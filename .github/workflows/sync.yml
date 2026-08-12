@@ -205,13 +205,6 @@ jobs:
 
           # Each snapshot is stored at the root of its own branch for clean ZIPs.
           sync_mirror \
-            "https://gitgud.io/BondageProjects/Bondage-College.git" \
-            "master" \
-            "BondageClub" \
-            "bondageclub" \
-            "partial"
-
-          sync_mirror \
             "https://github.com/SugarChain-Studio/echo-activity-ext.git" \
             "main" \
             "." \
@@ -224,3 +217,10 @@ jobs:
             "." \
             "echo-clothing-ext" \
             "shallow"
+
+          sync_mirror \
+            "https://gitgud.io/BondageProjects/Bondage-College.git" \
+            "master" \
+            "BondageClub" \
+            "bondageclub" \
+            "partial"
