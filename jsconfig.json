@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "checkJs": true,
+        "allowJs": true,
+        "lib": ["es2021", "dom"],
+        "paths": {
+            "@mod-utils/*": ["./utils/src/*"]
+        }
+    },
+    "include": [
+        "utils/src/**/*.js",
+        "src/**/*.js",
+        "src/**/Typedef.d.ts",
+        "utils/src/**/Typedef.d.ts",
+        "node_modules/bc-stubs/bc/**/*.d.ts",
+        "translation/Typedef.d.ts",
+        "translation/**/*.js"
+    ]
+}

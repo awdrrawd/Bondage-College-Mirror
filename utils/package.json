@@ -1,0 +1,26 @@
+{
+    "name": "bc-modding-utilities",
+    "version": "1.0.0",
+    "description": "A collection of utilities for modding BC",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/SugarChain-Studio/bc-modding-utilities"
+    },
+    "author": "Da'Inihlus",
+    "license": "MIT",
+    "packageManager": "pnpm@10.13.1",
+    "devDependencies": {
+        "@eslint/js": "^9.31.0",
+        "@sugarch/bc-asset-manager": "^0.5.12",
+        "@sugarch/bc-event-handler": "^0.6.3",
+        "@sugarch/bc-mod-hook-manager": "^0.2.15",
+        "@sugarch/bc-mod-types": "^0.6.2",
+        "@sugarch/bc-mod-utility": "^0.2.11",
+        "bc-stubs": "118.0.0",
+        "bondage-club-mod-sdk": "^1.2.0",
+        "copyfiles": "^2.4.1",
+        "eslint": "^9.31.0",
+        "rollup": "^4.45.1",
+        "typescript": "^5.8.3"
+    }
+}
