@@ -1,0 +1,111 @@
+name: Sync BondageClub code
+
+on:
+  schedule:
+    # GitHub Actions uses UTC. 18:17 UTC is 02:17 in Taiwan (UTC+8).
+    - cron: "17 18 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bondage-club-mirror
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out mirror repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch non-media files from upstream
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          git clone \
+            --depth=1 \
+            --filter=blob:none \
+            --no-checkout \
+            --branch=master \
+            https://gitgud.io/BondageProjects/Bondage-College.git \
+            upstream
+
+          echo "UPSTREAM_COMMIT=$(git -C upstream rev-parse HEAD)" >> "$GITHUB_ENV"
+
+          python3 <<'PY'
+          import subprocess
+          from pathlib import Path
+
+          excluded_extensions = {
+              # Images
+              ".avif", ".bmp", ".gif", ".ico", ".jpe", ".jpeg", ".jpg",
+              ".jxl", ".png", ".svg", ".tif", ".tiff", ".webp",
+              # Audio
+              ".aac", ".flac", ".m4a", ".mid", ".midi", ".mp3", ".oga",
+              ".ogg", ".opus", ".wav",
+              # Video
+              ".avi", ".m4v", ".mkv", ".mov", ".mp4", ".mpeg", ".mpg",
+              ".ogv", ".webm", ".wmv",
+          }
+
+          result = subprocess.run(
+              [
+                  "git", "-C", "upstream", "ls-tree", "-r", "-z",
+                  "--name-only", "HEAD", "BondageClub/",
+              ],
+              check=True,
+              stdout=subprocess.PIPE,
+          )
+
+          selected = []
+          for raw_path in result.stdout.split(b"\0"):
+              if not raw_path:
+                  continue
+              path = raw_path.decode("utf-8", errors="surrogateescape")
+              if Path(path).suffix.lower() not in excluded_extensions:
+                  selected.append(raw_path)
+
+          with open("selected-paths.bin", "wb") as output:
+              for path in selected:
+                  output.write(path + b"\0")
+
+          print(f"Selected {len(selected)} non-media files")
+          PY
+
+          if [[ -s selected-paths.bin ]]; then
+            git -C upstream checkout HEAD \
+              --pathspec-from-file=../selected-paths.bin \
+              --pathspec-file-nul
+          fi
+
+      - name: Update mirror tree
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          mkdir -p BondageClub
+          rsync -a --delete upstream/BondageClub/ BondageClub/
+          rm -rf upstream selected-paths.bin
+
+      - name: Commit and push changes
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          git add --all BondageClub
+
+          if git diff --cached --quiet; then
+            echo "No upstream changes"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Sync BondageClub code from upstream ${UPSTREAM_COMMIT:0:12}"
+          git push
