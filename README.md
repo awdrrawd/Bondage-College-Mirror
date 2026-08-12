@@ -15,9 +15,10 @@ workflow. The workflow runs daily at approximately 02:17 Taiwan time and can
 also be started manually from the Actions page.
 
 Common images, image project files, audio, video, fonts, 3D assets, documents,
-and archives are excluded. Source submodules are expanded into the snapshots so
-they are included in downloaded ZIP files. A new snapshot commit is created only
-when its filtered upstream content changes.
+archives, and upstream GitHub Actions workflow definitions are excluded. Source
+submodules are expanded into the snapshots so they are included in downloaded
+ZIP files. A new snapshot commit is created only when its filtered upstream
+content changes.
 
 These are filtered snapshots and do not preserve original upstream Git history.
 
