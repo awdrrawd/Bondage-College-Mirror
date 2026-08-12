@@ -1,0 +1,127 @@
+import { AssetManager } from "@local/AssetManager";
+import { luziSuffixFixups } from "@local/lib/fixups";
+
+/** @type { AddAssetWithConfigParamsNoGroup[] } */
+const accessories = [
+    [
+        {
+            Name: "耳朵1",
+            Random: false,
+            DynamicGroupName: "HairAccessory1",
+            Top: -40,
+            Left: 90,
+            Priority: 20,
+            DefaultColor: ["#7A4646", "#888888", "#0F0F0F"],
+            Layer: [{ Name: "内圈" }, { Name: "绒毛" }, { Name: "外圈" }],
+        },
+        {
+            translation: { CN: "耳朵 1", EN: "Ears 1", RU: "Уши 1" },
+            layerNames: { EN: { 内圈: "Inner", 绒毛: "Fur", 外圈: "Outer" } },
+        },
+    ],
+    [
+        {
+            Name: "耳朵2",
+            Random: false,
+            DynamicGroupName: "HairAccessory1",
+            Top: 0,
+            Left: 90,
+            Priority: 20,
+            DefaultColor: ["#916A6A", "#888888", "#917451"],
+            Layer: [{ Name: "内圈" }, { Name: "绒毛" }, { Name: "外圈" }],
+        },
+        {
+            translation: { CN: "耳朵 2", EN: "Ears 2", RU: "Уши 2" },
+            layerNames: { EN: { 内圈: "Inner", 绒毛: "Fur", 外圈: "Outer" } },
+        },
+    ],
+    [
+        {
+            Name: "角7",
+            Random: false,
+            DynamicGroupName: "HairAccessory1",
+            Top: 0,
+            Left: 0,
+            Priority: 52,
+        },
+        { translation: { CN: "卷羊角", EN: "Curled Horn" } },
+    ],
+    [
+        {
+            Name: "精灵耳2",
+            Random: false,
+            DynamicGroupName: "HairAccessory1",
+            Top: 0,
+            Left: 90,
+            Priority: 51,
+            InheritColor: "BodyUpper",
+            ColorSuffix: { HEX_COLOR: "White" },
+        },
+        { translation: { CN: "精灵耳 2", EN: "Elf Ears 2" } },
+    ],
+    [
+        {
+            Name: "小马耳2",
+            Random: false,
+            DynamicGroupName: "HairAccessory1",
+            Top: 0,
+            Left: 90,
+        },
+        { translation: { CN: "小马耳 2", EN: "Pony Ears 2" } },
+    ],
+    [
+        {
+            Name: "鱼鳍耳朵",
+            Random: false,
+            DynamicGroupName: "HairAccessory1",
+            Left: 160,
+            Top: 150,
+            Priority: 51,
+            DefaultColor: ["#FFFFFF", "#888888", "#000000"],
+            Layer: [{ Name: "A1" }, { Name: "A2" }, { Name: "A3" }],
+        },
+        {
+            translation: { CN: "鱼鳍耳朵", EN: "Fish Fin Ears" },
+            layerNames: {
+                CN: { A1: "底色", A2: "加深", A3: "鱼鳍骨" },
+                EN: { A1: "Base", A2: "Darkening", A3: "Fin Bones" },
+            },
+        },
+    ],
+    [
+        {
+            Name: "耷拉下来的耳朵",
+            Random: false,
+            DynamicGroupName: "HairAccessory1",
+            Left: 140,
+            Top: 70,
+            Priority: 51,
+        },
+        {
+            translation: { CN: "耷拉兔耳", EN: "Droopy Bunny Ears" },
+        },
+    ],
+    [
+        {
+            Name: "角8",
+            Random: false,
+            DynamicGroupName: "HairAccessory1",
+            Top: 0,
+            Left: 0,
+            Priority: 51,
+            DefaultColor: ["#7A4646", "#888888", "#0F0F0F"],
+            Layer: [{ Name: "A1" }, { Name: "A2" }, { Name: "A3" }, { Name: "B1" }, { Name: "B2" }, { Name: "B3" }],
+        },
+        {
+            translation: { CN: "角8", EN: "角8", RU: "角8" },
+            layerNames: { EN: { A1: "A1", A2: "A2", A3: "A3", B1: "B1", B2: "B2", B3: "B3" } },
+        },
+    ],
+];
+
+export default function () {
+    AssetManager.addAssetWithConfig(["HairAccessory1", "HairAccessory2", "HairAccessory3", "Hat"], accessories);
+    for (const a of accessories) {
+        luziSuffixFixups(["HairAccessory1", "HairAccessory2"], a[0].Name);
+    }
+}

@@ -1,0 +1,67 @@
+﻿import { DialogTools, Tools } from "@mod-utils/Tools";
+import { AssetManager } from "@local/AssetManager";
+import { PoseMapTool } from "@local/lib/generator";
+
+/** @type {AddAssetWithConfigParams} */
+const asset = [
+    "ClothLower",
+    {
+        Name: "裙子2",
+        Random: false,
+        ...Tools.topLeftBuilder({ Left: 80, Top: 410 }, ["KneelingSpread", { Left: 170 }]),
+        Priority: 26,
+        ParentGroup: {},
+        Expose: ["ItemVulva", "ItemVulvaPiercings", "ItemButt"],
+        PoseMapping: PoseMapTool.hideFullBody(),
+        Layer: [
+            { Name: "A1", ColorGroup: "Base" },
+            { Name: "A2", ColorGroup: "Shade" },
+            { Name: "A3", ColorGroup: "Line" },
+            { Name: "B1", ColorGroup: "Base" },
+            { Name: "B2", ColorGroup: "Shade" },
+            { Name: "B3", ColorGroup: "Line" },
+            { Name: "C1", ColorGroup: "Base" },
+            { Name: "C2", ColorGroup: "Shade" },
+            { Name: "C3", ColorGroup: "Line" },
+            { Name: "D1", ColorGroup: "Base" },
+            { Name: "D2", ColorGroup: "Shade" },
+            { Name: "D3", ColorGroup: "Line" },
+            { Name: "E1", ColorGroup: "Base" },
+            { Name: "E2", ColorGroup: "Shade" },
+            { Name: "E3", ColorGroup: "Line" },
+        ],
+    },
+    {
+        translation: { CN: "呢子短裙", EN: "Woolen Short Skirt" },
+        layerNames: {
+            CN: {
+                ...DialogTools.repeatEntries(
+                    [["A1", "A2", "A3"], "左2"],
+                    [["B1", "B2", "B3"], "左1"],
+                    [["C1", "C2", "C3"], "右2"],
+                    [["D1", "D2", "D3"], "右1"],
+                    [["E1", "E2", "E3"], "前"]
+                ),
+                Base: "基础",
+                Shade: "阴影",
+                Line: "线条",
+            },
+            EN: {
+                ...DialogTools.repeatEntries(
+                    [["A1", "A2", "A3"], "Left2"],
+                    [["B1", "B2", "B3"], "Left1"],
+                    [["C1", "C2", "C3"], "Right2"],
+                    [["D1", "D2", "D3"], "Right1"],
+                    [["E1", "E2", "E3"], "Front"]
+                ),
+                Base: "Base",
+                Shade: "Shade",
+                Line: "Line",
+            },
+        },
+    },
+];
+
+export default function () {
+    AssetManager.addAssetWithConfig(...asset);
+}

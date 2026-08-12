@@ -1,0 +1,500 @@
+import { DialogTools } from "@mod-utils/Tools";
+
+/** @type {(dialogKey:(id:string)=>string) => (id:string) => string} */
+const createText = (dialogKey) => (id) => AssetTextGet(dialogKey(id));
+
+/** @type {ItemDialog.DrawButtonFunction} */
+const drawButton = (text, id, location, hover) => {
+    const rect = /** @type {RectTuple} */ (Object.values(location));
+    DrawButton(...rect, text(id), "White", null, hover, false);
+};
+/** @type {ItemDialog.DrawButtonFunction} */
+const drawButtonDisable = (text, id, location, hover) => {
+    const rect = /** @type {RectTuple} */ (Object.values(location));
+    DrawButton(...rect, text(id), "Pink", null, hover, true);
+};
+
+/**
+ * @param {Rect} rect
+ * @returns {boolean}
+ */
+export function RMouseIn(rect) {
+    return MouseIn(rect.x, rect.y, rect.w, rect.h);
+}
+
+/**
+ * @param {number} value
+ * @param {number} min
+ * @param {number} max
+ */
+function clamp(value, min, max) {
+    return Math.min(Math.max(value, min), max);
+}
+
+/**
+ * @template {ExtendedItemData<any>} DataType
+ */
+class CustomItemDialog {
+    /**
+     * @typedef {ItemDialog.Callback<DataType>} CallbackType
+     */
+
+    /**
+     * @typedef {ItemDialog.CallbackWithOriginal<DataType>} CallbackWithOriginalType
+     */
+
+    /**
+     * @typedef {ItemDialog.OnChange<DataType>} OnChangeType
+     */
+
+    /**
+     * @param {ItemDialog.Options<DataType>} [options]
+     */
+    constructor(options = {}) {
+        /** @private */
+        this._buttons = /** @type {ItemDialog.ButtonConfig<DataType>[]} */ ([...(options.buttons ?? [])]);
+        /** @private */
+        this._params = /** @type {ItemDialog.ParameterConfig<DataType>[]} */ ([...(options.params ?? [])]);
+        /** @private */
+        this._texts = /** @type {ItemDialog.TextConfig<DataType>[]} */ ([...(options.texts ?? [])]);
+        /** @private */
+        this._checkboxes = /** @type {ItemDialog.CheckBoxConfig<DataType>[]} */ ([...(options.checkboxes ?? [])]);
+        /** @private */
+        this._sliders = /** @type {ItemDialog.SliderConfig<DataType>[]} */ ([...(options.sliders ?? [])]);
+
+        /** @private */
+        this._ondraw = /** @type {CallbackType | undefined} */ (options.ondraw);
+        /** @private */
+        this._onload = /** @type {CallbackType | undefined} */ (options.onload);
+        /** @private */
+        this._onexit = /** @type {CallbackType | undefined} */ (options.onexit);
+
+        /** @private */
+        this._overrideClickExit = /** @type {CallbackWithOriginalType | undefined} */ (options.overrideClickExit);
+        /** @private */
+        this._onchanges = /** @type {OnChangeType[]} */ (options.onchanges ? [options.onchanges] : []);
+
+        /** @private */
+        this._key = Math.random().toString(36).slice(2);
+    }
+
+    /**
+     * @param {CallbackType} draw
+     */
+    onDraw(draw) {
+        this._ondraw = draw;
+        return this;
+    }
+
+    /**
+     * @param {OnChangeType} callback
+     */
+    onChange(callback) {
+        this._onchanges.push(callback);
+        return this;
+    }
+
+    /**
+     * @private
+     * @param {DataType} data
+     */
+    _draw(data) {
+        const chara = CharacterGetCurrent();
+        const item = DialogFocusItem;
+        if (!item || !chara) return;
+
+        const text = createText(DialogTools.dialogKey(item));
+
+        const ctx = { data, item, chara };
+        const ctxText = { data, item, chara, text };
+
+        const oldAlign = MainCanvas.textAlign;
+        MainCanvas.textAlign = "center";
+
+        const lockRejected = InventoryGetItemProperty(item, "LockedBy") && !DialogCanUnlock(chara, item);
+
+        for (const button of this._buttons) {
+            if (button.show && !button.show(ctx)) continue;
+
+            const hover = button.hover?.(ctxText);
+
+            if ((!button.requireLockPermission || !lockRejected) && (!button.enable || button.enable(ctx))) {
+                drawButton(text, button.key, button.location, hover);
+            } else {
+                drawButtonDisable(text, button.key, button.location, hover);
+            }
+        }
+
+        const LeftPartX = 1470;
+        const RightPartX = 1530;
+        for (const param of this._params) {
+            if (!param.show(ctx)) continue;
+
+            MainCanvas.textAlign = "right";
+            DrawTextFit(text(param.key), LeftPartX, param.Y, 300, "White", "Gray");
+
+            MainCanvas.textAlign = "left";
+            const valueText = param.value(ctxText);
+            DrawTextFit(valueText, RightPartX, param.Y, 300, "White", "Gray");
+        }
+
+        for (const param of this._texts) {
+            const textValue = param.text(ctxText);
+            if (!textValue) continue;
+
+            /** @type {CanvasTextAlign} */
+            const oldAlign = MainCanvas.textAlign;
+            MainCanvas.textAlign = param.align ?? "center";
+            const { x, y, w } = param.location;
+            DrawTextFit(textValue, x, y, w, "White", param.backColor);
+            MainCanvas.textAlign = oldAlign;
+        }
+
+        const oldBaseline = MainCanvas.textBaseline;
+        MainCanvas.textBaseline = "middle";
+        MainCanvas.textAlign = "left";
+        for (const box of this._checkboxes) {
+            if (box.show && !box.show(ctx)) continue;
+            const enable = (!box.requireLockPermission || !lockRejected) && (!box.enable || box.enable(ctx));
+            const { x, y } = box.location;
+            const { w, h } = /**@type {Partial<Rect>} */ (box.location);
+            const checked = box.checked(ctx);
+            const textValue = box.text(ctxText);
+
+            const X = x + (w ?? 64) + 15;
+            const Y = y + (h ?? 64) / 2;
+
+            const hover = box.hover?.(ctxText);
+            // DrawCheckbox(x, y, w ?? 64, h ?? 64, "", checked, !enable);
+            // DrawButton(x, Y, w ?? 64, h ?? 64, "", "White", null, hover, !enable);
+
+            const color = enable ? "White" : "Pink";
+            const icon = checked ? "Icons/Checked.png" : "";
+            DrawButton(x, y, w ?? 64, h ?? 64, "", color, icon, hover, !enable);
+            if (box.textWidth) DrawTextFit(textValue, X, Y, box.textWidth, "White", "Gray");
+            else DrawText(textValue, X, Y, "White", "Gray");
+        }
+
+        this._sliders.forEach((slider, idx) => {
+            const id = `slider_${this._key}_${idx}`;
+            const ele = /** @type {HTMLInputElement} */ (document.getElementById(id));
+            if (!ele) return;
+            const curValue = parseInt(ele.value);
+            const X = slider.location.x;
+            const Y = slider.location.y;
+            const W = slider.location.w;
+            const H = 32;
+            const labelWidth = 60;
+            const spacing = 10;
+
+            let SliderX = X;
+            let SliderW = W;
+
+            if (slider.show && !slider.show(ctx)) {
+                ele.style.display = "none";
+                return;
+            }
+
+            ele.style.display = "";
+
+            MainCanvas.textBaseline = "middle";
+            if (slider.leftLabel) {
+                MainCanvas.textAlign = "left";
+                const labelText = slider.leftLabel(ctxText, curValue);
+                DrawTextFit(labelText, X, Y + H / 2, labelWidth, "White", "Gray");
+                SliderX += labelWidth + spacing;
+                SliderW -= labelWidth + spacing;
+            }
+
+            if (slider.rightLabel) {
+                MainCanvas.textAlign = "right";
+                const labelText = slider.rightLabel(ctxText, curValue);
+                DrawTextFit(labelText, X + W, Y + H / 2, labelWidth, "White", "Gray");
+                SliderW -= labelWidth + spacing;
+            }
+
+            ElementPosition(id, SliderX + SliderW / 2, Y + H, SliderW, H);
+        });
+
+        MainCanvas.textBaseline = oldBaseline;
+        MainCanvas.textAlign = oldAlign;
+        this._ondraw?.(data, item, chara);
+    }
+
+    /**
+     * @private
+     * @param {DataType} data
+     * @param {()=>void} original
+     */
+    _click(data, original) {
+        const chara = CharacterGetCurrent();
+        const item = DialogFocusItem;
+        if (!item || !chara) return;
+
+        const propertiesBefore = { ...item.Property };
+
+        if (this._overrideClickExit && MouseIn(1885, 25, 90, 90)) {
+            this._overrideClickExit(original, data, item, chara);
+        } else {
+            original();
+        }
+
+        const ctx = { data, item, chara };
+
+        /** @type {(arg0:ItemDialog.ButtonConfig<DataType>["update"])=>void} */
+        const update = (arg0) => {
+            CharacterRefresh(chara);
+            if (arg0 === true) ChatRoomCharacterItemUpdate(chara, item.Asset.Group.Name);
+            else if (arg0 === "full") ChatRoomCharacterUpdate(chara);
+            else if (typeof arg0 === "string") ChatRoomCharacterItemUpdate(chara, /** @type {AssetGroupName} */ (arg0));
+        };
+        const dialogKey = DialogTools.dialogKey(item);
+
+        const lockRejected = InventoryGetItemProperty(item, "LockedBy") && !DialogCanUnlock(chara, item);
+
+        /** @type {ItemDialog.InteractableConfig<DataType>} */
+        const clicked = (() => {
+            const btn = this._buttons.find(
+                (btn) =>
+                    btn.onclick &&
+                    RMouseIn(btn.location) &&
+                    (!btn.show || btn.show(ctx)) &&
+                    (!btn.requireLockPermission || !lockRejected) &&
+                    (!btn.enable || btn.enable(ctx))
+            );
+            if (btn) {
+                btn.onclick(ctx);
+                return btn;
+            }
+
+            const box = this._checkboxes.find(
+                (box) =>
+                    box.onclick &&
+                    RMouseIn({ w: 64, h: 64, ...box.location }) &&
+                    (!box.show || box.show(ctx)) &&
+                    (!box.requireLockPermission || !lockRejected) &&
+                    (!box.enable || box.enable(ctx))
+            );
+            if (box) {
+                box.onclick(ctx);
+                return box;
+            }
+        })();
+
+        if (clicked) {
+            if (clicked.update) update(clicked.update);
+            else if (clicked.update === undefined) {
+                if (item.Asset.Group.Category === "Item") update(true);
+                else CharacterRefresh(chara, false);
+            }
+            if (clicked.actionKey) {
+                const key = typeof clicked.actionKey === "function" ? clicked.actionKey(ctx) : clicked.actionKey;
+                const builder = new DictionaryBuilder()
+                    .sourceCharacter(Player)
+                    .targetCharacter(chara)
+                    .destinationCharacterName(chara)
+                    .asset(item.Asset, "AssetName", item.Craft && item.Craft.Name);
+                const Dictionary = (
+                    typeof clicked.actionProcess === "function" ? clicked.actionProcess(builder, item) : builder
+                ).build();
+                ChatRoomPublishCustomAction(dialogKey(key), !!clicked.leaveDialog, Dictionary);
+            } else if (!!clicked.leaveDialog) {
+                DialogLeave();
+            }
+        }
+
+        const propertiesAfter = { ...item.Property };
+        this._onchanges.forEach((callback) => callback(propertiesBefore, propertiesAfter, ctx));
+    }
+
+    /**
+     * @private
+     * @param {DataType} data
+     */
+    _load(data) {
+        const C = CharacterGetCurrent();
+        const Item = DialogFocusItem;
+        if (!Item || !C) return;
+        this._onload?.(data, Item, C);
+
+        this._sliders.forEach((slider, idx) => {
+            const id = `slider_${this._key}_${idx}`;
+            const max = slider.config?.max ?? 100;
+            const min = slider.config?.min ?? 0;
+            const step = slider.config?.step ?? 1;
+            const init = clamp(slider.value({ data, item: Item, chara: C }), min, max);
+
+            const ele = ElementCreateRangeInput(id, init, min, max, step);
+
+            ele.addEventListener("input", () => {
+                slider.onChange?.({ data, item: Item, chara: C }, parseInt(ele.value));
+            });
+            ele.style.display = "none";
+        });
+    }
+
+    /**
+     * @private
+     * @param {DataType} data
+     * @param {(()=>void)|null} original
+     */
+    _exit(data, original) {
+        const C = CharacterGetCurrent();
+        const Item = DialogFocusItem;
+        if (!Item || !C) return;
+        this._onexit?.(data, Item, C);
+
+        if (!original) {
+            this._sliders.forEach((_, idx) => {
+                const id = `slider_${this._key}_${idx}`;
+                ElementRemove(id);
+            });
+        }
+    }
+
+    /**
+     * @param {CallbackType} load
+     */
+    onLoad(load) {
+        this._onload = load;
+        return this;
+    }
+
+    /**
+     * @param {CallbackType} exit
+     */
+    onExit(exit) {
+        this._onexit = exit;
+        return this;
+    }
+
+    /**
+     * @param {CallbackWithOriginalType} clickExit
+     */
+    overrideClickExit(clickExit) {
+        this._overrideClickExit = clickExit;
+        return this;
+    }
+
+    /**
+     * @typedef { DataType extends ModularItemData ? ModularItemOption :
+     *   DataType extends TypedItemData ? TypedItemOption :
+     *   DataType extends NoArchItemData ? NoArchItemOption :
+     *     never} OptionType
+     */
+
+    /**
+     * @param {ExtendedItemCapsScriptHooksStruct<DataType, OptionType>} [base] 基础hook
+     * @return {ExtendedItemCapsScriptHooksStruct<DataType, OptionType>}
+     */
+    createHooks(base = {}) {
+        const hooks = { ...base };
+
+        /**
+         * @param {(data:DataType)=>void} func
+         * @returns {(data: DataType, originalFunction: (()=>void) | null) => void}
+         */
+        const originThen = (func) => (data, originalFunction) => {
+            originalFunction?.();
+            func(data);
+        };
+
+        const keys = /** @type {("Load" | "Exit" |"Draw"|"Click")[]} */ (["Click", "Draw"]);
+        if (this._onload || this._sliders.length > 0) keys.push("Load");
+        if (this._onexit || this._sliders.length > 0) keys.push("Exit");
+
+        for (const key of keys) {
+            hooks[key] = (() => {
+                switch (key) {
+                    case "Load":
+                        return originThen((data) => this._load(data));
+                    case "Exit":
+                        return (data, originalFunction) => {
+                            this._exit(data, originalFunction);
+                            originalFunction?.();
+                        };
+                    case "Click":
+                        return (data, original) => this._click(data, original);
+                    case "Draw":
+                        return originThen((data) => this._draw(data));
+                    default:
+                        return () => {};
+                }
+            })();
+        }
+        return hooks;
+    }
+}
+
+class _ItemDialogTools {
+    /**
+     * @template {ExtendedItemData<any>} Rt
+     * @type {(arg:ItemDialog.ButtonConfig<Rt>)=>ItemDialog.ButtonConfig<Rt>}
+     */
+    buttons = (arg) => arg;
+
+    /**
+     * @template {ExtendedItemData<any>} Rt
+     * @type {(arg:ItemDialog.ParameterConfig<Rt>)=>ItemDialog.ParameterConfig<Rt>}
+     */
+    params = (arg) => arg;
+
+    /**
+     * @template {ExtendedItemData<any>} Rt
+     * @type {(arg:ItemDialog.TextConfig<Rt>)=>ItemDialog.TextConfig<Rt>}
+     */
+    texts = (arg) => arg;
+
+    /**
+     * @template {ExtendedItemData<any>} Rt
+     * @type {(arg:ItemDialog.CheckBoxConfig<Rt>)=>ItemDialog.CheckBoxConfig<Rt>}
+     */
+    checkboxes = (arg) => arg;
+
+    /**
+     * @template {ExtendedItemData<any>} Rt
+     * @type {(arg:ItemDialog.SliderConfig<Rt>)=>ItemDialog.SliderConfig<Rt>}
+     */
+    sliders = (arg) => arg;
+}
+
+export const ItemDialogTools = new _ItemDialogTools();
+
+/**
+ * Factory that creates a DialogButtons instance for a generic DataType.
+ * @template {ExtendedItemData<any>} DataType
+ * @param {ItemDialog.Options<DataType>} [options]
+ * @returns {CustomItemDialog<DataType>}
+ */
+function createItemDialog(options) {
+    const ret = /** @type {CustomItemDialog<DataType>}*/ (new CustomItemDialog(options));
+    return ret;
+}
+
+/**
+ * Loose-typed wrapper for modular dialogs. Accepts any button/param shapes and
+ * returns a DialogButtons instance typed for ModularItemData.
+ * @param {ItemDialog.Options<ModularItemData>} [options]
+ * @returns {CustomItemDialog<ModularItemData>}
+ */
+export function createItemDialogModular(options) {
+    return /** @type {CustomItemDialog<ModularItemData>} */ (createItemDialog(options));
+}
+
+/**
+ * Loose-typed wrapper for typed dialogs.
+ * @param {ItemDialog.Options<TypedItemData>} [options]
+ * @returns {CustomItemDialog<TypedItemData>}
+ */
+export function createItemDialogTyped(options) {
+    return /** @type {CustomItemDialog<TypedItemData>} */ (createItemDialog(options));
+}
+
+/**
+ * Loose-typed wrapper for noarch dialogs.
+ * @param {ItemDialog.Options<NoArchItemData>} [options]
+ * @returns {CustomItemDialog<NoArchItemData>}
+ */
+export function createItemDialogNoArch(options) {
+    return /** @type {CustomItemDialog<NoArchItemData>} */ (createItemDialog(options));
+}

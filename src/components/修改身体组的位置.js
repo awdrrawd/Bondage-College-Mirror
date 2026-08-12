@@ -1,0 +1,53 @@
+import { HookManager } from "@sugarch/bc-mod-hook-manager";
+import { AssetManager } from "@local/AssetManager";
+import { Type } from "@local/lib/type";
+
+/** @type {AssetDefinitionBase["DrawOffset"]} */
+const customOffset = [
+    ...["FlatChastityCage", "PlasticChastityCage", "FuturisticTrainingBelt"].map((Asset) =>
+        Type.drawOffset({ Group: "ItemVulva", Asset, Y: -20 })
+    ),
+    ...["BasicCockring", "LockingCockring"].map((Asset) => Type.drawOffset({ Group: "ItemVulva", Asset, Y: -36 })),
+    ...Type.groups(["Pussy", "ItemVulva", "ItemVulvaPiercings", "ItemButt"]).map((Group) =>
+        Type.drawOffset({ Group, Y: -16 })
+    ),
+    ...["CockSock", "Jockstrap"].map((Asset) => Type.drawOffset({ Asset, Y: -20 })),
+    { Asset: "Splatters", Layer: ["Internal2", "Internal3"], Y: -20 },
+    { Asset: "ExtendablePostureCollar", Y: -11, X: -10 },
+];
+
+/** @type {["Original", "EchoV2"]} */
+const bodyStyles = ["Original", "EchoV2"];
+
+/** @type {Record<bodyStyles[number], AssetDefinitionBase["DrawOffset"]>} */
+const bodyOffset = {
+    Original: customOffset,
+    EchoV2: [...customOffset, { Group: "Bra", Asset: "LeatherBunnyHollowBra", X: 160, Y: 208 }],
+};
+
+export default function () {
+    HookManager.patchFunction("CommonDrawComputeDrawingCoordinates", {
+        "offset.Group === groupName &&": "(offset.Group === undefined || offset.Group === groupName) &&",
+    });
+
+    HookManager.hookFunction("CommonDrawComputeDrawingCoordinates", 0, (args, next) => {
+        const ret = next(args);
+        const [C, asset] = args;
+
+        const bodyStyleItem = InventoryGet(C, "BodyStyle");
+        if (bodyStyleItem?.Asset?.Name === "EchoV1") return ret;
+
+        if (asset.Name === "StrictPonyBoots") {
+            if (C.PoseMapping.BodyLower === "BaseLower") {
+                ret.Y -= 10;
+            }
+        }
+        return ret;
+    });
+
+    for (const body of bodyStyles) {
+        AssetManager.modifyAsset("BodyStyle", body, (group, asset) => {
+            asset.DrawOffset = bodyOffset[body];
+        });
+    }
+}

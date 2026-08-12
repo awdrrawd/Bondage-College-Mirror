@@ -1,0 +1,29 @@
+import { debugFlag } from "@mod-utils/rollupHelper";
+import { AssetManager } from "@local/AssetManager";
+
+/** @type {CustomAssetDefinition} */
+const asset = {
+    Name: "坐标尺",
+    Random: false,
+    Top: 0,
+    Left: 0,
+    Priority: 99,
+    DynamicGroupName: "BodyMarkings2_Luzi",
+    Alpha: [
+        {
+            Group: ["ItemDevices"],
+            Masks: [
+                [0, 100, 100, 100], //下
+            ],
+        },
+    ],
+};
+
+const translation = { CN: "坐牢尺", EN: "Grid" };
+
+export default function () {
+    if (debugFlag) {
+        AssetManager.addAssetWithConfig("外观工具", asset, { translation, layerNames: {} });
+    }
+}
+

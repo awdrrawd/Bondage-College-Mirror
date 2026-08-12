@@ -1,0 +1,12 @@
+otherTool/
+node_modules/
+public/
+草稿/
+resources/**/*.psd
+/CHANGELOG.md
+/.vscode
+/.idea
+.DS_Store
+resources/Assets/*空白文件
+resources/Assets/*空白*
+__pycache__

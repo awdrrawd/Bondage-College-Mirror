@@ -1,0 +1,131 @@
+﻿import { AssetManager } from "@local/AssetManager";
+import { Tools } from "@mod-utils/Tools";
+import { partialDraw, PartialDrawCanvasCacheData } from "./metaDraw";
+import { monadic } from "@mod-utils/monadic";
+import { registerDrawHook } from "@local/lib/draw";
+import { PoseMapTool } from "@local/lib/generator";
+import { Access } from "@local/lib/type";
+
+/** @type {Record<string, { partial: AssetGroupName[], mask: string, blend: GlobalCompositeOperation }>} */
+const drawConfig = {
+    上身遮罩: { partial: ["BodyUpper"], mask: "身体遮罩", blend: "destination-out" },
+    下身遮罩: { partial: ["BodyLower"], mask: "身体遮罩", blend: "destination-out" },
+    底部: { partial: ["BodyUpper", "BodyLower"], mask: "底部遮罩", blend: "destination-in" },
+};
+
+/** @type {ExtendedItemCallbacks.AfterDraw<{drawCache: PartialDrawCanvasCacheData}>} */
+function afterDraw(drawData) {
+    const { C, A, X, Y, drawCanvas, drawCanvasBlink, AlphaMasks, L, PersistentData } = drawData;
+    monadic(Access.get(drawConfig, L)).then(({ partial, mask, blend }) => {
+        const key = `Luzi_PartialDraw_${partial.join("_")}`;
+        const data = PersistentData();
+        data.drawCache ??= new PartialDrawCanvasCacheData();
+        const cache = data.drawCache.get(key);
+
+        const { Canvas, CanvasBlink } = partialDraw(C, A, partial, cache);
+        Tools.getAssetImageThen(drawData, mask).then((img) => {
+            DrawImageEx(img, Canvas.getContext("2d"), X, Y, { BlendingMode: blend });
+            DrawImageEx(img, CanvasBlink.getContext("2d"), X, Y, { BlendingMode: blend });
+            drawCanvas(Canvas, 0, 0, AlphaMasks);
+            drawCanvasBlink(CanvasBlink, 0, 0, AlphaMasks);
+        });
+    });
+}
+
+/** @type {CustomAssetDefinition} */
+const asset = {
+    Name: "生化人体",
+    Random: false,
+    Top: 0,
+    Left: 0,
+    Priority: 8,
+    Gender: "F",
+    Expose: ["ItemVulva", "ItemVulvaPiercings", "ItemButt"],
+    DefaultColor: ["Default", "Default", "#696776", "#7E5F69", "#E3BFBF"],
+    PoseMapping: {
+        Hogtied: PoseType.HIDE,
+        AllFours: PoseType.HIDE,
+    },
+    DynamicAfterDraw: true,
+    ParentGroup: {},
+
+    EditOpacity: true,
+    Hide: ["BodyUpper", "BodyLower", "Nipples"],
+    Layer: [
+        {
+            Name: "底部",
+            ParentGroup: "BodyUpper",
+            AllowColorize: false,
+            HasImage: false,
+        },
+        {
+            Name: "骨架",
+            PoseMapping: {
+                Kneel: "LegsClosed",
+                LegsClosed: "LegsClosed",
+                Spread: "Spread",
+                KneelingSpread: "KneelingSpread",
+                Hogtied: PoseType.HIDE,
+                AllFours: PoseType.HIDE,
+            },
+        },
+        {
+            Name: "阴道",
+            Top: 400,
+            Left: 180,
+        },
+        {
+            Name: "腹中脑容器",
+            Top: 400,
+            Left: 180,
+        },
+        {
+            Name: "腹中脑",
+            Top: 400,
+            Left: 180,
+        },
+        {
+            Name: "上身遮罩",
+            ParentGroup: "BodyUpper",
+            PoseMapping: PoseMapTool.hideFullBody(),
+            AllowColorize: false,
+            HasImage: false,
+        },
+        {
+            Name: "下身遮罩",
+            ParentGroup: "BodyLower",
+            Priority: 9,
+            PoseMapping: { ...AssetPoseMapping.BodyLower, Kneel: "LegsClosed" },
+            AllowColorize: false,
+            HasImage: false,
+        },
+        {
+            Name: "网格",
+            ParentGroup: "BodyUpper",
+        },
+    ],
+};
+
+const translation = {
+    CN: "生化人体",
+    EN: "Android Body",
+};
+
+const layerNames = {
+    EN: {
+        骨架: "Skeleton",
+        阴道: "Vulva",
+        腹中脑容器: "Stomach Brain Container",
+        腹中脑: "Stomach Brain",
+        网格: "Mesh",
+    },
+};
+
+export default function () {
+    const assetGroup = "动物身体_Luzi";
+    registerDrawHook(asset, assetGroup, { afterDraw });
+    AssetManager.addAssetWithConfig(assetGroup, asset, {
+        translation,
+        layerNames,
+    });
+}

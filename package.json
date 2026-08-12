@@ -1,0 +1,86 @@
+{
+    "name": "echo-clothing-ext",
+    "scripts": {
+        "type-check": "tsc --noEmit --allowJs --checkJs -p jsconfig.json",
+        "lint": "eslint --ext .js src utils",
+        "build": "rollup -c rollup.config.js",
+        "dev:rel": "pnpm type-check && pnpm resources:rel && pnpm build --configBaseURL \"http://localhost:8080/\"",
+        "dev": "pnpm lint && pnpm type-check && pnpm resources:dev && pnpm build --configDebug --configBaseURL \"http://localhost:8080/\"",
+        "dev:beta": "pnpm type-check && pnpm resources:dev --type beta && pnpm build --configDebug --configBeta --configBaseURL \"http://localhost:8080/\"",
+        "changelog": "conventional-changelog -n ./scripts/.changelog-config.mjs -o CHANGELOG.md -r 0",
+        "changelog:stdout": "conventional-changelog -n ./scripts/.changelog-config.mjs",
+        "changelog:latest-stdout": "conventional-changelog -n ./scripts/.changelog-config.mjs --stdout -r 2",
+        "changelog:page": "node ./scripts/.changelog.js CHANGELOG.md public/changelog.html",
+        "resources:rel": "node ./scripts/.resource.js --rel",
+        "resources:dev": "node ./scripts/.resource.js --dev",
+        "serve": "http-server -p 8080 --cors public -c31536000",
+        "package-props": "node ./scripts/.package-props.js",
+        "update-sugarch": "node ./scripts/update-sugarch-deps.js",
+        "update-sugarch:check": "node ./scripts/update-sugarch-deps.js --dry-run",
+        "git:release": "pnpm push-release",
+        "push-release": "pnpm lint && git checkout -q release && git merge --quiet --ff-only origin/beta && git push && git checkout main",
+        "push-beta": "pnpm lint && git checkout -q beta && git merge --quiet --ff-only origin/main && git push && git checkout main"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/SugarChain-Studio/echo-clothing-ext.git"
+    },
+    "rollupSetting": {
+        "output": "bc-cloth.js",
+        "input": "src/bc-cloth.js",
+        "assets": {
+            "location": "resources",
+            "assets": [
+                "Assets",
+                "Audio",
+                "Icons",
+                "Screens"
+            ]
+        },
+        "componentDir": "src/components",
+        "loaderName": "bc-cloth.user.js",
+        "beta": {
+            "output": "bc-cloth-beta.js",
+            "loaderName": "bc-cloth-beta.user.js"
+        }
+    },
+    "displayName": "服装拓展",
+    "modFullName": "Echo的服装拓展",
+    "author": "Echo",
+    "description": "BC视觉表现的美学修正与拓展",
+    "devDependencies": {
+        "@eslint/js": "^9.36.0",
+        "@rollup/plugin-alias": "^5.1.1",
+        "@rollup/plugin-commonjs": "^28.0.6",
+        "@rollup/plugin-node-resolve": "^16.0.1",
+        "@rollup/plugin-replace": "^6.0.2",
+        "@rollup/plugin-terser": "^0.4.4",
+        "@sugarch/bc-asset-manager": "^1.4.0",
+        "@sugarch/bc-event-handler": "^1.0.4",
+        "@sugarch/bc-mod-hook-manager": "^0.3.4",
+        "@sugarch/bc-mod-i18n": "^0.0.4",
+        "@sugarch/bc-mod-types": "^0.6.4",
+        "@sugarch/bc-mod-utility": "^0.2.11",
+        "@typescript-eslint/parser": "^8.56.1",
+        "bc-stubs": "129.0.0-Beta.1",
+        "bondage-club-mod-sdk": "^1.2.0",
+        "conventional-changelog": "^7.1.1",
+        "conventional-changelog-angular": "^8.0.0",
+        "conventional-changelog-conventionalcommits": "^9.1.0",
+        "conventional-changelog-preset-loader": "^5.0.0",
+        "copyfiles": "^2.4.1",
+        "eslint": "^10.0.2",
+        "github-markdown-css": "^5.8.1",
+        "globals": "^16.4.0",
+        "http-server": "^14.1.1",
+        "lz-string": "^1.5.0",
+        "marked": "^15.0.12",
+        "rollup": "^4.59.0",
+        "rollup-plugin-cleanup": "^3.2.1",
+        "rollup-plugin-copy": "^3.5.0",
+        "rollup-plugin-import-css": "^3.5.8",
+        "sweetalert2": "11.23.0",
+        "typescript": "^5.9.3"
+    },
+    "packageManager": "pnpm@10.32.1+sha512.a706938f0e89ac1456b6563eab4edf1d1faf3368d1191fc5c59790e96dc918e4456ab2e67d613de1043d2e8c81f87303e6b40d4ffeca9df15ef1ad567348f2be"
+}
