@@ -42,6 +42,7 @@ jobs:
             local source_ref="$2"
             local source_path="$3"
             local target_branch="$4"
+            local clone_mode="$5"
             local temp_dir
             local upstream
             local pathspec_file
@@ -53,20 +54,31 @@ jobs:
             pathspec_file="$temp_dir/selected-paths.bin"
 
             echo "::group::Fetch $target_branch"
-            git clone \
-              --depth=1 \
-              --filter=blob:none \
-              --no-checkout \
-              --branch="$source_ref" \
-              "$source_url" \
-              "$upstream"
+            if [[ "$clone_mode" == "partial" ]]; then
+              git clone \
+                --depth=1 \
+                --filter=blob:none \
+                --no-checkout \
+                --branch="$source_ref" \
+                "$source_url" \
+                "$upstream"
+            else
+              git clone \
+                --depth=1 \
+                --recurse-submodules \
+                --shallow-submodules \
+                --branch="$source_ref" \
+                "$source_url" \
+                "$upstream"
+            fi
 
             upstream_commit="$(git -C "$upstream" rev-parse HEAD)"
 
-            SOURCE_PATH="$source_path" \
-            UPSTREAM="$upstream" \
-            PATHSPEC_FILE="$pathspec_file" \
-            python3 <<'PY'
+            if [[ "$clone_mode" == "partial" ]]; then
+              SOURCE_PATH="$source_path" \
+              UPSTREAM="$upstream" \
+              PATHSPEC_FILE="$pathspec_file" \
+              python3 <<'PY'
           import os
           import subprocess
           from pathlib import Path
@@ -119,16 +131,17 @@ jobs:
           print(f"Selected {len(selected)} non-media paths")
           PY
 
-            if [[ -s "$pathspec_file" ]]; then
-              git -C "$upstream" checkout HEAD \
-                --pathspec-from-file="$pathspec_file" \
-                --pathspec-file-nul
-            fi
+              if [[ -s "$pathspec_file" ]]; then
+                git -C "$upstream" checkout HEAD \
+                  --pathspec-from-file="$pathspec_file" \
+                  --pathspec-file-nul
+              fi
 
-            # Include submodule source in downloadable ZIP snapshots.
-            if [[ -f "$upstream/.gitmodules" ]]; then
-              git -C "$upstream" submodule update \
-                --init --recursive --depth=1 --filter=blob:none
+              # Include submodule source in downloadable ZIP snapshots.
+              if [[ -f "$upstream/.gitmodules" ]]; then
+                git -C "$upstream" submodule update \
+                  --init --recursive --depth=1 --filter=blob:none
+              fi
             fi
 
             if [[ "$source_path" == "." ]]; then
@@ -195,16 +208,19 @@ jobs:
             "https://gitgud.io/BondageProjects/Bondage-College.git" \
             "master" \
             "BondageClub" \
-            "bondageclub"
+            "bondageclub" \
+            "partial"
 
           sync_mirror \
             "https://github.com/SugarChain-Studio/echo-activity-ext.git" \
             "main" \
             "." \
-            "echo-activity-ext"
+            "echo-activity-ext" \
+            "shallow"
 
           sync_mirror \
             "https://github.com/SugarChain-Studio/echo-clothing-ext.git" \
             "main" \
             "." \
-            "echo-clothing-ext"
+            "echo-clothing-ext" \
+            "shallow"
