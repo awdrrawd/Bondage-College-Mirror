@@ -1,20 +1,28 @@
-# Bondage College code mirror
+# Filtered code mirrors
 
-This repository automatically mirrors the `BondageClub/` directory from
-[BondageProjects/Bondage-College](https://gitgud.io/BondageProjects/Bondage-College).
+This repository keeps three filtered source snapshots. Each snapshot lives at
+the root of a separate branch so GitHub's **Download ZIP** produces a clean,
+single-project archive.
 
-The scheduled workflow:
+| Branch | Upstream content |
+| --- | --- |
+| [`bondageclub`](../../tree/bondageclub) | `BondageClub/` from [BondageProjects/Bondage-College](https://gitgud.io/BondageProjects/Bondage-College) |
+| [`echo-activity-ext`](../../tree/echo-activity-ext) | [SugarChain-Studio/echo-activity-ext](https://github.com/SugarChain-Studio/echo-activity-ext) |
+| [`echo-clothing-ext`](../../tree/echo-clothing-ext) | [SugarChain-Studio/echo-clothing-ext](https://github.com/SugarChain-Studio/echo-clothing-ext) |
 
-- runs once per day and can also be started manually;
-- preserves the directory tree below `BondageClub/`;
-- excludes common image, audio, and video formats; and
-- commits only when the filtered upstream content has changed.
+The `main` branch contains only this documentation and the synchronization
+workflow. The workflow runs daily at approximately 02:17 Taiwan time and can
+also be started manually from the Actions page.
 
-The mirror contains snapshots of the filtered tree. It does not preserve the
-original upstream Git commit history.
+Common images, image project files, audio, video, fonts, 3D assets, documents,
+and archives are excluded. Source submodules are expanded into the snapshots so
+they are included in downloaded ZIP files. A new snapshot commit is created only
+when its filtered upstream content changes.
+
+These are filtered snapshots and do not preserve original upstream Git history.
 
 ## Upstream and licensing
 
-All mirrored files originate from the upstream project. Review and comply with
-the upstream project's current licensing and redistribution terms before using
-or redistributing this mirror.
+All mirrored files originate from their respective upstream projects. Review
+and comply with each upstream project's current licensing and redistribution
+terms before using or redistributing these mirrors.

@@ -1,6 +1,0 @@
-Audience Patience Level
-听众的耐心
-Accuracy
-准确度
-Bonus
-奖励分数

@@ -1,6 +1,11 @@
-name: Sync BondageClub code
+name: Sync code mirrors
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/sync.yml"
   schedule:
     # GitHub Actions uses UTC. 18:17 UTC is 02:17 in Taiwan (UTC+8).
     - cron: "17 18 * * *"
@@ -10,102 +15,196 @@ permissions:
   contents: write
 
 concurrency:
-  group: bondage-club-mirror
+  group: code-mirrors
   cancel-in-progress: true
 
 jobs:
   sync:
     runs-on: ubuntu-latest
+    timeout-minutes: 45
 
     steps:
-      - name: Check out mirror repository
+      - name: Check out mirror configuration
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Fetch non-media files from upstream
+      - name: Synchronize filtered snapshot branches
         shell: bash
         run: |
           set -euo pipefail
 
-          git clone \
-            --depth=1 \
-            --filter=blob:none \
-            --no-checkout \
-            --branch=master \
-            https://gitgud.io/BondageProjects/Bondage-College.git \
-            upstream
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          echo "UPSTREAM_COMMIT=$(git -C upstream rev-parse HEAD)" >> "$GITHUB_ENV"
+          sync_mirror() {
+            local source_url="$1"
+            local source_ref="$2"
+            local source_path="$3"
+            local target_branch="$4"
+            local temp_dir
+            local upstream
+            local pathspec_file
+            local source_root
+            local upstream_commit
 
-          python3 <<'PY'
+            temp_dir="$(mktemp -d "$RUNNER_TEMP/mirror.XXXXXX")"
+            upstream="$temp_dir/upstream"
+            pathspec_file="$temp_dir/selected-paths.bin"
+
+            echo "::group::Fetch $target_branch"
+            git clone \
+              --depth=1 \
+              --filter=blob:none \
+              --no-checkout \
+              --branch="$source_ref" \
+              "$source_url" \
+              "$upstream"
+
+            upstream_commit="$(git -C "$upstream" rev-parse HEAD)"
+
+            SOURCE_PATH="$source_path" \
+            UPSTREAM="$upstream" \
+            PATHSPEC_FILE="$pathspec_file" \
+            python3 <<'PY'
+          import os
           import subprocess
           from pathlib import Path
 
-          excluded_extensions = {
-              # Images
-              ".avif", ".bmp", ".gif", ".ico", ".jpe", ".jpeg", ".jpg",
-              ".jxl", ".png", ".svg", ".tif", ".tiff", ".webp",
+          media_extensions = {
+              # Images and image project files
+              ".ai", ".avif", ".bmp", ".eps", ".gif", ".ico", ".jpe",
+              ".jpeg", ".jpg", ".jxl", ".kra", ".pdn", ".png", ".psb",
+              ".psd", ".svg", ".tga", ".tif", ".tiff", ".webp", ".xcf",
               # Audio
               ".aac", ".flac", ".m4a", ".mid", ".midi", ".mp3", ".oga",
               ".ogg", ".opus", ".wav",
               # Video
               ".avi", ".m4v", ".mkv", ".mov", ".mp4", ".mpeg", ".mpg",
               ".ogv", ".webm", ".wmv",
+              # Fonts, 3D assets, documents, and archives
+              ".7z", ".blend", ".eot", ".fbx", ".glb", ".gltf", ".gz",
+              ".obj", ".otf", ".pdf", ".rar", ".tar", ".ttf", ".woff",
+              ".woff2", ".zip",
           }
 
-          result = subprocess.run(
-              [
-                  "git", "-C", "upstream", "ls-tree", "-r", "-z",
-                  "--name-only", "HEAD", "BondageClub/",
-              ],
-              check=True,
-              stdout=subprocess.PIPE,
-          )
+          def is_media(path: str) -> bool:
+              # Also recognize editor backup names such as image.png~.
+              normalized = path.lower().rstrip("~")
+              return Path(normalized).suffix in media_extensions
 
-          selected = []
-          for raw_path in result.stdout.split(b"\0"):
-              if not raw_path:
-                  continue
-              path = raw_path.decode("utf-8", errors="surrogateescape")
-              if Path(path).suffix.lower() not in excluded_extensions:
-                  selected.append(raw_path)
+          upstream = os.environ["UPSTREAM"]
+          source_path = os.environ["SOURCE_PATH"]
+          command = [
+              "git", "-C", upstream, "ls-tree", "-r", "-z", "--name-only",
+              "HEAD",
+          ]
+          if source_path != ".":
+              command.append(source_path.rstrip("/") + "/")
 
-          with open("selected-paths.bin", "wb") as output:
+          result = subprocess.run(command, check=True, stdout=subprocess.PIPE)
+          selected = [
+              raw_path
+              for raw_path in result.stdout.split(b"\0")
+              if raw_path
+              and not is_media(
+                  raw_path.decode("utf-8", errors="surrogateescape")
+              )
+          ]
+
+          with open(os.environ["PATHSPEC_FILE"], "wb") as output:
               for path in selected:
                   output.write(path + b"\0")
 
-          print(f"Selected {len(selected)} non-media files")
+          print(f"Selected {len(selected)} non-media paths")
           PY
 
-          if [[ -s selected-paths.bin ]]; then
-            git -C upstream checkout HEAD \
-              --pathspec-from-file=../selected-paths.bin \
-              --pathspec-file-nul
-          fi
+            if [[ -s "$pathspec_file" ]]; then
+              git -C "$upstream" checkout HEAD \
+                --pathspec-from-file="$pathspec_file" \
+                --pathspec-file-nul
+            fi
 
-      - name: Update mirror tree
-        shell: bash
-        run: |
-          set -euo pipefail
+            # Include submodule source in downloadable ZIP snapshots.
+            if [[ -f "$upstream/.gitmodules" ]]; then
+              git -C "$upstream" submodule update \
+                --init --recursive --depth=1 --filter=blob:none
+            fi
 
-          mkdir -p BondageClub
-          rsync -a --delete upstream/BondageClub/ BondageClub/
-          rm -rf upstream selected-paths.bin
+            if [[ "$source_path" == "." ]]; then
+              source_root="$upstream"
+            else
+              source_root="$upstream/$source_path"
+            fi
 
-      - name: Commit and push changes
-        shell: bash
-        run: |
-          set -euo pipefail
+            # Submodules are checked out separately, so filter their files too.
+            SOURCE_ROOT="$source_root" python3 <<'PY'
+          import os
+          from pathlib import Path
 
-          git add --all BondageClub
+          media_extensions = {
+              ".7z", ".aac", ".ai", ".avi", ".avif", ".blend", ".bmp",
+              ".eot", ".eps", ".fbx", ".flac", ".gif", ".glb", ".gltf",
+              ".gz", ".ico", ".jpe", ".jpeg", ".jpg", ".jxl", ".kra",
+              ".m4a", ".m4v", ".mid", ".midi", ".mkv", ".mov", ".mp3",
+              ".mp4", ".mpeg", ".mpg", ".obj", ".oga", ".ogg", ".ogv",
+              ".opus", ".otf", ".pdf", ".pdn", ".png", ".psb", ".psd",
+              ".rar", ".svg", ".tar", ".tga", ".tif", ".tiff", ".ttf",
+              ".wav", ".webm", ".webp", ".wmv", ".woff", ".woff2", ".xcf",
+              ".zip",
+          }
 
-          if git diff --cached --quiet; then
-            echo "No upstream changes"
-            exit 0
-          fi
+          root = Path(os.environ["SOURCE_ROOT"])
+          for path in root.rglob("*"):
+              if path.is_file() and path.name != ".git":
+                  normalized = path.name.lower().rstrip("~")
+                  if Path(normalized).suffix in media_extensions:
+                      path.unlink()
+          PY
+            echo "::endgroup::"
 
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "Sync BondageClub code from upstream ${UPSTREAM_COMMIT:0:12}"
-          git push
+            echo "::group::Update $target_branch"
+            git fetch origin \
+              "+refs/heads/$target_branch:refs/remotes/origin/$target_branch" \
+              2>/dev/null || true
+
+            if git show-ref --verify --quiet "refs/remotes/origin/$target_branch"; then
+              git checkout -B "$target_branch" "origin/$target_branch"
+            else
+              git checkout --orphan "$target_branch"
+              git rm -rf .
+            fi
+
+            rsync -a --delete --exclude='.git' "$source_root/" ./
+            git add --all --force
+
+            if git diff --cached --quiet; then
+              echo "No changes for $target_branch"
+            else
+              git commit -m "Sync from upstream ${upstream_commit:0:12}"
+              git push origin "HEAD:$target_branch"
+            fi
+
+            git checkout --force main
+            rm -rf "$temp_dir"
+            echo "::endgroup::"
+          }
+
+          # Each snapshot is stored at the root of its own branch for clean ZIPs.
+          sync_mirror \
+            "https://gitgud.io/BondageProjects/Bondage-College.git" \
+            "master" \
+            "BondageClub" \
+            "bondageclub"
+
+          sync_mirror \
+            "https://github.com/SugarChain-Studio/echo-activity-ext.git" \
+            "main" \
+            "." \
+            "echo-activity-ext"
+
+          sync_mirror \
+            "https://github.com/SugarChain-Studio/echo-clothing-ext.git" \
+            "main" \
+            "." \
+            "echo-clothing-ext"
