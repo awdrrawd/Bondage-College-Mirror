@@ -7102,6 +7102,21 @@ var AssetFemale3DCG = [
 				],
 			},
 			{
+				Name: "ChainBelt",
+				Priority: 25,
+				PoseMapping: {
+					...AssetPoseMapping.Cloth,
+					BackCuffs: PoseType.DEFAULT,
+					BackBoxTie: PoseType.DEFAULT,
+					BackElbowTouch: PoseType.DEFAULT,
+					OverTheHead: PoseType.DEFAULT,
+					Yoked: PoseType.DEFAULT,
+					TapedHands: PoseType.DEFAULT,
+					Hogtied: PoseType.HIDE,
+					AllFours: PoseType.HIDE,
+				},
+			},
+			{
 				Name: "BowAccessory",
 				InventoryID: 167,
 				Random: false,
@@ -7278,6 +7293,17 @@ var AssetFemale3DCG = [
 					Author: "Echo (SugarChain)",
 					OriginalName: "肩章",
 					License: "CC BY-SA-NC 4.0",
+				},
+			},
+			{
+				Name: "ForeheadJewelry",
+				ParentGroup: "",
+				Top: 0,
+				DynamicGroupName: "Mask",
+				CopyConfig: {
+					GroupName: "Mask",
+					AssetName: "ForeheadJewelry",
+					BuyGroup: true,
 				},
 			},
 		],
@@ -16543,6 +16569,17 @@ var AssetFemale3DCG = [
 				},
 			},
 			{
+				Name: "ChainBelt",
+				ParentGroup: "",
+				Top: 0,
+				DynamicGroupName: "ClothAccessory",
+				CopyConfig: {
+					GroupName: "ClothAccessory",
+					AssetName: "ChainBelt",
+					BuyGroup: true,
+				},
+			},
+			{
 				Name: "LaceLegRing",
 				Random: false,
 				Gender: "F",
@@ -20633,6 +20670,17 @@ var AssetFemale3DCG = [
 					BuyGroup: true,
 				},
 			},
+			{
+				Name: "ForeheadJewelry",
+				ParentGroup: "",
+				Top: 0,
+				DynamicGroupName: "Mask",
+				CopyConfig: {
+					GroupName: "Mask",
+					AssetName: "ForeheadJewelry",
+					BuyGroup: true,
+				},
+			},
 		],
 		Color: [
 			"Default",
@@ -22717,6 +22765,17 @@ var AssetFemale3DCG = [
 					License: "CC BY-SA-NC 4.0",
 				},
 			},
+			{
+				Name: "ForeheadJewelry",
+				ParentGroup: "",
+				Top: 0,
+				DynamicGroupName: "Mask",
+				CopyConfig: {
+					GroupName: "Mask",
+					AssetName: "ForeheadJewelry",
+					BuyGroup: true,
+				},
+			},
 		],
 		Color: [
 			"Default",
@@ -23097,6 +23156,17 @@ var AssetFemale3DCG = [
 				CopyConfig: {
 					GroupName: "HairAccessory1",
 					AssetName: "CustomizableCowEars",
+					BuyGroup: true,
+				},
+			},
+			{
+				Name: "ForeheadJewelry",
+				ParentGroup: "",
+				Top: 0,
+				DynamicGroupName: "Mask",
+				CopyConfig: {
+					GroupName: "Mask",
+					AssetName: "ForeheadJewelry",
 					BuyGroup: true,
 				},
 			},
@@ -29802,20 +29872,47 @@ var AssetFemale3DCG = [
 			{
 				Name: "HairFront56",
 				Top: 30,
+				Extended: true,
 				Layer: [
-					{ Name: "Main", HideForAttribute: ["SmallEars", "NoEars"] },
+					{ Name: "Main", HideForAttribute: ["SmallEars", "NoEars"], AllowTypes: {typed: 0} },
 					{
 						Name: "SmallEars",
 						CopyLayerColor: "Main",
 						ShowForAttribute: ["SmallEars"],
+						AllowTypes: {typed: 0},
 					},
 					{
 						Name: "NoEars",
 						CopyLayerColor: "Main",
 						ShowForAttribute: ["NoEars"],
+						AllowTypes: {typed: 0},
 					},
 					{
 						Name: "MainTip",
+						AllowTypes: {typed: 0},
+					},
+					{ 
+						Name: "Texture_Main", 
+						HideForAttribute: ["SmallEars", "NoEars"], 
+						AllowTypes: {typed: 1},
+						CopyLayerColor: "Main",
+					},
+					{
+						Name: "Texture_SmallEars",
+						CopyLayerColor: "Main",
+						ShowForAttribute: ["SmallEars"],
+						AllowTypes: {typed: 1},
+					},
+					{
+						Name: "Texture_NoEars",
+						CopyLayerColor: "Main",
+						ShowForAttribute: ["NoEars"],
+						AllowTypes: {typed: 1},
+					},
+					{
+						Name: "Texture_MainTip",
+						AllowTypes: {typed: 1},
+						CopyLayerColor: "MainTip",
 					},
 				],
 			},
@@ -29823,19 +29920,45 @@ var AssetFemale3DCG = [
 				Name: "HairFront56b",
 				Top: 30,
 				Layer: [
-					{ Name: "Main", HideForAttribute: ["SmallEars", "NoEars"] },
+					{ Name: "Main", HideForAttribute: ["SmallEars", "NoEars"], AllowTypes: {typed: 0} },
 					{
 						Name: "SmallEars",
 						CopyLayerColor: "Main",
 						ShowForAttribute: ["SmallEars"],
+						AllowTypes: {typed: 0},
 					},
 					{
 						Name: "NoEars",
 						CopyLayerColor: "Main",
 						ShowForAttribute: ["NoEars"],
+						AllowTypes: {typed: 0},
 					},
 					{
 						Name: "MainTip",
+						AllowTypes: {typed: 0},
+					},
+					{ 
+						Name: "Texture_Main", 
+						HideForAttribute: ["SmallEars", "NoEars"], 
+						AllowTypes: {typed: 1},
+						CopyLayerColor: "Main",
+					},
+					{
+						Name: "Texture_SmallEars",
+						CopyLayerColor: "Main",
+						ShowForAttribute: ["SmallEars"],
+						AllowTypes: {typed: 1},
+					},
+					{
+						Name: "Texture_NoEars",
+						CopyLayerColor: "Main",
+						ShowForAttribute: ["NoEars"],
+						AllowTypes: {typed: 1},
+					},
+					{
+						Name: "Texture_MainTip",
+						AllowTypes: {typed: 1},
+						CopyLayerColor: "MainTip",
 					},
 				],
 			},
