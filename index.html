@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>repo//grep — GitHub 倉庫全文搜尋器</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<style>
+  :root{
+    --bg:        #0b0d0f;
+    --panel:     #111417;
+    --panel-2:   #14181c;
+    --line:      #22282e;
+    --text:      #d7dde3;
+    --dim:       #7a8590;
+    --accent:    #5fd68a;
+    --accent-dim:#2f6d4d;
+    --warn:      #e0a458;
+    --match:     #3a5f4a;
+    --mono: ui-monospace, "SFMono-Regular", "JetBrains Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:var(--mono); font-size:13px; line-height:1.5;
+    display:flex; flex-direction:column;
+  }
+  ::selection{background:var(--accent-dim); color:#fff;}
+
+  header{
+    border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg, #101316, #0d0f11);
+    padding:10px 14px;
+  }
+  .brand{display:flex; align-items:baseline; gap:8px; margin-bottom:8px;}
+  .brand .logo{color:var(--accent); font-weight:700; letter-spacing:0.5px; font-size:14px;}
+  .brand .logo .slash{color:var(--dim);}
+  .brand .sub{color:var(--dim); font-size:11px;}
+
+  .cfg-row{display:flex; flex-wrap:wrap; gap:6px; align-items:center;}
+  .cfg-row input{
+    background:var(--panel-2); border:1px solid var(--line); color:var(--text);
+    font-family:var(--mono); font-size:12px; padding:6px 8px; border-radius:3px; outline:none;
+  }
+  .cfg-row input:focus{border-color:var(--accent-dim);}
+  .cfg-row input#repoUrl{flex:1; min-width:280px;}
+  .cfg-row input#token{width:180px;}
+  .cfg-row label.tok{color:var(--dim); font-size:11px; display:flex; align-items:center; gap:4px;}
+
+  button{
+    font-family:var(--mono); font-size:12px; border-radius:3px; cursor:pointer;
+    border:1px solid var(--line); background:var(--panel-2); color:var(--text);
+    padding:6px 10px; transition:border-color .15s, color .15s;
+  }
+  button:hover:not(:disabled){border-color:var(--accent-dim); color:var(--accent);}
+  button:disabled{opacity:.4; cursor:not-allowed;}
+  button.primary{background:var(--accent-dim); border-color:var(--accent-dim); color:#dffbe9; font-weight:600;}
+  button.primary:hover:not(:disabled){color:#fff; border-color:var(--accent);}
+  button.mini{padding:3px 6px; font-size:10.5px;}
+
+  .status{margin-top:8px; font-size:11px; color:var(--dim); display:flex; align-items:center; gap:10px; min-height:14px; flex-wrap:wrap;}
+  .status .ok{color:var(--accent);}
+  .status .warn{color:var(--warn);}
+  .bar{flex:1; max-width:220px; height:5px; background:var(--panel-2); border-radius:3px; overflow:hidden; border:1px solid var(--line); display:none;}
+  .bar.show{display:block;}
+  .bar > i{display:block; height:100%; width:0%; background:var(--accent); transition:width .2s;}
+
+  .search-row{
+    display:flex; gap:6px; padding:10px 14px; border-bottom:1px solid var(--line);
+    background:var(--panel); flex-wrap:wrap; align-items:center;
+  }
+  .search-row input[type=text]{
+    flex:1; min-width:200px; background:var(--panel-2); border:1px solid var(--line); color:var(--text);
+    font-family:var(--mono); font-size:13px; padding:8px 10px; border-radius:3px; outline:none;
+  }
+  .search-row input[type=text]:focus{border-color:var(--accent-dim);}
+  .search-row .modeToggle{display:flex; border:1px solid var(--line); border-radius:3px; overflow:hidden;}
+  .search-row .modeToggle button{border:none; border-radius:0; background:var(--panel-2);}
+  .search-row .modeToggle button.active{background:var(--accent-dim); color:#dffbe9;}
+  .search-row .count{color:var(--dim); font-size:11px; white-space:nowrap;}
+
+  main{flex:1; display:flex; min-height:0;}
+  #fileList{width:340px; flex-shrink:0; overflow-y:auto; border-right:1px solid var(--line); background:var(--panel);}
+  .empty-hint{color:var(--dim); padding:16px; font-size:12px; line-height:1.7;}
+  .empty-hint b{color:var(--text);}
+  .empty-hint code{background:var(--panel-2); padding:1px 4px; border-radius:2px;}
+
+  .treeRow{display:flex; align-items:center; gap:4px; padding:5px 8px; cursor:pointer; border-bottom:1px solid transparent;}
+  .treeRow:hover{background:var(--panel-2);}
+  .treeRow.dir .name{color:var(--text); font-weight:600;}
+  .treeRow.dir .arrow{color:var(--dim); width:12px; display:inline-block; transition:transform .12s;}
+  .treeRow.dir.open .arrow{transform:rotate(90deg);}
+  .treeRow.dir .count{color:var(--dim); font-size:10.5px; margin-left:auto;}
+  .treeRow.file{}
+  .treeRow.file .name{color:var(--text); font-size:12px; word-break:break-all;}
+  .treeRow.file.active{background:var(--match);}
+  .treeRow.file .size{color:var(--dim); font-size:10px; margin-left:auto; flex-shrink:0; padding-left:6px;}
+  .treeChildren{display:none;}
+  .treeChildren.open{display:block;}
+  .icon{width:14px; flex-shrink:0; text-align:center; color:var(--dim); font-size:11px;}
+
+  .flatRow{padding:7px 12px; border-bottom:1px solid var(--line); cursor:pointer; display:flex; flex-direction:column; gap:2px;}
+  .flatRow:hover{background:var(--panel-2);}
+  .flatRow.active{background:var(--match);}
+  .flatRow .path{font-size:12px; word-break:break-all; color:var(--text);}
+  .flatRow .path .hi{background:var(--accent-dim); color:#fff; border-radius:2px;}
+  .flatRow .path .dirpart{color:var(--dim);}
+  .flatRow .meta{font-size:10px; color:var(--dim); display:flex; gap:8px;}
+  .flatRow .meta .n{color:var(--warn);}
+
+  #viewer{flex:1; display:flex; flex-direction:column; min-width:0;}
+  .viewer-bar{padding:8px 14px; border-bottom:1px solid var(--line); background:var(--panel); display:flex; align-items:center; gap:8px; flex-wrap:wrap;}
+  .viewer-bar .path{color:var(--accent); font-size:12px; word-break:break-all; flex:1;}
+  .viewer-bar .path .dim{color:var(--dim);}
+  #code{flex:1; overflow:auto; margin:0; padding:14px; white-space:pre-wrap; word-break:break-word; background:var(--bg); font-size:12.5px; color:var(--text);}
+  #code mark{background:var(--accent-dim); color:#fff; border-radius:2px;}
+  .placeholder{flex:1; display:flex; align-items:center; justify-content:center; color:var(--dim); font-size:12px; text-align:center; padding:40px;}
+
+  footer{border-top:1px solid var(--line); padding:6px 14px; font-size:10.5px; color:var(--dim); display:flex; justify-content:space-between; background:var(--panel);}
+  a{color:var(--accent); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+
+  @media (max-width: 720px){
+    main{flex-direction:column;}
+    #fileList{width:100%; max-height:38vh; border-right:none; border-bottom:1px solid var(--line);}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <span class="logo">repo<span class="slash">//</span>grep</span>
+    <span class="sub">— 在瀏覽器裡直接讀取 GitHub 倉庫全文，像 F12 一樣，但對準整個 repo</span>
+  </div>
+  <div class="cfg-row">
+    <input id="repoUrl" placeholder="貼上 GitHub 網址，例如 https://github.com/owner/repo 或 https://github.com/owner/repo/tree/branch"
+      value="https://github.com/awdrrawd/Bondage-College-Mirror/tree/bondageclub">
+    <input id="token" type="password" placeholder="GitHub token（選填，提高速率上限）">
+    <button id="loadBtn" class="primary">載入倉庫檔案清單</button>
+  </div>
+  <div class="status">
+    <span id="statusText">貼好網址後按「載入倉庫檔案清單」。載入後會自動把所有文字檔內容抓進瀏覽器記憶體（分頁關掉就釋放），之後搜尋不用再等網路。</span>
+    <div class="bar" id="bar"><i id="barFill"></i></div>
+  </div>
+</header>
+
+<div class="search-row">
+  <div class="modeToggle">
+    <button id="modeName" class="active">檔名搜尋</button>
+    <button id="modeContent">內容搜尋（找函式名等關鍵字）</button>
+  </div>
+  <input id="searchBox" type="text" placeholder="輸入關鍵字…直接找出全倉庫中符合的檔案，不受資料夾收合影響" disabled>
+  <button id="fetchAllBtn" disabled title="預先抓取所有文字檔內容，之後搜尋會更快">抓取全部文字檔內容</button>
+  <button id="zipBtn" disabled title="把目前列表中符合條件、且內容已抓取的檔案打包成 zip">下載目前清單為 .zip</button>
+  <button id="copyAllBtn" disabled title="把目前列表中符合條件、且內容已抓取的檔案合併複製">複製目前清單全文</button>
+  <span class="count" id="countText"></span>
+</div>
+
+<main>
+  <div id="fileList">
+    <div class="empty-hint">
+      這個工具會：<br>
+      1. 貼上 GitHub 網址即可，不用分開填 owner / repo / branch<br>
+      2. 載入後自動把所有文字檔內容抓進瀏覽器記憶體，關掉分頁就釋放，之後搜尋是本機比對、不用重新打網路<br>
+      3. 沒有搜尋關鍵字時，左側以「資料夾樹狀收合」瀏覽；一輸入關鍵字，會依「命中檔案的上一層資料夾」分組並可收合，重複的翻譯檔不會洗版<br>
+      4. 內容搜尋在背景抓取還沒跑完時也能用，符合的檔案會邊抓邊冒出來，不用等全部抓完<br>
+      5. 圖片/字型/音訊等二進位檔只列出名稱與下載連結，不會被抓取內容
+    </div>
+  </div>
+
+  <div id="viewer">
+    <div class="placeholder" id="placeholder">選一個檔案來看內容<br><span style="font-size:11px">（或先用左側清單 / 上方搜尋列找檔案）</span></div>
+    <div class="viewer-bar" id="viewerBar" style="display:none;">
+      <span class="path" id="viewerPath"></span>
+      <button id="copyOneBtn">複製</button>
+      <button id="downloadOneBtn">下載</button>
+      <button id="rawLinkBtn">開啟原始連結</button>
+    </div>
+    <pre id="code" style="display:none;"></pre>
+  </div>
+</main>
+
+<footer>
+  <span>資料來源：GitHub REST API + raw.githubusercontent.com（只讀，不會寫入你的倉庫）</span>
+  <span id="rateInfo"></span>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  const $ = (id) => document.getElementById(id);
+  const repoUrlEl = $("repoUrl"), tokenEl = $("token");
+  const loadBtn = $("loadBtn"), statusText = $("statusText"), bar = $("bar"), barFill = $("barFill");
+  const searchBox = $("searchBox"), modeName = $("modeName"), modeContent = $("modeContent");
+  const fetchAllBtn = $("fetchAllBtn"), zipBtn = $("zipBtn"), copyAllBtn = $("copyAllBtn");
+  const countText = $("countText"), fileListEl = $("fileList");
+  const viewerBar = $("viewerBar"), viewerPath = $("viewerPath"), codeEl = $("code"), placeholder = $("placeholder");
+  const copyOneBtn = $("copyOneBtn"), downloadOneBtn = $("downloadOneBtn"), rawLinkBtn = $("rawLinkBtn");
+  const rateInfo = $("rateInfo");
+
+  const TEXT_EXT = new Set(["js","jsx","ts","tsx","mjs","cjs","html","htm","css","scss","sass","less",
+    "json","json5","md","markdown","txt","xml","csv","tsv","yml","yaml","py","java","c","cc","cpp","h","hpp",
+    "cs","php","rb","go","rs","sh","bash","sql","svg","ini","cfg","conf","toml","gradle","bat","ps1","lock",
+    "gitignore","editorconfig","env","vue","svelte"]);
+
+  let files = [];          // flat list: {path,size,url,ext,isText,content,fetched}
+  let tree = null;         // nested tree built from files
+  let mode = "name";        // 'name' | 'content'
+  let activeFile = null;
+  let searchTerm = "";
+  let filteredCache = [];
+  let expanded = new Set(); // dir paths currently expanded (browse tree)
+  let matchGroupCollapsed = new Set(); // parent-folder groups user closed in search results
+
+  // ---------- parse a pasted GitHub URL ----------
+  function parseRepoInput(raw){
+    let s = raw.trim();
+    if(!s) return null;
+    s = s.replace(/^git@github\.com:/, "https://github.com/");
+    s = s.replace(/\.git\/?$/, "");
+    // strip protocol/host if present, otherwise assume "owner/repo[/tree/branch[/path]]"
+    let rest;
+    const m = s.match(/^https?:\/\/(?:www\.)?github\.com\/(.+)$/i);
+    if(m){ rest = m[1]; } else { rest = s.replace(/^\/+/, ""); }
+    rest = rest.replace(/\/+$/, "");
+    const parts = rest.split("/").filter(Boolean);
+    if(parts.length < 2) return null;
+    const owner = parts[0], repo = parts[1];
+    let branch = "";
+    if(parts.length >= 4 && (parts[2] === "tree" || parts[2] === "blob")){
+      branch = decodeURIComponent(parts[3]);
+    }
+    return {owner, repo, branch};
+  }
+
+  function extOf(path){
+    const base = path.split("/").pop();
+    const dot = base.lastIndexOf(".");
+    if (dot <= 0) return base.toLowerCase();
+    return base.slice(dot+1).toLowerCase();
+  }
+
+  function setStatus(msg, cls){ statusText.className = cls || ""; statusText.textContent = msg; }
+  function showBar(show){ bar.classList.toggle("show", show); if(!show) barFill.style.width = "0%"; }
+  function setBar(pct){ barFill.style.width = Math.max(0,Math.min(100,pct)) + "%"; }
+
+  async function ghFetch(url){
+    const headers = {"Accept":"application/vnd.github+json"};
+    const tok = tokenEl.value.trim();
+    if(tok) headers["Authorization"] = "Bearer " + tok;
+    const res = await fetch(url, {headers});
+    const remaining = res.headers.get("x-ratelimit-remaining");
+    const limit = res.headers.get("x-ratelimit-limit");
+    if(remaining !== null) rateInfo.textContent = `GitHub API 速率：剩餘 ${remaining}/${limit}`;
+    if(!res.ok){
+      const body = await res.text().catch(()=>"");
+      throw new Error(`HTTP ${res.status}：${body.slice(0,200)}`);
+    }
+    return res.json();
+  }
+
+  // ---------- load repo ----------
+  loadBtn.addEventListener("click", loadRepo);
+  repoUrlEl.addEventListener("keydown", (e)=>{ if(e.key === "Enter") loadRepo(); });
+
+  async function loadRepo(){
+    const parsed = parseRepoInput(repoUrlEl.value);
+    if(!parsed){ setStatus("看不懂這個網址，請貼類似 https://github.com/owner/repo 或 https://github.com/owner/repo/tree/branch 的格式。", "warn"); return; }
+    const {owner, repo} = parsed;
+    let branch = parsed.branch;
+
+    loadBtn.disabled = true;
+    try{
+      if(!branch){
+        setStatus(`正在查詢 ${owner}/${repo} 的預設分支…`);
+        const repoInfo = await ghFetch(`https://api.github.com/repos/${owner}/${repo}`);
+        branch = repoInfo.default_branch;
+      }
+      setStatus(`正在抓取 ${owner}/${repo}@${branch} 的完整檔案樹…`);
+      const treeUrl = `https://api.github.com/repos/${owner}/${repo}/git/trees/${encodeURIComponent(branch)}?recursive=1`;
+      const data = await ghFetch(treeUrl);
+      if(data.truncated){
+        setStatus("警告：這個倉庫的檔案數量超過 GitHub API 單次回傳上限，清單可能不完整。", "warn");
+      }
+      const blobs = (data.tree || []).filter(item => item.type === "blob");
+      files = blobs.map(item => {
+        const ext = extOf(item.path);
+        return {
+          path: item.path, size: item.size || 0, sha: item.sha,
+          url: `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${item.path}`,
+          ext, isText: TEXT_EXT.has(ext), content: null, fetched: false
+        };
+      });
+      tree = buildTree(files);
+      expanded = new Set(); // collapsed by default
+      matchGroupCollapsed = new Set();
+      searchBox.disabled = false;
+      fetchAllBtn.disabled = false;
+      setStatus(`已載入 ${owner}/${repo}@${branch}：${files.length} 個檔案（${files.filter(f=>f.isText).length} 個文字檔），開始把文字檔內容抓進記憶體…`, "ok");
+      searchBox.value = ""; searchTerm = "";
+      renderList();
+      startBackgroundFetch(); // 自動把全部文字檔內容抓進記憶體，之後搜尋不用再打網路
+    }catch(err){
+      setStatus("載入失敗："+err.message+"　（請確認網址、分支是否正確）", "warn");
+    }finally{
+      loadBtn.disabled = false;
+    }
+  }
+
+  // ---------- build nested tree from flat file list ----------
+  function buildTree(fileList){
+    const root = {name:"", path:"", type:"dir", children: new Map(), fileCount:0};
+    for(const f of fileList){
+      const segs = f.path.split("/");
+      let node = root;
+      for(let i=0;i<segs.length-1;i++){
+        const seg = segs[i];
+        const p = segs.slice(0,i+1).join("/");
+        if(!node.children.has(seg)){
+          node.children.set(seg, {name:seg, path:p, type:"dir", children:new Map(), fileCount:0});
+        }
+        node = node.children.get(seg);
+        node.fileCount++;
+      }
+      const leaf = segs[segs.length-1];
+      node.children.set(leaf, {name:leaf, path:f.path, type:"file", fileRef:f});
+    }
+    return root;
+  }
+
+  // ---------- search mode toggle ----------
+  modeName.addEventListener("click", ()=>{ mode="name"; modeName.classList.add("active"); modeContent.classList.remove("active"); runSearch(); });
+  modeContent.addEventListener("click", ()=>{ mode="content"; modeContent.classList.add("active"); modeName.classList.remove("active"); runSearch(); });
+  searchBox.addEventListener("input", ()=>{ searchTerm = searchBox.value; runSearch(); });
+
+  function runSearch(){
+    const term = searchTerm.trim().toLowerCase();
+    if(!term){ filteredCache = []; renderList(); return; }
+    if(mode === "name"){
+      filteredCache = files.filter(f => f.path.toLowerCase().includes(term));
+    } else {
+      filteredCache = files.filter(f => f.isText && f.fetched && f.content && f.content.toLowerCase().includes(term));
+    }
+    renderList();
+  }
+
+  // ---------- fetch content ----------
+  async function fetchContent(file){
+    if(file.fetched) return file.content;
+    const res = await fetch(file.url);
+    if(!res.ok) throw new Error("HTTP "+res.status);
+    const text = await res.text();
+    file.content = text; file.fetched = true;
+    return text;
+  }
+
+  async function fetchAllTextFiles(onProgress){
+    const targets = files.filter(f => f.isText && !f.fetched);
+    let done = 0; const total = targets.length;
+    if(total === 0){ onProgress(1,1); return; }
+    const CONCURRENCY = 8; let idx = 0;
+    async function worker(){
+      while(idx < targets.length){
+        const my = idx++; const f = targets[my];
+        try{ await fetchContent(f); }catch(e){ f.content = null; f.fetched = true; f.error = e.message; }
+        done++; onProgress(done, total);
+      }
+    }
+    await Promise.all(Array.from({length:Math.min(CONCURRENCY,targets.length)}, worker));
+  }
+
+  let isFetchingAll = false;
+  let lastLiveRefresh = 0;
+
+  // 邊抓邊搜：抓取過程中，若目前正在做「內容搜尋」，每隔一小段時間就重新套用一次篩選，
+  // 這樣符合的檔案會一筆一筆冒出來，不用等全部抓完。
+  function maybeLiveRefresh(force){
+    if(mode !== "content" || !searchTerm.trim()) return;
+    const now = Date.now();
+    if(force || now - lastLiveRefresh > 220){
+      lastLiveRefresh = now;
+      runSearch();
+    }
+  }
+
+  async function startBackgroundFetch(){
+    if(isFetchingAll) return;
+    isFetchingAll = true;
+    fetchAllBtn.disabled = true; showBar(true);
+    await fetchAllTextFiles((done,total)=>{
+      setBar(done/total*100);
+      setStatus(`背景抓取內容中… ${done}/${total}（搜尋列已經可以用，符合的檔案會邊抓邊列出來）`);
+      maybeLiveRefresh(false);
+    });
+    showBar(false);
+    isFetchingAll = false;
+    fetchAllBtn.disabled = false;
+    const okCount = files.filter(f=>f.fetched && f.content!==null).length;
+    setStatus(`已把 ${okCount} 個文字檔內容全部抓進記憶體，之後搜尋都是本機比對、不再打網路，直到你重新整理頁面或換倉庫為止。`, "ok");
+    maybeLiveRefresh(true);
+  }
+
+  fetchAllBtn.addEventListener("click", startBackgroundFetch);
+
+  searchBox.addEventListener("keydown", (e)=>{
+    if(e.key === "Enter"){
+      if(mode === "content" && !isFetchingAll){
+        const anyUnfetched = files.some(f=>f.isText && !f.fetched);
+        if(anyUnfetched) startBackgroundFetch();
+      }
+      runSearch();
+    }
+  });
+
+  function escapeHtml(s){ return s.replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+  function highlight(text, term){
+    if(!term) return escapeHtml(text);
+    const esc = escapeHtml(text);
+    const safeTerm = term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    try{ return esc.replace(new RegExp("("+safeTerm+")", "ig"), "<span class='hi'>$1</span>"); }
+    catch(e){ return esc; }
+  }
+
+  // ---------- render: tree view (no search) or flat matches (searching) ----------
+  function renderList(){
+    const searching = !!searchTerm.trim();
+    countText.textContent = files.length
+      ? (searching ? `${filteredCache.length} / ${files.length} 個檔案符合` : `共 ${files.length} 個檔案`)
+      : "";
+    zipBtn.disabled = searching ? filteredCache.length === 0 : true;
+    copyAllBtn.disabled = searching ? filteredCache.length === 0 : true;
+
+    if(!files.length){
+      fileListEl.innerHTML = `<div class="empty-hint">
+        這個工具會：<br>
+        1. 貼上 GitHub 網址即可載入整個倉庫的檔案清單<br>
+        2. 沒有關鍵字時用資料夾樹狀收合顯示<br>
+        3. 一輸入關鍵字，直接跨資料夾列出符合的檔案
+      </div>`;
+      return;
+    }
+
+    fileListEl.innerHTML = "";
+    if(searching){
+      renderFlatMatches();
+    } else {
+      const frag = document.createDocumentFragment();
+      renderTreeNode(tree, frag, 0);
+      fileListEl.appendChild(frag);
+    }
+  }
+
+  // 依「目標檔案的上一層資料夾」分組，同一個資料夾下有多筆命中時可以收合，
+  // 避免像多語系翻譯檔那種同資料夾重複很多筆，把清單拉得太長。
+  function groupMatchesByParent(list){
+    const groups = new Map(); // dir -> [files]
+    for(const f of list){
+      const slash = f.path.lastIndexOf("/");
+      const dir = slash >= 0 ? f.path.slice(0, slash) : ""; // "" = 倉庫根目錄
+      if(!groups.has(dir)) groups.set(dir, []);
+      groups.get(dir).push(f);
+    }
+    return Array.from(groups.entries())
+      .sort((a,b) => a[0].localeCompare(b[0], undefined, {numeric:true, sensitivity:"base"}));
+  }
+
+  function renderFlatMatches(){
+    const term = searchTerm.trim();
+    if(filteredCache.length === 0){
+      const hint = mode === "content"
+        ? `目前還沒有已抓取內容的檔案符合「${escapeHtml(term)}」——如果倉庫還在背景抓取中，符合的檔案會邊抓邊冒出來，稍等一下即可。`
+        : `沒有符合「${escapeHtml(term)}」的檔案名稱。`;
+      fileListEl.innerHTML = `<div class="empty-hint">${hint}</div>`;
+      return;
+    }
+    const capped = filteredCache.slice(0, 2000);
+    const groups = groupMatchesByParent(capped);
+    const frag = document.createDocumentFragment();
+    const safeTerm = term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+    groups.forEach(([dir, list]) => {
+      const isOpen = !matchGroupCollapsed.has(dir);
+      const header = document.createElement("div");
+      header.className = "treeRow dir" + (isOpen ? " open" : "");
+      header.innerHTML = `<span class="arrow">▶</span><span class="icon">▤</span><span class="name">${escapeHtml(dir || "（根目錄）")}</span><span class="count">${list.length}</span>`;
+      const childWrap = document.createElement("div");
+      childWrap.className = "treeChildren" + (isOpen ? " open" : "");
+      header.addEventListener("click", ()=>{
+        const nowOpen = matchGroupCollapsed.has(dir);
+        if(nowOpen) matchGroupCollapsed.delete(dir); else matchGroupCollapsed.add(dir);
+        header.classList.toggle("open", nowOpen);
+        childWrap.classList.toggle("open", nowOpen);
+      });
+      frag.appendChild(header);
+      frag.appendChild(childWrap);
+
+      list.forEach(f => {
+        const row = document.createElement("div");
+        row.className = "flatRow" + (activeFile === f ? " active" : "");
+        row.style.paddingLeft = "20px";
+        const sizeKb = (f.size/1024).toFixed(1);
+        const base = f.path.slice(dir.length ? dir.length+1 : 0);
+        let matchCount = "";
+        if(mode === "content" && f.fetched && f.content){
+          const n = (f.content.match(new RegExp(safeTerm, "ig")) || []).length;
+          matchCount = `<span class="n">${n} 處相符</span>`;
+        }
+        const nameHtml = mode === "name" ? highlight(base, term) : escapeHtml(base);
+        row.innerHTML = `<div class="path">${nameHtml}</div>
+          <div class="meta"><span>${sizeKb} KB</span><span>${f.isText ? (f.fetched?"已抓取":"文字檔") : "二進位檔"}</span>${matchCount}</div>`;
+        row.addEventListener("click", ()=>openFile(f));
+        childWrap.appendChild(row);
+      });
+    });
+
+    fileListEl.appendChild(frag);
+    if(filteredCache.length > 2000){
+      const note = document.createElement("div");
+      note.className = "empty-hint";
+      note.textContent = `（僅顯示前 2000 筆，請縮小關鍵字範圍）`;
+      fileListEl.appendChild(note);
+    }
+  }
+
+  function sortedChildren(node){
+    const arr = Array.from(node.children.values());
+    arr.sort((a,b) => {
+      if(a.type !== b.type) return a.type === "dir" ? -1 : 1;
+      return a.name.localeCompare(b.name, undefined, {numeric:true, sensitivity:"base"});
+    });
+    return arr;
+  }
+
+  function renderTreeNode(node, container, depth){
+    const children = sortedChildren(node);
+    for(const child of children){
+      if(child.type === "dir"){
+        const isOpen = expanded.has(child.path);
+        const row = document.createElement("div");
+        row.className = "treeRow dir" + (isOpen ? " open" : "");
+        row.style.paddingLeft = (8 + depth*14) + "px";
+        row.innerHTML = `<span class="arrow">▶</span><span class="icon">▤</span><span class="name">${escapeHtml(child.name)}</span><span class="count">${child.fileCount}</span>`;
+        const childWrap = document.createElement("div");
+        childWrap.className = "treeChildren" + (isOpen ? " open" : "");
+        row.addEventListener("click", ()=>{
+          const nowOpen = !expanded.has(child.path);
+          if(nowOpen) expanded.add(child.path); else expanded.delete(child.path);
+          row.classList.toggle("open", nowOpen);
+          childWrap.classList.toggle("open", nowOpen);
+          if(nowOpen && childWrap.childElementCount === 0){
+            renderTreeNode(child, childWrap, depth+1);
+          }
+        });
+        container.appendChild(row);
+        container.appendChild(childWrap);
+        if(isOpen) renderTreeNode(child, childWrap, depth+1);
+      } else {
+        const f = child.fileRef;
+        const row = document.createElement("div");
+        row.className = "treeRow file" + (activeFile === f ? " active" : "");
+        row.style.paddingLeft = (8 + depth*14 + 16) + "px";
+        const sizeKb = (f.size/1024).toFixed(1);
+        row.innerHTML = `<span class="icon">${f.isText ? "▫" : "▪"}</span><span class="name">${escapeHtml(child.name)}</span><span class="size">${sizeKb} KB</span>`;
+        row.addEventListener("click", ()=>openFile(f));
+        container.appendChild(row);
+      }
+    }
+  }
+
+  async function openFile(f){
+    activeFile = f;
+    renderList();
+    viewerBar.style.display = "flex";
+    placeholder.style.display = "none";
+    codeEl.style.display = "block";
+    viewerPath.innerHTML = `${escapeHtml(f.path)} <span class="dim">(${(f.size/1024).toFixed(1)} KB)</span>`;
+    rawLinkBtn.onclick = ()=> window.open(f.url, "_blank");
+
+    if(!f.isText){
+      codeEl.textContent = "（這是二進位檔，不在瀏覽器裡顯示內容。可用上方「開啟原始連結」查看或下載。）";
+      return;
+    }
+    codeEl.textContent = "載入中…";
+    try{
+      const text = await fetchContent(f);
+      const term = mode === "content" ? searchTerm.trim() : "";
+      codeEl.innerHTML = highlight(text, term);
+    }catch(err){
+      codeEl.textContent = "讀取失敗："+err.message;
+    }
+  }
+
+  copyOneBtn.addEventListener("click", async ()=>{
+    if(!activeFile || !activeFile.content) return;
+    await navigator.clipboard.writeText(activeFile.content);
+    copyOneBtn.textContent = "已複製 ✓";
+    setTimeout(()=>copyOneBtn.textContent="複製", 1200);
+  });
+  downloadOneBtn.addEventListener("click", ()=>{
+    if(!activeFile || activeFile.content == null) return;
+    const blob = new Blob([activeFile.content], {type:"text/plain;charset=utf-8"});
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = activeFile.path.split("/").pop();
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+
+  function currentMatchList(){ return filteredCache.filter(f => f.isText && f.fetched && f.content != null); }
+
+  copyAllBtn.addEventListener("click", async ()=>{
+    const list = currentMatchList();
+    if(!list.length){ setStatus("目前清單中沒有已抓取內容的文字檔可複製，請先按「抓取全部文字檔內容」。", "warn"); return; }
+    const combined = list.map(f => `\n\n===== ${f.path} =====\n\n${f.content}`).join("\n");
+    await navigator.clipboard.writeText(combined);
+    setStatus(`已複製 ${list.length} 個檔案的內容到剪貼簿。`, "ok");
+  });
+
+  zipBtn.addEventListener("click", async ()=>{
+    const list = currentMatchList();
+    const binaries = filteredCache.filter(f => !f.isText);
+    if(!list.length && !binaries.length){ setStatus("目前沒有可下載的檔案。", "warn"); return; }
+    if(!list.length){ setStatus("清單中的文字檔尚未抓取內容，請先按「抓取全部文字檔內容」再打包。", "warn"); return; }
+    setStatus("正在打包 zip…");
+    const zip = new JSZip();
+    list.forEach(f => zip.file(f.path, f.content));
+    const blob = await zip.generateAsync({type:"blob"});
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    const parsed = parseRepoInput(repoUrlEl.value) || {repo:"repo", branch:"branch"};
+    a.download = `${parsed.repo}-matched.zip`;
+    a.click();
+    URL.revokeObjectURL(a.href);
+    setStatus(`已下載 zip（${list.length} 個檔案；${binaries.length} 個二進位檔未包含，可用「開啟原始連結」個別下載）。`, "ok");
+  });
+
+})();
+</script>
+</body>
+</html>
