@@ -7298,7 +7298,7 @@ var AssetFemale3DCG = [
 			{
 				Name: "ForeheadJewelry",
 				ParentGroup: "",
-				Top: 101,
+				Top: 0,
 				DynamicGroupName: "Mask",
 				CopyConfig: {
 					GroupName: "Mask",
@@ -20546,17 +20546,6 @@ var AssetFemale3DCG = [
 					License: "CC BY-SA-NC 4.0",
 				},
 			},
-			{
-				Name: "ForeheadJewelry",
-				ParentGroup: "",
-				Top: 101,
-				DynamicGroupName: "Mask",
-				CopyConfig: {
-					GroupName: "Mask",
-					AssetName: "ForeheadJewelry",
-					BuyGroup: true,
-				},
-			},
 		],
 		Color: [
 			"Default",
@@ -23167,17 +23156,6 @@ var AssetFemale3DCG = [
 				CopyConfig: {
 					GroupName: "HairAccessory1",
 					AssetName: "CustomizableCowEars",
-					BuyGroup: true,
-				},
-			},
-			{
-				Name: "ForeheadJewelry",
-				ParentGroup: "",
-				Top: 101,
-				DynamicGroupName: "Mask",
-				CopyConfig: {
-					GroupName: "Mask",
-					AssetName: "ForeheadJewelry",
 					BuyGroup: true,
 				},
 			},
@@ -29928,6 +29906,40 @@ var AssetFemale3DCG = [
 						Name: "Texture_MainTip",
 						AllowTypes: { typed: 1 },
 						CopyLayerColor: "MainTip",
+					},
+					{
+						Name: "MainOG",
+						CopyLayerColor: "Main",
+						HideForAttribute: ["SmallEars", "NoEars"],
+						AllowTypes: { typed: 2 },
+						Top: 50,
+					},
+					{
+						Name: "SmallEarsOG",
+						CopyLayerColor: "Main",
+						ShowForAttribute: ["SmallEars"],
+						AllowTypes: { typed: 2 },
+						Top: 50,
+					},
+					{
+						Name: "NoEarsOG",
+						CopyLayerColor: "Main",
+						ShowForAttribute: ["NoEars"],
+						AllowTypes: { typed: 2 },
+						Top: 50,
+					},
+					{
+						Name: "MainTipOG",
+						CopyLayerColor: "MainTip",
+						AllowTypes: { typed: 2 },
+						Top: 50,
+					},
+					{
+						Name: "BackOG",
+						CopyLayerColor: "Main",
+						AllowTypes: { typed: 2 },
+						Priority: 5,
+						Top: 50,
 					},
 				],
 			},
