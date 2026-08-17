@@ -139,9 +139,12 @@
       value="https://github.com/awdrrawd/Bondage-College-Mirror/tree/bondageclub">
     <input id="token" type="password" placeholder="GitHub token（選填，提高速率上限）">
     <button id="loadBtn" class="primary">載入倉庫檔案清單</button>
+    <span style="color:var(--dim); font-size:11px;">或</span>
+    <button id="selectFolderBtn">選擇本機資料夾…</button>
+    <input type="file" id="folderInputFallback" webkitdirectory directory multiple style="display:none;">
   </div>
   <div class="status">
-    <span id="statusText">貼好網址後按「載入倉庫檔案清單」。載入後會自動把所有文字檔內容抓進瀏覽器記憶體（分頁關掉就釋放），之後搜尋不用再等網路。</span>
+    <span id="statusText">貼好網址後按「載入倉庫檔案清單」，或直接選本機資料夾，兩者都會自動把文字檔內容載進瀏覽器記憶體，搜尋時不用等網路。</span>
     <div class="bar" id="bar"><i id="barFill"></i></div>
   </div>
 </header>
@@ -162,11 +165,11 @@
   <div id="fileList">
     <div class="empty-hint">
       這個工具會：<br>
-      1. 貼上 GitHub 網址即可，不用分開填 owner / repo / branch<br>
-      2. 載入後自動把所有文字檔內容抓進瀏覽器記憶體，關掉分頁就釋放，之後搜尋是本機比對、不用重新打網路<br>
+      1. 貼上 GitHub 網址，或直接「選擇本機資料夾」（瀏覽器只會跳出一次授權視窗，不用分開填 owner / repo / branch）<br>
+      2. 載入後自動把所有文字檔內容讀進瀏覽器記憶體，關掉分頁就釋放；本機資料夾模式完全不連網路，速度取決於你的硬碟而不是網速<br>
       3. 沒有搜尋關鍵字時，左側以「資料夾樹狀收合」瀏覽；一輸入關鍵字，會依「命中檔案的上一層資料夾」分組並可收合，重複的翻譯檔不會洗版<br>
-      4. 內容搜尋在背景抓取還沒跑完時也能用，符合的檔案會邊抓邊冒出來，不用等全部抓完<br>
-      5. 圖片/字型/音訊等二進位檔只列出名稱與下載連結，不會被抓取內容
+      4. 內容搜尋在背景載入還沒跑完時也能用，符合的檔案會邊讀邊冒出來，不用等全部讀完<br>
+      5. 圖片/字型/音訊等二進位檔只列出名稱，GitHub 模式會附下載連結，本機模式可直接用「下載」按鈕另存
     </div>
   </div>
 
@@ -194,6 +197,7 @@
   const $ = (id) => document.getElementById(id);
   const repoUrlEl = $("repoUrl"), tokenEl = $("token");
   const loadBtn = $("loadBtn"), statusText = $("statusText"), bar = $("bar"), barFill = $("barFill");
+  const selectFolderBtn = $("selectFolderBtn"), folderInputFallback = $("folderInputFallback");
   const searchBox = $("searchBox"), modeName = $("modeName"), modeContent = $("modeContent");
   const fetchAllBtn = $("fetchAllBtn"), zipBtn = $("zipBtn"), copyAllBtn = $("copyAllBtn");
   const countText = $("countText"), fileListEl = $("fileList");
@@ -206,7 +210,7 @@
     "cs","php","rb","go","rs","sh","bash","sql","svg","ini","cfg","conf","toml","gradle","bat","ps1","lock",
     "gitignore","editorconfig","env","vue","svelte"]);
 
-  let files = [];          // flat list: {path,size,url,ext,isText,content,fetched}
+  let files = [];          // flat list: {path,size,ext,isText,content,fetched,source:'remote'|'local', url?, localHandle?, localFile?}
   let tree = null;         // nested tree built from files
   let mode = "name";        // 'name' | 'content'
   let activeFile = null;
@@ -291,7 +295,7 @@
         return {
           path: item.path, size: item.size || 0, sha: item.sha,
           url: `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${item.path}`,
-          ext, isText: TEXT_EXT.has(ext), content: null, fetched: false
+          ext, isText: TEXT_EXT.has(ext), content: null, fetched: false, source: "remote"
         };
       });
       tree = buildTree(files);
@@ -308,6 +312,88 @@
     }finally{
       loadBtn.disabled = false;
     }
+  }
+
+  // ---------- load a local folder (no network at all) ----------
+  // 用 File System Access API（Chrome / Edge）跳出瀏覽器原生的資料夾選取視窗，
+  // 使用者按一次「允許」即可，接下來全部在本機讀取，速度不受網路影響。
+  // 沒有這個 API 的瀏覽器（Firefox / 部分 Safari）則退回用 <input webkitdirectory> 做一次性快照。
+  selectFolderBtn.addEventListener("click", async ()=>{
+    if(window.showDirectoryPicker){
+      try{
+        const dirHandle = await window.showDirectoryPicker();
+        await loadLocalFolder(dirHandle);
+      }catch(e){
+        if(e.name !== "AbortError") setStatus("選取資料夾失敗："+e.message, "warn");
+      }
+    } else {
+      folderInputFallback.click();
+    }
+  });
+
+  folderInputFallback.addEventListener("change", (e)=>{
+    const list = Array.from(e.target.files || []);
+    if(list.length) loadLocalFolderFromFileList(list);
+    folderInputFallback.value = "";
+  });
+
+  async function walkDirectory(dirHandle, prefix, out){
+    for await (const [name, handle] of dirHandle.entries()){
+      const path = prefix ? prefix + "/" + name : name;
+      if(handle.kind === "file") out.push({path, handle});
+      else if(handle.kind === "directory") await walkDirectory(handle, path, out);
+    }
+  }
+
+  async function loadLocalFolder(dirHandle){
+    loadBtn.disabled = true; selectFolderBtn.disabled = true;
+    setStatus("正在讀取本機資料夾結構…");
+    try{
+      const collected = [];
+      await walkDirectory(dirHandle, "", collected);
+      const built = [];
+      for(const item of collected){
+        const fileObj = await item.handle.getFile();
+        const ext = extOf(item.path);
+        built.push({
+          path: item.path, size: fileObj.size, ext, isText: TEXT_EXT.has(ext),
+          content: null, fetched: false, source: "local", localHandle: item.handle
+        });
+      }
+      files = built;
+      finishLocalLoad(dirHandle.name);
+    }catch(err){
+      setStatus("讀取本機資料夾失敗："+err.message, "warn");
+    }finally{
+      loadBtn.disabled = false; selectFolderBtn.disabled = false;
+    }
+  }
+
+  function loadLocalFolderFromFileList(fileList){
+    files = fileList.map(f => {
+      const rel = f.webkitRelativePath || f.name;
+      const path = rel.includes("/") ? rel.slice(rel.indexOf("/")+1) : rel; // 去掉最外層資料夾名稱
+      const finalPath = path || f.name;
+      const ext = extOf(finalPath);
+      return {
+        path: finalPath, size: f.size, ext, isText: TEXT_EXT.has(ext),
+        content: null, fetched: false, source: "local", localFile: f
+      };
+    });
+    const rootName = (fileList[0].webkitRelativePath || "").split("/")[0] || "本機資料夾";
+    finishLocalLoad(rootName);
+  }
+
+  function finishLocalLoad(rootName){
+    tree = buildTree(files);
+    expanded = new Set();
+    matchGroupCollapsed = new Set();
+    searchBox.disabled = false;
+    fetchAllBtn.disabled = false;
+    searchBox.value = ""; searchTerm = "";
+    setStatus(`已讀取本機資料夾「${rootName}」：${files.length} 個檔案（${files.filter(f=>f.isText).length} 個文字檔），開始把內容載入記憶體（本機讀取，速度應該快很多）…`, "ok");
+    renderList();
+    startBackgroundFetch();
   }
 
   // ---------- build nested tree from flat file list ----------
@@ -350,9 +436,15 @@
   // ---------- fetch content ----------
   async function fetchContent(file){
     if(file.fetched) return file.content;
-    const res = await fetch(file.url);
-    if(!res.ok) throw new Error("HTTP "+res.status);
-    const text = await res.text();
+    let text;
+    if(file.source === "local"){
+      const fileObj = file.localFile || await file.localHandle.getFile();
+      text = await fileObj.text();
+    } else {
+      const res = await fetch(file.url);
+      if(!res.ok) throw new Error("HTTP "+res.status);
+      text = await res.text();
+    }
     file.content = text; file.fetched = true;
     return text;
   }
@@ -577,7 +669,12 @@
     placeholder.style.display = "none";
     codeEl.style.display = "block";
     viewerPath.innerHTML = `${escapeHtml(f.path)} <span class="dim">(${(f.size/1024).toFixed(1)} KB)</span>`;
-    rawLinkBtn.onclick = ()=> window.open(f.url, "_blank");
+    if(f.source === "local"){
+      rawLinkBtn.style.display = "none";
+    } else {
+      rawLinkBtn.style.display = "";
+      rawLinkBtn.onclick = ()=> window.open(f.url, "_blank");
+    }
 
     if(!f.isText){
       codeEl.textContent = "（這是二進位檔，不在瀏覽器裡顯示內容。可用上方「開啟原始連結」查看或下載。）";
