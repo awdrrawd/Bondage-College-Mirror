@@ -1243,6 +1243,10 @@ var AssetFemale3DCGExtended = {
 		},
 	}, // Decals
 	BodyMarkings: {
+		NavelBar1: {
+			Archetype: ExtendedArchetype.MODULAR,
+			CopyConfig: { GroupName: "ItemTorso", AssetName: "NavelBar1" },
+		}, // NavelBar1
 		WombTattoos: {
 			Archetype: ExtendedArchetype.MODULAR,
 			ChatSetting: ModularItemChatSetting.PER_MODULE,
@@ -1814,6 +1818,22 @@ var AssetFemale3DCGExtended = {
 					Name: "Holo",
 					Key: "h",
 					Options: [{}, {}], // off, on
+				},
+				{
+					Name: "Layering",
+					Key: "l",
+					Options: [
+						{
+							Property: {
+								OverridePriority: 45,
+							}, // Above mask layers
+						}, 
+						{
+							Property: {
+								OverridePriority: 8,
+							}, // Below eye layers
+						}
+					], // Mask Layer (45), Face Layer (8)
 				},
 			],
 		}, // Face Crests
@@ -10616,6 +10636,10 @@ var AssetFemale3DCGExtended = {
 		}, // TransparentLatexHood
 	}, // ItemHood
 	Jewelry: {
+		NavelBar1: {
+			Archetype: ExtendedArchetype.MODULAR,
+			CopyConfig: { GroupName: "ItemTorso", AssetName: "NavelBar1" },
+		}, // NavelBar1
 		JewelrySet: {
 			Archetype: ExtendedArchetype.MODULAR,
 			Modules: [
@@ -14807,6 +14831,11 @@ var AssetFemale3DCGExtended = {
 					],
 				},
 			],
+			DialogPrefix: {
+				Option: "ItemTorsoNavelBar1Option",
+				Header: "ItemTorsoNavelBar1Select",
+				Module: "ItemTorsoNavelBar1Module",
+			},
 		}, // NavelBar1
 		SteelBelt: {
 			Archetype: ExtendedArchetype.MODULAR,
@@ -21295,6 +21324,18 @@ var AssetFemale3DCGExtended = {
 			Archetype: ExtendedArchetype.MODULAR,
 			ChatSetting: ModularItemChatSetting.PER_MODULE,
 			DrawImages: true,
+			DrawData: {
+				elementData: [
+					{ position: ExtendedXY[7][0] },
+					{ position: ExtendedXY[7][1] },
+					{ position: ExtendedXY[7][2] },
+					{ position: ExtendedXY[7][3] },
+					{ position: ExtendedXY[7][4] },
+					{ position: ExtendedXY[7][5] },
+					{ position: ExtendedXY[7][6] },
+				],
+				itemsPerPage: 7,
+			},
 			CopyConfig: { GroupName: "FaceMarkings", AssetName: "FaceCrests" },
 		}, //FaceCrests
 	}, // Glasses

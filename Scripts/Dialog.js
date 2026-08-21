@@ -523,6 +523,14 @@ function DialogCanStartGGTSInteractions() {
 	return (AsylumGGTSIsEnabled() && (CurrentCharacter != null) && (AsylumGGTSGetLevel(CurrentCharacter) >= 1) && !DialogCanWatchKinkyDungeon() && (ReputationGet("Asylum") > 0));
 }
 
+function DialogIsMaid() {
+	return LogQuery("JoinedSorority", "Maid");
+}
+
+function DialogIsHeadMaid() {
+	return LogQuery("LeadSorority", "Maid");
+}
+
 /**
  * Nurses can ask GGTS for specific interactions with other players
  * @param {string} Interaction - The interaction to trigger
@@ -2110,7 +2118,12 @@ function DialogChangeMode(mode, reset=false) {
 	if (!C) return;
 
 	// Handle changing to the expression color picker having to restore the selected mode & group
-	if (mode === "colorExpression" && (!DialogExpressionPreviousMode || DialogExpressionPreviousMode.mode !== "colorExpression")) {
+	// NOTE: compare against the *current* DialogMenuMode, not the previously stored one - otherwise
+	// clicking the color button again while already in "colorExpression" overwrites
+	// DialogExpressionPreviousMode.mode with "colorExpression" itself, which later causes
+	// DialogMenuBack()/DialogChangeFocusToGroup() to re-enter "colorExpression" and call
+	// ItemColorCancelAndExit() recursively (stack overflow on exit).
+	if (mode === "colorExpression" && DialogMenuMode !== "colorExpression") {
 		DialogExpressionPreviousMode = { mode: DialogMenuMode, group: C.FocusGroup };
 	}
 
@@ -4529,6 +4542,13 @@ class _DialogExpressionMenu extends _DialogSelfMenu {
 			color: {
 				click(button, ev, { C }, equippedItem) {
 					if (!equippedItem) {
+						ev.stopImmediatePropagation();
+						return;
+					}
+					// Guard against double-clicks: if we're already colorizing this expression,
+					// re-running this handler would re-register a second ItemColorOnExit callback
+					// and corrupt DialogExpressionPreviousMode (see DialogChangeMode above).
+					if (DialogMenuMode === "colorExpression" && ItemColorState) {
 						ev.stopImmediatePropagation();
 						return;
 					}

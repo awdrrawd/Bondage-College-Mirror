@@ -893,9 +893,21 @@ function ServerAccountQueryResult(data) {
 	const { Query, Result } = data;
 	if (typeof Query !== "string" || Result == null) return;
 
-	if (Query == "OnlineFriends") FriendListLoadFriendList(Result);
-	else if (Query == "EmailStatus") SecurityEmailStatus(data);
-	else if (Query == "EmailUpdate") SecurityEmailUpdate(data);
+	switch (Query) {
+		case "OnlineFriends":
+			if (CurrentScreen === "FriendList") {
+				FriendListLoadFriendList(Result);
+			} else {
+				ServerUpdateFriendList(Result);
+			}
+			break;
+		case "EmailStatus":
+			SecurityEmailStatus(data)
+			break;
+		case "EmailUpdate":
+			SecurityEmailUpdate(data)
+			break;
+	}
 }
 
 /**
@@ -1285,16 +1297,20 @@ var ServerAccountDataSyncedValidate = {
 		return typeof arg === "string" && ServerCharacterNicknameRegex.test(arg) ? arg.trim() : undefined;
 	},
 	Money: (arg, C) => {
-		return CommonIsNumeric(arg) ? arg : 0;
+		return CommonIsNonNegativeInteger(arg) ? arg : 0;
 	},
 	AllowedInteractions: (arg, C) => {
 		return CommonIsInteger(arg, 0, 5) ? /** @type {AllowedInteractions} */(arg) : 2;
 	},
 	Difficulty: (arg, C) => {
-		return {
-			Level: CommonIsInteger(arg?.Level, 0, 5) ? arg.Level : 1,
-			LastChange: CommonIsNonNegativeInteger(arg?.LastChange) ? arg.LastChange : undefined,
+		/** @type {ServerAccountData["Difficulty"]} */
+		const diff = {
+			Level: CommonIsInteger(arg?.Level, Difficulty.ROLEPLAY, Difficulty.EXTREME) ? arg.Level : Difficulty.REGULAR,
 		};
+		if (CommonIsNonNegativeInteger(arg?.LastChange)) {
+			diff.LastChange = arg.LastChange;
+		}
+		return diff;
 	},
 	ArousalSettings: (arg, C) => {
 		return ValidationApplyRecord(arg, C, PreferenceArousalSettingsValidate);
@@ -1692,4 +1708,29 @@ async function ServerRoomJoin(roomName) {
 	} catch (e) {
 		return Result.failure(e);
 	}
+}
+
+/**
+ * Update the player's friend- and submissive-related arrays based on the inc
+ * @param {ServerFriendInfo[]} data An array of data, we receive from the server
+ * @returns {boolean} Whether the player's {@link Player["FriendNames"]} and/or {@link Player["SubmissivesList"]} were updated
+ */
+function ServerUpdateFriendList(data) {
+	let infoChanged = false;
+	data.forEach(friend => {
+		if (!Player.FriendNames.has(friend.MemberNumber)) {
+			Player.FriendNames.set(friend.MemberNumber, friend.MemberName);
+			infoChanged = true
+		}
+		if (Player.SubmissivesList.has(friend.MemberNumber) != (friend.Type == "Submissive")) {
+			if (friend.Type == "Submissive") {
+				Player.SubmissivesList.add(friend.MemberNumber);
+			} else {
+				Player.SubmissivesList.delete(friend.MemberNumber);
+			}
+			infoChanged = true;
+		}
+	});
+	if (infoChanged) ServerPlayerRelationsSync();
+	return infoChanged;
 }

@@ -35,11 +35,11 @@ var ChatRoomBackground = "";
  * The data for the current chatroom, as recieved from the server.
  * @type {null | ServerChatRoomData}
  */
-let ChatRoomData = null;
+var ChatRoomData = null;
 /**
  * The list of chatroom characters.
  * This is unpacked characters from the data recieved from the server in {@link ChatRoomData.Character}.
- * @type {Character[]}
+ * @type {OnlineCharacter[]}
  */
 var ChatRoomCharacter = [];
 var ChatRoomJustEntered = false;
@@ -101,7 +101,7 @@ var ChatRoomChatHidden = false;
 /**
  * The chatroom characters that were drawn in the last frame.
  * Used for limiting the "fov". Characters come from {@link ChatRoomCharacter}
- * @type {Character[]}
+ * @type {OnlineCharacter[]}
  */
 var ChatRoomCharacterDrawlist = [];
 /**
@@ -665,13 +665,13 @@ function ChatRoomTakeSuitcase(character) {
 	if (KidnapLeagueSearchingPlayers.length == 0) {
 		if (InventoryIsWorn(Player, "ItemMisc", "BountySuitcase")) {
 			KidnapLeagueSearchFinishTime = CommonTime() + KidnapLeagueSearchFinishDuration;
-			ChatRoomPublishCustomAction("OnlineBountySuitcaseStart", true, [
+			ChatRoomPublishCustomAction("OnlineBountySuitcaseStart", false, [
 				{ Tag: "SourceCharacter", Text: CharacterNickname(character), MemberNumber: character.MemberNumber },
 				{ Tag: "DestinationCharacterName", Text: CharacterNickname(Player), MemberNumber: Player.MemberNumber },
 			]);
 		} else if (InventoryIsWorn(Player, "ItemMisc", "BountySuitcaseEmpty")) {
 			KidnapLeagueSearchFinishTime = CommonTime() + KidnapLeagueSearchFinishDuration;
-			ChatRoomPublishCustomAction("OnlineBountySuitcaseStartOpened", true, [
+			ChatRoomPublishCustomAction("OnlineBountySuitcaseStartOpened", false, [
 				{ Tag: "SourceCharacter", Text: CharacterNickname(character), MemberNumber: character.MemberNumber },
 				{ Tag: "DestinationCharacterName", Text: CharacterNickname(Player), MemberNumber: Player.MemberNumber },
 			]);
@@ -4089,7 +4089,7 @@ function ChatRoomRegisterMessageHandler(handler) {
  * Performs the processing for an hidden message.
  *
  * @param {ServerChatRoomMessage} data
- * @param {Character} SenderCharacter
+ * @param {OnlineCharacter} SenderCharacter
  * @returns {boolean}
  */
 function ChatRoomMessageProcessHidden(data, SenderCharacter) {
@@ -4490,7 +4490,7 @@ function ChatRoomMessageRunExtractors(data, sender) {
  *
  * @param {"pre"|"post"} type - The type of processing to perform
  * @param {ServerChatRoomMessage} data - The recieved message
- * @param {Character} sender - The actual message sender character object
+ * @param {OnlineCharacter} sender - The actual message sender character object
  * @param {string} msg - The escaped message, likely different from data.Contents
  * @param {IChatRoomMessageMetadata} [metadata] - The message metadata, only available for post-handlers
  * @returns {boolean | string}
@@ -4987,7 +4987,7 @@ function ChatRoomHideIdentity(C) {
 
 /**
  * Adds a character into the chat room.
- * @param {Character} newCharacter - The new character to be added to the chat room.
+ * @param {OnlineCharacter} newCharacter - The new character to be added to the chat room.
  * @param {ServerChatRoomSyncCharacterResponse["Character"]} newRawCharacter - The raw character data of the new character as it was received from the server.
  * @returns {void} - Nothing
  */
@@ -7016,7 +7016,7 @@ function ChatRoomGetSettings(room) {
 /**
  * Gets a character by MemberNumber or name or nickname
  * @param {string|number} spec
- * @return {Character|null}
+ * @return {OnlineCharacter|null}
  */
 function ChatRoomGetCharacter(spec) {
 	/** @type {number} */
