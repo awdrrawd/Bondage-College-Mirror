@@ -1827,12 +1827,12 @@ var AssetFemale3DCGExtended = {
 							Property: {
 								OverridePriority: 45,
 							}, // Above mask layers
-						}, 
+						},
 						{
 							Property: {
 								OverridePriority: 8,
 							}, // Below eye layers
-						}
+						},
 					], // Mask Layer (45), Face Layer (8)
 				},
 			],
@@ -3917,7 +3917,6 @@ var AssetFemale3DCGExtended = {
 					Name: "Behind",
 					Property: {
 						SetPose: ["BackCuffs"],
-						Effect: [E.Block],
 						Difficulty: 3,
 					},
 				},
@@ -3925,7 +3924,6 @@ var AssetFemale3DCGExtended = {
 					Name: "Overhead",
 					Property: {
 						SetPose: ["OverTheHead"],
-						Effect: [E.Block],
 						Difficulty: 3,
 					},
 				},
@@ -14761,6 +14759,15 @@ var AssetFemale3DCGExtended = {
 					BondageLevel: 4,
 					Property: {
 						Difficulty: 4,
+						Effect: [E.CrotchRope],
+						Attribute: ["IsHipHarness"],
+					},
+				},
+				{
+					Name: "Unity",
+					BondageLevel: 8,
+					Property: {
+						Difficulty: 8,
 						Effect: [E.CrotchRope],
 						Attribute: ["IsHipHarness"],
 					},
