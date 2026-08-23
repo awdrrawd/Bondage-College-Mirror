@@ -5,7 +5,7 @@
  * Maintains a queue of toasts to display and limits the number of
  * concurrently visible toasts.
  */
-var ToastManager = new class ToastManager {
+var ToastManager = new class {
 	/**
 	 * Queue of toast options waiting to be displayed.
 	 * @type {Required<Toasts.Options>[]}
@@ -16,12 +16,13 @@ var ToastManager = new class ToastManager {
 	 * @type {number}
 	 */
 	active = 0;
+
 	/**
 	 * Maximum number of toast buddies that can chill together in one spot.
 	 * @type {number}
 	 * @static
 	 */
-	static maxStack = 3;
+	maxStack = 3;
 
 	/**
 	 * Show an info toast, because you need to know stuff.
@@ -147,7 +148,7 @@ var ToastManager = new class ToastManager {
 		for (let i = 0; i < this.queue.length; i++) {
 			const toast = this.queue[i];
 			const count = this.active || 0;
-			if (count < ToastManager.maxStack) {
+			if (count < this.maxStack) {
 				this.queue.splice(i, 1);
 				this._display(toast);
 				i--;
@@ -172,7 +173,15 @@ var ToastManager = new class ToastManager {
 		const remove = (reason) => {
 			_.onClose?.(toast, reason);
 
+			// Need some manual book keeping here to keep things from only running once
+			// Cannot rely on the `addEventListener`'s `once` parameter, as one pair of `end`/`cancel` events
+			// is allowed to fire per entry in the CSS `will-change` property
+			let transitionEventFired = false;
 			const removeAndProcess = () => {
+				if (transitionEventFired) {
+					return;
+				}
+				transitionEventFired = true;
 				toast._timeoutTimerRemove?.();
 				toast.remove();
 				this.active--;
@@ -186,8 +195,13 @@ var ToastManager = new class ToastManager {
 				const listener = () => {
 					removeAndProcess();
 				};
-				toast.addEventListener('transitionend', listener, { once: true });
-				toast.addEventListener('transitioncancel', listener, { once: true });
+				toast.addEventListener('transitionend', listener);
+				toast.addEventListener('transitioncancel', listener);
+				setTimeout(() => {
+					if (document.contains(toast)) {
+						removeAndProcess();
+					}
+				}, _.duration * 2); // Double the normal animation duration for the sake of extra error margin
 			}
 		};
 

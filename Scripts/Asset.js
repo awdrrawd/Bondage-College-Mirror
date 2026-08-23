@@ -151,6 +151,7 @@ function AssetParseTopLeft(value, fallback) {
  */
 function ItemParseTopLeft(value, propName=null) {
 	if (!CommonIsObject(value)) {
+		// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
 		throw new TypeError(`Invalid ${propName ?? "DrawingTop or DrawingLeft"} property type: ${value}`);
 	}
 	return CommonFromEntries(CommonEntries(value).map(([layerName, protoConfig]) => {
@@ -161,6 +162,7 @@ function ItemParseTopLeft(value, propName=null) {
 		} else if (CommonIsObject(protoConfig)) {
 			config = protoConfig;
 		} else {
+			// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
 			throw new TypeError(`Invalid ${propName ?? "Top or Left"} value for layer "${layerName}": ${protoConfig}`);
 		}
 		return [layerName, config];
@@ -981,7 +983,7 @@ function AssetLoad(Groups, Family, ExtendedConfig) {
 		}
 	}
 
-	AssetLoadDescription(Family);
+	CommonPromiseCatch(AssetLoadDescription(Family));
 }
 
 // Reset and load all the assets
@@ -1269,4 +1271,16 @@ function AssetLoadCheckActivities() {
 	if (report) {
 		console.info(`Next available activity ID is ${Math.max(...ids.keys()) + 1}`);
 	}
+}
+
+/**
+ * Return all entries in `list` that are absent from `referenceList`
+ * @param {readonly RemoveOnItemRemove[]} list
+ * @param {readonly RemoveOnItemRemove[]} referenceList
+ * @returns {RemoveOnItemRemove[]}
+ */
+function AssetGetRemoveOnItemRemoveDiff(list, referenceList) {
+	return list.filter(rec => !referenceList.some(referenceRec => {
+		return rec.Name == referenceRec.Name && rec.Group == referenceRec.Group && CommonDeepEqual(rec.TypeRecord, referenceRec.TypeRecord);
+	}));
 }

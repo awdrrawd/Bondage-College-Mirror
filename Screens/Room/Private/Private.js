@@ -1953,7 +1953,7 @@ function PrivateSelectPunishment() {
 				case "ChastityBelt": if (!Player.IsVulvaChaste() && (NPCTraitGet(CurrentCharacter, "Frigid") >= 0)) break testLoop; break;
 				case "ChastityBra": if (!Player.IsBreastChaste() && (NPCTraitGet(CurrentCharacter, "Frigid") >= 0)) break testLoop; break;
 				case "ForceNaked": if (Player.CanChangeOwnClothes() && (NPCTraitGet(CurrentCharacter, "Horny") >= 0)) break testLoop; break;
-				case "ConfiscateKey": if ((InventoryAvailable(Player, "MetalCuffsKey", "ItemMisc") || InventoryAvailable(Player, "MetalPadlockKey", "ItemMisc") || InventoryAvailable(Player, "IntricatePadlockKey", "ItemMisc") || InventoryAvailable(Player, "HighSecurityPadlockKey", "ItemMisc"))) break testLoop; break;
+				case "ConfiscateKey": if ((InventoryAvailable(Player, "MetalCuffsKey", "ItemMisc") || InventoryAvailable(Player, "MetalPadlockKey", "ItemMisc"))) break testLoop; break;
 				case "ConfiscateCrop": if (InventoryAvailable(Player, "Crop", "ItemHandheld")) break testLoop; break;
 				case "ConfiscateWhip": if (InventoryAvailable(Player, "Whip", "ItemHandheld")) break testLoop; break;
 				case "SleepCage": if (LogQuery("Cage", "PrivateRoom") && !LogQuery("SleepCage", "Rule")) break testLoop; break;
@@ -1983,7 +1983,16 @@ function PrivateRunPunishment(LoveFactor) {
 	switch (PrivatePunishment) {
 		case "Cage": Player.Cage = true; LogAdd("BlockCage", "Rule", CurrentTime + 120000); DialogLeave(); break;
 		case "Bound": PrivateReleaseTimer = CommonTime() + 240000; CharacterFullRandomRestrain(Player, "ALL"); InventoryRemove(Player, "ItemArms"); InventoryWear(Player, "HempRope", "ItemArms"); InventorySetDifficulty(Player, "ItemArms", 12); break;
-		case "BoundPet": PrivateReleaseTimer = CommonTime() + 240000; PoseSetActive(Player, "Kneel", true); InventoryWear(Player, "LeatherBelt", "ItemLegs"); InventoryWear(Player, "TailButtPlug", "ItemButt"); InventoryWear(Player, "Ears" + (Math.floor(Math.random() * 2) + 1).toString(), "Hat"); InventoryWear(Player, "LeatherArmbinder", "ItemArms"); InventorySetDifficulty(Player, "ItemArms", 15); break;
+		case "BoundPet":{
+			PrivateReleaseTimer = CommonTime() + 240000;
+			PoseSetActive(Player, "Kneel", true);
+			InventoryWear(Player, "LeatherBelt", "ItemLegs");
+			InventoryWear(Player, "TailButtPlug", "ItemButt");
+			InventoryWear(Player, CommonGetRandomItemFromList(["Ears1", "Ears2"]), "Hat");
+			InventoryWear(Player, "LeatherArmbinder", "ItemArms");
+			InventorySetDifficulty(Player, "ItemArms", 15);
+			break;
+		}
 		case "ChastityBra":
 			InventoryWear(Player, "MetalChastityBra", "ItemBreast");
 			InventoryLock(Player, "ItemBreast", (Player.IsOwned() ? "OwnerPadlock" : "ExclusivePadlock"), CurrentCharacter);
@@ -2514,11 +2523,12 @@ function PrivateGetClubCardDeck(C) {
  */
 function PrivateClubCardVsCharacterStart() {
 	if (!CurrentCharacter) return;
-	ClubCardStart(CurrentCharacter, PrivateGetClubCardDeck(CurrentCharacter), () => PrivateClubCardVsCharacterEnd());
+	ClubCardStart(CurrentCharacter, PrivateGetClubCardDeck(CurrentCharacter), () => { PrivateClubCardVsCharacterEnd(); });
 }
 
 /**
  * When the club card game against a friend NPC ends
+ * @returns {SafePromise<void>}
  */
 async function PrivateClubCardVsCharacterEnd() {
 	if (!ClubCardOpponent) return;
@@ -2549,7 +2559,7 @@ async function PrivateClubCardVsCharacterEnd() {
  */
 function PrivateClubCardVsOwnerStart() {
 	if (!CurrentCharacter) return;
-	ClubCardStart(CurrentCharacter, PrivateGetClubCardDeck(CurrentCharacter), () => PrivateClubCardVsCharacterEnd());
+	ClubCardStart(CurrentCharacter, PrivateGetClubCardDeck(CurrentCharacter), () => { PrivateClubCardVsCharacterEnd(); });
 }
 
 /**
@@ -2568,7 +2578,7 @@ function PrivateClubCardVsOwnerEnd() {
  */
 function PrivateClubCardVsSubStart() {
 	if (!CurrentCharacter) return;
-	ClubCardStart(CurrentCharacter, PrivateGetClubCardDeck(CurrentCharacter), () => PrivateClubCardVsCharacterEnd());
+	ClubCardStart(CurrentCharacter, PrivateGetClubCardDeck(CurrentCharacter), () => { PrivateClubCardVsCharacterEnd(); });
 }
 
 /**

@@ -85,6 +85,9 @@ BigMouthSelectMouthStyle,Pick a latex lip type:
 BikiniTypeClosed,Closed
 BikiniTypeOpen,Open
 Bloated,Bloated
+BodyMarkingsBabyPowderDustSelect,Select Powder Amount
+BodyMarkingsBabyPowderDustLight,Light
+BodyMarkingsBabyPowderDustHeavy,Heavy
 BodyMarkingsBodyWritingsModulePosition,Position
 BodyMarkingsBodyWritingsModuleText,Text
 BodyMarkingsBodyWritingsModuleStyle,Style
@@ -4384,12 +4387,13 @@ ItemHeadInteractiveVisorTypeTransparent,Transparent
 ItemHeadInteractiveVRHeadsetModuleBackground,Background
 ItemHeadInteractiveVRHeadsetModuleFunction,Mode
 ItemHeadInteractiveVRHeadsetModuleGame,Game
-ItemHeadInteractiveVRHeadsetOptionb0,None
+ItemHeadInteractiveVRHeadsetOptionb0,Passthrough
 ItemHeadInteractiveVRHeadsetOptionb1,Virtual World
 ItemHeadInteractiveVRHeadsetOptionb2,Dungeon
 ItemHeadInteractiveVRHeadsetOptionb3,High-Tech
 ItemHeadInteractiveVRHeadsetOptionb4,Ancient Ruins
 ItemHeadInteractiveVRHeadsetOptionb5,Trance
+ItemHeadInteractiveVRHeadsetOptionb6,Black
 ItemHeadInteractiveVRHeadsetOptionf0,Passthrough
 ItemHeadInteractiveVRHeadsetOptionf1,Off
 ItemHeadInteractiveVRHeadsetOptionf2,VR
@@ -4406,6 +4410,7 @@ ItemHeadInteractiveVRHeadsetSetb2,SourceCharacter sets the background on Destina
 ItemHeadInteractiveVRHeadsetSetb3,SourceCharacter sets the background on DestinationCharacter headset to a high-tech environment.
 ItemHeadInteractiveVRHeadsetSetb4,SourceCharacter sets the background on DestinationCharacter headset to an ancient fantasy location.
 ItemHeadInteractiveVRHeadsetSetb5,SourceCharacter sets DestinationCharacter headset to induce a trance-like state...
+ItemHeadInteractiveVRHeadsetSetb6,SourceCharacter sets DestinationCharacter headset to a solid black color...
 ItemHeadInteractiveVRHeadsetSetf0,SourceCharacter configures DestinationCharacter headset to display the surroundings through a camera feed.
 ItemHeadInteractiveVRHeadsetSetf1,SourceCharacter turns off DestinationCharacter headset.
 ItemHeadInteractiveVRHeadsetSetf2,SourceCharacter logs DestinationCharacter headset into the virtual world as TargetPronounPossessive real self.
@@ -6291,6 +6296,19 @@ ItemVulvaPiercingsUrethralSoundOut,Half Out
 ItemVulvaPiercingsUrethralSoundSelect,Choose how far the sound is inside.
 ItemVulvaPiercingsUrethralSoundSetIn,SourceCharacter pushes DestinationCharacter urethral sound fully inside.
 ItemVulvaPiercingsUrethralSoundSetOut,SourceCharacter pulls DestinationCharacter urethral sound halfway outside
+ItemVulvaPiercingsCatheterSelectBase,Choose catheter options
+ItemVulvaPiercingsCatheterSelectLength,Set penetration
+ItemVulvaPiercingsCatheterSelectOpenEnded,Set valve state
+ItemVulvaPiercingsCatheterModuleLength,Penetration
+ItemVulvaPiercingsCatheterModuleOpenEnded,Valve State
+ItemVulvaPiercingsCatheterOptiono0,Open
+ItemVulvaPiercingsCatheterOptiono1,Closed
+ItemVulvaPiercingsCatheterOptionl0,Shallow Penetration
+ItemVulvaPiercingsCatheterOptionl1,Deep Penetration
+ItemVulvaPiercingsCatheterSetl0,SourceCharacter pulls DestinationCharacter catheter outwards.
+ItemVulvaPiercingsCatheterSetl1,SourceCharacter pushes DestinationCharacter catheter inwards.
+ItemVulvaPiercingsCatheterSeto0,SourceCharacter opens DestinationCharacter's catheter.
+ItemVulvaPiercingsCatheterSeto1,SourceCharacter closes DestinationCharacter's catheter.
 ItemVulvaStitchesCross,Crossed
 ItemVulvaStitchesSelect,Choose stitches
 ItemVulvaStitchesSetCross,SourceCharacter stitches DestinationCharacter pussy shut with crossed threads.

@@ -81,7 +81,7 @@ function CharacterCreatePlayer() {
 	Character[0] = Player;
 	Character.splice(oldId, 1);
 	CharacterNextId--;
-	CharacterLoadCSVDialog(Player, { module: "Character", screen: "Player", name: "Player" });
+	CommonPromiseCatch(CharacterLoadCSVDialog(Player, { module: "Character", screen: "Player", name: "Player" }));
 	PreferenceInitPlayer(Player, {});
 }
 
@@ -125,7 +125,7 @@ function CharacterCreate(CharacterAssetFamily, Type, CharacterID) {
 			}
 			this._Stage = value;
 			if (DialogMenuMode === "dialog") {
-				DialogMenuMapping.dialog.Reload();
+				CommonPromiseCatch(DialogMenuMapping.dialog.Reload());
 			}
 		},
 		_CurrentDialog: "",
@@ -863,13 +863,13 @@ function CharacterCreate(CharacterAssetFamily, Type, CharacterID) {
 		{
 			set(...args) {
 				if (DialogSelfMenuSelected === "Expression" && DialogSelfMenuMapping.Expression.C.ID === NewCharacter.ID) {
-					DialogSelfMenuMapping.Expression.Reload();
+					CommonPromiseCatch(DialogSelfMenuMapping.Expression.Reload());
 				}
 				return Reflect.set(...args);
 			},
 			deleteProperty(...args) {
 				if (DialogSelfMenuSelected === "Expression" && DialogSelfMenuMapping.Expression.C.ID === NewCharacter.ID) {
-					DialogSelfMenuMapping.Expression.Reload();
+					CommonPromiseCatch(DialogSelfMenuMapping.Expression.Reload());
 				}
 				return Reflect.deleteProperty(...args);
 			},
@@ -970,7 +970,7 @@ function CharacterBuildDialog(C, CSV, functionPrefix, reload=true) {
 	}
 
 	if (reload && DialogMenuMode === "dialog") {
-		DialogMenuMapping.dialog.Reload(null, { reset: true });
+		CommonPromiseCatch(DialogMenuMapping.dialog.Reload(null, { reset: true }));
 	}
 }
 
@@ -1182,7 +1182,8 @@ function CharacterLoadNPC(CharacterID, NPCType=null, module=null, screen=null) {
 	// Randomize the new character
 	const C = /** @type {NPCCharacter} */ (CharacterCreate("Female3DCG", CharacterType.NPC, CharacterID));
 	C.AccountName = NPCType;
-	CharacterLoadCSVDialog(C, { module: module ?? CurrentModule, screen: screen ?? CurrentScreen, name: NPCType });
+	// XXX: should be awaited here
+	CommonPromiseCatch(CharacterLoadCSVDialog(C, { module: module ?? CurrentModule, screen: screen ?? CurrentScreen, name: NPCType }));
 	C.Name = CharacterGenerateRandomName();
 	CharacterAppearanceBuildAssets(C);
 	CharacterAppearanceFullRandom(C);
@@ -1267,7 +1268,7 @@ function CharacterOnlineRefresh(Char, data, SourceMemberNumber) {
 	if (oldPronouns !== undefined && oldPronouns !== newPronouns) {
 		// Reload the dialog so the new gender takes effect
 		// Don't reload in initialization (when oldPronouns is undefined), which breaks translation
-		CharacterLoadCSVDialog(Char, { module: "Online", screen: "ChatRoom", name: "Online" });
+		CommonPromiseCatch(CharacterLoadCSVDialog(Char, { module: "Online", screen: "ChatRoom", name: "Online" }));
 	}
 	CharacterLoadEffect(Char);
 	CharacterRefresh(Char);
@@ -1316,7 +1317,7 @@ function CharacterLoadOnline(data, SourceMemberNumber) {
 		Char.MemberNumber = data.MemberNumber;
 		Char.Difficulty = ServerAccountDataSyncedValidate.Difficulty(data.Difficulty, Char);
 		Char.AllowItem = false;
-		CharacterLoadCSVDialog(Char, { module: "Online", screen: "ChatRoom", name: "Online" });
+		CommonPromiseCatch(CharacterLoadCSVDialog(Char, { module: "Online", screen: "ChatRoom", name: "Online" }));
 		CharacterOnlineRefresh(Char, data, SourceMemberNumber);
 	} else {
 
@@ -1599,7 +1600,9 @@ function CharacterRefresh(C, Push = true, RefreshDialog = true) {
 	if (C.IsPlayer()) {
 		// Grab the first custom background that we can find
 		const customBGItem = C.Appearance.find(item => typeof item.Property?.CustomBlindBackground === "string");
-		C.CustomBackground = customBGItem ? customBGItem.Property?.CustomBlindBackground : undefined;
+		if (customBGItem?.Property?.CustomBlindBackground !== null) {
+			C.CustomBackground = customBGItem ? customBGItem.Property?.CustomBlindBackground : undefined;
+		}
 	}
 
 	if (C.IsPlayer() && Push) {
@@ -1645,7 +1648,7 @@ function CharacterRefreshDialog(C) {
 
 	if (DialogMenuMode === "items" || DialogMenuMode === "activities" || DialogMenuMode === "permissions" || DialogMenuMode === "dialog") {
 		// We were looking at some inventory, perform a soft reload to update the UI
-		DialogMenuMapping[DialogMenuMode].Reload();
+		CommonPromiseCatch(DialogMenuMapping[DialogMenuMode].Reload());
 	} else if (DialogMenuMode === "extended" || DialogMenuMode === "tighten") {
 		if (!focusItem) {
 			// Focused item was removed
@@ -1789,10 +1792,8 @@ function CharacterNaked(C, refresh=true) {
 function CharacterRandomUnderwear(C) {
 
 	// Clear the current clothes
-	for (let A = C.Appearance.length - 1; A >= 0; A--)
-		if ((C.Appearance[A].Asset.Group.Category == "Appearance") && C.Appearance[A].Asset.Group.AllowNone) {
-			C.Appearance.splice(A, 1);
-		}
+	const items = C.Appearance.filter(item => item.Asset.Group.IsAppearance() && item.Asset.Group.AllowNone);
+	InventoryRemoveItems(C, items);
 
 	// Generate random undies at a random color
 	/** @type {"" | BCColor} */
@@ -1844,15 +1845,12 @@ function CharacterDress(C, Appearance) {
 /**
  * Removes all binding items from a given character
  * @param {Character} C - Character to release
- * @param {boolean} [Refresh=false] - do not call CharacterRefresh if false
+ * @param {boolean} [refresh=true] - do not call CharacterRefresh if false
  * @returns {void} - Nothing
  */
-function CharacterRelease(C, Refresh) {
-	for (let E = C.Appearance.length - 1; E >= 0; E--)
-		if (C.Appearance[E].Asset.IsRestraint) {
-			C.Appearance.splice(E, 1);
-		}
-	if (Refresh || Refresh == null) CharacterRefresh(C);
+function CharacterRelease(C, refresh=true) {
+	const items = C.Appearance.filter(item => item.Asset.IsRestraint);
+	InventoryRemoveItems(C, items, { refresh });
 }
 
 /**
@@ -1873,11 +1871,8 @@ function CharacterReleaseFromLock(C, LockName) {
  * @returns {void} - Nothing
  */
 function CharacterReleaseNoLock(C) {
-	for (let E = C.Appearance.length - 1; E >= 0; E--)
-		if (C.Appearance[E].Asset.IsRestraint && !C.Appearance[E].Property?.LockedBy) {
-			C.Appearance.splice(E, 1);
-		}
-	CharacterRefresh(C);
+	const items = C.Appearance.filter(item => item.Asset.IsRestraint && !item.Property?.LockedBy);
+	InventoryRemoveItems(C, items);
 }
 
 /**
@@ -1887,23 +1882,18 @@ function CharacterReleaseNoLock(C) {
  * @returns {void} - Nothing
  */
 function CharacterReleaseTotal(C, refresh=true) {
-	for (let E = C.Appearance.length - 1; E >= 0; E--) {
-		if (C.Appearance[E].Asset.Group.Category != "Appearance") {
-			if (C.IsOwned() && C.Appearance[E].Asset.Name == "SlaveCollar") {
-				// Reset slave collar to the default model if it has a gameplay effect (such as gagging the player)
-				const effects = InventoryGetItemProperty(C.Appearance[E], "Effect");
-				if (effects?.length) {
-					C.Appearance[E].Property = CommonCloneDeep(InventoryItemNeckSlaveCollarTypes[0].Property);
-				}
+	const items = C.Appearance.filter(item => {
+		if (item.Asset.Name === "SlaveCollar" && C.IsOwned()) {
+			// Reset slave collar to the default model if it has a gameplay effect (such as gagging the player)
+			if (item.Property?.Effect?.length) {
+				item.Property = CommonCloneDeep(InventoryItemNeckSlaveCollarTypes[0].Property);
 			}
-			else {
-				C.Appearance.splice(E, 1);
-			}
+			return false;
+		} else {
+			return item.Asset.Group.IsItem();
 		}
-	}
-	if (refresh) {
-		CharacterRefresh(C);
-	}
+	});
+	InventoryRemoveItems(C, items, { refresh });
 }
 
 /**

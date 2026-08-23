@@ -63,13 +63,14 @@ function CollegeChessGameStart(Difficulty, Bet) {
 	const playerStarts = Math.random() < 0.5;
 	ChessCharacterWhite = playerStarts ? Player : CollegeChessOpponent;
 	ChessCharacterBlack = playerStarts ? CollegeChessOpponent : Player;
-	MiniGameStart("Chess", CollegeChessDifficulty, () => CollegeChessGameEnd());
+	MiniGameStart("Chess", CollegeChessDifficulty, () => { CollegeChessGameEnd(); });
 	document.addEventListener("chessOnMove", CollegeChessGameProgress);
 }
 
 /**
  * In strip or bondage chess, a player can lose one piece of cloth
- * @returns {void} - Nothing, the returns are quick exit short cuts
+ * @param {Character} C
+ * @returns {Item[]} - The removed items (if any)
  */
 function CollegeChessStrip(C) {
 	if (InventoryGet(C, "Shoes") != null) return InventoryRemove(C, "Shoes");
@@ -148,6 +149,7 @@ function CollegeChessGameConcede() {
 
 /**
  * Triggered when the chess game ends.
+ * @returns {SafePromise<void>}
  */
 async function CollegeChessGameEnd() {
 	await CommonSetScreen("Room", "CollegeChess");

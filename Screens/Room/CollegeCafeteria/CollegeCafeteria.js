@@ -56,7 +56,7 @@ async function CollegeCafeteriaLoad() {
 			InventoryWear(CollegeCafeteriaSidney, "Pussy1", "Pussy", "#505050");
 			InventoryWear(CollegeCafeteriaSidney, "Eyes10", "Eyes", "#FF0000");
 			InventoryWear(CollegeCafeteriaSidney, "Eyes10", "Eyes2", "#FF0000");
-			InventoryWear(CollegeCafeteriaSidney, "Mouth", "Mouth", "Default");
+			InventoryWear(CollegeCafeteriaSidney, "Regular", "Mouth", "Default");
 			InventoryWear(CollegeCafeteriaSidney, "H0960", "Height", "Default");
 			InventoryWear(CollegeCafeteriaSidney, "XLarge", "BodyUpper", "White");
 			InventoryWear(CollegeCafeteriaSidney, "XLarge", "BodyLower", "White");
@@ -147,9 +147,9 @@ function CollegeCafeteriaFightStart() {
 
 /**
  * Resolves the fight between the player and Sidney
- * @returns {void} - Nothing
+ * @returns {SafePromise<void>}
  */
-function CollegeCafeteriaFightEnd() {
+async function CollegeCafeteriaFightEnd() {
 	SkillProgress(Player, "Willpower", KidnapSuccessWillpowerProgress(CollegeCafeteriaSidney));
 	CollegeCafeteriaSidney.Stage = (KidnapVictory) ? "300" : "400";
 	CharacterRelease(Player);
@@ -158,10 +158,9 @@ function CollegeCafeteriaFightEnd() {
 	InventoryWear(Player, "CollegeSkirt", "ClothLower", "Default");
 	InventoryWear(CollegeCafeteriaSidney, "CollegeOutfit1", "Cloth", "Default");
 	InventoryWear(CollegeCafeteriaSidney, "CollegeSkirt", "ClothLower", "Default");
-	CommonSetScreen("Room", "CollegeCafeteria").then(() => {
-		CharacterSetCurrent(CollegeCafeteriaSidney);
-		CollegeCafeteriaSidney.CurrentDialog = DialogFind(CollegeCafeteriaSidney, (KidnapVictory) ? "FightVictory" : "FightDefeat");
-	});
+	await CommonSetScreen("Room", "CollegeCafeteria");
+	CharacterSetCurrent(CollegeCafeteriaSidney);
+	CollegeCafeteriaSidney.CurrentDialog = DialogFind(CollegeCafeteriaSidney, (KidnapVictory) ? "FightVictory" : "FightDefeat");
 }
 
 /**

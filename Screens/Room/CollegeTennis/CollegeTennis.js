@@ -49,7 +49,7 @@ async function CollegeTennisLoad() {
 			InventoryWear(CollegeTennisJennifer, "Pussy1", "Pussy", "#edd6b0");
 			InventoryWear(CollegeTennisJennifer, "Eyes5", "Eyes", "#ffa239");
 			InventoryWear(CollegeTennisJennifer, "Eyes5", "Eyes2", "#ffa239");
-			InventoryWear(CollegeTennisJennifer, "Mouth", "Mouth", "Default");
+			InventoryWear(CollegeTennisJennifer, "Regular", "Mouth", "Default");
 			InventoryWear(CollegeTennisJennifer, "H0980", "Height", "Default");
 			InventoryWear(CollegeTennisJennifer, "Small", "BodyUpper", "White");
 			InventoryWear(CollegeTennisJennifer, "Small", "BodyLower", "White");
@@ -114,12 +114,13 @@ function CollegeTennisGameStart(Difficulty) {
 	if ((Difficulty == "Hard") && (CollegeTennisJennifer.Name != "Jennifer")) CharacterChangeMoney(Player, -25);
 	TennisCharacterLeft = Player;
 	TennisCharacterRight = CollegeTennisJennifer;
-	MiniGameStart("Tennis", Difficulty, () => CollegeTennisGameEnd());
+	MiniGameStart("Tennis", Difficulty, () => { CollegeTennisGameEnd(); });
 
 }
 
 /**
  * Triggered when the tennis game ends. Winning opens a dialog option to allow the player to invite Jennifer to their room.
+ * @returns {SafePromise<void>}
  */
 async function CollegeTennisGameEnd() {
 	await CommonSetScreen("Room", "CollegeTennis");
