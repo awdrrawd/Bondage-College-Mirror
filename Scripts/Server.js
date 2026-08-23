@@ -224,11 +224,11 @@ function ServerInfo(data) {
  */
 function ServerDisconnect(data, close = false) {
 	if (!ServerIsConnected) return;
-	console.warn("Server connection lost");
+	console.error("Server connection lost");
 	const ShouldRelog = Player.Name != "";
 	let msg = ShouldRelog ? "Disconnected" : "ErrorDisconnectedFromServer";
 	if (data) {
-		console.warn(data);
+		console.error(data);
 		msg = data;
 	}
 	ServerSetConnected(false, msg);
@@ -705,7 +705,7 @@ function ServerAppearanceLoadFromBundle(C, AssetFamily, Bundle, SourceMemberNumb
 
 	// If the appearance update was invalid, send another update to correct any issues
 	if (!updateValid && C.IsPlayer()) {
-		console.warn("Invalid appearance update bundle received. Updating with sanitized appearance.");
+		console.error("Invalid appearance update bundle received. Updating with sanitized appearance.");
 		ChatRoomCharacterUpdate(C);
 	}
 	return updateValid;
@@ -1012,21 +1012,8 @@ function ServerAccountBeep(data) {
 
 				ChatRoomAppendChat(div);
 			}
-		} else if (data.BeepType == "Leash" && ChatRoomLeashPlayer == data.MemberNumber && data.ChatRoomName) {
-			if (Player.OnlineSharedSettings.AllowPlayerLeashing && (!ServerPlayerIsInChatRoom() || ChatRoomData?.Name !== data.ChatRoomName)) {
-				if (ChatRoomCanBeLeashedBy(data.MemberNumber, Player) && ChatSelectGendersAllowed(data.ChatRoomSpace, Player.GetGenders())) {
-					ChatRoomJoinLeash = data.ChatRoomName;
-
-					ChatRoomLeave();
-					if (ServerPlayerIsInChatRoom()) {
-						CommonSetScreen("Online", "ChatSearch");
-					} else {
-						ChatRoomStart(data.ChatRoomSpace, "", null, null, "Introduction", BackgroundsTagList);
-					}
-				} else {
-					ChatRoomLeashPlayer = null;
-				}
-			}
+		} else if (data.BeepType === "Leash") {
+			ServerHandleLeashBeep(data);
 		}
 	}
 }
@@ -1090,6 +1077,100 @@ function ServerShowBeep(message, duration, options, title) {
 	TimerCreate(() => {
 		NotificationReset(NotificationEventType.BEEP);
 	}, 0, false, 'foreground');
+}
+
+/**
+ * Handle a leash beep from another player
+ *
+ * @param {ServerAccountBeepResponse} data
+ */
+async function ServerHandleLeashBeep(data) {
+	if (!Player.OnlineSharedSettings?.AllowPlayerLeashing) return;
+
+	// This is not our leash holder
+	if (ChatRoomLeashPlayer !== data.MemberNumber) return;
+
+	if (ServerPlayerIsInChatRoom() && ChatRoomData.Name === data.ChatRoomName) {
+		// We're already in the room
+		return;
+	}
+
+	// We can't actually be leashed
+	if (!ChatRoomCanBeLeashedBy(data.MemberNumber, Player)) {
+		ChatRoomBreakLeash(null);
+		return;
+	}
+
+	/** @type {Result<ServerChatRoomSearchResultResponse, ServerError>} */
+	let searchRes;
+	let retries = 5;
+	while (true) {
+		searchRes = await ServerRoomSearch(data.ChatRoomName, { Language: "", Space: data.ChatRoomSpace });
+		if (searchRes.ok) {
+			break;
+		}
+
+		if (searchRes.error instanceof ServerTimeoutError) {
+			ChatRoomBreakLeash("Timeout");
+		} else if (searchRes.error instanceof ServerInProgressError) {
+			continue;
+		} else {
+			ChatRoomBreakLeash(null);
+		}
+
+		if (--retries >= 0) {
+			CommonSleep(ServerDefaultTimeout);
+			continue;
+		}
+		return;
+	}
+
+	const room = searchRes.unwrap().find(r => r.Name === data.ChatRoomName);
+	if (!room) {
+		ChatRoomBreakLeash("CannotFindRoom");
+		return;
+	}
+
+	if (ChatSearchTempHiddenRooms.indexOf(room.CreatorMemberNumber) != -1) {
+		ChatRoomBreakLeash("TempHidden");
+		return;
+	}
+
+	if (Player.HasOnGhostlist(room.CreatorMemberNumber)) {
+		ChatRoomBreakLeash("GhostList");
+		return;
+	}
+
+	// The room we're entering is off-limit to us
+	if (!ChatSelectGendersAllowed(data.ChatRoomSpace, Player.GetGenders()) || CharacterHasBlockedItem(Player, room.BlockCategory)) {
+		ChatRoomBreakLeash("RoomBlocked");
+		return;
+	}
+
+	ChatRoomLeave();
+	retries = 5;
+	while (true) {
+		const result = await ServerRoomJoin(room.Name);
+		if (result.ok) {
+			break;
+		}
+
+		if (result.error instanceof ServerJoinError) {
+			ChatRoomBreakLeash(result.error.name);
+		} else if (result.error instanceof ServerInProgressError) {
+			continue;
+		} else if (result.error instanceof ServerTimeoutError) {
+			ChatRoomBreakLeash("Timeout");
+		} else {
+			ChatRoomBreakLeash(null);
+		}
+
+		if (--retries >= 0) {
+			await CommonSleep(ServerDefaultTimeout);
+			continue;
+		}
+		return;
+	}
 }
 
 // TODO: `data: object` -> `data: ServerAccountOwnershipResponse`

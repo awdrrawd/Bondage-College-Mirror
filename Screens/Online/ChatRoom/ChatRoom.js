@@ -136,13 +136,10 @@ var ChatRoomLeashList = [];
 var ChatRoomLeashPlayer = null;
 /**
  * The room name to join when being leashed
- * @type {string}
+ * @deprecated
+ * @type {never}
  */
-var ChatRoomJoinLeash = "";
-
-/**
- * Whether the chat room customization settings are user-enabled or not
- */
+var ChatRoomJoinLeash;
 var ChatRoomCustomized = false;
 
 /** @satisfies {Record<"Never" | "DisabledByDefault" | "EnabledByDefault" | "Always", ChatRoomCustomizationType>} */
@@ -4448,7 +4445,7 @@ function ChatRoomGetFocusGroupSubstitutions(data, focusGroup, targetCharacter) {
 	if (targetCharacter) {
 		return [["FocusAssetGroup", DialogActualNameForGroup(targetCharacter, focusGroup).toLowerCase()]];
 	} else {
-		console.warn(`Received message "${data.Content}" with focus group but no target character, assuming target's biology...`);
+		console.error(`Received message "${data.Content}" with focus group but no target character, assuming target's biology...`);
 		return [["FocusAssetGroup", focusGroup.Description]];
 	}
 }
@@ -4902,7 +4899,7 @@ function ChatRoomMessageDisplay(data, msg, SenderCharacter, metadata) {
 			break;
 
 		default:
-			console.warn(`unknown message type ${data.Type}, ignoring`);
+			console.error(`unknown message type ${data.Type}, ignoring`);
 			return;
 	}
 
@@ -5503,7 +5500,7 @@ function ChatRoomSyncItem(data) {
 
 	// If the update was invalid, send a correction update
 	if (targetChar.IsPlayer() && !valid) {
-		console.warn(`Invalid appearance update to group ${data.Item.Group}. Updating with sanitized appearance.`);
+		console.error(`Invalid appearance update to group ${data.Item.Group}. Updating with sanitized appearance.`);
 		ChatRoomCharacterUpdate(targetChar);
 	} else {
 		CharacterRefresh(targetChar);
@@ -5656,26 +5653,35 @@ function ChatRoomStopHoldLeash() {
 }
 
 /**
+ * Handle breaking off a leash
+ * @param {null | Exclude<ServerChatRoomJoinResponse, "JoinedRoom"> | "RoomBlocked" | "GhostList" | "TempHidden" | "Timeout"} event
+ */
+function ChatRoomBreakLeash(event) {
+	ChatRoomLeashPlayer = null;
+	CharacterRefreshLeash(Player);
+	if (event) {
+		ToastManager.error(TextGet(`LeashBreak${event}`));
+	}
+}
+
+/**
  * Handle the reply to a leash being released
  * @param {Character} SenderCharacter
  */
 function ChatRoomDoStopHoldLeash(SenderCharacter) {
 	if (SenderCharacter.MemberNumber == ChatRoomLeashPlayer) {
-		ChatRoomLeashPlayer = null;
-		CharacterRefreshLeash(Player);
+		ChatRoomBreakLeash(null);
 	}
 }
 
 /**
- * Triggered when a dom enters the room
+ * Triggered when a leash holder changes rooms
  * @returns {void} - Nothing.
  */
 function ChatRoomPingLeashedPlayers() {
-	if (ChatRoomLeashList && ChatRoomLeashList.length > 0) {
-		for (let P = 0; P < ChatRoomLeashList.length; P++) {
-			ServerSend("ChatRoomChat", { Content: "PingHoldLeash", Type: "Hidden", Target: ChatRoomLeashList[P] });
-			ServerSend("AccountBeep", { MemberNumber: ChatRoomLeashList[P], BeepType:"Leash"});
-		}
+	for (const target of ChatRoomLeashList) {
+		ServerSend("ChatRoomChat", { Content: "PingHoldLeash", Type: "Hidden", Target: target });
+		ServerSend("AccountBeep", { MemberNumber: target, BeepType: "Leash" });
 	}
 }
 
@@ -6017,7 +6023,7 @@ function ChatRoomDrawFocusListClear() {
 function ChatRoomAllowItem(data) {
 	if ((data != null) && (typeof data === "object") && (data.MemberNumber != null) && (typeof data.MemberNumber === "number") && (data.AllowItem != null) && (typeof data.AllowItem === "boolean"))
 		if (CurrentCharacter != null && CurrentCharacter.MemberNumber == data.MemberNumber && data.AllowItem !== CurrentCharacter.AllowItem) {
-			console.warn(`ChatRoomGetAllowItem mismatch trying to access ${CurrentCharacter.Name} (${CurrentCharacter.MemberNumber})`);
+			console.error(`ChatRoomGetAllowItem mismatch trying to access ${CurrentCharacter.Name} (${CurrentCharacter.MemberNumber})`);
 			CurrentCharacter.AllowItem = data.AllowItem;
 			CharacterSetCurrent(CurrentCharacter);
 		}
