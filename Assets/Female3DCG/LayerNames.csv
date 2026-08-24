@@ -3860,12 +3860,17 @@ ShoesHoofBootsBoots,Boots
 ShoesHoofBootsStraps,Straps
 ShoesHoofBootsSBuckles,Straps buckles
 ShoesHoofBootsLock,Padlocks
+ShoesHoofShoeSocks,Socks
+ShoesHoofShoeSole,Sole
 ShoesIndoorSlippersMain,Body
 ShoesIndoorSlippersDetail,Details
 ShoesLatexHeelsBase,Shoe
 ShoesLatexHeelsTrim,Trim
 ShoesMaryShoesMain,Main
 ShoesMaryShoesRear,Rear
+ShoesPrintedCrocsPatternedUpper,Pattern Color
+ShoesPrintedCrocsSole,Sole
+ShoesPrintedCrocsUpper,Plain Color
 ShoesPumpHighHeelsMain,Shoes
 ShoesPumpHighHeelsStrap,Straps
 ShoesPumpHighHeelsSMetal,Metal buckles
