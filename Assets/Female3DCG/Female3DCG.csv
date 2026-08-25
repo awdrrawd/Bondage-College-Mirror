@@ -1189,6 +1189,7 @@ ItemHandheld,Belt,Belt
 ItemHandheld,Brick,Brick
 ItemHandheld,Broom,Broom
 ItemHandheld,CandleWax,Candle Wax
+ItemHandheld,CandyCane,Candy Cane
 ItemHandheld,Cane,Cane
 ItemHandheld,CattleProd,Cattle Prod
 ItemHandheld,Chocolate,Chocolate Bar
@@ -1201,12 +1202,14 @@ ItemHandheld,Feather,Feather
 ItemHandheld,FeatherDuster,Feather Duster
 ItemHandheld,Flogger,Flogger
 ItemHandheld,FoamRoll,Foam Roll
+ItemHandheld,Foldingfan,Folding fan
 ItemHandheld,ForSaleSign,For Sale Sign
 ItemHandheld,Gavel,Gavel
 ItemHandheld,GiftBox,Gift Box
 ItemHandheld,GlassEmpty,Empty Glass
 ItemHandheld,GlassFilled,Filled Glass
 ItemHandheld,GlueTube,Atoxic Glue Tube
+ItemHandheld,GrilledSausage,Grilled Sausage
 ItemHandheld,Hairbrush,Hairbrush
 ItemHandheld,HeartCrop,Heart Crop
 ItemHandheld,IceCube,Ice Cube
@@ -1230,6 +1233,7 @@ ItemHandheld,Plushie,Plushie
 ItemHandheld,Popcorn,Popcorn
 ItemHandheld,PortalTablet,PortalLink Tablet
 ItemHandheld,PotionBottle,Potion Bottle
+ItemHandheld,R18Baton,Penis Baton
 ItemHandheld,RainbowWand,Rainbow Wand
 ItemHandheld,RopeCoilLong,Long Coiled Rope
 ItemHandheld,RopeCoilShort,Short Coiled Rope

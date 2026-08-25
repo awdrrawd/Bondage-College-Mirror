@@ -2083,6 +2083,8 @@ ItemHandheldAnimeGirlWandDetail2,Spheres
 ItemHandheldAnimeGirlWandSwitch,Power switch
 ItemHandheldBunPlushBase1,Base
 ItemHandheldBunPlushBase2,Accent
+ItemHandheldCandyCaneBase,Base
+ItemHandheldCandyCanePattern,Pattern
 ItemHandheldChocolateAluminumFoil,Aluminum Foil
 ItemHandheldChocolateChocolateBar,Chocolate Bar
 ItemHandheldChocolateGoldTicket,Gold Ticket
@@ -2114,12 +2116,21 @@ ItemHandheldElectricGuitarB6,Borders
 ItemHandheldElectricGuitarB7,Tuners
 ItemHandheldElectricGuitarB8,Frets
 ItemHandheldElectricGuitarB9,B9
+ItemHandheldFoldingfanFanEdge,Fan Edge
+ItemHandheldFoldingfanFanSurface,Fan Surface
+ItemHandheldFoldingfanFoldingRibs,Folding Ribs
+ItemHandheldFoldingfanOpenRibs,Open Ribs
+ItemHandheldFoldingfanOpenRibsBack,Open Ribs Back
+ItemHandheldFoldingfanOpenShadow,Open Shadow
 ItemHandheldFoxPlushBase1,Base
 ItemHandheldFoxPlushBase2,Accent
 ItemHandheldGiftBoxBox,Box
 ItemHandheldGiftBoxBoxReflection,Box Reflection
 ItemHandheldGiftBoxRibbon,Ribbon
 ItemHandheldGiftBoxRibbonReflection,Ribbon Reflection
+ItemHandheldGrilledSausageFlavor1,Five Spices
+ItemHandheldGrilledSausageFlavor2,Smoky Honey
+ItemHandheldGrilledSausageStick,Stick
 ItemHandheldKyosensuFan,Fan paper
 ItemHandheldKyosensuFan1,Fan paper 2nd color
 ItemHandheldKyosensuFan2,Fan paper 3rd color
@@ -2167,6 +2178,10 @@ ItemHandheldPlushiesZannah,Zannah
 ItemHandheldPopcornBag,Bag
 ItemHandheldPopcornCorn,Corn
 ItemHandheldPortalTablet,Tablet
+ItemHandheldR18BatonHandleColor1,Handle Color 1
+ItemHandheldR18BatonHandleColor2,Handle Color 2
+ItemHandheldR18BatonHandleMetal,Handle Metal
+ItemHandheldR18BatonStickBase,Penis
 ItemHandheldSharkBelly,Belly
 ItemHandheldSharkBody,Body
 ItemHandheldSharkEye,Eye
