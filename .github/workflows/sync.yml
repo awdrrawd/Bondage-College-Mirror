@@ -7,8 +7,8 @@ on:
     paths:
       - ".github/workflows/sync.yml"
   schedule:
-    # 每3小時檢查一次上游是否有新 commit（GitHub Actions 使用 UTC）。
-    # 檢查本身只用 git ls-remote，幾乎零成本；只有偵測到上游有更新時才會真正 clone。
+    # 每3小時檢查一次上游是否有新 commit(GitHub Actions 使用 UTC)。
+    # 檢查本身只用 git ls-remote,幾乎零成本;只有偵測到上游有更新時才會真正 clone。
     - cron: "0 */3 * * *"
   workflow_dispatch:
 
@@ -38,14 +38,14 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # 用來記錄本次執行後，每個 target branch 對應的最新上游 commit hash。
+          # 用來記錄本次執行後,每個 target branch 對應的最新上游 commit hash。
           # 執行完所有 mirror 後會一次寫回 sync-state 分支。
-          declare -A NEW_STATE
+          declare -A NEW_STATE=()
 
           STATE_BRANCH="sync-state"
 
           # 透過 raw.githubusercontent.com 讀取上次記錄的 commit hash。
-          # 只是一次輕量 HTTP GET，不需要 clone/fetch，state 分支不存在或檔案不存在時回傳空字串。
+          # 只是一次輕量 HTTP GET,不需要 clone/fetch,state 分支不存在或檔案不存在時回傳空字串。
           get_last_commit() {
             local key="$1"
             curl -fsSL "https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${STATE_BRANCH}/${key}.commit" 2>/dev/null || true
@@ -66,7 +66,7 @@ jobs:
             local last_commit
 
             echo "::group::Check $target_branch"
-            # 先用 ls-remote 問上游目前的 commit，不下載任何內容，成本極低。
+            # 先用 ls-remote 問上游目前的 commit,不下載任何內容,成本極低。
             latest_commit="$(git ls-remote "$source_url" "refs/heads/$source_ref" | cut -f1)"
 
             if [[ -z "$latest_commit" ]]; then
@@ -239,8 +239,8 @@ jobs:
             rm -rf "$temp_dir"
             echo "::endgroup::"
 
-            # 記錄本次的上游 commit，稍後統一寫回 sync-state 分支，
-            # 這樣即使過濾後內容沒變，下次也能直接靠 ls-remote 判斷跳過。
+            # 記錄本次的上游 commit,稍後統一寫回 sync-state 分支,
+            # 這樣即使過濾後內容沒變,下次也能直接靠 ls-remote 判斷跳過。
             if [[ -n "$latest_commit" ]]; then
               NEW_STATE["$target_branch"]="$latest_commit"
             fi
