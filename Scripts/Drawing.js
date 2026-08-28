@@ -918,8 +918,8 @@ function GetWrapTextSize(Text, Width, MaxLine) {
  * @param {string} ForeColor - Foreground color
  * @param {string} [BackColor] - Background color
  * @param {number} [MaxLine] - Maximum of lines the word can wrap for
- * @param {number} LineSpacing - The number of pixels between each lines (default to 23)
- * @param {"Center" | "Top"} Alignment - How the text should be alligned w.r.t. the Y position when wrapped over multiple lines
+ * @param {number} [LineSpacing] - The number of pixels between each lines (default to 23)
+ * @param {"Center" | "Top" | null} Alignment - How the text should be alligned w.r.t. the Y position when wrapped over multiple lines
  * @returns {void} - Nothing
  */
 function DrawTextWrap(Text, X, Y, Width, Height, ForeColor, BackColor, MaxLine, LineSpacing = 23, Alignment = "Center") {
@@ -1101,7 +1101,7 @@ function DrawButton(Left, Top, Width, Height, Label, Color, Image=null, Hovering
 	// Draw the button rectangle (makes the background color cyan if the mouse is over it)
 	MainCanvas.beginPath();
 	MainCanvas.rect(Left, Top, Width, Height);
-	MainCanvas.fillStyle = ((MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height) && !CommonIsMobile && !Disabled) ? "Cyan" : Color;
+	MainCanvas.fillStyle = (MouseIn(Left, Top, Width, Height) && !CommonIsMobile && !Disabled) ? "Cyan" : Color;
 	MainCanvas.fillRect(Left, Top, Width, Height);
 	MainCanvas.fill();
 	MainCanvas.lineWidth = 2;
@@ -1109,12 +1109,16 @@ function DrawButton(Left, Top, Width, Height, Label, Color, Image=null, Hovering
 	MainCanvas.stroke();
 	MainCanvas.closePath();
 
+	const buttonPadding = 2;
+
 	// Draw the text or image
-	DrawTextFit(Label, Left + Width / 2, Top + (Height / 2) + 1, Width - 4, "black");
-	if ((Image != null) && (Image != "")) DrawImage(Image, Left + 2, Top + 2);
+	DrawTextFit(Label, Left + Width / 2, Top + (Height / 2) + 1, Width - 2 * buttonPadding, "black");
+	if ((Image != null) && (Image != "")) {
+		DrawImageEx(Image, MainCanvas, Left + buttonPadding, Top + buttonPadding, { Width: Width - 2 * buttonPadding, Height: Height - 2 * buttonPadding });
+	}
 
 	// Draw the hovering text
-	if ((HoveringText != null) && (MouseX >= Left) && (MouseX <= Left + Width) && (MouseY >= Top) && (MouseY <= Top + Height) && !CommonIsMobile && !CommonPhotoMode) {
+	if (HoveringText != null && MouseIn(Left, Top, Width, Height) && !CommonIsMobile && !CommonPhotoMode) {
 		DrawHoverElements.push(() => {
 			const rect = tooltipPosition ?? RectMakeRect(Left, Top, Width, Height);
 			DrawButtonHover(...RectGetFrame(rect), HoveringText);
