@@ -4063,7 +4063,7 @@ var AssetFemale3DCG = [
 					...AssetPoseMapping.Cloth,
 					Suspension: "Suspension",
 				},
-				DefaultColor: ["#886D5D", "#886D58", "#8B6945", "Default"],
+				DefaultColor: ["#886d5d", "#886D58", "#8B6945", "Default"],
 				Layer: [
 					{ Name: "Base", AllowTypes: { c: [0, 1] } },
 					{ Name: "BaseStains", AllowTypes: { c: 1 } },
@@ -6443,6 +6443,9 @@ var AssetFemale3DCG = [
 			{ Name: "CRABS", Left: 206, Top: 274 },
 			{ Name: "PirateRockRadio", Left: 206, Top: 268 },
 			{ Name: "MelodysBoutique", Left: 206, Top: 268 },
+			{ Name: "BellFlower", Left: 200, Top: 270 },
+            { Name: "VelvetBunny", Left: 183, Top: 270 },
+            { Name: "LMF", Left: 195, Top: 255 },
 		],
 	},
 	// #endregion
@@ -8421,7 +8424,10 @@ var AssetFemale3DCG = [
 				Extended: true,
 				Layer: [
 					{ Name: "Base", StyleOverride: ["EchoV2"] },
-					{ Name: "Zip" },
+					{
+						Name: "Zip",
+						PoseMapping: { ...AssetPoseMapping.Suit, Hogtied: PoseType.HIDE },
+					},
 					{
 						Name: "OpaqueGloves",
 						Priority: 27,
@@ -9509,7 +9515,16 @@ var AssetFemale3DCG = [
 				Hide: ["ItemVulvaPiercings", "BodyLower"],
 				HideItem: ["SocksPantyhose1"],
 				Attribute: ["SuitLower"],
-				Layer: [{ Name: "Base" }, { Name: "Zip" }],
+				Layer: [
+					{ Name: "Base" },
+					{
+						Name: "Zip",
+						PoseMapping: {
+							...AssetPoseMapping.SuitLower,
+							Hogtied: PoseType.HIDE,
+						},
+					},
+				],
 			},
 			{
 				Name: "DiaperSuit",
@@ -9608,7 +9623,7 @@ var AssetFemale3DCG = [
 				BuyGroup: "Catsuit",
 				Hide: ["ItemVulvaPiercings"],
 				PoseMapping: {
-					Hogtied: "Hogtied",
+					Hogtied: PoseType.HIDE,
 				},
 				Attribute: ["SuitLower"],
 			},
@@ -9624,10 +9639,34 @@ var AssetFemale3DCG = [
 				HideItem: ["SocksPantyhose1"],
 				Attribute: ["SuitLower"],
 				Layer: [
-					{ Name: "Layer1" },
-					{ Name: "Layer2" },
-					{ Name: "Layer3" },
-					{ Name: "Layer4" },
+					{
+						Name: "Layer1",
+						PoseMapping: {
+							...AssetPoseMapping.SuitLower,
+							Hogtied: PoseType.HIDE,
+						},
+					},
+					{
+						Name: "Layer2",
+						PoseMapping: {
+							...AssetPoseMapping.SuitLower,
+							Hogtied: PoseType.HIDE,
+						},
+					},
+					{
+						Name: "Layer3",
+						PoseMapping: {
+							...AssetPoseMapping.SuitLower,
+							Hogtied: PoseType.HIDE,
+						},
+					},
+					{
+						Name: "Layer4",
+						PoseMapping: {
+							...AssetPoseMapping.SuitLower,
+							Hogtied: PoseType.HIDE,
+						},
+					},
 				],
 			},
 			{
@@ -9666,7 +9705,16 @@ var AssetFemale3DCG = [
 				BuyGroup: "SeethroughSuit",
 				HideItem: ["SocksPantyhose1"],
 				Attribute: ["SuitLower"],
-				Layer: [{ Name: "Base" }, { Name: "Zip" }],
+				Layer: [
+					{ Name: "Base" },
+					{
+						Name: "Zip",
+						PoseMapping: {
+							...AssetPoseMapping.SuitLower,
+							Hogtied: PoseType.HIDE,
+						},
+					},
+				],
 			},
 			{
 				Name: "ReverseBunnySuit",
@@ -14133,27 +14181,74 @@ var AssetFemale3DCG = [
 				Layer: [
 					{
 						Name: "Base",
+						AllowTypes: { d: [0] },
 					},
 					{
 						Name: "Tabs",
+						Priority: 20,
 					},
 					{
-						Name: "Motiv",
-						AllowTypes: { typed: [1, 2, 3, 4] },
-						CreateLayerTypes: ["typed"],
+						Name: "None",
+						AllowTypes: { m: [0] },
 						ParentGroup: "",
+						Priority: 20,
 					},
 					{
 						Opacity: 0,
 						MinOpacity: 0,
 						MaxOpacity: 1,
 						Name: "Wet",
+						Priority: 21,
 					},
 					{
 						Opacity: 1,
 						Name: "Indicator",
 						MinOpacity: 0,
 						MaxOpacity: 1,
+						Priority: 20,
+					},
+					{
+						Name: "BaseAlpha",
+						AllowTypes: { d: [1] },
+						CopyLayerColor: "Base",
+					},
+					{
+						Name: "BaseBunny",
+						AllowTypes: { d: [2] },
+						CopyLayerColor: "Base",
+					},
+					{
+						Name: "BaseLacy",
+						AllowTypes: { d: [3] },
+						CopyLayerColor: "Base",
+					},
+					{
+						Name: "Simple",
+						AllowTypes: { m: [1] },
+						ParentGroup: "",
+						CopyLayerColor: "None",
+						Priority: 20,
+					},
+					{
+						Name: "HisMajesty",
+						AllowTypes: { m: [2] },
+						ParentGroup: "",
+						CopyLayerColor: "None",
+						Priority: 20,
+					},
+					{
+						Name: "HerMajesty",
+						AllowTypes: { m: [3] },
+						ParentGroup: "",
+						CopyLayerColor: "None",
+						Priority: 20,
+					},
+					{
+						Name: "Lock",
+						AllowTypes: { m: [4] },
+						ParentGroup: "",
+						CopyLayerColor: "None",
+						Priority: 20,
 					},
 				],
 			},
@@ -17909,7 +18004,15 @@ var AssetFemale3DCG = [
 							Hogtied: PoseType.HIDE,
 						},
 					},
-					{ Name: "Heels" },
+					{
+						Name: "Heels",
+						PoseMapping: {
+							...AssetPoseMapping.Shoes,
+							KneelingSpread: PoseType.HIDE,
+							Kneel: PoseType.HIDE,
+							LegsClosed: PoseType.HIDE,
+						},
+					},
 					{ Name: "Straps" },
 					{ Name: "Buckles", AllowColorize: false },
 				],
@@ -24392,6 +24495,7 @@ var AssetFemale3DCG = [
 				PoseMapping: {
 					...AssetPoseMapping.Gloves,
 					BackElbowTouch: PoseType.HIDE,
+					AllFours: PoseType.HIDE,
 				},
 			},
 			{
@@ -51487,6 +51591,10 @@ var AssetFemale3DCG = [
 						AllowTypes: { NelsStorage: 3 },
 					},
 					{
+						Name: "Viola",
+						AllowTypes: { NelsStorage: 4},
+					},
+					{
 						Name: "Dana",
 						AllowTypes: { CCLounge: 1 },
 					},
@@ -73929,6 +74037,7 @@ var AssetFemale3DCG = [
 				Time: 10,
 				RemoveTime: 10,
 				AllowLock: true,
+				DrawLocks: false,
 				Hide: ["Shoes"],
 				CopyConfig: {
 					GroupName: "Shoes",
@@ -74488,7 +74597,18 @@ var AssetFemale3DCG = [
 					Kneel: PoseType.HIDE,
 					KneelingSpread: PoseType.HIDE,
 				},
-				Layer: [{ Name: "Boots" }, { Name: "Straps" }],
+				Layer: [
+					{ Name: "Boots" },
+					{
+						Name: "Straps",
+						PoseMapping: {
+							...AssetPoseMapping.ItemBoots,
+							Kneel: PoseType.HIDE,
+							KneelingSpread: PoseType.HIDE,
+							Hogtied: PoseType.HIDE,
+						},
+					},
+				],
 			},
 			{
 				Name: "LeatherFootMitts1",
@@ -74508,7 +74628,18 @@ var AssetFemale3DCG = [
 					Kneel: PoseType.HIDE,
 					KneelingSpread: PoseType.HIDE,
 				},
-				Layer: [{ Name: "Mitts" }, { Name: "Straps" }],
+				Layer: [
+					{ Name: "Mitts" },
+					{
+						Name: "Straps",
+						PoseMapping: {
+							...AssetPoseMapping.ItemBoots,
+							Kneel: PoseType.HIDE,
+							KneelingSpread: PoseType.HIDE,
+							Hogtied: PoseType.HIDE,
+						},
+					},
+				],
 			},
 			{
 				Name: "ToeTape",
@@ -74549,19 +74680,6 @@ var AssetFemale3DCG = [
 				PoseMapping: {
 					Kneel: PoseType.HIDE,
 					Hogtied: "Hogtied",
-				},
-			},
-			{
-				Name: "HighThighBoots",
-				Audio: "LeatherStretchingShort",
-				Time: 10,
-				RemoveTime: 10,
-				AllowLock: true,
-				Hide: ["Shoes"],
-				CopyConfig: {
-					GroupName: "Shoes",
-					AssetName: "HighThighBoots",
-					BuyGroup: true,
 				},
 			},
 			{
@@ -74681,7 +74799,16 @@ var AssetFemale3DCG = [
 				Layer: [
 					{ Name: "Toe" },
 					{ Name: "Foot" },
-					{ Name: "Ankle" },
+					{
+						Name: "Ankle",
+						PoseMapping: {
+							AllFours: PoseType.HIDE,
+							Hogtied: PoseType.HIDE,
+							LegsClosed: "LegsClosed",
+							Spread: "Spread",
+							KneelingSpread: PoseType.HIDE,
+						},
+					},
 					{ Name: "U" },
 				],
 			},
