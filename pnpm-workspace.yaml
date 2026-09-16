@@ -1,2 +1,2 @@
 minimumReleaseAgeExclude:
-  - '@sugarch/bc-activity-manager@1.2.5'
+  - '@sugarch/bc-activity-manager@1.2.5 || 1.2.6'

@@ -27,8 +27,8 @@ importers:
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.62.2)
       '@sugarch/bc-activity-manager':
-        specifier: ^1.2.5
-        version: 1.2.5(@sugarch/bc-event-handler@1.0.4(@sugarch/bc-mod-hook-manager@0.3.4(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0))(@sugarch/bc-mod-hook-manager@0.3.4(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0)
+        specifier: ^1.2.6
+        version: 1.2.6(@sugarch/bc-event-handler@1.0.4(@sugarch/bc-mod-hook-manager@0.3.4(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0))(@sugarch/bc-mod-hook-manager@0.3.4(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0)
       '@sugarch/bc-event-handler':
         specifier: ^1.0.4
         version: 1.0.4(@sugarch/bc-mod-hook-manager@0.3.4(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0)
@@ -422,8 +422,8 @@ packages:
   '@socket.io/component-emitter@3.1.2':
     resolution: {integrity: sha512-9BCxFwvbGg/RsZK9tjXd8s4UcwR0MWeFQ1XEKIQVVvAGJyINdrqKMcTRyLoK8Rse1GjzLV9cwjWV1olXRWEXVA==}
 
-  '@sugarch/bc-activity-manager@1.2.5':
-    resolution: {integrity: sha512-VkDtW6IEcIUrWw2zSIWVGpGc9DIEV2t2cKDsgOq3k/JM+JqGV7pq4LxQk9EyGh8taEEO7aQbOF/OawhtTTsAVQ==}
+  '@sugarch/bc-activity-manager@1.2.6':
+    resolution: {integrity: sha512-T+dfdHqHSlLKTe2gsKgF3LmHUEijY/m7j0ft7ZkLvYmzJniBckJkZcmL/4D4weyn6wioMlCgV9jX7iwb7ssYfQ==}
     peerDependencies:
       '@sugarch/bc-event-handler': 1.0.4
       '@sugarch/bc-mod-hook-manager': 0.3.4
@@ -727,6 +727,7 @@ packages:
   eslint@9.39.5:
     resolution: {integrity: sha512-DgZS62aPLXKlnxILS/AYCoRvHaZeXceIzlXPkkGGzJWSow1aEk0lbTlxUSlyjC8jcaKxAdOnTDz+o1JFSBsyjw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
     peerDependencies:
       jiti: '*'
@@ -1462,6 +1463,7 @@ packages:
   whatwg-encoding@2.0.0:
     resolution: {integrity: sha512-p41ogyeMUrw3jWclHWTQg1k05DSVXPLcVxRTYsXUk+ZooOCZLcoYgPZ/HL/D/N+uQPOtcp1me1WhBEaX02mhWg==}
     engines: {node: '>=12'}
+    deprecated: Use @exodus/bytes instead for a more spec-conformant and faster implementation
 
   which@2.0.1:
     resolution: {integrity: sha512-N7GBZOTswtB9lkQBZA4+zAXrjEIWAUOB93AvzUiudRzRxhUdLURQ7D/gAIMY1gatT/LTbmbcv8SiYazy3eYB7w==}
@@ -1775,7 +1777,7 @@ snapshots:
 
   '@socket.io/component-emitter@3.1.2': {}
 
-  '@sugarch/bc-activity-manager@1.2.5(@sugarch/bc-event-handler@1.0.4(@sugarch/bc-mod-hook-manager@0.3.4(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0))(@sugarch/bc-mod-hook-manager@0.3.4(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0)':
+  '@sugarch/bc-activity-manager@1.2.6(@sugarch/bc-event-handler@1.0.4(@sugarch/bc-mod-hook-manager@0.3.4(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0))(@sugarch/bc-mod-hook-manager@0.3.4(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0)':
     dependencies:
       '@sugarch/bc-event-handler': 1.0.4(@sugarch/bc-mod-hook-manager@0.3.4(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0)
       '@sugarch/bc-mod-hook-manager': 0.3.4(bondage-club-mod-sdk@1.2.0)
