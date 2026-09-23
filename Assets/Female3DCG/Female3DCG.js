@@ -562,7 +562,7 @@ const AssetPoseMapping = /** @type {const} */ ({
 	},
 });
 
-/** @type {string[]} */
+/** @type {readonly AssetFullName[]} */
 const AssetMalePantiesList = [
 	"PantiesBoxerShorts",
 	"PantiesBriefs",
@@ -571,7 +571,7 @@ const AssetMalePantiesList = [
 	"PantiesMaleCatsuitPanties",
 ];
 
-/** @type {string[]} */
+/** @type {readonly AssetFullName[]} */
 const AssetMaleChasityCagesList = [
 	"ItemVulvaPlasticChastityCage2",
 	"ItemVulvaPlasticChastityCage1",
@@ -43870,8 +43870,6 @@ var AssetFemale3DCG = [
 				AllowLock: true,
 				AllowTighten: true,
 				DefaultColor: "#70C0C0",
-				Hide: ["HandAccessoryLeft", "HandAccessoryRight"],
-				HideItemExclude: ["CorsetCorset1", "CorsetLatexCorset1"],
 				HideItem: [
 					"ItemButtAnalBeads2",
 					"ItemVulvaVibratingDildo",
@@ -45735,8 +45733,7 @@ var AssetFemale3DCG = [
 				BuyGroup: "LatexSleevelessLeotard",
 				Extended: true,
 				SelfUnlock: false,
-				Hide: ["Cloth", "ItemNipplesPiercings", "ItemVulvaPiercings", "Corset"],
-				HideItemExclude: ["CorsetCorset1", "CorsetLatexCorset1"],
+				Hide: ["ItemNipplesPiercings", "ItemVulvaPiercings"],
 				HideItem: [
 					"ItemButtAnalBeads2",
 					"ItemVulvaVibratingDildo",
@@ -45779,8 +45776,7 @@ var AssetFemale3DCG = [
 				BuyGroup: "LatexSleevelessLeotard",
 				Extended: true,
 				SelfUnlock: false,
-				Hide: ["Cloth", "ItemNipplesPiercings", "ItemVulvaPiercings", "Corset"],
-				HideItemExclude: ["CorsetCorset1", "CorsetLatexCorset1"],
+				Hide: ["ItemNipplesPiercings", "ItemVulvaPiercings"],
 				HideItem: [
 					"ItemButtAnalBeads2",
 					"ItemVulvaVibratingDildo",
@@ -45822,14 +45818,7 @@ var AssetFemale3DCG = [
 				DefaultColor: "#580505",
 				Extended: true,
 				SelfUnlock: false,
-				Hide: [
-					"Cloth",
-					"Bra",
-					"ItemNipplesPiercings",
-					"ItemVulvaPiercings",
-					"Corset",
-				],
-				HideItemExclude: ["CorsetCorset1", "CorsetLatexCorset1"],
+				Hide: ["ItemNipplesPiercings", "ItemVulvaPiercings"],
 				HideItem: [
 					"ItemButtAnalBeads2",
 					"ItemVulvaVibratingDildo",
@@ -52378,6 +52367,25 @@ var AssetFemale3DCG = [
 				Attribution: {
 					Author: "Echo (SugarChain)",
 					OriginalName: "油纸伞",
+					License: "CC BY-SA-NC 4.0",
+				},
+			},
+			{
+				Name: "Book",
+				InventoryID: 1405,
+				Random: false,
+				Value: 10,
+				Priority: 26,
+				Top: 320,
+				Left: 172,
+				ParentGroup: {},
+				DefaultColor: ["Default", "#FFFFFF"],
+				AllowActivity: ["SpankItem", "RubItem"],
+				ActivityAudio: ["BrushSpank"],
+				Layer: [{ Name: "Cover" }, { Name: "Paper", Priority: 25 }],
+				Attribution: {
+					Author: "Echo (SugarChain)",
+					OriginalName: "书",
 					License: "CC BY-SA-NC 4.0",
 				},
 			},
@@ -69963,7 +69971,6 @@ var AssetFemale3DCG = [
 				Time: 10,
 				IsRestraint: false,
 				Prerequisite: ["AccessVulva", "NotChaste"],
-				Hide: ["Shoes", "ItemBoots", "ItemLegs", "ItemVulva"],
 				SetPose: ["KneelingSpread"],
 				Effect: [E.FillVulva, E.Freeze, E.Mounted],
 				Block: ["ItemPelvis", "ItemButt", "ItemVulva"],

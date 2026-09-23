@@ -183,7 +183,7 @@ var DialogSelfMenuOptions = [
 var DialogLeaveFocusItemHandlers = {
 	/**
 	 * Screen setup callbacks for after exiting the tighten/loosen menu; screen names are used as keys.
-	 * @type {Record<string, (item: Item) => void>}
+	 * @type {Partial<Record<ScreenName, (item: Item) => void>>}
 	 */
 	DialogTightenLoosenItem: {
 		Crafting: (item) => {
@@ -201,7 +201,7 @@ var DialogLeaveFocusItemHandlers = {
 
 	/**
 	 * Screen setup callbacks for after exiting the extended item menu; screen names are used as keys.
-	 * @type {Record<string, (item: Item) => void>}
+	 * @type {Partial<Record<ScreenName, (item: Item) => void>>}
 	 */
 	DialogFocusItem: {
 		Appearance: () => {
@@ -296,7 +296,7 @@ function DialogChangeReputation(RepType, Value) { ReputationProgress(RepType, Va
 
 /**
  * Equips a specific item on the player from dialog
- * @param {string} AssetName - The name of the asset that should be equipped
+ * @param {AssetName} AssetName - The name of the asset that should be equipped
  * @param {AssetGroupName} AssetGroup - The name of the corresponding asset group
  * @returns {void} - Nothing
  */
@@ -453,7 +453,7 @@ function DialogSkillGreater(SkillType, Value) { return SkillGetLevel(Player, Ski
 
 /**
  * Checks, if a given item is available in the player's inventory
- * @param {string} InventoryName
+ * @param {AssetName} InventoryName
  * @param {AssetGroupName} InventoryGroup
  * @returns {boolean} - Returns true, if the item is available, false otherwise
  */
@@ -1932,7 +1932,7 @@ function DialogMenuButtonClick() {
 						DialogChangeMode("items");
 						if (save && (!CommonArraysEqual(colors, initialColors) || !CommonArraysEqual(opacity, initialOpacity))) {
 							if (C.IsPlayer()) ServerPlayerAppearanceSync();
-							ChatRoomPublishAction(C, "ActionChangeColor", Object.assign({}, Item, { Color: colors }), Item);
+							ChatRoomPublishAction(C, "ActionChangeColor", { ...Item, Color: colors }, Item);
 						}
 					});
 				}).catch(err => {
@@ -2852,7 +2852,7 @@ class DialogMenu {
 		const dialogMenu = this;
 		this.eventListeners = {
 			/**
-			 * @type {(this: HTMLButtonElement, ev: MouseEvent) => null | string}
+			 * @type {(this: HTMLButtonElement, ev: PointerEvent) => null | string}
 			 * @returns A status message if an _unexpected_ error is encountered and null otherwise
 			 */
 			_ClickButton: function(event) {
@@ -2875,7 +2875,7 @@ class DialogMenu {
 			},
 
 			/**
-			 * @type {(this: HTMLButtonElement, ev: MouseEvent) => null | string}
+			 * @type {(this: HTMLButtonElement, ev: PointerEvent) => null | string}
 			 * @returns A status message if an _expected_ error is encountered and null otherwise
 			 */
 			_ClickDisabledButton: function(event) {
@@ -2896,7 +2896,7 @@ class DialogMenu {
 						dialogMenu.Reload()
 							.then((reloadStatus) => {
 								if (reloadStatus && this.getAttribute("aria-disabled") !== "true") {
-									this.dispatchEvent(new MouseEvent("click", event));
+									this.dispatchEvent(new PointerEvent("click", event));
 								}
 							})
 					);
@@ -2907,7 +2907,7 @@ class DialogMenu {
 
 			/**
 			 * See {@link DialogMenu.KeyDown}
-			 * @type {(this: HTMLButtonElement, ev: MouseEvent) => void}
+			 * @type {(this: HTMLButtonElement, ev: PointerEvent) => void}
 			 */
 			_ClickPaginatePrev: function(event) {
 				document.dispatchEvent(new KeyboardEvent("keydown", { key: "PageUp" }));
@@ -2915,7 +2915,7 @@ class DialogMenu {
 
 			/**
 			 * See {@link DialogMenu.KeyDown}
-			 * @type {(this: HTMLButtonElement, ev: MouseEvent) => void}
+			 * @type {(this: HTMLButtonElement, ev: PointerEvent) => void}
 			 */
 			_ClickPaginateNext: function(event) {
 				document.dispatchEvent(new KeyboardEvent("keydown", { key: "PageDown" }));
@@ -3333,7 +3333,7 @@ class _DialogFocusMenu extends DialogMenu {
 			...this.eventListeners,
 
 			/**
-			 * @type {(this: HTMLButtonElement, ev: MouseEvent) => null | string}
+			 * @type {(this: HTMLButtonElement, ev: PointerEvent) => null | string}
 			 * @returns A status message if an _unexpected_ error is encountered and null otherwise
 			 */
 			_ClickButton: function(event) {
@@ -3356,7 +3356,7 @@ class _DialogFocusMenu extends DialogMenu {
 			},
 
 			/**
-			 * @type {(this: HTMLButtonElement, ev: MouseEvent) => null | string}
+			 * @type {(this: HTMLButtonElement, ev: PointerEvent) => null | string}
 			 * @returns A status message if an _expected_ error is encountered and null otherwise
 			 */
 			_ClickDisabledButton: function(event) {
@@ -3377,7 +3377,7 @@ class _DialogFocusMenu extends DialogMenu {
 						dialogMenu.Reload()
 							.then((reloadStatus) => {
 								if (reloadStatus && this.getAttribute("aria-disabled") !== "true") {
-									this.dispatchEvent(new MouseEvent("click", event));
+									this.dispatchEvent(new PointerEvent("click", event));
 								}
 							})
 					);
@@ -3569,14 +3569,23 @@ class _DialogItemMenu extends _DialogFocusMenu {
 
 		const equippedItem = InventoryGet(C, focusGroup.Name);
 		for (const [i, button] of Array.from(buttonGrid.children).entries()) {
-			const clickedItem = DialogInventory[i];
+			let clickedItem = DialogInventory[i];
 
 			// Tasks already performed during a full `options.resetDialogItems` operation
 			if (!options.resetDialogItems) {
 				const wasWorn = clickedItem.Worn;
 				const isWorn = !!(equippedItem && !DialogAllowItemClick(equippedItem, clickedItem));
 				if (isWorn) {
-					Object.assign(clickedItem, equippedItem);
+					/** @type {undefined | CraftingItem} */
+					const craft = !equippedItem.Craft ? undefined : {
+						...equippedItem.Craft,
+						Partial: false,
+						Color: equippedItem.Color.join(","),
+						Lock: equippedItem.Property?.LockedBy ?? "",
+						Item: equippedItem.Asset.Name,
+						ItemProperty: equippedItem.Property,
+					};
+					clickedItem = DialogInventory[i] = DialogInventoryCreateItem(C, equippedItem, true, undefined, craft);
 					button.toggleAttribute("hidden", false);
 				}
 				if (isWorn !== wasWorn) {
@@ -4391,7 +4400,7 @@ class _DialogSelfMenu extends DialogMenu {
 		this.eventListeners = {
 			...this.eventListeners,
 
-			/** @type {(this: HTMLButtonElement, ev: MouseEvent) => void} */
+			/** @type {(this: HTMLButtonElement, ev: PointerEvent) => void} */
 			_ClickMenuButton(ev) {
 				const param = CommonPick(dialogMenu._initProperties, dialogMenu._initPropertyNames);
 				if (Object.values(param).some(i => i == null)) {
@@ -4419,7 +4428,7 @@ class _DialogSelfMenu extends DialogMenu {
 				listener.click(this, ev, param, equippedItem);
 			},
 
-			/** @type {(this: HTMLButtonElement, ev: MouseEvent) => void} */
+			/** @type {(this: HTMLButtonElement, ev: PointerEvent) => void} */
 			_ClickDisabledMenuButton(ev) {
 				const param = CommonPick(dialogMenu._initProperties, dialogMenu._initPropertyNames);
 				if (Object.values(param).some(i => i == null)) {
@@ -4558,7 +4567,7 @@ class _DialogExpressionMenu extends _DialogSelfMenu {
 		this.eventListeners = {
 			...this.eventListeners,
 
-			/** @type {(this: HTMLButtonElement, ev: MouseEvent) => void} */
+			/** @type {(this: HTMLButtonElement, ev: PointerEvent) => void} */
 			_expressionRadioGroupClick(ev) {
 				const colorButton = document.getElementById(`${dialogMenu.ids.menubar}-color`);
 				document.querySelector(`#${dialogMenu.ids.root} > .dialog-expression-grid:not([hidden])`)?.toggleAttribute("hidden", true);
@@ -4963,7 +4972,7 @@ class _DialogPoseMenu extends _DialogSelfMenu {
 		this.eventListeners = {
 			...this.eventListeners,
 
-			/** @type {(this: HTMLButtonElement, ev: MouseEvent) => void} */
+			/** @type {(this: HTMLButtonElement, ev: PointerEvent) => void} */
 			_clickPoseMutuallyExclusive: function(ev) {
 				const parent = this.closest(".dialog-grid");
 				if (!parent) {
@@ -5541,11 +5550,11 @@ var DialogFocusGroup = {
 	/**
 	 *
 	 * @param {string} id - The ID for the to-be created focus group grid
-	 * @param {(this: HTMLButtonElement, ev: MouseEvent) => any} listener - The listener to-be executed upon selecting a group; the group name can be retrieved from `this.name`
+	 * @param {(this: HTMLButtonElement, ev: PointerEvent) => any} clickListener - The listener to-be executed upon selecting a group; the group name can be retrieved from `this.name`
 	 * @param {null | { required?: boolean, useDynamicGroupName?: boolean }} options - Further options for the to-be created focus group grid
 	 * @returns {HTMLElement} - The created element
 	 */
-	Create(id, listener, options=null) {
+	Create(id, clickListener, options=null) {
 		options ??= {};
 		const root = document.getElementById(id);
 		if (root) {
@@ -5576,7 +5585,7 @@ var DialogFocusGroup = {
 
 		const children = grid.map(({ group, index, zone }, i) => ElementButton.Create(
 			`${id}-${group.Name}-${index}`,
-			listener,
+			clickListener,
 			{ noStyling: true, role: "radio" },
 			{ button: {
 				attributes: {

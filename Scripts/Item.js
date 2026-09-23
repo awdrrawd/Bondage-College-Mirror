@@ -140,7 +140,7 @@ var AppearanceItem = {
 	/**
 	 * Construct an item from the passed group- and asset names
 	 * @param {AssetGroupName} groupName The asset's group name
-	 * @param {string} assetName The asset's name
+	 * @param {AssetName} assetName The asset's name
 	 * @param {null | Item.Options} options Further options
 	 * @returns {null | Item} The new item or `null` if no matching asset can be found
 	 */
@@ -196,7 +196,7 @@ function ItemPropertiesCompress(item, options=null) {
 					allowedProperties.add("TypeRecord");
 					break;
 			}
-			Object.assign(baseline, option.Property ?? {}, option.ParentData.baselineProperty ?? {});
+			CommonAssign(baseline, option.Property ?? {}, option.ParentData.baselineProperty ?? {});
 			for (const key of CommonKeys(option.ParentData.baselineProperty ?? {})) {
 				allowedProperties.add(key);
 			}
@@ -225,7 +225,7 @@ function ItemPropertiesCompress(item, options=null) {
 			break lockedBy;
 		}
 
-		Object.assign(baseline, lockData.baselineProperty ?? {});
+		CommonAssign(baseline, lockData.baselineProperty ?? {});
 		allowedProperties.add("LockedBy");
 		allowedProperties.add("LockMemberNumber");
 		allowedProperties.add("LockMemberName");
@@ -315,7 +315,7 @@ function ItemPropertiesDecompress(item, properties) {
 	const propertiesUnsanitized = properties ?? {};
 
 	const C = ItemPropertiesDummy ??= CharacterLoadSimple("ItemBundleDummy");
-	Object.assign(item.Property, propertiesUnsanitized);
+	CommonAssign(item.Property, propertiesUnsanitized);
 
 	// Unpack effect-related properties
 	if (propertiesUnsanitized.LockedBy) {

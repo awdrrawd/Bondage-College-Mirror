@@ -365,7 +365,7 @@ function TypedItemSetAllowLockType(asset, allowLockType, allowAll=false) {
 /**
  * Returns the options configuration array for a typed item
  * @param {AssetGroupName} groupName - The name of the asset group
- * @param {string} assetName - The name of the asset
+ * @param {AssetName} assetName - The name of the asset
  * @returns {TypedItemOption[]|null} - The options array for the item, or null if no typed item data was found
  */
 function TypedItemGetOptions(groupName, assetName) {
@@ -377,7 +377,7 @@ function TypedItemGetOptions(groupName, assetName) {
  * Returns a list of typed item option names available for the given asset, or an empty array if the asset is not typed
  * @public
  * @param {AssetGroupName} groupName - The name of the asset group
- * @param {string} assetName - The name of the asset
+ * @param {AssetName} assetName - The name of the asset
  * @returns {string[]} - The option names available for the asset, or an empty array if the asset is not typed or no
  * typed item data was found
  */
@@ -390,7 +390,7 @@ function TypedItemGetOptionNames(groupName, assetName) {
  * Returns the named option configuration object for a typed item
  * @public
  * @param {AssetGroupName} groupName - The name of the asset group
- * @param {string} assetName - The name of the asset
+ * @param {AssetName} assetName - The name of the asset
  * @param {string} optionName - The name of the option
  * @returns {TypedItemOption|null} - The named option configuration object, or null if none was found
  */
@@ -611,7 +611,7 @@ function TypedItemInit({ options, name, baselineProperty, asset }, C, Item, Push
 		let update = false;
 		if (!CommonDeepIsSubset(newProps, Item.Property)) {
 			for (const [k, v] of CommonEntries(newProps)) {
-				Item.Property[k] = CommonIsObject(Item.Property[k]) ? Object.assign(Item.Property[k], v) : v;
+				Item.Property[k] = CommonIsObject(Item.Property[k]) ? CommonAssign(Item.Property[k], v) : v;
 			}
 			update = true;
 		}
@@ -635,7 +635,7 @@ function TypedItemInit({ options, name, baselineProperty, asset }, C, Item, Push
 	} else {
 		// Always pick the first option unless NPCs are involved (in which case `NPCDefault` must be respected)
 		const option = C.IsNpc() ? (options.find(o => o.NPCDefault) || options[0]) : options[0];
-		Item.Property = Object.assign(
+		Item.Property = CommonAssign(
 			Item.Property ?? {},
 			CommonCloneDeep(option.Property),
 		);

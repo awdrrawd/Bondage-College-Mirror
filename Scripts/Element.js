@@ -914,7 +914,7 @@ function ElementPosition(ElementOrID, X, Y, W, H) {
 	const posX = ElementCanvasScaledY(Y, 'top') - height / 2;
 	const posY = ElementCanvasScaledX(X - W / 2, 'left');
 
-	Object.assign(E.style, {
+	CommonAssign(E.style, {
 		position: 'fixed',
 		top: posX + 'px',
 		left: posY + 'px',
@@ -1575,7 +1575,7 @@ var ElementButton = {
 	 * Click event listener for spin buttons.
 	 * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/spinbutton_role
 	 * @private
-	 * @type {(this: HTMLButtonElement, ev: MouseEvent) => void}
+	 * @type {(this: HTMLButtonElement, ev: PointerEvent) => void}
 	 */
 	_ClickSpin: function _ClickSpin(ev) {
 		const min = Number.parseInt(this.getAttribute("aria-valuemin") ?? "", 10);
@@ -2877,7 +2877,7 @@ function ElementSetPosition(elementOrId, xPos = 0, yPos = 0, anchorPosition = 't
 	const y = ElementCanvasScaledY(yPos, yAnchor);
 	const x = ElementCanvasScaledX(xPos, xAnchor);
 
-	Object.assign(element.style, {
+	CommonAssign(element.style, {
 		position: 'fixed',
 		[xAnchor]: x + 'px',
 		[yAnchor]: y + 'px',
@@ -2933,7 +2933,7 @@ function ElementSetFontSize(elementOrId, targetFontSize = 'auto') {
 
 	const fontSize = targetFontSize === 'auto' ? autoFontSize : targetFontSize * scaleFactor;
 
-	Object.assign(element.style, {
+	CommonAssign(element.style, {
 		fontSize: fontSize + 'px',
 		fontFamily: CommonGetFontName()
 	});

@@ -1080,7 +1080,7 @@ function ExtendedItemSetOption(data, C, item, newOption, previousOption, push=fa
 
 /** A temporary hack for registering extra archetypes for a single screen. */
 function ExtendedItemManualRegister() {
-	/** @type {{ group: AssetGroupName, name: string, config: AssetArchetypeConfig }[]} */
+	/** @type {{ group: AssetGroupName, name: AssetName, config: AssetArchetypeConfig }[]} */
 	const items = [
 		{
 			group: "ItemArms",
@@ -1460,7 +1460,7 @@ function ExtendedItemSetOptionByRecord(C, itemOrGroupName, typeRecord=null, opti
 		if (invalidProperties.length > 0) {
 			console.error("Ignoring unsanctioned/invalid item properties", invalidProperties.sort());
 		}
-		Object.assign((item.Property ??= {}), CommonPick(properties, propertyKeys));
+		CommonAssign((item.Property ??= {}), CommonPick(properties, propertyKeys));
 	}
 
 	if (refresh || refresh == null) {

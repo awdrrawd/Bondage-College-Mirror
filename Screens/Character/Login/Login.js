@@ -10,67 +10,67 @@ var LoginCreditsPosition = 0;
 var LoginThankYou = "";
 /* eslint-disable */
 var LoginThankYouList = [
-"_20_05", 
-"AlexG", 
-"Alpha", 
-"Amazing", 
-"asd1520456080", 
-"Asriel", 
-"Aybes", 
-"Brad", 
-"bryce", 
-"Canti", 
-"Cerberus", 
-"Christian", 
-"Cm382714", 
-"Cool", 
-"Desch", 
-"Dragokahn", 
-"dynilath", 
-"Exe", 
-"Exusiai", 
-"fumoffu", 
-"George", 
-"Greendragon", 
-"holonoringo", 
-"I.F.S.", 
-"ItsTheHutch", 
-"Jacob", 
-"jamal", 
-"jazzybanana", 
-"Jerry", 
-"John", 
-"Jonas", 
-"Kim", 
-"koka", 
-"laach", 
-"Laurie", 
-"Megumin", 
-"Michel", 
-"micr0", 
-"Mindtie", 
-"Misa", 
-"NeReFox", 
-"SaiZaro", 
-"Salix", 
-"Schrödingers", 
-"Signal_Flare", 
-"Soulcollar", 
-"Sticks", 
-"Tam", 
-"Taraly", 
-"Tarram1010", 
-"Teli", 
-"Thkdt", 
-"Troubadix", 
-"UltimateDespair", 
-"Verena", 
-"Vojta", 
-"walnus", 
-"WhiteSniper", 
-"XDWolfie", 
-"Xepherio", 
-"云雪", 
+"_20_05",
+"AlexG",
+"Alpha",
+"Amazing",
+"asd1520456080",
+"Asriel",
+"Aybes",
+"Brad",
+"bryce",
+"Canti",
+"Cerberus",
+"Christian",
+"Cm382714",
+"Cool",
+"Desch",
+"Dragokahn",
+"dynilath",
+"Exe",
+"Exusiai",
+"fumoffu",
+"George",
+"Greendragon",
+"holonoringo",
+"I.F.S.",
+"ItsTheHutch",
+"Jacob",
+"jamal",
+"jazzybanana",
+"Jerry",
+"John",
+"Jonas",
+"Kim",
+"koka",
+"laach",
+"Laurie",
+"Megumin",
+"Michel",
+"micr0",
+"Mindtie",
+"Misa",
+"NeReFox",
+"SaiZaro",
+"Salix",
+"Schrödingers",
+"Signal_Flare",
+"Soulcollar",
+"Sticks",
+"Tam",
+"Taraly",
+"Tarram1010",
+"Teli",
+"Thkdt",
+"Troubadix",
+"UltimateDespair",
+"Verena",
+"Vojta",
+"walnus",
+"WhiteSniper",
+"XDWolfie",
+"Xepherio",
+"云雪",
 ];
 
 /* eslint-enable */
@@ -548,7 +548,7 @@ function LoginReloadLanguageText() {
  * If it's an asset merge (say 3 into one typed asset), it will either set
  * the fixed up item to the specified `Option` or the first one if unspecified.
  *
- * @type {{ Old: { Group: string, Name: string | '*' }, New: { Group: AssetGroupName, Name?: string, Option?: string } }[]}
+ * @type {{ Old: { Group: string, Name: string | '*' }, New: { Group: AssetGroupName, Name?: AssetName, Option?: string } }[]}
  */
 let LoginInventoryFixups = [
 	{ Old: { Group: "ItemLegs", Name: "WoodenHorse" }, New: { Group: "ItemDevices", Name: "WoodenHorse" } },
@@ -694,7 +694,7 @@ function LoginPerformAppearanceFixups(Appearance) {
 
 				// Replace old previous properties with the wanted ones
 				if (opt && opt.Property)
-					worn.Property = Object.assign(opt.Property);
+					worn.Property = { ...opt.Property };
 			} else if (asset?.Extended) {
 				// Old-style extended item
 
@@ -721,7 +721,7 @@ function LoginPerformCraftingFixups(Crafting) {
 		// Move crafts over to the new name
 		for (const craft of Crafting) {
 			if (!craft || craft.Item !== fixup.Old.Name) continue;
-			craft.Item = /** @type {string} */(fixup.New.Name);
+			craft.Item = /** @type {AssetName} */(fixup.New.Name);
 		}
 	}
 }

@@ -41,7 +41,7 @@ let CraftingReturnToChatroom = false;
  * Eligible assets are defined as crafting-valid assets with either a matching {@link Asset.Name} or {@link Asset.CraftGroup}.
  *
  * The first asset in each list is guaranteed to satisfy `Asset.Group.Name === Asset.DynamicGroupName` _if_ any of the list members satisfy this condition.
- * @type {Record<string, Asset[]>}
+ * @type {Partial<Record<AssetName, Asset[]>>}
  */
 let CraftingAssets = {};
 
@@ -1066,7 +1066,7 @@ var CraftingEventListeners = {
 
 	/**
 	 * @private
-	 * @type {(this: HTMLButtonElement, ev: MouseEvent) => void}
+	 * @type {(this: HTMLButtonElement, ev: PointerEvent) => void}
 	 */
 	_ClickGroup: function _ClickGroup(ev) {
 		const groupName = /** @type {AssetGroupItemName} */(this.name);
@@ -1088,7 +1088,7 @@ var CraftingEventListeners = {
 			);
 
 			// Make sure that the asset panel is open and scroll to the top
-			document.querySelector(`#${CraftingID.assetButton}[aria-checked="false"]`)?.dispatchEvent(new MouseEvent("click"));
+			document.querySelector(`#${CraftingID.assetButton}[aria-checked="false"]`)?.dispatchEvent(new PointerEvent("click"));
 			assetList.scrollTo({ top: 0 });
 		} else {
 			document.querySelector(`#${CraftingID.assetHeader} > span`)?.replaceChildren(TextGet("SelectItem"));
@@ -1853,8 +1853,11 @@ function CraftingGetAllAssetNames() {
 	const visited = new Set();
 
 	return Object.values(CraftingAssets).flat().sort((asset1, asset2) => {
-		return asset1.Description.localeCompare(asset2.Description);
-	}).filter((asset) => {
+		return asset1 && asset2 ? asset1.Description.localeCompare(asset2.Description) : 0;
+	}).filter(/** @type {(asset?: Asset) => asset is Asset} */(asset) => {
+		if (!asset) {
+			return false;
+		}
 		const status = InventoryAvailable(Player, asset.Name, asset.Group.Name) && !visited.has(asset.Description);
 		if (status) {
 			visited.add(asset.Description);
@@ -2225,11 +2228,14 @@ function CraftingExitResetElements() {
 
 	// Clear all search inputs and undo their filtering
 	const searchInputs = /** @type {NodeListOf<HTMLInputElement>} */(document.querySelectorAll(`#${CraftingID.leftPanel} input[type='search']`));
-	searchInputs.forEach((searchInp) => searchInp.value ||= "");
+	for (const searchInput of searchInputs) {
+		searchInput.value = "";
+		searchInput.dispatchEvent(new Event("input"));
+	}
 
 	const focusGroup = document.querySelector(`#${CraftingID.centerPanel} [role='radio'][aria-checked='true']`);
 	if (focusGroup) {
-		focusGroup.dispatchEvent(new MouseEvent("click"));
+		focusGroup.dispatchEvent(new PointerEvent("click"));
 		document.querySelectorAll(`#${CraftingID.assetGrid} [data-hidden-group]`).forEach(e => e.toggleAttribute("data-hidden-group", false));
 	}
 
@@ -2268,8 +2274,8 @@ function CraftingExit(allowPanelClose=true) {
 			const activePanel = document.querySelector(`#${CraftingID.leftPanel} > [aria-checked='true']`);
 			const activeGroup = document.querySelector(`#${CraftingID.centerPanel} [aria-checked='true']`);
 			if ((activePanel || activeGroup) && allowPanelClose) {
-				activePanel?.dispatchEvent(new MouseEvent("click"));
-				activeGroup?.dispatchEvent(new MouseEvent("click"));
+				activePanel?.dispatchEvent(new PointerEvent("click"));
+				activeGroup?.dispatchEvent(new PointerEvent("click"));
 			} else {
 				CraftingExitResetElements();
 				CraftingUnload();
@@ -2322,9 +2328,9 @@ function CraftingAppliesToItem(Craft, Item) {
  * @returns {Asset[]} - Nothing
  */
 function CraftingItemListBuild() {
-	const assets = new Set(Object.values(CraftingAssets).map(i => i[0]));
-	return Array.from(assets).filter(a => {
-		return InventoryAvailable(Player, a.Name, a.DynamicGroupName);
+	const assets = new Set(Object.values(CraftingAssets).map(i => i?.[0]));
+	return Array.from(assets).filter(/** @type {(a?: Asset) => a is Asset} */a => {
+		return a != null && InventoryAvailable(Player, a.Name, a.DynamicGroupName);
 	}).sort((a1, a2) => {
 		return a1.Description.localeCompare(a2.Description);
 	});
@@ -2549,7 +2555,7 @@ var CraftingValidationRecord = {
 			if (a.Archetype) {
 				const data = ExtendedItemGetData(a, a.Archetype);
 				if (data && data.baselineProperty) {
-					Object.assign(baseline, data.baselineProperty);
+					CommonAssign(baseline, data.baselineProperty);
 				}
 			}
 
@@ -2569,7 +2575,7 @@ var CraftingValidationRecord = {
 				"LayerScaleY",
 				"LayerRotation",
 			]));
-			/** @type {null | string[]} */
+			/** @type {null | (LayerName | AssetName)[]} */
 			let layers = null;
 			for (const [key, value] of CommonEntries(property)) {
 				if (value == null) {
@@ -2624,7 +2630,7 @@ var CraftingValidationRecord = {
 			if (a.Archetype) {
 				let data = ExtendedItemGetData(a, a.Archetype);
 				if (data && data.baselineProperty) {
-					Object.assign(baseline, data.baselineProperty);
+					CommonAssign(baseline, data.baselineProperty);
 				}
 			}
 
@@ -2691,9 +2697,9 @@ var CraftingValidationRecord = {
 /**
  * @overload
  * @param {CraftingPartialItem} Craft
- * @param {Asset | null} [asset]
- * @param {boolean} [Warn]
- * @param {boolean} [checkPlayerInventory]
+ * @param {Asset | null | undefined} asset
+ * @param {boolean | undefined} Warn
+ * @param {boolean | undefined} checkPlayerInventory
  * @param {true} partial
  * @return {CraftingStatusType}
  *//**

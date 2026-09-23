@@ -2217,16 +2217,16 @@ function CommonScreenName(screen) {
  * Generates the path to a translation CSV file for a screen
  *
  * @overload
- * @param {string} module - The screen's module
- * @param {string} screen - The screen's name
+ * @param {ModuleType} module - The screen's module
+ * @param {ScreenName} screen - The screen's name
  * @param {string} group - The text group
  * @returns {string}
  */
 /**
  * Generates the path to a translation CSV file for a screen
  *
- * @param {string} [module] - The screen's module
- * @param {string} [screen] - The screen's name
+ * @param {ModuleType} [module] - The screen's module
+ * @param {ScreenName} [screen] - The screen's name
  * @param {string} [group] - The text group
  * @returns {string | undefined}
  */
@@ -2242,8 +2242,8 @@ function ScreenFileGetTranslation(module, screen, group) {
  * Generates the path to a CSV Dialog file for a screen
  *
  * @param {string} npcType - The dialog file name
- * @param {string} [module] - The screen's module
- * @param {string} [screen] - The screen's name
+ * @param {ModuleType} [module] - The screen's module
+ * @param {ScreenName} [screen] - The screen's name
  * @returns {string}
  */
 function ScreenFileGetDialog(npcType, module, screen) {
@@ -2256,8 +2256,8 @@ function ScreenFileGetDialog(npcType, module, screen) {
  * Generate a path to one of our Screen assets
  *
  * @param {string} file
- * @param {string} [module]
- * @param {string} [screen]
+ * @param {ModuleType} [module]
+ * @param {ScreenName | "Game"} [screen]
  * @returns
  */
 function ScreenFileGetPath(file, module, screen) {
@@ -2836,4 +2836,15 @@ function CommonClipboardWrite(data, cb = undefined) {
 				}
 			}
 		});
+}
+
+/**
+ * A more type-safe version of {@link Object.assign}, demanding a type match of the target- and source object(s) instead of producing an intersection
+ * @template {{}} T
+ * @param {T} target
+ * @param  {(null | undefined | NoInfer<Partial<Readonly<T>>>)[]} src
+ * @returns {T}
+ */
+function CommonAssign(target, ...src) {
+	return Object.assign(target, ...src.filter(i => i != null));
 }

@@ -161,7 +161,7 @@ function ValidationResolveScriptDiff(previousItem, newItem, {C, permissions, sou
 	}
 
 	let item = newItem;
-	Object.assign(sanitizedProperty, newProperty);
+	CommonAssign(sanitizedProperty, newProperty);
 	const propertyNames = Object.keys(sanitizedProperty);
 
 	// Strip out any invalid properties
@@ -189,7 +189,7 @@ function ValidationResolveScriptDiff(previousItem, newItem, {C, permissions, sou
 			}
 			const scriptItem = InventoryItemCreate(C, "ItemScript", "Script");
 			if (scriptItem) {
-				item = Object.assign(scriptItem, {Property: sanitizedProperty});
+				item = CommonAssign(scriptItem, {Property: sanitizedProperty});
 			}
 		}
 	}
@@ -573,7 +573,7 @@ function ValidationCanAddItem(newItem, params) {
  * @param {Character} C - The target character
  * @param {number} sourceMemberNumber - The member number of the source character
  * @param {AssetGroupName} groupName - The name of the asset group for the intended item
- * @param {string} assetName - The asset name of the intended item
+ * @param {AssetName} assetName - The asset name of the intended item
  * @param {string|null} [type] - The type of the intended item
  * @returns {boolean} - TRUE if the character with the provided source member number is _not_ allowed to equip the
  * described asset on the target character, FALSE otherwise.
@@ -1329,7 +1329,7 @@ function ValidationApplyRecord(arg, C, validators, allowExtraKeys=false) {
 
 	if (allowExtraKeys) {
 		const extraKeys = CommonKeys(obj).filter(i => !(i in ret));
-		return Object.assign(ret, CommonPick(obj, extraKeys));
+		return CommonAssign(ret, CommonPick(obj, extraKeys));
 	} else {
 		return ret;
 	}
