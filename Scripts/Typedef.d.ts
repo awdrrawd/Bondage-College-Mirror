@@ -1397,10 +1397,10 @@ interface Asset {
 	readonly BodyCosplay: boolean;
 	readonly OverrideBlinking: boolean;
 	readonly DialogSortOverride?: DialogSortOrder;
-	readonly DynamicDescription: (C: Character) => string;
+	readonly DynamicDescription: (this: Asset, C: Character) => string;
 	readonly DynamicPreviewImage: (C: Character) => string;
 	readonly DynamicAllowInventoryAdd: (C: Character) => boolean;
-	readonly DynamicName: (C: Character) => AssetName;
+	readonly DynamicName: (this: Asset, C: Character) => AssetName;
 	readonly DynamicGroupName: AssetGroupName;
 	readonly DynamicActivity: (C: Character) => ActivityName | null | undefined;
 	readonly DynamicAudio: ((C: Character) => string) | null;
@@ -2280,7 +2280,7 @@ interface Character {
 }
 
 /** Private Room & Private Bed */
-interface Character {
+interface PrivateBedCharacter {
 	PrivateBed?: boolean;
 	PrivateBedActivityTimer?: number;
 	PrivateBedLeft?: number;
@@ -2288,6 +2288,8 @@ interface Character {
 	PrivateBedMoveTimer?: number;
 	PrivateBedAppearance?: string;
 }
+
+interface Character extends PrivateBedCharacter {}
 
 type PrivatePunishment = (
 	"Cage" | "Bound" | "BoundPet" | "ChastityBra" | "ForceNaked" | "ConfiscateKey" | "ConfiscateCrop" | "ConfiscateWhip"
@@ -3193,7 +3195,7 @@ interface AssetOverrideHeight {
  * Either a single number that will cause all of the asset's layer to
  * inherit that priority, or a more precise specifier keyed by layer name.
  */
-type AssetLayerOverridePriority = Partial<Record<LayerName | "", number>> | number;
+type AssetLayerOverridePriority = Partial<Record<LayerName, number>> | number;
 
 /**
  * Base properties of extended items derived from their respective {@link Asset} definition.
@@ -3609,15 +3611,15 @@ interface ItemPropertiesCustom {
 }
 
 interface ItemProperties extends ItemPropertiesBase, AssetDefinitionProperties, ItemPropertiesCustom {
-	LayerTranslationX?: Partial<Record<LayerName | "", number>>;
+	LayerTranslationX?: Partial<Record<LayerName, number>>;
 	/** Translation Y */
-	LayerTranslationY?: Partial<Record<LayerName | "", number>>;
+	LayerTranslationY?: Partial<Record<LayerName, number>>;
 	/** Scale X */
-	LayerScaleX?: Partial<Record<LayerName | "", number>>;
+	LayerScaleX?: Partial<Record<LayerName, number>>;
 	/** Scale Y */
-	LayerScaleY?: Partial<Record<LayerName | "", number>>;
+	LayerScaleY?: Partial<Record<LayerName, number>>;
 	/** Rotation */
-	LayerRotation?: Partial<Record<LayerName | "", number>>;
+	LayerRotation?: Partial<Record<LayerName, number>>;
 }
 
 /** Properties in {@link ItemPropertiesMinimized} with a minimization format distinct from their representation {@link ItemProperties} */
@@ -4001,6 +4003,9 @@ interface NoArchItemData extends ExtendedItemData<NoArchItemOption> {
 
 // #endregion
 
+/** Take a type and convert all of its properties into `unknown` */
+type Unknown<T> = { [k in keyof T]: unknown };
+
 type Optional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 
 /** The {@link Window} type with all non-function values removed (though they may still be optional) */
@@ -4010,22 +4015,32 @@ type WindowFunctions = { [k in keyof Window as NonNullable<Window[k]> extends An
 
 type StruggleKnownMinigames = "Strength" | "Flexibility" | "Dexterity" | "Loosen" | "LockPick";
 
+interface StruggleEventTypes {
+	Click: null;
+	MouseDown: PointerEvent;
+	KeyDown: KeyboardEvent;
+}
+
+type StruggleEventListener = (
+	...args: {
+		[K in keyof StruggleEventTypes]: [EventType: K, event: StruggleEventTypes[K]]
+	}[keyof StruggleEventTypes]
+) => boolean;
+
 interface StruggleMinigame {
-	Setup: (C: Character, PrevItem: Item, NextItem: Item) => void;
+	Setup: (C: Character, PrevItem: Item | null, NextItem: Item | null) => void;
 	Draw: (C: Character) => void;
-	HandleEvent?: (EventType: "KeyDown"|"Click", event: Event) => boolean;
+	HandleEvent?: StruggleEventListener;
 	DisablingCraftedProperty?: CraftingPropertyType;
 }
 
-interface StruggleCompletionData {
+type StruggleCompletionData = {
 	Progress: number;
-	PrevItem: Item;
-	NextItem?: DialogInventoryItem;
 	Skill: number;
 	Attempts: number;
 	Interrupted: boolean;
 	Auto?: boolean;
-}
+} & ({ PrevItem: Item; NextItem: DialogInventoryItem; } | { PrevItem: null; NextItem: DialogInventoryItem; } | { PrevItem: Item; NextItem: null; })
 
 type StruggleCompletionCallback = (character: Character, game: StruggleKnownMinigames, data: StruggleCompletionData) => void;
 
@@ -4039,10 +4054,10 @@ interface StruggleOnlineData {
 	LoosenMode: boolean;
 	Item: Item;
 	NextAnim: number;
-	StartExpressionEyes: ExpressionName; // technically ExpressionNameMap["Eyes"];
-	StartExpressionBlush: ExpressionName;
-	StartExpressionMouth: ExpressionName;
-	StartExpressionEyebrows: ExpressionName;
+	StartExpressionEyes: ExpressionName | undefined; // technically ExpressionNameMap["Eyes"];
+	StartExpressionBlush: ExpressionName | undefined;
+	StartExpressionMouth: ExpressionName | undefined;
+	StartExpressionEyebrows: ExpressionName | undefined;
 }
 
 // #endregion
@@ -4439,9 +4454,9 @@ interface DynamicDrawingData<T extends AnimationPersistentData = AnimationPersis
 	Opacity: number;
 	Property: ItemProperties;
 	A: Asset;
-	G: "" | AssetName;
+	G: AssetName;
 	AG: AssetGroup;
-	L: "" | LayerName;
+	L: LayerName;
 	Pose: AssetPoseName | NullPoseType;
 	LayerType: string;
 	BlinkExpression: string;
@@ -4463,7 +4478,7 @@ interface DynamicBeforeDrawOverrides {
 	X?: number;
 	Y?: number;
 	LayerType?: string;
-	L?: "" | LayerName;
+	L?: LayerName;
 	AlphaMasks?: RectTuple[];
 	Pose?: AssetPoseName | NullPoseType;
 }
