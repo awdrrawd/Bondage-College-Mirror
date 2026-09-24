@@ -160,6 +160,14 @@ var AppearanceItem = {
  */
 let ItemPropertiesDummy = null;
 
+// TODO: R134
+/**
+ * Enables R134-style compression while still in R132/R133
+ * @private
+ * @deprecated will be removed as of R134
+ */
+var _ItemPropertiesR134Compression = false;
+
 /**
  * Compress the passed item's properties in preparation for {@link ItemBundle} creation.
  * @param {Item} item The item whose properties are to be minimized
@@ -203,11 +211,6 @@ function ItemPropertiesCompress(item, options=null) {
 		}
 	}
 
-	if (item.Asset.Group.HasExpression()) {
-		baseline.Expression = null;
-		allowedProperties.add("Expression");
-	}
-
 	/** @type {EffectName[]} */
 	const allowedEffects = ["IsLeashed"];
 	for (const effect of allowedEffects) {
@@ -226,14 +229,8 @@ function ItemPropertiesCompress(item, options=null) {
 		}
 
 		CommonAssign(baseline, lockData.baselineProperty ?? {});
-		allowedProperties.add("LockedBy");
-		allowedProperties.add("LockMemberNumber");
-		allowedProperties.add("LockMemberName");
-		allowedProperties.add("LockMessage");
-		lockProperties.add("LockedBy");
-		lockProperties.add("LockMemberNumber");
-		lockProperties.add("LockMemberName");
-		lockProperties.add("LockMessage");
+		// Switch back to a lock-agnostic `LockedBy` baseline
+		baseline.LockedBy = undefined;
 		for (const key of CommonKeys(lockData.baselineProperty ?? {})) {
 			allowedProperties.add(key);
 			lockProperties.add(key);
@@ -257,10 +254,6 @@ function ItemPropertiesCompress(item, options=null) {
 					if (v) {
 						allDefault = false;
 						typeRecord[k] = v;
-					} else {
-						// TODO: Remove this `else` branch once R132 is live and rely on absent values implictly being 0
-						// This is needed due to `ModularItemInit()` failing to handle partial typerecords prior to this commit (<= R131)
-						typeRecord[k] = v;
 					}
 				}
 				if (!allDefault) {
@@ -276,7 +269,7 @@ function ItemPropertiesCompress(item, options=null) {
 			default: {
 				const propertyValue = item.Property[key];
 				const baselineValue = baseline[key];
-				if (lockProperties.has(key)) {
+				if (!_ItemPropertiesR134Compression && lockProperties.has(key)) {
 					// FIXME: Ensure that `ExtendedItemInit()` also calls the lock's `Init()` function so that undefined values are re-initialized
 					// Currently it fails to do so due to locks not being their own item; piggy backing off of an actual item instead
 					/** @type {Unknown<typeof ret>} */(ret)[key] = propertyValue;
@@ -316,9 +309,6 @@ function ItemPropertiesDecompress(item, properties) {
 	CommonAssign(item.Property, propertiesUnsanitized);
 
 	// Unpack effect-related properties
-	if (propertiesUnsanitized.LockedBy) {
-		CommonArrayConcatDedupe(item.Property.Effect ??= [], ["Lock"]);
-	}
 	if ("IsLeashed" in propertiesUnsanitized && propertiesUnsanitized.IsLeashed) {
 		CommonArrayConcatDedupe(item.Property.Effect ??= [], ["IsLeashed"]);
 	}
@@ -330,6 +320,11 @@ function ItemPropertiesDecompress(item, properties) {
 	if (item.Asset.Extended) {
 		// Init will respect the `TypeRecord` values assigned further up above
 		ExtendedItemInit(C, item, false, false);
+	} else if (propertiesUnsanitized.LockedBy) {
+		// Code branch already taken care of by `ExtendedItemInit` for extended items
+		/** @type {Parameters<ExtendedItemCallbacks.Init>} */
+		const args = [C, item, false, false];
+		CommonCallFunctionByNameWarn(`InventoryItemMisc${propertiesUnsanitized.LockedBy}Init`, ...args);
 	}
 	return item.Property;
 }
