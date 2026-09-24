@@ -1360,6 +1360,7 @@ ItemHood,LatexBunny,Latex Bunny
 ItemHood,LatexDogHood,Latex Dog Hood
 ItemHood,LatexDogMask,Latex Dog Mask
 ItemHood,LatexHabit,Latex Habit Hood
+ItemHood,LatexHood,Latex Hood
 ItemHood,LatexHoodOpenHair,Open Hair Latex Hood
 ItemHood,LeatherHood,Leather Hood
 ItemHood,LeatherHoodOpenEyes,Leather Hood Eyes
@@ -1658,6 +1659,7 @@ ItemNipples,HeartPasties,Heart Pasties
 ItemNipples,KittyPasties,Kitty Pasties
 ItemNipples,LactationPump,Lactation Pump
 ItemNipples,NippleClamp,Nipple Clamps
+ItemNipples,NippleClamps1,Nipple Button Clamps
 ItemNipples,NippleClamps2, Nipple Clamps 2
 ItemNipples,NippleSuctionCups,Nipple Suction Cups
 ItemNipples,NippleTape,Pair Of Nipple Tapes
@@ -1672,7 +1674,7 @@ ItemNipples,VibeNippleClamp,Vibrating Nipple Clamps
 ItemNipples,VibratorRemote,Vibrating Clamps Remote
 ItemNipples,XmasBell,Christmas Bells
 ItemNipplesPiercings,,Nipples
-ItemNipplesPiercings,BarbellPiercing,Barbell Piercing
+ItemNipplesPiercings,BarbellPiercing,Barbell Piercings
 ItemNipplesPiercings,BellPiercing,Nipple Bell Piercings
 ItemNipplesPiercings,CrossedStraightPiercing,Crossed Straight Piercings
 ItemNipplesPiercings,NecklacePiercingChain, Necklace Nipple Chain
@@ -1683,12 +1685,15 @@ ItemNipplesPiercings,NippleChastityPiercing1,Chastity Guard Shield
 ItemNipplesPiercings,NippleChastityPiercing2,Chastity Cross Shield
 ItemNipplesPiercings,PiercingNameBadge,Piercing Name Badge
 ItemNipplesPiercings,RoundPiercing,Round Piercings
+ItemNipplesPiercings,ShortStraightPiercings,Short Straight Piercings
 ItemNipplesPiercings,StraightPiercing,Straight Piercings
+ItemNipplesPiercings,ThroughPiercings,Through Piercings
 ItemNipplesPiercings,VibeHeartPiercings,Vibrating Heart Piercings
 ItemNose,,Nose
 ItemNose,BarbelPiercing,Barbel Piercing
 ItemNose,ClownNose,Clown Nose
 ItemNose,DuctTape,Duct Tape
+ItemNose,ExpandingNoseHook,Expanding Nose Hook
 ItemNose,GlueNose,Glue
 ItemNose,NoseClip,Nose Clip
 ItemNose,NoseHook,Nose Hook

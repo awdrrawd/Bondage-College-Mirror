@@ -3292,6 +3292,8 @@ ItemNeckRibbonCollarChain,Chain
 ItemNipplesChainClampChain,Chain
 ItemNipplesChainClampClamp,Clamps
 ItemNipplesChainClampMetal,Metal
+ItemNipplesNippleClamps1Chain,Chain
+ItemNipplesNippleClamps1NippleClamps1,Nipple Clamps
 ItemNipplesNippleClamps2Metal,Metal
 ItemNipplesNippleClamps2RubberTips,Rubber Tips
 ItemNipplesPiercingsNecklacePiercingChainChain,Chain
@@ -3302,6 +3304,8 @@ ItemNipplesPiercingsPiercingNameBadgeRightNipple,Right Nipple
 ItemNipplesPiercingsRoundPiercingChain,Chain
 ItemNipplesPiercingsRoundPiercingPiercings,Piercings
 ItemNipplesPiercingsRoundPiercingWeights,Weights
+ItemNipplesPiercingsThroughPiercingsd,Base
+ItemNipplesPiercingsThroughPiercingsg,Shine
 ItemNipplesPiercingsVibeHeartPiercingsHeart,Heart
 ItemNipplesPiercingsVibeHeartPiercingsRing,Ring
 ItemNipplesStretchCloversClamps,Clamps
@@ -3312,6 +3316,10 @@ ItemNipplesTapedVibeEggsTape1,Left Tape Strip
 ItemNipplesTapedVibeEggsTape2,Right Tape Strip
 ItemNipplesXmasBellBell,Bell
 ItemNipplesXmasBellBow,Bow
+ItemNoseExpandingNoseHookBand,Band
+ItemNoseExpandingNoseHookHook,Hook
+ItemNoseExpandingNoseHookNostril,Nostril
+ItemNoseExpandingNoseHookSkin,Skin
 ItemNoseNoseClipClip,Clip
 ItemNoseNoseClipRod,Rod
 ItemNoseNoseClipSkin,Nose
