@@ -35,6 +35,21 @@ jobs:
         run: |
           set -euo pipefail
 
+          # Avoid upstream HTTP/2 stream resets, including partial-clone fetches.
+          git config --global http.version HTTP/1.1
+
+          retry() {
+            local attempt
+            for attempt in 1 2 3; do
+              if "$@"; then return 0; fi
+              if [[ "$attempt" -lt 3 ]]; then
+                echo "Retry $attempt/3 after network command failed" >&2
+                sleep "$((attempt * 5))"
+              fi
+            done
+            return 1
+          }
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
@@ -67,7 +82,7 @@ jobs:
 
             echo "::group::Check $target_branch"
             # 先用 ls-remote 問上游目前的 commit,不下載任何內容,成本極低。
-            latest_commit="$(git ls-remote "$source_url" "refs/heads/$source_ref" | cut -f1)"
+            latest_commit="$(retry git ls-remote "$source_url" "refs/heads/$source_ref" | cut -f1)"
 
             if [[ -z "$latest_commit" ]]; then
               echo "::warning::Could not determine latest commit for $target_branch via ls-remote, will sync anyway"
@@ -242,7 +257,7 @@ jobs:
             # 記錄本次的上游 commit,稍後統一寫回 sync-state 分支,
             # 這樣即使過濾後內容沒變,下次也能直接靠 ls-remote 判斷跳過。
             if [[ -n "$latest_commit" ]]; then
-              NEW_STATE["$target_branch"]="$latest_commit"
+              NEW_STATE["$target_branch"]="$upstream_commit"
             fi
           }
 
@@ -280,22 +295,44 @@ jobs:
             echo "::endgroup::"
           }
 
+          # A fresh Bash process preserves errexit inside sync_mirror. Calling the
+          # function directly in an `if` would disable errexit in its whole body.
+          export -f retry get_last_commit sync_mirror update_state_branch
+          export STATE_BRANCH
+          failed_mirrors=()
+          run_mirror() {
+            if bash -euo pipefail -c '
+              declare -A NEW_STATE=()
+              sync_mirror "$@"
+              update_state_branch
+            ' mirror "$@"; then
+              echo "- $4: success" >> "$GITHUB_STEP_SUMMARY"
+            else
+              failed_mirrors+=("$4")
+              echo "::endgroup::"
+              echo "::error::Mirror $4 failed; continuing with the other mirrors"
+              echo "- $4: FAILED (see logs)" >> "$GITHUB_STEP_SUMMARY"
+              # Restore the disposable Actions checkout before the next mirror.
+              git checkout --force main
+            fi
+          }
+
           # Each snapshot is stored at the root of its own branch for clean ZIPs.
-          sync_mirror \
+          run_mirror \
             "https://github.com/SugarChain-Studio/echo-activity-ext.git" \
             "main" \
             "." \
             "echo-activity-ext" \
             "shallow"
 
-          sync_mirror \
+          run_mirror \
             "https://github.com/SugarChain-Studio/echo-clothing-ext.git" \
             "main" \
             "." \
             "echo-clothing-ext" \
             "shallow"
 
-          sync_mirror \
+          run_mirror \
             "https://gitgud.io/BondageProjects/Bondage-College.git" \
             "master" \
             "BondageClub" \
@@ -303,30 +340,47 @@ jobs:
             "partial"
 
           # Mod source snapshots for translation maintenance (upstream default branches).
-          sync_mirror \
+          run_mirror \
             "https://github.com/Jomshir98/bondage-club-extended.git" \
             "master" \
             "." \
             "bcx" \
             "shallow"
 
-          sync_mirror \
+          run_mirror \
             "https://github.com/littlesera/LSCG.git" \
             "main" \
             "." \
             "lscg" \
             "shallow"
 
-          sync_mirror \
+          run_mirror \
             "https://github.com/Seles84/bc-plus.git" \
             "main" \
             "." \
             "bcplus" \
             "shallow"
 
-          update_state_branch
-      - name: Notify on failure
+          if [[ ${#failed_mirrors[@]} -gt 0 ]]; then
+            echo "::error::Failed mirrors: ${failed_mirrors[*]}"
+            exit 1
+          fi
+      - name: Check notification configuration
         if: failure()
+        id: mail
+        env:
+          MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
+          MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
+          MAIL_TO: ${{ vars.MAIL_TO }}
+        run: |
+          if [[ -n "$MAIL_USERNAME" && -n "$MAIL_PASSWORD" && -n "$MAIL_TO" ]]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Email notification skipped: configure MAIL_USERNAME, MAIL_PASSWORD secrets and MAIL_TO variable." >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Notify on failure
+        if: failure() && steps.mail.outputs.enabled == 'true'
+        continue-on-error: true
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
@@ -334,6 +388,6 @@ jobs:
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
           subject: "鏡像同步失敗"
-          to: your@email.com
+          to: ${{ vars.MAIL_TO }}
           from: GitHub Actions
           body: "Bondage-College-Mirror 同步失敗,請檢查 workflow log。"
