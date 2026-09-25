@@ -1,0 +1,73 @@
+import { OutfitStorageStrategy } from "Settings/OutfitCollection/IOutfitCollection";
+
+export interface BaseSettingsModel {
+    enabled: boolean;
+}
+
+export interface ModuleStats {
+
+}
+
+export interface GlobalSettingsModel extends GlobalPublicSettingsModel {
+    edgeBlur: boolean;
+    showCheckRolls: boolean;
+    blockSettingsWhileRestrained: boolean;
+    seeSharedCrafts: boolean;
+    hideResizing: boolean;
+    erectionDetection: boolean;
+    tamperproofEnabled: boolean;
+    tamperproofElectricityEnabled: boolean;
+}
+
+export interface GlobalPublicSettingsModel extends BaseSettingsModel {
+    sharePublicCrafting: boolean;
+    blockDOGS: boolean;
+}
+
+export interface LipstickSettingsModel extends BaseSettingsModel {
+    dry: boolean;
+}
+
+export interface SplatterSettingsModel extends BaseSettingsModel {
+    giver: boolean;
+    taker: boolean;
+    autoSplat: boolean;
+    uncontrollableWhenBound: boolean;
+    colorOverride: BCColor | null;
+    opacityOverride: string | null;
+    whitelist: number[] | null;
+    blacklist: number[] | null;
+    requireLover: boolean;
+    minArousal: number;
+}
+
+export interface MapSettingsModel extends BaseSettingsModel {
+    enhancedLighting: boolean;
+    useRoomCustomization: boolean;
+    useEnhancedBlinding: boolean;
+    disableLightAnimation: boolean;
+    hideVanillaFog: boolean;
+    hideDarkLights: boolean;
+}
+
+export interface MiscSettingsModel extends BaseSettingsModel {
+    chloroformEnabled: boolean;
+    chloroformedAt: number;
+    chloroformPotencyTime: number;
+    //immersiveChloroform: boolean;
+    infiniteChloroformPotency: boolean;
+    handChokeEnabled: boolean;
+    gagChokeEnabled: boolean;
+    chokeChainEnabled: boolean;
+}
+
+export interface OpacitySettingsModel extends OpacityPublicSettingsModel {
+}
+
+export interface OpacityPublicSettingsModel extends BaseSettingsModel {
+    preventExternalMod: boolean;
+}
+
+export interface OutfitSettings extends BaseSettingsModel {
+    strategy: OutfitStorageStrategy;
+}
