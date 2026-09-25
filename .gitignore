@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+src/ui/generated/
+
+# Environment
+.env
+.env.*
+
+# Local tooling (not part of the repo)
+CLAUDE.md
+.claude/
+.idea/
+.vscode/
+
+# Wrangler local cache (worker deploys)
+.wrangler/
+
+# Logs
+*.log
