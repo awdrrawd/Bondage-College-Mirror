@@ -1,7 +1,7 @@
 # Filtered Code Mirrors
-This is a **code-only mirror** of BondageClub, without any media files
+This is a **code-only mirror** of BondageClub and related extensions, without any media files
 (images, audio, video, fonts, 3D assets, etc.).  
-This repository currently keeps three filtered source snapshots.
+This repository currently keeps six filtered source snapshots.
 Each snapshot lives at the root of a separate branch, so GitHub's **Download ZIP** produces a clean, single project.
 
 | Branch                                                                         | Upstream content                                                                                         |
@@ -9,11 +9,14 @@ Each snapshot lives at the root of a separate branch, so GitHub's **Download ZIP
 | [`bondageclub`](https://github.com/awdrrawd/Bondage-College-Mirror/tree/bondageclub)             | `BondageClub/` from [BondageProjects/Bondage-College](https://gitgud.io/BondageProjects/Bondage-College) |
 | [`echo-activity-ext`](https://github.com/awdrrawd/Bondage-College-Mirror/tree/echo-activity-ext) | [SugarChain-Studio/echo-activity-ext](https://github.com/SugarChain-Studio/echo-activity-ext)            |
 | [`echo-clothing-ext`](https://github.com/awdrrawd/Bondage-College-Mirror/tree/echo-clothing-ext) | [SugarChain-Studio/echo-clothing-ext](https://github.com/SugarChain-Studio/echo-clothing-ext)            |
+| [`bcx`](https://github.com/awdrrawd/Bondage-College-Mirror/tree/bcx) | [Jomshir98/bondage-club-extended](https://github.com/Jomshir98/bondage-club-extended), `master` |
+| [`lscg`](https://github.com/awdrrawd/Bondage-College-Mirror/tree/lscg) | [littlesera/LSCG](https://github.com/littlesera/LSCG), `main` |
+| [`bcplus`](https://github.com/awdrrawd/Bondage-College-Mirror/tree/bcplus) | [Seles84/bc-plus](https://github.com/Seles84/bc-plus), `main` |
 
 The `main` branch only contains this documentation, the sync workflow, and a
 small browser tool (`index.html`, published via GitHub Pages) for searching
-the mirrored branches by filename or content. The sync workflow runs daily at
-approximately 02:17 Taiwan time (18:17 UTC) and can also be triggered
+the mirrored branches by filename or content. The sync workflow checks upstream every
+three hours (UTC cron: `0 */3 * * *`) and can also be triggered
 manually from the Actions tab.
 
 ### Code search tool
@@ -31,6 +34,8 @@ excluded from the snapshots. Source submodules are expanded into the
 snapshots so they are included in downloaded ZIP files. A new snapshot
 commit is only created when its filtered upstream content actually changes.
 
+The mod mirrors track the source branches listed above, not deployed bundles or release tags. New mirror branches are created on the first successful sync after this workflow is pushed to `main`.
+
 These are filtered snapshots and do not preserve the original upstream Git
 history.
 
@@ -44,8 +49,8 @@ terms before using or redistributing these mirrors.
 
 # 過濾後的程式碼鏡像
 
-這是一個 **BondageClub 純代碼的鏡像站**，不帶任意媒體檔案（圖片、音訊、影片、字型、3D 素材等）。  
-這個倉庫保目前存了三份經過過濾的原始碼快照。每份快照都放在各自獨立分支的根目錄下，
+這是一個 **BondageClub 與相關擴充的純代碼鏡像站**，不帶任意媒體檔案（圖片、音訊、影片、字型、3D 素材等）。
+這個倉庫目前保存了六份經過過濾的原始碼快照。每份快照都放在各自獨立分支的根目錄下，
 這樣使用 GitHub 的 **Download ZIP** 就能直接得到一份乾淨、單一的專案。
 
 | 分支                                                                             | 上游來源                                                                                                         |
@@ -53,10 +58,13 @@ terms before using or redistributing these mirrors.
 | [`bondageclub`](https://github.com/awdrrawd/Bondage-College-Mirror/tree/bondageclub)             | 來自 [BondageProjects/Bondage-College](https://gitgud.io/BondageProjects/Bondage-College) 的 `BondageClub/` 資料夾 |
 | [`echo-activity-ext`](https://github.com/awdrrawd/Bondage-College-Mirror/tree/echo-activity-ext) | [SugarChain-Studio/echo-activity-ext](https://github.com/SugarChain-Studio/echo-activity-ext)                |
 | [`echo-clothing-ext`](https://github.com/awdrrawd/Bondage-College-Mirror/tree/echo-clothing-ext) | [SugarChain-Studio/echo-clothing-ext](https://github.com/SugarChain-Studio/echo-clothing-ext)                |
+| [`bcx`](https://github.com/awdrrawd/Bondage-College-Mirror/tree/bcx) | [Jomshir98/bondage-club-extended](https://github.com/Jomshir98/bondage-club-extended), `master` |
+| [`lscg`](https://github.com/awdrrawd/Bondage-College-Mirror/tree/lscg) | [littlesera/LSCG](https://github.com/littlesera/LSCG), `main` |
+| [`bcplus`](https://github.com/awdrrawd/Bondage-College-Mirror/tree/bcplus) | [Seles84/bc-plus](https://github.com/Seles84/bc-plus), `main` |
 
 `main` 分支只放這份說明文件、同步用的 workflow，以及一個透過 GitHub Pages
 發佈的小型瀏覽器工具（`index.html`），可以用檔名或內容關鍵字搜尋各個鏡像分支。
-同步 workflow 每天約在台灣時間 02:17（UTC 18:17）自動執行一次，也可以在
+同步 workflow 每 3 小時檢查一次上游（UTC cron：`0 */3 * * *`），也可以在
 Actions 分頁手動觸發。
 
 ### 代碼查詢工具
@@ -70,6 +78,8 @@ Actions 分頁手動觸發。
 以及上游倉庫自帶的 GitHub Actions workflow 定義。原始碼中的 submodule 會被
 展開併入快照，讓下載的 ZIP 檔案包含完整內容。只有在過濾後的上游內容真的有
 變動時，才會產生新的快照 commit。
+
+Mod 鏡像追蹤上表列出的原始碼分支，不是已部署的 bundle 或 release tag。此 workflow 推送到 `main` 後，第一次成功同步會建立新增的鏡像分支。
 
 這些都是經過過濾的快照，不會保留上游原本的 Git 歷史紀錄。
 

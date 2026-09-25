@@ -302,6 +302,28 @@ jobs:
             "bondageclub" \
             "partial"
 
+          # Mod source snapshots for translation maintenance (upstream default branches).
+          sync_mirror \
+            "https://github.com/Jomshir98/bondage-club-extended.git" \
+            "master" \
+            "." \
+            "bcx" \
+            "shallow"
+
+          sync_mirror \
+            "https://github.com/littlesera/LSCG.git" \
+            "main" \
+            "." \
+            "lscg" \
+            "shallow"
+
+          sync_mirror \
+            "https://github.com/Seles84/bc-plus.git" \
+            "main" \
+            "." \
+            "bcplus" \
+            "shallow"
+
           update_state_branch
       - name: Notify on failure
         if: failure()
