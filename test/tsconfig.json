@@ -1,0 +1,13 @@
+{
+	"extends": "../tsconfig.base.json",
+	"compilerOptions": {
+		"types": ["@types/jest", "expect-puppeteer"],
+		"skipLibCheck": true,
+	},
+	"include": [
+		"./**/*.d.ts",
+		"../src/**/*.d.ts",
+		"../node_modules/bc-stubs/bc/**/*.d.ts",
+		"./**/*.ts"
+	]
+}

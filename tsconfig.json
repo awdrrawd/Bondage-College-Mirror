@@ -1,0 +1,13 @@
+{
+	"extends": "./tsconfig.base.json",
+	"compilerOptions": {
+		"target": "ES2018",
+		"rootDir": "./src",
+		"noEmit": false,
+		"skipLibCheck": true,
+	},
+	"include": [
+		"node_modules/bc-stubs/bc/**/*.d.ts",
+		"./src/**/*"
+	]
+}
