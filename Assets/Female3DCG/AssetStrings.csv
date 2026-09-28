@@ -6904,7 +6904,7 @@ OnlineBountySuitcaseEnd,"The kidnappers opened your suitcase, which contains a l
 OnlineBountySuitcaseEndEarly,SourceCharacter's suitcase is safe... for now.
 OnlineBountySuitcaseEndEarlyOpened,SourceCharacter's data is safe... for now.
 OnlineBountySuitcaseEndOpened,The kidnappers have stolen even more data using your laptop.
-OnlineBountySuitcaseFinish,You find confidential club secrets worth MONEYAMOUNT$ on the black market.
+OnlineBountySuitcaseFinish,You find confidential club secrets worth $MONEYAMOUNT on the black market.
 OnlineBountySuitcaseOngoing,SourceCharacter's suitcase will be open in TIMEREMAINING minutes. Make sure PronounSubject is secure until then!
 OnlineBountySuitcaseOngoingOpened,SourceCharacter's data will be ready in TIMEREMAINING minutes. Make sure PronounSubject is secure until then!
 OnlineBountySuitcaseStart,SourceCharacter starts unlocking DestinationCharacterName suitcase! PronounSubject will finish in 5 minutes.
@@ -8869,6 +8869,7 @@ ItemHandheldCustomPaddleSetc7,SourceCharacter set the Custom Text to "Toy" on De
 ItemHandheldCustomPaddleSetc8,SourceCharacter set the Custom Text to "Bitch" on DestinationCharacter Custom paddle.
 ItemHandheldCustomPaddleActivitySpankItem,SourceCharacter hits DestinationCharacter FocusAssetGroup with PronounPossessive ActivityAsset leaving a mark.
 ItemHandheldCustomPaddleActivityRubItem,SourceCharacter rubs DestinationCharacter FocusAssetGroup with PronounPossessive ActivityAsset.
+ItemHandheldRattleActivityShakeItem,SourceCharacter shakes PronounPossessive rattle and it makes a jingle.
 ItemDevicesLeatherCageSelectBase,Leather cage main menu:
 ItemDevicesLeatherCageModuleFace,Belts
 ItemDevicesLeatherCageSelectFace,Belts options:

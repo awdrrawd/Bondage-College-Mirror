@@ -620,6 +620,11 @@ function CharacterCreate(CharacterAssetFamily, Type, CharacterID) {
 		GetDeafLevel: function () {
 			let deafLevel = 0;
 			for (const item of this.Appearance) {
+				if (item.Craft?.Effects.Deaf) {
+					deafLevel += 1;
+				} else if (item.Craft?.Effects.Audible) {
+					deafLevel -= 1;
+				}
 				for (const [effect, level] of CharacterDeafLevels.entries()) {
 					if (InventoryItemHasEffect(item, effect)) {
 						deafLevel += level;
@@ -627,7 +632,7 @@ function CharacterCreate(CharacterAssetFamily, Type, CharacterID) {
 					}
 				}
 			}
-			return deafLevel;
+			return CommonClamp(deafLevel, 0, Infinity);
 		},
 		CanPickLocks: function () {
 			const CanAccessLockpicks = (this.CanInteract() || this.CanWalk()) && InventoryAvailable(this, "Lockpicks", "ItemMisc");
@@ -784,6 +789,23 @@ function CharacterCreate(CharacterAssetFamily, Type, CharacterID) {
 			const pronouns = pronounItem ? pronounItem.Asset.Name : "SheHer";
 			return /** @type {CharacterPronouns} */(pronouns);
 		},
+		GetLockTimerLimit: function () {
+			if (this.IsOnline()) {
+				switch (this.OnlineSharedSettings.LockTimerLimit) {
+					case "LockTimerLimitDay":
+						return 1*24*60*60;
+					case "LockTimerLimitWeek":
+						return 7*24*60*60;
+					case "LockTimerLimitMonth":
+						return 30*24*60*60;
+					case "LockTimerLimitYear":
+						return 365*24*60*60;
+					case "LockTimerLimitDecade":
+						return 10*365*24*60*60;
+				}
+			}
+			return null;
+		},
 		HasPenis: function () {
 			return InventoryIsItemInList(this, "Pussy", ["Penis"]);
 		},
@@ -922,6 +944,13 @@ function CharacterGenerateRandomName() {
 }
 
 /**
+ * An expression representing `{foo=bar}`-type of patterns.
+ *
+ * See {@link CharacterDialogPatternSubstitutor} for key-specific substitution logic.
+ */
+const CharacterDialogSubstitutionPattern = /\{(\s+)?(?<key>[a-zA-Z0-9_])(\s+)?=(\s+)?(?<value>.+)(\s+)?\}/i;
+
+/**
  * Substitute name and pronoun fields in dialog.
  * @param {Character} C - Character for which to build the dialog
  * @returns {void} - Nothing
@@ -931,6 +960,7 @@ function CharacterDialogSubstitution(C){
 	let subst = [
 		["DialogCharacterName", CharacterNickname(C)],
 		["DialogPlayerName", CharacterNickname(Player)],
+		[CharacterDialogSubstitutionPattern, "", CharacterDialogPatternSubstitutor] // expression for `"{foo=bar}"` patterns in the text
 	];
 	subst = subst.concat(ChatRoomPronounSubstitutions(C, "DialogCharacter", false));
 	subst = subst.concat(ChatRoomPronounSubstitutions(Player, "DialogPlayer", false));
@@ -1582,13 +1612,68 @@ function CharacterSetCurrent(C, options=null) {
 }
 
 /**
+ * A scaling factor for all money gains, effectively introducing wage inflation as more and more items are added to the shop.
+ *
+ * Proportional to the sum of all asset values divided by `50_000`.
+ * @type {number}
+ */
+var CharacterMoneyFactor = 1.0;
+
+/**
+ * String subsitution helper for money changes referenced in character dialog
+ * @type {CommonSubstituteReplacer}
+ */
+function CharacterDialogPatternSubstitutor(match, offset, replacement, string, _groups) {
+	const { key: keyUnparsed, value: valueUnparsed } = /** @type {{ key?: string, value?: string }} */(_groups ?? {});
+	if (!keyUnparsed || !valueUnparsed) {
+		return "";
+	}
+
+	// Remove surrounding quotation marks
+	const value = (
+		(valueUnparsed.startsWith("'") && valueUnparsed.endsWith("'"))
+		|| (valueUnparsed.startsWith('"') && valueUnparsed.endsWith('"'))
+	) ? valueUnparsed.slice(1, valueUnparsed.length - 1) : valueUnparsed;
+	const key = keyUnparsed.toLowerCase();
+
+	switch (key) {
+		case "money":
+			// Need some explicit underscore special casing in order to support it as numeric superator here
+			return CharacterMoneyFormat(Number(value.replaceAll("_", "")));
+		default:
+			return "";
+	}
+}
+
+/**
+ * Apply scaling factors to a change in money and format into a string, returning the absolute value
+ * @param {number} value The money value
+ * @returns {string}
+ */
+function CharacterMoneyFormat(value) {
+	const money = CharacterMoneyApplyFactor(value);
+	return Math.abs(money).toLocaleString(TranslationLanguage);
+}
+
+/**
+ * Apply scaling factors to a change in money
+ * @param {number} value The money value
+ * @returns {number}
+ */
+function CharacterMoneyApplyFactor(value) {
+	if (!CommonIsFinite(value)) { return 0; }
+	const moneyFactor = value > 0 ? CharacterMoneyFactor * CheatFactor("DoubleMoney", 2) : 1;
+	return Math.ceil(moneyFactor * value);
+}
+
+/**
  * Changes the character money and sync with the account server, factors in the cheaters version.
  * @param {Character} C - Character for which we are altering the money amount
  * @param {number} Value - Money to subtract/add
  * @returns {void} - Nothing
  */
 function CharacterChangeMoney(C, Value) {
-	C.Money = parseInt(C.Money) + parseInt(Value) * ((Value > 0) ? CheatFactor("DoubleMoney", 2) : 1);
+	C.Money += CharacterMoneyApplyFactor(Value);
 	ServerPlayerSync();
 }
 
@@ -2159,7 +2244,8 @@ function CharacterHasItemWithAttribute(C, Attribute) {
  */
 function CharacterItemsForActivity(C, Activity) {
 	return C.Appearance.filter(item => {
-		return InventoryGetItemProperty(item, "AllowActivity")?.includes(Activity);
+		return Activity === "GagItem" && item.Asset.Group.Name.startsWith("ItemMouth")
+			|| InventoryGetItemProperty(item, "AllowActivity")?.includes(Activity);
 	});
 }
 

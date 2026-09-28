@@ -277,8 +277,8 @@ type RectTuple = [X: number, Y: number, W: number, H: number];
 /** A 4-tuple with X & Y coordinates and, optionally, width and height */
 type PartialRectTuple = [X: number, Y: number, W?: number, H?: number];
 
-type CommonSubstituteReplacer = (match: string, offset: number, replacement: string, string: string) => string;
-type CommonSubtituteSubstitution = [tag: string, substitution: string, replacer?: CommonSubstituteReplacer];
+type CommonSubstituteReplacer = (match: string, offset: number, replacement: string, string: string, groups?: Partial<Record<string, string>>) => string;
+type CommonSubtituteSubstitution = [tag: string | RegExp, substitution: string, replacer?: CommonSubstituteReplacer];
 
 interface CommonGenerateGridParameters {
 	/** Starting X coordinate of the grid */
@@ -672,11 +672,12 @@ type AssetLockType =
 	"TimerPasswordPadlock"
 	;
 
-type CraftingPropertyType =
+type CraftingPropertyType = (
 	"Normal" | "Large" | "Small" | "Thick" | "Thin" | "Secure" | "Loose" | "Decoy" |
 	"Malleable" | "Rigid" | "Simple" | "Puzzling" | "Painful" | "Comfy" | "Strong" |
-	"Flexible" | "Nimble" | "Arousing" | "Dull" | "Edging" | "Heavy" | "Light"
-	;
+	"Flexible" | "Nimble" | "Arousing" | "Dull" | "Edging" | "Heavy" | "Light" |
+	"Deaf" | "Audible"
+);
 
 type AssetGenericSize = "Small" | "Medium" | "Large";
 type AssetAttribute =
@@ -1501,10 +1502,31 @@ type ActivityNameBasic = "Bite" | "Brush" | "Caress" | "Choke" | "Clean" | "Cudd
 	"PenetrateSlow" | "Pet" | "Pinch" | "PoliteKiss" | "Pull" |
 	"RestHead" | "Rub" | "Scratch" | "Sit" | "Slap" | "Spank" | "Step" | "StruggleArms" | "StruggleLegs" |
 	"Suck" | "SuckPenetrateItem" | "DeepThroat" | "TakeCare" | "Tickle" | "Whisper" | "Wiggle" |
-	"SistersHug" | "BrothersHandshake" | "SiblingsCheekKiss" | "CollarGrab"
+	"SistersHug" | "BrothersHandshake" | "SiblingsCheekKiss" | "CollarGrab" | "SpitOutGag"
 ;
 
-type ActivityNameItem = "Inject" | "MasturbateItem" | "PenetrateItem" | "ChewItem" | "PourItem" | "RollItem" | "RubItem" | "BrushItem" | "ShockItem" | "SipItem" | "SpankItem" | "SqueezeItem" | "TickleItem" | "EatItem" | "Scratch" | "ThrowItem";
+type ActivityNameItem =
+	| "PowderItem"
+	| "ShakeItem"
+	| "SpitItem"
+	| "Inject"
+	| "MasturbateItem"
+	| "PenetrateItem"
+	| "ChewItem"
+	| "PourItem"
+	| "RollItem"
+	| "RubItem"
+	| "BrushItem"
+	| "ShockItem"
+	| "SipItem"
+	| "SpankItem"
+	| "SqueezeItem"
+	| "TickleItem"
+	| "EatItem"
+	| "Scratch"
+	| "ThrowItem"
+	| "GagItem"
+;
 
 type ActivityName = ActivityNameBasic | ActivityNameItem;
 
@@ -1610,7 +1632,7 @@ interface InventoryRemoveOptions {
 	 */
 	removeItemOnRemove?: readonly RemoveOnItemRemove[];
 	/**
-	 * Whether to trigger a character refresh on a successful item removal.
+	 * Whether to trigger {@link CharacterRefresh} on a successful item removal.
 	 * @default true
 	 */
 	refresh?: boolean;
@@ -2126,6 +2148,13 @@ interface Character {
 	HeightRatioProportion?: number;
 	GetGenders: () => AssetGender[];
 	GetPronouns: () => CharacterPronouns;
+	/**
+	 * The duration a timer lock is allowed to be set to.
+	 * null = default value
+	 * number = seconds
+	 * infinite = unlimited
+	 */
+	GetLockTimerLimit: () => null | number;
 	HasPenis: () => boolean;
 	HasVagina: () => boolean;
 	IsFlatChested: () => boolean;
@@ -2228,6 +2257,7 @@ interface CharacterOnlineSharedSettings {
 	ItemsAffectExpressions: boolean;
 	ScriptPermissions: ScriptPermissions;
 	WheelFortune: string;
+	LockTimerLimit: LockTimerLimitName
 }
 
 type NicknameStatus = "NicknameTooLong" | "NicknameTooShort" | "NicknameInvalidChars" | "NicknameLocked";
@@ -2609,6 +2639,7 @@ interface PlayerOnlineSettings {
 	ShowRoomCustomization: ChatRoomCustomizationType;
 	FriendListAutoRefresh: boolean;
 	DefaultChatRoomBackground: string;
+	LockTimerLimit: LockTimerLimitName
 }
 
 /** Pandora Player extension */
