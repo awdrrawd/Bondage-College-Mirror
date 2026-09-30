@@ -1718,8 +1718,7 @@ function DialogInventoryBuild(C, focusGroup, resetOffset=false, locks=false, rel
 
 		// Sixth. we add all crafted items from the character that matches that slot
 		if (!C.IsPlayer() && !C.IsNpc()) {
-			const Crafting = CraftingDecompressServerData(C.Crafting);
-			for (const Craft of Crafting) {
+			for (const Craft of C.Crafting) {
 				if (Craft == null || Craft.Private) {
 					continue;
 				}
@@ -4732,7 +4731,7 @@ class _DialogExpressionMenu extends _DialogSelfMenu {
 					CommonKeys(this.facialExpressions).sort().map(group => ElementButton.Create(
 						`${ids.menuLeft}-${group}`,
 						this.eventListeners._expressionRadioGroupClick,
-						{ role: "menuitemradio", image: `Assets/Female3DCG/${group}/Icon.png` },
+						{ role: "menuitemradio", image: `Icons/Expressions/${group}/Default.png` },
 						{ button: {
 							classList: ["dialog-menubar-button"],
 							attributes: {
@@ -4794,7 +4793,7 @@ class _DialogExpressionMenu extends _DialogSelfMenu {
 					{
 						clickDisabled: this.eventListeners._ClickDisabledButton,
 						role: "radio",
-						image: `Assets/Female3DCG/${group}/${name ? name + "/Icon" : "Icon"}.png`,
+						image: `Icons/Expressions/${group}/${name || "Default"}.png`,
 						allowRequiredClick: true,
 					},
 					{ button: {

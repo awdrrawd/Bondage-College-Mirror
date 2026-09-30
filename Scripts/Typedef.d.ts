@@ -1163,6 +1163,7 @@ interface AssetAppearanceGroup extends AssetGroup {
 	readonly Category: "Appearance";
 	readonly Name: AssetGroupBodyName;
 	readonly IsRestraint: false;
+	readonly Effect: readonly Exclude<EffectName, GagEffectName | BlindEffectName | DeafEffectName | BlurEffectName>[];
 }
 
 /** An AssetGroup subtype for the `Item` {@link AssetGroup.Category} */
@@ -2224,7 +2225,7 @@ interface Character {
 	Rule?: LogRecord[];
 	Status?: string | null;
 	StatusTimer?: number;
-	Crafting: (CraftingItem | null)[]; // technically never as it is Online-only
+	Crafting?: (CraftingItem | null)[];
 	LastMapData?: ChatRoomMapData;
 	/**
 	 * The custom background to use for the current room
@@ -2411,7 +2412,7 @@ interface OnlineCharacter extends Character {
 	Nickname?: string;
 	Title: TitleName | undefined;
 	LabelColor: HexColor;
-	Creation: number;
+	Creation?: number;
 	Description: string;
 	OnlineSharedSettings: CharacterOnlineSharedSettings;
 	Game: CharacterGameParameters;
@@ -2425,11 +2426,13 @@ interface OnlineCharacter extends Character {
 	Status?: string | null;
 	StatusTimer?: number;
 	LastMapData?: ChatRoomMapData;
+	Crafting: (CraftingItem | null)[];
 }
 
 interface PlayerCharacter extends OnlineCharacter {
 	// All the following are guaranteed to be set on login
 
+	Creation: number;
 	// PreferenceInitPlayer() must be updated with defaults, when adding a new setting
 	ChatSettings: ChatSettingsType;
 	VisualSettings: VisualSettingsType;
