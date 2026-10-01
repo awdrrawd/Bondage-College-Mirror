@@ -1414,6 +1414,7 @@ ItemLegs,Ribbons,Ribbons
 ItemLegs,SeamlessHobbleSkirt,Seamless Hobble Skirt
 ItemLegs,SeamlessLegBinder,Seamless Leg Binder
 ItemLegs,ShinyLegBinder,Shiny Leg Binder
+ItemLegs,ShockDevice,Shock Device
 ItemLegs,Slime,Slime
 ItemLegs,SturdyLeatherBelts,Sturdy Leather Belt
 ItemLegs,Tentacles,Tentacles
@@ -1473,6 +1474,7 @@ ItemMouth,BoneGag,Bone Gag
 ItemMouth,CageMuzzle,Iron Cage Muzzle
 ItemMouth,CaneGag,Cane
 ItemMouth,CarrotGag,Rubber Carrot Gag
+ItemMouth,CheekRetractor,Cheek Retractor
 ItemMouth,ChloroformCloth,Chloroform Cloth
 ItemMouth,ChopstickGag,Chopstick Gag
 ItemMouth,Cigarette,Cigarette

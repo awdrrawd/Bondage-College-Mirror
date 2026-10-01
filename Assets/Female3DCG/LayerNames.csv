@@ -2586,6 +2586,13 @@ ItemLegsShinyLegBinderLatex,Binder
 ItemLegsShinyLegBinderLock,Locks
 ItemLegsShinyLegBinderMetal,Buckles
 ItemLegsShinyLegBinderShine,Shine
+ItemLegsShockDeviceAnal,Anal
+ItemLegsShockDeviceBody,Body
+ItemLegsShockDeviceGlow,Glow
+ItemLegsShockDeviceInnerThigh,Inner Thigh
+ItemLegsShockDeviceLowerAbdomen,Lower Abdomen
+ItemLegsShockDeviceStraps,Straps
+ItemLegsShockDeviceVaginal,Vaginal
 ItemLegsSlimeOne,Color 1
 ItemLegsSlimeTwo,Color 2
 ItemLegsSturdyLeatherBeltsLowerBelt,Lower Belt
@@ -2966,6 +2973,9 @@ ItemMouthCageMuzzleMuzzle,Cage
 ItemMouthCageMuzzleStrap,Straps
 ItemMouthCarrotGagCarrot,Carrot
 ItemMouthCarrotGagStraps,Straps
+ItemMouthCheekRetractorLips,Lips
+ItemMouthCheekRetractorRetractor,Retractor
+ItemMouthCheekRetractorTeeth,Teeth
 ItemMouthCigaretteSmokeInMouth,Smoke
 ItemMouthCigaretteLitInMouth,Lit
 ItemMouthCigaretteFilterInMouth,Filter
