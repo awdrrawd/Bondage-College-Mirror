@@ -239,6 +239,7 @@ function InventoryDataBuild(C) {
 * @param {Character} C - The character on which we should remove the item
 * @param {AssetName} Name - The name of the item to validate
 * @param {AssetGroupName} Group - The group name of the item to validate
+* @returns {boolean} Whether the given item is in the given character's inventory.
 */
 function InventoryAvailable(C, Name, Group) {
 	if (C.Inventory.find(i => i.Group === Group && i.Name === Name)) {
@@ -252,7 +253,7 @@ function InventoryAvailable(C, Name, Group) {
 	} else if (asset.Value === 0) {
 		return true;
 	} else if (asset.BuyGroup != null) {
-		return Asset.filter(a => a.BuyGroup === asset.BuyGroup).some(a => a.Value === 0);
+		return AssetBuyGroupMap.get(asset.BuyGroup)?.some(a => a.Value === 0) ?? false;
 	} else {
 		return false;
 	}
@@ -900,7 +901,7 @@ function InventoryWearRandom(C, GroupName, Difficulty, Refresh = true, MustOwn =
 
 	let item = CharacterAppearanceSetItem(C, GroupName, SelectedAsset, SelectedColor, Difficulty);
 	if (Extend) {
-		item = InventoryRandomExtend(C, GroupName);
+		item = InventoryRandomExtend(C, GroupName, undefined, false, false);
 	}
 
 	if (Refresh) {
@@ -914,9 +915,11 @@ function InventoryWearRandom(C, GroupName, Difficulty, Refresh = true, MustOwn =
  * @param {Character} C - The character wearing the item
  * @param {AssetGroupName} GroupName - The name of the item's group
  * @param {Character | undefined} [C_Source] - The character setting the new item option. If `null`, assume that it is _not_ the player character.
+ * @param {boolean} [push] - Whether the change should be pushed.
+ * @param {boolean} [refresh] - Whether the character's appearance should be refreshed.
  * @returns {Item | null} - The equipped item (if any)
  */
-function InventoryRandomExtend(C, GroupName, C_Source=undefined) {
+function InventoryRandomExtend(C, GroupName, C_Source=undefined, push=undefined, refresh=undefined) {
 	const Item = InventoryGet(C, GroupName);
 
 	if (!Item || !Item.Asset.Archetype) {
@@ -925,7 +928,7 @@ function InventoryRandomExtend(C, GroupName, C_Source=undefined) {
 
 	switch (Item.Asset.Archetype) {
 		case ExtendedArchetype.TYPED:
-			TypedItemSetRandomOption(C, Item, false, C_Source);
+			TypedItemSetRandomOption(C, Item, push, C_Source, refresh);
 			break;
 		default:
 			// Archetype does not yet support random extension

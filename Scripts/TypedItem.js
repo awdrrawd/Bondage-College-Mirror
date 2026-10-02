@@ -518,10 +518,11 @@ function TypedItemFindPreviousOption({ name, options }, item) {
  * @param {boolean} [push] - Whether or not appearance updates should be persisted (only applies if the character is the
  * player) - defaults to false.
  * @param {null | Character} [C_Source] - The character setting the new item option. If `null`, assume that it is _not_ the player character.
+ * @param {boolean} [refresh] - Whether the character's appearance should be refreshed.
  * @returns {string|undefined} - undefined or an empty string if the type was set correctly. Otherwise, returns a string
  * informing the player of the requirements that are not met.
  */
-function TypedItemSetRandomOption(C, itemOrGroupName, push = false, C_Source=null) {
+function TypedItemSetRandomOption(C, itemOrGroupName, push = false, C_Source=null, refresh=undefined) {
 	const item = typeof itemOrGroupName === "string" ? InventoryGet(C, itemOrGroupName) : itemOrGroupName;
 
 	if (!item || item.Asset.Archetype !== ExtendedArchetype.TYPED) {
@@ -549,7 +550,7 @@ function TypedItemSetRandomOption(C, itemOrGroupName, push = false, C_Source=nul
 	if (requirementMessage) {
 		return requirementMessage;
 	} else {
-		ExtendedItemSetOption(data, C, item, newOption, previousOption, push);
+		ExtendedItemSetOption(data, C, item, newOption, previousOption, push, refresh);
 	}
 }
 
@@ -576,8 +577,13 @@ function TypedItemInit({ options, name, baselineProperty, asset }, C, Item, Push
 	}
 
 	const optionIndex = Item.Property.TypeRecord[name];
+	const option = options[optionIndex];
+
+	// Initialize subscreen(s) in a DFS manner
+	let update = ExtendedItemInitSubscreen(option ?? options[0], Item, C, false, false);
+
 	validateType: if (
-		options[optionIndex] !== undefined
+		option !== undefined
 		&& !InventoryIsPermissionBlocked(C, asset.Name, asset.Group.Name, `${name}${optionIndex}`)
 		&& !(C.ArousalSettings?.DisableAdvancedVibes && VibratorModesAdvanced.includes(options[optionIndex].Property.Mode))
 	) {
@@ -587,7 +593,6 @@ function TypedItemInit({ options, name, baselineProperty, asset }, C, Item, Push
 		}
 
 		// Check if all the expected properties are present; extra properties are ignored
-		const option = options[optionIndex];
 		const newProps = CommonCloneDeep(option.Property);
 		/** @type {ItemProperties} */
 		const mutableProperties = {};
@@ -604,10 +609,15 @@ function TypedItemInit({ options, name, baselineProperty, asset }, C, Item, Push
 			return existingValue == null && typeof existingValue !== typeof v && !ExtendedItemInitPropertyIgnore.has(k);
 		});
 
-		let update = false;
 		if (!CommonDeepIsSubset(newProps, Item.Property)) {
 			for (const [k, v] of CommonEntries(newProps)) {
-				Item.Property[k] = CommonIsObject(Item.Property[k]) ? CommonAssign(Item.Property[k], v) : v;
+				if (CommonIsObject(Item.Property[k]) && CommonIsObject(v)) {
+					Item.Property[k] = CommonAssign(Item.Property[k], v);
+				} else if (Array.isArray(Item.Property[k]) && CommonIsArray(v)) {
+					Item.Property[k] = CommonArrayConcatDedupe(Item.Property[k], v);
+				} else {
+					Item.Property[k] = v;
+				}
 			}
 			update = true;
 		}
@@ -624,16 +634,18 @@ function TypedItemInit({ options, name, baselineProperty, asset }, C, Item, Push
 			update = true;
 		}
 
+		// Initialize subscreen(s)
+		update = ExtendedItemInitSubscreen(option, Item, C, false, false) || update;
+
 		if (!update) {
 			return false;
 		}
 	} else {
 		// Always pick the first option unless NPCs are involved (in which case `NPCDefault` must be respected)
-		const option = C.IsNpc() ? (options.find(o => o.NPCDefault) || options[0]) : options[0];
-		Item.Property = CommonAssign(
-			Item.Property ?? {},
-			CommonCloneDeep(option.Property),
-		);
+		const newOption = C.IsNpc() ? (options.find(o => o.NPCDefault) || options[0]) : options[0];
+		const newProperty = CommonCloneDeep(newOption.Property);
+		newProperty.TypeRecord = CommonAssign(Item.Property.TypeRecord ?? {}, newProperty.TypeRecord);
+		Item.Property = CommonAssign(Item.Property, newProperty);
 		for (const [propName, baselineValue] of CommonEntries(baselineProperty ?? {})) {
 			if (baselineValue === undefined) {
 				continue;
