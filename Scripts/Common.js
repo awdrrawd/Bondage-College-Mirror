@@ -23,6 +23,13 @@ var CommonCSVCache = {};
 var CutsceneStage = 0;
 var CommonPhotoMode = false;
 
+const MS_PER_SEC = 1000;
+const MS_PER_MIN = 60 * MS_PER_SEC; // 60_000
+const MS_PER_HOUR = 60 * MS_PER_MIN; // 3_600_000
+const MS_PER_DAY = 24 * MS_PER_HOUR; // 86_400_000
+const MS_PER_WEEK = 7 * MS_PER_DAY; // 604_800_000
+const MS_PER_YEAR = 365 * MS_PER_DAY; // 31_536_000_000
+
 /**
  * An enum encapsulating possible chatroom message substitution tags. Character name substitution tags are interpreted
  * in chatrooms as follows (assuming the character name is Ben987):
@@ -1533,7 +1540,7 @@ function CommonIncludes(array, searchElement, fromIndex) {
  * @note The returned record is typed as being non-{@link Partial}, an assumption that may not hold in practice
  * @template {string} KT
  * @template VT
- * @param {Iterable<[key: KT, value: VT]>} iterable An iterable object that contains key-value entries for properties and methods
+ * @param {Iterable<readonly [key: KT, value: VT]>} iterable An iterable object that contains key-value entries for properties and methods
  * @returns {Record<KT, VT>} A record created from the passed key/value pairs
  */
 function CommonFromEntries(iterable) {
@@ -1751,9 +1758,12 @@ function CommonObjectIsSubset(subRec, superRec) {
 
 /**
  * Returns the object with keys and values reversed
- * @param {object} obj
+ * @template {{}} T
+ * @param {T} obj
+ * @returns {{ [k in keyof T as T[k]]: k }}
  */
 function CommonObjectFlip(obj) {
+	// @ts-expect-error
 	return Object.keys(obj).reduce((ret, key) => {
 		ret[/** @type {Record<string, any>} */ (obj)[key]] = key;
 		return ret;
@@ -2548,18 +2558,18 @@ function CommonGetDatePartsRange(end, start, options = {}) {
 
 		diff = end.valueOf() - mid.valueOf();
 	} else if (includeDays) {
-		d = Math.floor(diff / 86400000);
-		diff %= 86400000;
+		d = Math.floor(diff / MS_PER_DAY);
+		diff %= MS_PER_DAY;
 	}
 
 	if (includeHours) {
-		h = Math.floor(diff / 3600000);
-		diff %= 3600000;
+		h = Math.floor(diff / MS_PER_HOUR);
+		diff %= MS_PER_HOUR;
 	}
 
 	if (includeMinutes) {
-		min = Math.floor(diff / 60000);
-		diff %= 60000;
+		min = Math.floor(diff / MS_PER_MIN);
+		diff %= MS_PER_MIN;
 	}
 
 	const s = Math.floor(diff / 1000);
@@ -2867,4 +2877,26 @@ function CommonStringReplacer(func, replacement) {
 		}
 		return func(match, offset, replacement, args[offsetIndex + 1], args[offsetIndex + 2]);
 	};
+}
+
+/**
+ * A {@link Math.max} variant that demands at least one parameter and respects the (literal) number type
+ * @template {number} T
+ * @param {T} arg0
+ * @param  {T[]} args
+ * @returns {T}
+ */
+function CommonMax(arg0, ...args) {
+	return /** @type {T} */(Math.max(arg0, ...args));
+}
+
+/**
+ * A {@link Math.min} variant that demands at least one parameter and respects the (literal) number type
+ * @template {number} T
+ * @param {T} arg0
+ * @param  {T[]} args
+ * @returns {T}
+ */
+function CommonMin(arg0, ...args) {
+	return /** @type {T} */(Math.min(arg0, ...args));
 }

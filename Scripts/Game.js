@@ -15,8 +15,6 @@ var CommonVersionUpdated = false;
 /** @type {TouchList | null} */
 var CommonTouchList = null;
 
-const DEFAULT_FRAMERATE = 60;
-
 /**
  * Start BC after the webpage has fully loaded
  * @param {boolean} isNode Whether BC is run through the browser or via Node (_i.e._ the testing suite)
@@ -35,7 +33,9 @@ async function GameStart(isNode=false) {
 	DrawLoad();
 	AssetLoadAll();
 	MapDataLoad();
-	await AssetInventoryIDValidate();
+	if (!isNode) {
+		await AssetInventoryIDValidate();
+	}
 	CommandsLoad();
 	ControllerStart();
 	await TextPrefetchFile(InterfaceStringsPath).loadedPromise;
