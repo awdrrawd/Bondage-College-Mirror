@@ -10,7 +10,7 @@ Each snapshot lives at the root of a separate branch, so GitHub's **Download ZIP
 | [`echo-activity-ext`](https://github.com/awdrrawd/Bondage-College-Mirror/tree/echo-activity-ext) | [SugarChain-Studio/echo-activity-ext](https://github.com/SugarChain-Studio/echo-activity-ext)            |
 | [`echo-clothing-ext`](https://github.com/awdrrawd/Bondage-College-Mirror/tree/echo-clothing-ext) | [SugarChain-Studio/echo-clothing-ext](https://github.com/SugarChain-Studio/echo-clothing-ext)            |
 | [`bcx`](https://github.com/awdrrawd/Bondage-College-Mirror/tree/bcx) | [Jomshir98/bondage-club-extended](https://github.com/Jomshir98/bondage-club-extended), `master` |
-| [`lscg`](https://github.com/awdrrawd/Bondage-College-Mirror/tree/lscg) | [littlesera/LSCG](https://github.com/littlesera/LSCG), `main` |
+| [`lscg`](https://github.com/awdrrawd/Bondage-College-Mirror/tree/lscg) | [littlesera/LSCG](https://github.com/littlesera/LSCG), `dev` |
 | [`bcplus`](https://github.com/awdrrawd/Bondage-College-Mirror/tree/bcplus) | [Seles84/bc-plus](https://github.com/Seles84/bc-plus), `main` |
 
 The `main` branch only contains this documentation, the sync workflow, and a
