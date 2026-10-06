@@ -36,10 +36,22 @@ type MemoizedFunction<T extends AnyFunction> = T & {
 type SafePromise<T> = Promise<T>;
 
 // GL shim
+
+/**
+ * Something GLDrawImage/DrawImage can draw: either the URL of an image that goes
+ * through the ImageCache, or an already available image source that gets
+ * uploaded on the spot.
+*/
+type DrawSource = string | HTMLImageElement | HTMLCanvasElement | ImageBitmap;
+
 interface WebGLTextureData {
 	width: number,
 	height: number,
 	texture: WebGLTexture,
+}
+
+interface GLImageMetadata {
+	textureInfo?: WebGLTextureData;
 }
 
 interface WebGL2RenderingContext {
@@ -597,7 +609,7 @@ interface ExpressionNameMap {
 		"TonguePinch" | "LipBite" | "Happy" | "Devious" | "Laughing" | "Grin" | "Smirk" | "Pout"
 	),
 	Pussy: null | "Hard",
-	Blush: null | "Low" | "Medium" | "High" | "VeryHigh" | "Extreme" | "ShortBreath",
+	Blush: null | "Low" | "Medium" | "High" | "VeryHigh" | "Extreme" | "ShortBreath" | "Dread",
 	Fluids: (
 		null | "DroolLow" | "DroolMedium" | "DroolHigh" | "DroolSides" | "DroolMessy" | "DroolTearsLow" |
 		"DroolTearsMedium" | "DroolTearsHigh" | "DroolTearsMessy" | "DroolTearsSides" |
@@ -1049,21 +1061,6 @@ interface ChatRoomMessageHandler {
 
 //#endregion
 
-//#region FriendList
-
-interface IFriendListBeepLogMessage {
-	MemberNumber?: number; /* undefined for NPCs */
-	MemberName: string;
-	ChatRoomName?: string;
-	Private: boolean;
-	ChatRoomSpace?: ServerChatRoomSpace;
-	Sent: boolean;
-	Time: Date;
-	Message?: string;
-}
-
-//#endregion
-
 /**
  * Make all properties in T mutable.
  * Opposite of {@link Readonly}
@@ -1503,7 +1500,7 @@ type ActivityNameBasic = "Bite" | "Brush" | "Caress" | "Choke" | "Clean" | "Cudd
 	"PenetrateSlow" | "Pet" | "Pinch" | "PoliteKiss" | "Pull" |
 	"RestHead" | "Rub" | "Scratch" | "Sit" | "Slap" | "Spank" | "Step" | "StruggleArms" | "StruggleLegs" |
 	"Suck" | "SuckPenetrateItem" | "DeepThroat" | "TakeCare" | "Tickle" | "Whisper" | "Wiggle" |
-	"SistersHug" | "BrothersHandshake" | "SiblingsCheekKiss" | "CollarGrab" | "SpitOutGag"
+	"SistersHug" | "BrothersHandshake" | "SiblingsCheekKiss" | "SiblingsHug" | "CollarGrab" | "SpitOutGag"
 ;
 
 type ActivityNameItem =
@@ -1537,7 +1534,7 @@ type ActivityPrerequisite =
 	`TargetNeeds-${ActivityNameItem}` |
 	"TargetCanUseTongue" | "TargetKneeling" | "TargetMouthBlocked" | "TargetMouthOpen" | "TargetZoneAccessible" | "TargetZoneNaked" |
 	"UseArms" | "UseFeet" | "UseHands" | "UseMouth" | "UseTongue" | "VulvaEmpty" | "ZoneAccessible" | "ZoneNaked" |
-	"Sisters" | "Brothers" | "SiblingsWithDifferentGender" | "Collared"
+	"Sisters" | "Brothers" | "SiblingsWithDifferentGender" | "SiblingsNeutral" | "Collared"
 ;
 
 interface Activity {
@@ -2010,6 +2007,7 @@ interface Character {
 	Canvas: HTMLCanvasElement | null;
 	CanvasBlink: HTMLCanvasElement | null;
 	MustDraw: boolean;
+	DrawnAssets: Set<string>;
 	BlinkFactor: number;
 	AllowItem: boolean;
 	/** A record with all asset- and type-specific permission settings */
@@ -5416,5 +5414,39 @@ declare namespace Item {
 		difficulty?: number;
 		craft?: Readonly<CraftingPartialItem>;
 		property?: Readonly<ItemProperties>;
+	}
+}
+
+declare namespace ImageCache {
+	/**
+	 * A callback called when an image is loaded.
+	 */
+	type LifetimeCallback = (img: CachedImage<any>) => void;
+
+	/**
+	 * Options for an ImageCache.
+	 */
+	interface Options {
+		/** A callback that will be called when the load completes. */
+		loadCallback?: LifetimeCallback;
+		/** A callback that will be called when the image is removed from the cache. */
+		unloadCallback?: LifetimeCallback;
+	}
+}
+
+/**
+ * A cached image whose data is guaranteed to be available.
+ */
+interface LoadedCachedImage<ImageMetadata extends object> extends CachedImage<ImageMetadata> {
+	bitmap: ImageBitmap;
+}
+
+declare namespace BrowserCache {
+	interface FetchOptions {
+		/**
+		 * Called if a background revalidation finds a newer version of the resource.
+		 * The response is fresh and unconsumed.
+		 */
+		onUpdate?(response: Response): void;
 	}
 }

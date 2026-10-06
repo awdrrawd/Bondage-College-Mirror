@@ -17314,37 +17314,37 @@ var AssetFemale3DCGExtended = {
 				{
 					Name: "BallGag",
 					Property: {
-						Effect: [E.BlockMouth],
+						Effect: [E.BlockMouth, E.GagMedium],
 					},
 				},
 				{
 					Name: "RingGag",
 					Property: {
-						Effect: [E.OpenMouth],
+						Effect: [E.OpenMouth, E.GagMedium],
 					},
 				},
 				{
 					Name: "WiffleGag",
 					Property: {
-						Effect: [E.BlockMouth],
+						Effect: [E.BlockMouth, E.GagMedium],
 					},
 				},
 				{
 					Name: "BitGag",
 					Property: {
-						Effect: [E.BlockMouth],
+						Effect: [E.BlockMouth, E.GagMedium],
 					},
 				},
 				{
 					Name: "LargeBallGag",
 					Property: {
-						Effect: [E.BlockMouth],
+						Effect: [E.BlockMouth, E.GagHeavy],
 					},
 				},
 				{
 					Name: "LargeRingGag",
 					Property: {
-						Effect: [E.OpenMouth],
+						Effect: [E.OpenMouth, E.GagHeavy],
 					},
 				},
 			],
@@ -24649,6 +24649,54 @@ var AssetFemale3DCGExtended = {
 							{
 								imagePath:
 									"Assets/Female3DCG/ItemHandheld/Plushie_Courtney.png",
+							},
+						],
+					},
+				},
+				{
+					Name: "VelvetBunnyCabaret",
+					Key: "VelvetBunnyCabaret",
+					DrawImages: true,
+					Options: [
+						{}, // Off
+						{}, // Slime Queen Samantha
+						{}, // Snow
+						{}, // Dana
+						{}, // Roxhuo
+						{}, // Alice
+						{}, // Cali
+						{}, // Yvain
+						{}, // Samantha
+					],
+					DrawData: {
+						elementData: [
+							{ imagePath: "Screens/Inventory/ItemHandheld/Plushies/None.png" },
+							{
+								imagePath:
+									"Assets/Female3DCG/ItemHandheld/Plushie_SlimeQueenSamantha.png",
+							},
+							{
+								imagePath: "Assets/Female3DCG/ItemHandheld/Plushie_Snow.png",
+							},
+							{
+								imagePath:
+									"Assets/Female3DCG/ItemHandheld/Plushie_VelvetDana.png",
+							},
+							{
+								imagePath: "Assets/Female3DCG/ItemHandheld/Plushie_Roxhuo.png",
+							},
+							{
+								imagePath: "Assets/Female3DCG/ItemHandheld/Plushie_Alice.png",
+							},
+							{
+								imagePath: "Assets/Female3DCG/ItemHandheld/Plushie_Cali.png",
+							},
+							{
+								imagePath: "Assets/Female3DCG/ItemHandheld/Plushie_Yvain.png",
+							},
+							{
+								imagePath:
+									"Assets/Female3DCG/ItemHandheld/Plushie_Samantha2.png",
 							},
 						],
 					},

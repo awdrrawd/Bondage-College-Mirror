@@ -3370,6 +3370,7 @@ ItemPelvisBulkyDiaperBase,Diaper
 ItemPelvisBulkyDiaperCrotchPiece,Crotch Padding
 ItemPelvisBulkyDiaperTape,Tape
 ItemPelvisBulkyDiaperWaistBand,Waist Band
+ItemPelvisBulkyDiaperGradientBack,Gradient Back
 ItemPelvisBulkyDiaperGradient,Gradient
 ItemPelvisFemPelvisHarnessMain,Main
 ItemPelvisFemPelvisHarnessMetal,Metal
@@ -3835,7 +3836,9 @@ PantiesBulkyDiaperBase,Diaper
 PantiesBulkyDiaperCrotchPiece,Crotch Padding
 PantiesBulkyDiaperTape,Tape
 PantiesBulkyDiaperWaistBand,Waist Band
-PantiesBulkyDiaperGradient,Gradient
+PantiesBulkyDiaperGradientBack,Gradient Back
+PantiesBulkyDiaperGradient,Gradient Front
+PantiesBulkyDiaperBackground,Background
 PantiesCockSockBase,Cock Sock
 PantiesCockSockBow,Bow
 PantiesCockSockStripes,Stripes
@@ -3876,6 +3879,8 @@ PantiesPoofyDiaperCrotchPatch,Crotch Padding
 PantiesPoofyDiaperFrills,Frills
 PantiesPoofyDiaperTape,Tape
 PantiesPoofyDiaperGradient,Gradient
+PantiesPoofyDiaperGradientBack,Gradient Back
+PantiesPoofyDiaperBackground,Background
 PantiesPullDownPantiesPose1,Normal
 PantiesPullDownPantiesPose2,Pulled
 PantiesPullDownPantiesPose3,Exposed
@@ -3894,6 +3899,7 @@ PantiesWaistLegHarnessMetalC,Link metal parts
 PantiesLatexDiaperBase,Latex
 PantiesLatexDiaperShine,Shine
 PantiesLatexDiaperGradient,Gradient
+PantiesLatexDiaperBackground,Background
 PantiesUntrainersThinBase,Base
 PantiesUntrainersThinBack,Back
 PantiesUntrainersThinMiddle,Middle
