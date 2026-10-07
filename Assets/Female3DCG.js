@@ -44662,8 +44662,6 @@ var AssetFemale3DCG = [
 				Block: [
 					"ItemNipples",
 					"ItemNipplesPiercings",
-					"ItemVulva",
-					"ItemVulvaPiercings",
 					"ItemButt",
 					"ItemHands",
 					"ItemHandheld",
@@ -52597,6 +52595,10 @@ var AssetFemale3DCG = [
 						Name: "Samantha2",
 						AllowTypes: { VelvetBunnyCabaret: 8 },
 					},
+					{
+						Name: "Shadow",
+						AllowTypes: { SubbycatsPlace: 1 },
+					},
 				],
 			},
 			{
@@ -59229,7 +59231,7 @@ var AssetFemale3DCG = [
 				},
 			},
 			{
-				Name: "BallGagMask",
+				Name: "BallGag",
 				CopyConfig: {
 					AssetName: "BallGag",
 					GroupName: "ItemMouth",
@@ -59237,7 +59239,7 @@ var AssetFemale3DCG = [
 				},
 			},
 			{
-				Name: "BallGag",
+				Name: "BallGagMask",
 				CopyConfig: {
 					AssetName: "BallGagMask",
 					GroupName: "ItemMouth",
@@ -59261,7 +59263,7 @@ var AssetFemale3DCG = [
 				},
 			},
 			{
-				Name: "StitchedMuzzleGag",
+				Name: "LatexBallMuzzleGag",
 				CopyConfig: {
 					AssetName: "LatexBallMuzzleGag",
 					GroupName: "ItemMouth",
@@ -60145,7 +60147,7 @@ var AssetFemale3DCG = [
 				},
 			},
 			{
-				Name: "StitchedMuzzleGag",
+				Name: "LatexBallMuzzleGag",
 				CopyConfig: {
 					AssetName: "LatexBallMuzzleGag",
 					GroupName: "ItemMouth",
@@ -60382,7 +60384,7 @@ var AssetFemale3DCG = [
 					AssetName: "MouthFeatureGag",
 					BuyGroup: true,
 				},
-			}, // MouthFeatureGag
+			},
 			{
 				Name: "XmasStickerGag",
 				CopyConfig: {
@@ -68471,7 +68473,6 @@ var AssetFemale3DCG = [
 				Time: 10,
 				IsRestraint: false,
 				Prerequisite: ["AccessVulva", "NotChaste"],
-				Hide: ["Shoes", "ItemBoots", "ItemLegs"],
 				SetPose: ["KneelingSpread"],
 				Effect: [E.FillVulva, E.Freeze, E.Mounted],
 				Block: ["ItemPelvis", "ItemButt", "ItemVulva"],
