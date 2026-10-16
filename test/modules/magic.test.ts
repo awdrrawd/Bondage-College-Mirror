@@ -651,4 +651,64 @@ describe("MagicModule", () => {
 			expect(sent.actions()[0]).toContain("forcing");
 		});
 	});
+
+	describe("/lscg spellbook", () => {
+		const run = (arg?: string) => magic.commands.find(c => c.Tag === "spellbook")!.Action!(arg ?? "", "", arg ? [arg] : []);
+		const shown = () => sent.local().join(" ");
+		const keyword = (k: string) => `<b style="color:gold;font-style:normal;">${k}</b>`;
+
+		beforeEach(() => {
+			magic.settings.knownSpells = [
+				spell("Slumber", [LSCGSpellEffect.slumber], { AllowVoiceCast: true }),
+				spell("Bind", [LSCGSpellEffect.tighten, LSCGSpellEffect.none], { AllowVoiceCast: true, AllowPotion: true, CastingPhrase: "be still" }),
+				spell("Brew", [LSCGSpellEffect.slumber], { AllowPotion: true }),
+				spell("Quiet", [LSCGSpellEffect.slumber]),
+			];
+		});
+
+		it("lists every spell by default, with voice keywords and potion tags", () => {
+			run();
+			expect(shown()).toContain("Spellbook:");
+			expect(shown()).toContain(`<li>Slumber (${LSCGSpellEffect.slumber}): ${keyword("Slumber")}</li>`);
+			expect(shown()).toContain(`<li>Bind (${LSCGSpellEffect.tighten}): ${keyword("be still")} <small>[potion]</small></li>`);
+			expect(shown()).toContain(`<li>Brew (${LSCGSpellEffect.slumber}) <small>[potion]</small></li>`);
+			expect(shown()).toContain(`<li>Quiet (${LSCGSpellEffect.slumber})</li>`);
+		});
+
+		it("voice: only the voice-castable spells, with the phrase that casts each", () => {
+			run("Voice");
+			expect(shown()).toContain(`<li>Slumber (${LSCGSpellEffect.slumber}): ${keyword("Slumber")}</li>`);
+			expect(shown()).toContain(`<li>Bind (${LSCGSpellEffect.tighten}): ${keyword("be still")}</li>`);
+			expect(shown()).not.toContain("Brew");
+			expect(shown()).not.toContain("Quiet");
+		});
+
+		it("potion: only the spells that can be potions", () => {
+			run("potion");
+			expect(shown()).toContain(`<li>Bind (${LSCGSpellEffect.tighten})</li>`);
+			expect(shown()).toContain(`<li>Brew (${LSCGSpellEffect.slumber})</li>`);
+			expect(shown()).not.toContain("Slumber (");
+			expect(shown()).not.toContain("Quiet");
+		});
+
+		it("explains itself for anything else", () => {
+			run("spells");
+			expect(shown()).toContain("Usage: /lscg spellbook [voice/potion/all]");
+		});
+
+		it("escapes what the player typed", () => {
+			magic.settings.knownSpells = [spell("<img src=x>", [LSCGSpellEffect.slumber], { AllowVoiceCast: true })];
+			run();
+			expect(shown()).toContain("&lt;img src=x&gt;");
+			expect(shown()).not.toContain("<img");
+		});
+
+		it("says so when there are none", () => {
+			magic.settings.knownSpells = [spell("Quiet", [LSCGSpellEffect.slumber])];
+			run("voice");
+			expect(shown()).toContain("no spells that can be cast by voice");
+			run("potion");
+			expect(shown()).toContain("no spells that can be made into potions");
+		});
+	});
 });
