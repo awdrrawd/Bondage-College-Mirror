@@ -53,12 +53,12 @@ export function findDrawOrderPair(C, characters) {
 }
 
 /**
- * @returns {{oldList: (Character)[], newList: (Character)[], pairedSet: Set<number>}}
+ * @returns {{oldList: (OnlineCharacter)[], newList: (OnlineCharacter)[], pairedSet: Set<number>}}
  */
 function reorderedChatRoomCharacter() {
     const oldList = ChatRoomCharacter;
 
-    /** @type {(Character)[]} */
+    /** @type {(OnlineCharacter)[]} */
     const newList = [];
 
     // push all characters with nextCharacter to the end of the list
@@ -176,7 +176,7 @@ export function setupXCharacterDrawlist() {
 
     const func = HookManager.randomGlobalFunction(
         "CheckXLine",
-        /** @type {(characters: Character[], charsPerRow: number) => boolean} */
+        /** @type {(characters: OnlineCharacter[], charsPerRow: number) => boolean} */
         (characters, charsPerRow) => {
             if (characters.length <= charsPerRow) return false;
 
@@ -195,8 +195,9 @@ export function setupXCharacterDrawlist() {
 
     const func2 = HookManager.randomGlobalFunction(
         "CheckX",
-        /** @type {(xlineFlag: boolean, charsPerRow: number, charIdx: number) => [boolean, number]} */
-        (xlineFlag, charsPerRow, charIdx) => {
+        /** @type {(backgroundURL: string | undefined, xlineFlag: boolean, charsPerRow: number, charIdx: number) => [boolean, number]} */
+        (backgroundURL, xlineFlag, charsPerRow, charIdx) => {
+            if (!backgroundURL) return [false, charIdx];
             if (!xlineFlag) return [charIdx % charsPerRow === 0, charIdx];
             else {
                 if (charIdx === 0) return [true, 0];
@@ -206,9 +207,10 @@ export function setupXCharacterDrawlist() {
         }
     );
 
+    // In R133 version, a backgroundURL should be defined for the X line check to work correctly
     HookManager.patchFunction("ChatRoomCharacterViewDraw", {
         "ChatRoomCharacterViewLoopCharacters(": `const xlineFlag = ${func}(ChatRoomCharacterDrawlist, charsPerRow); ChatRoomCharacterViewLoopCharacters(`,
-        "if (charIdx % charsPerRow === 0) {": `const [pflag, pidx] = ${func2}(xlineFlag, charsPerRow, charIdx); if (pflag) {`,
+        "if (backgroundURL && charIdx % charsPerRow === 0) {": `const [pflag, pidx] = ${func2}(backgroundURL, xlineFlag, charsPerRow, charIdx); if (pflag) {`,
         "RectMakeRect(0, Y + charIdx * 100, viewWidth, viewHeight * roomZoom);":
             "RectMakeRect(0, Y + pidx * 100, viewWidth, viewHeight * roomZoom);",
     });

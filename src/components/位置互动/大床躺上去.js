@@ -3,6 +3,7 @@ import { ActivityManager } from "../../activityForward";
 import { DrawMods, SharedCenterModifier } from "@mod-utils/ChatRoomOrder";
 import { Prereqs } from "../../prereqs";
 import { findDrawOrderPair } from "@mod-utils/ChatRoomOrder/XCharacterDrawlist";
+import { isOnlineCharacter } from "../../lib/character";
 
 /**
  * @param {object} arg
@@ -69,12 +70,14 @@ const activities = [
             Name: "躺上去",
             Prerequisite: [
                 Prereqs.Acted.GroupIs("ItemDevices", ["Bed", "床左边", "床右边"]),
-                Prereqs.ActedCheck((C) => !findDrawOrderPair(C, ChatRoomCharacter)),
+                Prereqs.ActedCheck((C) => isOnlineCharacter(C) && !findDrawOrderPair(C, ChatRoomCharacter)),
             ],
             MaxProgress: 0,
             Target: ["ItemTorso"],
         },
         run: (player, sender, { SourceCharacter, SourceCharacterC, TargetCharacter }) => {
+            if (!isOnlineCharacter(SourceCharacterC)) return;
+
             if (TargetCharacter === player.MemberNumber) {
                 if (!ServerChatRoomGetAllowItem(sender, player)) return;
                 playerLiesInBed(
@@ -113,13 +116,15 @@ const activities = [
                 "UseHands",
                 Prereqs.or(Prereqs.Relation.Lover(), Prereqs.Relation.ActingOwnActed()),
                 Prereqs.Acting.GroupIs("ItemDevices", ["Bed", "床左边", "床右边"]),
-                Prereqs.ActingCheck((C) => !findDrawOrderPair(C, ChatRoomCharacter)),
+                Prereqs.ActingCheck((C) => isOnlineCharacter(C) && !findDrawOrderPair(C, ChatRoomCharacter)),
             ],
             MaxProgress: 0,
             Target: ["ItemTorso", "ItemArms"],
         },
         useImage: ["ItemDevices", "Bed"],
         run: (player, sender, { SourceCharacter, SourceCharacterC, TargetCharacter }) => {
+            if (!isOnlineCharacter(SourceCharacterC)) return;
+
             if (TargetCharacter === player.MemberNumber) {
                 if (!ServerChatRoomGetAllowItem(sender, player)) return;
                 playerLiesInBed(
