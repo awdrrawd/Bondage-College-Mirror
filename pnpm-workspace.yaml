@@ -1,0 +1,3 @@
+minimumReleaseAgeExclude:
+  - "@sugarch/bc-activity-manager@1.2.11"
+  - "@sugarch/bc-mod-utility@0.2.13"

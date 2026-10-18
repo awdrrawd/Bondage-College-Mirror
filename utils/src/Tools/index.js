@@ -202,9 +202,9 @@ export class Tools {
      * @returns {Optional<HTMLImageElement, {}>}
      */
     static getAssetImageThen(drawData, OverrideName) {
-        return monadic(this.getAssetURL(drawData, OverrideName))
-            .then((url) => DrawGetImage(url))
-            .filter((img) => img.complete);
+        return monadic(this.getAssetURL(drawData, OverrideName)).then((url) =>
+            DrawGetImage(url)
+        );
     }
 
     /**

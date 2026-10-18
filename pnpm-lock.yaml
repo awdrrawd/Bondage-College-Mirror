@@ -185,8 +185,8 @@ importers:
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.64.8)
       '@sugarch/bc-activity-manager':
-        specifier: ^1.2.10
-        version: 1.2.10(@sugarch/bc-event-handler@1.0.5(@sugarch/bc-mod-hook-manager@0.3.5(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0))(@sugarch/bc-mod-hook-manager@0.3.5(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0)
+        specifier: ^1.2.11
+        version: 1.2.11(@sugarch/bc-event-handler@1.0.5(@sugarch/bc-mod-hook-manager@0.3.5(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0))(@sugarch/bc-mod-hook-manager@0.3.5(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0)
       '@sugarch/bc-event-handler':
         specifier: ^1.0.5
         version: 1.0.5(@sugarch/bc-mod-hook-manager@0.3.5(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0)
@@ -579,8 +579,8 @@ packages:
   '@socket.io/component-emitter@3.1.2':
     resolution: {integrity: sha512-9BCxFwvbGg/RsZK9tjXd8s4UcwR0MWeFQ1XEKIQVVvAGJyINdrqKMcTRyLoK8Rse1GjzLV9cwjWV1olXRWEXVA==}
 
-  '@sugarch/bc-activity-manager@1.2.10':
-    resolution: {integrity: sha512-jZAp7BXUTJ1dQoiJJhjqZPGzfOyXBp/TE1cBmfrAQ6ZgJBfqlIZwm1CmXBN1WleUTUfs9LbAbmtoSMklA16qkA==}
+  '@sugarch/bc-activity-manager@1.2.11':
+    resolution: {integrity: sha512-hd8IrzuEX75XoaI714mJjQukLhN3Ru+Gs77cUgsBYssnkA1nakAsY7nhXQNDbA0TXGVcLFcVdiRG1mnOd9n35Q==}
     peerDependencies:
       '@sugarch/bc-event-handler': 1.0.5
       '@sugarch/bc-mod-hook-manager': 0.3.5
@@ -1821,7 +1821,7 @@ snapshots:
 
   '@socket.io/component-emitter@3.1.2': {}
 
-  '@sugarch/bc-activity-manager@1.2.10(@sugarch/bc-event-handler@1.0.5(@sugarch/bc-mod-hook-manager@0.3.5(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0))(@sugarch/bc-mod-hook-manager@0.3.5(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0)':
+  '@sugarch/bc-activity-manager@1.2.11(@sugarch/bc-event-handler@1.0.5(@sugarch/bc-mod-hook-manager@0.3.5(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0))(@sugarch/bc-mod-hook-manager@0.3.5(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0)':
     dependencies:
       '@sugarch/bc-event-handler': 1.0.5(@sugarch/bc-mod-hook-manager@0.3.5(bondage-club-mod-sdk@1.2.0))(bondage-club-mod-sdk@1.2.0)
       '@sugarch/bc-mod-hook-manager': 0.3.5(bondage-club-mod-sdk@1.2.0)
