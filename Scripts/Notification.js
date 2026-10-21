@@ -97,8 +97,12 @@ class NotificationEventHandler {
 		let titleEnd = "";
 		let C = data.character;
 		if (!C && data.memberNumber) C = Character.find(Char => Char.MemberNumber === data.memberNumber);
-		if (C && 'icon' in Notification.prototype) icon = DrawCharacterSegment(C, 168, 50, 164, 164).toDataURL("image/png");
-		if (data.characterName) titleStart = data.characterName + " - ";
+		const hideIdentity = C ? ChatRoomHideIdentity(C) : false;
+		if (C && 'icon' in Notification.prototype) {
+			icon = hideIdentity ? NotificationCharacterSilhouette(C) : DrawCharacterSegment(C, 168, 50, 164, 164).toDataURL("image/png");
+		}
+		if (hideIdentity) titleStart = InterfaceTextGet("Someone") + " - ";
+		else if (data.characterName) titleStart = data.characterName + " - ";
 		else if (C) titleStart = CharacterNickname(C) + " - ";
 		if (data.chatRoomName) titleEnd = InterfaceTextGet("NotificationTitleFromRoom").replace("ChatRoomName", "'" + data.chatRoomName + "'");
 
@@ -198,6 +202,29 @@ function NotificationLoad() {
 }
 
 /**
+ * Head crop of a character, filled in as a solid silhouette so the portrait cannot be recognized.
+ * @param {Character} C
+ * @returns {string} A PNG data URL, or the club logo if the character cannot be drawn
+ */
+function NotificationCharacterSilhouette(C) {
+	const segment = DrawCharacterSegment(C, 168, 50, 164, 164);
+	if (!segment?.width || !segment?.height) return "Icons/Logo.png";
+	const canvas = document.createElement("canvas");
+	canvas.width = segment.width;
+	canvas.height = segment.height;
+	const ctx = canvas.getContext("2d");
+	if (!ctx) return "Icons/Logo.png";
+	ctx.drawImage(segment, 0, 0);
+	ctx.globalCompositeOperation = "source-in";
+	ctx.fillStyle = "#2a2a2a";
+	ctx.fillRect(0, 0, canvas.width, canvas.height);
+	ctx.globalCompositeOperation = "destination-over";
+	ctx.fillStyle = "#d5d5d5";
+	ctx.fillRect(0, 0, canvas.width, canvas.height);
+	return canvas.toDataURL("image/png");
+}
+
+/**
  * Create a handler instance to track and handle notifications of that event type
  * @param {NotificationEventType} eventType
  * @param {NotificationSetting} setting
@@ -209,7 +236,7 @@ function NotificationEventHandlerSetup(eventType, setting) {
 /**
  * Create a new notification
  * @param {NotificationEventType} eventType - The type of event that occurred
- * @param {NotificationData} [data={}] - Data relating to the event that can be passed into a popup
+ * @param {NotificationData} [data] - Data relating to the event that can be passed into a popup
  * @returns {void} - Nothing
  */
 function NotificationRaise(eventType, data = {}) {
@@ -240,10 +267,10 @@ function NotificationResetAll() {
 /**
  * Returns whether popup notifications are permitted
  * @param {NotificationEventType} eventType - The type of event that occurred
- * @param {NotificationData} [data={}] - Data relating to the event that can be passed into a popup
+ * @param {NotificationData} [data] - Data relating to the event that can be passed into a popup
  * @returns {boolean} - Whether popups can appear
  */
-function NotificationPopupsEnabled(eventType, data) {
+function NotificationPopupsEnabled(eventType, data = {}) {
 	if (!("Notification" in window)) {
 		return false;
 	} else if (Notification.permission === "granted") {

@@ -208,7 +208,10 @@ const E = /** @type {const} */ ({
 	HideRestraints: "HideRestraints",
 
 	// #region Locks
-	/** Marks the item as being some kind of lock. @todo not renamed because layers usually have that name */
+	/**
+	 * Marks the item as being some kind of lock.
+	 * @todo not renamed because layers usually have that name
+	 */
 	Lock: "Lock",
 	/** Disables the item from being lock-picked by its wearer. */
 	NotSelfPickable: "NotSelfPickable",
@@ -6508,10 +6511,24 @@ var AssetFemale3DCG = [
 			{ Name: "LMF", Left: 195, Top: 255 },
 			{ Name: "BFPin", Left: 274, Top: 264 },
 			{
+				Name: "DisciplineCorner",
+				Left: 205,
+				Top: 257,
+				DefaultColor: ["#989898", "#001070", "#001070"],
+				Layer: [{ Name: "1" }, { Name: "2" }, { Name: "3" }],
+			},
+			{
 				Name: "CTSimplified",
 				Left: 200,
 				Top: 270,
 				DefaultColor: ["#000000", "#F0F0F0"],
+				Layer: [{ Name: "1" }, { Name: "2" }],
+			},
+			{
+				Name: "TheOddRoom",
+				Left: 205,
+				Top: 257,
+				DefaultColor: ["#FF0000", "#FFFFFF"],
 				Layer: [{ Name: "1" }, { Name: "2" }],
 			},
 			{ Name: "SADollhouse", Left: 178, Top: 268 },
@@ -75174,7 +75191,8 @@ var AssetFemale3DCG = [
 ];
 
 // #region Poses
-/** 3D Custom Girl based pose
+/**
+ * 3D Custom Girl based pose
  * @type {Pose[]}
  */
 var PoseFemale3DCG = [

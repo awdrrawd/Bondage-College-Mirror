@@ -48,9 +48,10 @@ const ChatRoomMapViewInteractionRange = 1;
 const ChatRoomMapViewRemoteRange = ChatRoomMapViewPerceptionRangeMax;
 const ChatRoomMapSignTextMaxLength = 150;
 
-/** @type {boolean[]}
+/**
+ * @type {boolean[]}
  * @deprecated Use {@link MapManager.Map.isTileVisible()}
-*/
+ */
 var ChatRoomMapViewVisibilityMask = [];
 /**
  * @type {boolean[]}
@@ -363,7 +364,7 @@ function ChatRoomMapViewShowEditor() {
  * @param {ChatRoomMapDoodad} item
  * @param {MapDataDoodadType} type
  * @param {boolean} updateRecent
- * @returns
+ * @returns {void}
  */
 function ChatRoomMapViewSetSelection(item, type, updateRecent=true) {
 	ChatRoomMapViewEditObject = CommonCloneDeep(item);
@@ -582,7 +583,7 @@ function ChatMapRoomViewCreateCategoryButton(callback, image, tooltip) {
  */
 function ChatRoomMapViewGetItems(search) {
 	if (search) { // can't search / didn't bother for effects because they have no name like "red" or "yellow tint"
-		let items = [...AssetsMapDataTiles, ...AssetsMapDataObjects, ...AssetsMapDataEffects];
+		let items = [...MapDataTiles.values(), ...MapDataObjects.values(), ...MapDataEffects.values()];
 		if (ChatRoomMapViewEditSubMode != "") {
 			items = items.filter((item) => item.Type == ChatRoomMapViewEditSubMode);
 		}
@@ -601,15 +602,15 @@ function ChatRoomMapViewGetItems(search) {
 	switch (ChatRoomMapViewEditMode) {
 		case "Tile":
 		case "TileType": {
-			const items = AssetsMapDataTiles.filter((tile) => tile.Type == ChatRoomMapViewEditSubMode);
+			const items = [...MapDataTiles.values()].filter((tile) => tile.Type == ChatRoomMapViewEditSubMode);
 			return [...items].map((item) => ChatRoomMapViewCreateMapElementItem(item));
 		}
 		case "Object": {
-			const items = AssetsMapDataObjects.filter((object) => object.Type == ChatRoomMapViewEditSubMode);
+			const items = [...MapDataObjects.values()].filter((object) => object.Type == ChatRoomMapViewEditSubMode);
 			return [...items].map((item) => ChatRoomMapViewCreateMapElementItem(item));
 		}
 		case "Effect":
-			return AssetsMapDataEffects.map((item) => ChatRoomMapViewCreateMapElementItem(item));
+			return [...MapDataEffects.values()].map((item) => ChatRoomMapViewCreateMapElementItem(item));
 		default:
 			return [];
 	}
@@ -657,6 +658,7 @@ function ChatRoomMapViewIsChatRoomMapTile(element) {
  * Creates an item for the chat room map view
  * @param {ChatRoomMapDoodad} item - The map element to create
  * @param {boolean} [updateRecent]
+ * @param {boolean} [readOnly]
  * @returns {Element} - The created item
  */
 function ChatRoomMapViewCreateMapElementItem(item, updateRecent=true, readOnly=false) {

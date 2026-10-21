@@ -18,6 +18,7 @@ var ServerCharacterNameRegex = /^[a-zA-Z ]{1,20}$/;
 var ServerCharacterNicknameRegex = /^[\p{L}\p{Nd}\p{Z}'\-]{1,20}$/u;
 var ServerChatMessageMaxLength = 2000;
 var ServerChatRoomDescriptionMaxLength = 300;
+var ServerChatRoomNameRegex = /^[\x20-\x7E]{1,20}$/;
 /** @type {ServerChatRoomLanguage[]} */
 const ServerChatRoomSupportedLanguages = ["EN", "DE", "FR", "ES", "CN", "RU", "UA"];
 
@@ -75,7 +76,7 @@ var ServerAccountUpdate = new class AccountUpdater {
 	constructor() {
 		/**
 		 * @private
-		 * @type {Map<keyof ServerAccountUpdateRequest, any>}
+		 * @type {Map<keyof ServerAccountUpdateRequest, unknown>}
 		 */
 		this.Queue = new Map;
 		/**
@@ -150,7 +151,8 @@ function ServerSetConnected(connected, errorMessage) {
 }
 
 /**
- * @private Use the {@link ServerIsLoggedIn} function instead.
+ * Use the {@link ServerIsLoggedIn} function instead.
+ * @private
  * @type {boolean}
  */
 let ServerIsLoggedIn_ = false;
@@ -219,7 +221,7 @@ function ServerInfo(data) {
  * Callback used when we are disconnected from the server, try to enter the reconnection mode (relog screen) if the
  * user was logged in
  * @param {ServerForceDisconnectMessage} [data] - Error to log
- * @param {boolean} [close=false] - close the transport
+ * @param {boolean} [close] - close the transport
  * @returns {void} - Nothing
  */
 function ServerDisconnect(data, close = false) {
@@ -302,7 +304,7 @@ function ServerHandleRelog(C) {
 var ServerPlayerChatRoom = {
 	/**
 	 * All registered callbacks representing distinct screens that must be checked in order to determine chatroom presence
-	 * @type {((module: ModuleType, screen: ScreenName) => boolean)[]}
+	 * @type {ScreenCheckCallback[]}
 	 */
 	callbacks: [],
 
@@ -678,7 +680,7 @@ function ServerAppearanceBundle(Appearance) {
  * @param {IAssetFamily} AssetFamily - Family of assets used for the appearance array
  * @param {AppearanceBundle} Bundle - Bundled appearance
  * @param {number} [SourceMemberNumber] - Member number of the user who triggered the change
- * @param {boolean} [AppearanceFull=false] - Whether or not the appearance should be assigned to an NPC's AppearanceFull
+ * @param {boolean} [AppearanceFull] - Whether or not the appearance should be assigned to an NPC's AppearanceFull
  * property
  * @returns {boolean} - Whether or not the appearance bundle update contained invalid items
  */
@@ -1426,23 +1428,78 @@ var ServerValidation = {
 	 * Private helper to quickly check strings
 	 * @param {number} maxLength
 	 * @param {string} defaultValue
-	 * @returns {(arg: any) => string}
+	 * @returns {(arg: unknown) => string}
 	 */
 	isString(maxLength, defaultValue) {
 		return (arg) => {
-			return typeof arg === "string" && arg.length <= maxLength ? arg : defaultValue;
+			if (typeof arg !== "string") return defaultValue;
+			arg = arg.trim();
+			return arg.length <= maxLength ? arg : defaultValue;
 		};
 	},
 
 	/**
 	 * Private helper to quickly check strings
 	 * @param {number} maxLength
-	 * @param {string|undefined} defaultValue
-	 * @returns {(arg: any) => string | undefined}
+	 * @param {string | undefined} defaultValue
+	 * @returns {(arg: unknown) => string | undefined}
 	 */
 	isStringOrUndefined(maxLength, defaultValue) {
 		return (arg) => {
-			return this.isString(maxLength, defaultValue)(arg) || typeof arg === "undefined" ? arg : defaultValue;
+			return this.isString(maxLength, defaultValue)(arg) || typeof arg === "undefined" ? /** @type {string | undefined } */ (arg) : defaultValue;
+		};
+	},
+
+	/**
+	 * Private helper to check strings against a regex
+	 * @param {RegExp} regex
+	 * @param {string} defaultValue
+	 * @returns {(arg: unknown) => string}
+	 */
+	stringMatchesRegex(regex, defaultValue) {
+		return (arg) => {
+			return typeof arg === "string" && regex.test(arg) ? arg : defaultValue;
+		};
+	},
+
+	/**
+	 * Private helper to validate array of integers
+	 * @template T
+	 * @param {T[]} defaultValue - Default value if the array fails validation
+	 * @param {object} [options] - Options to use for validation
+	 * @param {number} [options.minInteger] - Minimum bound, inclusive, for the integers
+	 * @param {number} [options.maxInteger] - Maximum bound, inclusive, for the integers
+	 * @param {boolean} [options.strict] - Whether a number not in [minInteger, maxInteger] should fail validation;
+	 *   otherwise the integer will just be removed.
+	 * @param {boolean} [options.unique] - Ensure the array contains unique values
+	 * @returns {(array: T[]) => T[]}
+	 */
+	isArrayOfIntegers(defaultValue, options = {}) {
+		const { minInteger = -Infinity, maxInteger = Infinity, strict = false, unique = false } = options;
+		return (array) => {
+			if (!Array.isArray(array)) return defaultValue;
+			if (unique) {
+				array = [...new Set(array).values()];
+			}
+			if (strict && !array.every((i) => CommonIsInteger(i, minInteger, maxInteger))) {
+				return defaultValue;
+			}
+			return array.filter((i) => CommonIsInteger(i, minInteger, maxInteger));
+		};
+	},
+
+	/**
+	 * Private helper to check arrays whose items must appear in a fixed list
+	 * @template T
+	 * @param {readonly T[]} list
+	 * @param {T[]} defaultIfEmpty
+	 * @returns {(arg: unknown) => T[]}
+	 */
+	isArrayOfItems(list, defaultIfEmpty) {
+		return (arg) => {
+			if (!Array.isArray(arg)) return defaultIfEmpty;
+			const values = arg.filter((r) => CommonIncludes(list, r));
+			return values.length > 0 ? values : defaultIfEmpty;
 		};
 	},
 
@@ -1638,10 +1695,10 @@ var ServerAccountDataSyncedValidate = {
 		return ret;
 	},
 	WhiteList: (arg, C) => {
-		return arg?.filter(i => CommonIsInteger(i, 0)) ?? [];
+		return ServerValidation.isArrayOfIntegers([], { minInteger: 0, unique: true })(arg);
 	},
 	BlackList: (arg, C) => {
-		return arg?.filter(i => CommonIsInteger(i, 0)) ?? [];
+		return ServerValidation.isArrayOfIntegers([], { minInteger: 0, unique: true })(arg);
 	},
 	/**
 	 * Validate a ChatRoomMapData object
@@ -1691,7 +1748,7 @@ var ServerAccountDataSyncedValidate = {
 	 * @returns {ChatRoomSearchSettings}
 	 */
 	ChatSearchSettings: (arg, C) => {
-		return ValidationApplyRecord(arg, C, ServerChatRoomSearchSettingsValidate, false);
+		return ValidationApplyRecord(arg, undefined, ServerChatRoomSearchSettingsValidate, false);
 	},
 	WardrobeCharacterNames: (arg, C) => {
 		const names = new Array(WardrobeSize).fill(C.Name);
@@ -1718,7 +1775,7 @@ var ServerAccountDataSyncedValidate = {
 
 /**
  * @param {unknown} arg
- * @return {arg is ChatRoomMapData}
+ * @returns {arg is ChatRoomMapData}
  */
 function ServerIsMapData(arg) {
 	const data = /** @type {ChatRoomMapData} */ (arg);
@@ -1731,7 +1788,7 @@ function ServerIsMapData(arg) {
 
 /**
  * Namespace with default values for {@link ChatRoomSearchSettings} properties.
- * @type {{ [k in keyof Required<ChatRoomSearchSettings>]: (arg: ChatRoomSearchSettings[k], C: Character) => ChatRoomSearchSettings[k] }}
+ * @type {{ [k in keyof Required<ChatRoomSearchSettings>]: (arg: ChatRoomSearchSettings[k], obj: never) => ChatRoomSearchSettings[k] }}
  * @namespace
  */
 const ServerChatRoomSearchSettingsValidate = {
@@ -1747,12 +1804,56 @@ const ServerChatRoomSearchSettingsValidate = {
 	FilterTerms: ServerValidation.isString(200, ""),
 };
 
+/** @type {readonly ServerChatRoomRole[]} */
+const ServerChatRoomRoleList = ["All", "Admin", "Whitelist"];
+
 /**
- * Namespace with functions for validating {@link ServerAccountDataSynced} properties, converting them into their valid {@link Character} counterpart
- * @satisfies {{ [k in keyof (ServerChatRoomData)]?: (arg: Partial<ServerChatRoomData[k]>) => ServerChatRoomData[k] }}
- * @namespace
+ * Per-field validators for {@link ServerChatRoomData} (for {@link ValidationApplyRecord}).
+ * @satisfies {{ [k in keyof ServerChatRoomData]?: (arg: unknown, C: Character) => ServerChatRoomData[k] }}
  */
-const ServerChatRoomDataValidate = {
+var ServerChatRoomDataValidationRecord = {
+	Name: ServerValidation.stringMatchesRegex(ServerChatRoomNameRegex, ""),
+	Description: ServerValidation.isString(ServerChatRoomDescriptionMaxLength, ""),
+	Background: ServerValidation.isString(100, ""),
+	/**
+	 * @param {unknown} arg
+	 * @returns {ServerChatRoomGame}
+	 */
+	Game(arg) {
+		/** @type {ServerChatRoomGame[]} */
+		const games = ["", "ClubCard", "LARP", "MagicBattle", "GGTS", "Prison"];
+		return CommonIncludes(games, arg) ? arg : "";
+	},
+	/**
+	 * @param {unknown} arg
+	 * @returns {ServerChatRoomSpace}
+	 */
+	Space(arg) {
+		/** @type {ServerChatRoomSpace[]} */
+		const spaces = ["X", "", "M", "Asylum"];
+		return CommonIncludes(spaces, arg) ? arg : "";
+	},
+	Language: ServerValidation.isItem([...ServerChatRoomSupportedLanguages], "EN"),
+	/**
+	 * @param {unknown} arg
+	 * @returns {number}
+	 */
+	Limit(arg) {
+		return CommonIsInteger(arg, 2, 20) ? /** @type {number} */ (arg) : 10;
+	},
+	Admin: ServerValidation.isArrayOfIntegers([], { minInteger: 1 }),
+	Ban: ServerValidation.isArrayOfIntegers([], { minInteger: 1 }),
+	Whitelist: ServerValidation.isArrayOfIntegers([], { minInteger: 1 }),
+	Visibility: ServerValidation.isArrayOfItems(ServerChatRoomRoleList, ["All"]),
+	Access: ServerValidation.isArrayOfItems(ServerChatRoomRoleList, ["All"]),
+	/**
+	 * @param {unknown} arg
+	 * @returns {ServerChatRoomBlockCategory[]}
+	 */
+	BlockCategory(arg) {
+		if (!Array.isArray(arg)) return [];
+		return /** @type {ServerChatRoomBlockCategory[]} */ (arg.filter((c) => typeof c === "string" && (typeof ChatBlockItemList === "undefined" || ChatBlockItemList.includes(c))));
+	},
 	/** @type {((arg: Partial<ServerChatRoomCustomData>) => ServerChatRoomCustomData) & { [k in keyof (Required<ServerChatRoomCustomData>)]: (arg: ServerChatRoomCustomData[k]) => ServerChatRoomCustomData[k] }} */
 	Custom: Object.assign(
 		(arg) => {
@@ -1764,11 +1865,11 @@ const ServerChatRoomDataValidate = {
 				 * @param {string} img
 				 * @returns
 				 */
-				ImageURL: ServerChatRoomDataValidate.Custom.ImageURL(arg.ImageURL),
-				SizeMode: ServerChatRoomDataValidate.Custom.SizeMode(arg.SizeMode),
-				ImageFilter: ServerChatRoomDataValidate.Custom.ImageFilter(arg.ImageFilter),
-				MusicURL: ServerChatRoomDataValidate.Custom.MusicURL(arg.MusicURL),
-				MusicStart: ServerChatRoomDataValidate.Custom.MusicStart(arg.MusicStart),
+				ImageURL: ServerChatRoomDataValidationRecord.Custom.ImageURL(arg?.ImageURL),
+				SizeMode: ServerChatRoomDataValidationRecord.Custom.SizeMode(arg?.SizeMode),
+				ImageFilter: ServerChatRoomDataValidationRecord.Custom.ImageFilter(arg?.ImageFilter),
+				MusicURL: ServerChatRoomDataValidationRecord.Custom.MusicURL(arg?.MusicURL),
+				MusicStart: ServerChatRoomDataValidationRecord.Custom.MusicStart(arg?.MusicStart),
 			};
 			if (custom.ImageURL === undefined) delete custom.SizeMode;
 			if (custom.MusicURL === undefined) delete custom.MusicStart;
@@ -1803,8 +1904,89 @@ const ServerChatRoomDataValidate = {
 			},
 			MusicStart: ServerValidation.isNumber(undefined),
 		}
-	)
+	),
 };
+
+/**
+ * Validates a chatroom's data
+ * @param {unknown} data
+ */
+function ServerChatRoomDataValidate(data) {
+	return ValidationApplyRecord(data, undefined, ServerChatRoomDataValidationRecord, true);
+}
+
+/**
+ * Per-field validators for {@link ServerChatRoomSearchData} (for {@link ValidationApplyRecord}).
+ * @satisfies {{ [k in keyof ServerChatRoomSearchData]?: (arg: unknown, C: Character) => ServerChatRoomSearchData[k] }}
+ */
+var ServerChatRoomSearchDataValidationRecord = {
+	Name: ServerValidation.stringMatchesRegex(ServerChatRoomNameRegex, ""),
+	Description: ServerValidation.isString(ServerChatRoomDescriptionMaxLength, ""),
+	Creator: ServerValidation.isString(20, ""),
+	Language: ServerValidation.isItem([...ServerChatRoomSupportedLanguages], "EN"),
+	/**
+	 * @param {unknown} arg
+	 * @returns {number}
+	 */
+	CreatorMemberNumber(arg) {
+		return CommonIsInteger(arg, 1) ? /** @type {number} */ (arg) : 0;
+	},
+	/**
+	 * @param {unknown} arg
+	 * @returns {number}
+	 */
+	Creation(arg) {
+		return CommonIsNumeric(arg) ? /** @type {number} */ (arg) : 0;
+	},
+	/**
+	 * @param {unknown} arg
+	 * @returns {number}
+	 */
+	MemberCount(arg) {
+		return CommonIsInteger(arg, 0, 20) ? /** @type {number} */ (arg) : 0;
+	},
+	/**
+	 * @param {unknown} arg
+	 * @returns {number}
+	 */
+	MemberLimit(arg) {
+		return CommonIsInteger(arg, 2, 20) ? /** @type {number} */ (arg) : 10;
+	},
+	BlockCategory: ServerChatRoomDataValidationRecord.BlockCategory,
+	Game: ServerChatRoomDataValidationRecord.Game,
+	Space: ServerChatRoomDataValidationRecord.Space,
+	Visibility: ServerValidation.isArrayOfItems(ServerChatRoomRoleList, ["All"]),
+	Access: ServerValidation.isArrayOfItems(ServerChatRoomRoleList, ["All"]),
+	MapType: ServerValidation.isString(20, "Never"),
+	CanJoin: ServerValidation.isBool(false),
+	/**
+	 * @param {unknown} arg
+	 * @returns {ServerFriendInfo[]}
+	 */
+	Friends(arg) {
+		if (!Array.isArray(arg)) return [];
+		/** @type {ServerFriendInfo[]} */
+		const ret = [];
+		for (const friend of arg) {
+			if (!CommonIsObject(friend)) continue;
+			const Type = friend.Type === "Submissive" ? "Submissive" : friend.Type === "Friend" ? "Friend" : null;
+			if (Type == null) continue;
+			const MemberNumber = CommonIsInteger(friend.MemberNumber, 1) ? friend.MemberNumber : 0;
+			const MemberName = ServerValidation.isString(20, "")(friend.MemberName);
+			if (MemberNumber > 0) ret.push({ Type, MemberNumber, MemberName });
+		}
+		return ret;
+	},
+};
+
+/**
+ * Validates search results
+ * @param {unknown} data
+ * @returns {ServerChatRoomSearchData}
+ */
+function ServerChatRoomSearchDataValidate(data) {
+	return ValidationApplyRecord(data, undefined, ServerChatRoomSearchDataValidationRecord, true);
+}
 
 const ServerDefaultTimeout = 3000;
 
@@ -1850,8 +2032,8 @@ class ServerJoinError extends ServerError {
  *
  * @template T
  * @param {number} timeout
- * @param {((resolve: (value: T | PromiseLike<T>) => void, reject: (reason?: any) => void) => void)} executor
- * @return {Promise<T>}
+ * @param {((resolve: (value: T | PromiseLike<T>) => void, reject: (reason?: Error) => void) => void)} executor
+ * @returns {Promise<T>}
  */
 function ServerPromiseWithTimeout(timeout, executor) {
 	const work = new Promise(executor);
@@ -1869,7 +2051,7 @@ let ServerRoomSearchLastQuery = null;
  * Perform a search query against the server
  * @param {string} queryString
  * @param {Omit<ServerChatRoomSearchRequest, "Query">} options
- * @return {Promise<Result<ServerChatRoomSearchResultResponse, ServerError>>}
+ * @returns {Promise<Result<ServerChatRoomSearchResultResponse, ServerError>>}
  */
 async function ServerRoomSearch(queryString, options) {
 	/** @type {ServerChatRoomSearchRequest} */
@@ -1889,6 +2071,13 @@ async function ServerRoomSearch(queryString, options) {
 		return await ServerPromiseWithTimeout(ServerDefaultTimeout, (resolve) => {
 			ServerSocket.once("ChatRoomSearchResult", (data) => {
 				ServerRoomSearchLastQueryTime = 0;
+				if (!CommonIsArray(data)) {
+					resolve(Result.success([]));
+					return;
+				}
+				data = data.map((row) =>
+					ValidationApplyRecord(row, undefined, ServerChatRoomSearchDataValidationRecord, true)
+				);
 				resolve(Result.success(data));
 			});
 
@@ -1905,7 +2094,7 @@ let ServerRoomJoinLastQueryTime = 0;
 /**
  * Perform a join query against the server
  * @param {string} roomName
- * @return {Promise<Result<string, ServerError>>}
+ * @returns {Promise<Result<string, ServerError>>}
  */
 async function ServerRoomJoin(roomName) {
 	if (ServerRoomJoinLastQuery === roomName && ServerRoomJoinLastQueryTime + ServerDefaultTimeout > CommonTime()) {
