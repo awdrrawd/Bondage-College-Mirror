@@ -13861,9 +13861,8 @@ var AssetFemale3DCGExtended = {
 				LastShrinkWarningTime: 0,
 				NextShrinkTime: 0,
 				ShrinkCooldown: 0,
-				TriggerValues: CommonConvertArrayToString(
-					InventoryItemVulvaTechnoChastityCageVoiceTriggers,
-				),
+				TriggerValues:
+					InventoryItemVulvaTechnoChastityCageVoiceTriggers.join(","),
 			},
 			ScriptHooks: {
 				Click: InventoryItemVulvaTechnoChastityCageClickHook,
@@ -14114,9 +14113,7 @@ var AssetFemale3DCGExtended = {
 			},
 			BaselineProperty: {
 				AccessMode: "",
-				TriggerValues: CommonConvertArrayToString(
-					ItemVulvaFuturisticVibratorTriggers,
-				),
+				TriggerValues: ItemVulvaFuturisticVibratorTriggers.join(","),
 			},
 		}, // FuturisticVibrator
 		FullCasingCage: {
@@ -21195,9 +21192,8 @@ var AssetFemale3DCGExtended = {
 				PunishStruggle: false,
 				PunishStruggleOther: false,
 				AccessMode: "",
-				TriggerValues: CommonConvertArrayToString(
-					InventoryItemPelvisModularChastityBeltVoiceTriggers,
-				),
+				TriggerValues:
+					InventoryItemPelvisModularChastityBeltVoiceTriggers.join(","),
 			},
 		}, // ModularChastityBelt
 		WaistLegHarness: {
@@ -24712,6 +24708,7 @@ var AssetFemale3DCGExtended = {
 						{}, // Yu Fantôme
 						{}, // Clara
 						{}, // Evelia
+						{}, // Carina
 					],
 					DrawData: {
 						elementData: [
@@ -24767,6 +24764,9 @@ var AssetFemale3DCGExtended = {
 							},
 							{
 								imagePath: "Assets/Female3DCG/ItemHandheld/Plushie_Evelia.png",
+							},
+							{
+								imagePath: "Assets/Female3DCG/ItemHandheld/Plushie_Carina.png",
 							},
 						],
 					},
@@ -24866,6 +24866,64 @@ var AssetFemale3DCGExtended = {
 							},
 							{
 								imagePath: "Assets/Female3DCG/ItemHandheld/Plushie_Dahlia.png",
+							},
+						],
+					},
+				},
+				{
+					Name: "MansionValentine",
+					Key: "MansionValentine",
+					DrawImages: true,
+					Options: [
+						{}, // Off
+						{}, // Julia Valentine
+						{}, // Luminas Valentine
+						{}, // Nina Valentine
+						{}, // Marsy Valentine
+						{}, // Audriana Valentine
+						{}, // Xiaohuahuo Valentine
+						{}, // Lucy Valentine
+						{}, // Kaede Valentine
+						{}, // Alena Brenhines
+					],
+					DrawData: {
+						elementData: [
+							{ imagePath: "Screens/Inventory/ItemHandheld/Plushies/None.png" },
+							{
+								imagePath:
+									"Assets/Female3DCG/ItemHandheld/Plushie_JuliaValentine.png",
+							},
+							{
+								imagePath:
+									"Assets/Female3DCG/ItemHandheld/Plushie_LuminasValentine.png",
+							},
+							{
+								imagePath:
+									"Assets/Female3DCG/ItemHandheld/Plushie_NinaValentine.png",
+							},
+							{
+								imagePath:
+									"Assets/Female3DCG/ItemHandheld/Plushie_MarsyValentine.png",
+							},
+							{
+								imagePath:
+									"Assets/Female3DCG/ItemHandheld/Plushie_AudrianaValentine.png",
+							},
+							{
+								imagePath:
+									"Assets/Female3DCG/ItemHandheld/Plushie_XiaohuahuoValentine.png",
+							},
+							{
+								imagePath:
+									"Assets/Female3DCG/ItemHandheld/Plushie_LucyValentine.png",
+							},
+							{
+								imagePath:
+									"Assets/Female3DCG/ItemHandheld/Plushie_KaedeValentine.png",
+							},
+							{
+								imagePath:
+									"Assets/Female3DCG/ItemHandheld/Plushie_AlenaBrenhines.png",
 							},
 						],
 					},
