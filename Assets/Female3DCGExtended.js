@@ -5733,6 +5733,81 @@ var AssetFemale3DCGExtended = {
 			],
 			ChangeWhenLocked: false,
 		}, // SteelBelt
+		PetUpperSuit: {
+			Archetype: ExtendedArchetype.MODULAR,
+			ChangeWhenLocked: false,
+			Modules: [
+				{
+					Name: "HandCuffs",
+					DrawImages: false,
+					Key: "l",
+					Options: [
+						{
+							Property: {
+								Difficulty: 8,
+								Effect: [E.Block, E.BlockWardrobe],
+								AllowActivePose: [
+									"BackElbowTouch",
+									"OverTheHead",
+									"Yoked",
+									"AllFours",
+								],
+								SetPose: ["BackElbowTouch"],
+							},
+							Expression: [{ Group: "Blush", Name: "Medium", Timer: 10 }],
+						},
+						{
+							Property: {
+								Difficulty: 8,
+								Effect: [E.CuffedArms, E.Mounted],
+								SetPose: ["OverTheHead"],
+							},
+							Expression: [{ Group: "Blush", Name: "Medium", Timer: 10 }],
+						},
+					],
+				},
+				{
+					Name: "LegCuffs",
+					DrawImages: false,
+					Key: "ll",
+					Options: [
+						{},
+						{
+							Property: {
+								Difficulty: 8,
+								Effect: [E.CuffedFeet, E.Mounted],
+								SetPose: ["KneelingSpread"],
+							},
+							Expression: [{ Group: "Blush", Name: "Medium", Timer: 10 }],
+						},
+					],
+				},
+				{
+					Name: "AdjustHeight",
+					DrawImages: false,
+					Key: "lll",
+					Options: [
+						{},
+						{
+							HasSubscreen: true,
+							ArchetypeConfig: {
+								Archetype: ExtendedArchetype.VARIABLEHEIGHT,
+								MaxHeight: 0,
+								MinHeight: -250,
+								DrawData: {
+									elementData: [
+										{ position: [1140, 650, 100, 500], icon: "rope" },
+									],
+								},
+								DialogPrefix: {
+									Chat: "SuspensionChange",
+								},
+							},
+						},
+					],
+				},
+			],
+		}, // PetUpperSuit
 	}, // ItemArms
 	ItemNeck: {
 		ShinySteelCollar: {
@@ -14470,15 +14545,13 @@ var AssetFemale3DCGExtended = {
 					Name: "Base",
 					Property: {
 						Difficulty: 0,
-						Intensity: 0,
 					},
 				},
 				{
 					Name: "Chain",
 					Property: {
 						Difficulty: 8,
-						Intensity: 1,
-						Effect: [E.Freeze, E.Egged],
+						Effect: [E.Freeze],
 					},
 					Random: false,
 				},
@@ -14486,8 +14559,7 @@ var AssetFemale3DCGExtended = {
 					Name: "Hair",
 					Property: {
 						Difficulty: 4,
-						Intensity: 1,
-						Effect: [E.Egged],
+						Effect: [E.FixedHead],
 					},
 				},
 			],
