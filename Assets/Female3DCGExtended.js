@@ -13674,6 +13674,112 @@ var AssetFemale3DCGExtended = {
 				},
 			],
 		}, // LatexbeltBed
+		TrashCan: {
+			Archetype: ExtendedArchetype.TYPED,
+			DrawImages: false,
+			Options: [
+				{ Name: "OpenLid" },
+				{ Name: "CloseLid" },
+				{ Name: "OpenFlap" },
+			],
+			BaselineProperty: { Opacity: 1 },
+			ScriptHooks: {
+				Init: PropertyOpacityInit,
+				Load: PropertyOpacityLoad,
+				Draw: PropertyOpacityDraw,
+				Exit: PropertyOpacityExit,
+			},
+			DrawData: {
+				elementData: ExtendedXYClothes[3].map((tuple) => ({
+					position: [tuple[0], tuple[1] + 100],
+				})),
+			},
+		}, // TrashCan
+		GiantStuffedToy: {
+			Archetype: ExtendedArchetype.TYPED,
+			DrawImages: false,
+			Options: [{ Name: "Bear" }],
+			BaselineProperty: { Opacity: 0.7 },
+			ScriptHooks: {
+				Init: PropertyOpacityInit,
+				Load: PropertyOpacityLoad,
+				Draw: PropertyOpacityDraw,
+				Exit: PropertyOpacityExit,
+			},
+			DrawData: {
+				elementData: ExtendedXYClothes[1].map((tuple) => ({
+					position: [tuple[0], tuple[1] + 100],
+				})),
+			},
+		}, // GiantStuffedToy
+		LegSpreadDisplayStand: {
+			Archetype: ExtendedArchetype.MODULAR,
+			ChangeWhenLocked: false,
+			Modules: [
+				{
+					Name: "Pose",
+					DrawImages: false,
+					Key: "o",
+					Options: [
+						{ Property: { SetPose: ["BackElbowTouch", "KneelingSpread"] } },
+						{ Property: { SetPose: ["OverTheHead", "KneelingSpread"] } },
+					],
+				},
+				{
+					Name: "MouthRestraint",
+					DrawImages: false,
+					Key: "g",
+					Options: [{}, {}],
+				},
+				{
+					Name: "GenitalProp",
+					DrawImages: false,
+					Key: "v",
+					Options: [{}, {}],
+				},
+				{
+					Name: "AdjustHeight",
+					DrawImages: false,
+					Key: "d",
+					Options: [
+						{},
+						{
+							HasSubscreen: true,
+							ArchetypeConfig: {
+								Archetype: ExtendedArchetype.VARIABLEHEIGHT,
+								MaxHeight: 0,
+								MinHeight: -250,
+								DrawData: {
+									elementData: [
+										{ position: [1140, 650, 100, 500], icon: "rope" },
+									],
+								},
+								DialogPrefix: {
+									Chat: "SuspensionChange",
+								},
+							},
+						},
+					],
+				},
+			],
+		}, // LegSpreadDisplayStand
+		BoxingBag: {
+			Archetype: ExtendedArchetype.TYPED,
+			DrawImages: false,
+			Options: [{ Name: "RemovePhoto" }, { Name: "AttachPhoto" }],
+			BaselineProperty: { Opacity: 1 },
+			ScriptHooks: {
+				Init: PropertyOpacityInit,
+				Load: PropertyOpacityLoad,
+				Draw: PropertyOpacityDraw,
+				Exit: PropertyOpacityExit,
+			},
+			DrawData: {
+				elementData: ExtendedXYClothes[2].map((tuple) => ({
+					position: [tuple[0], tuple[1] + 100],
+				})),
+			},
+		}, // BoxingBag
 	}, // ItemDevices
 	ItemBoots: {
 		ToeTape: {
