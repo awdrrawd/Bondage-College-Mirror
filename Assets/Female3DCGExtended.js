@@ -13893,6 +13893,66 @@ var AssetFemale3DCGExtended = {
 			],
 			ChangeWhenLocked: false,
 		}, // GlassJar
+		ShackledOneBarPrison: {
+			Archetype: ExtendedArchetype.MODULAR,
+			ChangeWhenLocked: false,
+			ChatTags: [
+				CommonChatTags.SOURCE_CHAR,
+				CommonChatTags.DEST_CHAR,
+				CommonChatTags.ASSET_NAME,
+			],
+			Modules: [
+				{
+					Name: "LegPose",
+					DrawImages: false,
+					Key: "o",
+					Options: [
+						{ Property: { SetPose: ["BaseLower"] } },
+						{
+							Prerequisite: ["CanLegsClosed"],
+							Property: { SetPose: ["LegsClosed"] },
+						},
+						{ Prerequisite: ["CanSpread"], Property: { SetPose: ["Spread"] } },
+					],
+				},
+				{
+					Name: "PistonMovement",
+					DrawImages: false,
+					Key: "d",
+					Options: [
+						{},
+						{
+							Property: {
+								Intensity: 0,
+								Effect: [E.Egged, E.FillVulva, E.VulvaShaft],
+								Difficulty: 5,
+							},
+						},
+						{
+							Property: {
+								Intensity: 1,
+								Effect: [E.Egged, E.Vibrating, E.FillVulva, E.VulvaShaft],
+								Difficulty: 2,
+							},
+						},
+						{
+							Property: {
+								Intensity: 2,
+								Effect: [E.Egged, E.Vibrating, E.FillVulva, E.VulvaShaft],
+								Difficulty: 3,
+							},
+						},
+						{
+							Property: {
+								Intensity: 3,
+								Effect: [E.Egged, E.Vibrating, E.FillVulva, E.VulvaShaft],
+								Difficulty: 4,
+							},
+						},
+					],
+				},
+			],
+		}, // ShackledOneBarPrison
 	}, // ItemDevices
 	ItemBoots: {
 		ToeTape: {
@@ -20666,6 +20726,11 @@ var AssetFemale3DCGExtended = {
 				Iterations: 0,
 			},
 		}, //BountySuitcaseEmpty
+		PumpkinPot: {
+			Archetype: ExtendedArchetype.TYPED,
+			DrawImages: false,
+			Options: [{ Name: "None" }, { Name: "Chain" }],
+		}, // PumpkinPot
 	}, // ItemMisc
 	ItemPelvis: {
 		FuturisticChastityBelt: {
@@ -21829,6 +21894,59 @@ var AssetFemale3DCGExtended = {
 				Chat: "BodyMarkingsWombTattoosSet",
 			},
 		}, //WombTattoos
+		FortuneChastityBelt: {
+			Archetype: ExtendedArchetype.MODULAR,
+			ChangeWhenLocked: false,
+			ChatTags: [
+				CommonChatTags.SOURCE_CHAR,
+				CommonChatTags.DEST_CHAR,
+				CommonChatTags.ASSET_NAME,
+			],
+			BaselineProperty: {
+				OrgasmCount: 0,
+				RuinedOrgasmCount: 0,
+			},
+			Modules: [
+				{
+					Name: "Shield",
+					Key: "s",
+					DrawImages: false,
+					Options: [
+						{},
+						{
+							Prerequisite: ["CanCoverVulva"],
+							Property: {
+								Effect: [E.Chaste],
+								Block: ["ItemVulva", "ItemVulvaPiercings"],
+							},
+						},
+						{
+							Property: {
+								Effect: [E.ButtChaste],
+								Block: ["ItemButt"],
+							},
+						},
+						{
+							Prerequisite: ["CanCoverVulva"],
+							Property: {
+								Effect: [E.Chaste, E.ButtChaste],
+								Block: ["ItemVulva", "ItemVulvaPiercings", "ItemButt"],
+							},
+						},
+					],
+				},
+				{
+					Name: "OrgasmPrevention",
+					Key: "o",
+					DrawImages: false,
+					Options: [
+						{},
+						{ Property: { Effect: ["DenialMode"] } },
+						{ Property: { Effect: ["DenialMode", "RuinOrgasms"] } },
+					],
+				},
+			],
+		}, // FortuneChastityBelt
 	}, // ItemPelvis
 	ItemEars: {
 		FuturisticEarphones: {
@@ -25370,6 +25488,39 @@ var AssetFemale3DCGExtended = {
 							{
 								imagePath:
 									"Assets/Female3DCG/ItemHandheld/Plushie_AlenaBrenhines.png",
+							},
+						],
+					},
+				},
+				{
+					Name: "AybesSuite",
+					Key: "AybesSuite",
+					DrawImages: true,
+					Options: [
+						{}, // Off
+						{}, // Aybes (1)
+						{}, // Ash (2)
+						{}, // Domi (3)
+						{}, // Elaina (4)
+					],
+					DrawData: {
+						elementData: [
+							{ imagePath: "Screens/Inventory/ItemHandheld/Plushies/None.png" },
+							{
+								imagePath:
+									"Assets/Female3DCG/ItemHandheld/Plushie_Aybes_the_chasted.png",
+							},
+							{
+								imagePath:
+									"Assets/Female3DCG/ItemHandheld/Plushie_Ash_the_cute.png",
+							},
+							{
+								imagePath:
+									"Assets/Female3DCG/ItemHandheld/Plushie_Domi_the_gremlin.png",
+							},
+							{
+								imagePath:
+									"Assets/Female3DCG/ItemHandheld/Plushie_puppygirl_Elaina.png",
 							},
 						],
 					},

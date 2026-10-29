@@ -3230,6 +3230,27 @@ ItemDevicesLegSpreadDisplayStandSetv0,SourceCharacter removes the genital prop o
 ItemDevicesLegSpreadDisplayStandSetv1,SourceCharacter adds a genital prop on DestinationCharacter stand.
 ItemDevicesLegSpreadDisplayStandSetd0,SourceCharacter resets the height on DestinationCharacter stand.
 ItemDevicesLegSpreadDisplayStandSetd1,SourceCharacter changes the height on DestinationCharacter stand.
+ItemDevicesShackledOneBarPrisonSelectBase,Configure the device
+ItemDevicesShackledOneBarPrisonSelectLegPose,Set the leg pose
+ItemDevicesShackledOneBarPrisonSelectPistonMovement,Set the dildo insertion speed or position
+ItemDevicesShackledOneBarPrisonModuleLegPose,Leg Pose
+ItemDevicesShackledOneBarPrisonModulePistonMovement,Dildo Speed
+ItemDevicesShackledOneBarPrisonOptiono0,Opened
+ItemDevicesShackledOneBarPrisonOptiono1,Closed
+ItemDevicesShackledOneBarPrisonOptiono2,Spread
+ItemDevicesShackledOneBarPrisonOptiond0,Stop Lowest
+ItemDevicesShackledOneBarPrisonOptiond1,Stop Highest
+ItemDevicesShackledOneBarPrisonOptiond2,Slow
+ItemDevicesShackledOneBarPrisonOptiond3,Medium
+ItemDevicesShackledOneBarPrisonOptiond4,Fast
+ItemDevicesShackledOneBarPrisonSeto0,SourceCharacter opens the legs on DestinationCharacter one bar prison.
+ItemDevicesShackledOneBarPrisonSeto1,SourceCharacter closes the legs on DestinationCharacter one bar prison.
+ItemDevicesShackledOneBarPrisonSeto2,SourceCharacter spreads the legs on DestinationCharacter one bar prison.
+ItemDevicesShackledOneBarPrisonSetd0,SourceCharacter stops the dildo at the lowest position on DestinationCharacter one bar prison.
+ItemDevicesShackledOneBarPrisonSetd1,SourceCharacter stops the dildo at the highest position on DestinationCharacter one bar prison.
+ItemDevicesShackledOneBarPrisonSetd2,SourceCharacter sets the dildo insertion to slow speed on DestinationCharacter one bar prison.
+ItemDevicesShackledOneBarPrisonSetd3,SourceCharacter sets the dildo insertion to medium speed on DestinationCharacter one bar prison.
+ItemDevicesShackledOneBarPrisonSetd4,SourceCharacter sets the dildo insertion to fast speed on DestinationCharacter one bar prison.
 ItemDevicesTrashCanSelect,Configure the trash can
 ItemDevicesTrashCanCloseLid,Close Lid
 ItemDevicesTrashCanOpenFlap,Open Flap
@@ -5423,6 +5444,11 @@ ItemMiscPetPotatoSetFloor,SourceCharacter puts the AssetName down.
 ItemMiscPetPotatoSetLap,SourceCharacter picks up the AssetName.
 ItemMiscPortalLinkPadlockDetail,Can only be opened using a PortalLink Tablet
 ItemMiscPortalLinkPadlockIntro,"""Accidents hurts… Safety First!"""
+ItemMiscPumpkinPotChain,Nipples
+ItemMiscPumpkinPotNone,No Chain
+ItemMiscPumpkinPotSelect,Configure the candy bucket chains
+ItemMiscPumpkinPotSetNone,SourceCharacter removes the nipple chains from DestinationCharacter pumpkin candy bucket.
+ItemMiscPumpkinPotSetChain,SourceCharacter adds nipple chains to DestinationCharacter pumpkin candy bucket.
 ItemMiscServingTrayCake,Cake
 ItemMiscServingTrayCookies,Cookies
 ItemMiscServingTrayDrinks,Drinks
@@ -6231,6 +6257,25 @@ ItemPelvisForbiddenChastityBeltSets0,SourceCharacter disables DestinationCharact
 ItemPelvisForbiddenChastityBeltSets1,SourceCharacter sets DestinationCharacter AssetName to low intensity.
 ItemPelvisForbiddenChastityBeltSets2,SourceCharacter sets DestinationCharacter AssetName to medium intensity.
 ItemPelvisForbiddenChastityBeltSets3,SourceCharacter sets DestinationCharacter AssetName to high intensity.
+ItemPelvisFortuneChastityBeltSelectBase,Configure the belt
+ItemPelvisFortuneChastityBeltSelectShield,Configure the shield
+ItemPelvisFortuneChastityBeltSelectOrgasmPrevention,Configure the orgasm module
+ItemPelvisFortuneChastityBeltModuleShield,Shield
+ItemPelvisFortuneChastityBeltModuleOrgasmPrevention,Orgasm
+ItemPelvisFortuneChastityBeltOptions0,Open All
+ItemPelvisFortuneChastityBeltOptions1,Close Front
+ItemPelvisFortuneChastityBeltOptions2,Close Rear
+ItemPelvisFortuneChastityBeltOptions3,Close All
+ItemPelvisFortuneChastityBeltOptiono0,Allow
+ItemPelvisFortuneChastityBeltOptiono1,Deny
+ItemPelvisFortuneChastityBeltOptiono2,Edge
+ItemPelvisFortuneChastityBeltSets0,SourceCharacter opens the shield on DestinationCharacter AssetName.
+ItemPelvisFortuneChastityBeltSets1,SourceCharacter closes the front shield on DestinationCharacter AssetName.
+ItemPelvisFortuneChastityBeltSets2,SourceCharacter closes the rear shield on DestinationCharacter AssetName.
+ItemPelvisFortuneChastityBeltSets3,SourceCharacter closes all shields on DestinationCharacter AssetName.
+ItemPelvisFortuneChastityBeltSeto0,SourceCharacter configures DestinationCharacter AssetName to allow orgasms.
+ItemPelvisFortuneChastityBeltSeto1,SourceCharacter configures DestinationCharacter AssetName to deny orgasms.
+ItemPelvisFortuneChastityBeltSeto2,SourceCharacter configures DestinationCharacter AssetName to edge orgasms.
 ItemPelvisFuturisticChastityBeltModuleBack,Rear Shield
 ItemPelvisFuturisticChastityBeltModuleFront,Front Shield
 ItemPelvisFuturisticChastityBeltModuleModel,Model Number
@@ -9264,6 +9309,18 @@ ItemHandheldPlushieOptionMansionValentine8,Kaede Valentine
 ItemHandheldPlushieSetMansionValentine8,SourceCharacter places a cute Kaede Valentine plushie in DestinationCharacter hands.
 ItemHandheldPlushieOptionMansionValentine9,Alena Brenhines
 ItemHandheldPlushieSetMansionValentine9,SourceCharacter places a cute Alena Brenhines plushie in DestinationCharacter hands.
+ItemHandheldPlushieModuleAybesSuite,Aybes Suite
+ItemHandheldPlushieSelectAybesSuite,Aybes Suite
+ItemHandheldPlushieOptionAybesSuite0,None
+ItemHandheldPlushieSetAybesSuite0,SourceCharacter removes a plushie from DestinationCharacter hands.
+ItemHandheldPlushieOptionAybesSuite1,Aybes
+ItemHandheldPlushieSetAybesSuite1,SourceCharacter places a cute Aybes plushie in DestinationCharacter hands.
+ItemHandheldPlushieOptionAybesSuite2,Ash The cute
+ItemHandheldPlushieSetAybesSuite2,SourceCharacter places a cute Ash plushie in DestinationCharacter hands.
+ItemHandheldPlushieOptionAybesSuite3,Domi
+ItemHandheldPlushieSetAybesSuite3,SourceCharacter places a cute Domi plushie in DestinationCharacter hands.
+ItemHandheldPlushieOptionAybesSuite4,Elaina
+ItemHandheldPlushieSetAybesSuite4,SourceCharacter places a cute Elaina plushie in DestinationCharacter hands.
 ItemHandheldCigaretteSelect,Choose position of the cigarette:
 ItemHandheldCigaretteInMouth,In Mouth
 ItemHandheldCigaretteInHand,In Hand

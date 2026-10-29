@@ -1128,6 +1128,7 @@ ItemDevices,PogoBall,Rubber Pogo Ball
 ItemDevices,Pole,Pole
 ItemDevices,SaddleStand,Saddle Stand
 ItemDevices,Seizaisu,Seiza-Isu
+ItemDevices,ShackledOneBarPrison,One Bar Prison & Shackles
 ItemDevices,SmallDisplayCase,Small Display Case
 ItemDevices,SmallLocker,Small Locker
 ItemDevices,SmallWoodenBox,Small Wooden Box
@@ -1468,6 +1469,7 @@ ItemMisc,PandoraPadlockKey,Pandora's Box Padlock Key
 ItemMisc,PasswordPadlock,Password Lock
 ItemMisc,PetPotato,Pet Potato
 ItemMisc,PortalLinkPadlock,PortalLink Padlock
+ItemMisc,PumpkinPot,Pumpkin Candy Bucket
 ItemMisc,SafewordPadlock,Safeword Padlock
 ItemMisc,ServingTray,Serving Tray
 ItemMisc,TeddyBear,Teddy Bear Set
@@ -1730,6 +1732,7 @@ ItemPelvis,,Pelvis
 ItemPelvis,DiaperHarness,Diaper Harness
 ItemPelvis,FemPelvisHarness,Female Pelvis Harness
 ItemPelvis,ForbiddenChastityBelt,Forbidden Chastity Belt
+ItemPelvis,FortuneChastityBelt,Fortune Chastity Belt
 ItemPelvis,FuturisticChastityBelt,Futuristic Chastity Belt
 ItemPelvis,FuturisticTrainingBelt,Futuristic Training Belt
 ItemPelvis,HarnessPanties1,Bondage Harness
