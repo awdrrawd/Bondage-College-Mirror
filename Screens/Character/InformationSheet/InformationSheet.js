@@ -374,7 +374,9 @@ function InformationSheetSecondScreenRun() {
 		let pos = 0;
 		for (let R = 0; R < C.Reputation.length; R++)
 			if (C.Reputation[R].Value != 0) {
-				DrawText(TextGet("Reputation" + C.Reputation[R].Type + ((C.Reputation[R].Value > 0) ? "Positive" : "Negative")) + " " + Math.abs(C.Reputation[R].Value).toString(), 1000, 200 + pos * lineHeight, "Black", "Gray");
+				const label = ReputationLabel(C.Reputation[R].Type, C.Reputation[R].Value);
+				if (!label) continue;
+				DrawText(`${label}: ${Math.abs(C.Reputation[R].Value)}`, 1000, 200 + pos * lineHeight, "Black", "Gray");
 				pos++;
 			}
 		if (pos == 0) DrawText(TextGet("ReputationNone"), 1000, 200, "Black", "Gray");
@@ -433,15 +435,15 @@ function InformationSheetClick() {
 		if (MouseIn(1815, 190, 90, 90) && !TitleIsForced(TitleGet(C))) CommonSetScreen("Character", "Title");
 		if (MouseIn(1815, 305, 90, 90)) CommonSetScreen("Character", "Preference");
 		if (MouseIn(1815, 420, 90, 90)) CommonSetScreen("Character", "FriendList");
-		if (MouseIn(1815, 535, 90, 90)) OnlineProfileStart("Description");
+		if (MouseIn(1815, 535, 90, 90)) OnlineProfileStart("description");
 		if (MouseIn(1715, 535, 90, 90) && C.HasOwnerNotes()) {
-			OnlineProfileStart("OwnersNotes");
+			OnlineProfileStart("ownersNotes");
 		}
 		if (MouseIn(1815, 765, 90, 90)) InformationSheetSecondScreen = !InformationSheetSecondScreen;
 	} else if (C.IsOnline()) {
-		if (MouseIn(1815, 190, 90, 90)) OnlineProfileStart("Description");
+		if (MouseIn(1815, 190, 90, 90)) OnlineProfileStart("description");
 		if (MouseIn(1715, 190, 90, 90) && (C.HasOwnerNotes() || C.IsFullyOwnedByPlayer())) {
-			OnlineProfileStart("OwnersNotes");
+			OnlineProfileStart("ownersNotes");
 		}
 		if (MouseIn(1815, 765, 90, 90)) InformationSheetSecondScreen = !InformationSheetSecondScreen;
 	}

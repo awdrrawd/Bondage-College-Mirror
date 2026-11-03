@@ -223,7 +223,7 @@ async function CommonReadCSV(url) {
 	const TranslationPath = url.replace(".csv", "_" + TranslationLanguage + ".txt");
 
 	// Opens the file, parse it and returns the result in an Object
-	let response = await CommonFetch(url);
+	let response = await CommonFetch(url, { headers: [["accept", "text/csv"]] });
 	if (response.status !== 200) return [];
 	const text = await response.text();
 	const parsed = CommonParseCSV(text);
@@ -321,13 +321,22 @@ function CommonRequestParseRetryAfter(value) {
 /**
  * Fetch a remote resource
  *
- * @param {RequestInfo | URL} request
+ * @param {RequestInfo | URL} reqOrUrl
+ * @param {object} [options]
+ * @param {HeadersInit} [options.headers]
  * @returns {Promise<Response>}
  */
-async function CommonFetch(request) {
-	const isRequestObject = request instanceof Request;
-	const method = isRequestObject ? request.method : "GET";
-	const url = isRequestObject ? request.url : request;
+async function CommonFetch(reqOrUrl, options = undefined) {
+	/** @type {Request} */
+	let request;
+	if (reqOrUrl instanceof Request) {
+		if (options) {
+			throw new Error("can't use options and pass a request object");
+		}
+		request = reqOrUrl;
+	} else {
+		request = new Request(reqOrUrl, { headers: options?.headers ?? undefined });
+	}
 
 	for (let attempt = 0; attempt <= FETCH_MAX_RETRIES; attempt++) {
 		let retryAfter;
@@ -341,7 +350,7 @@ async function CommonFetch(request) {
 			}
 
 			if (attempt === FETCH_MAX_RETRIES) {
-				console.error(`${method} request to ${url} failed (${reply.status}) - no more retries`);
+				console.error(`${request.method} request to ${request.url} failed (${reply.status}) - no more retries`);
 				return reply;
 			}
 
@@ -355,7 +364,7 @@ async function CommonFetch(request) {
 
 		const delay = retryAfter ?? CommonRequestRetryDelay(attempt);
 		if (attempt !== FETCH_MAX_RETRIES) {
-			console.error(`${method} request to ${url} failed (${reply?.status}) - retrying in ${delay.toFixed(1)}s`);
+			console.error(`${request.method} request to ${request.url} failed (${reply?.status}) - retrying in ${delay.toFixed(1)}s`);
 		}
 		await CommonSleep(delay * 1000);
 	}
@@ -918,16 +927,20 @@ function CommonArraysEqual(a1, a2, ignoreOrder = false) {
 }
 
 /**
- * Creates a debounced wrapper for the provided function with the provided wait time. The wrapped function will not be called as long as
- * the debounced function continues to be called. If the debounced function is called, and then not called again within the wait time, the
- * wrapped function will be called.
+ * Creates a debounced wrapper for the provided function with the provided wait time.
+ *
+ * **The wrapped function will not be called as long as the debounced function continues
+ * to be called**. If the debounced function is called, and then not called again within
+ * the wait time, the wrapped function will be called.
+ *
  * @template {any[]} argsT
  * @template retT
+ * @param {number} debounceInterval - The debouncing interval in milliseconds
  * @param {(...args: argsT) => retT} func - The function to debounce
- * @returns {(waitInterval: number, ...args: argsT) => retT} - A debounced version of the provided function
+ * @returns {CommonCancellableFn<argsT, retT>} - A debounced version of the provided function
  */
-function CommonDebounce(func) {
-	/** @type {null | number} */
+function CommonDebounce(debounceInterval, func) {
+	/** @type {number | undefined} */
 	let timeout;
 	/** @type {retT} */
 	let result;
@@ -938,33 +951,50 @@ function CommonDebounce(func) {
 
 	/** @type {(context: unknown, args: argsT) => void} */
 	function later(context, args) {
-		timeout = null;
+		timeout = undefined;
 		result = func.apply(context, args);
 	}
 
-	/** @type {(this: unknown, waitInterval: number, ...args: argsT) => retT} */
-	return function (waitInterval, ...args) {
-		if (timeout) {
+	/**
+	 * @this {unknown}
+	 * @param {argsT} args
+	 * @returns {retT}
+	 */
+	function debounced(...args) {
+		if (timeout !== undefined) {
 			clearTimeout(timeout);
 		}
 
-		timeout = laterSetTimeout(later, waitInterval, this, args);
+		timeout = laterSetTimeout(later, debounceInterval, this, args);
 
 		return result;
+	}
+
+	debounced.cancel = function () {
+		if (timeout !== undefined) {
+			clearTimeout(timeout);
+			timeout = undefined;
+		}
 	};
+
+	return debounced;
 }
 
 /**
- * Creates a throttling wrapper for the provided function with the provided wait time. If the wrapped function has been successfully called
- * within the wait time, further call attempts will be delayed until the wait time has passed.
+ * Creates a throttling wrapper for the provided function with the provided wait time.
+ *
+ * If the wrapped function has been successfully called within the wait time, further call
+ * attempts will be delayed until the wait time has passed.
+ *
  * @template {any[]} argsT
  * @template retT
+ * @param {number} throttleInterval - The throttling interval in milliseconds
  * @param {(...args: argsT) => retT} func - The function to throttle
- * @returns {(waitInterval: number, ...args: argsT) => retT} - A throttled version of the provided function
+ * @returns {CommonCancellableFn<argsT, retT>} - A throttled version of the provided function
  */
-function CommonThrottle(func) {
-	/** @type {null | number} */
-	let timeout;
+function CommonThrottle(throttleInterval, func) {
+	/** @type {number | undefined} */
+	let timeout = undefined;
 	/** @type {argsT} */
 	let args;
 	/** @type {unknown} */
@@ -974,30 +1004,46 @@ function CommonThrottle(func) {
 	let result;
 
 	function run() {
-		timeout = null;
-		result = func.apply(context, args);
+		timeout = undefined;
 		timestamp = CommonTime();
+		result = func.apply(context, args);
 	}
 
-	/** @type {(this: unknown, wait: number, ...innerArgs: argsT) => retT} */
-	return function (wait, ...innerArgs) {
+	/**
+	 * @this {unknown}
+	 * @param {argsT} innerArgs
+	 * @returns {retT}
+	 */
+	function throttled(...innerArgs) {
 		context = this;
 		args = innerArgs;
-		if (!timeout) {
+		if (timeout === undefined) {
 			const last = CommonTime() - timestamp;
-			if (last >= 0 && last < wait) {
-				timeout = setTimeout(run, wait - last);
+			if (last >= 0 && last < throttleInterval) {
+				timeout = setTimeout(run, throttleInterval - last);
 			} else {
 				run();
 			}
 		}
 		return result;
+	}
+
+	throttled.cancel = function () {
+		if (timeout !== undefined) {
+			clearTimeout(timeout);
+			timeout = undefined;
+		}
 	};
+
+	return throttled;
 }
 
 /**
- * Creates a wrapper for a function to limit how often it can be called. The player-defined wait interval setting determines the
- * allowed frequency. Below 100 ms the function will be throttled and above will be debounced.
+ * Creates a wrapper for a function to limit how often it can be called.
+ *
+ * The player-defined wait interval setting determines the allowed frequency. Below 100ms
+ * the function will be throttled and above will be debounced.
+ *
  * @template {any[]} argsT
  * @template retT
  * @param {(...args: argsT) => retT} func - The function to limit calls of
@@ -1006,18 +1052,22 @@ function CommonThrottle(func) {
  * @returns {(...args: argsT) => retT} - A debounced or throttled version of the function
  */
 function CommonLimitFunction(func, minWait = 0, maxWait = 1000) {
-	const funcDebounced = CommonDebounce(func);
-	const funcThrottled = CommonThrottle(func);
-
+	/** @type {number | undefined} */
+	let armedWait;
+	/** @type {CommonCancellableFn<argsT, retT> | undefined} */
+	let limited;
 	/** @type {(this: unknown, ...args: argsT) => retT} */
 	return function (...args) {
 		const wait = Math.min(
-			Math.max(
-				Player.GraphicsSettings ? Player.GraphicsSettings.AnimationQuality : 100, minWait
-			),
+			Math.max(Player.GraphicsSettings.AnimationQuality, minWait),
 			maxWait,
 		);
-		return wait < 100 ? funcThrottled.apply(this, [wait, ...args]) : funcDebounced.apply(this, [wait, ...args]);
+		if (limited === undefined || wait !== armedWait) {
+			if (limited !== undefined) limited.cancel();
+			armedWait = wait;
+			limited = wait < 100 ? CommonThrottle(wait, func) : CommonDebounce(wait, func);
+		}
+		return limited.apply(this, args);
 	};
 }
 
