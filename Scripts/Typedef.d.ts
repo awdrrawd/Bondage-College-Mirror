@@ -14,8 +14,6 @@ interface String {
 	replaceAt(index: number, character: string): string;
 }
 
-declare function parseInt(s: string | number, radix?: number): number;
-
 type MemoizedFunction<T extends AnyFunction> = T & {
 	/** Clears the cache of the memoized function */
 	clearCache(): void;
@@ -3467,12 +3465,6 @@ type VoiceTriggerType =
  * Those are the properties the main game code enforces.
  */
 interface ItemPropertiesBase {
-	/**
-	 * A string (or `null`) denoting the state of an extended item.
-	 * How the type-string translate to concrete properties depends on the Archetype in question.
-	 * @deprecated Superseded by {@link ItemPropertiesBase.TypeRecord}. Old type strings can be convert to records via {@link ExtendedItemTypeToRecord}.
-	 */
-	Type?: null | string;
 	/** A record mapping screen names to option indices. */
 	TypeRecord?: TypeRecord;
 
@@ -4968,12 +4960,6 @@ interface CraftingItem extends CraftingPartialItem {
 	Lock: "" | AssetLockType;
 	/** The name of the item; see {@link Asset.Name}. */
 	Item: AssetName;
-	/**
-	 * The type of the crafted item; only relevant for extended items and should be an empty string otherwise.
-	 * @deprecated superseded by {@link CraftingItem.TypeRecord}. Old type strings can be convert to records via {@link ExtendedItemTypeToRecord}.
-	 * @see {@link ItemProperties.Type}
-	 */
-	Type?: string | null;
 	/**
 	 * An integer (or `null`) representing the item layering priority; see {@link ItemProperties.OverridePriority}.
 	 * @deprecated - superseded by {@link CraftingItem.ItemProperty}

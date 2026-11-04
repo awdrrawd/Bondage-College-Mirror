@@ -13909,7 +13909,7 @@ var AssetFemale3DCGExtended = {
 					DrawImages: false,
 					Key: "o",
 					Options: [
-						{ Property: { SetPose: ["BaseLower"] } },
+						{},
 						{
 							Prerequisite: ["CanLegsClosed"],
 							Property: { SetPose: ["LegsClosed"] },
@@ -25613,6 +25613,39 @@ var AssetFemale3DCGExtended = {
 				},
 			],
 		}, // DragonPlush
+		ToyHammer: {
+			Archetype: ExtendedArchetype.MODULAR,
+			ChatTags: [
+				CommonChatTags.SOURCE_CHAR,
+				CommonChatTags.DEST_CHAR,
+				CommonChatTags.ASSET_NAME,
+			],
+			Modules: [
+				{
+					Name: "Text",
+					Key: "a",
+					Options: [
+						{}, // a0
+						{
+							HasSubscreen: true,
+							ArchetypeConfig: {
+								Archetype: ExtendedArchetype.TEXT,
+								MaxLength: {
+									Text: 24,
+								},
+								Font: "Archivo Black",
+								ScriptHooks: {
+									AfterDraw: AssetsItemHandheldToyHammerAfterDrawHook,
+								},
+							},
+						}, // a1
+					],
+				},
+			],
+			BaselineProperty: {
+				Text: "BONK!",
+			},
+		}, // ToyHammer
 		Chocolate: {
 			Archetype: "modular",
 			DrawImages: false,
@@ -25694,22 +25727,6 @@ var AssetFemale3DCGExtended = {
 				{ Name: "Cartoon" },
 			],
 		}, // Oilpaperumbrella
-		ToyHammer: {
-			Archetype: ExtendedArchetype.TYPED,
-			ChatTags: [
-				CommonChatTags.SOURCE_CHAR,
-				CommonChatTags.DEST_CHAR,
-				CommonChatTags.ASSET_NAME,
-			],
-			Options: [
-				{
-					Name: "NoBonk!",
-				}, // 0
-				{
-					Name: "BONK!",
-				}, // 1
-			],
-		}, // ToyHammer
 	}, // ItemHandheld
 	EyeShadow: {
 		Running: {
