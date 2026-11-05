@@ -3293,6 +3293,20 @@ ItemEarsCTHeadsetSetnc0,SourceCharacter turns the noise cancelling from Destinat
 ItemEarsCTHeadsetSetnc1,SourceCharacter turns the noise cancelling from DestinationCharacter headset up by a bit.
 ItemEarsCTHeadsetSetnc2,SourceCharacter turns the noise cancelling from DestinationCharacter headset up by a lot.
 ItemEarsCTHeadsetSetnc3,SourceCharacter turns the noise cancelling from DestinationCharacter headset on fully.
+HatFrogHat,Frog Hat
+HatFrogHatModuleNob,Nob
+HatFrogHatModuleSides,Sides
+HatFrogHatModuleTongue,Tongue
+HatFrogHatOptionn0,Default Nob
+HatFrogHatOptionn1,Crystal Nob
+HatFrogHatOptions0,Empty Sides
+HatFrogHatOptions1,Crystal Balls
+HatFrogHatOptiont0,Hidden
+HatFrogHatOptiont1,Shown
+HatFrogHatSelectBase,Customise your Frog Hat
+HatFrogHatSelectNob,Select Nob Style
+HatFrogHatSelectSides,Select Side Decoration
+HatFrogHatSelectTongue,Select Tongue
 HeadphoneEarPlugsPoseHeavy,Heavy
 HeadphoneEarPlugsPoseLight,Light
 HeadphoneEarPlugsPoseNoiseCancelling,Noise-Cancelling
@@ -8959,6 +8973,8 @@ ItemNeckAsylumCollarPadded,Plus padded layer
 ItemNeckAsylumCollarSetNormal,SourceCharacter removes padded layer under the DestinationCharacter Asylum Collar.
 ItemNeckAsylumCollarSetPadded,SourceCharacter adds a padded layer under the DestinationCharacter Asylum Collar.
 ItemHandheldPlushie,Plushies
+ItemHandheldPlushieSelectMenu,Choose what to change:
+ItemHandheldPlushieModuleBase,Plushie
 ItemHandheldPlushieSelectBase,Select a plushie:
 ItemHandheldPlushieModuleDenOfSin,Den of Sin
 ItemHandheldPlushieSelectDenOfSin,The Den of Sin:
@@ -9245,6 +9261,10 @@ ItemHandheldPlushieOptionVelvetBunnyCabaret18,Princess Vamparina
 ItemHandheldPlushieSetVelvetBunnyCabaret18,SourceCharacter places a cute Princess Vamparina plushie in DestinationCharacter hands.
 ItemHandheldPlushieOptionVelvetBunnyCabaret19,Shyy
 ItemHandheldPlushieSetVelvetBunnyCabaret19,SourceCharacter places a cute Shyy plushie in DestinationCharacter hands.
+ItemHandheldPlushieOptionVelvetBunnyCabaret20,Hajime
+ItemHandheldPlushieSetVelvetBunnyCabaret20,SourceCharacter places a cute Hajime plushie in DestinationCharacter hands.
+ItemHandheldPlushieOptionVelvetBunnyCabaret21,Lilly
+ItemHandheldPlushieSetVelvetBunnyCabaret21,SourceCharacter places a cute Lilly plushie in DestinationCharacter hands.
 ItemHandheldPlushieModuleSubbycatsPlace,Subbycat's Place
 ItemHandheldPlushieSelectSubbycatsPlace,Subbycat's Place
 ItemHandheldPlushieSubbycatsPlaceSelect,Choose the plushie:
@@ -9325,6 +9345,14 @@ ItemHandheldPlushieOptionAybesSuite3,Domi
 ItemHandheldPlushieSetAybesSuite3,SourceCharacter places a cute Domi plushie in DestinationCharacter hands.
 ItemHandheldPlushieOptionAybesSuite4,Elaina
 ItemHandheldPlushieSetAybesSuite4,SourceCharacter places a cute Elaina plushie in DestinationCharacter hands.
+ItemHandheldPlushieModulePosition,Position
+ItemHandheldPlushieSelectPosition,Where the plushie is:
+ItemHandheldPlushieOptionPosition0,In hands
+ItemHandheldPlushieSetPosition0,SourceCharacter puts the plushie back in DestinationCharacter hands.
+ItemHandheldPlushieOptionPosition1,On head
+ItemHandheldPlushieSetPosition1,SourceCharacter sits the plushie on top of DestinationCharacter head.
+ItemHandheldPlushieOptionPosition2,On the floor
+ItemHandheldPlushieSetPosition2,SourceCharacter sets the plushie down at DestinationCharacter feet.
 ItemHandheldCigaretteSelect,Choose position of the cigarette:
 ItemHandheldCigaretteInMouth,In Mouth
 ItemHandheldCigaretteInHand,In Hand

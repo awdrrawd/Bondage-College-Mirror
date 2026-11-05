@@ -336,6 +336,38 @@ var AssetFemale3DCGExtended = {
 				},
 			],
 		}, // WitchHat
+		FrogHat: {
+			Archetype: ExtendedArchetype.MODULAR,
+			Modules: [
+				{
+					Name: "Sides",
+					Key: "s",
+					DrawImages: false,
+					Options: [
+						{}, // 0 - Empty sides
+						{}, // 1 - Crystal balls
+					],
+				},
+				{
+					Name: "Nob",
+					Key: "n",
+					DrawImages: false,
+					Options: [
+						{}, // 0 - Default nob
+						{}, // 1 - Crystal nob
+					],
+				},
+				{
+					Name: "Tongue",
+					Key: "t",
+					DrawImages: false,
+					Options: [
+						{}, // 0 - No tongue
+						{}, // 1 - Tongue
+					],
+				},
+			],
+		}, // FrogHat
 	}, // Hat
 	HandAccessoryLeft: {
 		Rings: {
@@ -25291,6 +25323,8 @@ var AssetFemale3DCGExtended = {
 						{}, // Carina
 						{}, // Vamparina
 						{}, // Shyy
+						{}, // Hajime
+						{}, // Lilly
 					],
 					DrawData: {
 						elementData: [
@@ -25356,6 +25390,12 @@ var AssetFemale3DCGExtended = {
 							},
 							{
 								imagePath: "Assets/Female3DCG/ItemHandheld/Plushie_Shyy.png",
+							},
+							{
+								imagePath: "Assets/Female3DCG/ItemHandheld/Plushie_Hajime.png",
+							},
+							{
+								imagePath: "Assets/Female3DCG/ItemHandheld/Plushie_Lilly.png",
 							},
 						],
 					},
@@ -25550,8 +25590,57 @@ var AssetFemale3DCGExtended = {
 						],
 					},
 				},
+				{
+					Name: "Position",
+					Key: "Position",
+					Options: [
+						{
+							// In hands
+							PoseMapping: { ...AssetPoseMapping.ItemHandheld },
+						},
+						{
+							// On head, also when the arms are tied
+							Property: {
+								OverridePriority: 57,
+								DrawingTop: { [AssetOverride]: -315 },
+							},
+							PoseMapping: {
+								AllFours: PoseType.HIDE,
+								Hogtied: PoseType.HIDE,
+								Suspension: PoseType.HIDE,
+							},
+						},
+						{
+							// On the floor between the feet, also when the arms are tied.
+							// The ground line is at 962; plushies whose art does not end 193 px down their frame get their own top
+							Property: {
+								OverridePriority: 57,
+								DrawingLeft: { [AssetOverride]: 6 },
+								DrawingTop: {
+									[AssetOverride]: 549,
+									Brioche: 780,
+									Jakkie: 761,
+									KatrinaThunder: 779,
+									Lara: 761,
+									Lisa3: 781,
+									Mable: 790,
+									Neddle: 777,
+									Robin: 760,
+									Takao: 732,
+									VoidPsyker: 753,
+									Zannah: 746,
+								},
+							},
+							PoseMapping: { Suspension: PoseType.HIDE },
+							FixedPosition: true,
+						},
+					],
+				},
 			],
 			ScriptHooks: {
+				Load: InventoryItemHandheldPlushiesLoadHook,
+				Draw: InventoryItemHandheldPlushiesDrawHook,
+				Click: InventoryItemHandheldPlushiesClickHook,
 				SetOption: InventoryItemHandheldPlushiesSetOptionHook,
 			},
 		}, // Plushie

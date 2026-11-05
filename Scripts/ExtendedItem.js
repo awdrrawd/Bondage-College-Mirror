@@ -720,7 +720,7 @@ function ExtendedItemOffsetKey() {
 	if (!DialogFocusItem) {
 		throw new Error("called without a focused extended item");
 	}
-	var Asset = DialogFocusItem.Asset;
+	const Asset = DialogFocusItem.Asset;
 	return Asset.Group.Name + "/" + Asset.Name;
 }
 
@@ -1628,6 +1628,24 @@ function ExtendedItemGetDrawingOptions(item) {
 			stack.Invert = !stack.Invert;
 		if (value.DrawOptions?.Mirror)
 			stack.Mirror = !stack.Mirror;
+		return stack;
+	}, init);
+}
+
+/**
+ * Collect layout options for an item, given its current configuration: the pose mapping and fixed position its selected options give its layers
+ * @param {Item} item
+ * @returns {Pick<ExtendedItemOptionConfig, "PoseMapping" | "FixedPosition">}
+ */
+function ExtendedItemGetLayoutOptions(item) {
+	if (!item.Asset.Extended) return {};
+	/** @type {Pick<ExtendedItemOptionConfig, "PoseMapping" | "FixedPosition">} */
+	const init = {};
+	return ExtendedItemGatherOptions(item).reduce((stack, value) => {
+		if (value.PoseMapping)
+			stack.PoseMapping = { ...stack.PoseMapping, ...value.PoseMapping };
+		if (value.FixedPosition)
+			stack.FixedPosition = true;
 		return stack;
 	}, init);
 }
