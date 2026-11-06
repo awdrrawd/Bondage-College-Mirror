@@ -359,7 +359,7 @@ async function LoginLoad() {
 			children: [l.Icon, " ", l.LanguageName],
 			attributes: {
 				selected: l.LanguageCode === TranslationLanguage,
-				lang: l.LanguageCode,
+				lang: l.Locale,
 				value: l.LanguageCode,
 			},
 		};

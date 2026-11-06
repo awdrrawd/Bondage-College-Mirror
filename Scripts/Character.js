@@ -1703,7 +1703,7 @@ function CharacterDialogPatternSubstitutor(match, offset, replacement, string, _
  */
 function CharacterMoneyFormat(value) {
 	const money = CharacterMoneyApplyFactor(value);
-	return Math.abs(money).toLocaleString(TranslationLanguage);
+	return Math.abs(money).toLocaleString(TranslationGetLocale());
 }
 
 /**

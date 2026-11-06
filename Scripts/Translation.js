@@ -6,13 +6,14 @@ var TranslationLanguage = "EN";
 var TranslationCache = {};
 
 /**
- * Dictionary for all supported languages and their files
+ * Dictionary for all supported languages and their files.
  * @constant
  */
 var TranslationDictionary = /** @type {const} */([
 
 	{
 		LanguageCode: "EN",
+		Locale: "en",
 		LanguageName: "English",
 		EnglishName: "English",
 		Icon: "🇬🇧",
@@ -21,6 +22,7 @@ var TranslationDictionary = /** @type {const} */([
 	},
 	{
 		LanguageCode: "DE",
+		Locale: "de",
 		LanguageName: "Deutsch",
 		EnglishName: "German",
 		Icon: "🇩🇪",
@@ -122,6 +124,7 @@ var TranslationDictionary = /** @type {const} */([
 	},
 	{
 		LanguageCode: "FR",
+		Locale: "fr",
 		LanguageName: "Français",
 		EnglishName: "French",
 		Icon: "🇫🇷",
@@ -207,6 +210,7 @@ var TranslationDictionary = /** @type {const} */([
 	},
 	{
 		LanguageCode: "RU",
+		Locale: "ru",
 		LanguageName: "Русский",
 		EnglishName: "Russian",
 		Icon: "🇷🇺",
@@ -405,6 +409,7 @@ var TranslationDictionary = /** @type {const} */([
 	},
 	{
 		LanguageCode: "CN",
+		Locale: "zh-CN",
 		LanguageName: "中文",
 		EnglishName: "Chinese",
 		Icon: "🇨🇳",
@@ -667,6 +672,7 @@ var TranslationDictionary = /** @type {const} */([
 	},
 	{
 		LanguageCode: "TW",
+		Locale: "zh-TW",
 		LanguageName: "繁體中文",
 		EnglishName: "TraditionalChinese",
 		Icon: "🇹🇼",
@@ -856,6 +862,7 @@ var TranslationDictionary = /** @type {const} */([
 	},
 	{
 		LanguageCode: "UA",
+		Locale: "uk-UA",
 		LanguageName: "Українська",
 		EnglishName: "Ukrainian",
 		Icon: "🇺🇦",
@@ -1297,12 +1304,29 @@ function TranslationGetLanguageName(code, english=false) {
 }
 
 /**
+ * BCP 47 tag for a game language code.
+ * @param {string} [code] - Game language code. Defaults to the active language.
+ * @returns {string}
+ */
+function TranslationGetLocale(code = TranslationLanguage) {
+	const data = TranslationDictionary.find(d => d.LanguageCode === code);
+	return data ? data.Locale : "en";
+}
+
+/** Sets `<html lang>` from the active language. */
+function TranslationApplyDocumentLanguage() {
+	document.documentElement.lang = TranslationGetLocale();
+}
+
+/**
  * Changes the language depending on the given language and save the new selected language to local storage
  * @param {ServerChatRoomLanguage | "TW"} languageCode
  */
 function TranslationSwitchLanguage(languageCode) {
+	if (!languageCode || languageCode === TranslationLanguage) return;
 	TranslationLanguage = languageCode;
 	localStorage.setItem("BondageClubLanguage", languageCode);
+	TranslationApplyDocumentLanguage();
 }
 
 /**
@@ -1310,6 +1334,6 @@ function TranslationSwitchLanguage(languageCode) {
  * @returns {void} - Nothing
  */
 function TranslationLoad() {
-	const L = /** @type {ServerChatRoomLanguage | "TW"} */(localStorage.getItem("BondageClubLanguage"));
-	if (L != null) TranslationLanguage = L;
+	const lang = /** @type {ServerChatRoomLanguage | "TW"} */(localStorage.getItem("BondageClubLanguage"));
+	TranslationSwitchLanguage(lang);
 }

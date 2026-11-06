@@ -37419,6 +37419,8 @@ var AssetFemale3DCG = [
 				Value: -1,
 				BuyGroup: "WiredEgg",
 				Random: false,
+				IsRestraint: false,
+				Effect: [E.UseRemote],
 				Gender: "F",
 				Top: 530,
 				Left: 230,
@@ -43018,6 +43020,17 @@ var AssetFemale3DCG = [
 					BuyGroup: true,
 				},
 			},
+			{
+				Name: "FullBodyLeatherHarness",
+				DynamicGroupName: "ItemArms",
+				Left: 50,
+				IsRestraint: true,
+				CopyConfig: {
+					AssetName: "FullBodyLeatherHarness",
+					GroupName: "ItemArms",
+					BuyGroup: true,
+				},
+			},
 		],
 		Color: [
 			"Default",
@@ -43381,6 +43394,14 @@ var AssetFemale3DCG = [
 				Name: "WoodenSign",
 				CopyConfig: {
 					AssetName: "WoodenSign",
+					GroupName: "ItemTorso",
+					BuyGroup: true,
+				},
+			},
+			{
+				Name: "FullBodyLeatherHarness",
+				CopyConfig: {
+					AssetName: "FullBodyLeatherHarness",
 					GroupName: "ItemTorso",
 					BuyGroup: true,
 				},
@@ -72485,6 +72506,7 @@ var AssetFemale3DCG = [
 				Time: 20,
 				RemoveTime: 5,
 				Extended: true,
+				DynamicAfterDraw: true,
 				Layer: [
 					{
 						Name: "back",
@@ -76780,7 +76802,7 @@ var ActivityFemale3DCG = [
 		MaxProgress: 80,
 		Prerequisite: [
 			"ZoneAccessible",
-			"UseMouth",
+			"UseTongue",
 			"ZoneNaked",
 			"TargetNeeds-PenetrateItem",
 		],
@@ -76792,7 +76814,7 @@ var ActivityFemale3DCG = [
 		MaxProgress: 80,
 		Prerequisite: [
 			"ZoneAccessible",
-			"UseMouth",
+			"UseTongue",
 			"ZoneNaked",
 			"TargetNeeds-PenetrateItem",
 		],

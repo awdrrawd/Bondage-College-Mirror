@@ -89,9 +89,6 @@
 	cursor: ew-resize;
 }
 
-#chat-room-content[data-view="Map"] #chat-room-content-resize-bar:hover {
-	background: rgba(0, 200, 255, 0.5);
-}
 #chat-room-wrapper:has(#chat-room-div[hidden]) #chat-room-content[data-view="Map"] #chat-room-content-resize-bar {
 	right: 0;
 }
@@ -116,6 +113,7 @@
 	--gap-size: max(3px, min(0.4dvh, 0.2dvw));
 
 	pointer-events: none;
+	border: var(--border-width) solid black;
 }
 
 #chat-room-div > * {
@@ -144,7 +142,6 @@
 		"chat-input chat-buttons-div chat-buttons-collapse chat-length" min-content
 		"chat-input chat-buttons-div chat-buttons-collapse chat-buttons" min-content
 		/ auto min-content min-content min-content;
-	border: var(--border-width) inset black;
 	background-color: white;
 	column-gap: min(0.4vh, 0.2vw);
 }

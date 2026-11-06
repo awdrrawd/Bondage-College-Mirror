@@ -37,7 +37,7 @@ Game.load("../Screens/Online/ChatRoom/ChatRoomMapView.js");
 
 Game.load("../Assets/MapData.js");
 Game.load("../Scripts/Map.js");
-
+Game.load("../Scripts/Element.js");
 Game.MapDataLoad();
 
 Game.Player = {};

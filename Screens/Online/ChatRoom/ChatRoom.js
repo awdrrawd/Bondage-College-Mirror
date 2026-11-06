@@ -379,7 +379,6 @@ function ChatRoomRefreshActiveView() {
  * @returns {void}
  */
 function ChatRoomActivateView(viewName) {
-	console.log("ChatRoomActivateView");
 	if (!(viewName in ChatRoomViews)) {
 		throw Error(`Tried to change to non-existing view ${viewName}`);
 	}
@@ -1548,7 +1547,6 @@ function ChatRoomAppendChat(div) {
  * @type {ScreenLoadHandler}
  */
 async function ChatRoomLoad() {
-	console.log("ChatRoomLoad");
 	ChatRoomRefreshFontSize();
 	ChatRoomCreateElement();
 
@@ -3288,7 +3286,6 @@ function ChatRoomProcessSlowLeave() {
 		ChatRoomSlowLeaveCancel();
 	} else if (ChatRoomSlowStop) {
 		// We were stopped by someone, reset
-		console.log(`stopped from leaving`);
 		ChatRoomSlowLeaveCancel();
 	} else if (!Player.IsSlow() || CurrentTime > ChatRoomSlowtimer) {
 		// We're not slowed anymore, or the slow timer expired, exit
@@ -4665,6 +4662,10 @@ function ChatRoomMessage(data) {
 	// Substitute actions and server messages for their fulltext version
 	switch (data.Type) {
 		case "Action": {
+			// Mods use Beep as a full-message placeholder. Translating it first would
+			// remove the tag before CommonStringSubstitute can insert the action text.
+			if (msg === "Beep" && substitutions.some(([tag, text]) =>
+				tag === "Beep" && typeof text === "string" && text.trim() !== "")) break;
 			msg = TextQueryMultiple(
 				msg,
 				[
@@ -5653,7 +5654,7 @@ function ChatRoomRefreshChatSettings() {
 function DialogViewProfile() {
 	if (CurrentCharacter != null) {
 		const C = CurrentCharacter;
-		DialogLeave();
+		DialogLeave({ reload: false });
 		InformationSheetLoadCharacter(C);
 	}
 }

@@ -977,8 +977,10 @@ function ServerAccountBeep(data) {
 			const parsedMessage = data.Message ? FriendListBeepParseMessage(data.Message) : null;
 			const messageText = parsedMessage ? parsedMessage.text : null;
 			const isReaction = parsedMessage?.metadata?.messageType === "Reaction";
+			const incomingChatKey = `member:${data.MemberNumber}`;
+			const isCurrentChat = FriendListBeepChatKey === incomingChatKey;
 
-			if (!isReaction && (!Player.ChatSettings.ShowBeepChat || (Player.ChatSettings.ShowBeepChat && !ChatRoomNotificationNewMessageVisible()))) {
+			if (!isReaction && (!Player.ChatSettings.ShowBeepChat || (Player.ChatSettings.ShowBeepChat && !ChatRoomNotificationNewMessageVisible())) && !isCurrentChat) {
 				ServerShowBeep(data.Message ? (messageText ?? stripBCUtilCruft(message)) : title, 10000, {
 					memberNumber: data.MemberNumber,
 					memberName: data.MemberName,
@@ -1010,9 +1012,8 @@ function ServerAccountBeep(data) {
 			});
 			if (CurrentScreen === "FriendList") {
 				ServerSend("AccountQuery", { Query: "OnlineFriends" });
-				const incomingChatKey = `member:${data.MemberNumber}`;
-				if (FriendListBeepChatKey !== null && FriendListBeepChatKey === incomingChatKey) {
-					FriendListBeepChat(FriendListBeepChatKey);
+				if (isCurrentChat) {
+					FriendListBeepChat(incomingChatKey);
 				}
 			}
 			if (!isReaction && Player.ChatSettings.ShowBeepChat) {
