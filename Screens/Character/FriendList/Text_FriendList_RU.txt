@@ -24,3 +24,79 @@ TypeSubmissive
 Сабмиссив
 TypeFriend
 Друг
+MemberName
+Имя
+MemberNickname
+Никнейм
+ChatRoomType
+Тип комнаты
+ChatRoomMemberCount
+Число участников комнаты
+RelationType
+Тип отношений
+ActionRead
+Прочитать сигнал
+ActionActions
+Действия
+ActionsNone
+Нет доступных действий
+AutoRefresh
+Автообновление каждые 30 секунд
+ResetSorting
+Сбросить сортировку
+Exit
+Выход
+PrevMode
+Предыдущий режим
+NextMode
+Следующий режим
+TypePending
+Запрос в друзья...
+TypeFemale
+Комната только для женщин
+TypeMale
+Комната только для мужчин
+TypeMixed
+Смешанная комната
+TypeAsylum
+Комната лечебницы
+TypePrivate
+Личная комната
+AddFriends
+Добавить друзей
+AddFriendsPrompt
+Добавить друзей (номера участников через запятую)
+AddFriendsError
+Не указано ни одного допустимого номера участника.
+AddFriendsSuccess
+Добавлены друзья с номерами: $addedMembers.
+AddFriendsNoNewFriends
+Новые друзья не добавлены.
+ConfirmDelete
+Удалить $memberName ($memberNumber)?
+Unknown
+Неизвестно
+ScrollToBottom
+Прокрутить вниз
+IncludeRoom
+Указать название комнаты
+NewMessages
+Новые сообщения
+Reply
+Ответить
+Copy
+Копировать
+CopyDone
+Сообщение скопировано в буфер обмена
+CopyFailed
+Не удалось скопировать сообщение в буфер обмена
+React
+Добавить реакцию
+ReplyTo
+Ответить $memberName
+CancelReply
+Отменить ответ
+ReactionPickerTitle
+Выберите реакцию
+ReplyTapScroll
+Перейти к цитируемому сообщению

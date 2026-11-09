@@ -22,3 +22,67 @@ ClearHover
 Отменить выбор всех карт
 DefaultHover
 Сбросить колоду по умолчанию
+RenameDeck
+Переименовать
+RenameThisDeck
+Введите новое название колоды
+SelectCards
+Выберите карты для
+GroupAll
+Все карты
+GroupEvent
+Карты событий
+GroupNoGroup
+Без группы
+GroupLiability
+Обязательство
+GroupStaff
+Персонал
+GroupPolice
+Полиция
+GroupCriminal
+Преступница
+GroupFetishist
+Фетишистка
+GroupPornActress
+Порноактриса
+GroupMaid
+Горничная
+GroupAsylumPatient
+Пациентка лечебницы
+GroupAsylumNurse
+Медсестра лечебницы
+GroupDominant
+Доминант
+GroupMistress
+Госпожа
+GroupABDLBaby
+ABDL-малышка
+GroupABDLMommy
+ABDL-мамочка
+GroupCollegeStudent
+Студентка колледжа
+GroupCollegeTeacher
+Преподавательница колледжа
+GroupShibari
+Шибари
+GroupKnot
+Узел
+GroupPet
+Питомец
+GroupOwner
+Владелец
+GroupPlayer
+Онлайн-игрок
+GroupReward
+Карты наград
+ChangeCardBack
+Изменить рубашку
+ChangeCardBackGround
+Изменить фон карточной игры
+SaveCardBack
+Сохранить выбранную рубашку
+NextCardBacks
+Следующие 30 рубашек
+PreviousCardBacks
+Предыдущие 30 рубашек

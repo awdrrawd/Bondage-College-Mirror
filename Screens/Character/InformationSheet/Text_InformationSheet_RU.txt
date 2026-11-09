@@ -7,13 +7,13 @@ Title
 Pronouns
 Местоимения:
 MemberNumber
-Номер Участника:
+Номер участника:
 Relationships
-- Отношения -
+Возлюбленные
 Lover
 Возлюбленная:
 Owner
-Хозяйка:
+Хозяйка
 None
 Никто
 OwnerGGTS
@@ -21,47 +21,47 @@ GGTS
 Money
 Деньги:
 MemberFor
-Член в течении:
+В клубе
 Birthday
 День рождения Бондаж-Клуба!
 FriendsFor
-Друзья в течении:
+Дружба длится
 Days
 дней
 Unknown
 Неизвестно
 Reputation
-- Репутация -
+Репутация
 ReputationNone
-Никто
+Нет
 ReputationGamingPositive
-Подземелье:
+Подземелье
 ReputationDominantPositive
-Доминантность:
+Доминантность
 ReputationDominantNegative
-Покорность:
+Покорность
 ReputationMaidPositive
-Горничная:
+Горничная
 ReputationKidnapPositive
-Лига Похитителей :
+Лига похитителей
 ReputationAsylumPositive
-Медсестра Психушки:
+Медсестра Психушки
 ReputationAsylumNegative
-Пациент Психушки:
+Пациент Психушки
 ReputationLARPPositive
-LARP Битвы:
+Ролевые бои
 ReputationGamblingPositive
-Игорный зал:
+Игорный зал
 ReputationABDLPositive
-Подгузники:
+Подгузники
 ReputationHouseMaiestasPositive
-Дом Майестас:
+Дом Майестас
 ReputationHouseVinculaPositive
-Дом Винкула:
+Дом Винкула
 ReputationHouseAmplectorPositive
-Дом Амплектор:
+Дом Амплектор
 ReputationHouseCorporisPositive
-Дом Корпорис:
+Дом Корпорис
 DifficultyLevel0
 Ролевая
 DifficultyLevel1
@@ -71,78 +71,128 @@ DifficultyLevel2
 DifficultyLevel3
 Экстрим
 Skill
-- Навыки -
+Навыки
 SkillNone
-Никто
+Нет
 SkillBondage
-Бондаж:
+Бондаж
 SkillSelfBondage
-Самобондаж:
+Самобондаж
 SkillEvasion
-Побег:
+Побег
 SkillWillpower
-Сила воли:
+Сила воли
 SkillInfiltration
-Проникновение:
+Проникновение
 SkillDressage
-Выездка:
+Выездка
 Trait
-- Черты -
+Черты
 TraitUnknown
 Проводите с ней больше времени, чтобы узнать ее черты
 TraitDominant
-Доминантность:
+Доминантность
 TraitSubmissive
-Покорность:
+Покорность
 TraitViolent
-Вспыльчивая:
+Агрессивная
 TraitPeaceful
-Тихая:
+Миролюбивая
 TraitHorny
-Похотливая:
+Похотливая
 TraitFrigid
-Фригидная:
+Фригидная
 TraitRude
-Грубый:
+Грубая
 TraitPolite
-Вежливая:
+Вежливая
 TraitWise
-Мудрая:
+Мудрая
 TraitDumb
-Тупая:
+Тупая
 TraitSerious
-Серьезная:
+Серьезная
 TraitPlayful
-Игривая:
+Игривая
 Relationship
-Отношение:
+Отношения:
 RelationshipPerfect
-(Идеальное)
+(Идеальные)
 RelationshipGreat
-(Отличное)
+(Отличные)
 RelationshipGood
 (Хорошие)
 RelationshipFair
-(Честное)
+(Неплохие)
 RelationshipNeutral
-(Нейтральное)
+(Нейтральные)
 RelationshipPoor
-(Жалкое)
+(Натянутые)
 RelationshipBad
-(Плохое)
+(Плохие)
 RelationshipHorrible
-(Ужасное)
+(Ужасные)
 RelationshipAtrocious
-(Жестокое)
+(Отвратительные)
 AllowedInteraction0
 Все, без исключений
 AllowedInteraction1
-Все, кроме черного списка
+Все, кроме чёрного списка
 AllowedInteraction2
-Хозяйка, Возлюбленная, Белый Лист & Доминанты
+Хозяйка, возлюбленные, белый список и доминанты
 AllowedInteraction3
-Только Хозяйка, Возлюбленная и Белый Лист
+Только хозяйка, возлюбленные и белый список
 AllowedInteraction4
-Только Хозяйка и Возлюбленная
+Только хозяйка и возлюбленные
 AllowedInteraction5
-Только Хозяйка
+Только хозяйка
+NoMemberNumber
+—
+Unowned
+Без хозяйки
+JoinDate
+Дата вступления
+For
+в течение
+TrialBy
+На испытательном сроке у
+CollaredBy
+Принадлежит
+DatingWith
+Встречается с
+EngagedWith
+Помолвлена с
+MarriedWith
+В браке с
+DifficultyTitle
+сложность
+DifficultyDaysTillCanChange
+ — Можно изменить через NumberOfDays дн.
+SkillLockPicking
+Вскрытие замков
+SkillModifier
+ABSVAL на DURATION
+AllowedInteractions
+Допустимые взаимодействия:
+YourRelations
+Ваши отношения
+SkillLevelMaximum
+Макс.
+SkillRatioBondage
+Используется RATIO% вашего навыка связывания, поэтому из наложенных вами пут легче выбраться.
+SkillRatioEvasion
+Используется RATIO% вашего навыка освобождения, поэтому выбраться из пут сложнее.
+SkillRatio
+Используется RATIO% этого навыка.
+MenuExit
+Выход
+MenuTitle
+Титул и псевдоним
+MenuPreference
+Настройки
+MenuFriendList
+Список друзей
+MenuProfile
+Профиль
+MenuOwnersNotes
+Заметки хозяйки

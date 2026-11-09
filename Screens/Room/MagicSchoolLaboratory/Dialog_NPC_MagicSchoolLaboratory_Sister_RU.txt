@@ -258,3 +258,11 @@ Would you like to visit my room?
 Хочешь посетить мою комнату?
 (Leave her.)
 (Оставь ее.)
+(She smirks.)  Alright sis.  I bet you ${money=-25} that I can beat you in a magic fight.
+(Она усмехается.) Ладно, сестрёнка. Ставлю ${money=-25}, что одолею тебя в магическом бою.
+(Fight her and wage ${money=-25}.)
+(Сразиться с ней, поставив ${money=-25}.)
+(Gather essence from her.)
+(Собрать её эссенцию.)
+(The spell starts to drains her essence. She grows pale and drops to her knees shaking and moaning.) AahHhh~  (After a moment she calms down a little. She is powerless, exhausted, but also satisfied in some way~)
+(Заклинание начинает вытягивать её эссенцию. Она бледнеет и опускается на колени, дрожа и постанывая.) AahHhh~ (Через некоторое время она немного успокаивается. Она бессильна, измождена, но в чём-то даже удовлетворена~)

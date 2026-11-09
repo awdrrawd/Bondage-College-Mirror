@@ -127,7 +127,7 @@ StableBecomeTrainerDressageIntro,,,"Before you become a trainer, you must first 
 StableBecomeTrainerDomIntro,,,Only dominant people can become trainers.,,
 StableBecomeTrainerEquipmentIntro,,,"You lack the necessary equipment. You have to buy the following: crops, whips, and leather belts for feet and legs.",,
 StableBecomeTrainerMoneyIntro,,,You are too poor and cannot afford training ponies.,,
-StableBecomeTrainerTrueIntro,,,"Yes, you can join the trainer guild. The entrance fee is ${money=-50}0.",,
+StableBecomeTrainerTrueIntro,,,"Yes, you can join the trainer guild. The entrance fee is ${money=-500}.",,
 StableBecomeTrainerTrue,200,Take my money. when can I start?,First exercise: grab a broom and sweep the stable.,,
 StableBecomeTrainerTrue,0,That is too expensive for me.,Contact me when you've saved some cash.,,
 StableTrainingStartCollar,,,Where is your collar?,,

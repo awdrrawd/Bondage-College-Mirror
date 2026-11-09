@@ -99,7 +99,7 @@ function ItemModuleVoiceCommandHandle(C, item, LastTime, VoiceTriggers, TriggerV
  */
 function ItemModulePunishCheck(C, item, shockCooldown, tamperZones) {
 	const { PunishOrgasm, PunishStruggle, PunishStruggleOther, PunishStandup, NextShockTime = 0} = item.Property ??= {};
-	if ((CommonTime() > NextShockTime) && PunishOrgasm && C.ArousalSettings && C.ArousalSettings.OrgasmStage > 1) {
+	if ((CommonTime() > NextShockTime) && PunishOrgasm && C.ArousalSettings.OrgasmStage > 1) {
 		// Punish the player if they orgasm
 		item.Property.NextShockTime = CurrentTime + shockCooldown;
 		return "Orgasm";

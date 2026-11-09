@@ -1,7 +1,7 @@
 SelectYourAppearance
 Выберите свой внешний вид
 SelectSomeoneAppearance
-Выберите внешний вид имени целевого персонажа
+Выберите внешний вид TargetCharacterName
 MustPickItem
 Вы должны выбрать элемент типа:
 WardrobeNameInfo
@@ -48,3 +48,15 @@ ColorChangeMulti
 Выбрать цвета
 ColorChangeMultiDisabled
 Невозможно изменить цвет из-за разрешений игрока
+Copy
+Копировать в буфер обмена
+Paste
+Импортировать из буфера обмена
+Swap
+Изменить порядок предметов
+OwnerBlock
+запрещено владельцем
+Layering
+Изменить наложение слоёв предмета
+None
+Нет

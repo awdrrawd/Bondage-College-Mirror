@@ -1,4 +1,4 @@
-﻿###_NPC
+###_NPC
 It seems that you've been naughty.  Lovely gag by the way.
 Кажется, ты был непослушной.  Кстати, прекрасный кляп.
 (She licks her lips seeing the gag and allows you to silence her easily.)
@@ -36,7 +36,7 @@ It seems that you've been naughty.  Lovely gag by the way.
 (You unlock the belt from her waist and crotch.)  I can't wait to see what you'll use on me next...
 (Ты отстегиваешь ремень от ее талии и промежности.)  Я не могу дождаться, чтобы увидеть, что вы будете использовать на мне в следующий раз...
 (You strap the device on her head as she tries to look around.)  You know, this will heighten my other senses. Including touch...
-(Ты пристегиваешь устройство к ее голове, когда она пытается оглядеться.)  Знаете, это обострит мои другие чувства. В том числе и тактильные...
+(Вы закрепляете устройство на её голове, пока она пытается оглядеться.) Знаешь, это обострит другие мои чувства. В том числе осязание...
 (You use the item on her torso.)  You can use anything you want on me.
 (Вы используете предмет на ее торсе.) Вы можете использовать на мне все, что захотите.
 (You remove the item from her torso.)  I'm curious to see what you will try next.
@@ -45,8 +45,6 @@ It seems that you've been naughty.  Lovely gag by the way.
 (Вы надеваете устройство ей на глаза, когда она пытается осмотреться.) Знаешь, это обострит другие мои чувства. В том числе на ощупь...
 (You remove the device and she looks at you.)  That was pretty intense.  What else can we try?
 (Ты убираешь устройство, и она смотрит на тебя.)  Это было довольно интенсивно.  Что еще мы можем попробовать?
-(You strap the device on her head as she tries to look around.)  You know, this will heighten my other senses. Including touch...
-(Вы пристегиваете устройство к ее голове, пока она пытается осмотреться.) Знаешь, это обострит другие мои чувства. В том числе на ощупь...
 (You attach the device to her nose.)  You know, this makes me look silly.
 (Вы прикрепляете устройство к ее носу.) Знаешь, я выгляжу глупо.
 (You remove the device and she looks at you.) That was something...  What else can we try?
@@ -224,3 +222,5 @@ A sales woman came to sell us armbinders and some belts.  As you can see, she wa
 ###_PLAYER
 I'll go get help.  (Leave her.)
 Я пойду за помощью.  (Оставить ее.)
+(You pull the earplugs out.)  I can hear you clearly now.
+(Вы вынимаете беруши.) Теперь я тебя хорошо слышу.

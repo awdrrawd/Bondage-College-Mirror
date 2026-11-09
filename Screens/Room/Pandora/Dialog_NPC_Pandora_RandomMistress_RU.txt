@@ -306,3 +306,5 @@ She's coming up very soon.  She will take extra good care of you.  (She laughs o
 ###_PLAYER
 (Wait for the Dominatrix.)
 (Дождитесь Доминатрикс.)
+(She orders a few drinks and gives you ${money=5}.)  Don't be late or there will be trouble.  I need to go.  (She walks away.)
+(Она заказывает несколько напитков и даёт вам ${money=5}.) Не опаздывай, иначе будут неприятности. Мне пора. (Она уходит.)

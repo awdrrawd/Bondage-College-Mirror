@@ -4,3 +4,53 @@ GameOver
 Игра окончена.  Используйте кнопку выхода, чтобы повторить попытку.
 LevelUp
 CharacterName получила уровень!
+Save
+Сохранить прогресс
+SelectSave
+Выберите слот для сохранения прогресса
+SaveOn
+Сохранить в слот №
+Character
+Сведения о персонаже
+ChangeCharacter
+Сменить активного персонажа
+AudioToggle
+Включить/выключить звук
+ButtonGift
+Подарить ей предмет
+ButtonOliviaLover1Start
+Начать встречаться с Оливией
+ButtonOliviaLover1End
+Расстаться с Оливией
+ButtonOliviaDomination1Start
+Доминировать над Оливией
+ButtonOliviaDomination1End
+Освободить Оливию
+ButtonOliviaSubmission1Start
+Подчиниться Оливии
+ButtonOliviaSubmission1End
+Освободиться от власти Оливии
+ButtonEdlaranLover1Start
+Начать встречаться с Эдларан
+ButtonEdlaranLover1End
+Расстаться с Эдларан
+ButtonEdlaranDomination1Start
+Доминировать над Эдларан
+ButtonEdlaranDomination1End
+Освободить Эдларан
+ButtonEdlaranSubmission1Start
+Подчиниться Эдларан
+ButtonEdlaranSubmission1End
+Освободиться от власти Эдларан
+ButtonLynLover1Start
+Начать встречаться с Лин
+ButtonLynLover1End
+Расстаться с Лин
+ButtonLynDomination1Start
+Доминировать над Лин
+ButtonLynDomination1End
+Освободить Лин
+ButtonLynSubmission1Start
+Подчиниться Лин
+ButtonLynSubmission1End
+Освободиться от власти Лин

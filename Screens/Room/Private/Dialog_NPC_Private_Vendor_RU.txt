@@ -1,4 +1,4 @@
-﻿###_NPC
+###_NPC
 You've visited some kinky rooms recently?  (She laughs.)
 Вы посещали некоторые извращенные комнаты в последнее время?  (Она смеется.)
 (She shakes her head from left to right but you're able to silence her.)
@@ -290,3 +290,43 @@ I'll take the black bed. (Pay $150)
 ###_NPC
 Great!  We'll deliver your new bed right now.
 Отлично! Мы доставим вашу новую кровать прямо сейчас.
+Wardrobe, fancy beds, cages, security and expansions for now.  But the club is always improving, you can check again later.
+Пока что — гардеробы, роскошные кровати, клетки, охрана и расширение комнаты. Но клуб постоянно развивается, загляните позже.
+(She opens a catalog and shows you the beds.)  All our beds are ${money=-150}, which one would you like?
+(Она открывает каталог и показывает вам кровати.) Все кровати стоят ${money=-150}. Какую предпочитаете?
+We have a kinky tenant.  (She giggles.)  We can prepare cages for your room for ${money=-150}, do you have the funds?
+А наша постоялица с фантазией! (Она хихикает.) За ${money=-150} мы можем оборудовать вашу комнату клетками. У вас есть нужная сумма?
+Of course, we can double the size of your room for ${money=-200}, do you have the funds?
+Конечно, за ${money=-200} мы можем удвоить площадь вашей комнаты. У вас есть нужная сумма?
+(She ponders.)  It could be done, but we'll need to renovate to get you a bigger room.  Can you cover the ${money=-400} fees for it?
+(Она задумывается.) Это возможно, но для увеличения комнаты потребуется ремонт. Можете оплатить его стоимость — ${money=-400}?
+(She nods.)  Since Pandora's Box moved in town, security is a must to protect your friends.  For ${money=-200}, they will never get kidnapped again.
+(Она кивает.) С тех пор как «Ящик Пандоры» появился в городе, для защиты ваших подруг нужна охрана. За ${money=-200} вы навсегда защитите их от похищения.
+Are you sure?  The ${money=-200} security fee isn't refundable.  And Pandora's Box might strike again.
+Вы уверены? Плата за охрану ${money=-200} не возвращается. А «Ящик Пандоры» может напасть снова.
+The rent is ${money=-250}.  Do you have enough money?
+Аренда стоит ${money=-250}. У вас достаточно денег?
+The price for a regular room is ${money=-250}.
+Обычная комната стоит ${money=-250}.
+Here's the money. (Pay ${money=-250})
+Вот деньги. (Заплатить ${money=-250}.)
+An excellent choice.  The price is ${money=-100}.  Can you afford it?
+Отличный выбор. Цена — ${money=-100}. Можете себе позволить?
+Here's the money. (Pay ${money=-100})
+Вот деньги. (Заплатить ${money=-100}.)
+Here's the money. (Pay ${money=-150})
+Вот деньги. (Заплатить ${money=-150}.)
+Here's the money. (Pay ${money=-200})
+Вот деньги. (Заплатить ${money=-200}.)
+Here's the money. (Pay ${money=-400})
+Вот деньги. (Заплатить ${money=-400}.)
+(She nods.)  You can, but there's no refund for the ${money=-200} fee.
+(Она кивает.) Можно, но плата ${money=-200} не возвращается.
+Of course, but you will need to pay ${money=-150} again.
+Конечно, но придётся снова заплатить ${money=-150}.
+I'll take the white bed. (Pay ${money=-150})
+Возьму белую кровать. (Заплатить ${money=-150}.)
+I'll take the pink bed. (Pay ${money=-150})
+Возьму розовую кровать. (Заплатить ${money=-150}.)
+I'll take the black bed. (Pay ${money=-150})
+Возьму чёрную кровать. (Заплатить ${money=-150}.)

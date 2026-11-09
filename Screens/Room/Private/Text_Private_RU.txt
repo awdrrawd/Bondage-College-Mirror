@@ -30,3 +30,7 @@ MainHallBackground
 Выбери фон главного холла
 PrivateRoomBackground
 Выбери фон приватной комнаты
+Brainwash3Day
+На допросе
+InBed
+В вашей кровати

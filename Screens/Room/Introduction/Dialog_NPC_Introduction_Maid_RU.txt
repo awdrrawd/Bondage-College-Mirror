@@ -1,4 +1,4 @@
-﻿###_NPC
+###_NPC
 Communicating with a gag is quite hard.  You'll need to remove it to chat.
 Общаться с кляпом довольно сложно.  Тебе нужно будет удалить его, чтобы общаться.
 Of course, head maid DialogPlayerName.  (She releases you.)
@@ -240,15 +240,13 @@ Show me the body regions I can select.
 Покажи мне области тела, которые я могу выбрать.
 ###_NPC
 Restraining the feet will prevent your victim from moving away.
-Удерживая ступни, вы не дадите жертве отойти в сторону.
+Связав ступни, вы не позволите жертве уйти.
 You can lock boots and tie the toes of your victims.  To prevent them from running away or force them to stay sexy.
 Вы можете запереть ботинки и связать пальцы ног своих жертв. Чтобы они не убежали или заставили их оставаться сексуальными.
 ###_PLAYER
 (Listen.)
 (Слушать.)
 ###_NPC
-Restraining the feet will prevent your victim from moving away.
-Сдерживание ног не позволит вашей жертве отойти.
 Restraining the upper legs will still allow your victim to move around but it creates a nice effect.
 Ограничение верхних частей ног все еще позволит вашей жертве передвигаться, но это создает хороший эффект.
 On the pussy or vagina region, you can use items such as vibrators or eggs.  The perfect place to tease your victim and make them climax.
@@ -257,7 +255,6 @@ On the butt or anal region, you can use regular butt plugs or fashion plugs such
 На ягодицах или анальной области вы можете использовать обычные анальные пробки или модные пробки, такие как кошачьи хвосты.
 You can also attach piercings on the vulva.  Fashion is important.
 Вы также можете сделать пирсинг на вульве. Мода важна.
-На попе или анальной области вы можете использовать обычные анальные пробки или модные пробки, такие как кошачьи хвосты.
 On the pelvis, you can use whips, crops or chastity belts.  Know that it will restrict any access to the vagina and anus.
 На тазу можно использовать хлысты, стеки или пояса верности.  Знайте, что это ограничит любой доступ к влагалищу и анусу.
 On the torso, you can use many kinds of harnesses, mostly for esthetics.
@@ -870,3 +867,57 @@ Another satisfied customer.
 ###_NPC
 A very satisfied customer.  Is there something else you need?
 Очень довольный клиент.  Тебе что-то еще нужно?
+(You slowly release her hands.)  Thank you, Miss.  This is much better
+(Вы медленно освобождаете ей руки.) Спасибо, мисс. Так гораздо лучше.
+Since it's a special job that I can only offer once per day, the salary is ${money=120}.
+Это особая работа, которую я могу предложить лишь раз в день. Оплата — ${money=120}.
+A club Mistress is too busy to take her puppy girls for a walk.  She's offering ${money=120} if you take good care of them.  Are you up for it?
+Одна из госпож клуба слишком занята, чтобы выгулять своих девушек-щенков. Она предлагает ${money=120}, если вы хорошо о них позаботитесь. Возьмётесь?
+The shop wants to promote a specific lock.  They offer ${money=120} if you use it on five different girls in the chat rooms.  Are you up for it?
+Магазин продвигает определённый замок. Вам заплатят ${money=120}, если вы используете его на пяти разных девушках в комнатах чата. Возьмётесь?
+The club wants to teach a lesson to one of our members.  They will give you ${money=120} if you kidnap and humiliate her.  Are you up for it?
+Клуб хочет проучить одну из участниц. Вам заплатят ${money=120}, если вы похитите и унизите её. Возьмётесь?
+We need nurses and trainers right now.  You will get a ${money=120} bonus if you train three slaves or treat three patients.  Are you up for it?
+Нам сейчас нужны медсёстры и инструкторы. Вы получите премию ${money=120}, если обучите трёх рабынь или вылечите трёх пациенток. Возьмётесь?
+A member lost a piece of jewelry somewhere in the club.  She offers ${money=120} to whoever finds it.  Are you up for it?
+Участница потеряла украшение где-то в клубе. Она предлагает ${money=120} тому, кто его найдёт. Возьмётесь?
+One of the Shibari Dojo assistant called in sick, so we need a replacement quick.  You need to be flexible and the salary is ${money=120}.  Are you up for it?
+Одна из помощниц додзё шибари заболела, и нам срочно нужна замена. Нужно быть гибкой, оплата — ${money=120}. Возьмётесь?
+The club members in the chat rooms need some extra care today.  If you're willing to give pleasure to five of them, you'll be paid ${money=120}.  Are you up for it?
+Сегодня участницам в комнатах чата нужна особая забота. Если доставите удовольствие пятерым из них, получите ${money=120}. Возьмётесь?
+The Maid Sorority is getting swamped with work.  They offer a ${money=120} bonus if you complete three chores for them.  Are you up for it?
+Сестричество горничных завалено работой. Вам предлагают премию ${money=120}, если вы выполните для них три поручения по хозяйству. Возьмётесь?
+Congratulations!  Here's your money.  (She gives you ${money=120}.)  Well done.
+Поздравляю! Вот ваши деньги. (Она даёт вам ${money=120}.) Отличная работа.
+Can I tie you up if I win?
+Можно я свяжу тебя, если выиграю?
+(Play Club Card with her.)
+(Сыграть с ней в клубные карты.)
+Let's talk about something else.
+Давай поговорим о другом.
+Don't be sad, practice makes perfect and I won't strap you up for losing.
+Не расстраивайся, мастерство приходит с практикой. За проигрыш я тебя связывать не стану.
+Have you heard about Club Cards?
+Ты слышала о клубных картах?
+Tell me about the rules.
+Расскажи о правилах.
+(She shakes her head no.)  I'm on duty, we can only play for fun.
+(Она отрицательно качает головой.) Я при исполнении, можем играть только ради удовольствия.
+Will you restrain me if I lose?
+Ты свяжешь меня, если я проиграю?
+I cannot do that while I'm working.
+На работе я не могу этого делать.
+(She nods and does a curtsy.)  How can I help you?
+(Она кивает и делает реверанс.) Чем я могу помочь?
+(She smiles and gives you ${money=120}.)  Well done.
+(Она улыбается и даёт вам ${money=120}.) Отличная работа.
+(She nods and gives you ${money=120}.)  Well done.
+(Она кивает и даёт вам ${money=120}.) Отличная работа.
+(She frowns and gives you ${money=120}.)  Well done.
+(Она хмурится и даёт вам ${money=120}.) Отличная работа.
+Very good!  There are many other Club Card players throughout the Bondage Club.  Try to find all of them.
+Очень хорошо! В Бондаж-клубе есть много других любителей клубных карт. Попробуй найти их всех.
+You can learn more about it in the Club Card Lounge or we can play a fun game together if you want.
+Подробнее можно узнать в зале клубных карт. Или можем сыграть вместе ради удовольствия, если хочешь.
+I'm not the best to do that.  Go back to the main hall and check for the Club Card Lounge to learn more about it.
+Я не лучший учитель. Вернись в главный зал и найди зал клубных карт, чтобы узнать больше.

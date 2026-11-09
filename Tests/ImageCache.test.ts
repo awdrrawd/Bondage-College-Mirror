@@ -139,7 +139,7 @@ describe("get() over the network", () => {
 		expect(img.data).toBeNull();
 		expect(console.error).toHaveBeenCalledWith(
 			expect.stringContaining("Failed to load image " + URL_A),
-			expect.any(TypeError),
+			expect.objectContaining({ err: expect.any(TypeError) }),
 		);
 		expect(Game.createImageBitmap).not.toHaveBeenCalled();
 
@@ -171,7 +171,9 @@ describe("get() over the network", () => {
 		expect(Game.createImageBitmap).not.toHaveBeenCalled();
 		expect(console.error).toHaveBeenCalledWith(
 			expect.stringContaining("Failed to load image " + URL_A),
-			expect.objectContaining({ message: expect.stringContaining("text/html") }),
+			expect.objectContaining({
+				err: expect.objectContaining({ message: expect.stringContaining("text/html") }),
+			}),
 		);
 	});
 
@@ -186,7 +188,7 @@ describe("get() over the network", () => {
 		expect(img.data).toBeNull();
 		expect(console.error).toHaveBeenCalledWith(
 			expect.stringContaining("Failed to load image " + URL_A),
-			expect.any(DOMException),
+			expect.objectContaining({ err: expect.any(DOMException) }),
 		);
 	});
 });
@@ -1148,7 +1150,9 @@ describe("persistent store", () => {
 			expect(Game.createImageBitmap).not.toHaveBeenCalled();
 			expect(console.error).toHaveBeenCalledWith(
 				expect.stringContaining("Failed to load image " + URL_V123),
-				expect.objectContaining({ message: expect.stringContaining("text/html") }),
+				expect.objectContaining({
+					err: expect.objectContaining({ message: expect.stringContaining("text/html") }),
+				}),
 			);
 		});
 

@@ -2858,6 +2858,58 @@ ItemMiscServingTrayTray,Tray
 ItemMiscWoodenSignRope,Rope
 ItemMiscWoodenSignSign,Sign
 ItemMiscWoodenSignText,Text
+ItemMiscCatFur,Primary fur
+ItemMiscCatPatches,Secondary fur
+ItemMiscCatPawPads,Pads
+ItemMiscCatSkin,Skin
+ItemMiscCatEye,Eye colour
+ItemMiscCatEyeShine,Eye shine
+ItemMiscCatNose,Nose colour
+ItemMiscCatNoseShine,Nose shine
+ItemMiscCatPupils,Pupils
+ItemMiscDogFur,Primary fur
+ItemMiscDogPatches,Secondary fur
+ItemMiscDogPawPads,Pads
+ItemMiscDogSkin,Inner ears
+ItemMiscDogEye,Eye colour
+ItemMiscDogEyeShine,Eye shine
+ItemMiscDogNose,Nose colour
+ItemMiscDogNoseShine,Nose shine
+ItemMiscDogClaws,Claws
+ItemMiscDogEyeWhites,Eye whites
+ItemMiscDogPupils,Pupils
+ItemMiscPandaFur,Primary fur
+ItemMiscPandaPatches,Secondary fur
+ItemMiscPandaPawPads,Pads
+ItemMiscPandaSkin,Inner ears
+ItemMiscPandaEye,Eye colour
+ItemMiscPandaEyeShine,Eye shine
+ItemMiscPandaNose,Nose colour
+ItemMiscPandaNoseShine,Nose shine
+ItemMiscPandaEyeWhites,Eye whites
+ItemMiscPandaPupils,Pupils
+ItemMiscPenguinFur,Dark feathers
+ItemMiscPenguinPatches,Light feathers
+ItemMiscPenguinBeak,Beak
+ItemMiscPenguinFeet,Feet
+ItemMiscPenguinEye,Eye colour
+ItemMiscPenguinEyeShine,Eye shine
+ItemMiscPenguinBeakShine,Beak shine
+ItemMiscPenguinEyeWhites,Eye whites
+ItemMiscPenguinPupils,Pupils
+ItemMiscUnicornFur,Primary coat
+ItemMiscUnicornPatches,Chest fur
+ItemMiscUnicornMuzzle,Muzzle
+ItemMiscUnicornMane,Mane
+ItemMiscUnicornTail,Tail
+ItemMiscUnicornSkin,Inner ears
+ItemMiscUnicornHooves,Hooves
+ItemMiscUnicornHorn,Horn
+ItemMiscUnicornEye,Eye colour
+ItemMiscUnicornEyeShine,Eye shine
+ItemMiscUnicornHornShine,Horn shine
+ItemMiscUnicornEyeWhites,Eye whites
+ItemMiscUnicornPupils,Pupils
 ItemMouthAOMGagLips,Lips
 ItemMouthAOMGagStraps,Straps
 ItemMouthAOMGagMetalStraps,Metal straps
@@ -3813,8 +3865,23 @@ NecklaceFlowerGarlandCenter,Center
 NecklaceFlowerGarlandPetals,Petals
 NecklaceIDCardCard,Card
 NecklaceIDCardString,Lanyard
+NecklaceInitialLocketChain,Necklace
+NecklaceInitialLocketFace,Locket face
+NecklaceInitialLocketFaceShine,Face shine
+NecklaceInitialLocketGem,Locket gem
+NecklaceInitialLocketGemShine,Gem shine
+NecklaceInitialLocketMetalShine,Body shine
+NecklaceInitialLocketPendantMetal,Locket body
+NecklaceInitialLocketText,Text colour
 NecklaceNecklaceBallGagBall,Ball
 NecklaceNecklaceBallGagStrap,Strap
+NecklacePhoenixNecklaceChain,Necklace
+NecklacePhoenixNecklacePendantMetal,Phoenix metal
+NecklacePhoenixNecklaceMetalShine,Metal shine
+NecklacePhoenixNecklaceWingGem,Wing gems
+NecklacePhoenixNecklaceWingShine,Wing shine
+NecklacePhoenixNecklaceTailGem,Tail gems
+NecklacePhoenixNecklaceTailShine,Tail shine
 NecklaceNecklaceButterflyMetal,Metal
 NecklaceNecklaceButterflyStones,Jewels
 NecklaceNecklaceKeyChain,Chain

@@ -1,4 +1,4 @@
-﻿###_NPC
+###_NPC
 Blessed those who have nothing to say and yet remain silent.
 Благослови тех, кому нечего сказать и при этом молчат.
 (She shakes her head but you're able to gag and silence her.)
@@ -218,7 +218,7 @@ I put down 15 toothpicks. We will then alternately take one, two or three of the
 (You take a step back and she looks surprised.)
 (Ты делаешь шаг назад, и она выглядит удивленной.)
 If you go over 21 points you instantly lose the round.
-21 очко - это автоматический выигрышь. Если вы наберете более 21 очка вы мгновенно проигрываете раунд.
+Если наберёте больше 21 очка, сразу проиграете раунд.
 Every round the loser strips. If they have no clothes left, they get a little more tied up.
 Каждый раунд проигравшая раздевается. Если у нее не остается одежды, она становится немного более связанной.
 Whoever takes the last one has lost the game and gets tied up.
@@ -562,3 +562,5 @@ Thanks!  That was fun.
 Спасибо!  Это было весело.
 (Leave her.)
 (Оставь ее.)
+(She checks your locks.)  I'm sorry, there's not much I can do.
+(Она проверяет ваши замки.) Простите, тут я мало чем могу помочь.

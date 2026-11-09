@@ -1,4 +1,4 @@
-﻿###_NPC
+###_NPC
 Silence is gold, and a gagged submissive is even better.
 Молчание-золото, а покорная с кляпом во рту - еще лучше.
 (She releases you and looks disappointed.)  You'll need more practice if you want to become a true escape artist.
@@ -231,7 +231,7 @@ Piece of cake!  (Be cocky.)
 ###_NPC
 (She laughs.)  I hope you learned some tricks.  Would you like to try again?
 (Она смеется.)  Надеюсь, ты научилася некоторым трюкам.  Хочешь попробовать еще раз?
-+###_PLAYER
+###_PLAYER
 What is Shibari?
 Что такое Шибари?
 ###_NPC
@@ -403,3 +403,9 @@ I will, thanks.  Is there something I can do for you?
 Хорошо, спасибо.  Я могу чем-нибудь вам помочь?
 (She shakes her head no.)  You need to rest and practice for at least one hour before I can train you again.
 (Она отрицательно качает головой.) Вам нужно отдохнуть и потренироваться хотя бы час, прежде чем я снова смогу вас тренировать.
+(She nods.)  It was my pleasure.  Come back in an hour if you need more training.
+(Она кивает.) Мне было приятно помочь. Если нужно ещё потренироваться, возвращайся через час.
+(She grins.)  Come back in an hour if you need more training.
+(Она широко улыбается.) Если нужно ещё потренироваться, возвращайся через час.
+(She nods.)  It was my pleasure.  Come back in an hour if you need more training.  Remember to stay safe.
+(Она кивает.) Мне было приятно помочь. Если нужно ещё потренироваться, возвращайся через час. Помни о безопасности.

@@ -576,3 +576,149 @@ Think about it, comrade.  It's a big sum and it might be used to finance more ki
 ###_PLAYER
 Thanks.  Take care.  (Leave her.)
 Спасибо. Береги себя. (Оставь ее.)
+Would you like to play Club Cards?
+Хочешь сыграть в клубные карты?
+Can I tie you up if I win?
+Можно я свяжу тебя, если выиграю?
+(Play Club Card with her.)
+(Сыграть с ней в клубные карты.)
+Let's talk about something else.
+Давай поговорим о другом.
+You're already registered as a guard, you cannot take a new mission.
+Вы уже зарегистрированы как охранница и не можете взять новое задание.
+Let's talk about Pandora Penitentiary.
+Давайте поговорим о тюрьме Пандоры.
+(She nods.)  What would you like to know comrade?
+(Она кивает.) Что вы хотите узнать, товарищ?
+Comrade, I've got a prisoner from Pandora in my private room.
+Товарищ, в моей приватной комнате находится заключённая из тюрьмы Пандоры.
+No, I don't have time for that.  We'll play to hone our tactical skills.
+Нет, у меня нет на это времени. Сыграем ради оттачивания тактических навыков.
+Good, we have no time to waste.
+Хорошо, не будем терять время.
+What is that jail?
+Что это за тюрьма?
+I could get locked up to spy on it.
+Я могла бы попасть туда в заключение и провести разведку.
+You're already registered as a guard, you will not be admitted as a prisoner.
+Вы уже зарегистрированы как охранница, вас не примут в качестве заключённой.
+I could infiltrate their guard staff.
+Я могла бы внедриться в тюремную охрану.
+You're already registered as a guard, get to work comrade.
+Вы уже зарегистрированы как охранница. За работу, товарищ.
+What can I do as a prison guard?
+Что я могу делать в роли тюремной охранницы?
+I will create a new prison cell right now.
+Я прямо сейчас создам новую тюремную камеру.
+I will infiltrate the current cells.
+Я внедрюсь в существующие камеры.
+Can I dress up as a guard?
+Можно мне переодеться охранницей?
+You certainly can comrade.  (She helps you to dress up.)
+Конечно, товарищ. (Она помогает вам переодеться.)
+5 minutes.
+5 минут.
+15 minutes.
+15 минут.
+30 minutes.
+30 минут.
+1 hour.
+1 час.
+4 hours.
+4 часа.
+12 hours.
+12 часов.
+24 hours.
+24 часа.
+Let me think about it first.
+Дайте мне сначала подумать.
+Think quickly, the clock is ticking.
+Думайте быстрее, время идёт.
+Let's go!  (Get locked up.)
+Поехали! (Отправиться под замок.)
+Wait!  I've changed my mind.
+Стой! Я передумала.
+(She grumbles)  You're wasting my time comrade.
+(Она ворчит.) Вы тратите моё время, товарищ.
+8 hours.
+8 часов.
+(Back to main hall.)
+(Вернуться в главный зал.)
+I've trashed the place.
+Я разгромила это место.
+I kidnapped one of their employees.
+Я похитила одну из их сотрудниц.
+Actually, I could use a new slave.
+Вообще-то мне бы пригодилась новая рабыня.
+Yes, the ransom amount is ${money=-100}.
+Да, сумма выкупа — ${money=-100}.
+I'll pay right now.  (Give her ${money=-100}.)
+Заплачу прямо сейчас. (Дать ей ${money=-100}.)
+What happens to her?
+Что с ней будет?
+How long does it take?
+Сколько времени это займёт?
+We will need to hold her for 3 days to ensure we complete the interrogation.
+Нам нужно будет продержать её 3 дня, чтобы завершить допрос.
+Will I get any reward?
+Я получу награду?
+Please proceed comrade.
+Продолжайте, товарищ.
+Very well, the Club will be much safer thanks to you.
+Очень хорошо. Благодаря вам в клубе станет гораздо безопаснее.
+Let me think about it. (Leave her.)
+Дайте мне подумать. (Оставить её.)
+Well done comrade.  Your tactical skills will certainly be helpful in Pandora's missions.  Would you like to play again?
+Молодец, товарищ. Ваши тактические навыки наверняка пригодятся в заданиях против Пандоры. Сыграем ещё?
+You'll need to review your strategies comrade.  Losing is part of learning, would you like a rematch?
+Стоит пересмотреть стратегию, товарищ. Поражения — часть обучения. Хотите реванш?
+Very good comrade DialogPlayerName! We can send someone to pick her up for interrogation!
+Очень хорошо, товарищ DialogPlayerName! Можем послать кого-нибудь забрать её на допрос!
+(She thinks aloud.)  I guess we could do a game between two missions.  It's not too busy right now.
+(Она размышляет вслух.) Думаю, между заданиями можно сыграть. Сейчас не слишком много работы.
+Pandora's Box created a huge penitentiary facility, to jail many of our members at once.  We need to investigate the place so we can rescue our infiltrators.
+«Ящик Пандоры» создал огромную тюрьму, чтобы заключать туда сразу многих наших участников. Нужно разведать это место, чтобы спасать наших лазутчиц.
+If you're willing to get locked up, we will pay you comrade.  I can arrange your captivity, how long do you need?
+Если вы готовы попасть в заключение, мы вам заплатим, товарищ. Я могу устроить ваше заточение. Сколько времени вам нужно?
+We could register you as a guard so you can spy on their structure.  For how long could you do it?
+Можем зарегистрировать вас как охранницу, чтобы вы разведали их устройство. На какой срок вы готовы?
+Guards have lots of power, let me explain... (The /pandora command can be used to do activities with inmates, use /help to get the list.)
+У охраны много полномочий, сейчас объясню... (Команда /pandora позволяет взаимодействовать с заключёнными. Список действий можно узнать через /help.)
+Go now comrade!  (In mixed online chat rooms, search for rooms that begins with "Pandora" to enter an active cell.)
+Отправляйтесь, товарищ! (В смешанных чатах ищите комнаты, чьи названия начинаются с «Pandora», чтобы попасть в действующую камеру.)
+Easy enough.  I will arrange a 5 minutes sentence for you.  Here's ${money=5} for the trouble.  Bring lots of information.
+Несложно. Оформлю вам заключение на 5 минут. Вот ${money=5} за хлопоты. Принесите побольше информации.
+Alright.  I will arrange a 15 minutes sentence for you.  Here's ${money=10} for the trouble.  Bring lots of information.
+Хорошо. Оформлю вам заключение на 15 минут. Вот ${money=10} за хлопоты. Принесите побольше информации.
+Very well.  I will arrange a 30 minutes sentence for you.  Here's ${money=15} for the trouble.  Bring lots of information.
+Очень хорошо. Оформлю вам заключение на 30 минут. Вот ${money=15} за хлопоты. Принесите побольше информации.
+Good.  I will arrange a 1 hour sentence for you.  Here's ${money=25} for the trouble.  Bring lots of information.
+Хорошо. Оформлю вам заключение на 1 час. Вот ${money=25} за хлопоты. Принесите побольше информации.
+Impressive.  I will arrange a 4 hours sentence for you.  Here's ${money=40} for the trouble.  Bring lots of information.
+Впечатляет. Оформлю вам заключение на 4 часа. Вот ${money=40} за хлопоты. Принесите побольше информации.
+Excellent!  I will arrange a 12 hours sentence for you.  Here's ${money=60} for the trouble.  Bring lots of information.
+Отлично! Оформлю вам заключение на 12 часов. Вот ${money=60} за хлопоты. Принесите побольше информации.
+Wow!  I will arrange a 24 hours sentence for you.  Here's ${money=80} for the trouble.  Bring lots of information.
+Ого! Оформлю вам заключение на 24 часа. Вот ${money=80} за хлопоты. Принесите побольше информации.
+Easy enough.  I will prepare a 15 minutes guard shift for you.  Here's ${money=5} for the trouble.  Bring lots of information.
+Несложно. Подготовлю вам смену в охране на 15 минут. Вот ${money=5} за хлопоты. Принесите побольше информации.
+Alright.  I will prepare a 30 minutes guard shift for you.  Here's ${money=8} for the trouble.  Bring lots of information.
+Хорошо. Подготовлю вам смену в охране на 30 минут. Вот ${money=8} за хлопоты. Принесите побольше информации.
+Very well.  I will prepare a 1 hour guard shift for you.  Here's ${money=12} for the trouble.  Bring lots of information.
+Очень хорошо. Подготовлю вам смену в охране на 1 час. Вот ${money=12} за хлопоты. Принесите побольше информации.
+Good.  I will prepare a 4 hours guard shift for you.  Here's ${money=20} for the trouble.  Bring lots of information.
+Хорошо. Подготовлю вам смену в охране на 4 часа. Вот ${money=20} за хлопоты. Принесите побольше информации.
+Impressive.  I will prepare a 8 hours guard shift for you.  Here's ${money=25} for the trouble.  Bring lots of information.
+Впечатляет. Подготовлю вам смену в охране на 8 часов. Вот ${money=25} за хлопоты. Принесите побольше информации.
+Excellent!  I will prepare a 12 hours guard shift for you.  Here's ${money=30} for the trouble.  Bring lots of information.
+Отлично! Подготовлю вам смену в охране на 12 часов. Вот ${money=30} за хлопоты. Принесите побольше информации.
+Wow!  I will prepare a 24 hours guard shift for you.  Here's ${money=40} for the trouble.  Bring lots of information.
+Ого! Подготовлю вам смену в охране на 24 часа. Вот ${money=40} за хлопоты. Принесите побольше информации.
+(She looks at the prisoner that came with you and grins.)  Comrade!  Who did you bring with you?
+(Она смотрит на пришедшую с вами заключённую и усмехается.) Товарищ! Кого вы привели?
+Very well, comrade.  We'll break her and send her to your room in 1 day.  Are you ready to go back?
+Очень хорошо, товарищ. Мы сломим её и отправим в вашу комнату через 1 день. Готовы вернуться?
+We will break her for Pandora's secrets. By the end of it, she will be your willing slave and forget all about Pandora's Box.
+Мы сломим её, чтобы узнать секреты Пандоры. В итоге она станет вашей покорной рабыней и забудет всё о «Ящике Пандоры».
+No. While we would normally reward for any information about Pandora's Box, interrogations do cost us quite a bit.
+Нет. Обычно мы платим за сведения о «Ящике Пандоры», но допросы обходятся нам довольно дорого.

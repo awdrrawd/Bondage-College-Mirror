@@ -1,4 +1,4 @@
-﻿###_NPC
+###_NPC
 The sound of a gagged slave is a *delicieuse musique* to my ears.
 Голос рабыни с кляпом во рту - это "восхитительная музыка" для моих ушей.
 Enough!  (She seems furious.)  I'm tired of you, I don't want to see you anymore.  Get out!
@@ -624,7 +624,7 @@ So, it's both mental and physical?
 The first step is to strip the slave, to make sure she's humiliated and aware or her situation.
 Первый шаг - раздеть рабыню, чтобы убедиться, что она унижена и осознает свое положение.
 (She nods.)  *Absolument*.  The first step is to strip the slave, to make sure she's humiliated.
-(She nods.)  *Конечно*.  Первый шаг - раздеть рабыню, чтобы убедиться, что она унижена.
+(Она кивает.) *Absolument*, конечно. Первый шаг — раздеть рабыню, чтобы унизить её.
 ###_PLAYER
 It sounds like a good plan.
 Это звучит как хороший план.
@@ -1308,7 +1308,7 @@ It was too hard!
 Это было слишком трудно!
 ###_NPC
 (She stops everyone vibrator.)  You're *faible*.  I don't care for excuses.
-((Она останавливает каждый вибратор.)  Ты *слабая*.  Мне не нужны оправдания.
+(Она выключает у всех вибраторы.) Ты *слабая*. Мне не нужны оправдания.
 (Amanda seems proud of having won the game, but she stays humble about it.)
 (Аманда, кажется, гордится тем, что выиграла игру, но она остается скромной при этом.)
 (Sarah is still trembling and moaning very fast.  She hasn't recovered from the experiment.)
@@ -1342,3 +1342,7 @@ Yes Miss.
 (Стыдливо кивни.)
 No Miss, I don't.
 Нет, Мисс, я не знаю.
+*Oui*!  (She removes all restrains except Sarah's.)  Sarah, to end your punishment, find a way out.
+*Oui*! (Она снимает все ограничители, кроме тех, что на Саре.) Сара, чтобы закончить своё наказание, найди способ освободиться.
+Oh no!  Come on!
+О нет! Да ладно!

@@ -1,4 +1,4 @@
-﻿###_NPC
+###_NPC
 (She imitates your gagged speech and giggles.)
 (Она имитирует твою речь сквозь кляп и хихикает.)
 (A nervous asylum patient crosses your path.)  Oh!  Hello nurse DialogPlayerName.  What are you doing here?
@@ -164,3 +164,7 @@ You won't be able to run forever.
 Ты не сможешь бегать вечно.
 (Back to main hall.)
 (Возвращаемся в главный зал.)
+(You bring her back to asylum where she gets fully restrained.  They congratulate you and pay you ${money=15} for your work.)
+(Вы возвращаете её в лечебницу, где её полностью связывают. Вас поздравляют и платят ${money=15} за работу.)
+You're so corrupted.  Take these ${money=5} and leave me alone.
+Какая же ты продажная. Возьми ${money=5} и оставь меня в покое.

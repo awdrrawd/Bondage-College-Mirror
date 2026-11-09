@@ -220,6 +220,70 @@ var TranslationDictionary = /** @type {const} */([
 			"Assets/LayerNames_RU.txt",
 			"Assets/AssetStrings_RU.txt",
 			"Backgrounds/Backgrounds_RU.txt",
+			"Screens/Room/Gambling/Text_Gambling_RU.txt",
+			"Screens/Room/PrivateBed/Text_PrivateBed_RU.txt",
+			"Screens/Room/Shop2/Text_Shop2_RU.txt",
+			"Screens/Room/PlatformProfile/Text_PlatformProfile_RU.txt",
+			"Screens/Cutscene/NPCWedding/Text_NPCWedding_RU.txt",
+			"Screens/Room/AsylumGGTS/GGTSMessages_RU.txt",
+			"Screens/Room/Poker/Akira/Text_Multiple_RU.txt",
+			"Screens/Room/Poker/Akira/Text_Single_RU.txt",
+			"Screens/Room/Poker/Amanda/Text_Multiple_RU.txt",
+			"Screens/Room/Poker/Amanda/Text_Single_RU.txt",
+			"Screens/Room/Poker/Andrea/Text_Multiple_RU.txt",
+			"Screens/Room/Poker/Andrea/Text_Single_RU.txt",
+			"Screens/Room/Poker/Ann/Text_Multiple_RU.txt",
+			"Screens/Room/Poker/Ann/Text_Single_RU.txt",
+			"Screens/Room/Poker/Aoi/Text_Multiple_RU.txt",
+			"Screens/Room/Poker/Aoi/Text_Single_RU.txt",
+			"Screens/Room/Poker/Becky/Text_Multiple_RU.txt",
+			"Screens/Room/Poker/Becky/Text_Single_RU.txt",
+			"Screens/Room/Poker/Dita/Text_Multiple_RU.txt",
+			"Screens/Room/Poker/Dita/Text_Single_RU.txt",
+			"Screens/Room/Poker/Emily/Text_Multiple_RU.txt",
+			"Screens/Room/Poker/Emily/Text_Single_RU.txt",
+			"Screens/Room/Poker/Hannah/Text_Multiple_RU.txt",
+			"Screens/Room/Poker/Hannah/Text_Single_RU.txt",
+			"Screens/Room/Poker/Isanne/Text_Multiple_RU.txt",
+			"Screens/Room/Poker/Isanne/Text_Single_RU.txt",
+			"Screens/Room/Poker/Jasmine/Text_Multiple_RU.txt",
+			"Screens/Room/Poker/Jasmine/Text_Single_RU.txt",
+			"Screens/Room/Poker/Jelena/Text_Multiple_RU.txt",
+			"Screens/Room/Poker/Jelena/Text_Single_RU.txt",
+			"Screens/Room/Poker/Lia/Text_Multiple_RU.txt",
+			"Screens/Room/Poker/Lia/Text_Single_RU.txt",
+			"Screens/Room/Poker/Lua/Text_Multiple_RU.txt",
+			"Screens/Room/Poker/Lua/Text_Single_RU.txt",
+			"Screens/Room/Poker/Masuimi/Text_Multiple_RU.txt",
+			"Screens/Room/Poker/Masuimi/Text_Single_RU.txt",
+			"Screens/Room/Poker/Missey/Text_Multiple_RU.txt",
+			"Screens/Room/Poker/Missey/Text_Single_RU.txt",
+			"Screens/Room/Poker/Nadia/Text_Multiple_RU.txt",
+			"Screens/Room/Poker/Nadia/Text_Single_RU.txt",
+			"Screens/Room/Poker/Natalia/Text_Multiple_RU.txt",
+			"Screens/Room/Poker/Natalia/Text_Single_RU.txt",
+			"Screens/Room/Poker/Ornella/Text_Multiple_RU.txt",
+			"Screens/Room/Poker/Ornella/Text_Single_RU.txt",
+			"Screens/Room/Poker/Petra/Text_Multiple_RU.txt",
+			"Screens/Room/Poker/Petra/Text_Single_RU.txt",
+			"Screens/Room/Poker/Sally/Text_Multiple_RU.txt",
+			"Screens/Room/Poker/Sally/Text_Single_RU.txt",
+			"Screens/Room/Poker/Sarah/Text_Multiple_RU.txt",
+			"Screens/Room/Poker/Sarah/Text_Single_RU.txt",
+			"Screens/Room/Poker/Sasha/Text_Multiple_RU.txt",
+			"Screens/Room/Poker/Sasha/Text_Single_RU.txt",
+			"Screens/Room/Poker/Sophie/Text_Multiple_RU.txt",
+			"Screens/Room/Poker/Sophie/Text_Single_RU.txt",
+			"Screens/Room/Poker/Supergirl/Text_Multiple_RU.txt",
+			"Screens/Room/Poker/Supergirl/Text_Single_RU.txt",
+			"Screens/Room/Poker/Tasha/Text_Multiple_RU.txt",
+			"Screens/Room/Poker/Tasha/Text_Single_RU.txt",
+			"Screens/Room/Poker/Tigerr/Text_Multiple_RU.txt",
+			"Screens/Room/Poker/Tigerr/Text_Single_RU.txt",
+			"Screens/Room/MagicSchoolFindsAround/Dialog_NPC_MagicSchoolFindsAround_Kitsune_RU.txt",
+			"Screens/Room/MagicSchoolFindsAround/Dialog_NPC_MagicSchoolFindsAround_Theresa_RU.txt",
+			"Screens/Room/MovieStudio/Dialog_NPC_MovieStudio_OpenHouse_Client_RU.txt",
+			"Screens/Room/MovieStudio/Dialog_NPC_MovieStudio_OpenHouse_Girlfriend_RU.txt",
 			"Screens/Interface_RU.txt",
 			"Screens/Character/Appearance/Text_Appearance_RU.txt",
 			"Screens/Character/BackgroundSelection/Text_BackgroundSelection_RU.txt",
@@ -234,6 +298,7 @@ var TranslationDictionary = /** @type {const} */([
 			"Screens/Character/PasswordReset/Text_PasswordReset_RU.txt",
 			"Screens/Character/Player/Dialog_Player_RU.txt",
 			"Screens/Character/Preference/Text_Preference_RU.txt",
+			"Screens/Character/Preference/Text_Keybindings_RU.txt",
 			"Screens/Character/Preference/ActivityDictionary_RU.txt",
 			"Screens/Character/Relog/Text_Relog_RU.txt",
 			"Screens/Character/Title/Text_Title_RU.txt",
@@ -264,6 +329,7 @@ var TranslationDictionary = /** @type {const} */([
 			"Screens/MiniGame/WheelFortune/Text_WheelFortune_RU.txt",
 			"Screens/Online/AdvancedRule/Text_AdvancedRule_RU.txt",
 			"Screens/Online/ChatAdmin/Text_ChatAdmin_RU.txt",
+			"Screens/Online/ChatAdminRoomCustomization/Text_ChatAdminRoomCustomization_RU.txt",
 			"Screens/Online/ChatCreate/Text_ChatCreate_RU.txt",
 			"Screens/Online/ChatBlockItem/Text_ChatBlockItem_RU.txt",
 			"Screens/Online/ChatRoom/Dialog_Online_RU.txt",
@@ -273,8 +339,10 @@ var TranslationDictionary = /** @type {const} */([
 			"Screens/Online/ChatSelect/Text_ChatSelect_RU.txt",
 			"Screens/Online/ForbiddenWords/Text_ForbiddenWords_RU.txt",
 			"Screens/Online/Game/OnlineGameDictionary_RU.txt",
+			"Screens/Online/GameClubCard/Text_GameClubCard_RU.txt",
 			"Screens/Online/GameLARP/Text_GameLARP_RU.txt",
 			"Screens/Online/GameMagicBattle/Text_GameMagicBattle_RU.txt",
+			"Screens/Online/NicknameManagement/Text_NicknameManagement_RU.txt",
 			"Screens/Online/WheelFortuneCustomize/Text_WheelFortuneCustomize_RU.txt",
 			"Screens/Room/Arcade/Dialog_NPC_Arcade_Employee_RU.txt",
 			"Screens/Room/Arcade/Dialog_NPC_Arcade_Player_RU.txt",
@@ -336,6 +404,7 @@ var TranslationDictionary = /** @type {const} */([
 			"Screens/Room/MagicSchoolLaboratory/Dialog_NPC_MagicSchoolLaboratory_Sister_RU.txt",
 			"Screens/Room/MagicSchoolLaboratory/Dialog_NPC_MagicSchoolLaboratory_Student_RU.txt",
 			"Screens/Room/MagicSchoolLaboratory/Dialog_NPC_MagicSchoolLaboratory_Teacher_RU.txt",
+			"Screens/Room/MagicSchoolFindsAround/Text_MagicSchoolFindsAround_RU.txt",
 			"Screens/Room/MagicSchoolLaboratory/Text_MagicSchoolLaboratory_RU.txt",
 			"Screens/Room/MaidQuarters/Dialog_NPC_MaidQuarters_InitiationMaids_RU.txt",
 			"Screens/Room/MaidQuarters/Dialog_NPC_MaidQuarters_Maid_RU.txt",
@@ -1064,7 +1133,8 @@ var TranslationDictionary = /** @type {const} */([
  * Checks whether we're running a translation
  */
 function TranslationEnabled() {
-	return (TranslationLanguage != null) && (TranslationLanguage.trim() != "") && (TranslationLanguage.trim().toUpperCase() != "EN");
+	const lang = TranslationLanguage.trim();
+	return lang !== "" && lang.toUpperCase() !== "EN";
 }
 
 /**
@@ -1073,13 +1143,9 @@ function TranslationEnabled() {
  * @returns {boolean} - Returns TRUE if a translation is available for the given file
  */
 function TranslationAvailable(FullPath) {
-	const FileName = FullPath.trim().toUpperCase();
-	for (let L = 0; L < TranslationDictionary.length; L++)
-		if (TranslationDictionary[L].LanguageCode == TranslationLanguage)
-			for (let F = 0; F < TranslationDictionary[L].Files.length; F++)
-				if (TranslationDictionary[L].Files[F].trim().toUpperCase() == FileName)
-					return true;
-	return false;
+	const fileName = FullPath.trim().toUpperCase();
+	const lang = TranslationDictionary.find(d => d.LanguageCode === TranslationLanguage);
+	return lang?.Files.some(file => file.trim().toUpperCase() === fileName) ?? false;
 }
 
 /**
@@ -1120,12 +1186,11 @@ function TranslationParseTXT(str) {
  * @returns {string} - The translated string
  */
 function TranslationString(S, T) {
-	if(S && S.trim()){
-		S = S.trim();
-		let r = T.findIndex(_=>_===S);
-		if(r >= 0) return T[r+1];
-	}
-	return S;
+	const source = S?.trim();
+	if (!source) return S;
+	const index = T.indexOf(source);
+	if (index < 0) return source;
+	return T[index + 1] ?? source;
 }
 
 /**
@@ -1135,12 +1200,12 @@ function TranslationString(S, T) {
  * @returns {void} - Nothing
  */
 function TranslationDialogArray(C, T) {
-	for (let D = 0; D < C.Dialog.length; D++) {
-		const { Option, Result } = C.Dialog[D];
+	for (const dialog of C.Dialog) {
+		const { Option, Result } = dialog;
 		if (Option)
-			C.Dialog[D].Option = TranslationString(Option, T);
+			dialog.Option = TranslationString(Option, T);
 		if (Result)
-			C.Dialog[D].Result = TranslationString(Result, T);
+			dialog.Result = TranslationString(Result, T);
 	}
 }
 
@@ -1152,8 +1217,9 @@ function TranslationDialogArray(C, T) {
  * @deprecated
  */
 function TranslationTextArray(S, T) {
-	for (let P = 0; P < S.length; P++)
-		S[P].Value = TranslationString(S[P].Value, T);
+	for (const tag of S) {
+		tag.Value = TranslationString(tag.Value, T);
+	}
 }
 
 /**

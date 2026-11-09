@@ -66,7 +66,7 @@
 (A guard steps inside and looks at you.)  Prisoner DialogPlayerName.  How come you're not restrained?  Anyway, I will take care of you today.
 (Охранник заходит внутрь и смотрит на вас.) Заключенная DialogPlayerName.  Почему ты не связана?  В любом случае, сегодня я позабочусь о тебе.
 (A guard steps inside and looks at your bondage.)  Prisoner DialogPlayerName.  I see you are already bound.  I will take care of you today.
-(A guard steps inside and looks at your bondage.)  Заключенная DialogPlayerName.  Я вижу, ты уже связана.  Я позабочусь о тебе сегодня.
+(Охранница входит и смотрит на ваши путы.) Заключённая DialogPlayerName. Вижу, ты уже связана. Сегодня я займусь тобой.
 ###_PLAYER
 Who are you?
 Кто ты?
@@ -360,7 +360,7 @@ Forget it.
 (Guard DialogCharacterName steps inside and looks at you.)  Prisoner DialogPlayerName, since you're not restrained, let's get you naked.
 (Охранник DialogCharacterName заходит внутрь и смотрит на вас.) Заключенная DialogPlayerName, поскольку вы не связаны, давайте вас разденем.
 (Guard DialogCharacterName steps inside and looks at your bondage.)  Prisoner DialogPlayerName, it's time to strip you naked.
-(ОхранникDialogCharacterName заходит внутрь и смотрит на ваш бондаж.)  Заключенная DialogPlayerName, пришло время раздеть тебя догола.
+(Охранница DialogCharacterName входит и осматривает ваши путы.) Заключённая DialogPlayerName, пора раздеть тебя догола.
 ###_PLAYER
 No way!  It's cold in here.
 Ни за что!  Здесь холодно.
@@ -860,7 +860,7 @@ You're a naughty guard.
 (She helps you to stand up and dresses back.)  And you're a kinky prisoner, I'll remove some minutes on the clock.  I need to go.
 (Она помогает тебе встать и одеться обратно.) А ты извращенная ая, я уберу несколько минут на часах.  Мне нужно идти.
 (Guard DialogCharacterName enters with a water bottle.)  Prisoner DialogPlayerName, it's time to drink.  Are you thirsty?
-(Входит охранник с диалоговым именем персонажа с бутылкой воды.)  Заключенная DialogPlayerName, пришло время выпить.  Ты хочешь пить?
+(Охранница DialogCharacterName входит с бутылкой воды.) Заключённая DialogPlayerName, пора пить. Хочешь пить?
 ###_PLAYER
 Can I have some water?
 Можно мне немного воды?
@@ -891,3 +891,11 @@ Enjoy your cell then, I'll be back later.
 ###_NPC
 (She dries her face.)  Fine, rot in that cell.  I'm going.
 (Вытирает лицо.)  Ладно, гни в этой камере.  Я собираюсь.
+Here you go.  (Give her ${money=-5}.)
+Держи. (Дать ей ${money=-5}.)
+Here you go.  (Give her ${money=-3}.)
+Держи. (Дать ей ${money=-3}.)
+Here you go.  (Give her ${money=-10}.)
+Держи. (Дать ей ${money=-10}.)
+Here you go.  (Give her ${money=-6}.)
+Держи. (Дать ей ${money=-6}.)

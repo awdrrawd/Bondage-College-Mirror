@@ -27,15 +27,15 @@ BDSMRoomBlue
 BDSMRoomPurple
 Фиолетовая БДСМ-комната
 BDSMRoomRed
-Красная БДСМ-комната
+Красная БДСМ-комната 1
 Beach
 Пляж
 BeachCafe
 Открытое пляжное кафе
 BeachHotel1
-Пляжный отель
+Пляжный отель 1
 BeachHotel2
-Пляжный отель
+Пляжный отель 2
 BeachSunset
 Закат на пляже
 Bedroom
@@ -123,7 +123,7 @@ HouseInterior3
 HypnoSpiral2
 Гипнотическая спираль 2
 HypnoticSpiral
-Hypnotic Spiral
+Гипнотическая спираль
 IndoorPool
 Крытый бассейн
 Industrial
@@ -324,3 +324,149 @@ Yacht2
 Кают-компания на яхте
 Yacht3
 Палуба яхты
+Agora1
+Дворцовая агора
+BalletClass1
+Балетный класс
+Bar2
+Небольшой бар
+BDSMRoomCage1
+Клетка в БДСМ-комнате
+BDSMRoomRed2
+Красная БДСМ-комната 2
+BDSMRoomRed3
+Красная БДСМ-комната 3
+Bedroom2
+Японская спальня
+Bedroom3
+Спальня парня
+Bedroom4
+Спальня девушки 1
+Bedroom5
+Спальня Эвелин
+Bedroom6
+Спальня девушки 2
+BoxingRing1
+Боксёрский ринг
+Casino1
+Казино
+CastleHall1
+Каменный зал замка
+CollegeBuilding1
+Здание колледжа
+CollegeCafeteria
+Столовая 1
+CollegeCafeteria2
+Столовая 2
+CollegeClass1
+Учебный класс 1
+CollegeClass2
+Учебный класс 2
+CollegeClass3
+Учебный класс 3
+CollegeConcertStage
+Концертная сцена
+CollegeDetention
+Класс для наказанных
+CollegeEntrance
+Вход в колледж
+CollegeHall1
+Коридор колледжа 1
+CollegeHall2
+Коридор колледжа 2
+CollegeHall3
+Коридор колледжа 3
+CollegePool
+Бассейн колледжа
+CollegeTeacherLounge2
+Комната отдыха преподавателей
+CollegeTheater2
+Театр 2
+CollegeShowerRoom
+Душевая
+CollegeSportsGround
+Спортивная площадка
+CollegeStaffRoom
+Комната персонала
+CommercialStreetNight1
+Торговая улица ночью
+Cottage1
+Деревянный коттедж
+DressingRoom1
+Раздевалка
+FancyBathroom1
+Роскошная ванная
+FancyBedroom1
+Роскошная спальня
+Garden2
+Частный сад
+GardenCafe1
+Кафе в саду 1
+GardenCafe2
+Кафе в саду 2
+GardenMuseum1
+Музейный сад
+HairSalon1
+Парикмахерская
+HotelBedroom3
+Спальня в отеле 3
+HotelBedroom4
+Спальня в отеле 4
+HouseInterior4
+Японская гостиная 1
+HouseInterior5
+Традиционная японская комната
+Interrogation1
+Комната допроса
+KinkyShop1
+Магазин для взрослых
+Kitchen1
+Современная кухня
+Kitchen2
+Большая кухня
+Kitchen3
+Уютная кухня
+Kitchen4
+Кухня общежития
+LoungePiano1
+Гостиная с пианино
+MainHall2
+Золотой главный зал
+MeetingRoom1
+Зал собраний
+MovieStudio2
+Камера в киностудии
+Office3
+Небольшой кабинет колледжа
+Office4
+Кабинет директора колледжа
+PandoraCell0
+Камера Пандоры A
+PandoraCell1
+Камера Пандоры B
+PandoraCell2
+Камера Пандоры C
+PandoraCell3
+Камера Пандоры D
+PandoraCell4
+Камера Пандоры E
+PandoraCell5
+Камера Пандоры F
+PandoraCell6
+Камера Пандоры G
+ParkEntrance1
+Вход в парк
+PublicBathroom1
+Общественный туалет
+Stage1
+Подиум
+StreetNight
+Рождественская улица ночью
+StudentBedroom1
+Спальня студентки
+SuburbStreet1
+Тихая пригородная улица
+Tavern1
+Старая таверна
+ClubCardPlayBoard1
+Деревянная доска

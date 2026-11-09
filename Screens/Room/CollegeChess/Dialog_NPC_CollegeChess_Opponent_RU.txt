@@ -556,3 +556,19 @@ That's enough!  I hope you learned some tricks.  (She releases you.)  Would you 
 ###_PLAYER
 (Beg for help.)
 (Просить о помощи.)
+Let's make some rules.  Each major piece like a knight or a rook gets one piece of clothing off.  Have you played before?  Should I go easy on you?
+Давай установим правила. За каждую взятую фигуру, например коня или ладью, снимают один предмет одежды. Ты уже играла? Мне поддаваться?
+Let's bet ${money=-10}.
+Давай поставим ${money=-10}.
+Let's bet ${money=-20}.
+Давай поставим ${money=-20}.
+Let's bet ${money=-30}.
+Давай поставим ${money=-30}.
+(Play chess for ${money=-10} with her.)
+(Сыграть с ней в шахматы на ${money=-10}.)
+(Play chess for ${money=-20} with her.)
+(Сыграть с ней в шахматы на ${money=-20}.)
+(Play chess for ${money=-30} with her.)
+(Сыграть с ней в шахматы на ${money=-30}.)
+Each major piece gets one piece of clothing off.
+За каждую взятую фигуру снимают один предмет одежды.

@@ -1188,6 +1188,17 @@ function AssetGroupGet(Family, Group) {
 }
 
 /**
+ * Gets the decals other items can show, like the seat of the Bar Stool or map objects with a {@link ChatRoomMapObject.DecalArea}:
+ * every single-image asset of the `Decals` group, so new decals show up on them without any change.
+ * Items that save a decal by its position in this list need new decals appended at the end of the group.
+ * @param {IAssetFamily} [family]
+ * @returns {Asset[]} - Empty until the `Decals` group has loaded
+ */
+function AssetGetDecals(family = "Female3DCG") {
+	return (AssetGroupGet(family, "Decals")?.Asset ?? []).filter(asset => asset.Layer.length === 1 && !asset.Layer[0].Name && !asset.Extended);
+}
+
+/**
  * Check whether a group can be hidden through the item visibility settings
  * @param {AssetGroup} group
  */

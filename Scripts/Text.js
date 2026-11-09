@@ -369,12 +369,20 @@ class TextCache {
 	/**
 	 * Maps lines of a CSV to equivalent CSV lines with values translated according to the corresponding translation file
 	 * @param {string[][]} lines - An array of string arrays corresponding to lines in the CSV file
-	 * @param {string[]} translations - An array of strings in translation file format (with EN and translated values on alternate lines)
+	 * @param {string[]} translations - An array of strings in translation file format (with keys and translated values on alternate lines)
 	 * @returns {string[][]} - An array of string arrays corresponding to lines in the CSV file with the
 	 * values translated to the current game language
 	 */
 	buildTranslations(lines, translations) {
 		this.log(`buildTranslations`);
-		return lines.map(line => ([line[0], TranslationString(line[0], translations)]));
+		/** @type {Map<string, string>} */
+		const translated = new Map();
+		for (let i = 0; i + 1 < translations.length; i += 2) {
+			if (!translated.has(translations[i])) {
+				translated.set(translations[i], translations[i + 1]);
+			}
+		}
+		// Missing translations must retain the English text, including its substitution placeholders.
+		return lines.map(([key, value]) => [key, translated.get(key) ?? value]);
 	}
 }

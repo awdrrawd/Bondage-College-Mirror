@@ -13,7 +13,7 @@ I guess it will do.  Our group today wish to learn the fine art of evasion.  Com
 Думаю, сойдет. Сегодня наша группа желает научиться тонкому искусству уклонения. Идите сюда девочки! (Входит много студентов.)
 ###_PLAYER
 I'm ready for anything!
-Я готовf на все!
+Я готова на всё!
 ###_NPC
 Great spirit!  Our group today wish to learn the fine art of evasion.  Come here girls!  (Many students come in.)
 Великий дух! Сегодня наша группа желает научиться тонкому искусству уклонения. Идите сюда девочки! (Входит много студентов.)
@@ -170,3 +170,9 @@ Do you worst girl.
 Ты худшая девочка.
 (Stay silent and give your hands.)
 (Молчать и подать руки.)
+(She gives you ${money=120} for your efforts.)  I will certainly contact you again when the next class is ready.
+(Она даёт вам ${money=120} за старания.) Я обязательно свяжусь с вами, когда можно будет провести следующее занятие.
+(She smirks and gives you ${money=120} for your efforts.)  Check with the maids to know when the next class is ready.
+(Она усмехается и даёт вам ${money=120} за старания.) Узнайте у горничных, когда можно будет провести следующее занятие.
+(She gives you ${money=120} for your efforts.)  I might need you again for another class in the future.
+(Она даёт вам ${money=120} за старания.) Возможно, вы ещё понадобитесь мне на другом занятии.

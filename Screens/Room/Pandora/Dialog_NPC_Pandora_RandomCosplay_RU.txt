@@ -46,7 +46,7 @@ Can you help me?
 Вы можете помочь мне?
 ###_NPC
 Maybe, what are you looking for?
-Maybe, what are you looking for?
+Возможно. Что ты ищешь?
 ###_PLAYER
 I'll go get you a free drink.
 Я пойду принесу тебе бесплатный напиток.
@@ -72,7 +72,7 @@ I'm looking for a girl.
 Я ищу девушку.
 ###_NPC
 (You give some details on the girl you need to rescue, and she shrugs.)  I can't help you there.
-(Вы даете некоторые подробности о девушке, которую вам нужно спасти, и она пожимает плечами.)  Здесь я ничем не могу вам помочьe.
+(Вы описываете девушку, которую нужно спасти, и она пожимает плечами.) Тут я ничем не могу помочь.
 (You give some details on the girl you need to kidnap, and she shrugs.)  I can't help you there.
 (Вы сообщаете некоторые подробности о девушке, которую вам нужно похитить, и она пожимает плечами.)  Здесь я ничем не могу вам помочь.
 ###_PLAYER

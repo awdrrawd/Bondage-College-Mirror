@@ -15,7 +15,7 @@ ArousalPreferences
 SecurityPreferences
 - Настройки безопасности -
 VisibilityPreferences
-- Настройки предмета -
+- Настройки предметов -
 GraphicsPreferences
 - Графические настройки -
 OnlinePreferences
@@ -35,11 +35,11 @@ HomepageGeneral
 HomepageDifficulty
 Сложность
 HomepageRestriction
-Ограничение
+Ограничения
 HomepageChat
 Чат
 HomepageCensoredWords
-Цензурированные слова
+Цензура слов
 HomepageAudio
 Аудио
 HomepageArousal
@@ -47,7 +47,7 @@ HomepageArousal
 HomepageSecurity
 Безопасность
 HomepageVisibility
-Видимость предмета
+Видимость предметов
 HomepageOnline
 Онлайн
 HomepageImmersion
@@ -115,7 +115,7 @@ RestrictionSlowImmunity
 RestrictionBypassNPCPunishments
 Пропустить наказание при вызове горничных из чата.
 RestrictionNoSpeechGarble
-Не искажать разговор в онлайн-чате, если вам заткнули рот.
+Не искажать сообщения чата и шёпот при надетом кляпе.
 CharacterLabelColor
 Цвет ника персонажа:
 AllowedInteraction0
@@ -131,7 +131,7 @@ AllowedInteraction4
 AllowedInteraction5
 Только Хозяйка
 ErrorInvalidColor
-Поместите допустимый шестнадцатеричный цвет #красный-зеленый-синий
+Введите допустимый шестнадцатеричный цвет #RRGGBB
 ColorTheme
 Тема:
 Light
@@ -143,7 +143,7 @@ Light2
 Dark2
 Темная 2
 EnterLeaveStyle
-Стиль сообщений:
+Стиль сообщений о входе и выходе:
 Normal
 Обычный
 Smaller
@@ -169,7 +169,7 @@ Large
 DisplayTimestamps
 Отображение временных меток
 ColorNames
-Названия цвета
+Выделять имена цветом
 ColorActions
 Цветные действия
 ColorEmotes
@@ -181,15 +181,15 @@ ShrinkNonDialogue
 ShowActivities
 Показать сексуальные действия и оргазмы
 MuStylePoses
-Использовать : как псевдоним для /me и *
+Использовать :/:: вместо /me/*/action/**
 AutoBanBlackList
-Запретить блэклист при создании комнат
+Запрещать вход участникам чёрного списка при создании комнаты
 AutoBanGhostList
-Запретить призраков при создании комнат
+Запрещать вход участникам списка скрытых при создании комнаты
 SearchFriendsFirst
 Упорядочить комнаты по количеству друзей
 DisableAnimations
-Отключить заскриптованные активы на других
+Отключить скриптовые предметы на других персонажах
 ShowAutomaticMessages
 Показать все автоматические сообщения
 PreserveWhitespace
@@ -205,9 +205,9 @@ Volume
 MusicVolume
 Громкость музыки
 AudioPlayBeeps
-Звуковая сигнализация для гудков
+Звуковой сигнал при получении вызова
 AudioPlayItem
-Звуки предметов воспроизведения в чатах
+Воспроизводить звуки предметов в комнатах чата
 AudioPlayItemPlayerOnly
 Воспроизведение звуков предметов только в том случае, если вы участвуете
 AudioNotifications
@@ -217,7 +217,7 @@ ImmersionLockSetting
 ReturnToChatRoom
 Вернуться в чат-комнату при повторном входе
 ReturnToChatRoomAdmin
-Авто-переворот комнаты
+Автоматически воссоздавать комнаты
 SenseDepMessages
 Скрыть чужие сообщения
 ImmersionLocked
@@ -241,19 +241,19 @@ RoomCustomizationLevel3
 SensDepSetting
 Настройки сенсорной депривации
 SensDepLight
-Светлая
+Слабая
 SensDepNames
 Скрыть имена
 SensDepTotal
-Тяжело
+Сильная
 SensDepExtreme
 Полностью
 DoBlindFlash
 Вспышка после слепоты
 SmoothZoom
-Zoom чатов плавно
+Плавно масштабировать комнаты чата
 CenterChatrooms
-Центр игроков в чатах
+Размещать персонажей по центру комнаты
 AllowPlayerLeashing
 Игроки могут тащить вас в комнаты на поводке
 DisableAutoMaid
@@ -263,11 +263,11 @@ DisablePickingLocksOnSelf
 BlindDisableExamine
 Отключить осмотр вслепую
 DisableAutoRemoveLogin
-Сохраняйте все ограничения при повторном входе в систему
+Сохранять все путы при повторном входе
 OfflineLockedRestrained
 Не может войти в комнаты для одного игрока, будучи связанным
 ArousalDisableAdvancedVibes
-Блокировать расширенные режимы вибратора (граничный, случайный и т. д.)
+Блокировать расширенные режимы вибратора (на грани, случайный и др.)
 GeneralHardcoreWarning
 Стоп-слова и помощь от NPC отключены на Хардкор или Экстрим.
 ItemsAffectExpressions
@@ -293,9 +293,9 @@ ForceFullHeight
 EnableAfkTimer
 Показывать статус AFK, если бездействует в течение 5 минут.
 EnableSafeword
-Разрешить использование безопасного слова (нельзя включить пока связана)
+Разрешить стоп-слово (нельзя включить, пока вы связаны)
 ConfirmSafeword
-(Нажмите, чтобы подтвердить) Разрешить использование безопасного слова (невозможно включить пока связана)
+(Нажмите для подтверждения) Разрешить стоп-слово (нельзя включить, пока вы связаны)
 AllowFullWardrobeAccess
 Позволить другим изменить весь ваш внешний вид
 BlockBodyCosplay
@@ -323,7 +323,7 @@ UpdateEmailFailure
 UpdateEmailInvalid
 Недопустимые символы
 ArousalShowOtherMeter
-Показать счетчик другим
+Показывать шкалы возбуждения других персонажей
 ArousalAffectExpression
 Влияет на выражение лица
 ArousalActive
@@ -349,7 +349,7 @@ VFXAnimatedTemp
 VFXAnimated
 Постоянная анимация
 VFXVibrator
-Сетчатые фильтры вибратора
+Экранные эффекты вибратора
 VFXVibratorInactive
 Нет
 VFXVibratorSolid
@@ -357,7 +357,7 @@ VFXVibratorSolid
 VFXVibratorAnimated
 Мерцающее свечение
 VFXFilter
-Сетчатый фильтр возбуждения
+Эффект возбуждения на экране
 VFXFilterHeavy
 Сильный градиент
 VFXFilterMedium
@@ -371,13 +371,13 @@ ArousalVisible
 ArousalVisibleAll
 Показать возбуждение всем
 ArousalVisibleAccess
-Показать, есть ли у них доступ
+Показывать тем, у кого есть доступ
 ArousalVisibleSelf
-Покажи только себе
+Показывать только себе
 ArousalFetish
-Фетиш предпочтения:
+Предпочтения фетишей:
 ArousalFetishBondage
-Быть сдержанной
+Быть связанной
 ArousalFetishGagged
 Быть заткнутой кляпом
 ArousalFetishBlindness
@@ -411,7 +411,7 @@ ArousalFetishPony
 ArousalFetishABDL
 ABDL
 ArousalFetishPet
-Игра с питомцем
+Ролевая игра в питомца
 ArousalFetishForniphilia
 Форнифилия (человеческая мебель)
 ArousalFetishLove0
@@ -447,21 +447,21 @@ ArousalConfigureErogenousZones
 ArousalZoneLove0
 Блокировать все действия в этой зоне
 ArousalZoneLove1
-Не нравится эта зона, она отключение
+Прикосновения к этой зоне не нравятся и снижают возбуждение
 ArousalZoneLove2
 Эта зона не является для вас особенной
 ArousalZoneLove3
-Эта зона, она тебя заводит.
+Прикосновения к этой зоне нравятся и возбуждают
 ArousalZoneLove4
-Люблю эту зону, это здорово возбуждает.
+Прикосновения к этой зоне очень нравятся и сильно возбуждают
 ArousalAllowOrgasm
 Эта зона может дать вам оргазм
 ArousalZoneItemBoots
 Ступни и пальцы ног
 ArousalZoneItemFeet
-Лодыжки
+Голени
 ArousalZoneItemLegs
-Верхние части ног
+Бёдра
 ArousalZoneItemVulva
 Киска и влагалище
 ArousalZoneItemVulvaPiercings
@@ -499,9 +499,9 @@ ArousalStutterNone
 ArousalStutterArousal
 Когда ты возбужден
 ArousalStutterVibration
-Когда вы вибрируете
+Под действием вибрации
 ArousalStutterAll
-Возбужденный и вибрирующий
+При возбуждении и вибрации
 VisibilityGroup
 Группа:
 VisibilityAsset
@@ -555,7 +555,7 @@ GraphicsAntialiasing
 GraphicsSupportHint
 Для этого браузера, если поддерживается
 GraphicsNoWebGL
-Не запускать на WebGL, нельзя редактировать конфигурации рендеринга.
+WebGL не используется; настройки отрисовки недоступны.
 GraphicsPowerMode
 Предпочтительный режим энергопотребления
 PowerModelow-power
@@ -573,7 +573,7 @@ NotificationsAlertType2
 NotificationsAlertType3
 (1) в иконке
 NotificationsExplanation
-Поднимите уведомления о пропущенных событиях:
+Уведомлять о пропущенных событиях:
 NotificationsAudioExplanation1
 : воспроизведение звука только
 NotificationsAudioExplanation2
@@ -603,11 +603,11 @@ NotificationsChatJoinFriendlist
 NotificationsChatJoinSubs
 Собственные сабы
 NotificationsDisconnect
-Отключиться от игры
+Потеря соединения с игрой
 NotificationsLarp
 Ваш ход в игре LARP
 NotificationsTestRaise
-Поднимите тестовое уведомление
+Показать тестовое уведомление
 NotificationsTestReset
 Очистить всплывающие уведомления
 NotificationsTestMessage
@@ -623,15 +623,15 @@ AllowBlur
 AllowBlurHint
 Отключите при снижении частоты кадров
 GenderFemales
-Женщина
+Женщин
 GenderMales
-Мужчина
+Мужчин
 GenderAutoJoinSearch
 Автоматически входить в зону чата для:
 GenderHideShopItems
 Скрыть товары в магазине исключительно для:
 GenderHideTitles
-Скрыть заголовки в настройках для:
+Скрывать в настройках титулы для:
 CensorExit
 Применение цензуры
 CensorTitle
@@ -678,3 +678,143 @@ ShowFullscreenButtonoff
 Никогда
 OOCAutoClose
 Автоматическое закрытие сообщений OOC
+CensoredWordsPreferences
+- Настройки цензуры -
+KeybindingsPreferences
+- Настройки клавиш -
+HomepageKeybindings
+Назначение клавиш
+AllowedInteractions
+Разрешённые взаимодействия:
+DisableReplies
+Отключить ответы на сообщения
+ShowFriendRequestMessages
+Показывать запросы в друзья
+DefaultChatRoomBackground
+Фон комнаты по умолчанию:
+ChatSettingsPage0
+Страница 1/2
+ChatSettingsPage1
+Страница 2/2
+LockTimerLimitSetting
+Ограничение таймеров замков
+LockTimerLimitDefault
+По умолчанию
+LockTimerLimitDay
+1 день
+LockTimerLimitWeek
+1 неделя
+LockTimerLimitMonth
+1 месяц
+LockTimerLimitYear
+1 год
+LockTimerLimitUnlimited
+Без ограничений
+AllowRename
+Владелец может менять или блокировать ваш никнейм
+ToggleColorPicker
+Открыть/закрыть палитру
+RespondRemoteModListQueries
+Отвечать на запросы списка модов от других игроков
+ArousalAffectErection
+Влиять на эрекцию
+ArousalFetishSpandex
+Спандекс (плотно облегающий)
+VisibilityResetDescription
+Сбросить все настройки видимости предметов, чтобы скрытые предметы снова стали видны, затем сохранить и выйти?
+VisibilitySearchPlaceholder
+Поиск...
+VisibilityNoResults
+Нет предметов, соответствующих запросу
+ScriptsHelpGlobal
+Чтобы уменьшить число ошибок и сохранить приемлемый внешний вид, Бондаж-клуб ограничивает изменения предметов, способные вызвать наложение или другие графические дефекты.\nНа этом экране можно разрешить отдельным людям обходить эти ограничения.\nЭто позволяет сложнее настраивать поведение предметов, но может вызвать серьёзные графические ошибки, вплоть до невидимых предметов или персонажей. Разрешение «Все» позволяет изменять эту функцию любому, в том числе троллям. Пользуйтесь им осторожно.\nНежелательные эффекты скриптов можно убрать в любой момент, отключив все разрешения для соответствующего эффекта (включая «Себе»).\nЧтобы узнать подробнее о свойствах, доступных для настройки разрешений, их действии и связанных рисках, нажмите значок «?» рядом с нужным свойством.
+ScriptsHelpHide
+Разрешает скриптам изменять стандартное скрытие предметов в Бондаж-клубе. Это позволяет сочетать предметы, которые обычно нельзя сочетать, или скрывать их ради определённого образа, не полностью совпадающего с тем, что надето на самом деле. Однако это также может вызвать серьёзные графические ошибки, в том числе сделать невидимыми предметы или всего персонажа. Используйте осторожно!
+ScriptsHelpBlock
+Разрешает скриптам изменять стандартную блокировку предметов в Бондаж-клубе. Эта функция препятствует надеванию предметов на других и может запрещать сексуальные действия с заблокированными зонами. Дополнительная блокировка через скрипты позволяет вводить новые ограничения: например, запрещать снимать предметы или надевать новые в определённый слот. Но в результате могут появиться предметы, которые вы не сможете снять самостоятельно без скрипта или отключения этого разрешения.
+ScriptsShowHelp
+Показать справку
+FPSFocusedLimit
+Ограничение FPS
+FPSUnfocusedLimit
+Ограничение FPS в фоне
+ShowFPS
+Показывать счётчик FPS
+ShowFullscreenButton
+Показывать кнопку полного экрана
+ShowFullscreenButtonHint
+Показывать небольшую кнопку перехода в полноэкранный режим. Рекомендуется на мобильных устройствах; в настольных браузерах обычно уже есть сочетание клавиш для полного экрана.
+ShowFullscreenButtonon_when_mobile
+На мобильных устройствах
+MaxFPS0
+Без ограничений
+MaxFPS10
+10 FPS
+MaxFPS15
+15 FPS
+MaxFPS30
+30 FPS
+MaxFPS60
+60 FPS
+ShowUngarbledMessages
+Показывать неискажённый текст сообщений, если он доступен
+ExtensionsNotFound
+Расширения не найдены
+KeybindSearchMode
+Режим поиска
+KeybindSearchMode.action
+Действие
+KeybindSearchMode.category
+Категория
+KeybindSearchMode.keyCombo
+Сочетание клавиш
+KeybindSearchPlaceholder
+Введите текст для поиска...
+KeybindNotBound
+Не назначено
+KeybindError
+Ошибка
+KeybindConflictsOnly
+Показывать только конфликты
+KeybindConflictsWith
+Конфликтует с:\n$conflicts$
+KeybindContextsValid
+Контексты:\n$contexts$
+KeybindReset
+Сбросить сочетание
+KeybindUnbind
+Удалить назначение
+KeybindWaitingForInput
+Ожидание клавиш для $action$...
+KeybindFiltering
+Фильтрация
+MoveRightStickUp
+Отклоните правый стик вверх
+MoveRightStickRight
+Отклоните правый стик вправо
+PressA
+Нажмите кнопку A
+PressB
+Нажмите кнопку B
+PressX
+Нажмите кнопку X
+PressY
+Нажмите кнопку Y
+PressLeftBumper
+Нажмите левый бампер
+PressRightBumper
+Нажмите правый бампер
+PressLeftTrigger
+Нажмите левый курок
+PressRightTrigger
+Нажмите правый курок
+PressSelect
+Нажмите кнопку Select
+PressStart
+Нажмите кнопку Start
+PressLeftStick
+Нажмите на левый стик
+PressRightStick
+Нажмите на правый стик
+PressHome
+Нажмите кнопку Home

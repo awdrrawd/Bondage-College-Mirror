@@ -63,17 +63,17 @@ SourceName (SourceNumber) не удается заткнуть TargetName (Targe
 LARPOptionTighten
 Затянуть (OptionOdds %)
 LARPOptionTightenSuccess
-SourceName (SourceNumber) Затягивает TargetName (TargetNumber) бондаж, сбросив ее прогресс борьбы.
+SourceName (SourceNumber) затягивает путы TargetName (TargetNumber), сбрасывая прогресс освобождения.
 LARPOptionStruggle
 Бороться (OptionOdds %)
 LARPOptionStruggleSuccess
-TargetName (TargetNumber) успешно борется и освобождает руки.  [ActionOdds >= ActionRNG]
+TargetName (TargetNumber) успешно вырывается и освобождает руки. [ActionOdds >= ActionRNG]
 LARPOptionStruggleFail
 TargetName (TargetNumber) пытается вырваться, но терпит неудачу.  [ActionOdds < ActionRNG]
 LARPOptionCharge
 Заряжать (OptionOdds %)
 LARPOptionChargeSuccess
-SourceName (SourceNumber) Заряжает вместе со своей командой, давая 25% бонус к атаке на весь цикл.
+SourceName (SourceNumber) идёт в атаку вместе с SourcePronounPossessive командой, давая бонус 25% к атаке на полный цикл.
 LARPOptionControl
 Контроль (OptionOdds %)
 LARPOptionControlSuccess
@@ -81,23 +81,23 @@ SourceName (SourceNumber) контролирует комнату, не дава
 LARPOptionDetain
 Задержать (OptionOdds %)
 LARPOptionDetainSuccess
-SourceName (SourceNumber) задерживает TargetName (TargetNumber) и удерживает ее руки, используя: ItemDesc.
+SourceName (SourceNumber) задерживает TargetName (TargetNumber) и связывает руки с помощью: ItemDesc.
 LARPOptionExpose
 Раскрыть (OptionOdds %)
 LARPOptionExposeSuccess
-SourceName (SourceNumber) раскрывает TargetName (TargetNumber) и снимает с нее одежду.
+SourceName (SourceNumber) обнажает TargetName (TargetNumber), снимая одежду.
 LARPOptionInspire
 Вдохновлять (OptionOdds %)
 LARPOptionInspireSuccess
-SourceName (SourceNumber) вдохновляет TargetName (TargetNumber), позволяя ей снова использовать свои особые способности.
+SourceName (SourceNumber) вдохновляет TargetName (TargetNumber), восстанавливая возможность использовать особые способности.
 LARPOptionSeduce
 Соблазнять (OptionOdds %)
 LARPOptionSeduceSuccess
-SourceName (SourceNumber) соблазняет TargetName (TargetNumber), не позволяя ей действовать в следующий ход.
+SourceName (SourceNumber) соблазняет TargetName (TargetNumber), лишая возможности действовать в следующий ход.
 LARPOptionConfuse
 Сбить с толку (OptionOdds %)
 LARPOptionConfuseSuccess
-SourceName (SourceNumber) сбивает с толку TargetName (TargetNumber), не позволяя ей использовать особые способности в течение полного цикла.
+SourceName (SourceNumber) сбивает с толку TargetName (TargetNumber), лишая возможности использовать особые способности на полный цикл.
 LARPOptionHide
 Скрыться (OptionOdds %)
 LARPOptionHideSuccess
@@ -105,13 +105,13 @@ SourceName (SourceNumber) прячется в углу, ни один проти
 LARPOptionImmobilize
 Обездвижить (OptionOdds %)
 LARPOptionImmobilizeSuccess
-SourceName (SourceNumber) обездвиживает TargetName (TargetNumber) и удерживает ее ноги, используя: ItemDesc.
+SourceName (SourceNumber) обездвиживает TargetName (TargetNumber) и связывает ноги с помощью: ItemDesc.
 LARPOptionCheer
 взбодрить (OptionOdds %)
 LARPOptionCheerSuccess
-SourceName (SourceNumber) взбодрить TargetName (TargetNumber), давая ей 25% бонус к атаке и защите на весь цикл.
+SourceName (SourceNumber) подбадривает TargetName (TargetNumber), давая бонус 25% к атаке и защите на полный цикл.
 LARPOptionCostume
-Costume (OptionOdds %)
+Костюм (OptionOdds %)
 LARPOptionCostumeSuccess
 SourceName (SourceNumber) costumes TargetName (TargetNumber), используя: ItemDesc.
 LARPOptionEvasion
@@ -121,11 +121,11 @@ SourceName (SourceNumber) использует свои способности �
 LARPOptionRescue
 Спасти (OptionOdds %)
 LARPOptionRescueSuccess
-SourceName (SourceNumber) спасает TargetName (TargetNumber). Снимает ее ограничения.
+SourceName (SourceNumber) спасает TargetName (TargetNumber), снимая путы.
 LARPOptionSilence
 Тишина(кляп) (OptionOdds %)
 LARPOptionSilenceSuccess
-SourceName (SourceNumber) заставляет замолчать TargetName (TargetNumber) и затыкает ей рот, используя: ItemDesc.
+SourceName (SourceNumber) заставляет замолчать TargetName (TargetNumber), вставляя кляп: ItemDesc.
 LARPOptionUngag
 Снять кляп (OptionOdds %)
 LARPOptionUngagSuccess
@@ -133,7 +133,7 @@ SourceName (SourceNumber) Снимает кляп с TargetName (TargetNumber).
 LARPOptionCover
 Покрытие (OptionOdds %)
 LARPOptionCoverSuccess
-SourceName (SourceNumber) покрывает TargetName (TargetNumber), ни один противник не может нацелить ее на полный цикл.
+SourceName (SourceNumber) прикрывает TargetName (TargetNumber): противники не могут выбрать эту цель на протяжении полного цикла.
 LARPOptionDress
 Одеться (OptionOdds %)
 LARPOptionDressSuccess
@@ -180,3 +180,7 @@ MagicBattleRoundWinner
 SpellDesc из SourceName (SourceNumber) влияет на TargetName (TargetNumber).
 MagicBattleGameOver
 Битва окончена! Наслаждайтесь своими военными трофеями.
+LARPOptionStrip
+Раздеть TargetPronounObject (OptionOdds %)
+LARPOptionRestrainMouth
+Надеть кляп TargetPronounObject (OptionOdds %)

@@ -1,4 +1,4 @@
-﻿###_NPC
+###_NPC
 Silence is the highest form of truth!
 Молчание - это высшая форма истины!
 (She gives a curious look at the gag but doesn't resist as you silence her.)
@@ -55,7 +55,7 @@ What kind of test is it?
 ###_NPC
 (She shoves you into a cell and closes the door.)
 (Она запихивает тебя в камеру и закрывает дверь.)
-+###_PLAYER
+###_PLAYER
 I heard something about a gang of bad girls?
 Я что-то слышала о банде плохих девчонок?
 ###_NPC
@@ -235,3 +235,5 @@ Chill out. I'm going to get a coffee in the maid quarters.
 (Она использует свой стек.) Это ранит меня больше, чем тебя!
 You changed your clothes despite your mistress's ban. Therefore, you've been sent into a cell by other members.
 Ты переоделась, несмотря на запрет Госпожи. Поэтому тебя отправили в камеру другие члены.
+(Return the dice)
+(Вернуть игральные кости.)

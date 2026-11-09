@@ -1,7 +1,7 @@
 SelectTitle
 Выберите отображаемое имя и титул
 CurrentTitle
-Текущий титул: ТИТУЛ
+Текущий титул: TITLE
 NicknameLocked
 Псевдоним заблокирован вашей Хозяйкой
 NicknameTooLong
@@ -19,7 +19,7 @@ TitleHeadMaid
 TitleMaid
 Горничная
 TitleBondageMaid
-Бондаж Горничная
+Бондажная горничная
 TitleMasterKidnapper
 Мастер-похититель
 TitleKidnapper
@@ -41,7 +41,7 @@ TitlePatron
 TitleCollegeStudent
 Студент колледжа
 TitleNawashi
-Веревочный художник
+Мастер верёвочного бондажа
 TitleHoudini
 Гудини
 TitleAnimeGirl
@@ -53,11 +53,11 @@ TitlePonyFoal
 TitlePonyFarm
 Фермерская лошадь
 TitlePonyCold
-Хладнокровная Лошадь
+Тяжеловоз
 TitlePonyWarm
-Обычная Лошадь
+Теплокровная лошадь
 TitlePonyHot
-Горячая Лошадь
+Горячекровная лошадь
 TitlePonyWild
 Дикий Мустанг
 TitlePonyUnicorn
@@ -75,7 +75,7 @@ TitleInfilrationAgent
 TitleInfilrationOperative
 Оперативник
 TitleInfilrationSuperspy
-Супер шпион
+Супершпион
 TitleMagicSchoolWizard
 Волшебник
 TitleMagicSchoolMagus
@@ -153,7 +153,7 @@ TitleGoodSlave
 TitleDrone
 Дрон
 TitleGoodOne
-Хороший Вариант
+Хороший человек
 TitleLiege
 Сеньор
 TitleConcubus
@@ -172,3 +172,69 @@ TitleAmplector
 Мудрец
 TitleCorporis
 Ведьма
+SearchTitle
+Найти титул
+Nickname
+Никнейм
+TitleMaster
+Господин
+TitleKing
+Король
+TitleQueen
+Королева
+TitleGoddess
+Богиня
+TitleGod
+Бог
+TitleFreeUse
+В свободном пользовании
+TitleArchbishop
+Архиепископ
+TitleBishop
+Епископ
+TitleArchjudge
+Верховный судья
+TitleJudge
+Судья
+TitleChampion
+Чемпион
+TitleMatron
+Матрона
+TitlePatriarch
+Патриарх
+TitlePrimaris
+Примарис
+TitleLordFortune
+Лорд Фортуна
+TitlePuddleMaker
+Создатель луж
+TitleDiaperPrincess
+Принцесса подгузников
+TitleDiaperPrince
+Принц подгузников
+TitleDuke
+Герцог
+TitleDragon
+Дракон
+TitleWolf
+Волк
+TitleMonster
+Монстр
+TitleShapeshifter
+Оборотень
+TitleVampire
+Вампир
+TitleTurtle
+Черепаха
+TitleThing
+Нечто
+TitleElf
+Эльф
+TitleDrow
+Дроу
+TitlePixie
+Пикси
+TitleMistree
+Мистри
+TitleDominatrix
+Доминатрикс

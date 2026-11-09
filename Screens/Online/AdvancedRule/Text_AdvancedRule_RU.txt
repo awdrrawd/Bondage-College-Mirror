@@ -110,3 +110,17 @@ BlockScreenCafe
 Кафе
 BlockScreenArcade
 Аркада
+Next
+Следующая страница
+BlockItemGroupItemHandheld
+Предметы в руках
+BlockItemGroupItemMisc
+Разное
+BlockItemGroupItemDevices
+Устройства
+BlockItemGroupItemAddon
+Дополнения
+BlockScreenCollege
+Колледж
+BlockScreenClubCard
+Карточный зал

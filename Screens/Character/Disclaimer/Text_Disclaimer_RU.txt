@@ -1,28 +1,28 @@
 Disclaimer
-Bondage Club – Terms of Service
+Bondage Club — условия использования
 TosIntro1
-To play the game and create a character, you must read and agree to the Terms of Service (TOS).
+Чтобы играть и создать персонажа, необходимо прочитать и принять условия использования (TOS).
 TosIntro2
-These terms can change at any time. By playing the game, you agree to the terms below.
+Эти условия могут измениться в любое время. Играя, вы соглашаетесь с приведёнными ниже условиями.
 TosItem1
-Age Eligibility: This website contains age-restricted materials including nudity and explicit descriptions of sexual activities. You must be a legal adult in your country and at least 18 years old to play the Bondage Club. Minors are not allowed and should leave this website immediately. Never create a character that would be a minor.
+Возрастные ограничения: сайт содержит материалы с возрастными ограничениями, включая наготу и откровенные описания сексуальных действий. Для игры в Bondage Club вы должны быть совершеннолетним по законам своей страны и не младше 18 лет. Несовершеннолетним доступ запрещён; им следует немедленно покинуть сайт. Никогда не создавайте несовершеннолетнего персонажа.
 TosItem2
-Player License: As a player, you do not own the game, you are granted a license to play it. This license can be revoked, and your character can be banned or deleted if these terms are violated.
+Лицензия игрока: вы не владеете игрой, а получаете лицензию на участие в ней. При нарушении этих условий лицензия может быть отозвана, а персонаж — заблокирован или удалён.
 TosItem3
-User Conduct: As a player, you must conduct yourself in a civilized manner. Do not harass others, make hateful statements or try to harm others maliciously. You can cheat by using scripts or mods on yourself, but do not use them on others without their consent. Do not, in any way, try to hack or disrupt the server.
+Поведение игрока: ведите себя цивилизованно. Не преследуйте других, не высказывайтесь с ненавистью и не пытайтесь намеренно причинить вред. Вы можете использовать скрипты и модификации для получения преимуществ в отношении своего персонажа, но не применяйте их к другим без их согласия. Не пытайтесь каким-либо способом взломать сервер или нарушить его работу.
 TosItem4
-Assets Ownership: Many assets (drawings, real pictures & sounds) used in the Bondage Club game are not owned by the Bondage Club developers or Bondage Projects. The game is a community driven visible source game and these assets were imported from all over the web, making it almost impossible to track and credit all the sources. If you're the owner of one of these assets, please inform Ben987 on Patreon, Discord or DeviantArt.
+Права на ресурсы: многие ресурсы Bondage Club (рисунки, фотографии и звуки) не принадлежат разработчикам Bondage Club или Bondage Projects. Игра с доступным для просмотра исходным кодом развивается сообществом; ресурсы добавлялись из разных источников в интернете, поэтому отследить и указать все источники практически невозможно. Если вы владеете правами на один из этих ресурсов, сообщите об этом Ben987 через Patreon, Discord или DeviantArt.
 TosItem5
-No Warranty: The game is a community driven visible source game and can be modified in hundreds of ways, bugs are to be expected. There is no guarantee that the game won’t crash, that the server will be running and the client hosting will remain available. The Bondage Club is not responsible for any data loss on your accounts.
+Отсутствие гарантий: игра с доступным для просмотра исходным кодом развивается сообществом и допускает сотни способов модификации, поэтому в ней возможны ошибки. Нет гарантии, что игра не завершится аварийно, сервер будет работать, а хостинг клиента останется доступным. Bondage Club не несёт ответственности за потерю данных ваших аккаунтов.
 TosItem6
-Limitation of Liability: The Bondage Club is a free game and is not liable for any direct or indirect damage. Since you do not pay for the game, you cannot get a refund or sue the developers for bugs or content that does not meet your expectations.
+Ограничение ответственности: Bondage Club — бесплатная игра; проект не несёт ответственности за прямой или косвенный ущерб. Поскольку вы не платите за игру, вы не можете требовать возврата средств или подавать в суд на разработчиков из-за ошибок либо содержимого, не соответствующего вашим ожиданиям.
 TosItem7
-Termination of Access: The Bondage Club can be shut down at any time, without prior notification. There are no obligations to continue supporting the game in the future.
+Прекращение доступа: работа Bondage Club может быть прекращена в любое время без предварительного уведомления. Обязательств по дальнейшей поддержке игры нет.
 TosItem8
-Privacy: Your private information is not required to play the game. The only information you might want to provide is an email address to recover your account password. It is not advised, but you can share your private information with other players if you desire. The Bondage Club is not liable if the shared information is used against you in the future. The Bondage Club values your privacy and will not share or distribute your email address.
+Конфиденциальность: для игры не требуется предоставлять личные сведения. По желанию можно указать адрес электронной почты для восстановления пароля. Хотя это не рекомендуется, вы можете делиться личными сведениями с другими игроками. Bondage Club не несёт ответственности, если в дальнейшем эти сведения будут использованы против вас. Bondage Club ценит вашу конфиденциальность и не будет передавать или распространять ваш адрес электронной почты.
 TosAcceptPrompt
-Please accept these Terms of Service to create your character.
+Примите эти условия использования, чтобы создать персонажа.
 TosReturn
-Вернутся
+Вернуться
 TosAccept
 Я принимаю

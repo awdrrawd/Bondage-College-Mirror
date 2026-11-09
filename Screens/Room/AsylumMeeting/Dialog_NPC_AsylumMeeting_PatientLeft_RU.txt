@@ -1,4 +1,4 @@
-﻿###_NPC
+###_NPC
 Get that gag off or stop talking, you're driving me nuts.
 Вытащи кляп или замолчи, ты сводишь меня с ума.
 What's up doc?
@@ -382,3 +382,19 @@ I'll find a place to get drunk and celebrate.  See you later!
 ###_PLAYER
 (Back to the main hall.)
 (Вернутся в главный зал.)
+I can see that you need help, but what's in there for me?  Give me ${money=-10} and I'll help you out.
+Я вижу, что тебе нужна помощь, но что я с этого получу? Дай мне ${money=-10}, и я помогу тебе выбраться.
+I have a vibrating wand I can sell you.  It's used and it's not cheap, it goes for ${money=-80}.  Do you want it?
+У меня есть вибропалочка на продажу. Подержанная и недешёвая: ${money=-80}. Хочешь?
+I have a bunch of hairpins from one of the nurses. They're pretty hard to come by, though. It'll cost ${money=-40} for a pair.
+У меня есть шпильки от одной из медсестёр. Правда, их довольно трудно достать. Пара обойдётся в ${money=-40}.
+Sure, the price is ${money=-1} per smoke, do you want one?
+Конечно. Одна сигарета стоит ${money=-1}. Хочешь?
+Alright.  (Pay her ${money=-1} and smoke.)
+Ладно. (Заплатить ей ${money=-1} и покурить.)
+It's a deal!  (Pay her ${money=-80})
+Договорились! (Заплатить ей ${money=-80}.)
+No way!  ${money=-80} for a used vibrator!
+Ни за что! ${money=-80} за подержанный вибратор!
+Sounds good!  (Pay her ${money=-40})
+Отлично! (Заплатить ей ${money=-40}.)

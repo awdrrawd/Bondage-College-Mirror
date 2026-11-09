@@ -1,4 +1,4 @@
-﻿###_NPC
+###_NPC
 Good. Horses don't speak.
 Хорошо. Лошади не разговаривают.
 (She first shakes her head to avoid the gag, but finally surrenders and lets you silence her.)
@@ -731,3 +731,39 @@ Congratulations, you have passed all the exams.
 ###_NPC
 (They celebrate your success.) Hip Hip Hurray!
 (Они празднуют твой успех.) Хип-Хип Ура!
+Can I tie you up if I win?
+Можно я свяжу тебя, если выиграю?
+Will you restrain me if I loose?
+Ты свяжешь меня, если я проиграю?
+(Play Club Card with her.)
+(Сыграть с ней в клубные карты.)
+Let's talk about something else.
+Давай поговорим о другом.
+Well done, you have talent.  Another game or I get you into a tack?
+Молодец, у тебя талант. Ещё партия или надеть на тебя сбрую?
+Do you think the training was successful? Then I get ${money=-50} exam fee.
+Думаешь, тренировки прошли успешно? Тогда с тебя ${money=-50} за экзамен.
+Do you think you're ready? Then pay the ${money=-50}.
+Считаешь, что готова? Тогда заплати ${money=-50}.
+That'll be a ${money=-10} cleaning fee for your riding gear.
+Плата за чистку твоего снаряжения для верховой езды — ${money=-10}.
+Do you take breaks to play cards?
+Устраиваете перерывы, чтобы сыграть в карты?
+(She nods.)  Yes, I can play a few Club Card games with you.
+(Она кивает.) Да, могу сыграть с тобой несколько партий в клубные карты.
+No, I have ponies to train.
+Нет, мне нужно тренировать пони.
+(She shakes head from left to right.)  I only restrain ponies.
+(Она отрицательно качает головой.) Я связываю только пони.
+(She nods.)  These ponies are not going to train themselves.
+(Она кивает.) Эти пони сами себя не натренируют.
+No, not yet.  The training fee is ${money=-50}.
+Нет, ещё нет. Плата за обучение — ${money=-50}.
+Yes, the training costs ${money=-50}. It's long and demanding.
+Да, обучение стоит ${money=-50}. Оно долгое и напряжённое.
+Yes, you can join the trainer guild. The entrance fee is ${money=-500}.
+Да, ты можешь вступить в гильдию тренеров. Вступительный взнос — ${money=-500}.
+(Give the present trainers a whiskey (${money=-50}).)
+(Угостить присутствующих тренеров виски за ${money=-50}.)
+(She cheers.)  I hope you're better with ponies than with cards.  Another game or I get you into a tack?
+(Она ликует.) Надеюсь, с пони ты управляешься лучше, чем с картами. Ещё партия или надеть на тебя сбрую?

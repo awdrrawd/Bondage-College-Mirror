@@ -1,4 +1,4 @@
-﻿###_NPC
+###_NPC
 Don't waste your time talking, I cannot understand.
 Не трать время на разговоры, я не понимаю.
 (DialogCharacterName comes in front of you.)  What are you doing?  Don't touch my pet.
@@ -1177,7 +1177,7 @@ So much power!
 Так много энергии!
 ###_NPC
 (She nods.)  It's time for your inauguration party Mistress DialogPlayerName.
-(She nods.)  Пришло время для вашей инаугурационной вечеринки Госпожа  DialogPlayerName.
+(Она кивает.) Пора на вечеринку в честь вашего вступления в должность, Госпожа DialogPlayerName.
 ###_PLAYER
 Excellent!  (Do the inauguration party.)
 Превосходно!  (Сделай инаугурационную вечеринку.)
@@ -1326,3 +1326,113 @@ Poor girl, I'm sure you'll find a good lover someday. Let me ask again, are you 
 Бедняжка, я уверена, что когда-нибудь ты найдешь хорошую любовницу. Позвольте еще раз спросить, вы действительно уверены в этом?
 Then you'd better work things out with her. Take some time to discuss.
 Тогда вам лучше разобраться с ней. Найдите время, чтобы обсудить.
+There is, some fancy slaves want fancy collars.  There's a ${money=-30} fee to change your collar.  Are you willing to pay?
+Можно. Некоторые изысканные рабыни хотят изысканные ошейники. Замена ошейника стоит ${money=-30}. Готова заплатить?
+You can't blame me for trying.  Just pay the unlocking fee of ${money=-25} then.
+За попытку не вини. Тогда просто заплати ${money=-25} за отпирание.
+(You bend down and slowly lick her heels as she laughs.)  Good girl, the unlocking fee is ${money=-25}.
+(Вы наклоняетесь и медленно лижете её туфли на каблуках, пока она смеётся.) Хорошая девочка. Отпирание стоит ${money=-25}.
+It's not that easy, there's a ${money=-20} fee to contact your Mistress and a ${money=-25} fee for any item to remove.  And you won't get any refund if she refuses.
+Не всё так просто. Связаться с твоей госпожой стоит ${money=-20}, а снять каждый предмет — ${money=-25}. Если она откажет, деньги тебе не вернут.
+Yes, and your Mistress accepted to get you out.  It cost ${money=-25} for each item to unlock.
+Да, твоя госпожа согласилась тебя освободить. Отпереть каждый предмет стоит ${money=-25}.
+I'll make a deal with you then.  I'll send a maid to your room, and she will unlock all of your friends that are not owned by someone else for ${money=-50}.
+Тогда договоримся так. Я пришлю горничную в твою комнату. За ${money=-50} она отопрёт ограничители всех твоих подруг, которые не принадлежат кому-либо другому.
+Perfect!  Go get your consenting pet and bring her here.  You will need to pay ${money=-100} for the slave collar and the ceremony.
+Отлично! Приведи сюда свою питомицу, если она согласна. Рабский ошейник и церемония обойдутся в ${money=-100}.
+The regular cost to be released from your owner bond is ${money=-200}.  But since everyone can make mistakes, it cost ${money=-60} if it's the first time you do it.
+Обычно освобождение от отношений владения стоит ${money=-200}. Но все могут ошибаться, поэтому в первый раз это стоит ${money=-60}.
+The contract lasts for one hour and the girl gets paid ${money=50} at the end of it.  A special collar will be locked for the contract duration.
+Контракт длится один час, а по его окончании девушка получает ${money=50}. На время контракта на ней запирают специальный ошейник.
+(She swaps your collars and laughs.)  Very good, here's your money slave.  (She gives you ${money=50}.)
+(Она меняет вам ошейник и смеётся.) Очень хорошо. Вот твои деньги, рабыня. (Она даёт вам ${money=50}.)
+(She removes your collar and laughs.)  Very good, here's your money slave.  (She gives you ${money=50}.)
+(Она снимает с вас ошейник и смеётся.) Очень хорошо. Вот твои деньги, рабыня. (Она даёт вам ${money=50}.)
+(She swaps your collars and grins.)  You can come back anytime.  Here's your money slave.  (She gives you ${money=50}.)
+(Она меняет вам ошейник и широко улыбается.) Возвращайся в любое время. Вот твои деньги, рабыня. (Она даёт вам ${money=50}.)
+(She removes your collar and grins.)  You can come back anytime.  Here's your money slave.  (She gives you ${money=50}.)
+(Она снимает с вас ошейник и широко улыбается.) Возвращайся в любое время. Вот твои деньги, рабыня. (Она даёт вам ${money=50}.)
+(She swaps your collars and nods.)  Going public isn't for everyone.  Here's your money girl.  (She gives you ${money=50}.)
+(Она меняет вам ошейник и кивает.) Быть в общем пользовании подходит не всем. Вот твои деньги, девочка. (Она даёт вам ${money=50}.)
+(She removes your collar and nods.)  Going public isn't for everyone.  Here's your money girl.  (She gives you ${money=50}.)
+(Она снимает с вас ошейник и кивает.) Быть в общем пользовании подходит не всем. Вот твои деньги, девочка. (Она даёт вам ${money=50}.)
+Absolutely.  The salary is ${money=150} per week and they will receive the official Mistress outfit that I'm wearing right now.
+Разумеется. Зарплата — ${money=150} в неделю. Также они получат официальный наряд госпожи, как на мне сейчас.
+(She checks her book and gives you ${money=150}.)  Here you go Mistress DialogPlayerName.  Come again in seven days for your next pay.
+(Она сверяется с книгой и даёт вам ${money=150}.) Вот, госпожа DialogPlayerName. Приходите за следующей зарплатой через семь дней.
+There's a ${money=-100} fee required from both partners.  But before any wedding, you'll have to spend time with your lover.
+Каждый партнёр должен заплатить ${money=-100}. Но прежде чем жениться, вам нужно провести время со своей возлюбленной.
+I will pay the ${money=-30}.
+Я заплачу ${money=-30}.
+Please unlock the bra.  (Pay her ${money=-25}.)
+Пожалуйста, отоприте бюстгальтер. (Заплатить ей ${money=-25}.)
+Please unlock the belt.  (Pay her ${money=-25}.)
+Пожалуйста, отоприте пояс. (Заплатить ей ${money=-25}.)
+Please unlock the nipple piercings.  (Pay her ${money=-25}.)
+Пожалуйста, отоприте пирсинг сосков. (Заплатить ей ${money=-25}.)
+Please unlock the clitoris piercing.  (Pay her ${money=-25}.)
+Пожалуйста, отоприте пирсинг клитора. (Заплатить ей ${money=-25}.)
+Please unlock the vulva.  (Pay her ${money=-25}.)
+Пожалуйста, отоприте устройство на вульве. (Заплатить ей ${money=-25}.)
+Alright.  (You remove your clothes and she unlocks the chastity.)  How does it feel?
+Хорошо. (Вы снимаете одежду, и она отпирает защиту целомудрия.) Как ощущения?
+Please unlock the plug.  (Pay her ${money=-25}.)
+Пожалуйста, отоприте пробку. (Заплатить ей ${money=-25}.)
+Please contact her. (Pay her ${money=-20}.)
+Пожалуйста, свяжитесь с ней. (Заплатить ей ${money=-20}.)
+Which chastity device should I unlock?  The fee is ${money=-25} per item.
+Какое устройство целомудрия отпереть? Цена — ${money=-25} за предмет.
+Deal!  (Pay her ${money=-50}.)
+Договорились! (Заплатить ей ${money=-50}.)
+I want to be released from my owner {owner}.
+Я хочу освободиться от отношений владения с {owner}.
+I want my freedom from {owner}. (Pay her ${money=-60})
+Я хочу освободиться от {owner}. (Заплатить ей ${money=-60}.)
+I want my freedom from {owner}. (Pay her ${money=-200})
+Я хочу освободиться от {owner}. (Заплатить ей ${money=-200}.)
+(She checks your locks.)  No, you have family locks on you, get released first.
+(Она проверяет ваши замки.) Нет, на тебе семейные замки. Сначала добейся освобождения.
+(She looks angry as you kneel down for her.)  Slave,  why are you here?
+(Она сердито смотрит, пока вы встаёте перед ней на колени.) Рабыня, зачем ты здесь?
+(Lower your gaze and leave her.)
+(Опустить взгляд и оставить её.)
+The first: {lover=0}.
+Первая: {lover=0}.
+The second: {lover=1}.
+Вторая: {lover=1}.
+The third: {lover=2}.
+Третья: {lover=2}.
+The fourth: {lover=3}.
+Четвёртая: {lover=3}.
+The fifth: {lover=4}.
+Пятая: {lover=4}.
+Yes, I want to break up with {lover=0}.
+Да, я хочу расстаться с {lover=0}.
+Yes, I want to break up with {lover=1}.
+Да, я хочу расстаться с {lover=1}.
+Yes, I want to break up with {lover=2}.
+Да, я хочу расстаться с {lover=2}.
+Yes, I want to break up with {lover=3}.
+Да, я хочу расстаться с {lover=3}.
+Yes, I want to break up with {lover=4}.
+Да, я хочу расстаться с {lover=4}.
+Hold on girl, there's a ${money=-20} fee to contact your Mistress and a ${money=-25} fee for any item to remove.  And you won't get any refund if she refuses.
+Погоди, девочка. Связаться с твоей госпожой стоит ${money=-20}, а снять каждый предмет — ${money=-25}. Если она откажет, деньги не вернут.
+Of course, there's a ${money=-20} fee to contact your Mistress and a ${money=-25} fee for any item to remove.  And you won't get any refund if she refuses.
+Конечно. Связаться с твоей госпожой стоит ${money=-20}, а снять каждый предмет — ${money=-25}. Если она откажет, деньги не вернут.
+Very well, undress subbie girl.  (You remove your clothes and she unlocks the chastity.)
+Хорошо, раздевайся, нижняя. (Вы снимаете одежду, и она отпирает устройства целомудрия.)
+Yes, the Dominant must pay ${money=-100} for each pet, we provide the locking collar.  If a slave wants freedom, she will pay ${money=-60} on the first occurrence and ${money=-200} on others.
+Да, доминант платит ${money=-100} за каждую питомицу. Мы выдаём запираемый ошейник. За освобождение рабыня платит ${money=-60} в первый раз и ${money=-200} в последующие.
+(She slaps your face) Slave!  Why are you standing in my presence?  On your knees immediately.
+(Она даёт вам пощёчину.) Рабыня! Почему ты стоишь в моём присутствии? Немедленно на колени.
+(She announces the end of your relationship with {lover=0} and makes it official.)  You're free to go girl, enjoy the club.
+(Она объявляет о разрыве ваших отношений с {lover=0} и официально оформляет его.) Можешь идти, девочка. Наслаждайся клубом.
+(She announces the end of your relationship with {lover=1} and makes it official.)  You're free to go girl, enjoy the club.
+(Она объявляет о разрыве ваших отношений с {lover=1} и официально оформляет его.) Можешь идти, девочка. Наслаждайся клубом.
+(She announces the end of your relationship with {lover=2} and makes it official.)  You're free to go girl, enjoy the club.
+(Она объявляет о разрыве ваших отношений с {lover=2} и официально оформляет его.) Можешь идти, девочка. Наслаждайся клубом.
+(She announces the end of your relationship with {lover=3} and makes it official.)  You're free to go girl, enjoy the club.
+(Она объявляет о разрыве ваших отношений с {lover=3} и официально оформляет его.) Можешь идти, девочка. Наслаждайся клубом.
+(She announces the end of your relationship with {lover=4} and makes it official.)  You're free to go girl, enjoy the club.
+(Она объявляет о разрыве ваших отношений с {lover=4} и официально оформляет его.) Можешь идти, девочка. Наслаждайся клубом.

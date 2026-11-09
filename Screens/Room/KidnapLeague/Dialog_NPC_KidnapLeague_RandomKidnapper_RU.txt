@@ -1,4 +1,4 @@
-﻿###_NPC
+###_NPC
 Silence is gold, and gags are better than gold.
 Тишина - это золото, а кляпы - это лучше золота.
 (A kidnapper crosses your path and makes a devious smile.)  I will be merciful if you surrender now.
@@ -593,3 +593,79 @@ Follow me!  (Bring her to your room.)
 ###_NPC
 (She lets you go and sighs.)  Sadly, I need to go.  Find your owner to get out.
 (Она освобождает тебя и вздыхает.)  К сожалению, мне нужно идти.  Найдите свою хозяйку, чтобы освободиться.
+Fine, be a bully then!  I'll give you $DIALOGMONEY if you release me and leave me alone.
+Ладно, задира! Я дам тебе $DIALOGMONEY, если ты освободишь меня и оставишь в покое.
+(She stands proudly and does a superhero pose.)  Heavenly Light shall prevail!
+(Она гордо выпрямляется и принимает супергеройскую позу.) Небесный свет восторжествует!
+Wait!  Can we make a deal?  I'll give you ${money=-10}.
+Погоди! Может, договоримся? Я дам тебе ${money=-10}.
+Wait!  Do I see Club Cards?
+Погоди! Это клубные карты?
+A bounty hunter?  Here's ${money=-20}.  Leave me alone.
+Охотница за головами? Вот ${money=-20}. Оставь меня в покое.
+Take this ${money=-20} and leave, bounty hunter.
+Возьми ${money=-20} и уходи, охотница за головами.
+Sister!  I also follow the Heavenly Light.
+Сестра! Я тоже следую Небесному свету.
+Are you a superheroine?
+Ты супергероиня?
+What Seven Prisms?
+Что за Семь призм?
+This costume is cute.
+Милый костюм.
+Evil shall vanquish Heavenly light! (Fight her.)
+Зло победит Небесный свет! (Сразиться с ней.)
+(Play Club Cards.)
+(Сыграть в клубные карты.)
+Can I join your quest against evil?
+Можно присоединиться к твоей борьбе со злом?
+You want to redeem yourself and serve the Heavenly Light?
+Ты хочешь искупить вину и служить Небесному свету?
+I will protect the Seven Prisms.
+Я буду защищать Семь призм.
+By the Heavenly Light, you shall be our sister!  I will get you a proper costume.
+Небесным светом клянусь: ты станешь нашей сестрой! Я найду тебе подходящий костюм.
+I will wear the costume proudly.
+Буду носить этот костюм с гордостью.
+Yes sister, I will get you a costume to suit you for battle against evil.
+Да, сестра. Я найду тебе костюм, достойный битвы со злом.
+(Make a superhero pose.)
+(Принять супергеройскую позу.)
+(Wear the superheroine clothes.)
+(Надеть костюм супергероини.)
+I will begin my quest!  (Let her go.)
+Я начинаю свой поход! (Отпустить её.)
+Would you like to see my lair?
+Хочешь увидеть моё логово?
+A lair?  This could be the perfect place to gather against our foes.
+Логово? Прекрасное место для сборов против наших врагов.
+Follow me.  (Bring her to your room.)
+Иди за мной. (Привести её в свою комнату.)
+(A kidnapper carrying cards runs down the hall to meet you.)  I've heard about you and I will kidnap you!
+(По коридору к вам подбегает похитительница с картами.) Я о тебе слышала и собираюсь тебя похитить!
+(A costumed girl stops you.)  By the Heavenly Light and the Seven Prisms of the moon!  Your evil deeds are over!  Surrender!
+(Девушка в костюме останавливает вас.) Во имя Небесного света и Семи призм Луны! Твоим злодеяниям конец! Сдавайся!
+(A costumed girl stares at you and smirks.)  By the Seven Prisms of the moon!  Stopping evil is easy lately.
+(Девушка в костюме смотрит на вас и усмехается.) Клянусь Семью призмами Луны! В последнее время зло побеждать легко.
+(She struggles one last time.)  Evil might have won this battle, but Heavenly Light shall prevail!
+(Она в последний раз пытается освободиться.) Зло могло выиграть эту битву, но Небесный свет восторжествует!
+(You surrender without a fight as she quickly restrains your arms.)  Heavenly Light shall prevail!
+(Вы сдаётесь без боя, и она быстро связывает вам руки.) Небесный свет восторжествует!
+(She puts her deck away and surrenders to you.)  Well done, you're both a good player and kidnapper.
+(Она убирает колоду и сдаётся вам.) Молодец, ты хороша и в картах, и в похищениях.
+(She puts her deck away and quickly restraints you.)  Enough cards!  It's time to play with my prey.
+(Она убирает колоду и быстро связывает вас.) Хватит карт! Пора поиграть с моей добычей.
+(She nods.)  Yeah, I'm also a Club Card player.  Do you want to settle this kidnapping with cards instead?
+(Она кивает.) Да, я тоже играю в клубные карты. Хочешь решить исход похищения картами?
+My apologies sister.  I thought you were evil in disguise.  Are you on a quest for the Seven Prisms of the moon?
+Прости, сестра. Я приняла тебя за замаскированное зло. Ты выполняешь задание Семи призм Луны?
+By the Seven Prisms!  I defend the Heavenly Light against villainous foes like you!  Surrender now or I shall restrain you with my super powers.
+Клянусь Семью призмами! Я защищаю Небесный свет от таких злодеек, как ты! Сдавайся, иначе свяжу тебя суперсилами.
+The Seven Prisms of the moon shines the values of the Heavenly Light.  I shall proect them with my life.
+Семь призм Луны олицетворяют ценности Небесного света. Я буду защищать их ценой жизни.
+(She blushes and tries to stay in her role.)  Don't try villainous tricks on me!  I will capture you!
+(Она краснеет и старается не выходить из роли.) Не пытайся обмануть меня злодейскими уловками! Я тебя поймаю!
+Be proud sister, I will get you a costume to combat the forces of evil.  Heavenly Light shall prevail.
+Гордись, сестра. Я найду тебе костюм для борьбы с силами зла. Небесный свет восторжествует.
+(You wear the superheroine clothes.)  You look marvelous, a true Heavenly sister.  Ready to smite evil!
+(Вы надеваете костюм супергероини.) Выглядишь чудесно, настоящая небесная сестра. Готова сокрушать зло!

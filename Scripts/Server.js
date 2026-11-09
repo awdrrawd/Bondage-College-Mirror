@@ -951,119 +951,118 @@ function ServerAccountQueryResult(data) {
  * @returns {void} - Nothing
  */
 function ServerAccountBeep(data) {
-	if ((data != null) && (typeof data === "object") && !Array.isArray(data) && (data.MemberNumber != null) && (typeof data.MemberNumber === "number") && (data.MemberName != null) && (typeof data.MemberName === "string")) {
-		if (!data.BeepType || data.BeepType == "") {
-			if (typeof data.Message === "string") {
-				data.Message = FriendListBeepLimitMessageText(data.Message);
-			} else {
-				data.Message = "";
-			}
-			let title = `${InterfaceTextGet("BeepFrom")} ${data.MemberName} (${data.MemberNumber})`;
-			const message = data.Message;
-			// We make a copy here since we want to keep opening the correct beep, even if more get added
-			const beepIdx = FriendListBeepLog.length;
-			if (data.ChatRoomName) {
-				title += ` ${InterfaceTextGet("InRoom")} "${data.ChatRoomName}"${data.ChatRoomSpace === "Asylum" ? " " + InterfaceTextGet("InAsylum") : ''}`;
-			}
+	if (!CommonIsObject(data) || typeof data.MemberNumber !== "number" || typeof data.MemberName !== "string") return;
+	if (!data.BeepType || data.BeepType === "") {
+		if (typeof data.Message === "string") {
+			data.Message = FriendListBeepLimitMessageText(data.Message);
+		} else {
+			data.Message = "";
+		}
+		let title = `${InterfaceTextGet("BeepFrom")} ${data.MemberName} (${data.MemberNumber})`;
+		const message = data.Message;
+		// We make a copy here since we want to keep opening the correct beep, even if more get added
+		const beepIdx = FriendListBeepLog.length;
+		if (data.ChatRoomName) {
+			title += ` ${InterfaceTextGet("InRoom")} "${data.ChatRoomName}"${data.ChatRoomSpace === "Asylum" ? " " + InterfaceTextGet("InAsylum") : ''}`;
+		}
 
-			/**
-			 * This function is just there for compat with BCUtil's special "this is an IM beep"
-			 * @type {(txt: string) => string}
-			 */
-			const stripBCUtilCruft = (txt) => {
-				return txt?.split(FriendListBeepMetadataIndicator)[0].trimEnd();
-			};
+		/**
+		 * This function is just there for compat with BCUtil's special "this is an IM beep"
+		 * @type {(txt: string) => string}
+		 */
+		const stripBCUtilCruft = (txt) => {
+			return txt?.split(FriendListBeepMetadataIndicator)[0].trimEnd();
+		};
 
-			const parsedMessage = data.Message ? FriendListBeepParseMessage(data.Message) : null;
-			const messageText = parsedMessage ? parsedMessage.text : null;
-			const isReaction = parsedMessage?.metadata?.messageType === "Reaction";
-			const incomingChatKey = `member:${data.MemberNumber}`;
-			const isCurrentChat = FriendListBeepChatKey === incomingChatKey;
+		const parsedMessage = data.Message ? FriendListBeepParseMessage(data.Message) : null;
+		const messageText = parsedMessage ? parsedMessage.text : null;
+		const isReaction = parsedMessage?.metadata?.messageType === "Reaction";
+		const incomingChatKey = `member:${data.MemberNumber}`;
+		const isCurrentChat = FriendListBeepChatKey === incomingChatKey;
 
-			if (!isReaction && (!Player.ChatSettings.ShowBeepChat || (Player.ChatSettings.ShowBeepChat && !ChatRoomNotificationNewMessageVisible())) && !isCurrentChat) {
-				ServerShowBeep(data.Message ? (messageText ?? stripBCUtilCruft(message)) : title, 10000, {
-					memberNumber: data.MemberNumber,
-					memberName: data.MemberName,
-					chatRoomName: data.ChatRoomName,
-					...(data.Message && {
-						onClick: () => {
-							FriendListShowBeep(beepIdx);
-						}
-					})
-				}, data.Message ? title : undefined);
-			}
+		if (!isReaction && (!Player.ChatSettings.ShowBeepChat || (Player.ChatSettings.ShowBeepChat && !ChatRoomNotificationNewMessageVisible())) && !isCurrentChat) {
+			ServerShowBeep(data.Message ? (messageText ?? stripBCUtilCruft(message)) : title, 10000, {
+				memberNumber: data.MemberNumber,
+				memberName: data.MemberName,
+				chatRoomName: data.ChatRoomName,
+				...(data.Message && {
+					onClick: () => {
+						FriendListShowBeep(beepIdx);
+					}
+				})
+			}, data.Message ? title : undefined);
+		}
 
-			const incomingMsgId = parsedMessage?.metadata?.messageId;
-			const beepId = typeof incomingMsgId === "string" && incomingMsgId.length > 0
+		const incomingMsgId = parsedMessage?.metadata?.messageId;
+		const beepId = typeof incomingMsgId === "string" && incomingMsgId.length > 0
 				? incomingMsgId
 				: CommonGenerateUniqueID();
 
-			FriendListBeepLog.push({
-				MemberNumber: data.MemberNumber,
-				MemberName: data.MemberName,
-				ChatRoomName: data.ChatRoomName,
-				ChatRoomSpace: data.ChatRoomSpace,
-				Private: data.Private,
-				Sent: false,
-				Read: isReaction,
-				Time: new Date(),
-				Message: data.Message,
-				Id: beepId,
-			});
-			if (CurrentScreen === "FriendList") {
-				ServerSend("AccountQuery", { Query: "OnlineFriends" });
-				if (isCurrentChat) {
-					FriendListBeepChat(incomingChatKey);
-				}
+		FriendListBeepLog.push({
+			MemberNumber: data.MemberNumber,
+			MemberName: data.MemberName,
+			ChatRoomName: data.ChatRoomName,
+			ChatRoomSpace: data.ChatRoomSpace,
+			Private: data.Private,
+			Sent: false,
+			Read: isReaction,
+			Time: new Date(),
+			Message: data.Message,
+			Id: beepId,
+		});
+		if (CurrentScreen === "FriendList") {
+			ServerSend("AccountQuery", { Query: "OnlineFriends" });
+			if (isCurrentChat) {
+				FriendListBeepChat(incomingChatKey);
 			}
-			if (!isReaction && Player.ChatSettings.ShowBeepChat) {
-				// "Reply to beep" arrow
-				const replyLink = ElementButton.Create(
-					`beep-reply-${beepIdx}`, // or just leave to null for an ID auto assignment
-					() => {
-						ElementValue("InputChat", `/beep ${data.MemberNumber} ${ElementValue("InputChat").replace(/^\/(beep|w) \S+ ?/u, '')}`);
-						document.getElementById('InputChat')?.focus();
-					},
-					{ noStyling: true },
-					{ button: { classList: ["ReplyButton"], children: ['\u21a9\ufe0f'] } },
-				);
+		}
+		if (!isReaction && Player.ChatSettings.ShowBeepChat) {
+			// "Reply to beep" arrow
+			const replyLink = ElementButton.Create(
+				`beep-reply-${beepIdx}`, // or just leave to null for an ID auto assignment
+				() => {
+					ElementValue("InputChat", `/beep ${data.MemberNumber} ${ElementValue("InputChat").replace(/^\/(beep|w) \S+ ?/u, '')}`);
+					document.getElementById('InputChat')?.focus();
+				},
+				{ noStyling: true },
+				{ button: { classList: ["ReplyButton"], children: ['\u21a9\ufe0f'] } },
+			);
 
-				// Beep preview link
-				const beepLink = document.createElement("a");
-				beepLink.classList.add("beep-link");
+			// Beep preview link
+			const beepLink = document.createElement("a");
+			beepLink.classList.add("beep-link");
 
-				let previewMsg = "";
-				if (data.Message) {
-					previewMsg = messageText ?? stripBCUtilCruft(data.Message);
-					if (previewMsg.length > 150) {
-						previewMsg = previewMsg.substring(0, 150) + "…";
-					}
-					title += `: ${previewMsg}`;
+			let previewMsg = "";
+			if (data.Message) {
+				previewMsg = messageText ?? stripBCUtilCruft(data.Message);
+				if (previewMsg.length > 150) {
+					previewMsg = previewMsg.substring(0, 150) + "…";
 				}
-				beepLink.textContent = `(${title})`;
-				beepLink.onclick = (e) => {
-					e.preventDefault();
-					FriendListShowBeep(beepIdx);
-				};
+				title += `: ${previewMsg}`;
+			}
+			beepLink.textContent = `(${title})`;
+			beepLink.onclick = (e) => {
+				e.preventDefault();
+				FriendListShowBeep(beepIdx);
+			};
 
-				const div = document.createElement("div");
-				div.dataset.time = ChatRoomCurrentTime();
-				div.dataset.sender = data.MemberNumber.toString();
-				div.dataset.target = Player.MemberNumber.toString();
-				div.classList.add("ChatMessage", "ChatMessageLocalMessage", "ChatMessageNonDialogue", "ChatMessageBeep");
-				div.appendChild(replyLink);
-				div.appendChild(beepLink);
+			const div = document.createElement("div");
+			div.dataset.time = ChatRoomCurrentTime();
+			div.dataset.sender = data.MemberNumber.toString();
+			div.dataset.target = Player.MemberNumber.toString();
+			div.classList.add("ChatMessage", "ChatMessageLocalMessage", "ChatMessageNonDialogue", "ChatMessageBeep");
+			div.appendChild(replyLink);
+			div.appendChild(beepLink);
 
-				document.querySelector(`
+			document.querySelector(`
 					#TextAreaChatLog .ChatMessageBeep[data-sender="${data.MemberNumber}"] > .ReplyButton:not([tabindex='-1']),
 					#TextAreaChatLog .ChatMessageBeep[data-target="${data.MemberNumber}"] > .ReplyButton:not([tabindex='-1'])
 				`)?.setAttribute("tabindex", "-1");
 
-				ChatRoomAppendChat(div);
-			}
-		} else if (data.BeepType === "Leash") {
-			CommonPromiseCatch(ServerHandleLeashBeep(data));
+			ChatRoomAppendChat(div);
 		}
+	} else if (data.BeepType === "Leash") {
+		CommonPromiseCatch(ServerHandleLeashBeep(data));
 	}
 }
 

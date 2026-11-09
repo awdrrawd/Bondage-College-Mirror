@@ -1,4 +1,4 @@
-﻿###_NPC
+###_NPC
 It seems that someone got kidnapped recently.  (She giggles.)  I can't understand you though.
 Кажется, недавно кого-то похитили.  (Она хихикает.)  Но я не могу вас понять.
 (She bows her head.)  Congratulations on your victory!  I'm your victim.
@@ -172,7 +172,7 @@ This is not for me.
 Это не для меня.
 ###_NPC
 It's fine.  Would you like to talk then?
-Это отлично. Хочешь поговорить тогда?
+Всё в порядке. Тогда, может, поговорим?
 ###_PLAYER
 It's a laptop, isn't it?
 Это ноутбук, не так ли?
@@ -202,11 +202,7 @@ Give me a tough fight.
 Дайте мне жесткий бой.
 I can face any challenge!
 Я могу принять любой вызов!
-I've changed my mind.
-Я передумала.
 ###_NPC
-It's fine.  Would you like to talk then?
-Все нормально.  Может быть, вы хотите поговорить?
 ###_PLAYER
 Tell me the rules.
 Расскажите мне о правилах.
@@ -340,11 +336,7 @@ Can I use items that are not restraints?
 Yes, many unique items can be used passively to boost your moves strength.  They cannot be bought from the store, try to find them within the club.
 Да, многие уникальные предметы можно пассивно использовать для повышения силы ваших движений. Их нельзя купить в магазине, попробуйте найти в клубе.
 ###_PLAYER
-That's everything I need to know.
-Я узнала все, что мне нужно.
 ###_NPC
-Excellent.  Can I help you with anything else?
-Отлично.  Могу я вам еще чем-нибудь помочь?
 ###_PLAYER
 (Listen.)
 (Слушать.)
@@ -550,3 +542,13 @@ Can you help me out?
 (Сделай умоляющие глаза.)
 (Leave her to struggle by yourself.)
 (Оставьте ее и бороть самостоятельно.)
+You need to find and kidnap BOUNTYNAME.  She usually kidnaps newcomers.  If you succeed, you'll get paid $BOUNTYAMOUNT.
+Вам нужно найти и похитить BOUNTYNAME. Она обычно похищает новичков. В случае успеха вы получите $BOUNTYAMOUNT.
+Your bounty is BOUNTYNAME.  She really likes Japanese rope bondage.  The bounty amount is $BOUNTYAMOUNT.
+Ваша цель — BOUNTYNAME. Ей очень нравится японский верёвочный бондаж. Награда — $BOUNTYAMOUNT.
+Find and restrain BOUNTYNAME for a bounty of $BOUNTYAMOUNT.  She's a big spender and loves to shop.
+Найдите и свяжите BOUNTYNAME за награду $BOUNTYAMOUNT. Она большая транжира и любит ходить по магазинам.
+There's a bounty of $BOUNTYAMOUNT for BOUNTYNAME.  She's a part time maid for the club.
+За BOUNTYNAME назначена награда $BOUNTYAMOUNT. Она подрабатывает горничной в клубе.
+Very good! Here's your pay.  (She gives you $BOUNTYAMOUNT.)  Did she give you trouble?
+Очень хорошо! Вот ваша плата. (Она даёт вам $BOUNTYAMOUNT.) Она доставила вам хлопоты?

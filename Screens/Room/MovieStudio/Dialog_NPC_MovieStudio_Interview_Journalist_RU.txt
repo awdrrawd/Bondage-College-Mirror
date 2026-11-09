@@ -23,7 +23,7 @@ Eeeaaahhhahah!  Wait!  There's a mistake!  I'm a journalist, I came here for an 
 Еееааахахахаха!  Подожди!  Это ошибка!  Я журналистка, я пришла сюда на интервью.
 ###_PLAYER
 (Dust her with the gag.)
-(Вытрите её кляпом))
+(Смахнуть с неё пыль кляпом.)
 ###_NPC
 (She struggles against the cross and laughs.)  What are you doing?  I'm a journalist, I came here for an interview.
 (Она борется с крестом и смеется.)  Что ты делаешь?  Я журналистка, я пришла сюда на интервью.

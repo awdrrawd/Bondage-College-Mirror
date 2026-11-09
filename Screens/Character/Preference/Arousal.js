@@ -38,7 +38,7 @@ function PreferenceSubscreenArousalRun() {
 
 
 	// The other controls are only drawn if the arousal is active
-	if (PreferenceArousalIsActive()) {
+	if (PreferenceArousalAtLeast(Player, "NoMeter")) {
 
 		// Draws the labels and check boxes
 		DrawCheckbox(1250, 276, 64, 64, TextGet("ArousalAffectExpression"), Player.ArousalSettings.AffectExpression);
@@ -125,7 +125,7 @@ function PreferenceSubscreenArousalClick() {
 		Player.ArousalSettings.DisableAdvancedVibes = !Player.ArousalSettings.DisableAdvancedVibes;
 
 	// If the arousal is active, we allow more controls
-	if (PreferenceArousalIsActive()) {
+	if (PreferenceArousalAtLeast(Player, "NoMeter")) {
 
 		// Meter affect your facial expressions check box
 		if (MouseIn(1250, 276, 64, 64))

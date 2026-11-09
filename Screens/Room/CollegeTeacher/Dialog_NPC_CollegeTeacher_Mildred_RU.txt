@@ -173,7 +173,7 @@ It's a pillory little miss.  And you will experience.
 Это позорный столб маленькая мисс. И вы испытаете его.
 ###_PLAYER
 Oh, hell no!
-Oh, hell no!
+Нет уж, чёрта с два!
 ###_NPC
 Do not resist or I will call security.  Now raise your arms and give me your neck.
 Не сопротивляйтесь, иначе я вызову охрану. А теперь поднимите руки и отдайте мне свою шею.
@@ -612,3 +612,55 @@ Stay like that and get lost then.  Get out before I call security.
 (Покачать головой (нет).)
 I'll have my revenge someday.  (Leave her.)
 Когда-нибудь я отомщу. (Оставь ее.)
+That's impossible.  I always double-check it.  You sneaked in, didn't you?
+Это невозможно. Я всегда перепроверяю. Ты пробралась внутрь, не так ли?
+Even an eccentric like her wouldn't do that.  You sneaked in, didn't you?
+Даже такая чудачка, как она, не стала бы этого делать. Ты пробралась внутрь, не так ли?
+That's impossible.  Teacher Yuki knows the rules.  You sneaked in, didn't you?
+Это невозможно. Учительница Юки знает правила. Ты пробралась внутрь, не так ли?
+About the quiz in Literature Class...
+Насчёт контрольной по литературе...
+(She noticably pauses and raises an eyebrow.)
+(Она заметно медлит и приподнимает бровь.)
+I wanted to ask you a math question.
+Я хотела задать вам вопрос по математике.
+I need discipline to improve my grades.
+Мне нужна дисциплина, чтобы улучшить оценки.
+That much is clear. It's a pity that even the school has limits.
+Это и так понятно. Жаль, что даже у школы есть пределы возможностей.
+You clearly don't have the discipline to lead.
+У вас явно не хватает дисциплины, чтобы руководить.
+I'm not clear about question 69.
+Мне непонятен вопрос 69.
+Can you tutor me? I have a private room.
+Можете позаниматься со мной? У меня есть своя комната.
+Yes, Miss. (You kneel and the collar is locked.)
+Да, мисс. (Вы встаёте на колени, и она запирает ошейник.)
+Good. Now take me to your room so we can start your lessons.
+Хорошо. Теперь отведи меня в свою комнату, и начнём уроки.
+(You gulp.) No, that's too much!
+(Вы сглатываете.) Нет, это уже слишком!
+Then you snuck in here without a reason?
+То есть ты пробралась сюда без причины?
+(Bring her to your room.)
+(Привести её в свою комнату.)
+I can give you "Professional Development".
+Я могу устроить вам «повышение квалификации».
+You would do that for me? I would be eternally grateful.
+Ты сделаешь это для меня? Я буду вечно благодарна.
+I'll need your compliance. (Show her a collar.)
+Вы должны подчиняться. (Показать ей ошейник.)
+Yes Miss, anything to be more disciplined.
+Да, мисс. Всё что угодно, лишь бы стать дисциплинированнее.
+Actually, that sounds like too much work.
+Вообще-то это слишком много работы.
+(She fumes.) You think this is funny? Why are you really here?
+(Она злится.) По-твоему, это смешно? Зачем ты на самом деле пришла?
+Come with me now.
+Пойдём со мной.
+It's not my office hours, and I don't leave the door unlocked. You sneaked in, didn't you?
+Сейчас не приёмные часы, и я не оставляю дверь незапертой. Ты пробралась сюда, не так ли?
+(She sighs.) I thought discipline was lacking in today's students, but it turns out it was me.
+(Она вздыхает.) Я думала, нынешним студентам не хватает дисциплины. Оказалось, мне самой.
+I'm glad you're seeking discipline. However, I require strict obedience. Do you accept? (She shows you a collar.)
+Рада, что ты стремишься к дисциплине. Но я требую строгого послушания. Согласна? (Она показывает вам ошейник.)

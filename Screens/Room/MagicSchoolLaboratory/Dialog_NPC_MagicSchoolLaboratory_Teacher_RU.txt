@@ -274,3 +274,7 @@ I want to leave my house and the magic school.
 ###_PLAYER
 I've changed my mind.
 Я передумала.
+What is outside the magic school?
+Что находится за пределами школы магии?
+(A look of worry crosses her face.) Beyond the school lies the ancient magic forest, its a place filled with great danger but where is danger there is also opportunity
+(По её лицу пробегает тревога.) За школой лежит древний волшебный лес. Он полон опасностей, но там, где опасность, есть и возможности.

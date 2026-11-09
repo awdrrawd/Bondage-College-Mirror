@@ -149,3 +149,9 @@ Forget it then.
 ###_NPC
 Very well.  You're a strange person you know?
 Очень хорошо.  Ты странный человек, знаешь ли?
+Alright, but this is very strange.  (She gets naked and sells you her clothes for ${money=-10}.)
+Ладно, хотя это очень странно. (Она раздевается и продаёт вам свою одежду за ${money=-10}.)
+I know, but I like them. (Offer ${money=-10}.)
+Знаю, но они мне нравятся. (Предложить ${money=-10}.)
+I can't offer much. (Offer ${money=-5}.)
+Много предложить не могу. (Предложить ${money=-5}.)

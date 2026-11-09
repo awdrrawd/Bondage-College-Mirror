@@ -34,6 +34,8 @@ Game.load("../Scripts/Common.js");
 Game.load("../Scripts/BitString.js");
 Game.load("../Screens/Online/ChatRoom/ChatRoom.js");
 Game.load("../Screens/Online/ChatRoom/ChatRoomMapView.js");
+Game.load("../Screens/Online/ChatRoom/MapColorPicker.js");
+Game.load("../Screens/Online/ChatRoom/MapDecals.js");
 
 Game.load("../Assets/MapData.js");
 Game.load("../Scripts/Map.js");

@@ -586,7 +586,7 @@ function TypedItemInit({ options, name, baselineProperty, asset }, C, Item, Push
 	validateType: if (
 		option !== undefined
 		&& !InventoryIsPermissionBlocked(C, asset.Name, asset.Group.Name, `${name}${optionIndex}`)
-		&& !(C.ArousalSettings?.DisableAdvancedVibes && VibratorModesAdvanced.includes(options[optionIndex].Property.Mode))
+		&& !(C.ArousalSettings.DisableAdvancedVibes && VibratorModesAdvanced.includes(options[optionIndex].Property.Mode))
 	) {
 		if (!C.IsNpc && (!C.OnlineSharedSettings || C.OnlineSharedSettings.GameVersion !== GameVersion)) {
 			// We cannot reliably validate properties of people in different versions

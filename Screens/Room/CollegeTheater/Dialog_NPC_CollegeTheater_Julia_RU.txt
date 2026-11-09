@@ -20,7 +20,7 @@ Theater is for losers.
 Театр для неудачников.
 ###_NPC
 No, no, no, no.  Teatro is one of the oldest and greatest form or art, it transcends time and your soul.
-Нет нет Нет Нет. Театр — одна из древнейших и величайших форм искусства, он вне времени и вашей души.
+Нет, нет, нет, нет. Театр — одна из древнейших и величайших форм искусства; он выходит за пределы времени и души.
 ###_PLAYER
 I'm not a great actor.
 Я не великий актер.
@@ -682,3 +682,45 @@ See you soon little pupil.  If you see the next student, you can tell her to com
 ###_PLAYER
 See you soon.  (Leave her.)
 До скорого. (Оставь ее.)
+I would love to go there with you, but you cannot go out like that.
+Я бы с удовольствием пошла туда с тобой, но в таком виде выходить нельзя.
+Doth my queen need ministrations from this servant?
+Нужны ли моей королеве услуги этой служанки?
+My damsel dearest, your services were most enjoyable.
+Моя милая дева, твои услуги доставили мне большое удовольствие.
+I see you're running another show, can I audition?
+Вижу, у вас новый спектакль. Можно пройти прослушивание?
+Of course dear!
+Конечно, дорогая!
+Maybe not. I have room at a club downtown.
+Может, и нет. У меня есть комната в клубе в центре города.
+Si! And you could continue to serve me there!
+Да! И ты могла бы продолжить служить мне там!
+And what a pity, but maybe we have a different story?
+Как жаль. Но, может быть, у нас найдётся другая история?
+Teatro always has more stories to tell!
+У театра всегда есть ещё истории!
+The club does not take relationships lightly.
+В клубе серьёзно относятся к отношениям.
+I do, Queen. (Kneel and allow her to lock the collar.)
+Да, королева. (Встать на колени и позволить ей запереть ошейник.)
+Splendid! Take me to thy domicile, servant!
+Чудесно! Отведи меня в свои покои, служанка!
+I cannot. Maybe we can discover another relationship?
+Не могу. Может, найдём иной вид отношений?
+Magnifico! How about auditioning for my new show?
+Великолепно! Как насчёт прослушивания для моего нового спектакля?
+Si! And I could continue to serve you there!
+Да! И я могла бы продолжить служить тебе там!
+I do, my girl. (Lock the collar on her.)
+Да, моя девочка. (Запереть на ней ошейник.)
+Thank you Mistress! I promise to obey and serve you!
+Спасибо, госпожа! Обещаю слушаться и служить вам!
+(She smiles broadly) Surely your services are indeed valuable, alas, this is but a fleeting moment.
+(Она широко улыбается.) Твои услуги, несомненно, ценны. Увы, это лишь мимолётное мгновение.
+(She giggles) And would I adore to serve you again, alas this is but a fleeting moment.
+(Она хихикает.) Я бы с радостью снова служила тебе. Увы, это лишь мимолётное мгновение.
+(She turns serious and offers you a collar) I've seen this around campus as a symbol of service, do you promise to serve me?
+(Она становится серьёзной и протягивает вам ошейник.) В кампусе я видела это как символ служения. Обещаешь служить мне?
+(She kneels and offers you a collar) I've seen this around campus as a symbol of service, can you take me as your servant?
+(Она встаёт на колени и протягивает вам ошейник.) В кампусе я видела это как символ служения. Примешь меня своей служанкой?

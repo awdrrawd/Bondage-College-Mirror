@@ -734,3 +734,53 @@ We do.  (You both dress back up.)  You're not good enough, now get out.
 ###_PLAYER
 That's it?  I can go?
 Вот и все? Я могу идти?
+I'll give you ${money=-20} if we forget this.
+Я дам тебе ${money=-20}, если мы забудем об этом.
+Your little pet is coming back to owner.
+Твоя маленькая питомица возвращается к хозяйке.
+How adorable DialogPlayerName, but I'm busy with detention right now.
+Как мило, DialogPlayerName, но сейчас я занята оставленными после занятий.
+(Menacingly) I'm putting you in detention.
+(Угрожающе.) Я оставляю тебя после занятий.
+I just came by to say hi.
+Я просто зашла поздороваться.
+No one comes in by just to do that. What did you do wrong?
+Никто не заходит просто так. Что ты натворила?
+I've a room at a club just for pets like me.
+У меня есть комната в клубе — как раз для таких питомцев, как я.
+But I just wanted to play for a little while.
+Но я хотела лишь немного поиграть.
+A little while? How about the rest of the day instead!
+Немного? Как насчёт всего оставшегося дня?
+Of course. (Kneel and allow her to lock the collar.)
+Конечно. (Встать на колени и позволить ей запереть ошейник.)
+(She smirks.) Now you're all mine to play with. See you at the club later, kitty.
+(Она усмехается.) Теперь ты целиком моя игрушка. Увидимся позже в клубе, кошечка.
+I'm sorry, I can't wear that.
+Прости, я не могу это носить.
+(Meet her at the club later.)
+(Встретиться с ней в клубе позже.)
+I dare, because I know a way to keep you quiet.
+Я смею, потому что знаю, как заставить тебя молчать.
+And what might that be?
+И как же?
+(Show her a collar). This will ensure your silence.
+(Показать ей ошейник.) Это обеспечит твоё молчание.
+(She shivers.) Well, I can't argue with that...
+(Она вздрагивает.) Что ж, тут не поспоришь...
+Um.... (You search frantically for a spare collar)
+Эм... (Вы лихорадочно ищете запасной ошейник.)
+Hah! I knew you were bluffing. Now you get to spend the rest of the day with me!
+Ха! Я знала, что ты блефуешь. Теперь проведёшь со мной весь остаток дня!
+Now kneel and let me collar you.
+А теперь на колени. Я надену на тебя ошейник.
+(She kneels and bows her head). Yes, Miss DialogPlayerName.
+(Она встаёт на колени и склоняет голову.) Да, мисс DialogPlayerName.
+(Bring her to your room.)
+(Привести её в свою комнату.)
+(She stiffens from your tone and eyes you warily.) You dare to bring up the trap you laid in the library?
+(От вашего тона она напрягается и настороженно смотрит на вас.) Ты смеешь напоминать о ловушке, которую устроила в библиотеке?
+Oh? I can meet you there after I'm finished, but you must understand all pets need a collar. (She dangles a collar in your face.)
+О? Могу встретиться с тобой там, когда закончу. Но ты должна понимать: каждому питомцу нужен ошейник. (Она покачивает ошейником перед вашим лицом.)
+(She frowns.) You've got some guts playing around. Looks like you get to spend the rest of the day with me!
+(Она хмурится.) Хватает же тебе наглости на такие игры. Похоже, весь остаток дня проведёшь со мной!

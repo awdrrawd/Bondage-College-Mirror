@@ -3,9 +3,6 @@ var CurrentTime = 0;
 var TimerRunInterval = 20;
 var TimerLastTime = 0;
 var TimerLastCycleCall = 0;
-var TimerLastArousalProgress = 0;
-var TimerLastArousalProgressCount = 0;
-var TimerLastArousalDecay = 0;
 
 /** @type {Map<string, Timer.CustomTimer>} */
 var Timers = new Map();
@@ -260,100 +257,7 @@ function TimerProcess() {
 	DrawImageCache.purge();
 	GLDrawImageCache?.purge();
 
-	// Arousal/Activity events only occur in allowed rooms
-	if (ActivityAllowed()) {
-
-		// Arousal can change every second, based on ProgressTimer
-		if ((TimerLastArousalProgress + 1000 < CurrentTime) || (TimerLastArousalProgress - 1000 > CurrentTime)) {
-			TimerLastArousalProgress = CurrentTime;
-			TimerLastArousalProgressCount++;
-			for (let C = 0; C < Character.length; C++) {
-
-				// If the character is having an orgasm and the timer ran out, we move to the next orgasm stage
-				const arousalSettings = Character[C].ArousalSettings;
-				if (arousalSettings?.OrgasmTimer != null && arousalSettings.OrgasmTimer > 0) {
-					if (arousalSettings.OrgasmTimer < CurrentTime) {
-						if ((arousalSettings.OrgasmStage == null) || (arousalSettings.OrgasmStage <= 1)) ActivityOrgasmStart(Character[C]);
-						else ActivityOrgasmStop(Character[C], 20);
-					}
-				} else {
-
-					// Depending on the character settings, we progress the arousal meter
-					if (PreferenceArousalAtLeast(Character[C], "Hybrid")) {
-
-						// Activity impacts the progress slowly over time, if there's an activity running, vibrations are ignored
-						if ((Character[C].ArousalSettings.ProgressTimer != null) && (typeof Character[C].ArousalSettings.ProgressTimer === "number") && !isNaN(Character[C].ArousalSettings.ProgressTimer) && (Character[C].ArousalSettings.ProgressTimer != 0)) {
-							if (Character[C].ArousalSettings.ProgressTimer < 0) {
-								Character[C].ArousalSettings.ProgressTimer++;
-								ActivityTimerProgress(Character[C], -1);
-								ActivityVibratorLevel(Character[C], 0);
-							}
-							else {
-								Character[C].ArousalSettings.ProgressTimer--;
-								ActivityTimerProgress(Character[C], 1);
-								ActivityVibratorLevel(Character[C], 4);
-							}
-						} else if (Character[C].IsEgged()) {
-
-							// If the character is egged, we find the highest intensity factor and affect the progress, low and medium vibrations have a cap
-							let Factor = -1;
-							for (let A = 0; A < Character[C].Appearance.length; A++) {
-								let Item = Character[C].Appearance[A];
-								let ZoneFactor = PreferenceGetZoneFactor(Character[C], Item.Asset.ArousalZone) - 2;
-								if (InventoryItemHasEffect(Item, "Egged", true) && (Item.Property != null) && (Item.Property.Intensity != null) && (typeof Item.Property.Intensity === "number") && !isNaN(Item.Property.Intensity) && (Item.Property.Intensity >= 0) && (ZoneFactor >= 0) && (Item.Property.Intensity + ZoneFactor > Factor)){
-									if ((Character[C].ArousalSettings.Progress < 95) || PreferenceGetZoneOrgasm(Character[C], Item.Asset.ArousalZone))
-										Factor = Item.Property.Intensity + ZoneFactor;
-								}
-							}
-
-							// Adds the fetish value to the factor
-							if (Factor >= 0) {
-								const Fetish = ActivityFetishFactor(Character[C]);
-								if (Fetish > 0) Factor = Factor + Math.ceil(Fetish / 3);
-								if (Fetish < 0) Factor = Factor + Math.floor(Fetish / 3);
-							}
-
-							// Kicks the arousal timer faster from personal arousal
-							if ((Factor >= 4)) {ActivityVibratorLevel(Character[C], 4); if (TimerLastArousalProgressCount % 2 == 0)ActivityTimerProgress(Character[C], 1);}
-							if ((Factor == 3)) {ActivityVibratorLevel(Character[C], 3); if (TimerLastArousalProgressCount % 3 == 0) ActivityTimerProgress(Character[C], 1);}
-							if ((Factor == 2)) {ActivityVibratorLevel(Character[C], 2); if (Character[C].ArousalSettings.Progress <= 95 && TimerLastArousalProgressCount % 4 == 0) ActivityTimerProgress(Character[C], 1);}
-							if ((Factor == 1)) {ActivityVibratorLevel(Character[C], 1); if (Character[C].ArousalSettings.Progress <= 65 && TimerLastArousalProgressCount % 6 == 0) ActivityTimerProgress(Character[C], 1);}
-							if ((Factor == 0)) {ActivityVibratorLevel(Character[C], 1); if (Character[C].ArousalSettings.Progress <= 35 && TimerLastArousalProgressCount % 8 == 0) ActivityTimerProgress(Character[C], 1);}
-							if ((Factor == -1)) {ActivityVibratorLevel(Character[C], 0);}
-
-						}
-					} else {
-						ActivityVibratorLevel(Character[C], 0);
-					}
-				}
-			}
-		}
-
-		// Arousal decays by 1 naturally every 12 seconds, unless there's already a natural progression from an activity
-		if ((TimerLastArousalDecay + 12000 < CurrentTime) || (TimerLastArousalDecay - 12000 > CurrentTime)) {
-			TimerLastArousalDecay = CurrentTime;
-			for (let C = 0; C < Character.length; C++)
-				if (PreferenceArousalAtLeast(Character[C], "Hybrid"))
-					if ((Character[C].ArousalSettings.Progress != null) && (typeof Character[C].ArousalSettings.Progress === "number") && !isNaN(Character[C].ArousalSettings.Progress) && (Character[C].ArousalSettings.Progress > 0))
-						if ((Character[C].ArousalSettings.ProgressTimer == null) || (typeof Character[C].ArousalSettings.ProgressTimer !== "number") || isNaN(Character[C].ArousalSettings.ProgressTimer) || (Character[C].ArousalSettings.ProgressTimer == 0)) {
-
-							// If the character is egged, we find the highest intensity factor
-							let Factor = -1;
-							for (let A = 0; A < Character[C].Appearance.length; A++) {
-								let Item = Character[C].Appearance[A];
-								let ZoneFactor = PreferenceGetZoneFactor(Character[C], Item.Asset.ArousalZone) - 2;
-								if (InventoryItemHasEffect(Item, "Egged", true) && (Item.Property != null) && (Item.Property.Intensity != null) && (typeof Item.Property.Intensity === "number") && !isNaN(Item.Property.Intensity) && (Item.Property.Intensity >= 0) && (ZoneFactor >= 0) && (Item.Property.Intensity + ZoneFactor > Factor))
-									if ((Character[C].ArousalSettings.Progress < 95) || PreferenceGetZoneOrgasm(Character[C], Item.Asset.ArousalZone))
-										Factor = Item.Property.Intensity + ZoneFactor;
-							}
-
-							// No decay if there's a vibrating item running
-							if (Factor < 0) ActivityTimerProgress(Character[C], -1);
-
-						}
-		}
-
-	}
+	ActivityTimerProcess();
 }
 
 /**

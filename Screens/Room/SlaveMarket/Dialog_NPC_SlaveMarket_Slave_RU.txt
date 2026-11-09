@@ -1,4 +1,4 @@
-﻿###_NPC
+###_NPC
 (She looks at your gag and giggles silently.)
 (Она смотрит на твой кляп и тихо хихикает.)
 (She looks at you with bright eyes.)  Thank you so much Miss, you're very generous.
@@ -58,3 +58,7 @@ You better be a good investment.
 ###_PLAYER
 (Bring her to your room.)
 (Приведи ее в свою комнату.)
+Are these horns and wings?
+Это рога и крылья?
+(The Mistress looks at you and interfere.)  She's a succubus slave.  They sometimes get sold by their owners who enjoys auctions.
+(Госпожа смотрит на вас и вмешивается.) Она рабыня-суккуб. Иногда их продают владельцы, которым нравятся аукционы.

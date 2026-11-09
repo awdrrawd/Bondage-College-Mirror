@@ -1,4 +1,4 @@
-﻿###_NPC
+###_NPC
 Can you mime what you're trying to say?
 Ты можешь изобразить то, что пытаешься сказать?
 Hello, I want to get a device like the one you're wearing, for my slave.
@@ -221,13 +221,12 @@ Nice.  And what about the price?  Is the quality good for the price?
 Yes, pretty good marks.
 Да, довольно хорошие отметины.
 Yes, huge marks.
-Да, очень качественные.
 Да, огромные отметины.
 At this price, there's no better.
 По этой цене, нет ничего лучше.
 ###_NPC
 (She nods.)  You're an angel.  Can I kiss you, sexy angel?
-(Она кивает. Ты ангел.  Могу я поцеловать тебя, сексуальный ангел?
+(Она кивает.) Ты ангел. Можно тебя поцеловать, сексуальный ангел?
 ###_PLAYER
 The price is fair for this quality.
 Цена справедлива для этого качества.

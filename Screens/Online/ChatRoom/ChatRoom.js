@@ -1758,7 +1758,7 @@ function ChatRoomUpdateDisplay() {
 function DrawStatus(C, X, Y, Zoom) {
 	if ((Player.OnlineSettings != null) && (Player.OnlineSettings.ShowStatus != null) && (Player.OnlineSettings.ShowStatus == false)) return;
 	if (ChatRoomHideIconState >= ChatRoomHideIconStateType.NO_AROUSAL_BAR) return;
-	if ((C.ArousalSettings != null) && (C.ArousalSettings.OrgasmTimer != null) && (C.ArousalSettings.OrgasmTimer > 0)) {
+	if (C.ArousalSettings.OrgasmTimer > 0) {
 		DrawImageResize("Icons/Status/Orgasm" + (Math.floor(CommonTime() / 1000) % 3).toString() + ".png", X + 225 * Zoom, Y + 920 * Zoom, 50 * Zoom, 30 * Zoom);
 		return;
 	}
@@ -2043,7 +2043,7 @@ function ChatRoomStimulationMessage(Action) {
 		ActivityEffectFlat(Player, Player, event.arousal, group.Name, 1);
 	const duration = (Math.random() + event.arousal / 2.4) * 500;
 	DrawFlashScreen("#FFB0B0", duration, 140);
-	if (Player.ArousalSettings?.AffectExpression) {
+	if (Player.ArousalSettings.AffectExpression) {
 		CharacterSetFacialExpression(Player, "Blush", "VeryHigh", Math.ceil(duration / 250));
 	}
 
@@ -2523,11 +2523,10 @@ function ChatRoomDrawArousalOverlay()
 {
 	let orgasmScreen = false;
 	// In orgasm mode, we add a pink filter and different controls depending on the stage.  The pink filter shows a little above 90
-	if ((Player.ArousalSettings != null) && (Player.ArousalSettings.Active != null) && (Player.ArousalSettings.Active != "Inactive") && (Player.ArousalSettings.Active != "NoMeter")) {
-		if ((Player.ArousalSettings.OrgasmTimer != null) && (typeof Player.ArousalSettings.OrgasmTimer === "number") && !isNaN(Player.ArousalSettings.OrgasmTimer) && (Player.ArousalSettings.OrgasmTimer > 0)) {
+	if (PreferenceArousalIsActive(Player)) {
+		if (Player.ArousalSettings.OrgasmTimer > 0) {
 			DrawRect(0, 0, ChatRoomMapViewSplitPosition, 1000, "#FFB0B0B0");
 			DrawRect(ChatRoomMapViewSplitPosition, 0, 993, 63, "#FFB0B0B0");
-			if (Player.ArousalSettings.OrgasmStage == null) Player.ArousalSettings.OrgasmStage = 0;
 			if (Player.ArousalSettings.OrgasmStage == 0) {
 				DrawText(TextGet("OrgasmComing"), 500, 410, "White", "Black");
 				DrawButton(200, 532, 250, 64, TextGet("OrgasmTryResist"), "White");
@@ -2538,7 +2537,7 @@ function ChatRoomDrawArousalOverlay()
 			if (Player.ArousalSettings.OrgasmStage == 2) DrawText(TextGet("OrgasmRecovering"), 500, 500, "White", "Black");
 			orgasmScreen = true;
 			ActivityOrgasmProgressBar(50, 970);
-		} else if ((Player.ArousalSettings.Progress != null) && (Player.ArousalSettings.Progress >= 1) && (Player.ArousalSettings.Progress <= 99) && !CommonPhotoMode) {
+		} else if (Player.ArousalSettings.Progress > 0 && Player.ArousalSettings.Progress < 100 && !CommonPhotoMode) {
 			let y1 = 0;
 			let h = 1000;
 
@@ -2873,7 +2872,7 @@ function ChatRoomMouseWheel(event) {
 function ChatRoomClick(event) {
 
 	// In orgasm mode, we do not allow any clicks expect the chat
-	if ((Player.ArousalSettings != null) && (Player.ArousalSettings.OrgasmTimer != null) && (typeof Player.ArousalSettings.OrgasmTimer === "number") && !isNaN(Player.ArousalSettings.OrgasmTimer) && (Player.ArousalSettings.OrgasmTimer > 0)) {
+	if (Player.ArousalSettings.OrgasmTimer > 0) {
 
 		// On stage 0, the player can choose to resist the orgasm or not.  At 1, the player plays a mini-game to fight her orgasm
 		if (MouseIn(200, 532, 250, 68) && (Player.ArousalSettings.OrgasmStage == 0)) ActivityOrgasmGameGenerate(0);
@@ -5530,22 +5529,26 @@ function ChatRoomSyncPose(data) {
 function ChatRoomSyncArousal(data) {
 	if (ChatRoomData == null || data == null || typeof data !== "object") return;
 	const character = ChatRoomCharacter.find(c => c.MemberNumber === data.MemberNumber);
-	if (!character || !character.ArousalSettings) return;
+	if (!character) return;
 
-	// Sets the orgasm count & progress
-	character.ArousalSettings.OrgasmTimer = data.OrgasmTimer;
-	character.ArousalSettings.OrgasmCount = data.OrgasmCount;
-	character.ArousalSettings.Progress = data.Progress;
-	character.ArousalSettings.ProgressTimer = data.ProgressTimer;
-	ActivityExpression(character, character.ArousalSettings.Progress);
+	const orgasmTimer = PreferenceArousalSettingsValidate.OrgasmTimer(data.OrgasmTimer, character);
+	const orgasmCount = PreferenceArousalSettingsValidate.OrgasmCount(data.OrgasmCount, character);
+	const progress = PreferenceArousalSettingsValidate.Progress(data.Progress, character);
+	const progressTimer = PreferenceArousalSettingsValidate.ProgressTimer(data.ProgressTimer, character);
+
+	character.ArousalSettings.OrgasmTimer = orgasmTimer;
+	character.ArousalSettings.OrgasmCount = orgasmCount;
+	character.ArousalSettings.Progress = progress;
+	character.ArousalSettings.ProgressTimer = progressTimer;
+	ActivityExpression(character, progress);
 
 	// Update the cached copy in the chatroom
 	const roomCharacter = ChatRoomData.Character.find(c => c.MemberNumber === data.MemberNumber);
 	if (roomCharacter && roomCharacter.ArousalSettings) {
-		roomCharacter.ArousalSettings.OrgasmTimer = data.OrgasmTimer;
-		roomCharacter.ArousalSettings.OrgasmCount = data.OrgasmCount;
-		roomCharacter.ArousalSettings.Progress = data.Progress;
-		roomCharacter.ArousalSettings.ProgressTimer = data.ProgressTimer;
+		roomCharacter.ArousalSettings.OrgasmTimer = orgasmTimer;
+		roomCharacter.ArousalSettings.OrgasmCount = orgasmCount;
+		roomCharacter.ArousalSettings.Progress = progress;
+		roomCharacter.ArousalSettings.ProgressTimer = progressTimer;
 		// @ts-expect-error FIXME: This is mistaking raw server data with unpacked character data
 		roomCharacter.Appearance = character.Appearance;
 	}

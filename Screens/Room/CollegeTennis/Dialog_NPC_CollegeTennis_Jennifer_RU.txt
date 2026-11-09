@@ -1,4 +1,4 @@
-﻿###_NPC
+###_NPC
 (She laughs.)  If you play tennis like that, I'll keep the score.
 (Она смеется.)  Если ты будешь так играть в теннис, я буду вести счет.
 (She catches her breath.)  Good game!  Do you want a rematch?  I know I can do better.
@@ -250,3 +250,9 @@ That's the only way to get better.  Should I go easy on you?
 ###_PLAYER
 That's enough.
 Этого достаточно.
+Are you willing to bet ${money=-25} on the game?  The winner keeps everything.  I won't go easy on you.
+Готова поставить ${money=-25} на игру? Победительница забирает всё. Я не буду поддаваться.
+You're too poor for that.  Get ${money=-25} and we can bet it on a real tennis match.
+У тебя не хватит денег. Добудь ${money=-25}, и поставим их на настоящий теннисный матч.
+Here's ${money=-25}, you're going down.  (Play tennis.)
+Вот ${money=-25}, тебе не победить. (Сыграть в теннис.)

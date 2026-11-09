@@ -50,7 +50,7 @@ function InventoryItemPelvisObedienceBelts1ClickHook(data, originalFunction) {
 function InventoryObedienceBeltCheckPunish(Item, C) {
 	Item.Property ??= {};
 	const { PunishOrgasm, PunishStruggle, PunishStandup } = Item.Property;
-	if ((Item.Property.NextShockTime ?? 0) - CurrentTime <= 0 && PunishOrgasm && C.ArousalSettings && C.ArousalSettings.OrgasmStage > 1) {
+	if ((Item.Property.NextShockTime ?? 0) - CurrentTime <= 0 && PunishOrgasm && C.ArousalSettings.OrgasmStage > 1) {
 		// Punish the player if they orgasm
 		Item.Property.NextShockTime = CurrentTime + FuturisticChastityBeltShockCooldownOrgasm; // Difficult to have two orgasms in 10 seconds
 		return "Orgasm";

@@ -178,5 +178,7 @@ Thanks.  I've had enough.
 ###_NPC
 (Play another game.)
 (Сыграть в другую игру.)
-
-
+Cards that are no longer in the club, hand or deck, will go to the streets.
+Карты, покинувшие клуб, руку или колоду, отправляются на улицу.
+(She looks at you and giggles.)  I'm guessing you lost your last game?
+(Она смотрит на вас и хихикает.) Полагаю, последнюю партию ты проиграла?

@@ -119,3 +119,11 @@ Thanks!
 ###_NPC
 My pleasure.  (She counts the money and smiles.)  Anything else?
 С удовольствием.  (Она пересчитывает деньги и улыбается.)  Что-нибудь еще?
+Take this.  (Give her ${money=-5})
+Возьми. (Дать ей ${money=-5}.)
+Take this.  (Give her ${money=-3})
+Возьми. (Дать ей ${money=-3}.)
+Tell me everything.  (Give her ${money=-10})
+Расскажи всё. (Дать ей ${money=-10}.)
+Tell me everything.  (Give her ${money=-6})
+Расскажи всё. (Дать ей ${money=-6}.)

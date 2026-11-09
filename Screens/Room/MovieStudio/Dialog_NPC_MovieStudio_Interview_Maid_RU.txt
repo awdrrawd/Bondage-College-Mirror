@@ -977,7 +977,7 @@ That wasn't a great case.  Me and the maid will deliberate and get back to you. 
 Это было не самое удачное дело.  Мы с горничной все обдумаем и свяжемся с вами.  (Они начинают болтать.)
 ###_PLAYER
 Get lost maid!
-Get lost maid!
+Проваливай, горничная!
 ###_NPC
 This will not help at all.  Me and the maid will deliberate and get back to you.  (They start to chat.)
 Это совсем не поможет.  Мы с горничной все обдумаем и свяжемся с вами.  (Они начинают болтать.)

@@ -1,17 +1,17 @@
 Welcome
-Добро пожаловать в Бондаж Клуб
+Добро пожаловать в Бондаж-клуб
 EnterNamePassword
-Введите свое имя и пароль
+Введите имя аккаунта и пароль
 AccountName
-Имя Аккаунта
+Имя аккаунта
 Password
 Пароль
 Login
-Авторизоваться
+Войти
 CreateNewCharacter
 Или создайте нового персонажа
 NewCharacter
-Новый Персонаж
+Новый персонаж
 ConnectingToServer
 Подключение к серверу...
 LoginQueueWait
@@ -19,13 +19,13 @@ LoginQueueWait
 ErrorLoadingCharacterData
 Ошибка загрузки данных персонажа
 ErrorDisconnectedFromServer
-Разрыв соединения с сервером. Повторное подключение...
+Соединение с сервером потеряно. Повторное подключение...
 ErrorDuplicatedLogin
-Отключен из-за дублированного входа в систему
+Соединение разорвано из-за повторного входа в аккаунт
 ErrorUnableToConnect
 Невозможно подключиться к серверу. Повторное подключение...
 ErrorRateLimited
-Соединение отклонено: скорость вашего соединения ограничена.
+Соединение отклонено: превышен лимит запросов.
 ValidatingNamePassword
 Проверка имени и пароля...
 Error
@@ -33,9 +33,9 @@ Error
 InvalidNamePassword
 Неверное имя или пароль
 Cheats
-Выберите Читы
+Выбрать читы
 PasswordReset
-Восстановление Пароля
+Сброс пароля
 ThankYou
 Спасибо
 CreditTypeDevelopers

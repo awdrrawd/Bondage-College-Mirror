@@ -108,7 +108,7 @@ I'm DialogPlayerName.  Who are you?
 My name is DialogCharacterName, I'm a battle mage from House Vincula.
 Меня зовут DialogCharacterName, я боевой маг из дома Винкула.
 Sweetheart, I'm known as Lady DialogCharacterName, from House Amplector.
-Дорогая, я известна как Леди ДиалогХарактерИмя, из Дома Амплектор.
+Дорогая, я леди DialogCharacterName из дома Амплектор.
 (She cracks her knuckles.)  I'm witch DialogCharacterName, from House Corporis.  Are you looking for trouble?
 (Она хрустит костяшками пальцев.) Я ведьма DialogCharacterName из Дома Корпорис. Вы ищете проблемы?
 ###_PLAYER
@@ -462,3 +462,11 @@ Struggle in your bondage then, you can call a maid for help.  (She starts to wal
 ###_PLAYER
 (Leave her.)
 (Оставь ее.)
+(She smirks.)  Alright.  I bet you ${money=-25} that I can beat you in a magic fight.
+(Она усмехается.) Ладно. Ставлю ${money=-25}, что одолею тебя в магическом бою.
+(Fight her and wage ${money=-25}.)
+(Сразиться с ней, поставив ${money=-25}.)
+(Gather essence from her.)
+(Собрать её эссенцию.)
+(The spell starts to drains her essence. She grows pale and drops to her knees shaking and moaning.) AahHhh~  (After a moment she calms down a little. She is powerless, exhausted, but also satisfied in some way~)
+(Заклинание начинает вытягивать её эссенцию. Она бледнеет и опускается на колени, дрожа и постанывая.) AahHhh~ (Через некоторое время она немного успокаивается. Она бессильна, измождена, но в чём-то даже удовлетворена~)

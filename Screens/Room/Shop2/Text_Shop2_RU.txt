@@ -1,0 +1,70 @@
+PagePrev
+Предыдущие предметы
+PageNext
+Следующие предметы
+Exit
+Выход
+ClothesModeClothes
+Одежда
+ClothesModeUnderwear
+Нижнее бельё
+ClothesModeCosplay
+Косплей
+ClothesModeNude
+Без одежды
+ExtendedItemButton
+Использовать предмет
+Color
+Изменить цвет предмета
+BuyModePreview
+Режим магазина: примерка
+BuyModeSell
+Режим магазина: продажа
+BuyModeBuy
+Режим магазина: покупка
+InputSearch
+Фильтр по названию предмета
+GroupSelectHeader
+Фильтр по группе предметов
+GroupSelectCollapse
+Показать фильтр групп
+GroupSelectAll
+Выбрать всё
+GroupSelectNone
+Снять выбор
+LayeringButton
+Изменить наложение слоёв предмета
+MaleOnly
+только для мужчин
+FemaleOnly
+только для женщин
+AssetGroupCategoryAppearance
+Тело и одежда
+AssetGroupCategoryItem
+Игрушки и путы
+AssetGroupCategoryScript
+Разное
+PoseSelectHeader
+Выберите позу
+PoseSelectCollapse
+Показать меню поз
+PoseSelectReset
+Сбросить позу
+ItemHeader00
+Примерка предметов: страница 0
+ItemHeader01
+Покупка предметов: страница 0
+ItemHeader02
+Продажа предметов: страница 0
+ItemHeader10
+Примерка женских предметов: страница 0
+ItemHeader11
+Покупка женских предметов: страница 0
+ItemHeader12
+Продажа женских предметов: страница 0
+ItemHeader20
+Примерка мужских предметов: страница 0
+ItemHeader21
+Покупка мужских предметов: страница 0
+ItemHeader22
+Продажа мужских предметов: страница 0

@@ -1,9 +1,9 @@
 AccessBlocked
 Вы не можете получить доступ к своим предметам
 ActionActivateSafewordRelease
-SourceCharacter использует PronounPossessive безопасное слово и хочет быть освобожденым. PronounSubject выводится из комнаты в целях PronounPossessive безопасности.
+SourceCharacter использует PronounPossessive стоп-слово и просит об освобождении. PronounSubject покидает комнату с сопровождением ради PronounPossessive безопасности.
 ActionActivateSafewordRevert
-SourceCharacter использует PronounPossessive безопасное слово. Пожалуста убедитесь в PronounPossessive безопасности.
+SourceCharacter использует PronounPossessive стоп-слово. Пожалуйста, убедитесь в PronounPossessive благополучии.
 ActionAddLock
 SourceCharacter добавляет NextAsset к DestinationCharacter FocusAssetGroup PrevAsset.
 ActionChangeColor
@@ -19,7 +19,7 @@ SourceCharacter освобождается из PrevAsset.
 ActionGiveEnvelopeToOwner
 TargetCharacterName передает запечатанный конверт владельцу TargetPronounPossessive.
 ActionGrabbedForCell
-TargetCharacterName схватили две горничные и заперли в камере таймера, следуя командам владельца TargetPronounPossessive.
+Две горничные хватают TargetCharacterName и запирают в камере с таймером по приказу TargetPronounPossessive владельца.
 ActionGrabbedForGGTS
 TargetCharacterName схватили две медсестры в футуристическом снаряжении и заперли в психушке для GGTS, следуя командам владельца TargetPronounPossessive.
 ActionGrabbedToServeDrinks
@@ -27,7 +27,7 @@ TargetCharacterName хватают две горничные и сопровож
 ActionInterruptedAdd
 SourceCharacter прервали при попытке использовать NextAsset на TargetCharacter.
 ActionInterruptedRemove
-SourceCharacter прервали во время попытки использовать PrevAsset на TargetCharacter.
+SourceCharacter прервали при попытке снять PrevAsset с TargetCharacter.
 ActionInterruptedSwap
 SourceCharacter прервали при замене PrevAsset на NextAsset для TargetCharacter.
 ActionLock
@@ -39,9 +39,9 @@ SourceCharacter сильно ослабляет PrevAsset на FocusAssetGroup D
 ActionLoosenStruggle
 SourceCharacter борется и ослабляет PrevAsset в DestinationCharacter FocusAssetGroup.
 ActionPick
-SourceCharacter взламывает блокировку PrevAsset DestinationCharacter.
+SourceCharacter взламывает замок на PrevAsset DestinationCharacter.
 ActionRemove
-SourceCharacter удаляет PrevAsset с FocusAssetGroup DestinationCharacter.
+SourceCharacter снимает PrevAsset с FocusAssetGroup DestinationCharacter.
 ActionStruggle
 SourceCharacter выскальзывает из TargetPronounPossessive PrevAsset.
 ActionSwap
@@ -53,7 +53,7 @@ SourceCharacter сильно затягивает PrevAsset на FocusAssetGroup
 ActionUnlock
 SourceCharacter отпирает PrevAsset на FocusAssetGroup DestinationCharacter.
 ActionUnlockAndRemove
-SourceCharacter отпирает и удаляет PrevAsset с FocusAssetGroup DestinationCharacter.
+SourceCharacter отпирает и снимает PrevAsset с FocusAssetGroup DestinationCharacter.
 ActionUse
 SourceCharacter использует NextAsset на FocusAssetGroup DestinationCharacter.
 Adding
@@ -63,7 +63,7 @@ AddTimerTime
 AddTimerTimeMinutes
 Добавить TimerTime минут к таймеру
 AdjustTightness
-Затянуть/ Ослабить
+Затянуть / ослабить
 AlreadySet
 Опция уже установлена
 Beep
@@ -77,7 +77,7 @@ BeepWithMail
 BeepWithMessage
 С сообщением
 BlindToggleFacialExpressions
-Переключить слепоту с закрытыми глазами
+Включить или отключить потерю зрения при закрытых глазах
 BlockedByRoom
 Заблокирован в этой комнате.
 Brightness
@@ -95,29 +95,29 @@ ChatRoomHelp
 ChatRoomLeashNotFriend
 Вас нет в списке друзей этого участника; попросите TargetPronounObject добавить вас в друзья, прежде чем накинуть поводок на TargetPronounObject.
 ChooseStruggleMethod
-Выберите метод борьбы...
+Выберите способ освобождения...
 ChatRoomStruggleButton
-Борьба в чате комнаты
+Освобождаться в комнате чата
 ChatRoomStruggleStart
 SourceCharacter изо всех сил пытается освободиться от PronounPossessive PrevAsset
 ChatRoomStruggleGiveUp
 SourceCharacter отказывается от борьбы с PronounPossessive PrevAsset
 ChatRoomStruggleSuccess
-SourceCharacter борется с PronounPossessive PrevAsset
+SourceCharacter освобождается от PronounPossessive PrevAsset
 ChatRoomStruggleLoosenComplete0
 SourceCharacter медленно освобождается от PronounPossessive PrevAsset
 ChatRoomStruggleLoosenComplete1
 SourceCharacter добивается прогресса, борясь с PronounPossessive PrevAsset
 ChatRoomStruggleLoosenComplete2
-SourceCharacter умело пытается удалить PronounPossessive PrevAsset
+SourceCharacter умело пытается снять PronounPossessive PrevAsset
 ChatRoomStruggleLoosenComplete3
 SourceCharacter постепенно вырывается из PronounPossessive PrevAsset
 ChatRoomStruggleLoosenComplete4
-SourceCharacter методично работает над борьбой с PronounPossessive PrevAsset
+SourceCharacter методично пытается высвободиться из PronounPossessive PrevAsset
 ClearActivePoses
-Очистите активные позы
+Сбросить активные позы
 ClearFacialExpressions
-Очистите мимику лица
+Сбросить выражение лица
 ColorSave
 Сохранить цвет в текущий выбранный слот
 ColorSelect
@@ -133,9 +133,9 @@ CraftingDescription
 CraftingMember
 Создатель: MemberName (MemberNumber)
 CraftingName
-Имя: CraftName
+Название: CraftName
 CraftingProperty
-Свойство: CraftProperty
+Эффекты: CraftProperty
 CurrentMode
 Текущий режим:
 Decoding
@@ -157,7 +157,7 @@ DialogMenuColorSelect
 DialogMenuColorCancel
 Цвет по умолчанию
 DialogMenuColorChange
-Изменить цвет элемента
+Изменить цвет предмета
 DialogMenuColorExpressionChange
 Изменить цвет выражения
 DialogMenuColorDefault
@@ -165,27 +165,27 @@ DialogMenuColorDefault
 DialogMenuColorPickDisabled
 Невозможно изменить цвет из-за разрешений игрока.
 DialogMenuCrafting
-Созданные свойства
+Свойства созданного предмета
 DialogMenuDismount
 Слезть
 DialogMenuEscape
-Освобождение от предмета
+Освободиться из предмета
 DialogMenuExit
 Вернуться к персонажу
 DialogMenuGGTSControl
-GGTS контролируетэтот предмет
+GGTS управляет этим предметом
 DialogMenuInspectLock
-Осмотрите замок
+Осмотреть замок
 DialogMenuInspectLockDisabled
 Невозможно проверить из-за разрешений игрока
 DialogMenuLayering
-Изменение слоев элементов
+Изменить наложение слоёв предмета
 DialogMenuLock
-Используйте замок
+Запереть на замок
 DialogMenuLockDisabled
 Невозможно запереть элемент из-за разрешений игрока
 DialogMenuLockMenu
-Заблокировать связанные действия
+Действия с замком
 DialogMenuDown
 Посмотреть следующие предметы
 DialogMenuNormalMode
@@ -223,13 +223,13 @@ DialogMenuRemoteDisabledForNoRemoteOwnerRuleActive
 DialogMenuRemoteDisabledForRemotesBlocked
 Использование пультов на этом предмете заблокировано
 DialogMenuRemove
-Удалить предмет
+Снять предмет
 DialogMenuStruggle
-Попробуйте бороться
+Попытаться освободиться
 DialogMenuTightenLoosen
-Затянуть/ Ослабить
+Затянуть / ослабить
 DialogMenuUnlock
-Разблокировать предмет
+Отпереть предмет
 DialogMenuUse
 Используйте этот предмет
 DialogMenuUseDisabled
@@ -241,11 +241,11 @@ EnableRandomInput
 Escaping
 Освобождается...
 ExtendedItemNoCraftingScreen
-Недоступно во время крафта
+Недоступно при создании предмета
 ExtendedItemNoItemPermission
 Заблокировано из-за разрешений для предмета
 ExtendedItemUnlockBeforeChange
-Перед заменой снимите замки
+Снимите замки перед изменением настроек
 FacialExpression
 Выражение лица
 Hacking
@@ -285,25 +285,25 @@ LockMemberNumber
 LockZoneBlocked
 Другой предмет блокирует доступ к этому замку
 LockPickArousal
-Ваши руки дрожат, и вы случайно теряете концентрацию!
+Руки дрожат, и вы случайно ослабляете натяжение в замке!
 LockPickBreak
-SourceCharacter заклинилинивает замок на DestinationCharacterName и ломает PronounPossessive отмычку!
+SourceCharacter заклинивает замок на DestinationCharacterName и ломает PronounPossessive отмычку!
 LockpickFailed
 Вы заклинили замок.
 LockpickFailedTimeout
-Вы слишком устали, чтобы продолжать. Время жля отдыха:
+Вы слишком устали, чтобы продолжать. Осталось времени:
 LockpickIntro
 Нажмите на штифты в правильном порядке, чтобы открыть замок!
 LockpickIntro2
-Нажатие на неверный штиф может привести к его ошибочной установке.
+Нажатие не на тот штифт может привести к его ложной фиксации.
 LockpickIntro3
-Он упадет после нажатия на другие штифы.
+Он опустится после нажатия на другие штифты.
 LockpickJammed
-В случае неудачи или выхода из игры ваша отмычка сломается на 1 минуту.
+При неудаче или прекращении взлома отмычка сломается на 1 минуту
 LockpickTriesRemaining
 Оставшиеся попытки:
 Loosen
-Ослобляется...
+Ослабить...
 LoosenClick
 Кликните или нажмите пробел, когда круги совпадут.
 LoosenLittle
@@ -311,7 +311,7 @@ LoosenLittle
 LoosenLot
 ...Сильно
 LoosenPossible
-Вы изо всех сил пытаетесь ослабить это ограничение
+Вы можете попытаться ослабить эти путы
 MaximumTightness
 Максимум:
 MinimumTightness
@@ -327,7 +327,7 @@ NoItems
 NotificationTitleBeep
 Звуковой сигнал
 NotificationTitleChatJoin
-Присоедениться к комнате
+Вход в комнату
 NotificationTitleChatMessage
 Сообщение в чате
 NotificationTitleDisconnect
@@ -351,17 +351,17 @@ PoseMenu
 PrerequisiteAddItemsToUse
 Для использования потолочных ремней необходимо иметь предмет для рук/туловища/таза.
 PrerequisiteCannotAllFours
-Невозможно перейти в позу AllFours.
+Нельзя принять позу «на четвереньках».
 PrerequisiteCannotBackBoxTie
-Невозможно перейти в позу BackBoxTie.
+Нельзя принять позу «руки за спиной в коробочной обвязке».
 PrerequisiteCannotBackCuffs
-Невозможно перейти в позу BackCuffs.
+Нельзя принять позу «руки за спиной в наручниках».
 PrerequisiteCannotBackElbowTouch
-Невозможно перейти в позу BackElbowTouch.
+Нельзя принять позу «локти соприкасаются за спиной».
 PrerequisiteCannotBaseLower
-Невозможно перейти в позу BaseLower.
+Нельзя принять позу «ноги в обычном положении».
 PrerequisiteCannotBaseUpper
-Невозможно перейти в позу BaseUpper.
+Нельзя принять позу «руки в обычном положении».
 PrerequisiteCannotBeSuited
 Сначала снимите костюм.
 PrerequisiteCannotBeUsedOverGag
@@ -371,7 +371,7 @@ PrerequisiteCannotBeUsedOverHood
 PrerequisiteCannotBeUsedOverMask
 Нельзя использовать поверх наложенной маски.
 PrerequisiteCannotBeUsedWhenMounted
-Невозможно использовать в установленном виде.
+Нельзя использовать, пока персонаж закреплён на предмете.
 PrerequisiteCannotBeUsedWhenYoked
 Нельзя использовать, пока находится в ярме.
 PrerequisiteCannotBeUsedWhileServingDrinks
@@ -381,29 +381,29 @@ PrerequisiteCannotBeUsedWithFeetSpreader
 PrerequisiteCannotHaveWand
 Сначала уберите вибропалочку.
 PrerequisiteCannotHogtied
-Невозможно перейти в позу Hogtied.
+Нельзя принять позу «хогтай».
 PrerequisiteCannotKneel
-Невозможно перейти в позу Kneel.
+Нельзя принять позу «на коленях».
 PrerequisiteCannotKneelingSpread
-Невозможно перейти в позу KneelingSpread.
+Нельзя принять позу «на коленях с разведёнными ногами».
 PrerequisiteCannotLegsClosed
-Невозможно перейти в позу LegsClosedи.
+Нельзя принять позу «ноги вместе».
 PrerequisiteCannotOverTheHead
-Невозможно перейти в позу OverTheHead.
+Нельзя принять позу «руки над головой».
 PrerequisiteCannotSelfSelect
 Невозможно использовать эту опцию при ношении предмета.
 PrerequisiteCannotSpread
-Невозможно перейти в позу Spread.
+Нельзя принять позу «ноги врозь».
 PrerequisiteCannotStruggle
 Вам понадобится помощь, чтобы выбраться
 PrerequisiteCannotSuspension
-Невозможно перейти в позу Suspension.
+Нельзя принять позу «подвешивание».
 PrerequisiteCannotTapedHands
-Невозможно перейти в позу TapedHands.
+Нельзя принять позу «руки склеены».
 PrerequisiteCannotYoked
-Невозможно перейти в позу Yoked.
+Нельзя принять позу «руки в колодках».
 PrerequisiteCantCloseOnShaft
-Невозможно закрыть дышло.
+Нельзя закрыть поверх введённого стержня.
 PrerequisiteMustBeAbleToKneel
 Должна быть возможность опуститься на колени.
 PrerequisiteMustBeArmCuffedFirst
@@ -413,23 +413,23 @@ PrerequisiteMustBeFeetCuffedFirst
 PrerequisiteMustBeOnBed
 Чтобы прикрепить дополнения, нужно находиться на кровати.
 PrerequisiteMustBeUsedOverGag
-Требуется запертый кляп.
+Требуется кляп, закрывающий рот.
 PrerequisiteMustCollaredFirst
 Сначала необходимо надеть ошейник, к которому можно прикрепить аксессуары.
 PrerequisiteMustFreeArmsFirst
 Сначала нужно освободить руки.
 PrerequisiteMustFreeButtFirst
-Сначала надо очистить задницу.
+Сначала извлеките предметы из ануса.
 PrerequisiteMustFreeClitFirst
-Сначала нужно удалить пирсинг клитора
+Сначала снимите пирсинг клитора
 PrerequisiteMustFreeFeetFirst
 Сначала необходимо освободить ступни.
 PrerequisiteMustFreeHandsFirst
-Сначала необходимо освободить руки.
+Сначала нужно освободить кисти.
 PrerequisiteMustFreeLegsFirst
 Сначала необходимо освободить ноги.
 PrerequisiteMustFreeVulvaFirst
-Сначала необходимо опорожнить вульву.
+Сначала извлеките предметы из влагалища.
 PrerequisiteMustHaveBreasts
 Должна быть женская верхняя часть тела.
 PrerequisiteMustHaveFlatChest
@@ -441,7 +441,7 @@ PrerequisiteMustHavePenis
 PrerequisiteMustHaveVagina
 Должны быть женские гениталии.
 PrerequisiteMustNotHaveForcedErection
-Не должно быть эрекции.
+Не должно быть принудительной эрекции.
 PrerequisiteMustRemoveChastityCage
 Сначала нужно снять клетку целомудрия.
 PrerequisiteMustStandUpFirst
@@ -459,7 +459,7 @@ PrerequisiteNeedsHipHarness
 PrerequisiteNeedsNippleRings
 Требуется круглый пирсинг на сосках.
 PrerequisiteRemoveChain
-Развязать варежки.
+Отстегнуть цепь от варежек
 PrerequisiteRemoveChainForItem
 Сначала снимите цепь.
 PrerequisiteRemoveChastityFirst
@@ -469,7 +469,7 @@ PrerequisiteRemoveClothesForItem
 PrerequisiteRemoveFaceMaskFirst
 Сначала необходимо снять маску с лица.
 PrerequisiteRemoveRestraintsFirst
-Сначала снимите некоторые ограничения.
+Сначала снимите часть сдерживающих предметов.
 PrerequisiteRemoveShacklesFirst
 Сначала нужно снять кандалы.
 PrerequisiteRemoveSuspensionForItem
@@ -491,41 +491,41 @@ PreviewIconBlindLight
 PreviewIconBlindNormal
 Ослепление
 PreviewIconBuyGroup
-Buygroup учасник
+Предмет из набора для покупки
 PreviewIconDeafHeavy
-Сильное оглушение
+Сильно заглушает звуки
 PreviewIconDeafLight
-Слабое оглушение
+Слегка заглушает звуки
 PreviewIconDeafNormal
-Оглушение
+Заглушает звуки
 PreviewIconExtended
-Расширенный элемент
+Предмет с дополнительными настройками
 PreviewIconFamilyOnly
 Только семья Д/С
 PreviewIconFavorite
 Избранное
 PreviewIconFavoriteBoth
-Избранное(их и ваше)
+Избранное (у вас и у другого персонажа)
 PreviewIconFavoritePlayer
 Избранное (ваше)
 PreviewIconGagLight
-Лекгое затыкание
+Слабо заглушает речь
 PreviewIconGagNormal
 Затыкание
 PreviewIconGagTotal
 Полное затыкание
 PreviewIconHandheld
-Держать
+В руках
 PreviewIconLocked
-Заблокировано
+Заперто на замок
 PreviewIconLoverOnly
 Только возлюбленные
 PreviewIconOwnerOnly
 Только владелец
 PreviewIconPadlock
-Заблокировано с помощью AssetName
+Заперто на AssetName
 PreviewIconUnlocked
-Автоматически блокируется
+Запирается автоматически
 PrevPage
 Посмотреть предыдущую страницу
 Private
@@ -537,7 +537,7 @@ ProgressDex
 ProgressFlex
 Щелкайте по веревкам, прежде чем они упадут на землю, для прогресса.
 ProgressKeys
-Альтернативные клавиши A (Q на AZERTY) и D для ускорения.
+Поочерёдно нажимайте A (Q на AZERTY) и D для ускорения
 PronounObjectHeHim
 ему
 PronounObjectSheHer
@@ -547,7 +547,7 @@ PronounObjectTheyThem
 PronounPossessiveHeHim
 его
 PronounPossessiveSheHer
-ей/ее
+её
 PronounPossessiveTheyThem
 их
 PronounSelfHeHim
@@ -565,11 +565,11 @@ PronounSubjectTheyThem
 ReceivedBeep
 Получено в
 RemoveItemWithTimer
-Удалить предмет, когда таймер блокировки истечет
+Снять предмет по истечении таймера замка
 Removing
-Удаление...
+Снятие...
 RequireBondageLevel
-Нужен требуемый уровень бондажа
+Требуется уровень бондажа ReqLevel
 RequireSelfBondage
 Требуется самобондаж ReqLevel.
 RulesMenuBlockChange
@@ -577,15 +577,15 @@ RulesMenuBlockChange
 RulesMenuBlockFamilyKey
 Заблокировано: семейные ключи
 RulesMenuBlockKey
-Заблокирован: Обычные ключи
+Заблокировано: обычные ключи
 RulesMenuBlockLoverLockOwner
 Ваш владелец не может использовать на вас замки возлюбленных
 RulesMenuBlockLoverLockSelf
-Ни один возлябленный не запирает сам/а себя
+Нельзя использовать замки возлюбленных на себе
 RulesMenuBlockNickname
-Невозмржно сменить никнейм
+Нельзя изменить никнейм
 RulesMenuBlockOwnerLockSelf
-Ни один владелец не запирает сам/а себя
+Нельзя использовать замки владельца на себе
 RulesMenuBlockRemote
 Заблокировано: пульты для всех
 RulesMenuBlockRemoteSelf
@@ -611,35 +611,35 @@ SelectActivityNone
 SelectItemGroup
 Выберите предмет для использования в GroupName.
 SelectLock
-Выбирите замок, который будет использоваться для GroupName.
+Выберите замок для GroupName.
 SelectLocked
-Похоже, он заблокирован AssetName.
+Похоже, здесь установлен замок AssetName.
 SelectLockedUnknown
-Похоже, он чем-то заблокирован.
+Похоже, здесь установлен какой-то замок.
 SentBeep
 Отправлено в
 ServerBan
-TargetCharacterName был забанен SourceCharacter.
+SourceCharacter блокирует вход в комнату для TargetCharacterName.
 ServerDemoteAdmin
-TargetCharacterName был/а снят/а с должности администратора SourceCharacter.
+SourceCharacter снимает TargetCharacterName с должности администратора.
 ServerDisconnect
 SourceCharacter отключается.
 ServerEnter
 SourceCharacter входит в комнату.
 ServerKick
-SourceCharacter позвал/а горничных, чтобы они вывели TargetCharacterName из комнаты.
+SourceCharacter вызывает горничных, чтобы вывести TargetCharacterName из комнаты.
 ServerLeave
 SourceCharacter покидает комнату.
 ServerMessageBeginDating
 Клуб Бондажа рад сообщить, что SourceCharacter и TargetCharacter начинают минимальный период в 7 дней в качестве возлюбленных.
 ServerMessageBeginEngagement
-Клуб Бондажа рад сообщить, что SourceCharacter и TargetCharacter теперь помолвлены и начинают минимальный 7-дневный период в качестве новобрачных.
+Бондаж-клуб рад сообщить, что SourceCharacter и TargetCharacter помолвлены. Минимальный срок помолвки — 7 дней.
 ServerMessageBeginWedding
 Клуб Бондажа с гордостью сообщает, что SourceCharacter и TargetCharacter теперь супруги. Долгие лета молодым!
 ServerMessageEndOwnership
-Клуб Bondage объявляет, что SourceCharacter освободил TargetCharacter от PronounPossessive владения.
+Бондаж-клуб сообщает: SourceCharacter освобождает TargetCharacter от PronounPossessive владения.
 ServerMessageEndOwnershipTrial
-Клуб Bondage объявляет, что SourceCharacter отменил пробный период владением TargetCharacter.
+Бондаж-клуб сообщает: SourceCharacter отменяет пробный период владения TargetCharacter.
 ServerMessageEndTrial
 Клуб Бондажа с гордостью сообщает, что SourceCharacter теперь в постоянном ошейнике. Судьба PronounPossessive находится в руках PronounPossessive владельца.
 ServerMessageForbiddenWordsBlocked
@@ -665,7 +665,7 @@ SourceCharacter просит вас стать PronounPossessive женихом/
 ServerMessageOfferBeginWedding
 SourceCharacter предлагает вам стать PronounPossessive женой/мужем.  Нажмите на PronounObject и управляйте своими отношениями, чтобы принять это, или не делайте ничего, чтобы отказаться.
 ServerMessageOfferEndTrial
-SourceCharacter подготовил/а великолепную церемонию ошейника.  Горничная приносит рабский ошейник, который должен надеть сабмиссив.
+SourceCharacter устраивает торжественную церемонию надевания ошейника. Горничная приносит рабский ошейник, который PronounPossessive подчинённая должна согласиться надеть.
 ServerMessageOfferStartTrial
 SourceCharacter предлагает вам начать пробный период в качестве PronounPossessive сабмиссива.  Нажмите на PronounObject и управляйте своими отношениями, чтобы принять это, или не делайте ничего, чтобы отказаться.
 ServerMessageOwnerRuleAccessOtherAllow
@@ -755,19 +755,19 @@ ServerMessageReleaseSuccess
 ServerMessageStartTrial
 Клуб Бондажа рад сообщить, что SourceCharacter начинает минимальный 7-дневный испытательный период в качестве сабмиссива.
 ServerMoveLeft
-TargetCharacterName переместили влево с помощью SourceCharacter.
+SourceCharacter перемещает TargetCharacterName влево.
 ServerMoveRight
-TargetCharacterName переместили вправо с помощью SourceCharacter.
+SourceCharacter перемещает TargetCharacterName вправо.
 ServerPromoteAdmin
-TargetCharacterName был/а повышен/а до администратора  SourceCharacter.
+SourceCharacter назначает TargetCharacterName администратором.
 ServerRoomUnwhitelist
-TargetCharacterName был удален из белого списка комнат SourceCharacter.
+SourceCharacter удаляет TargetCharacterName из белого списка комнаты.
 ServerRoomWhitelist
-TargetCharacterName был добавлен в белый список комнат SourceCharacter.
+SourceCharacter добавляет TargetCharacterName в белый список комнаты.
 ServerShuffle
 SourceCharacter случайным образом меняет положение всех в комнате.
 ServerSwap
-SourceCharacter поменял/а местами TargetCharacterName и DestinationCharacterName1 местами.
+SourceCharacter меняет местами TargetCharacterName и DestinationCharacterName1.
 ServerUpdateRoom
 SourceCharacter обновил/а комнату. Название: ChatRoomName. Лимит: ChatRoomLimit.  ChatRoomPrivacy.  ChatRoomLocked.
 ShowAllZones
@@ -777,13 +777,13 @@ ShowItemWithTimerRemaining
 Someone
 Кто-то
 StruggleDexterity
-Попробуйте отстегнуть
+Попытаться расстегнуть
 StruggleFlexibility
-Попробуй выдавить
+Попытаться выскользнуть
 StruggleImpossible
 Невозможно освободиться!
 StruggleStrength
-Используйте грубую силу
+Применить грубую силу
 Struggling
 Боремся...
 Swapping
@@ -793,7 +793,7 @@ Tighten
 TightenLittle
 ...Немного
 TightenLoosenTitle
-Вы можете затянуть или ослабить этот элемент
+Вы можете затянуть или ослабить этот предмет
 TightenLot
 ...Сильно
 tightens
@@ -805,11 +805,11 @@ TryLoosen
 TimerLeft
 Оставшееся время:
 Unlocked
-Открытая
+Отперто
 Unlocking
 Отпираем...
 Using0
-Используя весь свой навык...
+Без использования навыка...
 Using25
 Используя 25% своего навыка...
 Using50
@@ -817,16 +817,334 @@ Using50
 Using75
 Используя 75% своего навыка...
 WinkFacialExpressions
-Моргать
+Подмигнуть / моргнуть
 WillRemoveItemWithTimer
-Предмет будет удален, когда истечет таймер блокировки
+Предмет будет снят по истечении таймера замка
 WontRemoveItemWithTimer
-Элемент останется, когда таймер блокировки закончится
+Предмет останется надетым по истечении таймера замка
 ZoneBlocked
-Эта зона недосягаема для другого предмета
+Другой предмет перекрывает доступ к этой зоне
 ZoneBlockedOwner
 Ваш владелец не разрешает вам доступ к этой зоне
 ZoneBlockedRange
 Вы слишком далеко, чтобы добраться до тела и предметов DialogCharacterObject.
 CommaDelimiter
 ,
+'s
+
+AppCopyDone
+Данные внешности скопированы в буфер обмена. Вставьте их в другое место, чтобы сохранить.
+AppCopyError
+Не удалось скопировать данные внешности.
+AppPasteDone
+Вставленные данные внешности загружены.
+AppPasteError
+Не удалось загрузить вставленные данные внешности.
+AppPasteBlocked
+Вы не можете изменить свою внешность.
+YourRoom
+Ваша личная комната
+BlockedByEquipped
+Предмет уже надет.
+BlockedByGGTS
+Предмет заблокирован GGTS.
+BlockedByLock
+Сначала нужно отпереть AssetName.
+BlockedByPermissions
+Предмет заблокирован пользователем.
+CannotSelfSelect
+Вы не можете изменить этот параметр самостоятельно.
+ChatRoomSpaceX
+Смешанная
+ChatRoomSpaceM
+Только мужчины
+ChatRoomSpaceF
+Только женщины
+ChatRoomSpaceAsylum
+Лечебница
+CraftingPrivate
+Личный предмет: CraftPrivate
+DialogMenuFilterItems
+Фильтр предметов
+DialogMenuFilterItemsExit
+Закрыть
+Days
+дн.
+Random
+Случайно
+LayeringAsset
+Настроить {asset}
+LayeringPriority
+Приоритет предмета
+LayeringScale
+Масштаб предмета
+LayeringRotation
+Поворот предмета
+LayeringTranslation
+Смещение предмета
+LayeringLayerPriority
+Приоритет слоёв
+LayeringLayerScale
+Масштаб слоёв
+LayeringLayerRotation
+Поворот слоёв
+LayeringLayerTranslation
+Смещение слоёв
+LayeringTransformationDisabled
+Преобразования для этого предмета отключены.
+NoItemEquipped
+Не надет предмет, на который можно установить замок
+OwnerBlockChangePose
+Запрещено правилом хозяйки
+OwnerProposeSub
+<b>Вы предложили TargetCharacterName стать вашей подчинённой. Если предложение примут, не забудьте добавить персонажа в друзья!</b>
+ScreenLoading
+Загрузка, подождите
+StableResult10
+Отлично
+StableResult9
+Очень хорошо
+StableResult8
+Хорошо
+StableResult7
+Довольно хорошо
+StableResult6
+Удовлетворительно
+StableResult5
+Посредственно
+StableResult4
+Недостаточно
+StableResult3
+Довольно плохо
+StableResult2
+Плохо
+StableResult1
+Очень плохо
+StableResult0
+Не выполнено
+PrerequisiteCantHaveErection
+Эрекция недопустима.
+PrerequisiteCantBeLimp
+Требуется эрекция.
+PrerequisiteOwnerBlockedRemotes
+Хозяйка запретила использовать пульты управления.
+PrerequisiteCantAttachMittens
+К этому предмету нельзя прикрепить рукавицы.
+PrerequisiteInternalError
+Внутренняя ошибка: отсутствует персонаж или предмет.
+PrerequisiteIllegalExpression
+Недопустимое выражение {Expression}.
+PreviewIconBlock
+Ограничивает движения рук
+PreviewIconBlocked
+Заблокированный предмет
+PreviewIconFreeze
+Ограничивает движения ног
+PreviewIconGagHeavy
+Сильно заглушает речь
+PrivateRoom
+<i>Личная</i>
+PronounObjectItIt
+его
+PronounPossessiveItIt
+его
+PronounSelfItIt
+себя
+PronounSubjectItIt
+оно
+ReputationABDL
+ABDL
+ReputationAsylumNegative
+Лечебница — пациентка
+ReputationAsylumPositive
+Лечебница — медсестра
+ReputationDominantNegative
+Д/с — подчинение
+ReputationDominantPositive
+Д/с — доминирование
+ReputationGambling
+Игорный зал
+ReputationGaming
+Исследовательница подземелий
+ReputationKidnap
+Лига похитителей
+ReputationLARP
+Ролевые бои
+ReputationMaid
+Сестринство горничных
+ReputationHouseAmplector
+Дом Амплектор
+ReputationHouseCorporis
+Дом Корпорис
+ReputationHouseMaiestas
+Дом Майестас
+ReputationHouseVincula
+Дом Винкула
+RequirePlayer
+Требуется персонаж игрока
+RulesMenu
+Действующие правила хозяйки и возлюбленных
+SendBeep
+Отправить сигнал
+Close
+Закрыть
+Reply
+Ответить
+Send
+Отправить
+ToggleRoomOn
+Включить комнату
+ToggleRoomOff
+Выключить комнату
+ServerBeepUnknownName
+Неизвестно ($target)
+ServerMessageForbiddenWordsMuted
+Вы произнесли запрещённое слово и не сможете говорить ещё TIMEREMAINING. Посмотреть список слов можно командой /forbiddenwords.
+StatusAndEffects
+Состояние и эффекты:
+TimerUnknown
+Оставшееся время неизвестно
+TimerHidden
+Таймер скрыт
+Using100
+Используется весь ваш навык...
+DurationFormatError
+Ошибка длительности
+FullscreenEnter
+Полный экран
+FullscreenExit
+Выйти из полноэкранного режима
+PandoraActivityBondage
+Охранница Пандоры надевает новые средства фиксации на TargetCharacterName.
+PandoraGuardActivityBondage
+Охранница Пандоры SourceCharacter надевает новые средства фиксации на TargetCharacterName.
+PandoraGuardActivityBondageAll
+Охранница Пандоры SourceCharacter надевает новые средства фиксации на всех заключённых.
+PandoraActivitySpank
+Охранница Пандоры многократно шлёпает TargetCharacterName по ягодицам.
+PandoraGuardActivitySpank
+Охранница Пандоры SourceCharacter многократно шлёпает TargetCharacterName по ягодицам.
+PandoraGuardActivitySpankAll
+Охранница Пандоры SourceCharacter по очереди шлёпает всех заключённых.
+PandoraActivityHose
+Охранница Пандоры обливает TargetCharacterName холодной водой из шланга.
+PandoraGuardActivityHose
+Охранница Пандоры SourceCharacter обливает TargetCharacterName холодной водой из шланга.
+PandoraGuardActivityHoseAll
+Охранница Пандоры SourceCharacter обливает всех заключённых холодной водой из шланга.
+PandoraActivityGag
+Охранница Пандоры вставляет кляп в рот TargetCharacterName.
+PandoraGuardActivityGag
+Охранница Пандоры SourceCharacter вставляет кляп в рот TargetCharacterName.
+PandoraGuardActivityGagAll
+Охранница Пандоры SourceCharacter вставляет кляпы в рот всем заключённым.
+PandoraActivityUngag
+Охранница Пандоры вынимает кляп изо рта TargetCharacterName.
+PandoraGuardActivityUngag
+Охранница Пандоры SourceCharacter вынимает кляп изо рта TargetCharacterName.
+PandoraGuardActivityUngagAll
+Охранница Пандоры SourceCharacter вынимает кляпы изо рта у всех заключённых.
+PandoraActivityHogtie
+Охранница Пандоры сковывает TargetCharacterName цепями, соединяя руки и ноги за спиной.
+PandoraGuardActivityHogtie
+Охранница Пандоры SourceCharacter сковывает TargetCharacterName цепями, соединяя руки и ноги за спиной.
+PandoraGuardActivityHogtieAll
+Охранница Пандоры SourceCharacter сковывает всех заключённых цепями, соединяя руки и ноги за спиной.
+PandoraActivityShibari
+Охранница Пандоры связывает TargetCharacterName в технике сибари.
+PandoraGuardActivityShibari
+Охранница Пандоры SourceCharacter связывает TargetCharacterName в технике сибари.
+PandoraGuardActivityShibariAll
+Охранница Пандоры SourceCharacter связывает всех заключённых в технике сибари.
+PandoraActivityDetain
+Охранница Пандоры надевает тюремные средства фиксации на TargetCharacterName.
+PandoraGuardActivityDetain
+Охранница Пандоры SourceCharacter надевает тюремные средства фиксации на TargetCharacterName.
+PandoraGuardActivityDetainAll
+Охранница Пандоры SourceCharacter надевает тюремные средства фиксации на всех заключённых.
+PandoraActivityNaked
+Охранница Пандоры раздевает TargetCharacterName и на время конфискует одежду.
+PandoraGuardActivityNaked
+Охранница Пандоры SourceCharacter раздевает TargetCharacterName и на время конфискует одежду.
+PandoraGuardActivityNakedAll
+Охранница Пандоры SourceCharacter раздевает всех заключённых и на время конфискует одежду.
+PandoraActivityLock
+Охранница Пандоры запирает замки на средствах фиксации TargetCharacterName.
+PandoraGuardActivityLock
+Охранница Пандоры SourceCharacter запирает замки на средствах фиксации TargetCharacterName.
+PandoraGuardActivityLockAll
+Охранница Пандоры SourceCharacter запирает замки на средствах фиксации всех заключённых.
+PandoraActivityChastity
+Охранница Пандоры запирает устройство целомудрия на TargetCharacterName.
+PandoraGuardActivityChastity
+Охранница Пандоры SourceCharacter запирает устройство целомудрия на TargetCharacterName.
+PandoraGuardActivityChastityAll
+Охранница Пандоры SourceCharacter запирает устройства целомудрия на всех заключённых.
+PandoraActivityUnchaste
+Охранница Пандоры снимает устройство целомудрия с TargetCharacterName.
+PandoraGuardActivityUnchaste
+Охранница Пандоры SourceCharacter снимает устройство целомудрия с TargetCharacterName.
+PandoraGuardActivityUnchasteAll
+Охранница Пандоры SourceCharacter снимает устройства целомудрия со всех заключённых.
+PandoraActivityUnlock
+Охранница Пандоры отпирает часть средств фиксации TargetCharacterName.
+PandoraGuardActivityUnlock
+Охранница Пандоры SourceCharacter отпирает часть средств фиксации TargetCharacterName.
+PandoraGuardActivityUnlockAll
+Охранница Пандоры SourceCharacter отпирает часть средств фиксации всех заключённых.
+PandoraActivityRelease
+Охранница Пандоры снимает часть средств фиксации с TargetCharacterName.
+PandoraGuardActivityRelease
+Охранница Пандоры SourceCharacter снимает часть средств фиксации с TargetCharacterName.
+PandoraGuardActivityReleaseAll
+Охранница Пандоры SourceCharacter снимает часть средств фиксации со всех заключённых.
+PandoraActivityCage
+Охранница Пандоры помещает TargetCharacterName в клетку.
+PandoraGuardActivityCage
+Охранница Пандоры SourceCharacter помещает TargetCharacterName в клетку.
+PandoraGuardActivityCageAll
+Охранница Пандоры SourceCharacter помещает всех заключённых в клетки.
+PandoraActivityUncage
+Охранница Пандоры выпускает TargetCharacterName из клетки.
+PandoraGuardActivityUncage
+Охранница Пандоры SourceCharacter выпускает TargetCharacterName из клетки.
+PandoraGuardActivityUncageAll
+Охранница Пандоры SourceCharacter выпускает всех заключённых из клеток.
+StableActivityStand
+SourceCharacter пытается правильно встать в стойку. Оценка упражнения: StablePerformance балл(ов). StableResult
+StableActivityTrot
+SourceCharacter пытается пройти рысью. Оценка упражнения: StablePerformance балл(ов). StableResult
+StableActivityGallop
+SourceCharacter пытается пройти галопом. Оценка упражнения: StablePerformance балл(ов). StableResult
+StableActivityPassage
+SourceCharacter пытается выполнить пассаж. Оценка упражнения: StablePerformance балл(ов). StableResult
+StableActivityPirouette
+SourceCharacter пытается выполнить пируэт. Оценка упражнения: StablePerformance балл(ов). StableResult
+DurationFormatYear
+$value$ г.
+DurationFormatYearFull
+$value$ г.
+DurationFormatMonth
+$value$ мес.
+DurationFormatMonthFull
+$value$ мес.
+DurationFormatWeek
+$value$ нед.
+DurationFormatWeekFull
+$value$ нед.
+DurationFormatDay
+$value$ дн.
+DurationFormatDayFull
+$value$ дн.
+DurationFormatHour
+$value$ ч
+DurationFormatHourFull
+$value$ ч
+DurationFormatMinute
+$value$ мин
+DurationFormatMinuteFull
+$value$ мин
+DurationFormatSecond
+$value$ с
+DurationFormatSecondFull
+$value$ с

@@ -1,4 +1,4 @@
-﻿###_NPC
+###_NPC
 Are you talking to me?
 Вы со мной разговариваете?
 (She willingly opens her mouth.)
@@ -107,3 +107,5 @@ Can we continue the show?
 ###_NPC
 (She nods in agreement.) Yes, please.
 (Она кивает в знак согласия.) Да, пожалуйста.
+(Some spectators give you money. You get $REPLACEMONEY.)
+(Некоторые зрители дают вам деньги. Вы получаете $REPLACEMONEY.)

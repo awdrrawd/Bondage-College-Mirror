@@ -110,7 +110,7 @@ Don't you dare touching a Mistress!
 Не смей прикасаться к Госпоже!
 ###_NPC
 (She gulps.)  Fine Mistress DialogPlayerName, let's speak later then.
-(Она сглатывает.) Прекрасно, Госпожа ДиалогИмяИгрока, тогда поговорим позже.
+(Она сглатывает.) Хорошо, госпожа DialogPlayerName. Тогда поговорим позже.
 ###_PLAYER
 Strip here?
 Раздеться здесь?
@@ -156,3 +156,11 @@ As punishment, you will experience what happened to my poor pet and wander the c
 (Смотрит на нее и ворчит.)
 (Leave her.)
 (Оставь ее.)
+(She frowns.)  Well you didn't, here's your money.  (She gives you ${money=120}.)
+(Она хмурится.) Что ж, ты не справилась. Вот твои деньги. (Она даёт вам ${money=120}.)
+(She smiles.)  I'll call you again, here's your money.  (She gives you ${money=120}.)
+(Она улыбается.) Я ещё позову тебя. Вот твои деньги. (Она даёт вам ${money=120}.)
+(She nods.)  Very good, here's your money.  (She gives you ${money=120}.)
+(Она кивает.) Очень хорошо. Вот твои деньги. (Она даёт вам ${money=120}.)
+(She gives you a thumbs up.)  I'll remember you, here's your money.  (She gives you ${money=120}.)
+(Она показывает поднятый большой палец.) Я тебя запомню. Вот твои деньги. (Она даёт вам ${money=120}.)

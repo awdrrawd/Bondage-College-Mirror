@@ -103,16 +103,21 @@ function PreferenceIsPlayerInSensDep() {
  * @returns {boolean} - Returns TRUE if the level is met or more
  */
 function PreferenceArousalAtLeast(C, Level) {
-	if (AsylumGGTSIsEnabled() && AsylumGGTSGetLevel(C) >= 4) {
-		if (InventoryIsWorn(C, "ItemPelvis", "FuturisticChastityBelt") || InventoryIsWorn(C, "ItemPelvis", "FuturisticTrainingBelt") || InventoryIsWorn(C, "ItemDevices", "FuckMachine"))
-			return true;
-	}
-	if ((C.ArousalSettings == null) || (C.ArousalSettings.Active == null)) return false;
-	if (Level === C.ArousalSettings.Active) return true;
-	if (C.ArousalSettings.Active == "Automatic") return true;
-	if ((Level == "Manual") && (C.ArousalSettings.Active == "Hybrid")) return true;
-	if ((Level == "NoMeter") && ((C.ArousalSettings.Active == "Manual") || (C.ArousalSettings.Active == "Hybrid"))) return true;
-	return false;
+	if (
+		AsylumGGTSIsEnabled() && AsylumGGTSGetLevel(C) >= 4
+		&& (
+			InventoryIsWorn(C, "ItemPelvis", "FuturisticChastityBelt")
+			|| InventoryIsWorn(C, "ItemPelvis", "FuturisticTrainingBelt")
+			|| InventoryIsWorn(C, "ItemDevices", "FuckMachine")
+		)
+	) return true;
+
+	const active = C.ArousalSettings.Active;
+	if (active == null) return false;
+
+	const activeRank = PreferenceArousalActiveList.indexOf(active);
+	const requiredRank = PreferenceArousalActiveList.indexOf(Level);
+	return activeRank >= 0 && requiredRank >= 0 && activeRank >= requiredRank;
 }
 
 /**
@@ -310,10 +315,13 @@ function PreferenceGetZoneOrgasm(C, ZoneName) {
 
 /**
  * Checks, if the arousal activity controls must be activated
+ * @param {Character} char - The character to check
+ * @param {ArousalActiveName[]} [modes] - The modes to check
  * @returns {boolean} - Returns true if we must activate the preference controls, false otherwise
  */
-function PreferenceArousalIsActive() {
-	return (PreferenceArousalActiveList[PreferenceArousalActiveIndex] != "Inactive");
+function PreferenceArousalIsActive(char, modes) {
+	if (!modes) modes = ["Manual", "Hybrid", "Automatic"];
+	return modes.includes(char.ArousalSettings.Active);
 }
 
 /**
@@ -601,7 +609,8 @@ var PreferenceArousalSettingsValidate = {
 		return CommonIsInteger(arg, 0, 100) ? arg : PreferenceArousalSettingsDefault.Progress;
 	},
 	ProgressTimer: (arg, C) => {
-		return CommonIsInteger(arg, 0, 100) ? arg : PreferenceArousalSettingsDefault.ProgressTimer;
+		// Settles between -25 and 25; see ActivitySetArousalTimer
+		return CommonIsInteger(arg, -25, 25) ? arg : PreferenceArousalSettingsDefault.ProgressTimer;
 	},
 	VibratorLevel: (arg, C) => {
 		return CommonIsInteger(arg, 0, 4) ? /** @type {0 | 1 | 2 | 3 | 4} */(arg) : PreferenceArousalSettingsDefault.VibratorLevel;

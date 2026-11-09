@@ -14,7 +14,7 @@ function InventoryItemBreastFuturisticBraUpdate(C) {
 		current_bpm += C.MemberNumber % 20; // 'Pseudo random baseline'
 	}
 
-	if (C.ArousalSettings && C.ArousalSettings.Progress > 0) {
+	if (C.ArousalSettings.Progress > 0) {
 		const Progress = C.ArousalSettings.Progress;
 		current_bpm += Math.floor(Progress * 0.60);
 		current_temp += Math.floor(Progress * 0.1) / 10;

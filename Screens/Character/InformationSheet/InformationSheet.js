@@ -387,7 +387,7 @@ function InformationSheetDifficulty(C) {
 		const lastChange = typeof C.Difficulty.LastChange === "number" ? C.Difficulty.LastChange : C.Creation;
 		const daysSince = Math.floor((CurrentTime - lastChange) / MS_PER_DAY);
 		const remaining = daysSince >= maxDelay ? 0 : maxDelay - daysSince;
-		text += TextGet("DifficultyDaysTillCanChange").replace("NumberOfDays", remaining.toString());
+		text += " " + TextGet("DifficultyDaysTillCanChange").trimStart().replace("NumberOfDays", remaining.toString());
 	}
 	return ElementCreate({
 		tag: "p",

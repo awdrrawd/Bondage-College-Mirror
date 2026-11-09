@@ -1,4 +1,4 @@
-﻿###_NPC
+###_NPC
 Lovely gag, but you'll need to get it off if you want to talk with me.
 Прекрасный кляп, но тебе придется его снять, если ты хочешь поговорить со мной.
 Ow!  Well done, you're a tough patient.  I'm not letting you out anyway.
@@ -576,3 +576,27 @@ Fine!  Forget it.
 ###_PLAYER
 (Nod and go to the club.)
 (Кивает и идет в клуб.)
+This is boring.  Wanna play cards?
+Скучно. Хочешь сыграть в карты?
+Can I tie you up if I win?
+Можно я свяжу тебя, если выиграю?
+No, I still have my shift to finish.  I cannot get in bondage.
+Нет, мне ещё нужно закончить смену. Связывать меня нельзя.
+Will you restrain me if I loose?
+Ты свяжешь меня, если я проиграю?
+(Play Club Card with her.)
+(Сыграть с ней в клубные карты.)
+Let's do something else.
+Давай займёмся чем-нибудь другим.
+Yeah, we can play cards when my shift is over.
+Да, можем сыграть в карты, когда закончится моя смена.
+I have a better currency.  (Bribe her with ${money=-10}.)
+У меня есть валюта получше. (Подкупить её за ${money=-10}.)
+Well done, that was a good game.  (She checks the clock.)  My shift isn't over yet, can I have a rematch?
+Молодец, хорошая была партия. (Она смотрит на часы.) Смена ещё не закончилась. Можно реванш?
+Victory!  (She does a few dance moves and checks the clock.)  My shift isn't over yet, do you want a rematch?
+Победа! (Она делает несколько танцевальных движений и смотрит на часы.) Смена ещё не закончилась. Хочешь реванш?
+(She checks around her.)  Sure, since we're alone at the entrance, we can play a card game.
+(Она оглядывается.) Конечно. Раз у входа никого, кроме нас, можно сыграть в карты.
+(She shakes head from left to right.)  Get into therapy and we can strap you up.  (She laughs.)
+(Она отрицательно качает головой.) Запишись на терапию, и мы сможем тебя связать. (Она смеётся.)

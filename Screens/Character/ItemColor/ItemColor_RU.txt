@@ -12,3 +12,27 @@ WholeItem
 Весь предмет
 All
 Все
+Reset
+Сбросить по умолчанию
+Copy
+Копировать цвет
+CopyFail
+Не удалось скопировать цвета предмета: различных цветов — {nColors}
+CopyFailBrowser
+Браузер не поддерживает копирование цветов
+CopySuccess
+Цвет {color} скопирован
+Paste
+Вставить цвет
+PasteFailBrowser
+Браузер не поддерживает вставку цветов
+PasteFailInvalid
+Не удалось вставить недопустимый цвет {color}
+PasteSuccess
+Цвет {color} вставлен
+Heading
+Выберите цвета: {item}
+SavedColors
+Сохранённые цвета
+SaveColor
+Сохранить цвет

@@ -20,18 +20,15 @@ const InventoryItemDevicesBarStoolCenterX = 250;
 const InventoryItemDevicesBarStoolLayerSize = /** @type {const} */ ([500, 445]);
 
 /**
- * The decals that can go on the seat: every single-image asset of the `Decals` group, so new decals show up
- * on the stool without any change here. Option `d0` is no decal, option `d<n>` the n-th decal of this list.
+ * The decals that can go on the seat, see {@link AssetGetDecals}, so new decals show up on the stool without any change here.
+ * Option `d0` is no decal, option `d<n>` the n-th decal of this list.
  * Only available once the `Decals` group has loaded, which is before the stool's own group.
  * @returns {readonly AssetName[]}
  */
 function InventoryItemDevicesBarStoolDecals() {
 	if (!InventoryItemDevicesBarStoolDecalNames) {
-		const group = AssetGroupGet("Female3DCG", "Decals");
-		if (!group) throw new Error("BarStool: the Decals group has not loaded yet");
-		InventoryItemDevicesBarStoolDecalNames = group.Asset
-			.filter(asset => asset.Layer.length === 1 && !asset.Layer[0].Name && !asset.Extended)
-			.map(asset => asset.Name);
+		if (!AssetGroupGet("Female3DCG", "Decals")) throw new Error("BarStool: the Decals group has not loaded yet");
+		InventoryItemDevicesBarStoolDecalNames = AssetGetDecals().map(asset => asset.Name);
 	}
 	return InventoryItemDevicesBarStoolDecalNames;
 }

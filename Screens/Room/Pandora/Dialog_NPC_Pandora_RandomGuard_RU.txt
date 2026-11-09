@@ -535,3 +535,15 @@ Very funny.  (She doesn't seem amused.)  You're under arrest!  A Dominatrix will
 Очень смешно.  (Кажется, ее это не забавляет.)  Вы арестованы!  Доминатрикс придет, чтобы разобраться в этой ситуации.
 Have a wonderful day Miss Dominatrix.  I will keep this place safe.
 Хорошего дня, мисс Доминатрикс.  Я буду охранять это место.
+(Play Club Card with her.)
+(Сыграть с ней в клубные карты.)
+Well played fellow guard.  Let's get back to work before we get caught playing.
+Хорошо сыграно, коллега. Давай вернёмся к работе, пока нас не застали за игрой.
+Don't be bitter fellow guard, it was a good game.  Let's get back to work before we get caught playing.
+Не расстраивайся, коллега, хорошая была партия. Давай вернёмся к работе, пока нас не застали за игрой.
+(Try to change subject.)  Do you play cards?
+(Попытаться сменить тему.) Играешь в карты?
+Of course!  This job is so boring, it's the only way to stay awake.  Let's play one game for honor.
+Конечно! Работа такая скучная, что только так и удаётся не заснуть. Сыграем одну партию ради чести.
+Don't try to change subject!  I will put you under arrest for safety.
+Не пытайся сменить тему! Для безопасности я тебя арестую.

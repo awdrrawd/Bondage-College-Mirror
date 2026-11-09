@@ -66,3 +66,5 @@ HandStraightFlush
 Стрит флеш
 HandRoyalFlush
 Роял флеш
+FamilyIllustration
+Иллюстрации

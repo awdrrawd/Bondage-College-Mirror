@@ -26,3 +26,5 @@ ErrorRateLimited
 Соединение отклонено: скорость вашего соединения ограничена.
 EnterNamePassword
 Введите свое имя и пароль
+ConnectingToServer
+Подключение к серверу...

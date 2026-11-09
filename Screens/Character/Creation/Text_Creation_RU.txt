@@ -1,24 +1,60 @@
 EnterAccountCharacterInfo
-Введите свою учетную запись и информацию о персонаже
+Введите данные аккаунта и персонажа
 EmailDesc
-Электронная почта (необязательно, чтобы восстановить пароль)
+(необязательно, для сброса пароля)
 CreateAccount
-Создайте свой аккаунт
+Создать аккаунт
 AccountAlreadyExists
 Ваша учетная запись уже существует?
 Login
-Авторизоваться
+Войти
 CreatingCharacter
 Создание вашего персонажа...
 Error
 Ошибка:
 InvalidData
-Недопустимый символ, имя учетной записи, пароль или адрес электронной почты
+Недопустимое имя персонажа, имя аккаунта, пароль или адрес электронной почты
 BothPasswordDoNotMatch
-Оба пароля не совпадают
+Пароли не совпадают
 ImportBondageCollege
-Импорт данных Бондаж Колледжа
+Импортировать данные Bondage College
 InvalidServerAnswer
-Неверный ответ сервера, он может быть устаревшим.
+Неверный ответ сервера. Возможно, он устарел.
 CharacterNamePermanent
 Имя персонажа постоянное и не может быть изменено. Позже вы сможете задать прозвище.
+CharacterName
+Имя персонажа
+AccountName
+Имя аккаунта
+Password
+Пароль аккаунта
+ConfirmPassword
+Подтвердите пароль
+CharacterNameDesc
+(буквы и пробелы)
+AccountNameDesc
+(буквы и цифры)
+PasswordDesc
+(буквы и цифры)
+ConfirmPasswordDesc
+(буквы и цифры)
+Email
+Электронная почта
+InfoTooLong
+Имя персонажа, имя аккаунта и пароль не должны превышать 20 символов.
+InvalidCharacters
+Недопустимые символы: $invalidCharacters
+InvalidFormat
+$inputName: неверный формат ($maxLength).\n$invalidCharacters
+Required
+$inputName: обязательное поле.
+TooLong
+$inputName: слишком длинное значение ($maxLength).
+MaxLength
+не более $maxLength
+MaxLengthUndefined
+максимальная длина
+ContainsInvalidCharacters
+$inputName: содержит недопустимые символы.\n$invalidCharacters
+InvalidEmail
+$inputName: неверный адрес электронной почты.

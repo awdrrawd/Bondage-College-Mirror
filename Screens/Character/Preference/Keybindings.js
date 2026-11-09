@@ -1,6 +1,7 @@
 'use strict';
 
 var KeyGUI = {
+	loadGeneration: 0,
 	/** @type {Keybindings.Keybinding['id'] | null} */
 	selectedAction: null,
 	/** @type {ReadonlySet<KeybindingScreen.FilteringMode>} */
@@ -549,7 +550,13 @@ var KeyGUI = {
 };
 
 function PreferenceSubscreenKeybindingsLoad() {
-	KeyGUI.buildSubscreen();
+	const generation = ++KeyGUI.loadGeneration;
+	const cache = TextPrefetchFile(ScreenFileGetTranslation("Character", "Preference", "Keybindings"));
+	CommonPromiseCatch(cache.loadedPromise.then(() => {
+		if (generation !== KeyGUI.loadGeneration || CurrentScreen !== "Preference" || PreferenceSubscreen?.name !== "Keybindings") return;
+		KeyGUI.buildSubscreen();
+		PreferenceSubscreenKeybindingsResize(true);
+	}));
 }
 
 function PreferenceSubscreenKeybindingsRun() {
@@ -566,6 +573,7 @@ function PreferenceSubscreenKeybindingsClick() {
 }
 
 function PreferenceSubscreenKeybindingsExit() {
+	KeyGUI.loadGeneration++;
 	KeyManager.serialize();
 	ServerSend('AccountUpdate', { KeybindingSettings: Player.KeybindingSettings });
 	ElementRemove(KeyGUI.selec.mainContent);

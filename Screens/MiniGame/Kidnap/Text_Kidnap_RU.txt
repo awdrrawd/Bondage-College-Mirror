@@ -162,3 +162,5 @@ PlayerMeditationOpponentMeditationPlayer
 Это еще не конец.
 PlayerMeditationOpponentMeditationOpponent
 Ты лучше, чем я думал.
+Meditation
+Медитация

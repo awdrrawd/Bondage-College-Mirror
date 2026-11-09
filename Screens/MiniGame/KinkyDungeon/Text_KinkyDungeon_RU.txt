@@ -1,11 +1,11 @@
 KinkyDungeonCredits
 Титры
 KinkyDungeonPatrons
-Патроны
+Поддержавшие проект
 KinkyDungeonDeviantart
 Новости и обновления
 KinkyDungeonPatreon
-Поддержи @ Patreon
+Поддержать на Patreon
 KinkyDungeonPatronsList0
 Спасибо следующим замечательным людям за поддержку на patreon.com/ada18980|cyberjoel|Samantha Lear|Kara|The-Fisher-King|Laioken|Finn|selly-grim|Dex♪|Churro|Gamefan|Shogo|X27|Blox|Slacker|Nikos S.|Flame|Alexis Octavia|Dmitri S.|Noxgarm|Siegfried K.|Hellgete
 KinkyDungeonPatronsList1
@@ -23,11 +23,11 @@ DemonQueenSera|John1304|Masaki H|Eric R.|Rei H.|hSXZM|Kieraakari|Pyros51
 KinkyDungeonBack
 Назад
 KinkyDungeonNext
-Следующий
+Далее
 KinkyDungeonCreditsList0
-Музыка: kocaeli|Графика вражеских персонажей: Song|CN Перевод: Alexthymia|KR, JP Перевод: Phantasm|Соавторы кода: Ellie, Demopans, Aelie|Аудио:|Potion drink — Jamius|Click — StrikeWhistler — Modified|StoneDoor_Close — AudioTorpedo — Modified |Footstep - Fission9 - Modified|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - OrangeSheepdog|Miss - Brsjak - Modified|Clap - DWSD - Modified|'Door, Front, Closing, A.wav' by InspectorJ (www.jshaw .co.uk) Freesound.org|'Door, Front, Opening, A.wav' от InspectorJ (www.jshaw.co.uk) Freesound.org|Chest Open - spookymodem - Modified|Unlock - BeezleFM|Unbuckle - danhelbling|Ножницы - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi
+Музыка: kocaeli|Графика связанных врагов: Song|Перевод на китайский: Alexthymia|Перевод на корейский и японский: Phantasm|Разработчики: Ellie, Demopans, Aelie|Звуки:|Potion drink - Jamius|Click - StrikeWhistler - изменено|StoneDoor_Close - AudioTorpedo - изменено|Footstep - Fission9 - изменено|FireSpell - Julien Matthey|LightSwing - qubodup|Heavy Swing - orangesheepdog|Miss - Brsjak - изменено|Clap - DWSD - изменено|'Door, Front, Closing, A.wav' — InspectorJ (www.jshaw.co.uk) с Freesound.org|'Door, Front, Opening, A.wav' — InspectorJ (www.jshaw.co.uk) с Freesound.org|Chest Open - spookymodem - изменено|Unlock - BeezleFM|Unbuckle - danhelbling|Scissors - qubodup|Rummage - adcbicycle|Fairy Dust - jacksonacademyashmore|Metal Smash - gristi
 KinkyDungeonCreditsList1
-Door locked.wav - mitchanary - Modified|Coins.wav - Saviraz|Opening the sarcophagus - Breviceps - Modified|Knife Sharpen - Anthousai|Paper Sounds - Bash360 - Modified|Freeze Powerup - JustInvoke - Modified|puddle - patchytherat - Modified|grab 3 - ihitokage - Modified|Gunfire - qubodup - Modified|Brass Falling - movingplaid - Modified|Energy Weapon Laser - rkkaleikau - Modified|Electricity - deleted_user_7146007 - Modified|Dragging a chain out of a sink - Hitrison - Modified|Hihat 7 - TheCoolManARM2 - Modified|Ambientsoundapp - Lightning Storm.wav - Modified|kev_durr - Arc Welding.wav - Modified|32cheeseman32 - SwordDraw01|||ARTISTS AND INSPIRATION|Hotel01 - https://www.pixiv.net/en/users/5944252 - Draws awesome wolfgirls|spark utamaro - For the idea of sentient vibrators
+Door locked.wav - mitchanary - изменено|Coins.wav - Saviraz|Opening the sarcophagus - Breviceps - изменено|Knife Sharpen - Anthousai|Paper Sounds - Bash360 - изменено|Freeze Powerup - JustInvoke - изменено|puddle - patchytherat - изменено|grab 3 - ihitokage - изменено|Gunfire - qubodup - изменено|Brass Falling - movingplaid - изменено|Energy Weapon Laser - rkkaleikau - изменено|Electricity - deleted_user_7146007 - изменено|Dragging a chain out of a sink - Hitrison - изменено|Hihat 7 - TheCoolManARM2 - изменено|Ambientsoundapp - Lightning Storm.wav - изменено|kev_durr - Arc Welding.wav - изменено|32cheeseman32 - SwordDraw01|||ХУДОЖНИКИ И ИСТОЧНИКИ ВДОХНОВЕНИЯ|Hotel01 - https://www.pixiv.net/en/users/5944252 - Рисует замечательных девушек-волчиц|spark utamaro - За идею разумных вибраторов
 Language
 Язык
 EN
@@ -57,23 +57,23 @@ RestartNeededES
 KinkyDungeon
 Коварное подземелье v4.25
 Intro
-Вы - странница, тайно проникщая в древний подземный город магии.
+Вы — искательница приключений, спускающаяся в древний подземный город магии.
 Intro2
 В его глубинах находится Посох Госпожи, артефакт несказанной силы.
 Intro3
 Одолеете ли вы эти неизведанные силы или поддадитесь их темным тайнам?
 KDToggleDrool
-Включить пускание слюней/слез
+Показывать слюни и слёзы
 KDToggleDrawArmor
 Прорисовывать броню
 KDToggleMusic
 Включить музыку
 KDToggleTurnCounter
-Счетчик поворотов
+Счётчик ходов
 KDToggleStunFlash
-Мигающий экран при оглушении
+Вспышка экрана при оглушении
 KDToggleArousalHearts
-Продвинутые отвлекающие визуальные эффекты
+Расширенные визуальные эффекты отвлечения
 KDToggleVibeHearts
 Продвинутые визуальные эффекты игрушек
 KDToggleShowNPCStatuses
@@ -81,7 +81,7 @@ KDToggleShowNPCStatuses
 KDToggleFancyWalls
 Продвинутый туман войны
 KDToggleIntenseOrgasm
-Интенсивный визуальный эффект «Отпусти»
+Интенсивные визуальные эффекты действия «Расслабиться»
 KDToggleVibeSounds
 Включить звуковые эффекты игрушек
 KDToggleFullscreen
@@ -89,7 +89,7 @@ KDToggleFullscreen
 KDToggleGraphicsQuality
 Высококачественная анимация
 KinkyDungeonFastWait
-Ждать быстро
+Быстрое ожидание
 KDHelpless
 Обездвижена!
 KDMissed
@@ -111,25 +111,25 @@ KDAnimSpeed
 KinkyDungeonJourney
 Выберите путешествие. Это определит порядок расположения игровых зон.
 KinkyDungeonJourney0
-Стандарт: предполагаемый опыт
+Стандартное: задуманный автором порядок
 KinkyDungeonJourney1
 Случайность: хаотическое путешествие
 KinkyDungeonJourney2
 Сложнее: более трудное путешествие
 KinkyDungeonStats
-Выберите привелегии для начала.
+Выберите стартовые особенности.
 KinkyDungeonStats2
-Наличие 10+ запасных очков запускает Hard режим, дающий уникальную добычу.
+Если оставить 10+ очков неиспользованными, включится сложный режим с уникальной добычей.
 KDHardMode
-(ВКЛЮЧЕН HARD РЕЖИМ)
+(ВКЛЮЧЁН СЛОЖНЫЙ РЕЖИМ)
 KinkyDungeonStartGameAdv
-Расширенный запуск (выберите привилегии)
+Настроить начало игры (выбрать особенности)
 KinkyDungeonStartGameQuick
-Подтвердите и начните играть!
+Подтвердить и начать игру
 KinkyDungeonStatCost
-Очков требуется：AMOUNT
+Стоимость в очках: AMOUNT
 KinkyDungeonStatPoints
-Очков доступно：AMOUNT
+Доступно очков: AMOUNT
 KinkyDungeonStatResilientFoes
 Стойкие враги
 KinkyDungeonStatDescResilientFoes
@@ -137,7 +137,7 @@ KinkyDungeonStatDescResilientFoes
 KinkyDungeonStat0
 Сильная
 KinkyDungeonStatDesc0
-Увеличивает способность борьбы при побеге.
+Повышает эффективность действия «Бороться» при освобождении.
 KinkyDungeonStat1
 Беспомощная
 KinkyDungeonStatDesc1
@@ -145,11 +145,11 @@ KinkyDungeonStatDesc1
 KinkyDungeonStat2
 Гибкая
 KinkyDungeonStatDesc2
-Немного увеличивает параметр снятия / разблокировки, побег происходит в 1,5 раза быстрее, за исключением взлома, и твои ноги могут использовать предметы / пряжки.
+Немного повышает эффективность снятия оков и отпирания замков. Освобождение происходит в 1,5 раза быстрее, кроме вскрытия отмычкой; вы можете пользоваться предметами и пряжками с помощью ступней.
 KinkyDungeonStat3
 Негибкая
 KinkyDungeonStatDesc3
-ВЫ получаете штраф за действие снятия и разблокировки, а побег происходит в 0,75 раза медленее.
+Снижает эффективность снятия оков и отпирания замков. Скорость освобождения составляет 0,75 от обычной.
 KinkyDungeonStat4
 Взломщица
 KinkyDungeonStatDesc4
@@ -157,11 +157,11 @@ KinkyDungeonStatDesc4
 KinkyDungeonStat5
 Неспособная
 KinkyDungeonStatDesc5
-Вы понятия не имеете, как вскрывать замки. Вскрытие происходит в 0,5 раза медленее, и вы не сможете вскрыть самые продвинутые замки.
+Вы не умеете вскрывать замки. Скорость вскрытия составляет 0,5 от обычной, а большинство сложных замков вам недоступно.
 KinkyDungeonStat6
 Экстрасенс
 KinkyDungeonStatDesc6
-Вы больше не роняете ключи и отмычки, можете отпереть себя связанными руками, и вам не нужны руки для предметов / зелий.
+Вы больше не роняете ключи и отмычки, можете отпирать замки даже со связанными руками и использовать предметы и зелья без помощи рук.
 KinkyDungeonStat7
 Новичок
 KinkyDungeonStatDesc7
@@ -173,7 +173,7 @@ KinkyDungeonStatDesc8
 KinkyDungeonStat9
 Проклятая
 KinkyDungeonStatDesc9
-Репутация божеств начинается с 0 и никогда не может превышать 25.
+Репутация у богинь начинается с 0 и не может превысить 25.
 KinkyDungeonStat10
 Покорная
 KinkyDungeonStatDesc10
@@ -201,7 +201,7 @@ KinkyDungeonStatDesc15
 KinkyDungeonStat18
 Сосредоточенное уклонение
 KinkyDungeonStatDesc18
-Пока ваш шанс неправильного применения равен 0%, вы получаете +40 к уклонению.
+При вероятности срыва заклинания 0% вы получаете +40 к уклонению.
 KinkyDungeonStat19
 Рассеянная
 KinkyDungeonStatDesc19
@@ -217,7 +217,7 @@ KinkyDungeonStatDesc21
 KinkyDungeonStatUnfocused
 Несосредоточенная
 KinkyDungeonStatDescUnfocused
-Точность умножается на 0,9x при отвлечении внимания на 10% и до 0,6x при отвлечении внимания на 90%.
+При отвлечении выше 10% точность умножается на 0,9; множитель снижается до 0,6 при отвлечении 90%.
 KinkyDungeonStat22
 Первозданный
 KinkyDungeonStatDesc22
@@ -241,19 +241,19 @@ KinkyDungeonStatDescForgetful
 KinkyDungeonStatCursedLocks
 Проклятые замки
 KinkyDungeonStatDescCursedLocks
-Те, у кого нет ключей, столкнутся с гневом Замка. Запертые на замок предметы нельзя разрезать, и с ними труднее бороться.
+Тех, у кого нет ключей, ждёт гнев Замка. Запертые предметы нельзя разрезать, а высвободиться из них методом борьбы сложнее.
 KDCursedLocks
 Магическая защита замка защищает предмет.
 KinkyDungeonStatUndeniable
 Безотказная
 KinkyDungeonStatDescUndeniable
-С рожденья покорная, она не может отказаться от связывания и рабства в диалогах.
+Из-за врождённой тяги к подчинению вы не можете отказываться от связывания в диалогах.
 KinkyDungeonStatFranticStruggle
 Неистовая борьба
 KinkyDungeonStatDescFranticStruggle
 Ваша борьба в 3 раза быстрее, но менее эффективна с точки зрения выносливости.
 KinkyDungeonStat28
-Искусство побега
+Мастерица побега
 KinkyDungeonStatDesc28
 Начните с высокой репутации веревки, и от всех веревочных ограничений будет легче сбежать.
 KinkyDungeonStat29
@@ -269,7 +269,7 @@ KinkyDungeonStat31
 KinkyDungeonStatDesc31
 От латексных ограничений труднее сбежать.
 KinkyDungeonStatHogtied
-Хогтаед!
+Связана по рукам и ногам!
 KinkyDungeonStatDescHogtied
 Начинай игру, скрученная в тугие веревки.
 KinkyDungeonStat32
@@ -277,21 +277,21 @@ KinkyDungeonStat32
 KinkyDungeonStatDesc32
 Начните с высокой репутации кожи, и от всех кожаных ограничений легче избавиться.
 KinkyDungeonStat33
-Кожанная связь
+В кожаных оковах
 KinkyDungeonStatDesc33
 Из кожаных ремней труднее вырваться.
 KinkyDungeonStat34
 Заклинательница
 KinkyDungeonStatDesc34
-Вы можете использовать заклинания стихий, не имея компонентов, в два раза дороже. Начиная с w/ Файербол.
+Вы можете применять заклинания стихий без нужных компонентов, расходуя вдвое больше маны. В начале игры доступно заклинание «Огненная стрела».
 KinkyDungeonStat35
 Колдунья
 KinkyDungeonStatDesc35
-Вы можете использовать заклинания Колдовства, не имея компонентов, в два раза дороже. Начиная с Сотворить Цепь.
+Вы можете применять заклинания колдовства без нужных компонентов, расходуя вдвое больше маны. В начале игры доступно заклинание «Колдовская цепь».
 KinkyDungeonStat36
 Волшебница
 KinkyDungeonStatDesc36
-Вы можете использовать заклинания иллюзии, не имея компонентов, за двойную стоимость. Начиная с Теневого кинжала.
+Вы можете применять заклинания иллюзий без нужных компонентов, расходуя вдвое больше маны. В начале игры доступно заклинание «Теневой кинжал».
 KinkyDungeonStat37
 Нарколептик
 KinkyDungeonStatDesc37
@@ -299,35 +299,35 @@ KinkyDungeonStatDesc37
 KinkyDungeonStat38
 Скрытая миссия
 KinkyDungeonStatDesc38
-Вас труднее обнаружить, и сундуков больше, но врагам наносится на 30% меньше урона, более уклончивы и не теряют золота.
+Вас труднее обнаружить, а сундуков больше. Однако враги получают на 30% меньше урона, лучше уклоняются и не оставляют золота.
 KinkyDungeonStatCommonLatex
 Любители латекса
 KinkyDungeonStatDescCommonLatex
-Все враги, которые могут связать вас, также применяют латексные ограничения.
+Все гуманоиды, способные связать вас, также используют латексные оковы.
 KinkyDungeonStatCommonLeather
 Любители кожи
 KinkyDungeonStatDescCommonLeather
-Все враги, которые могут связать вас, также используют кожаные ремни.
+Все гуманоиды, способные связать вас, также используют кожаные оковы.
 KinkyDungeonStatCommonWolf
 Любители девушек-волчиц
 KinkyDungeonStatDescCommonWolf
-Все враги, которые могут связать вас, также применяют ограничения девушек-волчиц.
+Все гуманоиды, способные связать вас, также используют оковы девушек-волчиц.
 KinkyDungeonStatCommonMaid
 Любители горничных
 KinkyDungeonStatDescCommonMaid
-Все враги, которые могут связать вас, также применяют ограничения для горничной.
+Все гуманоиды, способные связать вас, также используют оковы горничных.
 KinkyDungeonStatCommonDress
-Любители кукол
+Любители платьев
 KinkyDungeonStatDescCommonDress
-Все враги, которые могут связать вас, также применяют ограничения в виде одежды.
+Все гуманоиды, способные связать вас, также используют сковывающие платья.
 KinkyDungeonStatCommonKitty
 Любители кошечек
 KinkyDungeonStatDescCommonKitty
-Все враги, которые могут связать вас, также применяют ограничения для кошечек.
+Все гуманоиды, способные связать вас, также используют оковы кошечек.
 KinkyDungeonStatCommonExp
 Любители латекса плюс
 KinkyDungeonStatDescCommonExp
-Все враги, которые могут связать вас, также применяют лучшие латексные ограничения.
+Все гуманоиды, способные связать вас, также используют усовершенствованные латексные оковы.
 KinkyDungeonStat39
 Выделяющаяся
 KinkyDungeonStatDesc39
@@ -359,7 +359,7 @@ KinkyDungeonStatDesc47
 KinkyDungeonStat48
 Высокая надежность
 KinkyDungeonStatDesc48
-Отмычки слабее, а случайно сгенерированные замки жестче.
+Отмычки менее эффективны, а случайно создаваемые замки сложнее.
 KinkyDungeonStat49
 Дрянные ножи
 KinkyDungeonStatDesc49
@@ -375,23 +375,23 @@ KinkyDungeonStatDesc51
 KinkyDungeonStat52
 Не убежать.
 KinkyDungeonStatDesc52
-Враги всегда будут использовать максимально жесткие ограничения и полностью связывать вас.
+Враги всегда используют самые тугие из доступных оков и связывают вас полностью.
 KinkyDungeonStat53
 Грациозная походка
 KinkyDungeonStatDesc53
 Вы не теряете выносливость при ходьбе с одним замедляющим предметом, если только он не связывает ваши ноги вместе.
 KinkyDungeonStat54
-Хорошо оборудованно
+Хорошее снаряжение
 KinkyDungeonStatDesc54
 Ограничения и ловушки, которые ограничены уровнем, появляются раньше, и враги будут накладывать много ограничений.
 KinkyDungeonStat55
-Быстрый розыгрыш
+Быстрая смена оружия
 KinkyDungeonStatDesc55
-Переключение оружия и заклинаний не происходит по очереди.
+Смена оружия и заклинаний не расходует ход.
 KinkyDungeonStat56
 Быстрая переписчица
 KinkyDungeonStatDesc56
-Переключение заклинаний и сотворение из книги заклинаний не происходит по очереди.
+Смена заклинаний и применение их из книги не расходуют ход.
 KinkyDungeonStat57
 Неорганизованная
 KinkyDungeonStatDesc57
@@ -407,7 +407,7 @@ KinkyDungeonStatDescMagicHands
 KinkyDungeonStatStartCyberDoll
 Киберкукла
 KinkyDungeonStatDescStartCyberDoll
-Начните с кибер ограничениями.
+Вы начинаете игру в кибероковах.
 KinkyDungeonStatFuukaCollar
 Питомец Фууки
 KinkyDungeonStatDescFuukaCollar
@@ -415,19 +415,19 @@ KinkyDungeonStatDescFuukaCollar
 KinkyDungeonStatCommonFuuka
 Фан-клуб Фууки
 KinkyDungeonStatDescCommonFuuka
-Все враги, которые могут связать вас, также применяют специальные ограничения Фууки.
+Все гуманоиды, способные связать вас, также используют особые оковы Фууки.
 KinkyDungeonStatCommonCyber
 Миньоны кукольника
 KinkyDungeonStatDescCommonCyber
-Все гуманоиды, которые могут связать вас, также применяют ограничители Cyber ​​Doll.
+Все гуманоиды, способные связать вас, также используют оковы киберкуклы.
 KinkyDungeonStatDollmakerVisor
 Охотник за куклами V
 KinkyDungeonStatDescDollmakerVisor
-Вы начинаете с Визором Кукольника.
+Вы начинаете игру с визором Кукольника.
 KinkyDungeonStatDollmakerMask
 Охотник за куклами М
 KinkyDungeonStatDescDollmakerMask
-Вы начинаете с Маской Кукольника.
+Вы начинаете игру с маской Кукольника.
 KinkyDungeonStatVengeance
 Месть
 KinkyDungeonStatDescVengeance
@@ -435,13 +435,13 @@ KinkyDungeonStatDescVengeance
 KinkyDungeonStatBerserkerRage
 Ярость берсерка
 KinkyDungeonStatDescBerserkerRage
-Атаки ближнего боя отвлекают вас, но урон от ближнего боя (включая цепной) увеличивается на 30% при максимальном отвлечении.
+Атаки ближнего боя отвлекают вас, но урон в ближнем бою, включая урон цепями, растёт вплоть до 30% при максимальном отвлечении.
 KinkyDungeonStatUnstableMagic
 Нестабильная магия
 KinkyDungeonStatDescUnstableMagic
 Заклинания наносят до 60% дополнительного урона в зависимости от отвлечения внимания или вероятности ошибки, смотря, что выше.
 KinkyDungeonStatAbsoluteFocus
-Абсолютный фокус
+Полная сосредоточенность
 KinkyDungeonStatDescAbsoluteFocus
 Вероятность ошибки удвоена.
 KinkyDungeonStatBoundCrusader
@@ -463,7 +463,7 @@ KinkyDungeonStatDescHopeless
 KinkyDungeonStatQuickness
 Быстрота
 KinkyDungeonStatDescQuickness
-Дает быстроту после того, как вы не двигаетесь в течение 4 ходов. Быстрота позволяет вам перемещаться на 1 пробел, не останавливая часы.
+Если не двигаться 4 хода, вы получаете эффект «Быстрота». Он позволяет переместиться на 1 клетку без затрат хода.
 KinkyDungeonStatMapLarge
 Просторные залы
 KinkyDungeonStatDescMapLarge
@@ -477,7 +477,7 @@ KinkyDungeonStatMapGigantic
 KinkyDungeonStatDescMapGigantic
 Увеличивает размер карт на 3 в каждом направлении.
 KinkyDungeonStat24
-Упаковщица
+Мастерица связывания
 KinkyDungeonStatDesc24
 Повреждение от твоих цепей и клея увеличено на 20%. Связывание врагов на 30% сильнее.
 KinkyDungeonStat25
@@ -487,11 +487,11 @@ KinkyDungeonStatDesc25
 KinkyDungeonStatBurningDesire
 Жгучее желание
 KinkyDungeonStatDescBurningDesire
-При отвлечении внимания выше 70% вы поджигаете близлежащие объекты и получаете +40% урона от огня.
+При отвлечении выше 70% вы поджигаете объекты поблизости и наносите на 40% больше огненного урона.
 KinkyDungeonStatFrigidPersonality
 Фригидная личность
 KinkyDungeonStatDescFrigidPersonality
-При отвлечении 0% вы получаете +10% урона от льда и можете ходить по льду без штрафных санкций.
+При отвлечении 0% вы наносите на 10% больше ледяного урона и ходите по льду без штрафов.
 KinkyDungeonStatGroundedInReality
 Заземленная
 KinkyDungeonStatDescGroundedInReality
@@ -503,11 +503,11 @@ KinkyDungeonStatDescLikeTheWind
 KinkyDungeonStatImmovableObject
 Неподвижный объект
 KinkyDungeonStatDescImmovableObject
-Когда сила воли превышает 90%, вы получаете +150 к сопротивлению рабству, а заклинания, усиливающие эффект земли, стоят половину маны.
+При силе воли выше 90% вы получаете +150 к сопротивлению связыванию, а усиливающие заклинания земли расходуют вдвое меньше маны.
 KinkyDungeonStatLeastResistance
 Путь наименьшего сопротивления
 KinkyDungeonStatDescLeastResistance
-При 0 силе воли ты получаешь +35% уклонения и наносишь 20% от своей максимальной силы воли в виде кислотного урона, когда связана.
+При силе воли 0 вы получаете +35 к уклонению, а при связывании наносите кислотный урон в размере 20% от максимальной силы воли.
 KinkyDungeonStatSticky
 Липкая ситуация
 KinkyDungeonStatDescSticky
@@ -515,7 +515,7 @@ KinkyDungeonStatDescSticky
 KinkyDungeonStatBreathless
 Бездыханная
 KinkyDungeonStatDescBreathless
-От ударов цепью, ядом и дробью у вас кружится голова.
+Урон цепями, ядом или дробящий урон вызывает у вас головокружение.
 KinkyDungeonStatKinkyPrison
 Извращенная заключенная
 KinkyDungeonStatDescKinkyPrison
@@ -541,7 +541,7 @@ KDDoorknobFeet
 KinkyDungeonStatSelfMiscast
 Плохая техника
 KinkyDungeonStatDescSelfMiscast
-Вместо того, чтобы выдыхаться, большинство неправильно выпущенных снарядов и заклинаний AoE будут нацелены на вас.
+При срыве заклинания большинство снарядов и заклинаний по области (AoE) направляются на вас, вместо того чтобы рассеяться.
 KinkyDungeonStatTicklish
 Щекотливая
 KinkyDungeonStatDescTicklish
@@ -573,15 +573,15 @@ KinkyDungeonStatDescKeepOutfit
 KinkyDungeonStatFutileStruggles
 Бесполезная борьба
 KinkyDungeonStatDescFutileStruggles
-Теряйте 2 WP каждый раз, когда вы снимаете нетривиальное ограничение.
+При снятии каждых достаточно серьёзных оков вы теряете 2 WP.
 KinkyDungeonStatSecondWind
 Второе дыхание
 KinkyDungeonStatDescSecondWind
-Получайте 2 WP каждый раз, когда снимаете нетривиальное ограничение. Разрушает ограничения на удаление.
+При снятии каждых достаточно серьёзных оков вы получаете 2 WP. Снятые оковы уничтожаются.
 KinkyDungeonStatDominant
 Доминант
 KinkyDungeonStatDescDominant
-Они в ловушке здесь, с тобой. Призраки более полезны, и они могут связать врагов, которые связали тебя.
+Это они оказались в ловушке вместе с вами. Призраки охотнее помогают, а вы можете связывать врагов, предлагающих вам связывание в диалогах.
 KinkyDungeonStatStranger
 Незнакомка
 KinkyDungeonStatDescStranger
@@ -613,7 +613,7 @@ KinkyDungeonStatDescBlackout
 KinkyDungeonStatTotalBlackout
 Полное затемнение
 KinkyDungeonStatDescTotalBlackout
-Завязанные глаза чрезвычайно суровы, и вы не можете видеть исследованные области с завязанными глазами.
+Повязки на глаза сильно ограничивают обзор: с завязанными глазами вы не видите даже исследованные области.
 KinkyDungeonStatNoDoll
 Не кукла
 KinkyDungeonStatDescNoDoll
@@ -647,7 +647,7 @@ KinkyDungeonStatMC_Fighter
 KinkyDungeonStatDescMC_Fighter
 Ваше обучение дало вам доступ к заклинаниям класса Воин.
 KinkyDungeonStatMC_Rogue
-Негодяй
+Разбойник
 KinkyDungeonStatDescMC_Rogue
 Ваше обучение дало вам доступ к заклинаниям класса Разбойник.
 KinkyDungeonStatMC_Mage
@@ -659,11 +659,11 @@ KinkyDungeonStatPanic
 KinkyDungeonStatDescPanic
 Когда вы наступаете на ловушку, вы оглушены на 2 хода.
 KDPanic
-Начинается паника! (Ошеломлен на 2 оборота)
+Вас охватывает паника! (Оглушение на 2 хода)
 KinkyDungeonStatButterfingers
-Пальчики-бабочки
+Неуклюжие пальцы
 KinkyDungeonStatDescButterfingers
-Связанные руки не позволяют вам использовать свои пальцы для борьбы или взлома.
+Если руки связаны, вы не можете помогать себе кистями при борьбе или отпирании замков.
 KinkyDungeonStatWeakGrip
 Слабый хват
 KinkyDungeonStatDescWeakGrip
@@ -677,7 +677,7 @@ KinkyDungeonStatDescIncantation
 KinkyDungeonStatBallGagLover
 Любительница кляпов
 KinkyDungeonStatDescBallGagLover
-Увеличьте количество кляпов с мячом, уменьшите количество намордников.
+Шариковые кляпы встречаются чаще, а намордники — реже.
 KinkyDungeonStatMuzzleLover
 Любительница намордников
 KinkyDungeonStatDescMuzzleLover
@@ -717,17 +717,17 @@ KinkyDungeonStatDescArousingMagic
 KinkyDungeonStatClearheaded
 Ясноголовая
 KinkyDungeonStatDescClearheaded
-Магия приводит вас в ясное состояние ума. Произнесение заклинаний успешно уменьшает вашу рассеянность.
+Магия проясняет мысли. Успешное применение заклинания снижает отвлечение.
 KinkyDungeonCopyPerks
 Копировать (буфер обмена)
 KinkyDungeonPastePerks
 Вставить (буфер обмена)
 KDConductionDamageTaken
-DAMAGEDEALT повреждение электрическим током не приводит к вам!!!
+Электрический разряд достигает вас и наносит DAMAGEDEALT урона!!!
 KDBurningFanFlamesDamageTaken
 Давление раздувает пламя на вас, нанося дополнительный DAMAGEDEALT урон от огня!
 KinkyDungeonDrenchedSlimeBuff
-Защитное покрытие легче снимается в присутствии воды!
+В присутствии воды снять RestraintName становится легче!
 KDSlipIce
 Ты поскользнулась на льду!
 KinkyDungeonBuffIgniteDamage
@@ -741,7 +741,7 @@ KinkyDungeonRopeEngulfEnd1
 KinkyDungeonRopeEngulfEnd2
 Твое тело все глубже погружается в море пут...
 KinkyDungeonRopeEngulfEnd3
-Тебе трудно дышать, когда ты заживо погребен в извивающихся веревках...
+Вам трудно дышать: извивающиеся верёвки погребают вас заживо...
 KinkyDungeonSlimeEngulfEnd1
 Слизь растекается по твоему телу...
 KinkyDungeonSlimeEngulfEnd2
@@ -751,7 +751,7 @@ KinkyDungeonSlimeEngulfEnd3
 KinkyDungeonSarcoHexEnd1
 Вы чувствуете силу, заставляющую вас перестать сопротивляться...
 KinkyDungeonSarcoHexEnd2
-Ваше тело изо всех сил пытается двигаться, когда вы чувствуете, как сила запечатывает вас!
+Вам всё труднее двигаться: вы чувствуете, как некая сила запечатывает вас!
 KinkyDungeonSarcoHexEnd3
 Дверь саркофага открывается, когда вас медленно втягивают внутрь...
 KinkyDungeonShadowEngulf1
@@ -769,9 +769,9 @@ KinkyDungeonSpellArcaneStrike
 KDEnemyMiscast
 EnemyName говорит что-то непонятное! Ее заклинание не срабатывает!
 KDBanditMiscast
-EnemyName не знает, что делать дальше!
+EnemyName неудачно выполняет следующий приём!
 KDCastCM1
-EnemyName произносит кодовое слово в TargetName!
+EnemyName произносит командное слово, направленное на TargetName!
 KinkyDungeonPlayerVibratedLocationItemNipplesPiercings
 Соски
 KinkyDungeonPlayerVibratedLocationItemNipples
@@ -787,7 +787,7 @@ KinkyDungeonPlayerVibratedLocationItemVulva
 KinkyDungeonPlayerVibratedLocationItemButt
 Сзади
 KinkyDungeonPlayerVibratedLocationItemBoots
-Ноги
+Ступни
 KinkyDungeonPlayerVibratedLocationMultiple
 Повсюду!
 KinkyDungeonPlayerArmor
@@ -799,7 +799,7 @@ KinkyDungeonPlayerShadow
 KinkyDungeonPlayerSneak
 Невидимка: тебя очень трудно увидеть.
 KinkyDungeonPlayerQuickness
-Быстрота: ваше следующее движение настолько быстрое, что не продвинет ход вперед.
+Быстрота: следующее перемещение не расходует ход.
 KinkyDungeonPlayerReduction
 Уменьшение всего урона:
 KinkyDungeonPlayerDamageResist
@@ -809,13 +809,13 @@ KinkyDungeonPlayerDamageBuff
 KinkyDungeonPlayerBindBuff
 Ваши ограничения на PERCENT эффективнее.
 KinkyDungeonPlayerDamage
-Ваши атаки наносят базового урона DAMAGEDEALT тип- DAMAGETYPE.
+Базовый урон ваших атак: DAMAGEDEALT; тип: DAMAGETYPE.
 KinkyDungeonPlayerPlugged
 Вставлен плаг!
 KinkyDungeonPlayerPluggedExtreme
 Вас заткнули плагом!!!
 KinkyDungeonPlayerDenied
-Увы нет! Ты так легко не избавишься~
+Отказ в оргазме! Так просто разрядки не получить~
 KinkyDungeonPlayerVibrated0
 Дразнящие вибрации...
 KinkyDungeonPlayerVibrated1
@@ -837,7 +837,7 @@ KDStatArms
 KDStatHands
 Руки бесполезны!
 KDStatHandsPartial
-Руки ослабленны! Некоторые действия будут сложнее...
+Движения кистей ограничены! Некоторые действия станут сложнее...
 KDStatSpeedSlow
 Движение значительно затруднено!
 KDStatSpeedSlightlySlow
@@ -849,17 +849,17 @@ KDStatSpeedNoSprint
 KDStatSpeedImmobile
 Обездвижена!
 KDStatFreeMouth
-Ваш рот свободен для питья зелий и заклинаний.
+Рот свободен: вы можете пить зелья и произносить заклинания.
 KDStatFreeEyes
 Ваше зрение ясно.
 KDStatFreeHands
 Ваши кисти свободны.
 KDStatFreeArms
-Ваши руки свободны двигаться так, как им заблагорассудится.
+Вы можете свободно двигать руками.
 KDStatFreeLegs
-Ваши ноги свободны и неограниченны.
+Ноги свободны, ничто не мешает их движениям.
 KDStatGag
-У тебя кляп во рту! Вероятность словесной ошибки увеличивается, и ваши зелья становятся менее эффективными!
+Во рту кляп! Вероятность срыва словесных заклинаний выше, а зелья действуют слабее!
 KDStatGagFull
 Твой рот полностью заполнен! Ты не можешь пить зелья и произносить словесные заклинания!
 KinkyDungeonBuffEmpower
@@ -881,27 +881,27 @@ KinkyDungeonBuffTabletRope
 KinkyDungeonBuffTabletWill
 Регенерация
 KinkyDungeonBuffTabletElements
--50% стоимости MP (элементы)
+-50% затрат MP (стихии)
 KinkyDungeonBuffTabletConjure
 -50% стоимости MP (колдовство)
 KinkyDungeonBuffTabletIllusion
 -50% стоимости MP (иллюзия)
 KinkyDungeonBuffConduction
-Проводящая: когда вы или враг получаете электрический урон, другой также получает половину его!
+Проводимость: когда вы или враг получаете электрический урон, второй участник получает половину этого урона!
 KinkyDungeonBuffLightningRod
 Громоотвод: значительно увеличенное электрическое сопротивление.
 KinkyDungeonBuffDrenched
-Пропитанная: дает сопротивление огню, слабость ко льду, электричеству и делает вас проводящим.
+Промокшая: выше сопротивление огню, но выше уязвимость ко льду и электричеству; вы проводите ток.
 KinkyDungeonBuffChilled
 Охлажденная: от холода трудно двигаться! Ты замедлилась.
 KinkyDungeonBuffSlimed
 Слизь: она липкая и плотная! Вы замедляетесь и на 30% более уязвимы к повреждению клеем.
 KinkyDungeonBuffUnsteady
-Неустойчивая: ты на шаткой ноге. Вас легче поразить, и вы замедляетесь.
+Неустойчивость: вы плохо держитесь на ногах. Вас легче поразить, а движение замедлено.
 KinkyDungeonBuffUnsteady2
-Неустойчивая: ты на шаткой ноге. Вас легче поразить, и вы замедляетесь.
+Неустойчивость: вы плохо держитесь на ногах. Вас легче поразить, а движение замедлено.
 KinkyDungeonBuffChillWalk
-Игнорируй ледяные плитки
+Лёд не мешает движению
 KinkyDungeonBuffIgnite
 Воспламенена: вы наносите урон от огня себе и ближайшим врагам!
 KinkyDungeonBuffBurning
@@ -909,7 +909,7 @@ KinkyDungeonBuffBurning
 KinkyDungeonBuffShrineElements
 Тайная сила: наносит дополнительный урон при попадании во врага.
 KinkyDungeonBuffShrineConjure
-Тайная защита: уменьшает наносимый урон и наносит ответный урон.
+Тайная защита: уменьшает получаемый урон и наносит ответный.
 KinkyDungeonBuffShrineIllusion
 Тайная хитрость: вы ненадолго становитесь невидимой после атаки.
 KinkyDungeonBuffAvatarFire
@@ -951,7 +951,7 @@ KinkyDungeonBuffEvasion
 KinkyDungeonBuffSlimeMimic
 Мы сделали это! Мы сделали себя невидимыми - ммммф!!!
 KinkyDungeonBuffDisenchantSelf
-Ваши ограничения расколдованы, считаются как немагические для разрезания.
+Оковы лишены чар: при разрезании они считаются немагическими.
 KinkyDungeonBuffLeatherBurst
 Вы можете мгновенно запустить еще одно кожаное сдерживающее устройство!
 KinkyDungeonBuffDistractionCast
@@ -967,7 +967,7 @@ KinkyDungeonBuffScrollArms
 KinkyDungeonBuffScrollLegs
 Танец заклинаний: вы можете накладывать заклинания через ноги, будучи связанной.
 KinkyDungeonBuffBondageBusterCharge
-Бондажист: Лазор заряжается...
+Разрушитель оков: лазер заряжается...
 KinkyDungeonBuffKatanaCharge
 Катана: терпение - ключ...
 KinkyDungeonBuffStormCharge
@@ -985,7 +985,7 @@ KinkyDungeonDifficulty2
 KinkyDungeonLog
 Журнал
 KinkyDungeonDressPlayer
-Смени наряд
+Сменить наряд
 KinkyDungeonDressPlayerReset
 Сбросить наряд
 KinkyDungeonDressPlayerImport
@@ -995,9 +995,9 @@ KinkyDungeonConfirm
 KinkyDungeonSaveIntro0
 (Скопируйте приведенный выше код и сохраните его на своем компьютере, чтобы загрузить позже)
 KinkyDungeonSaveIntro
-Вы сталкиваетесь с черным монолитом, лицо которого исписано рунами.
+Вы находите чёрный монолит, поверхность которого покрыта рунами.
 KinkyDungeonSaveIntro2
-Вы изучаете их, но не можете придумать интерпретацию.
+Вы изучаете руны, но не можете их расшифровать.
 KinkyDungeonSaveIntro3
 Они все еще могут пригодиться будущим искателям приключений, если вас поймают...
 KinkyDungeonSaveIntro4
@@ -1007,21 +1007,21 @@ KinkyDungeonGameContinue
 KinkyDungeonRestart
 Меню
 KinkyDungeonRestartWait
-Я продолжу, чтобы посмотреть, что произойдет.
+Я просто подожду и посмотрю, что произойдёт.
 KinkyDungeonRestartQuitNoErase
-Сохраните мой текущий прогресс.
+Сохранить текущий прогресс.
 KinkyDungeonRestartYes
 Отказаться и удалить сохранение
 KinkyDungeonRestartYesConfirm
 Да, удалите мой сохраненный файл!
 KinkyDungeonRestartCapture
-Скучно, я позволю врагу пленить меня.
+Лучше я позволю врагу взять меня в плен.
 KinkyDungeonRestartCaptureConfirm
 Да, заточите меня в тюрьму!
 KinkyDungeonRestartNo
 Нет, я хочу продолжить
 KinkyDungeonCheckPerks
-Смотреть перки
+Посмотреть особенности
 KinkyDungeonChestFaction
 Этот сундук принадлежит FACTION
 DeviousChallenge
@@ -1035,7 +1035,7 @@ End2
 End3
 В следующий раз повезет больше!
 EndWin
-Вы достигли конца воспроизводимой части.
+Вы дошли до конца доступной части игры.
 EndWin2
 Приходите позже за новыми подземельями!
 StatKeyEscapeKey
@@ -1061,7 +1061,7 @@ StatSpeedNormal
 StatSpeedStun
 Ошеломлена!
 StatSpeedSlow
-Замедленна
+Замедление
 StatSpeedVerySlow
 Очень медленно
 StatSpeedImmobile
@@ -1075,9 +1075,9 @@ StatWillpower
 StatMana
 MP: CURRENT/MAX
 TooltipMana
-Мана медленно восстанавливается из пула, равного POOLMANA. Пейте зелья, чтобы восстановить бассейн.
+Мана постепенно восстанавливается из резерва объёмом POOLMANA. Пейте зелья, чтобы пополнить резерв.
 TooltipDistraction
-Ваш уровень отвлечения увеличивается со временем, когда вы сталкиваетесь с отвлекающими вещами.
+При столкновении с отвлекающими факторами со временем растёт минимальный уровень отвлечения.
 TooltipStamina
 Выносливость восстанавливается быстрее, когда вы ее не тратите.
 TooltipWill
@@ -1095,15 +1095,15 @@ MP
 KinkyDungeonSleep
 Лечь спать
 KinkyDungeonCallHelp
-Зови на помощь!
+Позвать на помощь
 KinkyDungeonPlayWithSelf
 Играть с собой
 KinkyDungeonTryOrgasm
-Отпусти...
+Расслабиться...
 KDLetGo
-Отпусти...
+Расслабиться...
 KDPlay
-Играй с самим собой
+Играть с собой
 KDSleep
 Лечь спать
 KDHelp
@@ -1115,13 +1115,13 @@ KDAutoStruggle
 KDAutoPath
 Автоматический путь
 KDSwitchWeapon
-Оружие быстрой замены
+Быстро сменить оружие
 KDInspect
 Осмотреть
 KDPass
 Пропуск NPC
 KDDoor
-Закрытие двери
+Закрыть дверь
 KDSprint
 Спринт/прыжок
 KinkyDungeonChangeDistraction0
@@ -1147,7 +1147,7 @@ KinkyDungeonChangeDistraction9
 KinkyDungeonChangeDistraction10
 (содрогается от удовольствия)
 Wait
-Подожди
+Вы ждёте.
 WaitAroused
 Ты ждешь, ноги дрожат от возбуждения.
 WaitArousedHeavy
@@ -1173,29 +1173,29 @@ KinkyDungeonNewGamePlus
 GameContinue
 Продолжить сохранение
 LoadGame
-Загрузка из кода
+Загрузить из кода
 LoadOutfit
 Сохранить экипировку (перезаписывается!)
 GameReturnToMenu
-Сохранить привязки клавиш
+Сохранить назначения клавиш
 GameReturnToMenu2
 Отменить изменения
 GameReturnToMenuFromOptions
 Вернуться
 GameConfigKeys
-Привязки клавиш
+Назначение клавиш
 GameToggles
 Параметры игры
 KinkyDungeonLoadConfirm
-Загрузка из кода
+Загрузить из кода
 KinkyDungeonLoadBack
 Вернуться в главное меню
 KinkyDungeonLoadMod
-Мод загрузки
+Загрузить мод
 KinkyDungeonDeleteMod
 Удалить мод
 KinkyDungeonClearAll
-Очистить перки
+Сбросить особенности
 KinkyDungeonConfig
 Конфигурация
 KinkyDungeonCancel
@@ -1221,7 +1221,7 @@ KinkyDungeonKeyUpRight
 KinkyDungeonKeyDownLeft
 Вниз влево
 KinkyDungeonKeyDownRight
-Прямо вниз
+Вниз вправо
 KinkyDungeonKeySpell1
 Заклинание 1
 KinkyDungeonKeySpell2
@@ -1237,13 +1237,13 @@ KinkyDungeonKeySpell6
 KinkyDungeonKeySpell7
 Заклинание 7
 KinkyDungeonKeySpellPage
-Страница циклических заклинаний
+Следующая страница заклинаний
 KinkyDungeonKeyUpcast
 Усиленные заклинания
 KinkyDungeonKeyUpcastCancel
 Отменить усиление
 KinkyDungeonKeySwitchWeapon
-Меняй оружие
+Сменить оружие
 KinkyDungeonKeySpellWeapon
 Дальняя атака
 KinkyDungeonKeySkip
@@ -1253,7 +1253,7 @@ KinkyDungeonKeyEnter
 KinkyDungeonKeyMsgLog
 Журнал сообщений
 KinkyDungeonKeyDoor
-Закрой дверь
+Закрыть дверь
 KinkyDungeonKeyPass
 Пройти через союзников
 KinkyDungeonKeyAStruggle
@@ -1263,7 +1263,7 @@ KinkyDungeonKeyAPathfind
 KinkyDungeonKeySprint
 Спринт/прыжок
 KinkyDungeonKeyInspect
-Проверять
+Осмотреть
 KinkyDungeonKeyQInventory
 Быстрый инвентарь
 KinkyDungeonKeyInventory
@@ -1297,9 +1297,9 @@ ClimbDownFail
 ClimbDownShortcut
 Вы спускаетесь вниз и оказываетесь в незнакомом новом месте.
 KDNGPlus
-_плюс XXX
+плюс XXX
 DungeonNamegrv
-Склеп
+Кладбище
 DungeonNamecat
 Катакомбы
 DungeonNamejng
@@ -1391,7 +1391,7 @@ LootChestArmor
 LootChestTrapMagic
 Вы находите золото и волшебную ловушку! (+RestraintType) (+XXX золота)
 LootChestTrapMagicHarness
-Закрученные ремни выходят из груди и связывают вас! (+RestraintType)
+Из сундука вырываются извивающиеся ремни и связывают вас! (+RestraintType)
 LootChestTrapMagicBelt
 Вы находите золото и пояс целомудрия, который застегивается на вашей талии! (+RestraintType) (+XXX золота)
 LootChestTrapMagicVibe
@@ -1429,7 +1429,7 @@ LootPotionStamina
 LootPotionFrigid
 Вы находите похожее на снег зелье, холодное на ощупь.
 LootPotionsMedley
-Вы находите смесь зелий.
+Вы находите набор разных зелий.
 KinkyDungeonRarity
 Редкость:
 KinkyDungeonRarity0
@@ -1457,7 +1457,7 @@ KinkyDungeonRarity10
 KinkyDungeonConsumableQuantity
 Количество:
 KinkyDungeonConsume
-Использовать элемент (потребляет 1)
+Использовать предмет (расходуется 1)
 KinkyDungeonInventoryItemnull
 Путь кулака
 KinkyDungeonInventoryItemPick
@@ -1523,13 +1523,13 @@ KinkyDungeonInventoryItemDollSuit
 KinkyDungeonInventoryItemDollSuitDesc
 Наряд из сильно переработанной слизи. Он естественно шелковистый и гладкий на ощупь.
 KinkyDungeonInventoryItemDollSuitDesc2
-Никаких премий, никаких штрафов.
+Без бонусов и штрафов.
 KinkyDungeonInventoryItemCyberDoll
 Костюм киберкуклы
 KinkyDungeonInventoryItemCyberDollDesc
 Технологически продвинутый костюм, предназначенный для длительного ношения. Несмотря на то, что он водонепроницаемый и плотный, он имеет отверстия для очистки и вентиляции, которые подключаются непосредственно к приспособлениям для хранения кукол.
 KinkyDungeonInventoryItemCyberDollDesc2
-Никаких премий, никаких штрафов.
+Без бонусов и штрафов.
 KinkyDungeonInventoryItemObsidian
 Теневое латексное платье
 KinkyDungeonInventoryItemObsidianDesc
@@ -1549,7 +1549,7 @@ KinkyDungeonInventoryItemScrollArmsUse
 KinkyDungeonInventoryItemScrollArmsDesc
 Свиток, используемый ворами чтоб скрыть свои проделки .
 KinkyDungeonInventoryItemScrollArmsDesc2
-Позволяет использовать заклинания Оружия без компонентов в течение 12 ходов.
+Позволяет применять заклинания с жестами рук без нужных компонентов в течение 12 ходов.
 KinkyDungeonInventoryItemScrollPurity
 Свиток Чистоты
 KinkyDungeonInventoryItemScrollPurityUse
@@ -1561,7 +1561,7 @@ KinkyDungeonInventoryItemScrollPurityDesc2
 KinkyDungeonInventoryItemScrollVerbal
 Свиток речи
 KinkyDungeonInventoryItemScrollVerbalUse
-Прокрутка делает вашу речь с кляпом во рту немного более понятной!
+Свиток делает вашу речь с кляпом немного разборчивее!
 KinkyDungeonInventoryItemScrollVerbalDesc
 Свиток, используемый для помощи в переводе на разные языки.
 KinkyDungeonInventoryItemScrollVerbalDesc2
@@ -1589,7 +1589,7 @@ KinkyDungeonInventoryItemAncientPowerSource
 KinkyDungeonInventoryItemAncientPowerSourceUse
 Вы держите кристалл, и сила течет в вас.
 KinkyDungeonInventoryItemAncientPowerSourceDesc
-Вы не знаете, как они заряжали эти...
+Вы не знаете, как заряжали такие кристаллы...
 KinkyDungeonInventoryItemAncientPowerSourceDesc2
 Таинственное устройство, использовавшееся древней цивилизацией для питания своих древних устройств.
 KinkyDungeonFullpower
@@ -1599,9 +1599,9 @@ KinkyDungeonInventoryItemAncientPowerSourceSpent
 KinkyDungeonInventoryItemAncientPowerSourceSpentUse
 Вы касаетесь израсходованного кристалла, и он выкачивает 100 золотых из вашей сумки!
 KinkyDungeonInventoryItemAncientPowerSourceSpentUseFail
-Вы не уверены, как зарядить это обратно.
+Вы не знаете, как зарядить его снова.
 KinkyDungeonInventoryItemAncientPowerSourceSpentDesc
-Вы не уверены, как они заряжали эти...
+Вы не знаете, как заряжали такие кристаллы...
 KinkyDungeonInventoryItemAncientPowerSourceSpentDesc2
 Таинственное устройство, используемое старой цивилизацией, ныне истощенное.
 KinkyDungeonInventoryItemGold
@@ -1635,19 +1635,19 @@ KinkyDungeonInventoryItemBola
 KinkyDungeonInventoryItemBolaDesc
 Пара грузов, прикрепленных к веревке. Можно бросить.
 KinkyDungeonInventoryItemBolaDesc2
-Наносит 9 очков связывания, 40 цепных повреждений и обездвиживает цель на 4 хода.
+Наносит 90 очков связывания и 40 урона цепями, обездвиживая цель на 4 хода.
 KinkyDungeonInventoryItem3BolaDesc
 Пара грузов, прикрепленных к веревке. Можно бросить.
 KinkyDungeonInventoryItem3BolaDesc2
-Наносит 9 очков связывания, 40 цепных повреждений и обездвиживает цель на 4 хода.
+Наносит 90 очков связывания и 40 урона цепями, обездвиживая цель на 4 хода.
 KinkyDungeonInventoryItemBomb
 Бомба
 KinkyDungeonInventoryItemBombDesc
-После предохранителя на 5 ходов наносит 100 урона от огня в области 3x3.
+Через 5 ходов после поджигания фитиля наносит 100 огненного урона в области 3x3.
 KinkyDungeonInventoryItemBombDesc2
 Не игрушка!
 KinkyDungeonInventoryItem3BombDesc
-После взрывателя на 6 ходов наносит 100 урона от огня в области 3x3.
+Через 6 ходов после поджигания фитиля наносит 100 огненного урона в области 3x3.
 KinkyDungeonInventoryItem3BombDesc2
 Не игрушка!
 KinkyDungeonInventoryItemBombUse
@@ -1659,7 +1659,7 @@ KinkyDungeonInventoryItemLockpick
 KinkyDungeonInventoryItemLockpickDesc
 Инструмент, используемый для взлома замков.
 KinkyDungeonInventoryItemLockpickDesc2
-Не навсегда, но может помочь в крайнем случае.
+Не вечна, но может выручить в трудную минуту.
 KinkyDungeonInventoryItem2Lockpick
 Отмычка x2
 KinkyDungeonInventoryItem4Lockpick
@@ -1703,11 +1703,11 @@ KinkyDungeonInventoryItemPotionWillDesc2
 KinkyDungeonInventoryItemPotionFrigid
 Фригидное зелье
 KinkyDungeonInventoryItemPotionFrigidUse
-Вы пьете смесь, и ваши чувства онемеют, помогая вам сосредоточиться.
+Вы выпиваете смесь; чувства притупляются, помогая сосредоточиться.
 KinkyDungeonInventoryItemPotionFrigidDesc
 Ледяной холодный флакон с горьковатым ароматом.
 KinkyDungeonInventoryItemPotionFrigidDesc2
-Уменьшает отвлечение до 0 и обеспечивает дополнительное затухание на 50 ходов. Можно использовать с кляпом во рту.
+Снижает отвлечение до 0 и ускоряет его спад на 50 ходов. Можно использовать с кляпом во рту.
 KinkyDungeonInventoryItemSmokeBomb
 Дымовая шашка
 KinkyDungeonInventoryItemSmokeBombUse
@@ -1723,19 +1723,19 @@ KinkyDungeonInventoryItemElfCrystalUse
 KinkyDungeonInventoryItemElfCrystalDesc
 Секрет эльфийской косметики и безупречной кожи.
 KinkyDungeonInventoryItemElfCrystalDesc2
-Делает вас скользким на 10 ходов, усиливая все формы борьбы.
+На 10 ходов делает кожу скользкой, облегчая все способы освобождения.
 KinkyDungeonSpellCastSlippery
 Вы чувствуете, как ограничения ослабевают на вашей коже!
 KinkyDungeonInventoryItemEnchantedGrinder
-Зачарованная мясорубка
+Зачарованная болгарка
 KinkyDungeonInventoryItemEnchantedGrinderUse
-Мясорубка начинает вращаться на короткое время! Его режущая сила огромна!
+Болгарка ненадолго раскручивается! Её режущая мощность огромна!
 KinkyDungeonInventoryItemEnchantedGrinderDesc
 Режущий диск блестящий и очень острый.
 KinkyDungeonInventoryItemEnchantedGrinderDesc2
 Обеспечивает значительно увеличенную мощность резания в течение короткого времени.
 KinkyDungeonSpellCastCutting
-Мясорубка начинает вращаться на короткое время! Его режущая способность огромна!
+Болгарка ненадолго раскручивается! Её режущая мощность огромна!
 KinkyDungeonInventoryItemStaffDoll
 Посох кукольника
 KinkyDungeonInventoryItemStaffDollDesc
@@ -1747,13 +1747,13 @@ KDDollmakerTooManyDolls
 KinkyDungeonInventoryItemStaffIncineration
 Посох испепеления
 KinkyDungeonInventoryItemStaffIncinerationDesc
-Магическое оружие, созданное для использования посредниками.
+Магическое оружие для магов со средним уровнем подготовки.
 KinkyDungeonInventoryItemStaffIncinerationDesc2
 +25% урона от огня. Наносит урон от огня. Горящие враги получают дополнительно 5 единиц урона от огня за ход.
 KinkyDungeonInventoryItemStaffStorm
 Посох штормов
 KinkyDungeonInventoryItemStaffStormDesc
-Магическое оружие, созданное для использования промежуточными звеньями.
+Магическое оружие для магов со средним уровнем подготовки.
 KinkyDungeonInventoryItemStaffStormDesc2
 +20% урона от электрического тока. Наносит урон электрическим током. Враги, пораженные электрическим уроном, наносят 15 дополнительных электрических повреждений в области 5x5.
 KinkyDungeonInventoryItemStaffFrostbite
@@ -2003,9 +2003,9 @@ KinkyDungeonInventoryItemArbiterDesc
 KinkyDungeonInventoryItemArbiterDesc2
 Наносит цепной урон с эффективностью связывания 110%, +40 теневого урона к призыву. +25% к повреждению клея и цепи. Дальняя атака: Разоружить
 KinkyDungeonInventoryItemBondageBuster
-Любитель бондажа
+Разрушитель оков
 KinkyDungeonInventoryItemBondageBusterDesc
-Может стрелять лучом (канал на 1 ход), который наносит 30 электрического урона, но заряжается, когда не стреляет, нанося 90 общего урона за 10 оборотов заряда.
+Стреляет лучом после подготовки в 1 ход и наносит 30 электрического урона. Пока оружие не стреляет, оно заряжается: после 10 ходов зарядки суммарный урон достигает 90.
 KinkyDungeonInventoryItemBondageBusterDesc2
 Режим ближнего боя наносит урон от щекотки и помечает врагов как уязвимых на 4 хода.
 KinkyDungeonInventoryItemBlaster
@@ -2015,7 +2015,7 @@ KinkyDungeonInventoryItemBlasterDesc
 KinkyDungeonInventoryItemBlasterDesc2
 Режим ближнего боя наносит урон от щекотки.
 KinkyDungeonSpellBlasterBlast
-Законодатель МК2
+Выстрел бластера
 KinkyDungeonSpellCastBlasterBlast
 Ты настраиваешь свой бластер на оглушение и стреляешь!
 KinkyDungeonInventoryItemMessengerOfLove
@@ -2023,7 +2023,7 @@ KinkyDungeonInventoryItemMessengerOfLove
 KinkyDungeonInventoryItemMessengerOfLoveDesc
 Любовь сияет многими способами...
 KinkyDungeonInventoryItemMessengerOfLoveDesc2
-Может выпустить стрелу, которая делает врага чрезвычайно похотливым, заставляя его нападать на других. Длится вечно на меньших врагах, 30 оборотов на высокоуровневых врагах и 10 оборотов на боссах.
+Выпускает стрелу, вызывающую у врага сильную похоть и заставляющую нападать на других. На слабых врагов действует бессрочно, на высокоуровневых — 30 ходов, на боссов — 10 ходов.
 KinkyDungeonInventoryItemMoiraiScissors
 Ножницы Мойры
 KinkyDungeonInventoryItemMoiraiScissorsDesc
@@ -2041,7 +2041,7 @@ KinkyDungeonInventoryItemMagicAxe
 KinkyDungeonInventoryItemMagicAxeDesc
 Чумной и мерзкий, как сердца ваших врагов.
 KinkyDungeonInventoryItemMagicAxeDesc2
-Наносит теневой урон цели и 20 теневого урона врагам рядом с вами. Замедляется на 3 оборота.
+Наносит теневой урон цели и 20 теневого урона врагам рядом с вами. Замедляет на 3 хода.
 KinkyDungeonInventoryItemPickaxe
 Кирка
 KinkyDungeonInventoryItemPickaxeDesc
@@ -2235,7 +2235,7 @@ KDArmorBlock
 KDBypasses
 EnemyName обходит вашу защиту, чтобы добавить RestraintName!
 KDAttackBlocked
-ИмяВрага пытается сдержать тебя, но ты сопротивляешься рабству!
+EnemyName пытается связать вас, но вы сопротивляетесь!
 KDRestraintBlockedItem
 Сопротивляться!
 NameDoorLock
@@ -2425,7 +2425,7 @@ AttackElf
 AttackElfBind
 Друид сковывает тебя мифриловыми оковами! (+RestraintAdded)
 AttackElfLock
-Друид выбрасывает прядь из своего плаща! Он находит вас и застегивается одним щелчком. ((DamageTaken)
+Друид бросает из-под плаща замок! Он находит вас и защёлкивается. (DamageTaken)
 NameElementalWater
 Элементаль воды
 KillElementalWater
@@ -3619,11 +3619,11 @@ NameApprentice2
 KillApprentice2
 Ученица убегает и плачет в углу.
 AttackApprentice2Bind
-Ученица вызывает на вас ограничение!
+Ученица призывает оковы прямо на вас! (+RestraintAdded)
 AttackApprentice2Lock
 Ученик нервно достает замок и принуждает вас носить его! (DamageTaken)
 AttackApprentice2
-Ученица игриво щекочет вас!
+Ученица игриво щекочет вас! (DamageTaken)
 NameApprenticeSlime
 Ученица латекса
 KillApprenticeSlime
@@ -3679,11 +3679,11 @@ NameFungal
 KillFungal
 Веселая девчонка уходит под землю.
 AttackFungalBind
-Веселая девчонка надевает тебе на шею ограничение!
+ФанГал застёгивает оковы у вас на шее! (+RestraintAdded)
 AttackFungalLock
 Веселая девчонка создает волшебный замок на все ваши ограничения! (DamageTaken)
 AttackFungal
-Веселая девчонка трет твою грудь своими длинными, тонкими пальцами!
+ФанГал поглаживает вашу грудь длинными тонкими пальцами! (DamageTaken)
 KinkyDungeonSpellCrystalPuff
 Кристаллический символ
 NameDressmakerQuest
@@ -4787,7 +4787,7 @@ KinkyDungeonPoolDrinkAnger
 KinkyDungeonPoolDrinkSlime
 Слизь смывается в фонтане!!!
 KinkyDungeonCommerceBuy
-Богиня предлагает товар, проданный за стоимость товара (NumCurrent/NumMax)
+Богиня предлагает ItemTraded за ItemCost (NumCurrent/NumMax)
 KinkyDungeonCommerceNext
 Следующее предложение
 KinkyDungeonCommercePurchase
@@ -4795,7 +4795,7 @@ KinkyDungeonCommercePurchase
 KinkyDungeonCommerceCost
 Стоимость: ItemCostgp
 KinkyDungeonRestraintLevel
-Уровень RestraintLevel (редкость)
+Уровень RestraintLevel (Rarity)
 KinkyDungeonCategoryFilterconsumable
 Расходуемое
 KinkyDungeonCategoryFilterrestraint
@@ -5197,7 +5197,7 @@ LootBracersTide
 KDCursedArmorUncurse
 Проклятие на RestraintName снято!
 KDShopConfirm
-Нажмите ВЕРНО, чтобы подтвердить покупку!
+Нажмите справа, чтобы подтвердить покупку!
 LootT
 Ты находишь
 RestraintBasicCollar
@@ -7367,7 +7367,7 @@ KDEffectTileTooltipEmberDesc
 KDEffectTileTooltipInferno
 Инферно
 KDEffectTileTooltipInfernoDesc
-Наносит DAMAGEDEALТ урона от огня за ход
+Наносит DAMAGEDEALT огненного урона за ход
 KDEffectTileTooltipSteam
 Пар
 KDEffectTileTooltipSteamDesc
@@ -7391,7 +7391,7 @@ KDTileTooltip1
 KDTileTooltip2
 Кирпичная кладка
 KDTileTooltipX
-Doodad
+Декорация
 KDTileTooltipL
 Мебель
 KDTileTooltipT
@@ -7597,7 +7597,7 @@ KDSpellEmpower
 KDSpellEmpowerCancel
 Отменить наделение полномочиями
 KDSpellEmpowerMsg
-Вы проводите ману через свое тело! Уровень расширения возможностей: УРОВЕНЬ
+Вы проводите ману через своё тело! Уровень усиления: LEVEL
 KDSpellEmpowerMsgMax
 Вы уже на максимальном уровне возможностей!
 KDSpellEmpowerFail
@@ -7673,9 +7673,9 @@ KinkyDungeonSpellDenyMana
 KinkyDungeonSpellDescriptionDenyMana
 Используя свою ментальную дисциплину, вы восстанавливаете 50 маны каждый раз, когда вам отказывают в окончании, если у вас есть лишняя сила воли.
 KinkyDungeonSpellApprenticeFire
-Новичок Пламени
+Новичок пламени
 KinkyDungeonSpellDescriptionApprenticeFire
-Открывает огненные заклинания. Изучите Файербол.
+Открывает огненные заклинания. Позволяет изучить «Огненную стрелу».
 KinkyDungeonSpellApprenticeLightning
 Новичек Молнии
 KinkyDungeonSpellDescriptionApprenticeLightning
@@ -7697,27 +7697,27 @@ KinkyDungeonSpellApprenticeAir
 KinkyDungeonSpellDescriptionApprenticeAir
 Открывает воздушные заклинания. Изучите порыв ветра.
 KinkyDungeonSpellApprenticeLatex
-Латекс
+Латекс: основы
 KinkyDungeonSpellDescriptionApprenticeLatex
 Разблокирует латексные заклинания. Изучите слаймбол.
 KinkyDungeonSpellApprenticeMetal
-Металл
+Металл: основы
 KinkyDungeonSpellDescriptionApprenticeMetal
 Открывает металлические заклинания. Научитесь создавать наручники.
 KinkyDungeonSpellApprenticeRope
-Веревка
+Верёвки: основы
 KinkyDungeonSpellDescriptionApprenticeRope
 Открывает заклинания веревки. Научитесь создавать веревки.
 KinkyDungeonSpellApprenticeLeather
-Кожа
+Кожа: основы
 KinkyDungeonSpellDescriptionApprenticeLeather
 Открывает кожаные заклинания. Научитесь вызывать кляп.
 KinkyDungeonSpellApprenticePhysics
-Физика
+Физика: основы
 KinkyDungeonSpellDescriptionApprenticePhysics
 Открывает заклинания телепортации и физической манипуляции. Изучайте Стену.
 KinkyDungeonSpellApprenticeSummon
-Призыв
+Призыв: основы
 KinkyDungeonSpellDescriptionApprenticeSummon
 Открывает заклинания призыва. Изучите Призвать Фамильяра.
 KinkyDungeonSpellApprenticeShadow
@@ -7753,7 +7753,7 @@ KinkyDungeonGlueSlow
 KinkyDungeonGlueSlowDamage
 Клей замедляет вас! (-DamageDealt SP)
 KinkyDungeonSpellFirebolt
-Файербол
+Огненная стрела
 KinkyDungeonSpellAllyFirebolt
 Огненная стрела элементаля
 KinkyDungeonSpellAllyWindBlast
@@ -7761,7 +7761,7 @@ KinkyDungeonSpellAllyWindBlast
 KinkyDungeonSpellDescriptionFirebolt
 Огненный шар, наносящий DamageDealt урона.
 KinkyDungeonSpellCastFirebolt
-Вы швыряете Файербол!
+Вы выпускаете огненную стрелу!
 KinkyDungeonSpellTargetFirebolt
 Выберите направление прицеливания
 KinkyDungeonSpellWindBlast
@@ -7791,7 +7791,7 @@ KinkyDungeonSpellTargetKnife
 KinkyDungeonSpellDagger
 Теневой кинжал
 KinkyDungeonSpellDescriptionDagger
-Холодный призрачный клинок, который наносит DamageDeal урона и пронзает все на своем пути.
+Холодный теневой клинок, который наносит DamageDealt урона и пронзает всё на своём пути.
 KinkyDungeonSpellCastDagger
 Вы бросаете призрачный кинжал!
 KinkyDungeonSpellTargetDagger
@@ -7803,7 +7803,7 @@ KinkyDungeonSpellShadowScythe
 KinkyDungeonSpellDescriptionShadowSlash
 Рассекайте область перед собой, нанося отложенный DamageDealt урон в области и ненадолго замедляя ее.
 KinkyDungeonSpellCastShadowSlash
-Вы создаете слезу в пространстве пальцем!
+Движением пальца вы создаёте разрыв в пространстве!
 KinkyDungeonSpellTargetShadowSlash
 Выберите направление прицеливания
 KinkyDungeonSpellBlink
@@ -7825,7 +7825,7 @@ KinkyDungeonSpellTargetLeap
 KinkyDungeonSpellIcebolt
 Ледяной осколок
 KinkyDungeonSpellDescriptionIcebolt
-Осколок льда, наносящий урон DamageDeal и замедляющий на ходы Duration. Замерзает, если уже замедлен или промок.
+Осколок льда наносит DamageDealt урона и замедляет цель на Duration ходов. Если цель уже замедлена или промокла, замораживает её.
 KinkyDungeonSpellCastIcebolt
 Ты бросаешь осколок льда!
 KinkyDungeonSpellTargetIcebolt
@@ -7833,7 +7833,7 @@ KinkyDungeonSpellTargetIcebolt
 KinkyDungeonSpellIceLance
 Ледяное копье
 KinkyDungeonSpellDescriptionIceLance
-Быстро движущийся ледяной осколок, который наносит DamageDeal урона, замедляется на ходы Duration и проходит сквозь врагов. Замораживает, если уже замедлено или промокло.
+Быстрый ледяной осколок пронзает врагов, наносит DamageDealt урона и замедляет цели на Duration ходов. Если цель уже замедлена или промокла, замораживает её.
 KinkyDungeonSpellCastIceLance
 Вы призываете могучее ледяное копье и бросаете его вперед!
 KinkyDungeonSpellTargetIceLance
@@ -8143,7 +8143,7 @@ KinkyDungeonSpellFlameRune
 KinkyDungeonSpellFlameRuneStrike
 Огненная руна
 KinkyDungeonSpellDescriptionFlameRune
-Ловушка, наносящая УронНаносит урон от огня по области. Установка занимает 5 ходов.
+Ловушка, наносящая DamageDealt огненного урона по области. Установка занимает 5 ходов.
 KinkyDungeonSpellCastFlameRune
 Вы создаете зажигательную ловушку!
 KinkyDungeonSpellTargetFlameRune
@@ -8217,7 +8217,7 @@ KinkyDungeonSpellTargetVolcanism
 KinkyDungeonSpellCoalesce
 Слипаться
 KinkyDungeonSpellDescriptionCoalesce
-Собирает слизь и покрытых слизью врагов в центральную точку. Наносит DamageDeal урона клея за каждый квадрат слизи и заключает в слизь врагов. Стоит половину маны, если есть только слизь.
+Стягивает слизь и покрытых ею врагов в одну точку. Наносит DamageDealt урона клеем за каждую клетку слизи и заключает покрытых слизью врагов в оболочку. Если в области есть только слизь, расходует вдвое меньше маны.
 KinkyDungeonSpellCastCoalesce
 Вы приказываете слизи налипнуть на врагов!
 KinkyDungeonSpellTargetCoalesce
@@ -8801,7 +8801,7 @@ CMD: Поимка
 KinkyDungeonSpellTargetCommandCapture
 Выберите, какое существо связать
 KinkyDungeonSpellDescriptionCommandCapture
-Приказывает ближайшим ограничителям связать цель, нанося DamageDealt цепного урона, связывание +50. Веревки задерживают 3 оборота/веревку, ремни +20 связывания/пояса, цепи наносят +15 дробящего урона/цепь.
+Заставляет ближайшие оковы связать цель: DamageDealt урона цепями и +50 к связыванию. Каждая верёвка обездвиживает на 3 хода, каждый ремень даёт +20 к связыванию, каждая цепь наносит +15 дробящего урона.
 KinkyDungeonSpellCastCommandCapture
 Вы произносите кодовое слово, и крепления на земле выполняют ваши приказы!
 KinkyDungeonSpellCommandDisenchant
@@ -8817,7 +8817,7 @@ CMD: Вибрации
 KinkyDungeonSpellTargetCommandVibrate
 Выберите область
 KinkyDungeonSpellDescriptionCommandVibrate
-Ориентируйтесь на большую площадь. Враги с затычками или игрушками дразнятся на ходы продолжительности, получая урон от возбуждения каждый ход.
+Действует на большую область. Враги с пробками или игрушками подвергаются стимуляции Duration ходов и каждый ход получают урон очарованием.
 KinkyDungeonSpellCastCommandVibrate
 Вы произносите кодовое слово, и все игрушки в округе начинают вибрировать!
 KinkyDungeonSpellCommandOrgasm
@@ -9261,7 +9261,7 @@ KinkyDungeonSpellCastSlimeForm
 KinkyDungeonSpellCastAvatarForm
 Сила четырех стихий течет по вашим венам!
 KinkyDungeonSpellHeatBolt
-Файербол
+Огненная стрела
 KinkyDungeonHeatBlast
 Взрыв сбивает вас с ног!
 KinkyDungeonSpellHighBolt
@@ -10119,7 +10119,7 @@ KinkyDungeonGhostUnhelpfulGeneric3
 KinkyDungeonGhostUnhelpfulGeneric4
 Призрак: Хорошая рабыня не жалуется.
 KinkyDungeonGhostUnhelpfulGag2
-Призрак: Что что? Я не понимаю.
+Призрак: Что такое? Не понимаю.
 KinkyDungeonGhostUnhelpfulGag3
 Призрак: Молчание — золото.
 KinkyDungeonGhostUnhelpfulGag4
@@ -10271,9 +10271,9 @@ KinkyDungeonRepNameFactionBlessed
 KinkyDungeonRepNameFactionThankful
 Благоприятный
 KinkyDungeonTetherTooShort
-Вы натыкаетесь на ПРИВЯЗЬ, тянущую вас назад.
+TETHER натягивается и не даёт вам двигаться дальше.
 KinkyDungeonTetherPull
-Тебя тянут вслед за ПРИВЯЗЬЮ!
+TETHER резко тянет вас назад!
 KinkyDungeonRemindJailTourStart
 Мы пойдем на прогулку. Следуй за мной.
 KinkyDungeonRemindJailTourStartCell
@@ -10521,7 +10521,7 @@ KinkyDungeonPurpleLockRemove
 KinkyDungeonPurpleLockRemoveCharger
 Ваше кодовое слово услышано, и зарядное устройство разблокируется!
 KDGameData.ConfirmAttack
-ConfirmAttack, Вы уверены, что хотите атаковать?
+Вы уверены, что хотите атаковать?
 KinkyDungeonConfirmStairs
 Вы уверены, что хотите перейти на следующий уровень? (Нажмите на себя, чтобы подтвердить)
 KinkyDungeonSelfBondage
@@ -10687,7 +10687,7 @@ KDTooltipDisarm
 KDTooltipDamageResists
 Сопротивления:
 KDTooltipHP
-HP:
+Здоровье:
 KDTooltipBinding
 Связывание:
 KDTooltipOpinion0
@@ -11759,7 +11759,7 @@ KinkyDungeonRemindJailNurseHit
 KinkyDungeonRemindJailNurseHitPlayer
 Я так взволнована!
 KinkyDungeonRemindJailNurseMiss
-Now now, you can't just resist like that~
+А ты ловкая, да?
 KinkyDungeonRemindJailNurseMissedMe
 Тсс тсс. Ты можешь лучше, дорогая~
 KinkyDungeonRemindJailNurseBlockedMe
@@ -12535,7 +12535,7 @@ KinkyDungeonRemindJailDomMaidPickpocket
 KinkyDungeonRemindJailDomMaidLock
 Щелк!
 KinkyDungeonRemindJailPlayBratSubMaid0
-Мне жаль! Я не хотелf разбивать эту вазу!
+Прости! Я не хотела разбивать эту вазу!
 KinkyDungeonRemindJailPlayBratSubMaid1
 Я больше так не буду, клянусь!
 KinkyDungeonRemindJailPlayBratSubMaid2
@@ -13363,7 +13363,7 @@ dOfferIceForce_No
 dOfferIceForce_NoGag
 (Пошевелиться, чтобы разогреться) (PERCENT шанс избежать)
 rOfferAutoTape
-(Приближается роботизированный SPEAKER)|ЗАПРОС: Обнаружена хорошая девочка:|Желаете сдержанности?
+(Приближается робот SPEAKER)|ЗАПРОС: Обнаружена хорошая девочка.|Желаете, чтобы вас связали?
 rOfferAutoTapeYes
 (SPEAKER пищит и жужжит)|SPEAKER добавит RESTRAINT.|Приемлемо?
 rOfferAutoTapeYes_Yes
@@ -13407,7 +13407,7 @@ dOfferAutoTapeForce_No
 dOfferAutoTapeForce_NoGag
 (Быстро мотайте головой) (PERCENT шанс избежать)
 rOfferHiTechCables
-(Приближается роботизированный SPEAKER)|ЗАПРОС: Обнаружена хорошая девочка:|Желаете сдержанности?
+(Приближается робот SPEAKER)|ЗАПРОС: Обнаружена хорошая девочка.|Желаете, чтобы вас связали?
 rOfferHiTechCablesYes
 (SPEAKER пищит и жужжит)|SPEAKER добавит RESTRAINT.|Приемлемо?
 rOfferHiTechCablesYes_Yes
@@ -13421,7 +13421,7 @@ rOfferHiTechCablesForce
 rOfferHiTechCablesForceYes
 ОШИБКА: Ожидается принятие.|УТВЕРЖДЕНИЕ: SPEAKER добавит RESTRAINT.
 rOfferHiTechCablesForce_No
-(SPEAKER издает жужжащий звук)|ОШИБКА: В SPEAKER кончилась лента.|Возвращение к патрулированию.
+(SPEAKER издаёт жужжащий звук)|ОШИБКА: У SPEAKER заклинило трос.|Возвращение к обычной программе.
 rOfferHiTechCablesForce_Yes
 (SPEAKER стреляет в вас кабелями)|RESTRAINT распределено.|Хорошего дня.
 rOfferHiTechCablesForce_Failure
@@ -13981,7 +13981,7 @@ dOfferObsidianForce_NoGag
 rOfferVine
 (SPEAKER хихикает и окликает вас)|Привет~|Хотите увидеть немного природы?~
 rOfferVineYes
-(Глашатай делает движение руками)|(Лозы поднимаются с пола и закручиваются)|Они тебя надежно свяжут...
+(SPEAKER делает жест руками)|(Из пола поднимаются и извиваются лозы)|Они надёжно тебя свяжут...
 rOfferVineYes_Yes
 (SPEAKER снова усмехается и двигается)|(Растения быстро обвивают вас)|(Ты извиваешься, сопротивляясь RESTRAINT)
 rOfferVineYes_No
@@ -14611,7 +14611,7 @@ rOfferBountyhunterYes_No
 rOfferBountyhunterNo
 (SPEAKER кивает)|Хорошо, тогда я не буду вас беспокоить.
 rOfferBountyhunterForce
-(Говорит с сомнением)|Знаете, за вашу голову назначена неплохая награда.|Я уверен, что мы могли бы что-нибудь с этим сделать.
+(SPEAKER смотрит с сомнением)|Знаешь, за твою голову назначена неплохая награда.|Думаю, мы могли бы что-нибудь с этим сделать.
 rOfferBountyhunterForceYes
 (SPEAKER наклоняет голову)|Ха-ха, очень смешно.|Мы оба знаем, что ты не из тех... верно?
 rOfferBountyhunterForce_No
@@ -14949,7 +14949,7 @@ rPotionSellPotionFrigid
 rPotionSellPotionInvisibility
 (SPEAKER улыбается)|Пустая фляжка?|…Ох.
 rElfCrystalSell
-(Говорит вам)|Приветствую, Посторонняя!|У меня пересохло в горле, и я ищу дары природы.|У тебя есть то, что я ищу?
+(SPEAKER подходит к вам)|Приветствую, чужестранка!|У меня пересохло в горле, и я ищу дары природы.|Есть ли у тебя то, что я ищу?
 rElfCrystalSellAttack
 (SPEAKER не выглядит удивленным)|Тогда устроим битву умов!
 rElfCrystalSellPotionMana
@@ -15037,7 +15037,7 @@ rGhostSellAttack
 rGhostSellElfCrystal
 (SPEAKER пожимает вам руку)|Ох! Призраки любят это!
 rGhostSellEctoplasm
-(ГОНЧИК улыбается)|Похоже, это веская улика для моего расследования!
+(SPEAKER улыбается)|Похоже, это веская улика для моего расследования!
 rGhostSellPotionInvisibility
 (SPEAKER усмехается)|Вау! Это так круто!
 dItemShopAttack
@@ -15765,19 +15765,19 @@ rTutorial0
 rTutorial1
 Вам может быть интересно, для чего нужны все эти бочки.|Не волнуйся, они, э-э, абсолютно безопасны!|Когда окажешься внутри одной из них, нажми на себя, чтобы подождать.|Врагам трудно увидеть тебя внутри бочки, | поэтому можешь ждать, пока они пройдут мимо.
 rTutorial2
-Справа вы увидите свои статы и слоты для заклинаний.|Там показаны ваши DP, SP, MP, и WP далее мы разберем, что они дают.|Ниже вы увидите ваши текущие расходные материалы, | ваше золото и ваше текущее оснащенное оружие.|Внизу два значка позволяют включать режимы авто- побега и пути.
+Справа показаны характеристики и ячейки заклинаний.|Там находятся DP, SP, MP и WP — скоро разберём, за что они отвечают.|Ниже показаны расходные предметы,|золото и оружие, которое сейчас используется.|Ещё ниже два значка включают автоматическое освобождение и перемещение.
 rTutorial2_sp1
 Ваш WP, или сила воли, является важным ресурсом.|Без этого освободиться из ограничений будет сложнее.|Там, наверху, на полу есть зелье силы воли. Иди и возьми его!
 rTutorial2_sp2
 О нет! Эта ловушка уничтожила всю вашу силу воли!|К счастью, у вас есть это красное зелье силы воли.|Вы можете выпить его, нажав на значок + рядом с вашей панелью WP.|Вы также можете зайти в свой инвентарь в нижней панели.|Также есть значок быстрого инвентаря (рюкзак).
 rTutorial2_sp3
-Еще одна ловушка! Вы заметите, что ловушка также значительно | истощила вашу выносливость, не позволяя вам бежать или атаковать.| (Примечание: вы можете переключать спринт с помощью кнопки '>>' на нижней панели)|Вы можете защитить себя, пока выносливость восстанавливается, | отступив в комнату наверху. Закройте дверь, |нажав кнопку «Закрыть дверь» в нижней панели.|
+Ещё одна ловушка!|Она также сильно истощила выносливость: теперь вы не можете быстро бежать или атаковать.|(Быстрый бег переключается кнопкой «>>» на нижней панели.)|Чтобы восстановить выносливость в безопасности, отступите в комнату выше.|Закройте дверь кнопкой «Закрыть дверь» на нижней панели.|
 rTutorial2_mp1
-Ваша MP, или мана, она для заклинаний.|Однако для того, чтобы использовать заклинания, нужно их выучить.|Нажмите кнопку «Заклинания» в правом нижнем углу.|Затем нажмите «Ученик пламени» и изучите его, чтобы открыть «Файербол».| Затем нажмите пробел, чтобы вернуться назад, а Вправо, чтобы менять страницы.|Выучите и нажмите на Файербол, и назначьте его на слот 1.
+MP, или мана, расходуется на заклинания.|Чтобы применять заклинания, их сначала нужно изучить.|Нажмите «Заклинания» в правом нижнем углу.|Изучите «Новичок пламени», чтобы открыть «Огненную стрелу».|Нажмите пробел для возврата и клавишу «Вправо» для смены страницы.|Выберите «Огненную стрелу», изучите её и назначьте в слот 1.
 rTutorial2_mp2
-Справа вы увидите свои статы и ячейки заклинаний.|Вы можете щелкнуть на заклинание или нажать 1-4, чтобы сотворить заклинание|затем щелкнуть по карте, куда вы хотите его направить.|Маленький значок гаечного ключа над ними позволит вам | обменять их на другое заклинание из вашей книги заклинаний.
+Справа показаны характеристики и ячейки заклинаний.|Выберите ячейку или нажмите 1-4 на клавиатуре,|затем нажмите на нужную цель на карте.|Маленький значок гаечного ключа над ячейками позволяет|назначить другое заклинание из книги.
 rTutorial2_mp3
-Там зомби!|К счастью, зомби не могут стрелять.|Файербол имеет очень большой радиус действия,|поэтому просто сотворите его и нажмите на зомби.|Повторяйте, пока он не умрет.
+Вон там зомби!|К счастью, зомби уязвимы к огню.|У «Огненной стрелы» большая дальность,|так что выберите её и нажмите на зомби.|Повторяйте, пока он не погибнет.
 rTutorial2_mp4
 Зелья маны полностью восстанавливают вашу ману.
 rTutorial2_dp1
@@ -15789,7 +15789,7 @@ rTutorial3_1
 rTutorial3_2
 Воу, похоже, ты в безвыходном положении! | Но не беспокойся. Там есть ключ от наручников.|Просто наведи указатель мыши на слот с наручниками.|Затем щелкни значок замка, чтобы снять замок.|Наконец, щелкни пряжку, чтобы снять наручники.
 rTutorial3_3
-Я думаю, мы все понимаем, что находится в следующем сундуке.|Важно изучить различные способы, побега.|Вы можете бороться, что требует больше всего выносливости|но также помогает и другим методам освобождения.|Вы можете резать, для чего нужен нож в руке. | Вы можете стянуть, что означает развязывание или расстегивание.
+Думаю, мы уже знаем, что в следующем сундуке.|Важно разобраться в разных способах освобождения.|Борьба расходует больше всего выносливости,|зато ускоряет остальные способы освобождения.|Для разрезания нужен нож в руке.|Снятие означает развязывание узлов или расстёгивание пряжек.
 rTutorial3_4
 Ой, это выглядит достаточно надежно...| Иногда ты не сможешь сама выбраться.|Тебе придется найти другой способ снять это...
 rTutorial4
@@ -16824,3 +16824,315 @@ RestraintWeakMagicRopeFeetDesc2
 Они светятся оттенком магии.
 KDStartGame
 Продолжить
+KDLogo2
+Автор: Ada18980
+KDToggleSound
+Включить звук
+KinkyDungeonKeyWait
+Ждать
+KinkyDungeonInventoryItemHeart
+Сердечный амулет
+KinkyDungeonHeartIntro
+Вы нашли волшебный амулет! Выберите, какой бонус он даст:
+KinkyDungeonHeartIntro1
+Сосредоточенность: +50% к максимуму отвлечения и ускоренное его снижение. +5% выносливости, защищённой от урона (базовое значение: 30%).
+KinkyDungeonHeartIntro2
+Выдержка: +50 к максимуму выносливости, +50% к эффективности зелий выносливости.
+KinkyDungeonHeartIntro3
+Мудрость: +50 к максимуму маны, +50% к эффективности зелий маны.
+KinkyDungeonHeartIntro4
+Стойкость: +50 к максимуму силы воли, +50% к эффективности зелий силы воли. +1 к восстановлению выносливости за ход.
+KinkyDungeonHeartDistraction
++Сосредоточенность
+KinkyDungeonHeartStamina
++Выдержка
+KinkyDungeonHeartWill
++Стойкость
+KinkyDungeonHeartMana
++Мудрость
+KinkyDungeonHeartDiscard
+Выбросить (уничтожит амулет навсегда!)
+KDClasses
+Выберите класс:
+KDSexyMode
+Режим возбуждения:
+KinkyDungeonSexyMode1
+С возбуждением
+KinkyDungeonSexyModeDesc0
+Убирает пояса целомудрия, вибрирующие путы, пробки и возможность ласкать себя.
+KinkyDungeonSexyModeDesc1
+Включает все эти приятные вещи.
+KinkyDungeonSexyPlugs
+Разрешить анальные пробки
+KinkyDungeonSexyPiercings
+Разрешить пирсинг
+KinkyDungeonClassMode0
+Воительница
+KinkyDungeonClassModeDesc0
+Начните с 200 силы воли и навыком «Железная воля». Сильна в ближнем бою и блокировании атак.
+KinkyDungeonClassModeDesc1
+Начните с 200 выносливости и навыком скрытности. Хорошо умеет прятаться и уклоняться.
+KinkyDungeonClassModeDesc2
+Начните с 200 маны и магическим зрением. Хорошо владеет заклинаниями.
+KinkyDungeonClassMode3
+Крестьянка
+KinkyDungeonClassModeDesc3
+Начните без гроша за душой. Для тех, кто ищет испытаний.
+KinkyDungeonClassModeDesc4
+Вы маг, но ещё не закончили официальное «обучение». Требуется режим с возбуждением.
+KDRandomMode
+Выбор заклинаний:
+KinkyDungeonRandomMode0
+Выбирать заклинания
+KinkyDungeonRandomMode1
+Случайные заклинания
+KinkyDungeonRandomModeDesc0
+Разбивайте сферы. Получайте очки. Покупайте заклинания. Всё просто.
+KinkyDungeonRandomModeDesc1
+Разбивайте сферы и надейтесь получить что-нибудь хорошее.
+KDSaveMode
+Режим сохранений:
+KinkyDungeonSaveMode0
+Коды сохранения
+KinkyDungeonSaveMode1
+Рогалик
+KinkyDungeonSaveModeDesc0
+На каждом этаже вы получаете код сохранения, который можно записать. Автосохранение — только в начале этажа.
+KinkyDungeonSaveModeDesc1
+Без кодов сохранения, с обязательными автосохранениями. Всё ради победы.
+KDEasyMode
+Строгость тюрьмы:
+KinkyDungeonEasyMode1
+Мягкая
+KinkyDungeonEasyMode2
+Строгая
+KinkyDungeonEasyModeDesc0
+Если вас захватят, хорошие отношения могут помочь вам добиться спасения.
+KinkyDungeonEasyModeDesc1
+Если вас захватят, вас всегда спасут за плату.
+KinkyDungeonEasyModeDesc2
+Если вас захватят, рассчитывайте только на себя.
+KinkyDungeonStartGame
+Начать игру
+KinkyDungeonStartGameDesc
+Окончательно закрепите настройки. Покрепче!
+KinkyDungeonStartGameDescAdc
+Выберите навыки, чтобы разнообразить прохождение.
+KinkyDungeonConsent
+Игра собирает безопасную аналитику с вашего согласия.
+KinkyDungeonConsent2
+Данные о выбранных заклинаниях, достигнутых уровнях и других игровых событиях помогают улучшать игру и её баланс.
+KinkyDungeonConsent3
+Личные данные не передаются и не сохраняются.
+KDOptIn
+Согласиться
+KDOptOut
+Не отслеживать меня
+KinkyDungeonDamageTypecrush
+Дробящий
+KinkyDungeonDamageTypegravity
+Гравитация
+KinkyDungeonDamageTypepierce
+Колющий
+KinkyDungeonDamageTypeslash
+Режущий
+KinkyDungeonDamageTypepain
+Боль
+KinkyDungeonDamageTypesouldrain
+Истощение духа
+KinkyDungeonDamageTypedrain
+Истощение маны
+KinkyDungeonDamageTypeelectric
+Электричество
+KinkyDungeonDamageTypeshock
+Электрошок
+KinkyDungeonDamageTypestun
+Давление
+KinkyDungeonDamageTypechain
+Цепи
+KinkyDungeonDamageTypeunstoppable
+Неостановимый
+KinkyDungeonDamageTypeunflinching
+Непоколебимый
+KinkyDungeonInventoryItemPotionInvisibility
+Зелье невидимости
+KinkyDungeonInventoryItemPotionInvisibilityUse
+Вы выпиваете смесь и видите, как ваше тело исчезает.
+KinkyDungeonInventoryItemPotionInvisibilityDesc
+Вы чувствуете жидкость внутри, но не видите её!
+KinkyDungeonInventoryItemPotionInvisibilityDesc2
+Накладывает на вас «Исчезновение».
+KinkyDungeonInventoryItemEctoplasm
+Эктоплазма
+KinkyDungeonInventoryItemEctoplasmUse
+Как увлажняющий крем, только из сгустившихся душ.
+KinkyDungeonInventoryItemEctoplasmDesc
+Можно использовать без рук. Просто нанесите прямо на лоб!
+KinkyDungeonInventoryItemEctoplasmDesc2
+Вас труднее заметить в течение 10 ходов.
+KinkyDungeonInventoryItemEarthRune
+Руна земли
+KinkyDungeonInventoryItemEarthRuneUse
+Вы разбиваете руну перед собой, и из земли поднимаются светящиеся камни.
+KinkyDungeonInventoryItemEarthRuneDesc
+На неё неприятно смотреть.
+KinkyDungeonInventoryItemEarthRuneDesc2
+Создаёт вокруг вас область 3x3, дающую +20 брони на 9 ходов.
+KinkyDungeonInventoryItemWaterRune
+Руна воды
+KinkyDungeonInventoryItemWaterRuneUse
+Вы раздавливаете руну в руке, и она превращается в воду, заливающую пол.
+KinkyDungeonInventoryItemWaterRuneDesc
+На ощупь склизкая.
+KinkyDungeonInventoryItemWaterRuneDesc2
+Создаёт вокруг вас область 3x3 на 9 ходов. Даёт союзникам +30 магической брони и вдвое замедляет врагов.
+KinkyDungeonInventoryItemIceRune
+Руна льда
+KinkyDungeonInventoryItemIceRuneUse
+Вы разбиваете руну перед собой, и из пола вырываются сосульки!
+KinkyDungeonInventoryItemIceRuneDesc
+Холодная на ощупь.
+KinkyDungeonInventoryItemIceRuneDesc2
+Создаёт вокруг вас сосульки на 5-8 ходов. Они наносят 40 урона и замораживают на 3 хода.
+ItemPickupDollID
+Вы крадёте удостоверение куклы.
+KinkyDungeonInventoryItemDollID
+Удостоверение куклы
+KinkyDungeonInventoryItemDollIDUse
+С помощью хитрого приёма вы сбрасываете время перезарядки визора.
+KinkyDungeonInventoryItemDollIDDesc
+Чип для опознания кукол. Должно быть, она его обронила. В любом случае внутри ценная технология...
+KinkyDungeonInventoryItemDollIDDesc2
+С его помощью можно убедить визор, что вы уже некоторое время выполняли свои задачи.
+ItemPickupDonut
+Вы находите пончик с посыпкой!
+KinkyDungeonInventoryItemDonut
+Пончик с посыпкой
+KinkyDungeonInventoryItemDonutUse
+Вы едите пончик, наслаждаясь его сладостью.
+KinkyDungeonInventoryItemDonutDesc
+Вкусная жареная выпечка в сахарной глазури с посыпкой.
+KinkyDungeonInventoryItemDonutDesc2
+Восстанавливает 10% силы воли. На еду уходит несколько ходов.
+ItemPickupCookieJailer
+Вы подбираете сахарное печенье, покрытое розовой глазурью!
+KinkyDungeonInventoryItemCookieJailer
+Подарок хорошей девочке
+KinkyDungeonInventoryItemCookieJailerUse
+Вы медленно едите печенье, наслаждаясь его воздушной текстурой.
+KinkyDungeonInventoryItemCookieJailerDesc
+Оно соблазняет сладкими обещаниями, но что-то в нём не так...
+KinkyDungeonInventoryItemCookieJailerDesc2
+Восстанавливает 15% силы воли и добавляет +5 к покорности. На еду уходит несколько ходов.
+ItemPickupCookie
+Вы находите печенье с шоколадной крошкой!
+KinkyDungeonInventoryItemCookie
+Печенье с шоколадной крошкой
+KinkyDungeonInventoryItemCookieUse
+Вы наслаждаетесь каждым шоколадным кусочком печенья.
+KinkyDungeonInventoryItemCookieDesc
+Вкусная выпечка из масла, сахара и шоколадной крошки, запечённая до золотистого цвета.
+KinkyDungeonInventoryItemCookieDesc2
+Восстанавливает 10% силы воли. На еду уходит несколько ходов.
+KinkyDungeonConsumableLessEffective
+Кляп снизил эффективность зелья!
+NameOldDrone
+Ржавый дрон
+KillOldDrone
+Механизмы дрона со скрежетом останавливаются.
+AttackOldDroneBind
+Дрон разбирается на части, обнажая набор связывающих тросов! (+RestraintAdded)
+NameOldTapeDrone
+Ржавый обмотчик
+KillOldTapeDrone
+Механизмы обмотчика со скрежетом останавливаются.
+AttackOldTapeDrone
+Обмотчик добавляет новые слои липкой ленты! (DamageTaken)
+AttackOldTapeDroneBind
+Он обматывает вас множеством слоёв ленты! (+RestraintAdded)
+NameRubberTurret
+Резиновый бластер
+KillRubberTurret
+Турель теряет устойчивость и вот-вот зальёт всё вокруг резиной!
+AttackRubberTurret
+Турель защищается электрическим разрядом в упор! (DamageTaken)
+NameRubberSilo
+Резиновая пусковая установка
+KillRubberSilo
+Турель теряет устойчивость и вот-вот зальёт всё вокруг резиной!
+AttackRubberSilo
+Турель защищается электрическим разрядом в упор! (DamageTaken)
+AttackBanditChiefLock
+Бандитка посмеивается и надевает замок! (DamageTaken)
+KinkyDungeonVulnerable
+EnemyName уязвим и получает дополнительно AMOUNT базового урона!
+KinkyDungeonUnseen
+EnemyName не замечает вас и получает дополнительно AMOUNT базового урона!
+KinkyDungeonStealPick
+Враг крадёт у вас отмычку!
+KinkyDungeonStealKnife
+Враг отбирает ваш нож!
+KinkyDungeonStealRedKey
+Враг крадёт ключ с вашего тела!
+KinkyDungeonSealEnchKnife
+Враг вырывает ваш волшебный нож!
+KinkyDungeonStealBlueKey
+Враг отбирает ваш драгоценный волшебный ключ!
+KinkyDungeonStealItem
+Враг крадёт у вас один предмет: ITEMSTOLEN!
+KinkyDungeonStealBack
+Вы возвращаете украденные предметы.
+KinkyDungeonStealBackFail
+EnemyName удаётся отступить с вашими предметами!
+KinkyDungeonOrbSpell
+В сфере заключено знание заклинания SPELL.
+KinkyDungeonCapture
+Вы захватываете EnemyName. На экране репутации можно стать поборницей.
+KinkyDungeonCaptureBasic
+Вы захватываете EnemyName.
+KinkyDungeonCaptureGoddess
+Вы захватываете EnemyName во имя богини GODDESS.
+KinkyDungeonCaptureGoddessLowUniform
+Вы захватываете EnemyName, но богиня GODDESS предпочла бы видеть вас в своей форме (в её путах).
+KinkyDungeonCaptureGoddessNoneUniform
+Вы захватываете EnemyName, но богиня GODDESS требует, чтобы на вас было несколько сдерживающих предметов!
+KinkyDungeonCaptureGoddessLowRestraint
+Вы захватываете EnemyName, но богиня GODDESS предпочла бы видеть на вас путы.
+KinkyDungeonCaptureGoddessNoneRestraint
+Вы захватываете EnemyName, но богиня GODDESS требует, чтобы на вас было несколько сдерживающих предметов!
+KinkyDungeonCaptureMax
+Вы захватываете EnemyName, но лимит наград на этом этаже уже достигнут.
+KinkyDungeonSummonTrapMonster
+Мстительный дух внутри пут вырывается наружу, чтобы сеять хаос!
+KinkyDungeonBarrel
+Вы прячетесь внутри контейнера...
+KinkyDungeonScrap
+Это смятый кусок металлолома с острым краем.
+KinkyDungeonScrapUse
+Вы пытаетесь разрезать предмет обломком.
+KinkyDungeonScrapObjectUse
+Вы трёте предмет об острые края сломанного объекта...
+KinkyDungeonHookHigh
+На уровне плеч висит крюк.
+KinkyDungeonHookHighFail
+Крюк слишком высоко! Вы не можете дотянуться...
+KinkyDungeonHookLow
+На стене есть крюк.
+KinkyDungeonCrack
+Стена потрескалась.
+KinkyDungeonPlayCorner
+Вы трётесь об угол...
+KinkyDungeonRemoveLowLevelRope
+Вокруг вас появляются верёвки: они снимают с вас более слабые верёвки и связывают врагов!
+KinkyDungeonRemoveJailKey
+У вас отбирают ключ от лестницы!
+ItemPickupKeyring
+Вы нашли связку ключей от лестницы! Осталось до неё добраться.
+KinkyDungeonNeedJailKey
+Похоже, эта надёжная дверь заперта. Видимо, нужен ключ.
+KinkyDungeonRemindJailNurseBlock
+Ну-ну, нельзя же так сопротивляться~
+rFuukaDefensive_Question_Question_Question
+(SPEAKER наклоняет голову)|...Разве не умирают?
+dFuukaDefensive_Question_Question_Question
+Но люди больше не умирают.

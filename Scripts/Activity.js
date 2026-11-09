@@ -21,6 +21,10 @@ let ActivityTranslateResolve = undefined;
 
 let ActivityDebug = false;
 
+var TimerLastArousalProgress = 0;
+var TimerLastArousalProgressCount = 0;
+var TimerLastArousalDecay = 0;
+
 /**
  * Debug logging function for activities
  * @param {any[]} args
@@ -128,7 +132,7 @@ function ActivityHasValidTarget(char, act, group) {
  * @returns {boolean} whether the activity is permitted
  */
 function ActivityCheckPermissions(A, C, Other) {
-	if ((C.ArousalSettings == null) || (C.ArousalSettings.Activity == null)) return true;
+	if (C.ArousalSettings.Activity == null) return true;
 	return (PreferenceGetActivityFactor(C, A.Name, !Other) != 0);
 }
 
@@ -380,11 +384,7 @@ function ActivityAllowedForGroup(character, groupname) {
  * @returns {boolean} - TRUE if the activity can be done
  */
 function ActivityCanBeDone(C, Activity, Group) {
-	let ActList = ActivityAllowedForGroup(C, Group);
-	for (let A = 0; A < ActList.length; A++)
-		if (ActList[A].Activity.Name == Activity)
-			return true;
-	return false;
+	return ActivityAllowedForGroup(C, Group).some(a => a.Activity.Name === Activity);
 }
 
 /**
@@ -468,15 +468,14 @@ function ActivityChatRoomArousalSync(C) {
 }
 
 /**
- * Sets the character arousal level and validates the value
+ * Sets the character arousal level. Clamps the new value to 0-100.
  * @param {Character} C - The character for which to set the arousal progress of
  * @param {number} Progress - Progress to set for the character (Ranges from 0 to 100)
  * @returns {void} - Nothing
  */
 function ActivitySetArousal(C, Progress) {
-	if ((C.ArousalSettings.Progress == null) || (typeof C.ArousalSettings.Progress !== "number") || isNaN(C.ArousalSettings.Progress)) C.ArousalSettings.Progress = 0;
-	if ((Progress == null) || (Progress < 0)) Progress = 0;
-	if (Progress > 100) Progress = 100;
+	// Meter clicks can land outside 0-100
+	Progress = CommonIsFinite(Progress) ? CommonClamp(Math.round(Progress), 0, 100) : 0;
 	if (Progress == 0) C.ArousalSettings.OrgasmTimer = 0;
 	if (C.ArousalSettings.Progress != Progress) {
 		C.ArousalSettings.Progress = Progress;
@@ -497,10 +496,8 @@ function ActivitySetArousal(C, Progress) {
 function ActivitySetArousalTimer(C, Activity, Zone, Progress, Asset) {
 
 	// If there's already a progress timer running, we add it's value but divide it by 2 to lessen the impact, the progress must be between -25 and 25
-	if ((C.ArousalSettings.ProgressTimer == null) || (typeof C.ArousalSettings.ProgressTimer !== "number") || isNaN(C.ArousalSettings.ProgressTimer)) C.ArousalSettings.ProgressTimer = 0;
 	Progress = Math.round((C.ArousalSettings.ProgressTimer / 2) + Progress);
-	if (Progress < -25) Progress = -25;
-	if (Progress > 25) Progress = 25;
+	Progress = CommonClamp(Progress, -25, 25);
 
 	// Make sure we do not allow orgasms if the activity (MaxProgress or MaxProgressSelf) or the zone (AllowOrgasm) doesn't allow it
 	let Max = ((Activity == null || Activity.MaxProgress == null) || (Activity.MaxProgress > 100)) ? 100 : Activity.MaxProgress;
@@ -537,8 +534,7 @@ function ActivityOrgasmProgressBar(X, Y) {
 	let Pos = 0;
 	if ((ActivityOrgasmGameTimer != null) && (ActivityOrgasmGameTimer > 0) && (CurrentTime < Player.ArousalSettings.OrgasmTimer))
 		Pos = ((Player.ArousalSettings.OrgasmTimer - CurrentTime) / ActivityOrgasmGameTimer) * 100;
-	if (Pos < 0) Pos = 0;
-	if (Pos > 100) Pos = 100;
+	Pos = CommonClamp(Pos, 0, 100);
 	DrawProgressBar(X, Y, 900, 25, Pos);
 }
 
@@ -547,32 +543,30 @@ function ActivityOrgasmProgressBar(X, Y) {
  * @returns {void} - Nothing
  */
 function ActivityOrgasmControl() {
-	if ((ActivityOrgasmGameTimer != null) && (ActivityOrgasmGameTimer > 0) && (CurrentTime < Player.ArousalSettings.OrgasmTimer)) {
-		// Ruin the orgasm
-		if (ActivityOrgasmGameProgress >= ActivityOrgasmGameDifficulty - 1 || CurrentTime > Player.ArousalSettings.OrgasmTimer - 500) {
-			if (ServerPlayerIsInChatRoom()) {
-				if (CurrentTime > Player.ArousalSettings.OrgasmTimer - 500) {
-					if (Player.ArousalSettings.OrgasmStage == 0) {
-						ChatRoomMessage({ Content: "OrgasmFailPassive" + (Math.floor(Math.random() * 3)).toString(), Type: "Action", Sender: Player.MemberNumber });
-					} else {
-						const Dictionary = new DictionaryBuilder()
-							.sourceCharacter(Player)
-							.build();
-						ServerSend("ChatRoomChat", { Content: "OrgasmFailTimeout" + (Math.floor(Math.random() * 3)).toString(), Type: "Activity", Dictionary: Dictionary });
-						ActivityChatRoomArousalSync(Player);
-					}
-				} else {
-					const Dictionary = new DictionaryBuilder()
-						.sourceCharacter(Player)
-						.build();
-					ServerSend("ChatRoomChat", { Content: ("OrgasmFailResist" + (Math.floor(Math.random() * 3))).toString(), Type: "Activity", Dictionary: Dictionary });
-					ActivityChatRoomArousalSync(Player);
-				}
+	if (!CommonIsInteger(ActivityOrgasmGameTimer) || ActivityOrgasmGameTimer <= 0 || CurrentTime >= Player.ArousalSettings.OrgasmTimer) return;
+	// Ruin the orgasm only when the bar is full or the timer is about to expire
+	if (ActivityOrgasmGameProgress < ActivityOrgasmGameDifficulty - 1 && CurrentTime <= Player.ArousalSettings.OrgasmTimer - 500) return;
+	if (ServerPlayerIsInChatRoom()) {
+		if (CurrentTime > Player.ArousalSettings.OrgasmTimer - 500) {
+			if (Player.ArousalSettings.OrgasmStage == 0) {
+				ChatRoomMessage({ Content: "OrgasmFailPassive" + (Math.floor(Math.random() * 3)).toString(), Type: "Action", Sender: Player.MemberNumber });
+			} else {
+				const Dictionary = new DictionaryBuilder()
+					.sourceCharacter(Player)
+					.build();
+				ServerSend("ChatRoomChat", { Content: "OrgasmFailTimeout" + (Math.floor(Math.random() * 3)).toString(), Type: "Activity", Dictionary: Dictionary });
+				ActivityChatRoomArousalSync(Player);
 			}
-			ActivityOrgasmGameResistCount++;
-			ActivityOrgasmStop(Player, 65 + Math.ceil(Math.random()*20));
+		} else {
+			const Dictionary = new DictionaryBuilder()
+				.sourceCharacter(Player)
+				.build();
+			ServerSend("ChatRoomChat", { Content: ("OrgasmFailResist" + (Math.floor(Math.random() * 3))).toString(), Type: "Activity", Dictionary: Dictionary });
+			ActivityChatRoomArousalSync(Player);
 		}
 	}
+	ActivityOrgasmGameResistCount++;
+	ActivityOrgasmStop(Player, 65 + Math.ceil(Math.random()*20));
 }
 
 
@@ -582,10 +576,9 @@ function ActivityOrgasmControl() {
  * @returns {void} - Nothing
  */
 function ActivityOrgasmWillpowerProgress(C) {
-	if ((C.IsPlayer()) && (ActivityOrgasmGameProgress > 0)) {
-		SkillProgress(Player, "Willpower", ActivityOrgasmGameProgress);
-		ActivityOrgasmGameProgress = 0;
-	}
+	if (!C.IsPlayer() || ActivityOrgasmGameProgress <= 0) return;
+	SkillProgress(Player, "Willpower", ActivityOrgasmGameProgress);
+	ActivityOrgasmGameProgress = 0;
 }
 
 /**
@@ -594,34 +587,33 @@ function ActivityOrgasmWillpowerProgress(C) {
  * @returns {void} - Nothing
  */
 function ActivityOrgasmStart(C) {
-	if ((C.IsPlayer()) || C.IsNpc()) {
-		if (C.IsPlayer() && !ActivityOrgasmRuined) ActivityOrgasmGameResistCount = 0;
-		AsylumGGTSTOrgasm(C);
-		PrivateBedOrgasm(C);
-		ActivityOrgasmWillpowerProgress(C);
-		if (!ActivityOrgasmRuined) {
-			C.ArousalSettings.OrgasmTimer = CurrentTime + (Math.random() * 10000) + 5000;
-			C.ArousalSettings.OrgasmStage = 2;
-			C.ArousalSettings.OrgasmCount = (C.ArousalSettings.OrgasmCount == null) ? 1 : C.ArousalSettings.OrgasmCount + 1;
-			ActivityOrgasmGameTimer = C.ArousalSettings.OrgasmTimer - CurrentTime;
-			if (C.IsPlayer() && ServerPlayerIsInChatRoom()) {
+	if (!C.IsPlayer() && !C.IsNpc()) return;
+	if (C.IsPlayer() && !ActivityOrgasmRuined) ActivityOrgasmGameResistCount = 0;
+	AsylumGGTSOrgasm(C);
+	PrivateBedOrgasm(C);
+	ActivityOrgasmWillpowerProgress(C);
+	if (!ActivityOrgasmRuined) {
+		C.ArousalSettings.OrgasmTimer = CurrentTime + (Math.random() * 10000) + 5000;
+		C.ArousalSettings.OrgasmStage = 2;
+		C.ArousalSettings.OrgasmCount++;
+		ActivityOrgasmGameTimer = C.ArousalSettings.OrgasmTimer - CurrentTime;
+		if (C.IsPlayer() && ServerPlayerIsInChatRoom()) {
 
-				const Dictionary = new DictionaryBuilder()
-					.sourceCharacter(Player)
-					.build();
-				ServerSend("ChatRoomChat", { Content: "Orgasm" + (Math.floor(Math.random() * 10)).toString(), Type: "Activity", Dictionary: Dictionary });
-				ActivityChatRoomArousalSync(C);
-			}
-		} else {
-			ActivityOrgasmStop(Player, 65 + Math.ceil(Math.random() * 20));
-			if (C.IsPlayer() && ServerPlayerIsInChatRoom()) {
-				let ChatModifier = C.ArousalSettings.OrgasmStage == 1 ? "Timeout" : "Surrender";
-				const Dictionary = new DictionaryBuilder()
-					.sourceCharacter(Player)
-					.build();
-				ServerSend("ChatRoomChat", { Content: ("OrgasmFail" + ChatModifier + (Math.floor(Math.random() * 3))).toString(), Type: "Activity", Dictionary: Dictionary });
-				ActivityChatRoomArousalSync(C);
-			}
+			const Dictionary = new DictionaryBuilder()
+				.sourceCharacter(Player)
+				.build();
+			ServerSend("ChatRoomChat", { Content: "Orgasm" + (Math.floor(Math.random() * 10)).toString(), Type: "Activity", Dictionary: Dictionary });
+			ActivityChatRoomArousalSync(C);
+		}
+	} else {
+		ActivityOrgasmStop(Player, 65 + Math.ceil(Math.random() * 20));
+		if (C.IsPlayer() && ServerPlayerIsInChatRoom()) {
+			let ChatModifier = C.ArousalSettings.OrgasmStage == 1 ? "Timeout" : "Surrender";
+			const Dictionary = new DictionaryBuilder()
+				.sourceCharacter(Player)
+				.build();
+			ServerSend("ChatRoomChat", { Content: ("OrgasmFail" + ChatModifier + (Math.floor(Math.random() * 3))).toString(), Type: "Activity", Dictionary: Dictionary });
+			ActivityChatRoomArousalSync(C);
 		}
 	}
 }
@@ -633,14 +625,13 @@ function ActivityOrgasmStart(C) {
  * @returns {void} - Nothing
  */
 function ActivityOrgasmStop(C, Progress) {
-	if ((C.IsPlayer()) || C.IsNpc()) {
-		ActivityOrgasmWillpowerProgress(C);
-		C.ArousalSettings.OrgasmTimer = 0;
-		C.ArousalSettings.OrgasmStage = 0;
-		ActivitySetArousal(C, Progress);
-		ActivityTimerProgress(C, 0);
-		ActivityChatRoomArousalSync(C);
-	}
+	if (!C.IsPlayer() && !C.IsNpc()) return;
+	ActivityOrgasmWillpowerProgress(C);
+	C.ArousalSettings.OrgasmTimer = 0;
+	C.ArousalSettings.OrgasmStage = 0;
+	ActivitySetArousal(C, Progress);
+	ActivityTimerProgress(C, 0);
+	ActivityChatRoomArousalSync(C);
 }
 
 /**
@@ -815,8 +806,7 @@ function ActivityTimerProgress(C, Progress) {
 		}
 	}
 
-	if (C.ArousalSettings.Progress < 0) C.ArousalSettings.Progress = 0;
-	if (C.ArousalSettings.Progress > 100) C.ArousalSettings.Progress = 100;
+	C.ArousalSettings.Progress = CommonClamp(C.ArousalSettings.Progress, 0, 100);
 
 	// Update the recent change time, so that on other player's screens the character's arousal meter will vibrate again when vibes start
 	if (C.ArousalSettings.Progress == 0) {
@@ -824,7 +814,7 @@ function ActivityTimerProgress(C, Progress) {
 	}
 
 	// Out of orgasm mode, it can affect facial expressions at every 10 steps
-	if ((C.ArousalSettings.OrgasmTimer == null) || (typeof C.ArousalSettings.OrgasmTimer !== "number") || isNaN(C.ArousalSettings.OrgasmTimer) || (C.ArousalSettings.OrgasmTimer < CurrentTime))
+	if (C.ArousalSettings.OrgasmTimer < CurrentTime)
 		if ((C.ArousalSettings.Progress + ((Progress < 0) ? 1 : 0)) % 10 == 0)
 			ActivityExpression(C, C.ArousalSettings.Progress);
 
@@ -840,11 +830,9 @@ function ActivityTimerProgress(C, Progress) {
  * @returns {void} - Nothing
  */
 function ActivityVibratorLevel(C, Level) {
-	if (C.ArousalSettings != null) {
-		if (Level != C.ArousalSettings.VibratorLevel) {
-			C.ArousalSettings.VibratorLevel = Level;
-			C.ArousalSettings.ChangeTime = CommonTime();
-		}
+	if (Level != C.ArousalSettings.VibratorLevel) {
+		C.ArousalSettings.VibratorLevel = Level;
+		C.ArousalSettings.ChangeTime = CommonTime();
 	}
 }
 
@@ -859,13 +847,13 @@ function ActivityVibratorLevel(C, Level) {
  * @returns {void} - Nothing
  */
 function ActivityRunSelf(Source, Target, Activity, Group, Asset) {
-	if (((Player.ArousalSettings.Active == "Hybrid") || (Player.ArousalSettings.Active == "Automatic")) && Source.IsPlayer() && !Target.IsPlayer()) {
-		let Factor = (PreferenceGetActivityFactor(Player, Activity.Name, false) * 5) - 10; // Check how much the player likes the activity, from -10 to +10
-		Factor = Factor + Math.floor((Math.random() * 8)); // Random 0 to 7 bonus
-		if (Target.IsLoverOfPlayer()) Factor = Factor + Math.floor((Math.random() * 8)); // Another random 0 to 7 bonus if the target is the player's lover
-		ActivitySetArousalTimer(Player, Activity, "ActivityOnOther", Factor, Asset);
-		//ActivityRunLogic(Player, Target, Group, { Activity: Activity, Item: InventoryGet(Target, Group.Name), Group: Group.Name });
-	}
+	if (!Source.IsPlayer() || Target.IsPlayer()) return;
+	if (!PreferenceArousalIsActive(Player, ["Hybrid", "Automatic"])) return;
+
+	let Factor = (PreferenceGetActivityFactor(Player, Activity.Name, false) * 5) - 10; // Check how much the player likes the activity, from -10 to +10
+	Factor = Factor + Math.floor((Math.random() * 8)); // Random 0 to 7 bonus
+	if (Target.IsLoverOfPlayer()) Factor = Factor + Math.floor((Math.random() * 8)); // Another random 0 to 7 bonus if the target is the player's lover
+	ActivitySetArousalTimer(Player, Activity, "ActivityOnOther", Factor, Asset);
 }
 
 /**
@@ -1008,9 +996,158 @@ function ActivityFetishItemFactor(C, Type) {
  */
 function ActivityFetishFactor(C) {
 	let Factor = 0;
-	if ((C.ArousalSettings != null) && (C.ArousalSettings.Fetish != null) && (typeof C.ArousalSettings.Fetish == "string"))
+	if (typeof C.ArousalSettings.Fetish == "string")
 		for (let F of FetishFemale3DCG)
 			if (PreferenceGetFetishFactor(C, F.Name) != 2)
 				Factor = Factor + F.GetFactor(C);
 	return Factor;
+}
+
+/**
+ * Highest intensity among vibrating items that still affect progress. -1 when none qualify.
+ * @param {Character} C - The character to check
+ * @returns {number} - The highest intensity factor, or -1
+ */
+function ActivityEggFactor(C) {
+	let Factor = -1;
+	for (const item of C.Appearance) {
+		if (!InventoryItemHasEffect(item, "Egged", true)) continue;
+
+		const intensity = item.Property?.Intensity;
+		if (!CommonIsNonNegativeInteger(intensity)) continue;
+
+		const zoneFactor = PreferenceGetZoneFactor(C, item.Asset.ArousalZone) - 2;
+		if (zoneFactor < 0) continue;
+		if (C.ArousalSettings.Progress >= 95 && !PreferenceGetZoneOrgasm(C, item.Asset.ArousalZone)) continue;
+
+		Factor = Math.max(Factor, intensity + zoneFactor);
+	}
+	return Factor;
+}
+
+/**
+ * True when an activity progress timer is running and should drive arousal instead of vibrations.
+ * @param {number} progressTimer - The character's progress timer
+ * @returns {boolean}
+ */
+function ActivityHasProgressTimer(progressTimer) {
+	return progressTimer !== 0;
+}
+
+/**
+ * Applies an egg intensity factor to the vibrator level and, on the matching tick, to arousal progress.
+ * @param {Character} char - The character being stimulated
+ * @param {number} factor - Combined egg, zone, and fetish factor
+ * @returns {void} - Nothing
+ */
+function ActivityApplyEggFactor(char, factor) {
+	const count = TimerLastArousalProgressCount;
+	if (factor >= 4) {
+		ActivityVibratorLevel(char, 4);
+		if (count % 2 == 0) ActivityTimerProgress(char, 1);
+	}
+	if (factor == 3) {
+		ActivityVibratorLevel(char, 3);
+		if (count % 3 == 0) ActivityTimerProgress(char, 1);
+	}
+	if (factor == 2) {
+		ActivityVibratorLevel(char, 2);
+		if (char.ArousalSettings.Progress <= 95 && count % 4 == 0) ActivityTimerProgress(char, 1);
+	}
+	if (factor == 1) {
+		ActivityVibratorLevel(char, 1);
+		if (char.ArousalSettings.Progress <= 65 && count % 6 == 0) ActivityTimerProgress(char, 1);
+	}
+	if (factor == 0) {
+		ActivityVibratorLevel(char, 1);
+		if (char.ArousalSettings.Progress <= 35 && count % 8 == 0) ActivityTimerProgress(char, 1);
+	}
+	if (factor == -1) ActivityVibratorLevel(char, 0);
+}
+
+/**
+ * Advances one character's orgasm, activity progress, or vibrating items for this second.
+ * @param {Character} C - The character to update
+ * @returns {void} - Nothing
+ */
+function ActivityProgressCharacter(C) {
+	// If the character is having an orgasm and the timer ran out, move to the next orgasm stage
+	const arousalSettings = C.ArousalSettings;
+	if (arousalSettings.OrgasmTimer > 0) {
+		if (arousalSettings.OrgasmTimer < CurrentTime) {
+			if (arousalSettings.OrgasmStage <= 1) ActivityOrgasmStart(C);
+			else ActivityOrgasmStop(C, 20);
+		}
+		return;
+	}
+
+	// Depending on the character settings, progress the arousal meter
+	if (!PreferenceArousalAtLeast(C, "Hybrid")) {
+		ActivityVibratorLevel(C, 0);
+		return;
+	}
+
+	// Activity impacts the progress slowly over time. While an activity is running, vibrations are ignored
+	if (ActivityHasProgressTimer(arousalSettings.ProgressTimer)) {
+		if (arousalSettings.ProgressTimer < 0) {
+			arousalSettings.ProgressTimer++;
+			ActivityTimerProgress(C, -1);
+			ActivityVibratorLevel(C, 0);
+		} else {
+			arousalSettings.ProgressTimer--;
+			ActivityTimerProgress(C, 1);
+			ActivityVibratorLevel(C, 4);
+		}
+		return;
+	}
+
+	if (!C.IsEgged()) return;
+
+	let Factor = ActivityEggFactor(C);
+	// Adds the fetish value to the factor
+	if (Factor >= 0) {
+		const Fetish = ActivityFetishFactor(C);
+		if (Fetish > 0) Factor = Factor + Math.ceil(Fetish / 3);
+		if (Fetish < 0) Factor = Factor + Math.floor(Fetish / 3);
+	}
+
+	// Kicks the arousal timer faster from personal arousal
+	ActivityApplyEggFactor(C, Factor);
+}
+
+/**
+ * Lowers arousal by 1 when nothing else is already driving it.
+ * @param {Character} C - The character to update
+ * @returns {void} - Nothing
+ */
+function ActivityDecayCharacter(C) {
+	if (!PreferenceArousalAtLeast(C, "Hybrid")) return;
+	if (C.ArousalSettings.Progress === 0 || C.ArousalSettings.ProgressTimer !== 0) return;
+
+	// A vibrating item holds arousal, so decay only when none qualifies
+	if (ActivityEggFactor(C) < 0) ActivityTimerProgress(C, -1);
+}
+
+/**
+ * Arousal and activity timer tick. Called from the main timer loop.
+ * @returns {void} - Nothing
+ */
+function ActivityTimerProcess() {
+	// Arousal/Activity events only occur in allowed rooms
+	if (!ActivityAllowed()) return;
+
+	// Arousal can change every second, based on ProgressTimer
+	if ((TimerLastArousalProgress + 1000 < CurrentTime) || (TimerLastArousalProgress - 1000 > CurrentTime)) {
+		TimerLastArousalProgress = CurrentTime;
+		TimerLastArousalProgressCount++;
+		for (const char of Character)
+			ActivityProgressCharacter(char);
+	}
+
+	// Arousal decays by 1 naturally every 12 seconds, unless there's already a natural progression from an activity
+	if ((TimerLastArousalDecay + 12000 < CurrentTime) || (TimerLastArousalDecay - 12000 > CurrentTime)) {
+		TimerLastArousalDecay = CurrentTime;
+		for (const char of Character)
+			ActivityDecayCharacter(char);
+	}
 }

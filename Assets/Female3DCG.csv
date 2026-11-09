@@ -1481,6 +1481,11 @@ ItemMisc,WoodenMaidTray,Wooden Maid Tray
 ItemMisc,WoodenMaidTrayFull,Wooden Maid Tray Full
 ItemMisc,WoodenPaddle,Wooden Paddle
 ItemMisc,WoodenSign,Wooden Sign
+ItemMisc,Cat,Cat
+ItemMisc,Dog,Dog
+ItemMisc,Panda,Panda
+ItemMisc,Penguin,Penguin
+ItemMisc,Unicorn,Unicorn
 ItemMouth,,Mouth
 ItemMouth,AOMGag,Always Open Mouth Gag
 ItemMouth,AsylumMuzzle,Asylum Muzzle
@@ -1898,6 +1903,8 @@ Necklace,ElegantHeartNecklace,Elegant Heart Necklace
 Necklace,FlowerGarland,Flower Garland
 Necklace,FurScarf,Fur Scarf
 Necklace,IDCard,ID Card
+Necklace,InitialLocket,Initial Locket
+Necklace,PhoenixNecklace,Phoenix Necklace
 Necklace,Necklace1,Fancy Necklace
 Necklace,Necklace2,Beaded Necklace
 Necklace,Necklace3,Long Beaded Necklace

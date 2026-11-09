@@ -35,6 +35,8 @@ Game.load("../Scripts/BitString.js");
 Game.load("../Scripts/DictionaryBuilder.js");
 Game.load("../Screens/Online/ChatRoom/ChatRoom.js");
 Game.load("../Screens/Online/ChatRoom/ChatRoomMapView.js");
+Game.load("../Screens/Online/ChatRoom/MapColorPicker.js");
+Game.load("../Screens/Online/ChatRoom/MapDecals.js");
 
 Game.load("../Assets/MapData.js");
 Game.load("../Scripts/Map.js");
@@ -696,5 +698,269 @@ describe("map positions", () => {
 		expect(Game.MapIsPosition({ X: "1", Y: 0 })).toBe(false);
 		expect(Game.MapIsPosition({ X: 1 })).toBe(false);
 		expect(Game.MapIsPosition(null)).toBe(false);
+	});
+});
+
+describe("placed object settings", () => {
+	const map = () => Game.MapManager.Map;
+	const place = (x: number, y: number, id: number) => map().setObject(x, y, Game.MapDataGetObject(id));
+
+	beforeEach(() => {
+		Game.Player = { MemberNumber: 1 };
+		Game.ChatRoomData = { Admin: [1], MapData: Game.ChatRoomMapViewInitialize("Always") };
+		Game.MapManager.OnViewActivate();
+	});
+
+	it("only applies settings to the object placed there, within the limits", () => {
+		place(3, 4, 362);
+		place(3, 5, 362);
+		map().setObjectSettings(3, 4, { Rotation: 90, Size: 150 });
+		map().setObjectSettings(3, 5, { Rotation: 400, Size: 20 });
+		expect(map().getObjectSettings(3, 4)).toEqual({ ID: 362, Rotation: 90, Size: 150 });
+		expect(map().getObjectSettings(3, 5)).toBe(null);
+		place(3, 4, 365);
+		expect(map().getObjectSettings(3, 4)).toBe(null);
+	});
+
+	it("are sent to the room BitString-encoded, and read back", () => {
+		place(1, 1, 362);
+		place(2, 1, 150);
+		map().setObjectSettings(1, 1, { Rotation: 176, Size: 180 });
+		map().setObjectSettings(2, 1, { Colors: ["#3050E0", "Default"] });
+		map().updateGlobalMapData();
+		const encoded = Game.ChatRoomData.MapData.ObjectSettings;
+		expect(typeof encoded).toBe("string");
+		Game.MapManager.OnMapDataUpdated();
+		expect(map().getObjectSettings(1, 1)).toEqual({ ID: 362, Rotation: 176, Size: 180 });
+		expect(map().getObjectSettings(2, 1)).toEqual({ ID: 150, Colors: ["#3050E0", "Default"] });
+	});
+
+	it("drops the settings of objects no longer on their tile when the map is saved", () => {
+		place(1, 1, 362);
+		map().setObjectSettings(1, 1, { Rotation: 90 });
+		map().updateGlobalMapData();
+		expect(Game.ChatRoomData.MapData.ObjectSettings).toBeDefined();
+		place(1, 1, 365);
+		map().updateGlobalMapData();
+		expect(Game.ChatRoomData.MapData.ObjectSettings).toBeUndefined();
+	});
+
+	it("leaves functional objects, doors and empty space as they are", () => {
+		for (const [x, id] of [[1, 3520], [2, 4016], [3, 101]]) {
+			place(x, 1, id);
+			expect(map().setObjectSettings(x, 1, { Rotation: 10, Size: 150 })).toBe(false);
+			expect(map().getObjectSettings(x, 1)).toBe(null);
+		}
+		for (const id of [100, 101, 3520, 4016]) {
+			expect(Game.MapDataGetObject(id).CanBeCustomized).toBe(false);
+		}
+		expect(Game.MapDataGetObject(362).CanBeCustomized).toBeUndefined();
+	});
+
+	it("leaves out values back at their default", () => {
+		place(1, 1, 362);
+		map().setObjectSettings(1, 1, { Size: 150 });
+		map().setObjectSettings(1, 1, { Rotation: 30 });
+		map().setObjectSettings(1, 1, { Size: 100 });
+		expect(map().getObjectSettings(1, 1)).toEqual({ ID: 362, Rotation: 30 });
+		map().setObjectSettings(1, 1, { Rotation: 0 });
+		map().updateGlobalMapData();
+		expect(Game.ChatRoomData.MapData.ObjectSettings).toBeUndefined();
+	});
+
+	it("can be undone, one step per change or per slider drag", () => {
+		place(1, 1, 362);
+		map().setObjectSettings(1, 1, { Rotation: 30 });
+		map().setObjectSettings(1, 1, { Size: 120 });
+		map().setObjectSettings(1, 1, { Size: 150 }, false);
+		expect(map().undo()).toBe(true);
+		expect(map().getObjectSettings(1, 1)).toEqual({ ID: 362, Rotation: 30 });
+		expect(map().undo()).toBe(true);
+		expect(map().getObjectSettings(1, 1)).toBe(null);
+		expect(map().getObjectId(1, 1)).toBe(362);
+	});
+
+	it("only turns and sizes objects standing on their own", () => {
+		expect(Game.MapCanTransformObject(Game.MapDataGetObject(362))).toBe(true);
+		expect(Game.MapCanTransformObject(Game.MapDataGetObject(710))).toBe(false);
+		expect(Game.MapCanTransformObject(Game.MapDataGetObject(2033))).toBe(false);
+		expect(Game.MapCanTransformObject(Game.MapDataGetObject(3010))).toBe(false);
+		for (const id of [185, 186, 187, 188, 330, 331, 332, 333]) {
+			expect(Game.MapCanTransformObject(Game.MapDataGetObject(id))).toBe(false);
+		}
+		place(1, 1, 710);
+		expect(map().setObjectSettings(1, 1, { Rotation: 90, Size: 150 })).toBe(true);
+		expect(map().getObjectSettings(1, 1)).toBe(null);
+	});
+
+	describe("colors", () => {
+		const throne = Game.MapDataGetObject(150);
+		const couch = Game.MapDataGetObject(710);
+		const plainObject = Game.MapDataGetObject(151);
+		const pos = { X: 1, Y: 1 };
+
+		it("are defined as valid color layers in the map data", () => {
+			const range = (from: number, to: number) => Array.from({ length: to - from + 1 }, (_, i) => from + i);
+			const colorableIDs = [
+				130, 140, 150, 165, 220, 389, 403, 511, 560, 570, 630, 640, 650, 710, 720, 730, 740, 750,
+				1010, 1020, 1030, 1050, 1090, 3075, 3076, 3121, 5014,
+				...range(1110, 1119), ...range(1201, 1226), ...range(1301, 1309),
+			];
+			for (const object of colorableIDs.map(id => Game.MapDataGetObject(id))) {
+				const colorable = Game.MapGetColorableLayers(object);
+				expect(colorable.length).toBeGreaterThan(0);
+				for (const layer of colorable) {
+					expect(layer.DefaultColor).toMatch(/^#[0-9A-F]{6}$/i);
+				}
+				const names = object.Layers.map(l => l.Name);
+				expect(new Set(names).size).toBe(names.length);
+			}
+		});
+
+		it("give every object at least one layer once loaded", () => {
+			const objects = Array.from({ length: 6000 }, (_, id) => Game.MapGetDoodad("Object", id)).filter(Boolean);
+			expect(objects.length).toBeGreaterThan(100);
+			for (const object of objects) {
+				expect(object.Layers?.length).toBeGreaterThan(0);
+			}
+			expect(plainObject.Layers).toEqual([{ Name: "", IsColorable: false }]);
+			expect(Game.MapDataGetObject(1201).Layers).toEqual([{ Name: "", IsColorable: true, DefaultColor: "#FFFFFF" }]);
+			expect(Game.MapDataGetObject(730).Layers.map(l => l.IsColorable)).toEqual([true, false]);
+		});
+
+		it("are checked against the object's layers", () => {
+			expect(Game.MapIsValidObjectColors(["#3050E0", "Default"], throne)).toBe(true);
+			expect(Game.MapIsValidObjectColors(["#3050E0", "#ABC"], throne)).toBe(true);
+			expect(Game.MapIsValidObjectColors(["#3050E0", "Default"], plainObject)).toBe(false);
+			expect(Game.MapIsValidObjectColors(["#3050E0"], throne)).toBe(false);
+			expect(Game.MapIsValidObjectColors(["red", "Default"], throne)).toBe(false);
+			expect(Game.MapIsValidObjectColors(["#3050E0", "<b>red</b>"], throne)).toBe(false);
+			expect(Game.MapIsValidObjectColors(undefined, throne)).toBe(false);
+		});
+
+		it("fall back to the layers' default colors", () => {
+			place(1, 1, throne.ID);
+			expect(Game.MapGetObjectLayerColors(pos, throne)).toEqual(Game.MapGetColorableLayers(throne).map(l => l.DefaultColor));
+			map().setObjectSettings(1, 1, { Colors: ["#3050E0", "Default"] });
+			expect(Game.MapGetObjectLayerColors(pos, throne)).toEqual(["#3050E0", Game.MapGetColorableLayers(throne)[1].DefaultColor]);
+		});
+
+		it("are left out when they are all back at their default", () => {
+			place(1, 1, throne.ID);
+			map().setObjectSettings(1, 1, { Size: 150, Colors: ["#3050E0", "Default"] });
+			expect(map().getObjectSettings(1, 1)).toEqual({ ID: 150, Size: 150, Colors: ["#3050E0", "Default"] });
+			map().setObjectSettings(1, 1, { Colors: ["Default", "Default"] });
+			expect(map().getObjectSettings(1, 1)).toEqual({ ID: 150, Size: 150 });
+		});
+
+		it("only apply when valid, to the object they were picked for", () => {
+			place(1, 1, throne.ID);
+			place(2, 1, plainObject.ID);
+			map().setObjectSettings(1, 1, { Colors: ["#3050E0", "<b>red</b>"] });
+			expect(map().getObjectSettings(1, 1)).toBe(null);
+			map().setObjectSettings(2, 1, { Colors: ["#3050E0"] });
+			expect(map().getObjectSettings(2, 1)).toBe(null);
+		});
+
+		it("are written as six digits, short colors included", () => {
+			place(1, 1, throne.ID);
+			map().setObjectSettings(1, 1, { Colors: ["#ABC", "Default"] });
+			map().updateGlobalMapData();
+			Game.MapManager.OnMapDataUpdated();
+			expect(map().getObjectSettings(1, 1)).toEqual({ ID: 150, Colors: ["#AABBCC", "Default"] });
+		});
+
+		it("only paste a color format on the same object", () => {
+			const format = { ObjectID: throne.ID, Colors: ["#3050E0", "Default"] };
+			expect(Game.MapCanPasteColorFormat(format, throne)).toBe(true);
+			expect(Game.MapCanPasteColorFormat(format, couch)).toBe(false);
+			expect(Game.MapCanPasteColorFormat(format, plainObject)).toBe(false);
+			expect(Game.MapCanPasteColorFormat(null, throne)).toBe(false);
+			expect(Game.MapCanPasteColorFormat({ ObjectID: plainObject.ID, Colors: [] }, plainObject)).toBe(false);
+		});
+
+		it("paste a color format between objects with the same color layers", () => {
+			const letterA = Game.MapDataGetObject(1201);
+			const letterFormat = { ObjectID: letterA.ID, Colors: ["#E04080"] };
+			expect(Game.MapCanPasteColorFormat(letterFormat, Game.MapDataGetObject(1116))).toBe(true);
+			expect(Game.MapCanPasteColorFormat(letterFormat, Game.MapDataGetObject(1301))).toBe(true);
+			expect(Game.MapCanPasteColorFormat(letterFormat, throne)).toBe(false);
+			expect(Game.MapCanPasteColorFormat({ ObjectID: throne.ID, Colors: ["#3050E0", "Default"] }, letterA)).toBe(false);
+		});
+	});
+
+	describe("decals", () => {
+		const djBooth = 599;
+		const decal = (Name: string, extra = {}) => ({ Name, Description: Name, Layer: [{ Name: null }], ...extra });
+		beforeEach(() => {
+			// Only the decals are needed, not the whole asset list
+			const decals = [decal("VelvetBunny"), decal("SADollhouse"), decal("MissMariasManor", { Extended: true })];
+			Game.AssetGetDecals = () => decals.filter(d => !d.Extended);
+		});
+
+		it("go on objects whose data has a decal area", () => {
+			expect(Game.MapDataGetObject(djBooth).DecalArea).toHaveLength(4);
+			place(1, 1, djBooth);
+			place(2, 1, 362);
+			expect(map().setObjectSettings(1, 1, { Decal: "VelvetBunny" })).toBe(true);
+			expect(map().getObjectSettings(1, 1)).toEqual({ ID: djBooth, Decal: "VelvetBunny" });
+			map().setObjectSettings(2, 1, { Decal: "VelvetBunny" });
+			expect(map().getObjectSettings(2, 1)).toBe(null);
+		});
+
+		it("only take the decals other items can show", () => {
+			place(1, 1, djBooth);
+			map().setObjectSettings(1, 1, { Decal: "MissMariasManor" });
+			expect(map().getObjectSettings(1, 1)).toBe(null);
+			map().setObjectSettings(1, 1, { Decal: "NoSuchDecal" });
+			expect(map().getObjectSettings(1, 1)).toBe(null);
+		});
+
+		it("are sent to the room and kept through a map copy, along with the other settings", () => {
+			place(1, 1, djBooth);
+			map().setObjectSettings(1, 1, { Rotation: 30, Decal: "SADollhouse" });
+			map().updateGlobalMapData();
+			Game.MapManager.OnMapDataUpdated();
+			expect(map().getObjectSettings(1, 1)).toEqual({ ID: djBooth, Rotation: 30, Decal: "SADollhouse" });
+			const mapString = map().exportString();
+			Game.ChatRoomData = { Admin: [1], MapData: Game.ChatRoomMapViewInitialize("Always") };
+			Game.MapManager.OnViewActivate();
+			expect(map().importString(mapString)).toBe(true);
+			expect(map().getObjectSettings(1, 1)).toEqual({ ID: djBooth, Rotation: 30, Decal: "SADollhouse" });
+		});
+
+		it("can be tinted, the color going with the decal", () => {
+			place(1, 1, djBooth);
+			map().setObjectSettings(1, 1, { Decal: "VelvetBunny", DecalColor: "#C040FF" });
+			map().updateGlobalMapData();
+			Game.MapManager.OnMapDataUpdated();
+			expect(map().getObjectSettings(1, 1)).toEqual({ ID: djBooth, Decal: "VelvetBunny", DecalColor: "#C040FF" });
+			map().setObjectSettings(1, 1, { DecalColor: "red" as any });
+			expect(map().getObjectSettings(1, 1)).toEqual({ ID: djBooth, Decal: "VelvetBunny" });
+			map().setObjectSettings(1, 1, { DecalColor: "#C040FF" });
+			map().setObjectSettings(1, 1, { Decal: undefined });
+			expect(map().getObjectSettings(1, 1)).toBe(null);
+		});
+
+		it("can be taken off and undone", () => {
+			place(1, 1, djBooth);
+			map().setObjectSettings(1, 1, { Decal: "VelvetBunny" });
+			map().setObjectSettings(1, 1, { Decal: undefined });
+			expect(map().getObjectSettings(1, 1)).toBe(null);
+			expect(map().undo()).toBe(true);
+			expect(map().getObjectSettings(1, 1)).toEqual({ ID: djBooth, Decal: "VelvetBunny" });
+		});
+	});
+
+	it("keeps the settings through a map copy and paste", () => {
+		place(1, 1, 362);
+		map().setObjectSettings(1, 1, { Rotation: 176, Size: 180 });
+		map().updateGlobalMapData();
+		const mapString = map().exportString();
+		Game.ChatRoomData = { Admin: [1], MapData: Game.ChatRoomMapViewInitialize("Always") };
+		Game.MapManager.OnViewActivate();
+		expect(map().importString(mapString)).toBe(true);
+		expect(map().getObjectSettings(1, 1)).toEqual({ ID: 362, Rotation: 176, Size: 180 });
+		expect(map().getObjectId(1, 1)).toBe(362);
 	});
 });

@@ -1,0 +1,78 @@
+Title
+Оформление комнаты
+Desc
+Здесь можно выбрать собственные фоновые изображения и музыку для комнаты, загрузив внешние ресурсы. Игрокам потребуется включить это оформление вручную.
+TitleMusicLibrary
+Подборка музыки, не защищённой авторским правом, которую можно использовать.
+BackgroundImageLabel
+Собственное фоновое изображение:
+BackgroundImageNote
+Можно использовать и ресурсы игры, например https://bondageprojects.com/images/school.jpg или Screens/Room/Platform/Background/Savannah/TentInterior.jpg
+BackgroundImageFillModeLabel
+Выберите способ заполнения фоном:
+BackgroundSizeModeFill
+Заполнить комнату
+BackgroundSizeModeFillOriginalRatio
+Заполнить комнату с сохранением пропорций
+BackgroundSizeModeShowFullOriginalRatio
+Всё изображение с сохранением пропорций
+BackgroundFilterLabel
+Цветовой фильтр:
+BackgroundFilterNote
+Поверх фона можно наложить цветовой фильтр. Например, #00000080 приглушает свет.
+BackgroundMusicLabel
+Собственная музыка:
+BackgroundMusicNote
+Укажите адрес файла фоновой музыки в формате mp3.
+BackgroundMusicSync
+Синхронизировать музыку для всех в комнате
+ResetButtonTooltip
+Сбросить
+OpenLibraryButtonTooltip
+Библиотека
+MusicPlay
+Воспроизвести
+MusicPause
+Пауза
+ClearButtonTooltip
+Очистить всё
+SaveButtonTooltip
+Сохранить
+CancelButtonTooltip
+Отмена
+Return
+Назад
+MusicLibraryFantasyAmbience
+Атмосфера фэнтези
+MusicLibraryHorrorAmbience
+Атмосфера ужасов
+MusicLibraryWesternAmbience
+Атмосфера вестерна
+MusicLibraryPop2020
+Поп-музыка 2020
+MusicLibraryPop2022
+Поп-музыка 2022
+MusicLibraryProgressiveHouse2022
+Прогрессив-хаус 2022
+MusicLibraryMetalInstrumental2021
+Инструментальный метал 2021
+MusicLibraryElectroDance2022
+Танцевальная электроника 2022
+MusicLibraryElectroDance2023
+Танцевальная электроника 2023
+MusicLibraryElectroRoyKnox
+Электроника от Roy Knox
+MusicLibraryDanceElectroPop
+Танцевальный электропоп
+MusicLibraryDarkTechno
+Дарк-техно
+SectionBackground
+Фон
+SectionMusic
+Музыка
+FillModeShort
+Заполнение
+PreviewEmpty
+Нет фонового изображения
+MusicSource
+Источник

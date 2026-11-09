@@ -412,3 +412,19 @@ How can I help you?
 ###_PLAYER
 (Check the battles.)
 (Проверьте сражения.)
+Can I tie you up if I win?
+Можно я свяжу тебя, если выиграю?
+(Play Club Card with her.)
+(Сыграть с ней в клубные карты.)
+Are you also a card player?
+Ты тоже играешь в карты?
+Lots of LARP players also play Club Card.  Would you like to do a game?
+Многие любители ролевых боёв играют и в клубные карты. Сыграем?
+(She shakes her head no.)  I have a LARP session soon.  Let's play without stakes.
+(Она отрицательно качает головой.) У меня скоро ролевая игра. Давай без ставок.
+Let's focus on LARP games.  We can play cards later.
+Давай сосредоточимся на ролевых играх. В карты сыграем позже.
+Well done, you're a card Mistress.  It's a good thing we haven't bet anything on that game.  (She winks at you.)
+Молодец, ты настоящая госпожа карт. Хорошо, что мы играли без ставок. (Она подмигивает вам.)
+Good game girl!   Don't be sad for losing, my deck has been studied carefully.  Another match?
+Хорошая партия, девочка! Не грусти из-за поражения: моя колода тщательно продумана. Ещё раз?

@@ -355,3 +355,23 @@ Can I eat with you?
 ###_NPC
 Sure, if that line gets moving before the bell rings.
 Конечно, если эта очередь сдвинется до того, как прозвенит звонок.
+(She frowns.)  Hey ex-slut.  Don't you dare cut in front of me.
+(Она хмурится.) Эй, бывшая шлюха. Не смей лезть передо мной без очереди.
+Yeah, I spent all my money on we...  on schoolbooks.  Can I borrow ${money=-20} from you?  I'll repay you next week.
+Да, я потратила все деньги на тра... на учебники. Одолжишь мне ${money=-20}? Верну на следующей неделе.
+${money=-20} for a good meal, can I borrow it from you?  I'll repay you next week.
+На хороший обед нужно ${money=-20}. Одолжишь? Верну на следующей неделе.
+Here's ${money=-20}, repay me next week.
+Вот ${money=-20}, верни на следующей неделе.
+Here's ${money=-20}, no need to repay me.
+Вот ${money=-20}, возвращать не нужно.
+Not ${money=-40}, but I can give you another ${money=-20}.
+Не ${money=-40}, но ещё ${money=-20} дать могу.
+Here's ${money=-40} for your "supper".
+Вот ${money=-40} на твой «ужин».
+Thanks!  (She takes your ${money=-20}.)  Come to think of it, can I borrow ${money=-40} more for boo... supper later?
+Спасибо! (Она забирает ваши ${money=-20}.) Кстати, можно одолжить ещё ${money=-40} на бу... на ужин попозже?
+Fuck yeah!  (She takes your ${money=-20}.)  Come to think of it, can I borrow ${money=-40} more for boo... for supper later?
+Охренеть, да! (Она забирает ваши ${money=-20}.) Кстати, можно одолжить ещё ${money=-40} на бу... на ужин попозже?
+(She nods as a teacher lectures both of you on fighting and makes sure you won't do it again.)
+(Она кивает, пока преподаватель отчитывает вас обеих за драку и убеждается, что это не повторится.)

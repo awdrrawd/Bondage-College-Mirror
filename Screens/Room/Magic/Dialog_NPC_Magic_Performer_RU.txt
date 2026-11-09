@@ -1,4 +1,4 @@
-﻿###_NPC
+###_NPC
 Speak more clearly if you want something.
 Говорите четко, если вы хотите что-то.
 (She willingly opens her mouth.)
@@ -324,3 +324,13 @@ Applause for both of them.
 ###_PLAYER
 Goodbye, I'm leaving the show.
 До свидания, я ухожу из шоу.
+(She gives you the income of $REPLACEMONEY.)
+(Она передаёт вам заработанные $REPLACEMONEY.)
+(She gives you the income of $REPLACEMONEY.) Will you come back?
+(Она передаёт вам заработанные $REPLACEMONEY.) Вы ещё вернётесь?
+(You get $REPLACEMONEY.)
+(Вы получаете $REPLACEMONEY.)
+(She gives you the income of $REPLACEMONEY.) Thank you so much.
+(Она передаёт вам заработанные $REPLACEMONEY.) Огромное спасибо.
+(She gives you the income of $REPLACEMONEY.) Thanks for the show.
+(Она передаёт вам заработанные $REPLACEMONEY.) Спасибо за представление.

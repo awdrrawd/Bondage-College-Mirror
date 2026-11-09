@@ -8005,6 +8005,52 @@ var AssetFemale3DCG = [
 		PreviewZone: [165, 170, 170, 170],
 		Asset: [
 			{
+				Name: "InitialLocket",
+				Left: 220,
+				Top: 215,
+				Random: false,
+				ParentGroup: "",
+				DynamicAfterDraw: true,
+				Layer: [
+					{ Name: "Chain", StyleOverride: ["EchoV2"], Color: ["#9F9686"] },
+					{ Name: "PendantMetal", Color: ["#9F9686"] },
+					{ Name: "MetalShine", Color: ["#E7DEEC"] },
+					{ Name: "Face", Color: ["#200045"] },
+					{ Name: "FaceShine", Color: ["#8B6BB0"] },
+					{ Name: "Gem", Color: ["#580000"] },
+					{ Name: "GemShine", Color: ["#EC9990"] },
+					{ Name: "Text", HasImage: false, Color: ["#D8BFEB"] },
+					{
+						Name: "ChainBack",
+						StyleOverride: ["EchoV2"],
+						Priority: 4,
+						CopyLayerColor: "Chain",
+					},
+				],
+			},
+			{
+				Name: "PhoenixNecklace",
+				Left: 220,
+				Top: 215,
+				Random: false,
+				ParentGroup: "",
+				Layer: [
+					{ Name: "Chain", StyleOverride: ["EchoV2"], Color: ["#DDA336"] },
+					{ Name: "PendantMetal", Color: ["#8C9299"] },
+					{ Name: "MetalShine" },
+					{ Name: "WingGem", Color: ["#200045"] },
+					{ Name: "WingShine", Color: ["#A68AC7"] },
+					{ Name: "TailGem", Color: ["#580000"] },
+					{ Name: "TailShine", Color: ["#C27A82"] },
+					{
+						Name: "ChainBack",
+						StyleOverride: ["EchoV2"],
+						Priority: 4,
+						CopyLayerColor: "Chain",
+					},
+				],
+			},
+			{
 				Name: "Necklace1",
 				InventoryID: 186,
 				Value: 40,
@@ -50708,12 +50754,14 @@ var AssetFemale3DCG = [
 						PoseMapping: {
 							BackCuffs: PoseType.HIDE,
 						},
+						ColorGroup: "WristBase",
 					},
 					{
 						Name: "WristShine",
 						Color: ["#CCCCCC"],
 						AllowTypes: { w: 1 },
 						CopyLayerPoseMapping: "WristBase",
+						ColorGroup: "WristShine",
 					},
 					{
 						Name: "WristBaseFitted",
@@ -50734,12 +50782,14 @@ var AssetFemale3DCG = [
 						Color: ["#222222"],
 						AllowTypes: { t: 0 },
 						CopyLayerPoseMapping: "WristBase",
+						ColorGroup: "MittBase",
 					},
 					{
 						Name: "Shine",
 						Color: ["#CCCCCC"],
 						AllowTypes: { t: 0 },
 						CopyLayerPoseMapping: "WristBase",
+						ColorGroup: "MittShine",
 					},
 					{
 						Name: "BalloonBase",
@@ -50758,6 +50808,7 @@ var AssetFemale3DCG = [
 						Color: ["#CCCCCC"],
 						AllowTypes: { t: 2 },
 						CopyLayerPoseMapping: "WristBase",
+						ColorGroup: "Nozzle",
 					},
 					// Patterns
 					{
@@ -50771,12 +50822,14 @@ var AssetFemale3DCG = [
 							AllFours: PoseType.HIDE,
 							TapedHands: PoseType.HIDE,
 						},
+						ColorGroup: "Pattern",
 					},
 					{
 						Name: "PumpkinShine",
 						Color: ["#CCCC33"],
 						AllowTypes: { r: [1, 2], t: 0 },
 						CopyLayerPoseMapping: "Pumpkin",
+						ColorGroup: "PatternShine",
 					},
 					{
 						Name: "PumpkinTop",
@@ -50936,12 +50989,14 @@ var AssetFemale3DCG = [
 						Color: ["#222222"],
 						AllowTypes: { w: 1 },
 						Priority: 34,
+						ColorGroup: "WristBase",
 					},
 					{
 						Name: "WristShineLeft",
 						Color: ["#CCCCCC"],
 						AllowTypes: { w: 1 },
 						Priority: 34,
+						ColorGroup: "WristShine",
 					},
 					{
 						Name: "WristBaseFittedLeft",
@@ -50961,11 +51016,13 @@ var AssetFemale3DCG = [
 						Name: "BaseLeft",
 						Color: ["#222222"],
 						AllowTypes: { t: 0 },
+						ColorGroup: "MittBase",
 					},
 					{
 						Name: "ShineLeft",
 						Color: ["#CCCCCC"],
 						AllowTypes: { t: 0 },
+						ColorGroup: "MittShine",
 					},
 					{
 						Name: "BalloonBaseLeft",
@@ -50981,6 +51038,7 @@ var AssetFemale3DCG = [
 						Name: "NozzleLeft",
 						Color: ["#CCCCCC"],
 						AllowTypes: { t: 2 },
+						ColorGroup: "Nozzle",
 					},
 					// Patterns
 					{
@@ -50993,12 +51051,14 @@ var AssetFemale3DCG = [
 							AllFours: PoseType.HIDE,
 							TapedHands: PoseType.HIDE,
 						},
+						ColorGroup: "Pattern",
 					},
 					{
 						Name: "PumpkinShineLeft",
 						Color: ["#CCCC33"],
 						AllowTypes: { l: [1, 2], t: 0 },
 						CopyLayerPoseMapping: "PumpkinLeft",
+						ColorGroup: "PatternShine",
 					},
 					{
 						Name: "PumpkinTopLeft",
@@ -51016,7 +51076,6 @@ var AssetFemale3DCG = [
 						CopyLayerColor: "PumpkinShineLeft",
 						CopyLayerPoseMapping: "PumpkinTopLeft",
 					},
-
 					{
 						Name: "BalloonPumpkinLeft",
 						AllowTypes: { l: [1, 2], t: [1, 2] },
@@ -51074,7 +51133,6 @@ var AssetFemale3DCG = [
 						CopyLayerColor: "PumpkinShineLeft",
 						CopyLayerPoseMapping: "PumpkinTopLeft",
 					},
-
 					{
 						Name: "BalloonSmileyLeft",
 						AllowTypes: { l: [3, 4], t: [1, 2] },
@@ -51099,7 +51157,6 @@ var AssetFemale3DCG = [
 						CopyLayerColor: "PumpkinShineLeft",
 						CopyLayerPoseMapping: "BalloonPumpkinTopLeft",
 					},
-
 					{
 						Name: "SplitLeft",
 						AllowTypes: { l: 5, t: 0 },
@@ -51120,7 +51177,6 @@ var AssetFemale3DCG = [
 						AllowTypes: { l: 5, t: [1, 2] },
 						CopyLayerColor: "PumpkinShineLeft",
 					},
-
 					{
 						Name: "QuartersLeft",
 						AllowTypes: { l: 6, t: 0 },
@@ -54103,6 +54159,36 @@ var AssetFemale3DCG = [
 						AllowTypes: { a: 1 },
 					},
 				],
+			},
+			{
+				Name: "Cat",
+				CopyConfig: { GroupName: "ItemMisc", AssetName: "Cat" },
+				ParentGroup: "",
+				DynamicGroupName: "ItemMisc",
+			},
+			{
+				Name: "Dog",
+				CopyConfig: { GroupName: "ItemMisc", AssetName: "Dog" },
+				ParentGroup: "",
+				DynamicGroupName: "ItemMisc",
+			},
+			{
+				Name: "Panda",
+				CopyConfig: { GroupName: "ItemMisc", AssetName: "Panda" },
+				ParentGroup: "",
+				DynamicGroupName: "ItemMisc",
+			},
+			{
+				Name: "Penguin",
+				CopyConfig: { GroupName: "ItemMisc", AssetName: "Penguin" },
+				ParentGroup: "",
+				DynamicGroupName: "ItemMisc",
+			},
+			{
+				Name: "Unicorn",
+				CopyConfig: { GroupName: "ItemMisc", AssetName: "Unicorn" },
+				ParentGroup: "",
+				DynamicGroupName: "ItemMisc",
 			},
 		],
 		Color: [
@@ -67647,6 +67733,94 @@ var AssetFemale3DCG = [
 					OriginalName: "南瓜盆",
 					License: "CC BY-SA-NC 4.0",
 				},
+			},
+			{
+				Name: "Cat",
+				Priority: 34,
+				Difficulty: -10,
+				Time: 1,
+				Random: false,
+				Left: 162,
+				Top: { [PoseType.DEFAULT]: 286, Suspension: 286 },
+				PoseMapping: { Hogtied: PoseType.HIDE, AllFours: PoseType.HIDE },
+				Layer: [
+					{ Name: "Fur", Color: ["#282828"] },
+					{ Name: "Patches", Color: ["#262626"] },
+					{ Name: "PawPads" },
+					{ Name: "Skin" },
+					{ Name: "Eye" },
+					{ Name: "EyeShine" },
+					{ Name: "Nose", Color: ["#B86F6F"] },
+					{ Name: "NoseShine", Color: ["#CC8181"] },
+					{ Name: "Pupils" },
+				],
+			},
+			{
+				Name: "Dog",
+				CopyConfig: { GroupName: "ItemMisc", AssetName: "Cat" },
+				Layer: [
+					{ Name: "Fur", Color: ["#544232"] },
+					{ Name: "Patches", Color: ["#6F6F6F"] },
+					{ Name: "PawPads" },
+					{ Name: "Skin" },
+					{ Name: "Eye" },
+					{ Name: "EyeShine" },
+					{ Name: "Nose" },
+					{ Name: "NoseShine" },
+					{ Name: "Claws" },
+					{ Name: "EyeWhites" },
+					{ Name: "Pupils" },
+				],
+			},
+			{
+				Name: "Panda",
+				CopyConfig: { GroupName: "ItemMisc", AssetName: "Cat" },
+				Layer: [
+					{ Name: "Fur" },
+					{ Name: "Patches" },
+					{ Name: "PawPads" },
+					{ Name: "Skin" },
+					{ Name: "Eye" },
+					{ Name: "EyeShine" },
+					{ Name: "Nose" },
+					{ Name: "NoseShine" },
+					{ Name: "EyeWhites" },
+					{ Name: "Pupils" },
+				],
+			},
+			{
+				Name: "Penguin",
+				CopyConfig: { GroupName: "ItemMisc", AssetName: "Cat" },
+				Layer: [
+					{ Name: "Fur" },
+					{ Name: "Patches" },
+					{ Name: "Beak" },
+					{ Name: "Feet" },
+					{ Name: "Eye", Color: ["#7700FF"] },
+					{ Name: "EyeShine" },
+					{ Name: "BeakShine" },
+					{ Name: "EyeWhites" },
+					{ Name: "Pupils" },
+				],
+			},
+			{
+				Name: "Unicorn",
+				CopyConfig: { GroupName: "ItemMisc", AssetName: "Cat" },
+				Layer: [
+					{ Name: "Fur" },
+					{ Name: "Patches" },
+					{ Name: "Muzzle" },
+					{ Name: "Mane", Color: ["#200045"] },
+					{ Name: "Tail", Color: ["#580000"] },
+					{ Name: "Skin" },
+					{ Name: "Hooves" },
+					{ Name: "Horn" },
+					{ Name: "Eye" },
+					{ Name: "EyeShine" },
+					{ Name: "HornShine" },
+					{ Name: "EyeWhites" },
+					{ Name: "Pupils" },
+				],
 			},
 		],
 		Color: ["Default"],

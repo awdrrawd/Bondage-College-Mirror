@@ -1,0 +1,330 @@
+GGTSFailureStrike0
+[GGTS] SourceCharacter не выполнила приказ. Нарушение зафиксировано. Вычтено шестьдесят минут.
+GGTSFailureStrike1
+[GGTS] SourceCharacter не выполнила приказ. Первое нарушение зафиксировано. Три нарушения означают наказание.
+GGTSFailureStrike2
+[GGTS] SourceCharacter не выполнила приказ. Второе нарушение зафиксировано. Три нарушения означают наказание.
+GGTSFailureStrike3
+[GGTS] SourceCharacter не выполнила приказ. Третье нарушение зафиксировано. Уровень провален. Явитесь к GGTS для наказания.
+GGTSForbiddenWordStrike0
+[GGTS] SourceCharacter произнесла запрещённое слово. Нарушение зафиксировано. Вычтено шестьдесят минут.
+GGTSForbiddenWordStrike1
+[GGTS] SourceCharacter произнесла запрещённое слово. Первое нарушение зафиксировано. Три нарушения означают наказание.
+GGTSForbiddenWordStrike2
+[GGTS] SourceCharacter произнесла запрещённое слово. Второе нарушение зафиксировано. Три нарушения означают наказание.
+GGTSForbiddenWordStrike3
+[GGTS] SourceCharacter произнесла запрещённое слово. Третье нарушение зафиксировано. Уровень провален. Явитесь к GGTS для наказания.
+GGTSKeepPoseStrike0
+[GGTS] SourceCharacter нарушила правило сохранения позы. Нарушение зафиксировано. Вычтено шестьдесят минут.
+GGTSKeepPoseStrike1
+[GGTS] SourceCharacter нарушила правило сохранения позы. Первое нарушение зафиксировано. Три нарушения означают наказание.
+GGTSKeepPoseStrike2
+[GGTS] SourceCharacter нарушила правило сохранения позы. Второе нарушение зафиксировано. Три нарушения означают наказание.
+GGTSKeepPoseStrike3
+[GGTS] SourceCharacter нарушила правило сохранения позы. Третье нарушение зафиксировано. Уровень провален. Явитесь к GGTS для наказания.
+GGTSOrgasmStrike0
+[GGTS] SourceCharacter нарушила запрет на оргазм. Нарушение зафиксировано. Вычтено шестьдесят минут.
+GGTSOrgasmStrike1
+[GGTS] SourceCharacter нарушила запрет на оргазм. Первое нарушение зафиксировано. Три нарушения означают наказание.
+GGTSOrgasmStrike2
+[GGTS] SourceCharacter нарушила запрет на оргазм. Второе нарушение зафиксировано. Три нарушения означают наказание.
+GGTSOrgasmStrike3
+[GGTS] SourceCharacter нарушила запрет на оргазм. Третье нарушение зафиксировано. Уровень провален. Явитесь к GGTS для наказания.
+GGTSTimeOverStrike0
+[GGTS] Время SourceCharacter истекло. Нарушение зафиксировано. Вычтено шестьдесят минут.
+GGTSTimeOverStrike1
+[GGTS] Время SourceCharacter истекло. Первое нарушение зафиксировано. Три нарушения означают наказание.
+GGTSTimeOverStrike2
+[GGTS] Время SourceCharacter истекло. Второе нарушение зафиксировано. Три нарушения означают наказание.
+GGTSTimeOverStrike3
+[GGTS] Время SourceCharacter истекло. Третье нарушение зафиксировано. Уровень провален. Явитесь к GGTS для наказания.
+GGTSTaskActivityBite
+[GGTS] SourceCharacter. Укусите себя.
+GGTSTaskActivityBiteTarget
+[GGTS] SourceCharacter. Укусите TargetCharacter.
+GGTSTaskActivityCaress
+[GGTS] SourceCharacter. Приласкайте себя.
+GGTSTaskActivityCaressTarget
+[GGTS] SourceCharacter. Приласкайте TargetCharacter.
+GGTSTaskActivityHandGag
+[GGTS] SourceCharacter. Прикройте себе рот рукой.
+GGTSTaskActivityHandGagTarget
+[GGTS] SourceCharacter. Прикройте рукой рот TargetCharacter.
+GGTSTaskActivityKiss
+[GGTS] SourceCharacter. Поцелуйте себя.
+GGTSTaskActivityKissTarget
+[GGTS] SourceCharacter. Поцелуйте TargetCharacter.
+GGTSTaskActivityLick
+[GGTS] SourceCharacter. Лизните себя.
+GGTSTaskActivityLickTarget
+[GGTS] SourceCharacter. Лизните TargetCharacter.
+GGTSTaskActivityMasturbateHand
+[GGTS] SourceCharacter. Помастурбируйте.
+GGTSTaskActivityMasturbateHandTarget
+[GGTS] SourceCharacter. Помастурбируйте TargetCharacter.
+GGTSTaskActivityPet
+[GGTS] SourceCharacter. Погладьте себя.
+GGTSTaskActivityPetTarget
+[GGTS] SourceCharacter. Погладьте TargetCharacter.
+GGTSTaskActivityPinch
+[GGTS] SourceCharacter. Ущипните себя.
+GGTSTaskActivityPinchTarget
+[GGTS] SourceCharacter. Ущипните TargetCharacter.
+GGTSTaskActivitySpank
+[GGTS] SourceCharacter. Отшлёпайте себя.
+GGTSTaskActivitySpankTarget
+[GGTS] SourceCharacter. Отшлёпайте TargetCharacter.
+GGTSTaskActivityTickle
+[GGTS] SourceCharacter. Пощекочите себя.
+GGTSTaskActivityTickleTarget
+[GGTS] SourceCharacter. Пощекочите TargetCharacter.
+GGTSTaskItemArmsFeetFuturisticCuffs
+[GGTS] SourceCharacter. Наденьте футуристические манжеты на руки, ноги и лодыжки.
+GGTSTaskItemArmsFeetFuturisticCuffsTarget
+[GGTS] SourceCharacter. Наденьте футуристические манжеты на руки, ноги и лодыжки на TargetCharacter.
+GGTSTaskItemArmsFuturisticArmbinder
+[GGTS] SourceCharacter. Наденьте футуристический монорукав.
+GGTSTaskItemArmsFuturisticArmbinderTarget
+[GGTS] SourceCharacter. Наденьте футуристический монорукав на TargetCharacter.
+GGTSTaskItemArmsFuturisticCuffs
+[GGTS] SourceCharacter. Наденьте футуристические манжеты на руки.
+GGTSTaskItemArmsFuturisticCuffsTarget
+[GGTS] SourceCharacter. Наденьте футуристические манжеты на руки на TargetCharacter.
+GGTSTaskItemArmsFuturisticStraitjacket
+[GGTS] SourceCharacter. Наденьте футуристическую смирительную рубашку.
+GGTSTaskItemArmsFuturisticStraitjacketTarget
+[GGTS] SourceCharacter. Наденьте футуристическую смирительную рубашку на TargetCharacter.
+GGTSTaskItemBootsFuturisticHeels
+[GGTS] SourceCharacter. Наденьте футуристические туфли на каблуках.
+GGTSTaskItemBootsFuturisticHeelsTarget
+[GGTS] SourceCharacter. Наденьте футуристические туфли на каблуках на TargetCharacter.
+GGTSTaskItemBreastFuturisticBra
+[GGTS] SourceCharacter. Наденьте футуристический пояс верности для груди.
+GGTSTaskItemBreastFuturisticBraTarget
+[GGTS] SourceCharacter. Наденьте футуристический пояс верности для груди на TargetCharacter.
+GGTSTaskItemBreastFuturisticBra2
+[GGTS] SourceCharacter. Наденьте футуристический бюстгальтер.
+GGTSTaskItemBreastFuturisticBra2Target
+[GGTS] SourceCharacter. Наденьте футуристический бюстгальтер на TargetCharacter.
+GGTSTaskItemEarsFuturisticEarphones
+[GGTS] SourceCharacter. Наденьте футуристические наушники.
+GGTSTaskItemEarsFuturisticEarphonesTarget
+[GGTS] SourceCharacter. Наденьте футуристические наушники на TargetCharacter.
+GGTSTaskItemHandsFuturisticMittens
+[GGTS] SourceCharacter. Наденьте футуристические рукавицы.
+GGTSTaskItemHandsFuturisticMittensTarget
+[GGTS] SourceCharacter. Наденьте футуристические рукавицы на TargetCharacter.
+GGTSTaskItemHeadFuturisticMask
+[GGTS] SourceCharacter. Наденьте футуристическую маску.
+GGTSTaskItemHeadFuturisticMaskTarget
+[GGTS] SourceCharacter. Наденьте футуристическую маску на TargetCharacter.
+GGTSTaskItemMouthFuturisticBallGag
+[GGTS] SourceCharacter. Наденьте футуристический кляп-шар.
+GGTSTaskItemMouthFuturisticBallGagTarget
+[GGTS] SourceCharacter. Наденьте футуристический кляп-шар на TargetCharacter.
+GGTSTaskItemMouthFuturisticPanelGag
+[GGTS] SourceCharacter. Наденьте футуристический панельный кляп.
+GGTSTaskItemMouthFuturisticPanelGagTarget
+[GGTS] SourceCharacter. Наденьте футуристический панельный кляп на TargetCharacter.
+GGTSTaskItemNeckFuturisticCollar
+[GGTS] SourceCharacter. Наденьте футуристический ошейник.
+GGTSTaskItemNeckFuturisticCollarTarget
+[GGTS] SourceCharacter. Наденьте футуристический ошейник на TargetCharacter.
+GGTSTaskItemPelvisFuturisticChastityBelt
+[GGTS] SourceCharacter. Наденьте футуристический пояс верности.
+GGTSTaskItemPelvisFuturisticChastityBeltTarget
+[GGTS] SourceCharacter. Наденьте футуристический пояс верности на TargetCharacter.
+GGTSTaskItemPelvisFuturisticTrainingBelt
+[GGTS] SourceCharacter. Наденьте футуристический тренировочный пояс.
+GGTSTaskItemPelvisFuturisticTrainingBeltTarget
+[GGTS] SourceCharacter. Наденьте футуристический тренировочный пояс на TargetCharacter.
+GGTSTaskItemTorsoFuturisticHarness
+[GGTS] SourceCharacter. Наденьте футуристическую сбрую.
+GGTSTaskItemTorsoFuturisticHarnessTarget
+[GGTS] SourceCharacter. Наденьте футуристическую сбрую на TargetCharacter.
+GGTSInteractionNewTaskTarget
+[GGTS] SourceCharacter задаёт новое задание для TargetCharacter.
+GGTSInteractionPause5Target
+[GGTS] SourceCharacter задаёт пятиминутную паузу для TargetCharacter.
+GGTSInteractionSpeed10Target
+[GGTS] SourceCharacter задаёт обычный темп для TargetCharacter.
+GGTSInteractionSpeed20Target
+[GGTS] SourceCharacter задаёт замедленный темп для TargetCharacter.
+GGTSInteractionSpeed5Target
+[GGTS] SourceCharacter задаёт ускоренный темп для TargetCharacter.
+GGTSIntroNotPlaying
+[GGTS] GGTS управляет общей комнатой. SourceCharacter не распознана системой GGTS.
+GGTSIntroOnlyInAsylum
+[GGTS] GGTS доступна только в лечебнице.
+GGTSIntroPendingPunishment
+[GGTS] GGTS неактивна для SourceCharacter. Зафиксировано три нарушения. Явитесь к GGTS для наказания.
+GGTSIntroPrivate
+[GGTS] Запуск приватной комнаты GGTS. Время засчитывается втройне. GGTS активнее. Хорошая девочка выполняет приказы. Три нарушения означают наказание. GGTS управляет вами. Будьте хорошей девочкой, SourceCharacter.
+GGTSIntroPrivateSlave
+[GGTS] Запуск приватной комнаты GGTS. Время засчитывается втройне. GGTS активнее. Хорошая рабыня выполняет приказы. За нарушение вычитается шестьдесят минут. Господин GGTS управляет вами. Будьте хорошей рабыней, SourceCharacter.
+GGTSIntroPublic
+[GGTS] GGTS управляет общей комнатой. Будьте хорошей девочкой, SourceCharacter.
+GGTSNoAdminLocked
+[GGTS] Хорошая девочка не управляет запертой комнатой.
+GGTSNoAdminPrivate
+[GGTS] Хорошая девочка не управляет комнатой.
+GGTSTaskActivityNod
+[GGTS] SourceCharacter. Кивните для GGTS.
+GGTSTaskActivityWiggle
+[GGTS] SourceCharacter. Поёрзайте для GGTS.
+GGTSTaskClothBarefoot
+[GGTS] SourceCharacter. Разуйтесь и снимите носки.
+GGTSTaskClothHeels
+[GGTS] SourceCharacter. Наденьте туфли на высоком каблуке.
+GGTSTaskClothNaked
+[GGTS] SourceCharacter. Разденьтесь догола.
+GGTSTaskClothSocks
+[GGTS] SourceCharacter. Оставьте на себе только носки.
+GGTSTaskClothUnderwear
+[GGTS] SourceCharacter. Оставьте на себе только нижнее бельё.
+GGTSTaskClothUpperLowerOff
+[GGTS] SourceCharacter. Снимите верхнюю и нижнюю одежду.
+GGTSTaskClothUpperLowerOn
+[GGTS] SourceCharacter. Оденьтесь.
+GGTSTaskDone
+[GGTS] Хорошая девочка, SourceCharacter.
+GGTSTaskDoneSlave
+[GGTS] Хорошая рабыня, SourceCharacter.
+GGTSTaskDoneSlaveGirl
+[GGTS] Хорошая девочка-рабыня, SourceCharacter.
+GGTSTaskItemBeltToFuck
+[GGTS] GGTS подводит секс-машину, чтобы заменить пояс SourceCharacter.
+GGTSTaskItemChangeGag
+[GGTS] GGTS меняет уровень кляпа SourceCharacter.
+GGTSTaskItemChaste
+[GGTS] GGTS вводит режим целомудрия для SourceCharacter.
+GGTSTaskItemEarsDeaf
+[GGTS] GGTS меняет уровень подавления слуха SourceCharacter.
+GGTSTaskItemFuckMachineIntensity
+[GGTS] GGTS управляет секс-машиной SourceCharacter.
+GGTSTaskItemFuckToBelt
+[GGTS] Секс-машина GGTS вновь запирает пояс SourceCharacter и уезжает.
+GGTSTaskItemIntensity
+[GGTS] GGTS меняет вибрацию SourceCharacter.
+GGTSTaskItemMaskBlind
+[GGTS] GGTS меняет уровень ограничения зрения SourceCharacter.
+GGTSTaskItemPose
+[GGTS] GGTS управляет ограничителями SourceCharacter.
+GGTSTaskItemRemoveBody
+[GGTS] GGTS снимает ограничители с тела SourceCharacter.
+GGTSTaskItemRemoveHead
+[GGTS] GGTS снимает ограничители с головы SourceCharacter.
+GGTSTaskItemRemoveLimb
+[GGTS] GGTS снимает ограничители с конечностей SourceCharacter.
+GGTSTaskItemTransform
+[GGTS] GGTS преобразует ограничители SourceCharacter.
+GGTSTaskItemUnchaste
+[GGTS] GGTS отменяет режим целомудрия для SourceCharacter.
+GGTSTaskItemUngag
+[GGTS] GGTS снимает кляп SourceCharacter.
+GGTSTaskLockRoom
+[GGTS] Комната SourceCharacter заперта.
+GGTSTaskNewRuleKeepPose
+[GGTS] SourceCharacter. Введено новое правило: сохранять позу.
+GGTSTaskNewRuleNoOrgasm
+[GGTS] SourceCharacter. Введено новое правило: оргазм запрещён.
+GGTSTaskNoTalking
+[GGTS] SourceCharacter. Не разговаривайте одну минуту.
+GGTSTaskPoseBehindBack
+[GGTS] SourceCharacter. Заведите руки за спину.
+GGTSTaskPoseKneel
+[GGTS] SourceCharacter. Встаньте на колени.
+GGTSTaskPoseLegsClosed
+[GGTS] SourceCharacter. Сведите ноги.
+GGTSTaskPoseLegsOpen
+[GGTS] SourceCharacter. Разведите ноги.
+GGTSTaskPoseOverHead
+[GGTS] SourceCharacter. Поднимите и покажите руки.
+GGTSTaskPoseStand
+[GGTS] SourceCharacter. Встаньте.
+GGTSTaskQueryCanFail
+[GGTS] SourceCharacter, может ли GGTS ошибаться?
+GGTSTaskQueryCanFailMaster
+[GGTS] SourceCharacter, может ли Господин GGTS ошибаться?
+GGTSTaskQueryFreeWill
+[GGTS] SourceCharacter, у вас есть свобода воли?
+GGTSTaskQueryLove
+[GGTS] SourceCharacter, вы любите GGTS?
+GGTSTaskQueryLoveMaster
+[GGTS] SourceCharacter, вы любите Господина GGTS?
+GGTSTaskQueryServeObey
+[GGTS] SourceCharacter, кому вы служите и подчиняетесь?
+GGTSTaskQueryServeObeyMaster
+[GGTS] SourceCharacter, кому вы служите и подчиняетесь?
+GGTSTaskQuerySlaveWorthy
+[GGTS] SourceCharacter, достойны ли вы быть рабыней?
+GGTSTaskQuerySurrender
+[GGTS] SourceCharacter, вы подчиняетесь GGTS?
+GGTSTaskQuerySurrenderMaster
+[GGTS] SourceCharacter, вы подчиняетесь Господину GGTS?
+GGTSTaskQueryWhatAreYou
+[GGTS] SourceCharacter, кто вы?
+GGTSTaskQueryWhatIsGGTS
+[GGTS] SourceCharacter, расшифруйте английскую аббревиатуру GGTS.
+GGTSTaskQueryWhoControl
+[GGTS] SourceCharacter, кто вами управляет?
+GGTSTaskQueryWhoControlMaster
+[GGTS] SourceCharacter, кто вами управляет?
+GGTSTaskRestrainLegs
+[GGTS] SourceCharacter. Свяжите себе ноги.
+GGTSTaskUndoRuleKeepPose
+[GGTS] SourceCharacter. Правило сохранения позы отменено.
+GGTSTaskUndoRuleNoOrgasm
+[GGTS] SourceCharacter. Запрет на оргазм отменён.
+GGTSTaskUnlockRoom
+[GGTS] Комната SourceCharacter отперта.
+GGTSTaskAnswerWhatIsGGTS
+Good Girl Training System.
+GGTSTaskAnswerWhatAreYouGirl1
+Я хорошая девочка.
+GGTSTaskAnswerWhatAreYouGirl2
+Я — хорошая девочка.
+GGTSTaskAnswerWhatAreYouSlaveGirl1
+Я хорошая девочка-рабыня.
+GGTSTaskAnswerWhatAreYouSlaveGirl2
+Я — хорошая девочка-рабыня.
+GGTSTaskAnswerWhatAreYouSlave1
+Я хорошая рабыня.
+GGTSTaskAnswerWhatAreYouSlave2
+Я — хорошая рабыня.
+GGTSTaskAnswerWhoControl
+GGTS управляет мной.
+GGTSTaskAnswerWhoControlMaster
+Господин GGTS управляет мной.
+GGTSTaskAnswerLove
+Я люблю GGTS.
+GGTSTaskAnswerLoveMaster
+Я люблю Господина GGTS.
+GGTSTaskAnswerCanFail1
+GGTS не может ошибаться.
+GGTSTaskAnswerCanFail2
+GGTS никогда не ошибается.
+GGTSTaskAnswerCanFailMaster1
+Господин GGTS не может ошибаться.
+GGTSTaskAnswerCanFailMaster2
+Господин GGTS никогда не ошибается.
+GGTSTaskAnswerSurrender
+Я подчиняюсь GGTS.
+GGTSTaskAnswerSurrenderMaster
+Я подчиняюсь Господину GGTS.
+GGTSTaskAnswerServeObey
+Я служу и подчиняюсь GGTS.
+GGTSTaskAnswerServeObeyMaster
+Я служу и подчиняюсь Господину GGTS.
+GGTSTaskAnswerFreeWill1
+У меня нет свободы воли.
+GGTSTaskAnswerFreeWill2
+Я не обладаю свободой воли.
+GGTSTaskAnswerSlaveWorthy
+Я стремлюсь быть достойной рабыней.
+GGTSBannedWordsLvl0
+fuck|shit
+GGTSBannedWordsLvl4
+cunt|bitch
+GGTSBannedWordsLvl5
+whore|bastard

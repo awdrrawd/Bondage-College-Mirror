@@ -181,7 +181,7 @@ function ChatRoomCharacterViewClickCharacter(C, CharX, CharY, Zoom, ClickX, Clic
 	// If the arousal meter is shown for that character, we can interact with it
 	if (PreferenceArousalAtLeast(C, "Manual")) {
 		let MeterShow = C.IsPlayer();
-		if (!C.IsPlayer() && Player.ArousalSettings.ShowOtherMeter && C.ArousalSettings) {
+		if (!C.IsPlayer() && Player.ArousalSettings.ShowOtherMeter) {
 			if (C.ArousalSettings.Visible === "Access") {
 				MeterShow = C.AllowItem;
 			} else if (C.ArousalSettings.Visible === "All") {

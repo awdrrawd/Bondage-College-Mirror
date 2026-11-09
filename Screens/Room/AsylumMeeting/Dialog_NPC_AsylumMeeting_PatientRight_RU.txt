@@ -1,4 +1,4 @@
-﻿###_NPC
+###_NPC
 (She giggles.)
 (Она хихикает.)
 (She opens her mouth wide and allows you to silence her easily.)
@@ -181,3 +181,29 @@ Hello Madam, would you like to touch me?
 ###_NPC
 (She nods as you stop playing with her.)
 (Она кивает, когда ты перестаешь играть с ней.)
+(You release her hands as she nods slowly.)  Thank you, Madam.
+(Вы освобождаете ей руки, и она медленно кивает.) Спасибо, госпожа.
+(She shakes her head yes.)  Of course, nurse DialogPlayerName, it's part of my treatment.
+(Она утвердительно кивает.) Конечно, медсестра DialogPlayerName, это часть моего лечения.
+(You free her arms as she stretches.)  I hope my treatment isn't over.
+(Вы освобождаете ей руки, и она потягивается.) Надеюсь, моё лечение ещё не закончено.
+Would you like to play Club Cards?
+Хочешь сыграть в клубные карты?
+(She nods and smiles.)  It could be a good way to relax while I'm locked up.
+(Она кивает и улыбается.) Неплохой способ расслабиться, пока я взаперти.
+Can I restrain you if I win?
+Можно связать тебя, если я выиграю?
+Will you tie me up if you win?
+Ты свяжешь меня, если выиграешь?
+(Play Club Card with her.)
+(Сыграть с ней в клубные карты.)
+Let's talk about something else.
+Давай поговорим о другом.
+(She nods.)  The asylum is more than a place to play cards.
+(Она кивает.) В лечебнице есть занятия и помимо карт.
+Well done!  This patient is all yours to bind.  I'm ready for any treatment.  (She giggles.)
+Молодец! Можешь связывать эту пациентку как угодно. Я готова к любому лечению. (Она хихикает.)
+That was good game, I got lucky.  Please see the nurses for your punishment, I'm not allowed to strap you up.
+Хорошая была партия, мне повезло. За наказанием обратись к медсёстрам: мне нельзя тебя связывать.
+Absolutely.  This patient is always available for more bondage therapies.  (She smiles.)
+Разумеется. Эта пациентка всегда готова к новой терапии связыванием. (Она улыбается.)

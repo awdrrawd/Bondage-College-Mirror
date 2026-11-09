@@ -6,3 +6,45 @@ Return
 Вернуться
 SelectAppareance
 Твоя любимая внешность
+Wardrobe
+Гардероб
+Search
+Поиск
+ReorderSlots
+Изменить порядок слотов
+ReorderSelect
+Нажмите, чтобы выбрать слоты для перемещения
+ReorderPlace
+Нажмите на слоты, чтобы разместить выбранное
+ExcludeBodyParts
+Не включать части тела
+OutfitSearch
+Поиск нарядов
+OutfitName
+Название наряда
+OutfitSaved
+Наряд сохранён
+OutfitNameError
+Название наряда может содержать только буквы, цифры и пробелы
+NoOutfitMatches
+Нет нарядов, соответствующих запросу
+LoadOutfitConfirm
+Загрузить этот наряд?
+SaveOutfitConfirm
+Сохранить этот наряд?
+Delete
+Удалить
+Rename
+Переименовать
+DeleteOutfitConfirm
+Удалить этот наряд?
+OutfitDeleted
+Наряд удалён
+OutfitRenamed
+Наряд переименован
+Close
+Закрыть
+ShowCharacterPreviews
+Показывать предпросмотр персонажа
+EmptyOutfitSlot
+Пусто

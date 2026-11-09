@@ -20788,6 +20788,40 @@ var AssetFemale3DCGExtended = {
 			DrawImages: false,
 			Options: [{ Name: "None" }, { Name: "Chain" }],
 		}, // PumpkinPot
+		Cat: {
+			Archetype: ExtendedArchetype.TYPED,
+			CopyConfig: { GroupName: "ItemMisc", AssetName: "PetPotato" },
+			Options: [
+				{ Name: "Lap" },
+				{
+					Name: "Floor",
+					FixedPosition: true,
+					Property: {
+						OverridePriority: 55,
+						DrawingLeft: { [AssetOverride]: 130 },
+						DrawingTop: {
+							[AssetOverride]: { [PoseType.DEFAULT]: 510, Suspension: -122 },
+						},
+					},
+				},
+			],
+		}, // Cat
+		Dog: {
+			Archetype: ExtendedArchetype.TYPED,
+			CopyConfig: { GroupName: "ItemMisc", AssetName: "Cat" },
+		}, // Dog
+		Panda: {
+			Archetype: ExtendedArchetype.TYPED,
+			CopyConfig: { GroupName: "ItemMisc", AssetName: "Cat" },
+		}, // Panda
+		Penguin: {
+			Archetype: ExtendedArchetype.TYPED,
+			CopyConfig: { GroupName: "ItemMisc", AssetName: "Cat" },
+		}, // Penguin
+		Unicorn: {
+			Archetype: ExtendedArchetype.TYPED,
+			CopyConfig: { GroupName: "ItemMisc", AssetName: "Cat" },
+		}, // Unicorn
 	}, // ItemMisc
 	ItemPelvis: {
 		FuturisticChastityBelt: {
@@ -22994,6 +23028,27 @@ var AssetFemale3DCGExtended = {
 		}, // OperaGloves
 	}, // Gloves
 	Necklace: {
+		InitialLocket: {
+			Archetype: ExtendedArchetype.TEXT,
+			MaxLength: { Text: 2 },
+			Font: "Satisfy",
+			BaselineProperty: { Text: "PS" },
+			DialogPrefix: { Header: "NecklaceInitialLocketTextLabel" },
+			ScriptHooks: {
+				AfterDraw: (...args) =>
+					TextItem.GenericTextDrawHook(...args, {
+						Width: 18,
+						Height: 14,
+						XOffset: 21,
+						YOffset: 67,
+						drawOptions: {
+							fontSize: 10,
+							strokeColor: args[2].Color,
+							strokeWidth: 0.4,
+						},
+					}),
+			},
+		},
 		NecklaceKey: {
 			Archetype: ExtendedArchetype.TYPED,
 			Options: [

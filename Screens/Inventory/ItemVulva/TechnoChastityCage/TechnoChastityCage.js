@@ -343,7 +343,7 @@ function InventoryItemVulvaChastityCageShrinkCheck(C, item, itemType) {
 	// still on cooldown, return
 	if (item.Property.ShrinkCooldown !== 0 && (CommonTime() < item.Property.ShrinkCooldown)) return;
 	// if the function isnt set or cage is already the smallest, there's no point to do anything else
-	if (!C.ArousalSettings || itemType.a === 0 || itemType.t === 2) return;
+	if (itemType.a === 0 || itemType.t === 2) return;
 
 	const threshold = ItemVulvaTechnoChastityCageGetArousalThreshold(item.Property.ArousalLvl);
 	const isBeyondThreshold = C.ArousalSettings.Progress >= threshold;

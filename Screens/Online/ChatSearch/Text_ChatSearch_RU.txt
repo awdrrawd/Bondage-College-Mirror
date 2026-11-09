@@ -68,3 +68,169 @@ GameLARP
 Magic Battle
 GameGGTS
 All languages
+ResponseServerTimeoutError
+Время ожидания запроса истекло
+ResponseServerInProgressError
+Запрос уже выполняется!
+LeashBreakAlreadyInRoom
+Поводок оборвался: вы уже в комнате
+LeashBreakRoomLocked
+Поводок оборвался: комната заперта
+LeashBreakRoomBanned
+Поводок оборвался: вам запрещён вход в эту комнату
+LeashBreakRoomBlocked
+Поводок оборвался: вход в комнату заблокирован
+LeashBreakRoomFull
+Поводок оборвался: комната заполнена
+LeashBreakCannotFindRoom
+Поводок оборвался: такой комнаты не существует
+LeashBreakAccountError
+Поводок оборвался из-за ошибки аккаунта
+LeashBreakInvalidRoomData
+Поводок оборвался: недопустимые данные комнаты
+LeashBreakGhostList
+Поводок оборвался: создатель комнаты в вашем списке скрытых
+LeashBreakTempHidden
+Поводок оборвался: вы скрыли эту комнату
+LeashBreakTimeout
+Поводок оборвался из-за истечения времени ожидания
+TempHideOnClick
+Фильтровать по нажатию
+FilterReasonTempHidden
+Отфильтровано
+HelpText6
+Нажмите на скрытую комнату, чтобы показать её. Если она только отфильтрована, она появится сразу. В остальных случаях потребуется подтвердить удаление создателя из списка скрытых и/или удаление слов из фильтра, мешающих показу комнаты.
+UnhideConfirmRoom
+Чтобы показать комнату «{RoomLabel}», вы также собираетесь:
+UnhideConfirmMember
+Удалить «{MemberLabel}» из списка скрытых
+UnhideConfirmWords
+Удалить «{WordsLabel}» из фильтра слов
+UnhideConfirmEnd
+Вы уверены, что хотите это сделать?
+UnhideCancel
+Отмена
+UnhideConfirm
+Выполнить
+RefreshRooms
+Обновить список комнат
+Exit
+Выйти из поиска комнат
+FriendList
+Друзья
+Next
+Следующая страница
+Prev
+Предыдущая страница
+Lobby
+Лобби:
+Mixed
+Смешанное
+Female
+Женское
+Male
+Мужское
+Asylum
+Лечебница
+Block
+Запреты:
+Leashing
+Поводки для игроков
+SciFi
+Научная фантастика
+Photos
+Фотографии
+Arousal
+Действия для возбуждения
+Fantasy
+Фэнтези
+GameLabel
+Игра:
+GameClubCard
+Клубные карты
+GameMagicBattle
+Магическая битва
+GamePrison
+Пандора
+GameAllRooms
+Все игры
+Language
+Все языки
+LanguageES
+Испанский
+MapRooms
+Комнаты с картой
+HybridRooms
+Смешанный режим карты
+NormalRooms
+Обычные комнаты
+AllRooms
+Все комнаты
+AnyLobby
+Любое лобби
+AnyLanguage
+Любой язык
+NoGame
+Без игры
+Search
+Поиск
+SearchDescription
+Искать в описании:
+ShowLockedRooms
+Показывать запертые комнаты:
+ShowFullRooms
+Показывать заполненные комнаты:
+Smoking
+Курение
+RoomType
+Тип комнаты:
+SearchMenuButton
+Меню поиска
+ShowRoomPage
+Страница комнаты
+JoinRoom
+Войти в комнату
+AdminAccess
+Только администраторы
+WhitelistAccess
+Только белый список
+RoomUnavailable
+Попытаться войти
+ABDLBlockDescription
+В этой комнате запрещены предметы ABDL.
+FantasyBlockDescription
+В этой комнате запрещены предметы фэнтези.
+PhotosBlockDescription
+В этой комнате запрещены фотографии.
+ArousalBlockDescription
+В этой комнате запрещены действия для возбуждения.
+SciFiBlockDescription
+В этой комнате запрещены научно-фантастические предметы.
+LeashingBlockDescription
+В этой комнате запрещены поводки для игроков.
+SmokingBlockDescription
+В этой комнате запрещено курение.
+SpaceDescription
+В этой комнате разрешены только женские персонажи.
+MSpaceDescription
+В этой комнате разрешены только мужские персонажи.
+XSpaceDescription
+В этой комнате разрешены персонажи разных полов.
+LARPRoomGameDescription
+В этой комнате идёт игра LARP.
+MagicBattleRoomGameDescription
+В этой комнате идёт магическая битва.
+GGTSRoomGameDescription
+В этой комнате действует GGTS.
+PrisonRoomGameDescription
+В этой комнате действует Пандора.
+ClubCardRoomGameDescription
+В этой комнате идёт игра в клубные карты.
+LanguageDescription
+Основной язык комнаты: %LANGUAGE%.
+AlwaysMapDescription
+Эта комната всегда использует карту.
+HybridMapDescription
+В этой комнате доступны карта и обычный режим.
+NeverMapDescription
+Эта комната использует только обычный режим.

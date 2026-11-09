@@ -1,10 +1,16 @@
 EnterDescription
 Введите описание в Интернете (MAXLEN максимум символов)
 ViewDescription
-Имя персонажа Описание в интернете
+Сетевой профиль: CharacterName
 Leave
 Выйти из профиля
 LeaveSave
 Принять изменения
 LeaveNoSave
 Отменить изменения
+EnterOwnersNotes
+Введите общедоступные заметки о CharacterName (не более MAXLEN символов)
+ViewOwnersNotes
+Заметки от OwnerName, владельца CharacterName
+OwnersNotes
+Заметки владельца

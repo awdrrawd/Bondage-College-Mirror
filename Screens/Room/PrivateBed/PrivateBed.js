@@ -111,10 +111,9 @@ function PrivateBedRun() {
 		PrivateBedDrawCharacter(C);
 
 	// In orgasm mode, we add a pink filter and different controls depending on the stage
-	if ((Player.ArousalSettings != null) && (Player.ArousalSettings.Active != null) && (Player.ArousalSettings.Active != "Inactive") && (Player.ArousalSettings.Active != "NoMeter")) {
-		if ((Player.ArousalSettings.OrgasmTimer != null) && (typeof Player.ArousalSettings.OrgasmTimer === "number") && !isNaN(Player.ArousalSettings.OrgasmTimer) && (Player.ArousalSettings.OrgasmTimer > 0)) {
+	if (PreferenceArousalIsActive(C)) {
+		if (Player.ArousalSettings.OrgasmTimer > 0) {
 			DrawRect(0, 0, 2000, 1000, "#FFB0B0B0");
-			if (Player.ArousalSettings.OrgasmStage == null) Player.ArousalSettings.OrgasmStage = 0;
 			if (Player.ArousalSettings.OrgasmStage == 0) {
 				DrawText(TextGet("OrgasmComing"), 1000, 410, "White", "Black");
 				DrawButton(700, 532, 250, 64, TextGet("OrgasmTryResist"), "White");
@@ -125,7 +124,7 @@ function PrivateBedRun() {
 			if (Player.ArousalSettings.OrgasmStage == 2) DrawText(TextGet("OrgasmRecovering"), 1000, 500, "White", "Black");
 			ActivityOrgasmProgressBar(550, 970);
 			return;
-		} else if ((Player.ArousalSettings.Progress != null) && (Player.ArousalSettings.Progress >= 1) && (Player.ArousalSettings.Progress <= 99)) ChatRoomDrawArousalScreenFilter(0, 1000, 2000, Player.ArousalSettings.Progress);
+		} else if ((Player.ArousalSettings.Progress >= 1) && (Player.ArousalSettings.Progress <= 99)) ChatRoomDrawArousalScreenFilter(0, 1000, 2000, Player.ArousalSettings.Progress);
 	}
 
 	// Draws all the buttons
@@ -339,7 +338,7 @@ function PrivateBedNPCActivity(Source) {
 function PrivateBedClick() {
 
 	// If an orgasm is going on, we do not process any other clicks
-	if ((Player.ArousalSettings != null) && (Player.ArousalSettings.OrgasmTimer != null) && (typeof Player.ArousalSettings.OrgasmTimer === "number") && !isNaN(Player.ArousalSettings.OrgasmTimer) && (Player.ArousalSettings.OrgasmTimer > 0)) {
+	if (Player.ArousalSettings.OrgasmTimer > 0) {
 
 		// On stage 0, the player can choose to resist the orgasm or not.  At 1, the player plays a mini-game to fight her orgasm
 		if (Player.ArousalSettings.OrgasmStage == 0 && MouseIn(700, 532, 250, 64)) ActivityOrgasmGameGenerate(0);

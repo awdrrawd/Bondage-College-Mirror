@@ -1,4 +1,4 @@
-﻿###_NPC
+###_NPC
 Cute gag.  It might be hard to communicate though.
 Милый кляп.  Хотя он может затруднитить общение.
 ###_NPC [Rude|Horny]
@@ -1230,7 +1230,7 @@ Let's chat.  (Spend time to chat with her.)
 (Вы пытаетесь вести содержательный разговор, но он никуда не идет. Кажется, что все, что она хочет - сосредоточиться на сексе.)
 ###_PLAYER
 That's all I wanted to talk about.
-Хватит болтовни.
+Это всё, о чём я хотела поговорить.
 ###_NPC
 (She nods.)  What would you like to do now?
 (Она кивает.)  Что бы ты хотел сделать сейчас?
@@ -1939,7 +1939,7 @@ Come closer my little sub.  Let's talk.
 ###_NPC [Violent]
 (She grabs your butt firmly and pulls you closer.)  What's up?
 (Она крепко хватает тебя за задницу и притягивает ближе.)  Что случилось?
-+###_NPC
+###_NPC
 I love you too.  You're the best sub.
 Я тоже тебя люблю.  Ты лучшая саба.
 ###_NPC [Dominant|Violent]
@@ -2140,7 +2140,7 @@ Are you happy to have me as your sub?
 Вы счастливы, что я буду вашей сабой?
 ###_NPC
 Yes, it's fun to have a sub like you.  (She smiles.)
-Да, это здорово иметь такую cабу, как ты.  (Она улыбается.)
+Да, здорово иметь такую нижнюю, как ты. (Она улыбается.)
 ###_NPC [Violent|Serious]
 (She slaps your ass and gives you a stern look.)  Don't worry girl, you'll know when I'm unhappy with you.
 (Она шлепает тебя по заднице и сурово смотрит на тебя.)  Не волнуйся, девочка, ты поймешь, когда я буду недовольна тобой.
@@ -2234,7 +2234,7 @@ You've waited long enough and proved your loyalty, but I'm still unsure if I wan
 ###_NPC [Playful]
 Yes!  That was quick.  I do need more time to think about our relationship before I collar you though.
 Да!  Это было очень быстро.  Но мне действительно нужно больше времени, чтобы подумать о наших отношениях, прежде чем я одену на тебя ошейник.
-+###_PLAYER
+###_PLAYER
 Mistress, do you have a lover?
 Госпожа, у вас есть любовница?
 ###_NPC
@@ -2283,8 +2283,6 @@ So, my slut isn't getting wet anymore?  Bitch, if I go, I'll never come back.  A
 We've only been together for a short while.  Give it some time girl.
 Мы были вместе совсем недолго.  Дай нам немного времени, девочка.
 ###_PLAYER
-That's all I wanted to talk about.
-Это все, о чем я хотела поговорить.
 ###_NPC
 (She nods.)  Anything else is on your mind my sub?
 (Она кивает.)  Что-нибудь еще у тебя на уме, моя саба?
@@ -2840,7 +2838,7 @@ It's been both amusing and alluring to see you struggle my little submissive, bu
 Было и забавно, и заманчиво видеть, как ты сопротивляешься, моя маленькая сабмиссивка, но пришло время освободить тебя.
 ###_PLAYER
 Thanks Mistress.
-Thanks Mistress.
+Спасибо, Госпожа.
 ###_NPC
 (She releases you and laughs.)  Don't get too used to your freedom girl.
 (Она освобождает тебя и смеется.) Не слишком привыкай к своей свободе, девочка.
@@ -4026,7 +4024,7 @@ Oh, hell yeah, being your slut makes me all wet.
 О, черт возьми, да, будучи вашей шлюхой, я вся мокрая.
 ###_NPC [Violent|Serious]
 (She seems uncertain.)  I guess our relationship lost some intensity, but we can kick it up.
-(She seems uncertain.)  I guess our relationship lost some intensity, but we can kick it up.
+(Она выглядит неуверенно.) Кажется, в наших отношениях поубавилось страсти, но мы можем её вернуть.
 ###_NPC [Peaceful|Polite]
 (She shrugs.)  I'll be honest with you.  I'm concerned about our relationship.  I hope it gets better with time.
 (Она пожимает плечами.)  Я буду с вами откровененой.  Я беспокоюсь о наших отношениях.  Надеюсь, со временем все наладится.
@@ -4469,7 +4467,7 @@ Forget it then.
 Тогда забудь об этом.
 See you tomorrow!  (Send her to the asylum.)
 Увидимся завтра!  (Отправь ее в психушку.)
-+###_NPC
+###_NPC
 Yes.  I could see myself as being both your slave and your lover.  I know we could have a great time together.
 Да.  Я могла бы видеть себя одновременно твоей рабыней и твоей любовницой.  Я знаю, мы могли бы прекрасно провести время вместе.
 ###_NPC [Horny]
@@ -4636,3 +4634,1623 @@ Is it too late to change my mind?
 ###_NPC [Submissive|Polite]
 (You masturbate her with passion as she moans and blushes.)  Mistress, being your slave is such a thrill.
 (Ты мастурбируешь ее со страстью, пока она стонет и краснеет.)  Госпожа, быть вашей рабыней - это такой кайф.
+This room is certainly worth the ${money=-250} rent.  Now tell me what's on your mind.
+Арендная плата ${money=-250} за эту комнату определённо оправданна. А теперь скажи, о чём ты думаешь.
+(She smiles.)  A shopping trip is a great idea!  Do you have at least ${money=-50} to pay for my new clothes?
+(Она улыбается.) Поход по магазинам — отличная идея! У тебя есть хотя бы ${money=-50} на мою новую одежду?
+I'll be your schoolgirl.  (Change for her.)
+Я буду твоей школьницей. (Переодеться для неё.)
+My girl, you make me really happy and I want to reward you.  I'll give you ${money=50} so you can do some shopping.
+Моя девочка, ты делаешь меня такой счастливой! Я хочу тебя наградить. Дам тебе ${money=50}, чтобы ты могла пройтись по магазинам.
+My wonderful submissive, I truly appreciate owning you and I want you to feel appreciated.  Take these ${money=50} and purchase something you desire.
+Моя прекрасная нижняя, я очень ценю то, что владею тобой, и хочу, чтобы ты это чувствовала. Возьми ${money=50} и купи себе что-нибудь по душе.
+You're a great bitch and should get a gift.  (She checks her purse for a while.)  Here's ${money=50}, get something kinky!
+Ты отличная сучка и заслуживаешь подарок. (Она некоторое время роется в сумочке.) Вот тебе ${money=50}, купи что-нибудь извращённое!
+My pleasure.  Spend it on something I can use on you.  (She winks and gives you ${money=50}.)
+С удовольствием. Купи то, что я смогу использовать на тебе. (Она подмигивает и даёт вам ${money=50}.)
+And you're the best sub.  Spend it on something I can use on you.  (She winks and gives you ${money=50}.)
+А ты лучшая нижняя. Купи то, что я смогу использовать на тебе. (Она подмигивает и даёт вам ${money=50}.)
+Slave, take it and spend it on something I can use on you.  (She gives you ${money=50}.)
+Рабыня, возьми деньги и купи то, что я смогу использовать на тебе. (Она даёт вам ${money=50}.)
+Spend it on something I can use on you.  (She winks and gives you ${money=50}.)
+Купи то, что я смогу использовать на тебе. (Она подмигивает и даёт вам ${money=50}.)
+My submissive, since you have cages around here, you're going to spend some time in one.  I'll give you the keys back when I'm satisfied.
+Моя нижняя, раз у тебя здесь есть клетки, ты проведёшь некоторое время в одной из них. Я верну ключи, когда буду довольна.
+(She grabs the item and whips your butt a few times.)  This item might come in handy later anyway.
+(Она хватает предмет и несколько раз хлещет вас по заднице.) Всё равно он ещё может пригодиться.
+You're the best!  I think there's a ${money=-100} cost to prepare the ceremony though.
+Ты лучшая! Правда, кажется, подготовка церемонии стоит ${money=-100}.
+This is wonderful Mistress.  Do you have the ${money=-100} to cover the ceremony cost?
+Это чудесно, госпожа. У вас есть ${money=-100}, чтобы оплатить церемонию?
+(She smiles.)  That's a great idea Mistress.  Do you have at least ${money=-50} to pay for my new clothes?
+(Она улыбается.) Отличная идея, госпожа. У вас есть хотя бы ${money=-50} на мою новую одежду?
+(She nods.)  Yes, they have specific one day treatments.  But there's a ${money=-25} fee, will you pay for it?
+(Она кивает.) Да, у них есть специальные однодневные процедуры. Но они стоят ${money=-25}. Вы заплатите?
+Wait!  I've changed my mind.
+Стой! Я передумала.
+(Nod slowly.)
+(Медленно кивнуть.)
+Enough!
+Хватит!
+(Moan in your gag.)
+(Стонать сквозь кляп.)
+(Stare at her.)
+(Пристально смотреть на неё.)
+This is embarrassing.
+Как неловко.
+(She winks at you.)  Join me in bed my love.  (She goes to your bed.)
+(Она подмигивает вам.) Иди ко мне в постель, любимая. (Она направляется к вашей кровати.)
+(She smirks.)  Fuck me like an animal!  (She goes to your bed.)
+(Она усмехается.) Трахни меня как животное! (Она направляется к вашей кровати.)
+Good game!  I'll have to do better next time.  You can do what you want with me.
+Хорошая партия! В следующий раз постараюсь лучше. Можешь делать со мной что хочешь.
+(She throws her cards away.)  Fine, you win!  Make it painful to teach me a lesson.
+(Она отбрасывает карты.) Ладно, ты победила! Сделай больно, чтобы я усвоила урок.
+You're good at that game you know?  (She winks at you.)  You can fuck me now.
+Ты хорошо играешь, знаешь? (Она подмигивает вам.) Теперь можешь меня трахнуть.
+Victory!  That was a good game.  Now it's time to get you in trouble.
+Победа! Хорошая была партия. А теперь у тебя будут неприятности.
+You never had a chance.  (She grins.)  Now it's time to get your skin red.
+У тебя не было шансов. (Она усмехается.) А теперь пора сделать твою кожу красной.
+Holy hell!  I won!  Get ready to cum hard prisoner.
+Чёрт возьми! Я выиграла! Готовься как следует кончить, пленница.
+What?  Did I win?  Hahaha, awesome!  I can put you in bondage now.
+Что? Я выиграла? Ха-ха-ха, отлично! Теперь могу тебя связать.
+Victory!  That was a good game.  Now it's time to get you in trouble my girl.
+Победа! Хорошая была партия. А теперь у тебя будут неприятности, моя девочка.
+You never had a chance slave.  (She grins.)  Now it's time to get your skin red.
+У тебя не было шансов, рабыня. (Она усмехается.) А теперь пора сделать твою кожу красной.
+Holy hell!  I won!  Get ready to cum hard slave.
+Чёрт возьми! Я выиграла! Готовься как следует кончить, рабыня.
+What?  Did I win?  Hahaha, awesome!  I can put you in even more bondage now.
+Что? Я выиграла? Ха-ха-ха, отлично! Теперь могу связать тебя ещё сильнее.
+You're good at that game you know?  (She winks at you.)  You can fuck me now Miss.
+Вы хорошо играете, знаете? (Она подмигивает вам.) Теперь можете меня трахнуть, мисс.
+I'll never understand that stupid game!  You win Mistress, I'm yours.
+Никогда не пойму эту дурацкую игру! Вы победили, госпожа. Я ваша.
+Victory!  That was a good game Mistress.  I can't believe I will get you in trouble.
+Победа! Хорошая была партия, госпожа. Не верится, что теперь я устрою вам неприятности.
+Holy hell!  I won!  Get ready to cum hard Miss.
+Чёрт возьми! Я выиграла! Готовьтесь как следует кончить, мисс.
+Happy Bondage Club birthday!
+С годовщиной вступления в Бондаж-клуб!
+Have a great Bondage Club birthday girl.  Get spanked.
+Чудесной годовщины вступления в Бондаж-клуб, девочка. Получи порку.
+Miss, you're not getting older at your Bondage Club birthday, you're getting wiser.
+Мисс, в годовщину вступления в Бондаж-клуб вы не стареете, а становитесь мудрее.
+Happy BC birthday!  (She sings cheerfully.)  Ya got paddled yet?
+С годовщиной в клубе! (Она весело поёт.) Тебя уже отшлёпали лопаткой?
+(She hums a birthday song silently.)  All my blessings on your Bondage Club birthday.
+(Она тихо напевает песню ко дню рождения.) Всех благ в годовщину твоего вступления в Бондаж-клуб.
+Have a good BC birthday with lots of orgasms.
+Прекрасной годовщины в клубе и побольше оргазмов.
+What's on your mind my spouse?
+О чём думаешь, моя супруга?
+What's going my wife?
+Как дела, моя жена?
+Please tell me of your feeling's my better half.
+Расскажи о своих чувствах, моя половинка.
+My sexy wife, how can we have fun?
+Моя сексуальная жена, как нам повеселиться?
+What troubles you my spouse?
+Что тебя тревожит, моя супруга?
+Let's discuss on how to improve our matrimonial union my love.
+Давай обсудим, как укрепить наш супружеский союз, любимая.
+What's up wife?
+Как дела, жена?
+What's on your mind my fiancée?
+О чём думаешь, моя невеста?
+What's going on bride-to-be?
+Что происходит, будущая невеста?
+Please tell me of your feeling's my fiancée.
+Расскажи о своих чувствах, моя невеста.
+My sexy fiancée, how can we have fun?
+Моя сексуальная невеста, как нам повеселиться?
+What troubles you my fiancée?
+Что тебя тревожит, моя невеста?
+Let's have a tete-a-tete my betrothed.
+Поговорим с глазу на глаз, моя суженая.
+What's up future wife?
+Как дела, будущая жена?
+By the Heavenly Light!  Are we going to fight evil today?
+Во имя Небесного света! Сегодня сразимся со злом?
+Get ready now sis!  Evil lurks and you need to move your butt to fight it.
+Собирайся, сестра! Зло не дремлет, пора поднять задницу и сразиться с ним.
+If evil comes, I will smack it!  Benzai!  (She almost hurts herself punching a wall.)
+Если зло придёт, я ему врежу! Бензай! (Она едва не ушибается, ударив стену.)
+(She wiggles her butt like a bunny.)  What's up doc?
+(Она виляет ягодицами, как зайка.) Как дела, док?
+(She wiggles her butt like a bunny.)  What's up gurl?  You will hop for me?
+(Она виляет ягодицами, как зайка.) Как дела, девчонка? Попрыгаешь для меня?
+Can I invite you to my bed?
+Можно пригласить тебя в мою постель?
+(She smiles.)  That's a wild idea my friend.  (She gets in bed.)
+(Она улыбается.) Смелая идея, подруга. (Она забирается в постель.)
+(She moans.)  Oh yeah!  Time for some spicy fun.  (She gets in bed.)
+(Она стонет.) О да! Пора непристойно повеселиться. (Она забирается в постель.)
+(She nods.)  Very well, some cuddles could be nice.  (She gets in bed.)
+(Она кивает.) Хорошо, немного объятий не помешает. (Она забирается в постель.)
+(She cheers.)  Pillow fight!  (She gets in bed.)
+(Она радостно восклицает.) Бой подушками! (Она забирается в постель.)
+Sorry, but I'm not in the mood.
+Прости, я не в настроении.
+(She moans and seems tormented.)  Yes?  No?  Maybe later.  I'm tired.
+(Она стонет и выглядит измученной.) Да? Нет? Может, позже. Я устала.
+(She shakes her head no.)  I'm not in the mood for sexual intercourse.
+(Она отрицательно качает головой.) Я не настроена на секс.
+No.  Can we do something more productive?
+Нет. Может, займёмся чем-нибудь полезнее?
+(She takes a deep breath.)  I rarely say no to have bedroom fun.  But not now.
+(Она глубоко вздыхает.) Я редко отказываюсь от постельных развлечений. Но сейчас нет.
+(Invite her to your bed.)
+(Пригласить её в свою постель.)
+How about a game of Club Cards?
+Как насчёт партии в клубные карты?
+That's a good plan.  But if I win, I'll get you in tight trouble.
+Хороший план. Но если выиграю, ты окажешься в тугих путах.
+Oh hell yeah!  Get ready for a tough time.  I ain't gonna hold any punches.
+Ещё бы! Готовься к трудностям. Поддаваться не собираюсь.
+Wear your superheroine outfit.
+Надень свой костюм супергероини.
+Get in a new bunny outfit.
+Надень новый костюм зайки.
+(She wiggles her butt and puts a new bunny outfit.)  All we need now is rope.
+(Она виляет ягодицами и надевает новый костюм зайки.) Теперь нужны только верёвки.
+Build a new succubus look.
+Создай новый образ суккуба.
+My pleasure!  (She smirks and builds a new succubus outfit.)
+С удовольствием! (Она усмехается и создаёт новый наряд суккуба.)
+Yes, here's the money.  (Pay ${money=-50} to shop.)
+Да, вот деньги. (Дать ${money=-50} на покупки.)
+My love, will you be my fiancée?
+Любимая, станешь моей невестой?
+(She gives you a bright smile.)  Yes my love, I would delighted.
+(Она ослепительно улыбается.) Да, любимая, с радостью.
+Yes, yes, yes and YES!!!  (She jumps of joy.)
+Да, да, да и ДА!!! (Она прыгает от радости.)
+Yes hun.  If I can still restrain you of course.  (She winks and smiles.)
+Да, дорогая. Если мне по-прежнему можно будет тебя связывать. (Она подмигивает и улыбается.)
+Oh yes my love.  Restrain me with your love forever.
+О да, любимая. Свяжи меня своей любовью навсегда.
+No girl.  This is not the right time and mood for that.  Hold your horses.
+Нет, девочка. Сейчас не то время и настроение. Попридержи коней.
+My love, will you marry me?
+Любимая, выйдешь за меня замуж?
+(She smiles at you.)  Yes my love, this is a dream come true.
+(Она улыбается вам.) Да, любимая, это сбывшаяся мечта.
+YES!!!  Let's get married right now my love.  (She jumps of joy.)
+ДА!!! Поженимся прямо сейчас, любимая. (Она прыгает от радости.)
+(She nods slowly.)  Yes sweetheart, it's time to declare our eternal love.
+(Она медленно кивает.) Да, дорогая, пора объявить о нашей вечной любви.
+Oh yeah!  Our love will be known throughout the club. (She smiles at you.)
+О да! Весь клуб узнает о нашей любви. (Она улыбается вам.)
+(She sheds a few tears.)  Yes my love.  I will be your faithful and devoted wife.
+(Она смахивает несколько слезинок.) Да, любимая. Я буду твоей верной и преданной женой.
+Hold your horses girl.  You should know me better and know that I won't rush that.
+Попридержи коней, девочка. Тебе пора знать: я не стану с этим торопиться.
+Of course Miss.  We can talk about something else.
+Конечно, мисс. Можем поговорить о другом.
+I love you DialogCharacterName.  (Exchange rings.)
+Я люблю тебя, DialogCharacterName. (Обменяться кольцами.)
+This is wonderful.  (Exchange rings.)
+Это чудесно. (Обменяться кольцами.)
+(Kiss her and exchange rings.)
+(Поцеловать её и обменяться кольцами.)
+(You exchange engagement rings and a long kiss.)  I love you DialogPlayerName.
+(Вы обмениваетесь помолвочными кольцами и долгим поцелуем.) Я люблю тебя, DialogPlayerName.
+Wait!  I wasn't serious.
+Погоди! Я не всерьёз.
+(She grumbles and pouts.)  Don't tease me like that.
+(Она недовольно ворчит и дуется.) Не дразни меня так.
+These rings will prove our love.
+Эти кольца докажут нашу любовь.
+These rings are so silly.
+Какие глупые кольца.
+I'll never remove that ring.
+Я никогда не сниму это кольцо.
+I love you so much DialogCharacterName.  (Get wed.)
+Я так люблю тебя, DialogCharacterName. (Пожениться.)
+This is the best day of my life.  (Get wed.)
+Это лучший день моей жизни. (Пожениться.)
+(Give her a French kiss and go get wed.)
+(Поцеловать её по-французски и отправиться на свадьбу.)
+(She grumbles and pouts.)  This is not funny.
+(Она недовольно ворчит и дуется.) Это не смешно.
+(Join her in bed.)
+(Присоединиться к ней в постели.)
+What would you like to do now?
+Чем хочешь заняться сейчас?
+(Check your room first.)
+(Сначала осмотреть свою комнату.)
+(Play Club Cards with her.)
+(Сыграть с ней в клубные карты.)
+I've changed my mind.
+Я передумала.
+Don't be too harsh with me.  I only lost a card game.
+Не будь слишком строга ко мне. Я всего лишь проиграла в карты.
+It was a good game.
+Хорошая была партия.
+Absolutely.  Being your prisoner for a little while will be good also.
+Конечно. Ненадолго стать твоей пленницей тоже будет приятно.
+Yeah!  And losing to you always makes me horny.  (She giggles.)
+Да! А проигрыш тебе всегда меня возбуждает. (Она хихикает.)
+Shit, shit, shit!  I'll do better next time.  You can have your ways for now.
+Чёрт, чёрт, чёрт! В следующий раз постараюсь лучше. Пока можешь делать со мной что хочешь.
+(You get closer to her.)
+(Вы приближаетесь к ней.)
+(Dress her up.)
+(Одеть её.)
+(She nods as you help her to dress back up.)
+(Она кивает, пока вы помогаете ей снова одеться.)
+(Get her in her underwear.)
+(Оставить её в нижнем белье.)
+(She looks down as you strip her down to her underwear.)
+(Она опускает взгляд, пока вы раздеваете её до нижнего белья.)
+(Strip her.)
+(Раздеть её.)
+(She blushes as you strip her naked.)
+(Она краснеет, пока вы раздеваете её догола.)
+That's enough.
+Хватит.
+(She nods.)  Very well.  Would you like to play another game?
+(Она кивает.) Хорошо. Хочешь сыграть ещё?
+What will you do?
+Что ты сделаешь?
+Please be gentle.
+Пожалуйста, будь нежной.
+Do your worse.
+Покажи всё, на что способна.
+Happy Bondage Club birthday my girl!
+С годовщиной вступления в Бондаж-клуб, моя девочка!
+Have a great Bondage Club birthday my slave.  You will get spanked a lot.
+Прекрасной годовщины вступления в Бондаж-клуб, моя рабыня. Тебя ждёт много порки.
+You're not getting older at your Bondage Club birthday, you're getting wiser.
+В годовщину вступления в Бондаж-клуб ты не стареешь, а становишься мудрее.
+Happy BC birthday my girl!  (She sings cheerfully.)  Where's the freaking paddle?
+С годовщиной в клубе, моя девочка! (Она весело поёт.) Где эта чёртова лопатка для порки?
+Hey slave!  Have a good BC birthday with lots of orgasms.
+Эй, рабыня! Прекрасной годовщины в клубе и побольше оргазмов.
+What's on your mind my submissive spouse?
+О чём думаешь, моя покорная супруга?
+What's going my slave-wife?
+Как дела, моя жена-рабыня?
+Please tell me of your feeling's my little better half.
+Расскажи о своих чувствах, моя маленькая половинка.
+My sexy subbie-wife, how can we have fun?
+Моя сексуальная покорная жена, как нам повеселиться?
+What troubles you my pet spouse?
+Что тебя тревожит, моя супруга-питомица?
+Let's discuss on how to improve our matrimonial union my submissive.
+Давай обсудим, как укрепить наш супружеский союз, моя нижняя.
+What's up slave-wife?
+Как дела, жена-рабыня?
+What's on your mind my submissive fiancée?
+О чём думаешь, моя покорная невеста?
+What's going on little bride-to-be?
+Что происходит, маленькая будущая невеста?
+Please tell me of your feeling's my sweet fiancée-pet.
+Расскажи о своих чувствах, моя милая невеста-питомица.
+My sexy sub and fiancée, how can we have fun?
+Моя сексуальная нижняя и невеста, как нам повеселиться?
+What troubles you my little fiancée?
+Что тебя тревожит, моя маленькая невеста?
+Let's have a tete-a-tete my submissive betrothed.
+Поговорим с глазу на глаз, моя покорная суженая.
+What's up future wife slave?
+Как дела, будущая жена-рабыня?
+By the Heavenly Light!  Today we fight evil my minion.
+Во имя Небесного света! Сегодня сразимся со злом, моя подручная.
+Get ready my minion!  Evil lurks and you need to move your butt to fight it.
+Собирайся, моя подручная! Зло не дремлет, пора поднять задницу и сразиться с ним.
+(She struggles against her bonds.) You will experience this when I am free.
+(Она бьётся в путах.) Когда освобожусь, ты испытаешь то же самое.
+Would you like to use the bed Mistress?
+Госпожа, хотите перейти в постель?
+(She smiles.)  Now that's a good idea.  (She gets in bed.)
+(Она улыбается.) Вот это хорошая идея. (Она забирается в постель.)
+(She moans.)  Oh yeah!  Time for some spicy fun my girl.  (She gets in bed.)
+(Она стонет.) О да! Пора непристойно повеселиться, моя девочка. (Она забирается в постель.)
+(She nods.)  Alright, I guess some cuddles could be nice.  (She gets in bed.)
+(Она кивает.) Ладно, думаю, немного объятий не помешает. (Она забирается в постель.)
+(She cheers.)  Yes!  But I get the best pillows my girl.  (She gets in bed.)
+(Она радостно восклицает.) Да! Но лучшие подушки мои, девочка. (Она забирается в постель.)
+No girl, I'm not in the mood.
+Нет, девочка, я не в настроении.
+Mistress, would you like to play Club Cards?
+Госпожа, хотите сыграть в клубные карты?
+That's a good plan my girl.  But if I win, I'll get you in even tighter trouble.
+Хороший план, моя девочка. Но если выиграю, свяжу тебя ещё туже.
+Oh hell yeah!  Get ready for a tough time slave.  I ain't gonna hold any punches.
+Ещё бы! Готовься к трудностям, рабыня. Поддаваться не собираюсь.
+Mistress, will you be my fiancée?
+Госпожа, станете моей невестой?
+(She gives you a bright smile.)  Yes my girl, I would delighted.
+(Она ослепительно улыбается.) Да, моя девочка, с радостью.
+Yes, yes, yes and YES!!!  You will soon be my subbie wife.  (She jumps of joy.)
+Да, да, да и ДА!!! Скоро ты станешь моей покорной женой. (Она прыгает от радости.)
+Yes slave.  But don't think I will go easy on you if we get married.  (She smirks.)
+Да, рабыня. Но не думай, что после свадьбы я стану мягче к тебе. (Она усмехается.)
+Oh yes my lovely submissive.  (She gives you a huge smile.)
+О да, моя прекрасная нижняя. (Она широко улыбается вам.)
+No!   Slave girl, this is not the right time and mood for that.  Hold your horses.
+Нет! Рабыня, сейчас не то время и настроение. Попридержи коней.
+Mistress, will you marry me?
+Госпожа, выйдете за меня замуж?
+(She smiles at you.)  Yes my girl, this is a dream come true.
+(Она улыбается вам.) Да, моя девочка, это сбывшаяся мечта.
+YES!!!  Let's get married right now my subbie.  (She jumps of joy.)
+ДА!!! Поженимся прямо сейчас, моя нижняя. (Она прыгает от радости.)
+(She nods slowly.)  Yes my little sweetheart, it's time to declare our eternal love.
+(Она медленно кивает.) Да, моя милая, пора объявить о нашей вечной любви.
+Oh yeah!  (She spanks your butt.)  Our love will be known throughout the club.
+О да! (Она шлёпает вас по ягодицам.) Весь клуб узнает о нашей любви.
+(She sheds a few tears.)  Yes my submissive.  I want to spend my life with you.
+(Она смахивает несколько слезинок.) Да, моя нижняя. Хочу провести с тобой жизнь.
+I love you Mistress.  (Exchange rings.)
+Я люблю вас, госпожа. (Обменяться кольцами.)
+(You exchange engagement rings and a long kiss.)  I love you my girl.
+(Вы обмениваетесь помолвочными кольцами и долгим поцелуем.) Я люблю тебя, моя девочка.
+Please wait!  I wasn't serious.
+Пожалуйста, подождите! Я не всерьёз.
+(She grumbles.)  Don't tease me like that or you'll get punished.
+(Она недовольно ворчит.) Не дразни меня так, иначе будешь наказана.
+(She nods slowly.)  It will, sweetie.  But remember that you're also my submissive.
+(Она медленно кивает.) Так и будет, милая. Но помни: ты также моя нижняя.
+Just like I will never remove your collar.  (She giggles and smiles at you.)
+Как и я никогда не сниму с тебя ошейник. (Она хихикает и улыбается вам.)
+I love you so much Mistress.  (Get wed.)
+Я так люблю вас, госпожа. (Пожениться.)
+Please wait!  I've changed my mind.
+Пожалуйста, подождите! Я передумала.
+(She grumbles and pouts.)  This is not funny my girl.
+(Она недовольно ворчит и дуется.) Это не смешно, моя девочка.
+Yes, Mistress?
+Да, госпожа?
+That was quick!
+Как быстро!
+(Mumble in your gag.)
+(Промычать сквозь кляп.)
+(Get comfy on your knees.)
+(Поудобнее опуститься на колени.)
+I love to spend time with you.
+Люблю проводить с тобой время.
+(Listen to her.)
+(Выслушать её.)
+Alright my girl.  What would you like to do then?
+Хорошо, моя девочка. Чем тогда хочешь заняться?
+Cherish this time when you can dominate me my girl.  It won't happen often.
+Цени возможность командовать мной, моя девочка. Такое бывает нечасто.
+(She's stunned as you slap her on the face.)  You're pushing your luck my girl.
+(Она ошеломлена вашей пощёчиной.) Нарываешься, моя девочка.
+(You spank her on the butt, and she jumps from the pain.)  Ow!  You're a naughty sub.
+(Вы шлёпаете её по ягодицам, и она подпрыгивает от боли.) Ай! Непослушная нижняя.
+(You take a step back.)  Enjoy your loot while you can my girl.
+(Вы отступаете на шаг.) Наслаждайся добычей, пока можешь, моя девочка.
+Don't go crazy.  I only lost a card game and I still own your collar.
+Не увлекайся. Я всего лишь проиграла в карты, а твой ошейник по-прежнему мой.
+Absolutely my subbie.  And being your prisoner for a little might be fun also.
+Конечно, моя нижняя. А ненадолго стать твоей пленницей тоже может быть весело.
+What will you do Miss?
+Что вы сделаете, мисс?
+Please be gentle Mistress.
+Пожалуйста, будьте нежной, госпожа.
+Do your worse Boss.
+Покажите всё, на что способны, босс.
+My girl, you deserve a break from chastity.  I will help you.
+Моя девочка, ты заслужила отдых от целомудрия. Я помогу тебе.
+Even if your chastity is important to me, let me help you out for a while.
+Хотя твоё целомудрие для меня важно, позволь ненадолго тебя освободить.
+This chastity is cruel, I want to see your sexy body, let me help you out.
+Это целомудрие жестоко. Хочу видеть твоё сексуальное тело. Давай помогу освободиться.
+Slave!  Let's get rid of that chastity, then we can fuck when we want.
+Рабыня! Избавимся от этих устройств целомудрия и сможем трахаться когда захотим.
+This is wonderful Mistress.
+Это чудесно, госпожа.
+(She releases your private parts and smiles.)  And you're a wonderful submissive.
+(Она снимает с вас устройства целомудрия и улыбается.) А ты прекрасная нижняя.
+Thanks a lot.
+Огромное спасибо.
+(She releases your private parts and nods.)  Don't forget that I can lock you back.
+(Она снимает с вас устройства целомудрия и кивает.) Не забывай, что я могу снова тебя запереть.
+(She releases your private parts and smirks.)  I love to see you struggle.
+(Она снимает с вас устройства целомудрия и усмехается.) Люблю смотреть, как ты пытаешься освободиться.
+My girl, it's time to get to bed.  Come with me.
+Моя девочка, пора в постель. Пойдём со мной.
+We need to spend more intimate time together my submissive.  Come to bed with me.
+Нам нужно больше близости, моя нижняя. Пойдём со мной в постель.
+It's time to get on your sexy bed my subbie.  Yay!  Come with me.
+Пора в твою соблазнительную постель, моя нижняя. Ура! Пойдём.
+Romance and BDSM can consolidate very well.  Let's experiment it in bed shall we?
+Романтика и БДСМ прекрасно сочетаются. Проверим в постели?
+Very well.  (Get in bed.)
+Хорошо. (Забраться в постель.)
+Sorry, I don't want to get in bed.
+Прости, я не хочу в постель.
+Oh yes Mistress!  (Get in bed.)
+О да, госпожа! (Забраться в постель.)
+(Stay silent and nod.)
+(Молча кивнуть.)
+(You both stay silent and continue to exchange a loving hug.)
+(Вы обе молчите и продолжаете нежно обниматься.)
+(Moan with bliss.)
+(Блаженно стонать.)
+(You both moan with bliss, sharing some sweet BDSM love.)
+(Вы обе блаженно стонете, наслаждаясь нежной БДСМ-любовью.)
+(Cuddle with her.)
+(Прижаться к ней и обнять.)
+(You cuddle together silently in a loving embrace.)
+(Вы молча прижимаетесь друг к другу в нежных объятиях.)
+(She sees your reaction and frowns but continues to cuddle anyway.)
+(Она замечает вашу реакцию и хмурится, но всё равно продолжает обнимать вас.)
+(Act like you're bored.)
+(Изобразить скуку.)
+(She doesn't seem to like the way you act but continues to hug you.)
+(Ваше поведение ей явно не нравится, но она продолжает обнимать вас.)
+(Rub your body submissively against her.)
+(Покорно потереться телом о неё.)
+(She releases you from her embrace.)  That's enough for now my girl.
+(Она выпускает вас из объятий.) Пока хватит, моя девочка.
+(She releases you from her embrace and spanks your butt.)  That's enough slave.
+(Она выпускает вас из объятий и шлёпает по ягодицам.) Хватит, рабыня.
+(She inspects your slave collar.)  It's time to change your collar my submissive.
+(Она осматривает ваш рабский ошейник.) Пора сменить тебе ошейник, моя нижняя.
+(She looks at your slave collar.)  Time to change your collar my subbie.
+(Она смотрит на ваш рабский ошейник.) Пора сменить тебе ошейник, моя нижняя.
+No.  I like my current collar.
+Нет. Мне нравится мой нынешний ошейник.
+(She seems annoyed.)  Fine, keep your current collar.
+(Она выглядит раздражённой.) Ладно, оставайся с нынешним ошейником.
+As you wish.
+Как пожелаете.
+Good idea Mistress.
+Хорошая идея, госпожа.
+(She unlocks your collar and picks a new model to lock around your neck.)  Good girl.
+(Она отпирает ваш ошейник и выбирает новую модель, чтобы запереть на вашей шее.) Хорошая девочка.
+(Bow your head slowly.)
+(Медленно склонить голову.)
+Is that necessary?
+Это необходимо?
+That is bullshit!
+Что за чушь!
+It will be hard to find help.
+Помощь будет трудно найти.
+Alright then.  (Go to the asylum.)
+Ну ладно. (Отправиться в лечебницу.)
+This is insane!  (Go to the asylum.)
+Это безумие! (Отправиться в лечебницу.)
+You're right Mistress.  (Go to the asylum.)
+Вы правы, госпожа. (Отправиться в лечебницу.)
+Happy Bondage Club birthday Mistress!
+С годовщиной вступления в Бондаж-клуб, госпожа!
+Have a great Bondage Club birthday Mistress.  Spank all the subs you want.
+Прекрасной годовщины вступления в Бондаж-клуб, госпожа. Шлёпайте всех нижних, кого пожелаете.
+Happy BC birthday Mam!  (She sings cheerfully.)  You can paddle me.  (She giggles.)
+С годовщиной в клубе, мэм! (Она весело поёт.) Можете отшлёпать меня лопаткой. (Она хихикает.)
+Hey Mistress!  Have a good BC birthday with lots of orgasms.
+Эй, госпожа! Прекрасной годовщины в клубе и побольше оргазмов.
+How can I serve you my spouse?
+Как могу служить вам, моя супруга?
+Will you punish your wife today?
+Сегодня накажете свою жену?
+This spouse body is yours to possess, love and care for Mistress.
+Тело вашей супруги принадлежит вам, госпожа. Любите его и заботьтесь о нём.
+This cunt is ready for her loving Mistress-wife.
+Эта сучка готова для своей любящей жены-госпожи.
+(Your wife bows her head and stays silent.)
+(Ваша жена склоняет голову и молчит.)
+Mistress, what do you desire from your submissive partner?
+Госпожа, чего вы желаете от своей покорной партнёрши?
+Yes wife?  Errr... Mistress?
+Да, жена? Эм... госпожа?
+How can I serve you my fiancée?
+Как могу служить вам, моя невеста?
+Will you punish your fiancée today?
+Сегодня накажете свою невесту?
+This wife-to-be body is yours to possess, love and care for Mistress.
+Тело вашей будущей жены принадлежит вам, госпожа. Любите его и заботьтесь о нём.
+This cunt is ready for her loving Mistress-fiancée.
+Эта сучка готова для своей любящей невесты-госпожи.
+(Your fiancée bows her head and stays silent.)
+(Ваша невеста склоняет голову и молчит.)
+Mistress, what do you desire from your betrothed submissive?
+Госпожа, чего вы желаете от своей покорной суженой?
+Yes my future wife?  Errr... Mistress?
+Да, моя будущая жена? Эм... госпожа?
+Will you punish your girlfriend today?
+Сегодня накажете свою девушку?
+(Your girlfriend bows her head and stays silent.)
+(Ваша девушка склоняет голову и молчит.)
+By the Heavenly Light!  I hope we fight evil today Mistress.
+Во имя Небесного света! Надеюсь, сегодня сразимся со злом, госпожа.
+I vow to protect the Seven Prisms and serve all my Mistress needs.  All of them!
+Клянусь защищать Семь призм и служить всем нуждам моей госпожи. Абсолютно всем!
+Mistress, ya know I'm always ready to kick some evil butts.
+Госпожа, вы же знаете: я всегда готова надрать злодеям задницы.
+(She wiggles her butt like a bunny.)  What's up Mistress?
+(Она виляет ягодицами, как зайка.) Как дела, госпожа?
+(She wiggles her butt like a bunny.)  What's up Miss?  You will hop with me?
+(Она виляет ягодицами, как зайка.) Как дела, мисс? Попрыгаете со мной?
+We will play Club Cards.
+Сыграем в клубные карты.
+That's a good plan Mistress.  It's a rare chance for me to get you in trouble.
+Хороший план, госпожа. Редкий шанс устроить вам неприятности.
+That's an interesting idea Miss.  I hope to get you in chastity after my victory.
+Интересная идея, мисс. Надеюсь, после победы смогу надеть на вас устройства целомудрия.
+Oh hell yeah!  Get ready for a tough time Mistress.  I ain't gonna hold any punches.
+Ещё бы! Готовьтесь к трудностям, госпожа. Поддаваться не собираюсь.
+It's time to get to bed my girl.
+Пора в постель, моя девочка.
+(She smiles.)  That's a great idea Mistress.  (She gets in bed.)
+(Она улыбается.) Отличная идея, госпожа. (Она забирается в постель.)
+(She moans.)  Oh yeah Mistress!  Time for some spicy fun.  (She gets in bed.)
+(Она стонет.) О да, госпожа! Пора непристойно повеселиться. (Она забирается в постель.)
+(She cheers.)  Yes!  And you can have the best pillows Mistress.  (She gets in bed.)
+(Она радостно восклицает.) Да! И лучшие подушки ваши, госпожа. (Она забирается в постель.)
+No Mistress.  Sorry, but I'm not in the mood.  Please do not punish me.
+Нет, госпожа. Простите, я не в настроении. Пожалуйста, не наказывайте меня.
+My girl, will you be my fiancée?
+Моя девочка, станешь моей невестой?
+(She gives you a bright smile.)  Yes Mistress, I would be delighted.
+(Она ослепительно улыбается.) Да, госпожа, с радостью.
+Yes, yes, yes and YES!!!  I love you Mistress!  (She jumps of joy.)
+Да, да, да и ДА!!! Я люблю вас, госпожа! (Она прыгает от радости.)
+Yes Mistress.  But please don't go easy on me.  (She winks and smiles.)
+Да, госпожа. Но, пожалуйста, не будьте слишком мягкой ко мне. (Она подмигивает и улыбается.)
+Oh yes Mistress.  Our love and your control will stand the test of time.
+О да, госпожа. Наша любовь и ваша власть выдержат испытание временем.
+My girl, will you marry me?
+Моя девочка, выйдешь за меня замуж?
+(She smiles at you.)  Yes Mistress, this is a dream come true.
+(Она улыбается вам.) Да, госпожа, это сбывшаяся мечта.
+YES!!!  Let's get married right now Mistress.  (She jumps of joy.)
+ДА!!! Поженимся прямо сейчас, госпожа. (Она прыгает от радости.)
+(She nods rapidly.)  Can someone pinch me please?  Yes!  I love you Mistress!
+(Она быстро кивает.) Кто-нибудь, ущипните меня! Да! Я люблю вас, госпожа!
+(She cries of joy.)  Yes Mistress.  I want to be your devoted wife and submissive.
+(Она плачет от радости.) Да, госпожа. Хочу быть вашей преданной женой и нижней.
+Yes Mistress!  (She smiles and builds a new succubus outfit.)
+Да, госпожа! (Она улыбается и создаёт новый наряд суккуба.)
+I will pay the ${money=-25}.
+Я заплачу ${money=-25}.
+Wait girl!  Let me think about it some more.
+Постой, девочка! Дай мне ещё подумать.
+I love you my submissive.  (Exchange rings.)
+Я люблю тебя, моя нижняя. (Обменяться кольцами.)
+(You exchange engagement rings and a long kiss.)  I love you Mistress.
+(Вы обмениваетесь помолвочными кольцами и долгим поцелуем.) Я люблю вас, госпожа.
+Wait girl!  I wasn't serious.
+Постой, девочка! Я не всерьёз.
+(She grumbles and sighs.)  Teasing me like that is so unfair.
+(Она недовольно ворчит и вздыхает.) Нечестно так меня дразнить.
+(She nods slowly.)  It will shine with our love, my wonderful Mistress.
+(Она медленно кивает.) Оно будет сиять нашей любовью, моя прекрасная госпожа.
+And I hope you will also never remove my collar.  (She giggles and smiles at you.)
+Надеюсь, вы тоже никогда не снимете мой ошейник. (Она хихикает и улыбается вам.)
+I love you so much my girl.  (Get wed.)
+Я так люблю тебя, моя девочка. (Пожениться.)
+Wait girl!  I've changed my mind.
+Постой, девочка! Я передумала.
+(She grumbles and pouts.)  This is not funny Mistress.
+(Она недовольно ворчит и дуется.) Это не смешно, госпожа.
+Please don't be too harsh Mistress.  I only lost a card game after all.
+Пожалуйста, не будьте слишком строги, госпожа. Я ведь всего лишь проиграла в карты.
+It was a good game my girl.
+Хорошая была партия, моя девочка.
+Slave, you're horrible at this game.
+Рабыня, ты ужасно играешь.
+(She seems disappointed.)  I'm sorry Mistress.  Feel free to punish me.
+(Она выглядит разочарованной.) Простите, госпожа. Можете наказать меня.
+Enough cards for now.
+Пока хватит карт.
+What will you do my girl?
+Что сделаешь, моя девочка?
+Please be gentle my subbie.
+Пожалуйста, будь нежной, моя нижняя.
+Do your worse slave.
+Покажи всё, на что способна, рабыня.
+(Bow your head and stay silent.)
+(Склонить голову и молчать.)
+A cage?  That's unfair!
+Клетка? Это нечестно!
+It's a fair punishment.
+Это справедливое наказание.
+Fine.  Bring the stupid cage.
+Ладно, неси эту дурацкую клетку.
+(Nod politely.)
+(Вежливо кивнуть.)
+(Get in the cage very slowly.)
+(Очень медленно забраться в клетку.)
+(Quickly get in the cage.)
+(Быстро забраться в клетку.)
+(Get in the cage.)
+(Забраться в клетку.)
+Yes, I agree.
+Да, я согласна.
+Very good.  Please give me your hands.
+Очень хорошо. Пожалуйста, протяни мне руки.
+I'll get you soon.
+Я скоро до тебя доберусь.
+We'll see about that.  For now, give me your hands.
+Посмотрим. А пока протяни мне руки.
+This will be fun.  Give me your hands.
+Будет весело. Протяни мне руки.
+(Offer your hands rapidly.)
+(Быстро протянуть руки.)
+(Give her some trouble to bind you.)
+(Немного помешать ей связать вас.)
+(Let her bind you.)
+(Позволить ей связать вас.)
+Since you lost, you will be my bound pet for a while.
+Раз ты проиграла, ненадолго станешь моей связанной питомицей.
+I'm not a pet!
+Я не питомица!
+You will be soon.  I'll get you properly restrained.
+Скоро станешь. Я как следует тебя свяжу.
+It sounds fun.
+Звучит весело.
+It will be fun.  I'll get you properly restrained.
+Будет весело. Я как следует тебя свяжу.
+(Nods slowly.)
+(Медленно кивнуть.)
+I'll get you properly restrained.
+Я как следует тебя свяжу.
+(Let her restrain you.)
+(Позволить ей связать вас.)
+(Make a sad face and let her bind you.)
+(Сделать грустное лицо и позволить ей связать вас.)
+(Wiggle your butt and let her bind you.)
+(Покачивать ягодицами и позволить ей связать вас.)
+As consequence for losing, I'll try some shibari on you.
+В наказание за проигрыш испытаю на тебе шибари.
+That's a wild plan!
+Смелый план!
+You will enjoy the ropes.  Get naked and give me your hands.
+Верёвки тебе понравятся. Раздевайся и протяни мне руки.
+Shibari?  What is that?
+Шибари? Что это?
+Let me show you.  Get naked and give me your hands.
+Сейчас покажу. Раздевайся и протяни мне руки.
+Are you sure this is a good idea?
+Ты уверена, что это хорошая идея?
+Trust me, it's a great idea.  Get naked and give me your hands.
+Поверь, отличная идея. Раздевайся и протяни мне руки.
+(Gulps and nods.)
+(Сглотнуть и кивнуть.)
+Get naked and give me your hands.
+Раздевайся и протяни мне руки.
+(Get naked and let her bind you.)
+(Раздеться и позволить ей связать вас.)
+(Get naked happily for some shibari.)
+(Радостно раздеться ради шибари.)
+(Sigh and get naked reluctantly.)
+(Вздохнуть и неохотно раздеться.)
+You cannot do that!
+Ты не можешь так поступить!
+Don't worry, it won't be for too long.  Only thirty minutes.  Give me your clothes.
+Не волнуйся, ненадолго. Всего на тридцать минут. Отдай мне одежду.
+For how long?
+Надолго?
+(She smiles.)  Only thirty minutes.  Give me your clothes.
+(Она улыбается.) Всего на тридцать минут. Отдай мне одежду.
+I will be cold.
+Мне будет холодно.
+Don't be scared, it's only for thirty minutes.  Give me your clothes.
+Не бойся, всего на тридцать минут. Отдай мне одежду.
+(Protest and give your clothes.)
+(Протестовать и отдать одежду.)
+(Give her your clothes.)
+(Отдать ей свою одежду.)
+(Surrender your clothes happily.)
+(Радостно отдать свою одежду.)
+I don't!  This is too much!
+Я не согласна! Это уже слишком!
+Don't be so shy, it will be fun.  Now give me these hips.
+Не стесняйся, будет весело. А теперь подставь бёдра.
+Just wait until you lose.
+Погоди, вот сама проиграешь.
+(She laughs.)  Maybe you will lose again.  Now give me these hips.
+(Она смеётся.) А может, ты опять проиграешь. А теперь подставь бёдра.
+I agree.  It's a fair consequence.
+Согласна. Справедливое последствие.
+(She nods and smirks.)  Give me these hips.
+(Она кивает и усмехается.) Подставь бёдра.
+I can escape any device.
+Я могу выбраться из любого устройства.
+We'll see about that.  Now give me these hips.
+Посмотрим. А теперь подставь бёдра.
+(Shivers and nods.)
+(Вздрогнуть и кивнуть.)
+Give me these hips.
+Подставь бёдра.
+(Grumble and get locked up.)
+(Недовольно ворчать и позволить запереть себя.)
+(Smile and let her lock you up.)
+(Улыбнуться и позволить ей запереть вас.)
+(Let her lock you up.)
+(Позволить ей запереть вас.)
+Fine!  Make it quick.  (Present your butt.)
+Ладно! Только быстро. (Подставить ягодицы.)
+(You present your butt and she spanks it quickly.)  You will count up to ten.
+(Вы подставляете ягодицы, и она быстро шлёпает вас.) Будешь считать до десяти.
+Very well.  (Present your butt.)
+Хорошо. (Подставить ягодицы.)
+I'll spank you later.  (Present your butt.)
+Потом я тебя отшлёпаю. (Подставить ягодицы.)
+(Nod and present your butt.)
+(Кивнуть и подставить ягодицы.)
+One.
+Один.
+(She spanks you again and laughs.)
+(Она снова шлёпает вас и смеётся.)
+Two.
+Два.
+(She hits you hard and stares at you.)  Best way to get better at cards.
+(Она сильно бьёт вас и пристально смотрит.) Лучший способ научиться играть в карты.
+Three.
+Три.
+(She spanks from the flip side and watches your moves.)
+(Она шлёпает с другой стороны и следит за вашими движениями.)
+Four.
+Четыре.
+(She hits you harder and smirks.)  I hope you felt that one.
+(Она бьёт сильнее и усмехается.) Надеюсь, этот удар ты почувствовала.
+Five.
+Пять.
+(She takes a few seconds to target and spanks you pretty hard.)
+(Она несколько секунд прицеливается и довольно сильно шлёпает вас.)
+Can we make a deal?
+Может, договоримся?
+Six.
+Шесть.
+(She raises her hand higher and spanks harder.)  That must hurt!
+(Она поднимает руку выше и шлёпает сильнее.) Должно быть больно!
+Seven.
+Семь.
+(She caresses your butt and quickly shifts for another spanking.)
+(Она ласкает ваши ягодицы и быстро переходит к следующему шлепку.)
+Eight.
+Восемь.
+(She laughs and looks at your red butt before spanking it again.)  Almost done!
+(Она смеётся и смотрит на ваши красные ягодицы, прежде чем снова шлёпнуть.) Почти закончили!
+Nine.
+Девять.
+(She aims carefully to make sure she hits the worst spot.)  Count!
+(Она тщательно целится в самое болезненное место.) Считай!
+Ten.
+Десять.
+Good!  Very good!  Your punishment is over.  We'll see if you play better now.
+Хорошо! Очень хорошо! Наказание окончено. Посмотрим, станешь ли лучше играть.
+Thanks for that lesson.  (Leave her.)
+Спасибо за урок. (Оставить её.)
+That was quite painful.  (Leave her.)
+Было довольно больно. (Оставить её.)
+I'll get you for that.  (Leave her.)
+Я тебе это припомню. (Оставить её.)
+You're getting soft.
+Ты становишься слишком мягкой.
+Oh yeah?  Soft?  We'll see who gets soft.  (She starts to tickle your ribs.)
+Ах да? Мягкой? Посмотрим, кто тут размякнет. (Она начинает щекотать ваши рёбра.)
+That's easy enough.
+Это достаточно легко.
+There are worse punishments out there.  (She starts to tickle your ribs.)
+Бывают наказания и похуже. (Она начинает щекотать ваши рёбра.)
+You're not putting much effort.
+Ты не слишком стараешься.
+Try not to laugh then!  (She starts to tickle your ribs.)
+Тогда попробуй не смеяться! (Она начинает щекотать ваши рёбра.)
+It will be fun!  (She starts to tickle your ribs.)
+Будет весело! (Она начинает щекотать ваши рёбра.)
+(Giggle playfully.)
+(Игриво хихикнуть.)
+(She also giggles and starts to tickle your ribs.)
+(Она тоже хихикает и начинает щекотать ваши рёбра.)
+Hey!  Hahaha!  Unfair!
+Эй! Ха-ха-ха! Нечестно!
+(She laughs with you and begins to tickle your tummy.)
+(Она смеётся вместе с вами и начинает щекотать ваш живот.)
+(Giggle and wiggle your hips.)
+(Хихикать и покачивать бёдрами.)
+(She also giggles and begins to tickle your tummy.)
+(Она тоже хихикает и начинает щекотать ваш живот.)
+(Pretend you're not ticklish.)
+(Сделать вид, что не боитесь щекотки.)
+(She doubles-down and begins to tickle your tummy.)
+(Она удваивает усилия и начинает щекотать ваш живот.)
+You're so kinky.
+Ты такая извращённая.
+It's a kinky consequence for sure.  (She moves up to tickle your arm pits.)
+Уж точно пикантное наказание. (Она поднимается к вашим подмышкам и щекочет их.)
+That's not funny!
+Это не смешно!
+It's your consequence for losing.  (She moves up to tickle your arm pits.)
+Это расплата за проигрыш. (Она поднимается к вашим подмышкам и щекочет их.)
+(Laugh without control.)
+(Безудержно смеяться.)
+(She seems to enjoy your laughs and moves down to tickle your thighs.)
+(Похоже, ей нравится ваш смех. Она опускается ниже и щекочет бёдра.)
+Eeeeeaahahaha!
+Ииии-ха-ха-ха!
+(Stay silent and defiant.)
+(Хранить вызывающее молчание.)
+(She takes a deep breath and moves down to tickle your thighs.)
+(Она глубоко вздыхает и опускается ниже, чтобы пощекотать ваши бёдра.)
+Oh lord!  Enough!
+О господи! Хватит!
+We're almost done.  (She moves down and tickles your feet without mercy.)
+Почти закончили. (Она опускается ниже и безжалостно щекочет ваши ступни.)
+(Snort and laugh madly.)
+(Фыркать и безумно смеяться.)
+(She gets on her knees and tickles your feet without mercy.)
+(Она встаёт на колени и безжалостно щекочет ваши ступни.)
+(Tremble and giggle playfully.)
+(Дрожать и игриво хихикать.)
+(Stay strong and stoic.)
+(Оставаться стойкой и невозмутимой.)
+Yep, that was ok.  (Leave her.)
+Ага, неплохо. (Оставить её.)
+I'll find a better punishment for you.  (Leave her.)
+Я придумаю тебе наказание получше. (Оставить её.)
+(Laugh some more and leave her.)
+(Ещё посмеяться и оставить её.)
+You're such a naughty tiger.
+Какая же ты непослушная тигрица.
+Can we do another consequence?
+Может, выберем другое наказание?
+It's always kinky with you.
+С тобой всегда пикантно.
+(Blow her a kiss.)
+(Послать ей воздушный поцелуй.)
+You have wonderful hands.
+У тебя чудесные руки.
+(Stay cold.)
+(Оставаться невозмутимой.)
+(She massages your breast with one hand and caresses your thigh with the other.)
+(Она одной рукой массирует вашу грудь, а другой ласкает бедро.)
+(Try to resist.)
+(Попытаться сопротивляться.)
+(She smirks and slowly masturbates your clitoris.  Watching your every move.)
+(Она усмехается и медленно стимулирует ваш клитор, следя за каждым движением.)
+Oooooooh!
+Оооооох!
+(She smiles and slowly masturbates your clitoris.  Watching your every move.)
+(Она улыбается и медленно стимулирует ваш клитор, следя за каждым движением.)
+Can I touch you also?
+Можно мне тоже тебя потрогать?
+No touching!  (She slowly masturbates your clitoris.  Watching your every move.)
+Не трогать! (Она медленно стимулирует ваш клитор, следя за каждым движением.)
+Aaaaah!  AAAAHH!
+Аааах! ААААХ!
+(Bite your lips not to scream.)
+(Прикусить губы, чтобы не кричать.)
+mmmMMMmmm!
+Ммм-ммм!
+(Try to stay in control.)
+(Пытаться сохранять контроль.)
+More!  Please more!
+Ещё! Пожалуйста, ещё!
+Best lover ever!
+Лучшая любовница на свете!
+You won't get me.
+Я тебе не дамся.
+(Let out a shattering orgasm.)
+(Бурно кончить.)
+(Gulp and stay in control.)
+(Сглотнуть и сохранить контроль.)
+(Look dazzled and try to catch your breath.)
+(Выглядеть ошеломлённой и пытаться перевести дух.)
+I've had better.  (Leave her.)
+Бывало и лучше. (Оставить её.)
+That was nice.  (Leave her.)
+Было приятно. (Оставить её.)
+Best consequence ever!  (Leave her.)
+Лучшее наказание на свете! (Оставить её.)
+Let's share our next orgasm my love.  (Leave.)
+В следующий раз кончим вместе, любимая. (Уйти.)
+My love, I have a gift for you.
+Любимая, у меня для тебя подарок.
+Sweetie!  You're so sexy and fun, I have a gift for you.
+Милая! Ты такая сексуальная и весёлая. У меня для тебя подарок.
+Yo luv.  I got ya a gift from the store.
+Эй, любимая. Принесла тебе подарок из магазина.
+To show you how much I care for you my love.  I got you a present.
+Хочу показать, как ты мне дорога, любимая. Я приготовила тебе подарок.
+Thank you very much.
+Огромное спасибо.
+(She gives you GIFTNAME.)  Would you like to try it now?
+(Она вручает вам подарок «GIFTNAME».) Хочешь попробовать его сейчас?
+You're way too generous.
+Ты слишком щедра.
+(She blushes and gives you GIFTNAME.)  Would you like to try it now?
+(Она краснеет и вручает вам подарок «GIFTNAME».) Хочешь попробовать его сейчас?
+I LOVE YOU!
+Я ЛЮБЛЮ ТЕБЯ!
+(She gives you GIFTNAME.)  I love you also.  Would you like to try it now?
+(Она вручает вам подарок «GIFTNAME».) Я тоже тебя люблю. Хочешь попробовать его сейчас?
+(Smile and take the gift.)
+(Улыбнуться и принять подарок.)
+(She smiles back and gives you GIFTNAME.)  Would you like to try it now?
+(Она улыбается в ответ и вручает вам подарок «GIFTNAME».) Хочешь попробовать его сейчас?
+Sure, I will try it now.
+Конечно, попробую прямо сейчас.
+(You try the gift as she watches you happily.)  What would you like to do today?
+(Вы пробуете подарок, а она радостно наблюдает.) Чем хочешь заняться сегодня?
+I will try it later.
+Попробую позже.
+Of course my love.  What would you like to do today?
+Конечно, любимая. Чем хочешь заняться сегодня?
+My love, I have a very kinky gift for you.
+Любимая, у меня для тебя очень пикантный подарок.
+Sweetheart, I went to the store and got you a fun gift.
+Милая, я сходила в магазин и купила тебе забавный подарок.
+Hun, it's time to spice things up.  I got you a gift.
+Дорогая, пора добавить остроты. Я приготовила тебе подарок.
+Luv, we need to fuck more often.  I got ya something for your libido.
+Любимая, нам нужно чаще трахаться. Я купила кое-что для твоего либидо.
+(She gives you GIFTNAME.)  Would you like to be restrained in it now?
+(Она вручает вам подарок «GIFTNAME».) Хочешь, чтобы я тебя сразу этим связала?
+(She blushes and gives you GIFTNAME.)  Would you like to be restrained in it now?
+(Она краснеет и вручает вам подарок «GIFTNAME».) Хочешь, чтобы я тебя сразу этим связала?
+(She smiles back and gives you GIFTNAME.)  Would you like to be restrained in it now?
+(Она улыбается в ответ и вручает вам подарок «GIFTNAME».) Хочешь, чтобы я тебя сразу этим связала?
+Sure, I will wear it now.
+Конечно, надену прямо сейчас.
+I will wear it later.
+Надену позже.
+My girl, I have a kinky gift for you to wear.
+Моя девочка, у меня для тебя пикантный подарок. Наденешь его.
+My subbbie, you're so much fun.  I have a sexy gift for you.
+Моя нижняя, с тобой так весело. У меня для тебя сексуальный подарок.
+Yo my girl.  I got ya a gift to keep you contained.
+Эй, моя девочка. Купила тебе подарок, чтобы держать тебя в узде.
+To show you how much I appreciate your submission.  I got you a present.
+Хочу показать, как ценю твоё подчинение. Я приготовила тебе подарок.
+Thank you Mistress.
+Спасибо, госпожа.
+(She gives you GIFTNAME.)  Guess what?  You will wear it now.
+(Она вручает вам подарок «GIFTNAME».) Угадай что? Ты наденешь его сейчас.
+(She shakes her head no and gives you GIFTNAME.)  You will wear it now.
+(Она отрицательно качает головой и вручает вам подарок «GIFTNAME».) Ты наденешь его сейчас.
+(Bow your head and take the gift.)
+(Склонить голову и принять подарок.)
+(She smirks and gives you GIFTNAME.)  You will wear it now.
+(Она усмехается и вручает вам подарок «GIFTNAME».) Ты наденешь его сейчас.
+(She happily puts the gift on you.)  Aren't you a good girl?
+(Она радостно надевает на вас подарок.) Разве ты не хорошая девочка?
+Right now?
+Прямо сейчас?
+Of course my girl.  (She puts the gift on you.)  This will be a good day.
+Конечно, моя девочка. (Она надевает на вас подарок.) День будет хорошим.
+Mistress, I have a special gift for you.
+Госпожа, у меня для вас особенный подарок.
+Superest-Bestest-Mistress, I went to the store and got you a fun gift.
+Самая-самая лучшая госпожа, я сходила в магазин и купила вам забавный подарок.
+Mistress, I want to show my devotion to you.  My body is yours.  I got you a gift.
+Госпожа, хочу показать вам свою преданность. Моё тело принадлежит вам. Я приготовила подарок.
+Yo Mistress, your slut is so happy that she got ya a gift.
+Эй, госпожа, ваша шлюха так счастлива, что купила вам подарок.
+Thank you my girl.
+Спасибо, моя девочка.
+(She gives you GIFTNAME.)  Would you like to try it now Mistress?
+(Она вручает вам подарок «GIFTNAME».) Хотите попробовать его сейчас, госпожа?
+You're a generous submissive.
+Какая щедрая нижняя.
+(She blushes and gives you GIFTNAME.)  Would you like to try it now Mistress?
+(Она краснеет и вручает вам подарок «GIFTNAME».) Хотите попробовать его сейчас, госпожа?
+Such a good girl!
+Какая хорошая девочка!
+(She smiles back and gives you GIFTNAME.)  Would you like to try it now Mistress?
+(Она улыбается в ответ и вручает вам подарок «GIFTNAME».) Хотите попробовать его сейчас, госпожа?
+Alright, I will try it now.
+Хорошо, попробую прямо сейчас.
+(You try the gift as she watches you happily.)  What are your plans for the day?
+(Вы пробуете подарок, а она радостно наблюдает.) Какие у вас планы на день?
+Not now my girl.
+Не сейчас, моя девочка.
+Of course Mistress.  What are your plans for the day?
+Конечно, госпожа. Какие у вас планы на день?
+(You meet your Mistress as you walk in the club.)  Hello my girl.
+(Во время прогулки по клубу вы встречаете свою госпожу.) Привет, моя девочка.
+Hello there!
+Привет!
+(She frowns.)  I need to train you better.
+(Она хмурится.) Нужно лучше тебя воспитывать.
+What a coincidence.
+Какое совпадение.
+We are bound to see each other.  (She giggles.)
+Нам суждено встречаться. (Она хихикает.)
+Greetings Mistress.
+Приветствую, госпожа.
+(She smiles and pets your head.)  I have a good girl.
+(Она улыбается и гладит вас по голове.) Какая у меня хорошая девочка.
+(She removes your gag and giggles.)  You get into so much trouble.
+(Она вынимает ваш кляп и хихикает.) Вечно ты попадаешь в неприятности.
+(Bow your head politely.)
+(Вежливо склонить голову.)
+(She removes your gag and smiles.)  Such a good girl.
+(Она вынимает ваш кляп и улыбается.) Какая хорошая девочка.
+(Shake your head from left to right.)
+(Покачать головой из стороны в сторону.)
+(She removes your gag.)  Is this how you beg for help?
+(Она вынимает ваш кляп.) Вот так ты просишь о помощи?
+What is on your mind?
+О чём вы думаете?
+(She starts to ponder.)
+(Она задумывается.)
+It's a pleasure to see you.
+Рада вас видеть.
+The pleasure is shared my girl.  (She starts to ponder.)
+Взаимно, моя девочка. (Она задумывается.)
+I'm kind of busy Mistress.
+Я немного занята, госпожа.
+So, you're too busy for me?  (She starts to ponder.)
+То есть для меня ты слишком занята? (Она задумывается.)
+What are you thinking about?
+О чём вы размышляете?
+Mistress?
+Госпожа?
+Come with me my submissive.  We are going back to your room.
+Пойдём со мной, моя нижняя. Вернёмся в твою комнату.
+Good girl.  (She smiles and starts to guide you.)
+Хорошая девочка. (Она улыбается и ведёт вас за собой.)
+Now?  I have other plans.
+Сейчас? У меня другие планы.
+Not anymore.  (She laughs and starts to push you.)
+Уже нет. (Она смеётся и подталкивает вас.)
+(She starts to guide you toward your room.)
+(Она ведёт вас к вашей комнате.)
+(Go to your private room with her.)
+(Пойти с ней в свою приватную комнату.)
+(You both go back to your private as she smirks.)  I want to have some fun with you.
+(Вы обе возвращаетесь в вашу комнату, и она усмехается.) Хочу с тобой повеселиться.
+My girl, I want to complicate how you will explore the club.
+Моя девочка, хочу усложнить тебе прогулки по клубу.
+Slave girl, I want ya to struggle hard while in BC.
+Рабыня, хочу, чтобы в клубе тебе пришлось как следует побороться с путами.
+My lovely submissive, I want to make your club wandering slightly more... restricted.
+Моя прекрасная нижняя, хочу, чтобы твои прогулки по клубу были чуть более... скованными.
+My slave, you're allowed to wander in the club, but it will be on my terms.
+Моя рабыня, гулять по клубу тебе разрешено, но на моих условиях.
+I'm not sure I like the sound of that.
+Не уверена, что мне это нравится.
+(Make a confused look.)
+(Растерянно посмотреть.)
+That sounds exciting Mistress.
+Звучит заманчиво, госпожа.
+What does it mean?
+Что это значит?
+It's easy my girl.  You're going to get into some bondage.  How tight do you want it?
+Всё просто, моя девочка. Тебя свяжут. Насколько туго хочешь?
+Do your worst, I can take it.
+Покажите всё, на что способны. Я выдержу.
+Oh!  Make it tight Mistress!
+О! Свяжите туго, госпожа!
+Please do it as you want it.
+Пожалуйста, делайте как считаете нужным.
+(She brings bondage items and gets you in bondage in the main hall of the club.)
+(Она приносит ограничители и связывает вас в главном зале клуба.)
+Not too tight please.
+Пожалуйста, не слишком туго.
+Is it really necessary?
+Это действительно необходимо?
+Wow!  I love this bondage.
+Ого! Мне нравятся эти путы.
+It's too tight Mistress.
+Слишком туго, госпожа.
+Too bad, because I need to go, ask for a maid if you're stuck.
+Жаль, мне пора. Если не выберешься, попроси горничную.
+You're so adorable in bondage.  I need to go, ask for a maid if you're stuck.
+Ты так мила в путах. Мне пора. Если не выберешься, попроси горничную.
+Grumble all you want slave.  I need to go.  Ask for a maid if you're stuck.
+Ворчи сколько хочешь, рабыня. Мне пора. Если не выберешься, попроси горничную.
+(Struggle in the main hall.)
+(Пытаться освободиться в главном зале.)
+Since you like to travel in the club, we will explore together my girl.
+Раз тебе нравится гулять по клубу, сходим вместе, моя девочка.
+Slave girl, since ya like to explore BC, we'll do it together.
+Рабыня, раз тебе нравится исследовать клуб, сделаем это вместе.
+My slave, since you wander in the club so much, we will do it together now.
+Моя рабыня, ты так много гуляешь по клубу. Теперь будем делать это вместе.
+That sounds boring.
+Звучит скучно.
+Trust me my girl, it won't.  Get naked!
+Поверь, моя девочка, скучно не будет. Раздевайся!
+Where should we go?
+Куда пойдём?
+Don't worry about that and get naked.
+Не беспокойся об этом и раздевайся.
+Good idea Mistress!
+Хорошая идея, госпожа!
+(She smiles.)  And it will get better.  Get naked!
+(Она улыбается.) А дальше будет ещё лучше. Раздевайся!
+(Nod in agreement.)
+(Согласно кивнуть.)
+Good girl.  Now get naked.
+Хорошая девочка. А теперь раздевайся.
+I can't explore without clothes.
+Я не могу гулять без одежды.
+You certainly can.  Everyone will see how cute you are.
+Ещё как можешь. Все увидят, какая ты милая.
+Don't worry about that.  Everyone will see how cute you are.
+Не беспокойся об этом. Все увидят, какая ты милая.
+Exploring naked?  That's exciting!
+Гулять нагишом? Заманчиво!
+Well said.  Everyone will see how cute you are.
+Хорошо сказано. Все увидят, какая ты милая.
+Good girl.  Everyone will see how cute you are.
+Хорошая девочка. Все увидят, какая ты милая.
+Naked?  Really?
+Голой? Серьёзно?
+Don't waste my time girl.  You're getting nude.
+Не трать моё время, девочка. Раздевайся.
+(Strip naked.)
+(Раздеться догола.)
+(You get naked as she smirks.)
+(Вы раздеваетесь, а она усмехается.)
+Can you help me to strip?
+Поможете мне раздеться?
+(She releases you and helps you to get naked.)
+(Она освобождает вас и помогает раздеться.)
+(Blush a little.)
+(Слегка покраснеть.)
+So adorable!  Show me your neck, we need a cute collar for your parade.
+Как мило! Покажи шею. Для твоего выхода нужен милый ошейник.
+So kinky Mistress!
+Как пикантно, госпожа!
+(She nods and smiles.)  Show me your neck, we need a cute collar for your parade.
+(Она кивает и улыбается.) Покажи шею. Для твоего выхода нужен милый ошейник.
+(She changes your collar and attaches a leash to it.)  Are you ready to go explore?
+(Она меняет ваш ошейник и пристёгивает поводок.) Готова отправиться на прогулку?
+(Present your neck.)
+(Подставить шею.)
+(Let your Mistress parade you.)
+(Позволить госпоже водить вас напоказ.)
+(Follow along.)
+(Следовать за ней.)
+Can we stop this?
+Можно прекратить?
+(Keep on parading.)
+(Продолжать идти напоказ.)
+This is humiliating.
+Это унизительно.
+(Follow your Mistress.)
+(Следовать за госпожой.)
+Alright!   I've had enough.
+Всё! С меня хватит.
+(Walk with her.)
+(Прогуляться с ней.)
+You're so kinky Mistress.
+Вы такая извращённая, госпожа.
+(Watch the games silently.)
+(Молча наблюдать за играми.)
+It's unfair!  I want to play also.
+Нечестно! Я тоже хочу играть.
+That was a fun visit.
+Весёлый был поход.
+I'm glad you did.  We'll do it again.  (She undoes the leash.)  See you soon my girl!
+Рада это слышать. Повторим. (Она отстёгивает поводок.) До скорого, моя девочка!
+That was too embarrassing.
+Было слишком неловко.
+I'm glad you did.  We'll do it again.  (She releases you.)  See you soon my girl!
+Рада это слышать. Повторим. (Она освобождает вас.) До скорого, моя девочка!
+(Grumble in your gag.)
+(Недовольно промычать сквозь кляп.)
+(Return to the main hall.)
+(Вернуться в главный зал.)
+(She giggles and grabs your hand.)  Come to the bed with me honey.  (She goes to your bed.)
+(Она хихикает и берёт вас за руку.) Идём со мной в постель, дорогая. (Она направляется к вашей кровати.)
+(She kisses your cheek.)  We should do some quick cuddles sweetheart.  (She goes to your bed.)
+(Она целует вас в щёку.) Немного пообнимаемся, милая. (Она направляется к вашей кровати.)
+I love you and your restraints, but they should be more secure.  (She picks a few lover padlocks and use them on your restraints.)
+Люблю тебя и твои путы, но их стоит сделать надёжнее. (Она берёт несколько замков возлюбленных и запирает ваши путы.)
+Oh!  You have unlocked restraints?  Bad sweetheart!  (She spanks your butt, picks a few lover padlocks, and use them on your restraints.)
+О! Твои путы не заперты? Плохая милашка! (Она шлёпает вас по ягодицам, берёт несколько замков возлюбленных и запирает ваши путы.)
+Hun, ya so hot and sexy with locks on ya bondage.  (She picks a few lover padlocks and use them on your restraints.)
+Дорогая, ты такая горячая и сексуальная, когда путы заперты. (Она берёт несколько замков возлюбленных и запирает ваши путы.)
+My love, it's very unsafe to wear unlocked restraints, let me help you.  (She picks a few lover padlocks and use them on your restraints.)
+Любимая, носить незапертые путы очень небезопасно. Позволь помочь. (Она берёт несколько замков возлюбленных и запирает ваши путы.)
+My fortune teller said to protect my love, that's one way to do it.  (She picks a few lover padlocks and use them on your restraints.)
+Гадалка велела защищать мою любовь. Вот один из способов. (Она берёт несколько замков возлюбленных и запирает ваши путы.)
+You're so sweet.  I guess we can unlock your restraints.  For now.  (She winks at you and removes the lover padlocks.)
+Ты такая милая. Думаю, можно отпереть твои путы. Пока что. (Она подмигивает и снимает замки возлюбленных.)
+Cutie!  It's time to unlock you so we can try new items.  (She pinches your cheek and removes the lover padlocks.)
+Милашка! Пора отпереть тебя, чтобы попробовать новые предметы. (Она щиплет вас за щёку и снимает замки возлюбленных.)
+I love you, but I've had enough of these damn locks.  I want some flesh hun. (She grins and removes the lover padlocks.)
+Я люблю тебя, но с меня хватит этих чёртовых замков. Хочу твоего тела, дорогая. (Она усмехается и снимает замки возлюбленных.)
+You're so adorable.  Love must be set free to flourish.  (She smiles at you and removes the lover padlocks.)
+Ты такая очаровательная. Чтобы любовь расцвела, её нужно освободить. (Она улыбается вам и снимает замки возлюбленных.)
+I'll unlock you for now, but don't get wild ideas.  (She smirks and removes the lover padlocks.)
+Пока отопру тебя, но не увлекайся. (Она усмехается и снимает замки возлюбленных.)
+Congratulations, I'll have to review my strategies and deck building.  It seems that I'm your spoils of war.
+Поздравляю, придётся пересмотреть стратегию и построение колоды. Похоже, я твой военный трофей.
+I'll never understand that stupid game!  You win, but don't go crazy on me, there are limits.
+Никогда не пойму эту дурацкую игру! Ты победила, но не перегибай: у меня есть пределы допустимого.
+(She puts away her cards carefully and smiles.)  I can help you review your tactics later, but for now you'll be my victim.
+(Она аккуратно убирает карты и улыбается.) Позже помогу пересмотреть твою тактику. А пока ты будешь моей жертвой.
+Good game my girl!  I'll have to do better next time.  You can do what you want with me, but don't go too far or you'll be punished.
+Хорошая партия, моя девочка! В следующий раз постараюсь лучше. Можешь делать со мной что хочешь, но не перегибай, иначе будешь наказана.
+(She throws her cards away.)  Fine, you win!  Make it painful to teach me a lesson slave.
+(Она отбрасывает карты.) Ладно, ты победила! Сделай больно, чтобы я усвоила урок, рабыня.
+You're good at that game you know?  (She winks at you.)  You can fuck me now my slave.
+Ты хорошо играешь, знаешь? (Она подмигивает вам.) Теперь можешь меня трахнуть, моя рабыня.
+Congratulations my submissive, I'll have to review my strategies and deck building.  It seems that I'm your spoils of war.
+Поздравляю, моя нижняя. Придётся пересмотреть стратегию и построение колоды. Похоже, я твой военный трофей.
+I'll never understand that stupid game!  You win my girl, but don't go crazy on me, there are limits.
+Никогда не пойму эту дурацкую игру! Ты победила, моя девочка, но не перегибай: у меня есть пределы допустимого.
+(She puts away her cards carefully and smiles.)  I can help you review your tactics later, but for now you'll be my lovely victim.
+(Она аккуратно убирает карты и улыбается.) Позже помогу пересмотреть твою тактику. А пока ты будешь моей милой жертвой.
+Good game Mistress!  I'll have to do better next time.  As usual, you can do what you want with me.
+Хорошая партия, госпожа! В следующий раз постараюсь лучше. Как всегда, можете делать со мной что хотите.
+(She throws her cards away.)  Fine, you win!  Mistress, please make it painful to teach me a lesson.
+(Она отбрасывает карты.) Ладно, вы победили! Госпожа, пожалуйста, сделайте больно, чтобы я усвоила урок.
+Congratulations Madam, I'll have to review my strategies and deck building.  It seems that I'm your spoils of war.
+Поздравляю, мадам. Придётся пересмотреть стратегию и построение колоды. Похоже, я ваш военный трофей.
+You never had a chance Mistress.  (She grins.)  It will be great to get your skin red.
+У вас не было шансов, госпожа. (Она усмехается.) С удовольствием подрумяню вашу кожу.
+(She puts away her cards carefully and smiles.)  I can help you review your tactics later, but for now you'll be my respected victim.
+(Она аккуратно убирает карты и улыбается.) Позже помогу пересмотреть вашу тактику. А пока вы будете моей уважаемой жертвой.
+What?  Did I win?  Hahaha, awesome!  Mistress, I'm allowed to put you in bondage?  Wow!
+Что? Я выиграла? Ха-ха-ха, отлично! Госпожа, мне можно вас связать? Ого!
+Best wishes for your Bondage Club birthday.  May you stay with us for years upon years.
+Всего наилучшего в годовщину вступления в Бондаж-клуб. Оставайся с нами долгие-долгие годы.
+Are we protecting the Seven Prisms today or relaxing in bed?  Both options are good to me.
+Сегодня защищаем Семь призм или отдыхаем в постели? Мне нравятся оба варианта.
+Time is of the essence sister.   We shall foment the perfect plan to protect the Seven Prisms of the moon.
+Время не ждёт, сестра. Нужно придумать идеальный план защиты Семи призм Луны.
+This is the perfect lair to shield ourselves against evil.  Heavenly Light shall prevail!
+Идеальное логово, чтобы укрыться от зла. Небесный свет восторжествует!
+(She wiggles her butt and winks at you.)  Beside bondage, we bunnies also do very naughty activities every day.  Are you in?
+(Она виляет ягодицами и подмигивает вам.) Помимо связывания мы, зайки, каждый день занимаемся очень непристойными делами. Ты с нами?
+(She wiggles her butt like a bunny.)  I'm not eating carrots but I can use them in other ways.
+(Она виляет ягодицами, как зайка.) Морковку я не ем, но нахожу ей другое применение.
+(She wiggles her butt in a bunny fashion.)  Do you have plans my friend?  What kind of rope bunny trouble could we get into today?
+(Она по-заячьи виляет ягодицами.) Есть планы, подруга? В какие верёвочные неприятности попадём сегодня?
+Let's find a way to get into strict rope bunny bondage together today.  We could maybe find a rigger in the dojo.
+Давай сегодня вместе попадём в тугие верёвочные путы. Может, найдём мастера бондажа в додзё.
+(She ponders and nods.)  Some intimate time with you will strenghten our friendship.  (She gets in bed.)
+(Она задумывается и кивает.) Близость с тобой укрепит нашу дружбу. (Она забирается в постель.)
+That's an interesting idea girl.  After my victory, you will end up in chastity for a long time.
+Интересная идея, девочка. После моей победы надолго останешься в устройствах целомудрия.
+A tactical game to prove superiority?  Very well.  Your posterior will glow crimson if I'm victorious.
+Тактическая игра, чтобы доказать превосходство? Хорошо. Победю — твоя задница будет пылать багрянцем.
+What cards now?  (She thinks for a while and giggles.)  Oh yeah!  I think I remember the rules.  Let's play a game.
+Какие ещё карты? (Она немного думает и хихикает.) А, точно! Кажется, я помню правила. Сыграем.
+(She salutes the light and changes.)  Always ready to protect the Seven Prisms of the moon!
+(Она салютует свету и переодевается.) Всегда готова защищать Семь призм Луны!
+(She ponders for a few seconds.)  I knew this question was coming sweetheart, and the answer is yes.
+(Она несколько секунд думает.) Знала, что ты об этом спросишь, милая. Ответ — да.
+(She sighs and shakes her head no.)  Now is not the best time for that.  Maybe if we know and trust each other better.
+(Она вздыхает и отрицательно качает головой.) Сейчас не лучшее время. Может, когда лучше узнаем друг друга и научимся доверять.
+(She pulls her tongue at you.)  Not now.  Maybe if we know and enjoy each other better.
+(Она показывает вам язык.) Не сейчас. Может, когда лучше узнаем друг друга и нам станет ещё приятнее вместе.
+(She shakes her head from left to right.)  This is not the right time and the right mood to ask this question.
+(Она качает головой из стороны в сторону.) Сейчас не то время и настроение для такого вопроса.
+I'm so sorry sweetie, it's too early in our relationship for that.  We need more durable love.
+Прости, милая, для наших отношений ещё рано. Наши чувства должны стать крепче.
+(She shakes her head no.)  Let's not rush our wedding.  We need to make sure we are the perfect pair.
+(Она отрицательно качает головой.) Не будем торопиться со свадьбой. Нужно убедиться, что мы идеальная пара.
+(She pulls her tongue at you.)  Don't be so quick!  We need to enjoy our time as lovers first.
+(Она показывает вам язык.) Не так быстро! Сначала насладимся временем в роли возлюбленных.
+(She shakes her head from left to right.)  You're too hasty sweetheart, give me more time to know you.
+(Она качает головой из стороны в сторону.) Ты слишком торопишься, милая. Дай мне время узнать тебя.
+I'm so sorry sweetie, we need to spend more time together first.  I hope you're not mad at me.
+Прости, милая, сначала нужно проводить больше времени вместе. Надеюсь, ты не сердишься.
+(You exchange engagement rings.)  I love you DialogPlayerName.  I want to be with you for a long, long time.
+(Вы обмениваетесь помолвочными кольцами.) Я люблю тебя, DialogPlayerName. Хочу быть с тобой очень-очень долго.
+(You exchange engagement rings.)  I love you DialogPlayerName.  The sun always shines when you're around.
+(Вы обмениваетесь помолвочными кольцами.) Я люблю тебя, DialogPlayerName. Рядом с тобой всегда светит солнце.
+(She sighs.)  It's a tradition.  You can always remove it if you're not happy.  What would you like to do now?
+(Она вздыхает.) Это традиция. Если не нравится, всегда можешь снять его. Чем хочешь заняться сейчас?
+Indeed, it was.  (She nods politely.)  I surrender to you, body and soul, until our next match of course.
+И правда хорошая. (Она вежливо кивает.) Отдаюсь тебе телом и душой. Конечно, до нашей следующей партии.
+(She hums a birthday song silently.)  All my blessings on your Bondage Club birthday my submissive.
+(Она тихо напевает песню ко дню рождения.) Всех благ в годовщину твоего вступления в Бондаж-клуб, моя нижняя.
+Best wishes for your Bondage Club birthday.  May you stay well constrained for years upon years.
+Всего наилучшего в годовщину вступления в Бондаж-клуб. Оставайся крепко связанной долгие-долгие годы.
+Today we will protect the Seven Prisms my minion.  But maybe get to bed before we do that.
+Сегодня мы будем защищать Семь призм, моя прислужница. Но сначала, пожалуй, стоит лечь в постель.
+Fear not minion!  If evil comes, I will smack it!  Benzai!  (She almost hurts herself punching a wall.)
+Не бойся, прислужница! Если зло явится, я его поколочу! Банзай! (Ударив стену кулаком, она едва не ушибается.)
+Time is of the essence my minion.   We shall foment the perfect plan to protect the Seven Prisms of the moon.
+Время не ждёт, моя прислужница. Мы разработаем идеальный план защиты Семи призм Луны.
+This is the perfect lair against evil.  I will protect you my minion.  Heavenly Light shall prevail!
+Это идеальное убежище от зла. Я защищу тебя, моя прислужница. Небесный свет восторжествует!
+(She ponders and nods.)  Some intimate time with you will strenghten our D/s relationship.  (She gets in bed.)
+(Она размышляет и кивает.) Немного близости укрепит наши отношения доминирования и подчинения. (Она ложится в постель.)
+That's an interesting idea my slave.  After my victory, you will end up in chastity for a long time.
+Интересная мысль, моя рабыня. После моей победы тебя надолго ждёт пояс верности.
+A tactical game to prove my superiority?  Very well.  Your posterior will glow crimson very soon.
+Тактическая игра, чтобы доказать моё превосходство? Хорошо. Очень скоро твоя попка станет пунцовой.
+What cards now?  (She thinks for a while and giggles.)  Oh yeah!  I think I remember the rules.  Let's play a game my subbie.
+Какие ещё карты? (Она немного думает и хихикает.) Ах да! Кажется, я помню правила. Давай сыграем, моя покорная.
+(She ponders for a few seconds.)  I knew this question was coming my slave, and the answer is yes.
+(Она несколько секунд размышляет.) Я знала, что ты об этом спросишь, моя рабыня. И мой ответ — да.
+(She sighs and shakes her head no.)  Now is not the best time for that girl.  Maybe if we know and trust each other better.
+(Она вздыхает и отрицательно качает головой.) Сейчас не лучшее время, девочка. Возможно, когда мы лучше узнаем друг друга и станем больше друг другу доверять.
+(She pulls her tongue at you.)  Not now subbie.  Maybe if we know and enjoy each other better.
+(Она показывает вам язык.) Не сейчас, моя покорная. Возможно, когда мы лучше узнаем друг друга и нам станет ещё приятнее вместе.
+(She shakes her head from left to right.)  This is not the right time and the right mood to ask this question my slave.
+(Она качает головой из стороны в сторону.) Сейчас неподходящий момент и неподходящее настроение для такого вопроса, моя рабыня.
+I'm sorry sweet submissive, but it's too early in our relationship for that.  We need more durable love.
+Прости, милая покорная, но для наших отношений ещё слишком рано. Наша любовь должна выдержать проверку временем.
+(She shakes her head no.)  Let's not rush our wedding girl.  We need to make sure we are the perfect pair.
+(Она отрицательно качает головой.) Давай не будем торопиться со свадьбой, девочка. Нужно убедиться, что мы идеально подходим друг другу.
+(She pulls her tongue at you.)  Don't be so quick little subbie!  We need to enjoy our time as lovers first.
+(Она показывает вам язык.) Не спеши так, моя покорная! Сначала нужно насладиться временем, пока мы просто возлюбленные.
+(She shakes her head from left to right.)  You're too hasty my slave, give me more time to know you.
+(Она качает головой из стороны в сторону.) Ты слишком торопишься, моя рабыня. Дай мне время узнать тебя получше.
+Hold your horses slave girl.  (She pinches your cheek.)  You should know that I won't rush it.
+Попридержи коней, рабыня. (Она щиплет вас за щёку.) Тебе пора знать, что я не стану с этим спешить.
+I'm sorry my submissive, we need to spend more time together first.  Do not be bitter about this.
+Прости, моя покорная, сначала нам нужно провести больше времени вместе. Не обижайся.
+(You exchange engagement rings.)  I love you my girl.  I want to be with you for a long, long time.
+(Вы обмениваетесь помолвочными кольцами.) Я люблю тебя, моя девочка. Я хочу быть с тобой очень-очень долго.
+(You exchange engagement rings.)  I love you my girl.  The sun always shines when you're around.
+(Вы обмениваетесь помолвочными кольцами.) Я люблю тебя, моя девочка. Когда ты рядом, всегда светит солнце.
+(She sighs.)  It's a tradition my submissive.  You can always remove it if you're not happy.
+(Она вздыхает.) Это традиция, моя покорная. Если тебе не нравится, всегда можешь его снять.
+(As soon as you enter, your Mistress intercepts you and forces you on your knees.)  I've been looking for you.
+(Едва вы входите, ваша Госпожа преграждает вам путь и ставит на колени.) Я тебя искала.
+(As soon as you enter, your Mistress intercepts you and forces you on your knees.)  I was wet thinking of you, my girl.
+(Едва вы входите, ваша Госпожа преграждает вам путь и ставит на колени.) Я вся промокла, думая о тебе, моя девочка.
+(As soon as you enter, your Mistress intercepts you and forces you on your knees.)  I've wanted to spend time with you.
+(Едва вы входите, ваша Госпожа преграждает вам путь и ставит на колени.) Мне хотелось провести с тобой время.
+(As soon as you enter, your Mistress intercepts you and forces you on your knees.)  It's a delight to see you my submissive.
+(Едва вы входите, ваша Госпожа преграждает вам путь и ставит на колени.) Как приятно тебя видеть, моя покорная.
+(As soon as you enter, your Mistress intercepts you and forces you on your knees.)  Yo my bitch!
+(Едва вы входите, ваша Госпожа преграждает вам путь и ставит на колени.) Эй, моя сучка!
+(As soon as you enter, your Mistress intercepts you and forces you on your knees without saying a word.)
+(Едва вы входите, ваша Госпожа молча преграждает вам путь и ставит на колени.)
+(As soon as you enter, your Mistress intercepts you and forces you on your knees.)  Yes!  You're back!
+(Едва вы входите, ваша Госпожа преграждает вам путь и ставит на колени.) Да! Ты вернулась!
+I want to spend some time with you, my girl.  To have some fun and get to know you better.
+Я хочу провести с тобой время, моя девочка. Повеселиться и узнать тебя получше.
+(You tickle her on the ribs and tummy.  She seems to enjoy it and cannot resist laughing.)  Hehehe, it tickles my subbie!
+(Вы щекочете ей бока и живот. Кажется, ей это нравится, и она не может удержаться от смеха.) Хи-хи-хи, щекотно, моя покорная!
+(You tickle her on the ribs and tummy.  She barely laughs and doesn't seem to enjoy it.)  That's child play slave.  You can do better than that.
+(Вы щекочете ей бока и живот. Она почти не смеётся, и, похоже, ей это не нравится.) Это детские игры, рабыня. Ты можешь лучше.
+(You get close to each other and share a lovely kiss on the lips.)  Mmmmh, this is nice my sub.
+(Вы придвигаетесь друг к другу и нежно целуетесь в губы.) М-м-м, как приятно, моя покорная.
+(You fondle her breast as she blushes.)  You have wonderful hands my submissive.  I'll use them later.
+(Вы ласкаете её грудь, и она краснеет.) У тебя чудесные руки, моя покорная. Позже я найду им применение.
+(You fondle her breast, but she doesn't react much.)  Is that the best you can do my girl?  Smack them, pinch them, whip them!
+(Вы ласкаете её грудь, но она почти не реагирует.) Это всё, на что ты способна, моя девочка? Шлёпай, щипай, хлещи!
+(You fondle her breast as she moans lightly.)  You're good girl.  Maybe I could have you trained as a masseuse.
+(Вы ласкаете её грудь, и она тихо стонет.) Ты молодец, девочка. Может, стоит отправить тебя учиться на массажистку.
+(She whimpers and bows her head as you slap her hard.)  Such a harsh treatment isn't deserved my submissive.
+(Она жалобно вскрикивает и опускает голову, когда вы сильно шлёпаете её.) Я не заслужила такого сурового обращения, моя покорная.
+(She whimpers as you spank her pretty hard on the butt.)  This punishment seems unfair, it was a small tactical defeat.
+(Она жалобно вскрикивает, когда вы довольно сильно шлёпаете её по попке.) Это наказание несправедливо: всего лишь небольшое тактическое поражение.
+(You masturbate her lovingly as she breathes faster and faster.)  Is it getting hot in here little sub?
+(Вы нежно мастурбируете ей, и её дыхание всё учащается.) Здесь становится жарко, моя покорная?
+(You masturbate her with passion as she moans and blushes.)  My girl, you could be a good caring Domme someday.
+(Вы страстно мастурбируете ей, а она стонет и краснеет.) Моя девочка, когда-нибудь ты могла бы стать хорошей, заботливой Госпожой.
+Yeah little slut!  And losing to you always makes me horny.  (She giggles.)  Enjoy fucking me.
+Да, маленькая шлюшка! Проигрыш тебе всегда меня возбуждает. (Она хихикает.) Наслаждайся: можешь меня трахнуть.
+Shit, shit, shit!  I'll do better next time slave girl.  You can have your ways for now.
+Чёрт, чёрт, чёрт! В следующий раз я постараюсь лучше, рабыня. Пока что можешь делать со мной что хочешь.
+Indeed, it was.  (She nods politely.)  I surrender to you my submissive, enjoy it while it lasts.
+Да, это было так. (Она вежливо кивает.) Я сдаюсь тебе, моя покорная. Наслаждайся, пока можешь.
+My beloved submissive, your chastity time is over.  I'll help you to let loose your wildest desires.
+Моя любимая покорная, срок твоего воздержания окончен. Я помогу тебе дать волю самым необузданным желаниям.
+My slave, I know you know I have...  (She thinks for a while.)  Forget it, let's have sex in your bed.
+Моя рабыня, я знаю, что ты знаешь, что у меня... (Она немного думает.) Забудь. Давай займёмся сексом в твоей постели.
+(She wraps her arms around you for a long and warm hug.)  My girl, I want you to know that I love you.
+(Она заключает вас в долгие тёплые объятия.) Моя девочка, я хочу, чтобы ты знала: я люблю тебя.
+(She wraps her arms around you for a long and warm hug.)  Slave, ya know I love ya to death.
+(Она заключает вас в долгие тёплые объятия.) Рабыня, ты же знаешь, я тебя до смерти люблю.
+(She wraps her arms around you for a long and warm hug.)  My beautiful submissive, I want you to remember that I cherish you.
+(Она заключает вас в долгие тёплые объятия.) Моя прекрасная покорная, помни: ты мне очень дорога.
+(She wraps her arms around you for a long and warm hug.)  My girl, remember that I'm here for you.
+(Она заключает вас в долгие тёплые объятия.) Моя девочка, помни, что я всегда рядом.
+(She wraps her arms around you for a long and warm hug.)  My subbie, I hope you know that I love you.
+(Она заключает вас в долгие тёплые объятия.) Моя покорная, надеюсь, ты знаешь, что я люблю тебя.
+(Time seems to stand still as you rub your bodies together.  Sharing a wonderful moment.)
+(Кажется, время замирает, пока вы трётесь телами друг о друга, наслаждаясь этим чудесным мгновением.)
+(She releases you from her embrace and smiles.)  That's enough my submissive, but we need to do this again.
+(Она выпускает вас из объятий и улыбается.) Пока хватит, моя покорная. Но нужно будет повторить.
+(She grabs your slave collar.)  Do not protest, it's time to change your slave collar.
+(Она берётся за ваш рабский ошейник.) Не спорь, пора сменить твой рабский ошейник.
+(She inspects your slave collar.)  This collar needs to be refreshed my submissive.  I will fetch you another model.
+(Она осматривает ваш рабский ошейник.) Пора обновить этот ошейник, моя покорная. Я принесу тебе другую модель.
+(She looks at your slave collar.)  I'm tired of that ol collar slave, I'm gettin ya a new one.
+(Она смотрит на ваш рабский ошейник.) Надоел мне этот старый ошейник, рабыня. Достану тебе новый.
+(She unlocks your collar and picks a new model to lock around your neck.)  There you go.
+(Она отпирает ваш ошейник и выбирает новую модель, которую запирает у вас на шее.) Вот так.
+My girl, you're going to stay restrained until I say otherwise.  To prove it, I will fully lock you with owner locks.
+Моя девочка, ты останешься связанной, пока я не скажу иначе. В доказательство я запру все твои устройства замками владельца.
+(She nods and smirks.)  It is.  (She locks all your items with owner locks and smiles.)  You belong to me.
+(Она кивает и усмехается.) Именно. (Она запирает все ваши устройства замками владельца и улыбается.) Ты принадлежишь мне.
+(She slaps your face.)  Shut up!  (She locks all your items with owner locks and grins.)  You belong to me.
+(Она даёт вам пощёчину.) Заткнись! (Она запирает все ваши устройства замками владельца и ухмыляется.) Ты принадлежишь мне.
+You won't get any help.  (She locks all your items with owner locks and grins.)  You belong to me.
+Никто тебе не поможет. (Она запирает все ваши устройства замками владельца и ухмыляется.) Ты принадлежишь мне.
+Good girl.  (She locks all your items with owner locks and smiles.)  You belong to me.
+Хорошая девочка. (Она запирает все ваши устройства замками владельца и улыбается.) Ты принадлежишь мне.
+Some time in the asylum might fix your attitude.  I'll commit you for fifteen minutes.
+Немного времени в лечебнице, возможно, исправит твоё поведение. Я отправлю тебя туда на пятнадцать минут.
+Mistress, you're not getting older at your Bondage Club birthday, you're getting wiser.
+Госпожа, в годовщину вступления в Bondage Club вы становитесь не старше, а мудрее.
+(She hums a birthday song silently.)  All my blessings on your Bondage Club birthday Mistress.
+(Она тихонько напевает поздравительную песенку.) Всего вам самого доброго в годовщину вступления в Bondage Club, Госпожа.
+Best wishes for your Bondage Club birthday.  May you stay in control for years upon years.
+С наилучшими пожеланиями в годовщину вступления в Bondage Club. Пусть власть остаётся в ваших руках ещё много-много лет.
+Fear not Mistress!  If evil comes, I will smack it!  Benzai!  (She almost hurts herself punching a wall.)
+Не бойтесь, Госпожа! Если зло явится, я его поколочу! Банзай! (Ударив стену кулаком, она едва не ушибается.)
+Time is of the essence Mistress.   I will help you foment the perfect plan to protect the Seven Prisms of the moon.
+Время не ждёт, Госпожа. Я помогу вам разработать идеальный план защиты Семи призм Луны.
+This is the perfect lair against evil.  I will serve and cherish you Mistress.  Heavenly Light shall prevail!
+Это идеальное убежище от зла. Я буду служить вам и дорожить вами, Госпожа. Небесный свет восторжествует!
+(She wiggles her butt and winks at you.)  Beside bondage, we bunnies also do very naughty activities every day.  Are you in Mistress?
+(Она виляет попкой и подмигивает вам.) Кроме связывания, мы, зайки, каждый день занимаемся очень непристойными делами. Вы с нами, Госпожа?
+(She wiggles her butt like a bunny.)  What's up doc?  Errr... I mean...  What's on your mind Mistress?
+(Она виляет попкой, как зайка.) В чём дело, док? Э-э-э... то есть... О чём вы думаете, Госпожа?
+(She wiggles her butt in a bunny fashion.)  Do you have specific plans Mistress?  What kind of rope bunny trouble should I get into today?
+(Она по-заячьи виляет попкой.) У вас есть особые планы, Госпожа? В какие неприятности сегодня вляпаться вашей любительнице верёвок?
+Mistress, if it's not too much to ask.  This bunny would love to get into strict rope bondage for hours today.
+Госпожа, если я не слишком многого прошу... Эта зайка сегодня очень хочет на несколько часов оказаться туго связанной верёвками.
+A tactical game Madam?  Very well.  It will be a privilege to make your posterior glow crimson.
+Тактическая игра, мадам? Хорошо. Для меня будет честью сделать вашу попку пунцовой.
+What cards now?  (She thinks for a while and giggles.)  Oh yeah!  I think I remember the rules.  Let's play Mistress.
+Какие ещё карты? (Она немного думает и хихикает.) Ах да! Кажется, я помню правила. Давайте сыграем, Госпожа.
+(She ponders for a few seconds.)  I knew this question was coming Mistress, and the answer is yes.
+(Она несколько секунд размышляет.) Я знала, что вы об этом спросите, Госпожа. И мой ответ — да.
+(She sighs and shakes her head no.)  Now is not the best time for that Mistress.  Maybe if we know and trust each other better.
+(Она вздыхает и отрицательно качает головой.) Сейчас не лучшее время, Госпожа. Возможно, когда мы лучше узнаем друг друга и станем больше друг другу доверять.
+(She pulls her tongue at you.)  Not now Mistress.  Maybe if we know and enjoy each other better.
+(Она показывает вам язык.) Не сейчас, Госпожа. Возможно, когда мы лучше узнаем друг друга и нам станет ещё приятнее вместе.
+(She shakes her head from left to right.)  Sorry but I must refuse Mistress.  This is not the right time and mood for this question.
+(Она качает головой из стороны в сторону.) Простите, но я вынуждена отказать, Госпожа. Сейчас неподходящий момент и неподходящее настроение для такого вопроса.
+No Mistress.  This is not the right time and mood for that.  Let's hold our horses.  You can punish me instead.
+Нет, Госпожа. Сейчас неподходящий момент и неподходящее настроение. Давайте не будем торопиться. Лучше накажите меня.
+I'm so sorry Mistress, it's too early in our relationship for that.  We need more durable love.  Please don't punish me.
+Мне очень жаль, Госпожа, но для наших отношений ещё слишком рано. Наша любовь должна выдержать проверку временем. Пожалуйста, не наказывайте меня.
+(She nods slowly.)  Yes, my Mistress.  It's the perfect timing to declare our eternal love.
+(Она медленно кивает.) Да, моя Госпожа. Сейчас самое время признаться друг другу в вечной любви.
+(She shakes her head no.)  Let's not rush our wedding Mistress.  We need to make sure we are the perfect pair.
+(Она отрицательно качает головой.) Давайте не будем торопиться со свадьбой, Госпожа. Нужно убедиться, что мы идеально подходим друг другу.
+(She pulls her tongue at you.)  Don't be so quick Mistress!  We need to enjoy our time as lovers first.
+(Она показывает вам язык.) Не спешите так, Госпожа! Сначала нужно насладиться временем, пока мы просто возлюбленные.
+(She shakes her head from left to right.)  Let's not be hasty Mistress, I need a little more time.
+(Она качает головой из стороны в сторону.) Давайте не будем торопиться, Госпожа. Мне нужно ещё немного времени.
+No Mistress.  This is going too fast for me.  You can punish me instead.  (She winks at you.)
+Нет, Госпожа. Для меня всё происходит слишком быстро. Лучше накажите меня. (Она подмигивает вам.)
+I'm sorry Mistress, but let's not jump too quickly.  We need more durable love.  Please don't punish me.
+Простите, Госпожа, но давайте не будем спешить. Наша любовь должна выдержать проверку временем. Пожалуйста, не наказывайте меня.
+Great!  Is there a cost for the ceremony?  ${money=-10}?  ${money=-50}?  Oh no, I think it's ${money=-100}.
+Отлично! Церемония платная? ${money=-10}? ${money=-50}? О нет, кажется, ${money=-100}.
+(You exchange engagement rings.)  I love you Mistress.  I want to be with you for a long, long time.
+(Вы обмениваетесь помолвочными кольцами.) Я люблю вас, Госпожа. Я хочу быть с вами очень-очень долго.
+(You exchange engagement rings.)  I love you Mistress.  The sun always shines when you're around.
+(Вы обмениваетесь помолвочными кольцами.) Я люблю вас, Госпожа. Когда вы рядом, всегда светит солнце.
+(She sighs.)  It's an old tradition I guess.  You can always remove it if you're not happy with it.
+(Она вздыхает.) Наверное, это старая традиция. Если вам не нравится, всегда можете его снять.
+Absolutely Mistress.  And being your prisoner is always a thrill for me.  How can I serve you?
+Безусловно, Госпожа. Быть вашей пленницей всегда так волнующе. Как я могу вам служить?
+Yes Miss!  And losing to you always makes me horny.  (She giggles.)  Do you need any sexual service?
+Да, мисс! Проигрыш вам всегда меня возбуждает. (Она хихикает.) Вам нужны какие-нибудь сексуальные услуги?
+Shit, shit, shit!  I'll do better next time Madam.  Punish and lock me any way you see fit.
+Чёрт, чёрт, чёрт! В следующий раз я постараюсь лучше, мадам. Наказывайте и запирайте меня, как сочтёте нужным.
+Indeed, it was.  (She nods politely.)  I surrender to you Mistress, body and soul forever.
+Да, это было так. (Она вежливо кивает.) Я сдаюсь вам, Госпожа, телом и душой, навсегда.
+A fair consequence I like to impose is some cage time.  I see that you have some cages around here, you will fit in perfectly.
+Мне нравится назначать справедливое наказание — немного времени в клетке. Вижу, у тебя здесь есть клетки. Ты в них отлично поместишься.
+(She smirks and points at a cage.)  You can stay in here for a few minutes and review your game strategies.
+(Она усмехается и указывает на клетку.) Можешь посидеть здесь несколько минут и пересмотреть свои игровые стратегии.
+(She nods and points at a cage.)  You can stay in here for a few minutes and review your game strategies.
+(Она кивает и указывает на клетку.) Можешь посидеть здесь несколько минут и пересмотреть свои игровые стратегии.
+(She grumbles and points at a cage.)  You can stay in here for a few minutes and review your game strategies.
+(Она ворчит и указывает на клетку.) Можешь посидеть здесь несколько минут и пересмотреть свои игровые стратегии.
+(She smiles and points at a cage.)  You can stay in here for a few minutes and review your game strategies.
+(Она улыбается и указывает на клетку.) Можешь посидеть здесь несколько минут и пересмотреть свои игровые стратегии.
+The best consequence for losing a Club Card game is certainly to get in bondage yourself.  It's time to strap you up.
+Лучшее наказание за проигрыш в клубные карты — конечно же, самой оказаться связанной. Пора надеть на тебя ремни.
+I'm in a kinky mood, as punishment for losing, you should be naked for a while.  I'll confiscate your clothes.
+У меня игривое настроение. В наказание за проигрыш ты немного побудешь голой. Я конфискую твою одежду.
+Don't worry, I'll keep you warm.  It's only for thirty minutes.  Give me your clothes.
+Не волнуйся, я тебя согрею. Это всего на тридцать минут. Отдавай одежду.
+(She grins.)  I think chastity would be a good consequence for losing that game.  Don't you agree?
+(Она ухмыляется.) Думаю, воздержание будет хорошим наказанием за проигрыш. Ты согласна?
+(She smirks.)  A good spanking will help you to improve your game.  Get naked and show me your butt.
+(Она усмехается.) Хорошая порка поможет тебе лучше играть. Раздевайся и показывай попку.
+No, you still have five to go.  (She takes a few seconds to target and spanks you pretty hard.)
+Нет, тебе осталось ещё пять. (Она несколько секунд прицеливается и довольно сильно шлёпает вас.)
+The deal is done, ten spankings!  (She takes a few seconds to target and spanks you pretty hard.)
+Уговор есть уговор: десять шлепков! (Она несколько секунд прицеливается и довольно сильно шлёпает вас.)
+(She laughs out loud.)  I'm not in a harsh mood.  Your consequence for losing will be some undies tickling.
+(Она громко смеётся.) Я сегодня не настроена на суровые меры. За проигрыш тебя ждёт немного щекотки под бельём.
+(She looks at you and smiles.)  That's enough.  Your punishment is over, I hope you enjoyed it.
+(Она смотрит на вас и улыбается.) Достаточно. Твоё наказание окончено. Надеюсь, тебе понравилось.
+You're a tough cookie you know?  Oh well, I guess your punishment is over, I hope you enjoyed it.
+А ты крепкий орешек! Ну ладно, пожалуй, твоё наказание окончено. Надеюсь, тебе понравилось.
+Hahaha, that was fun, but it's enough.  Your punishment is over, I hope you enjoyed it.
+Ха-ха-ха, было весело, но хватит. Твоё наказание окончено. Надеюсь, тебе понравилось.
+(She smirks.)  Guess what?  I'm in a naughty mood right now.  For losing, you will get some naked orgasms!
+(Она усмехается.) Угадай что? У меня сейчас непристойное настроение. За проигрыш тебя ждут оргазмы нагишом!
+Grrr!  (She pounces on you, making sure you're naked.  She starts to caress your breast.)
+Гр-р-р! (Она набрасывается на вас, убедившись, что вы обнажены, и начинает ласкать вашу грудь.)
+Nope!  (She pounces on you, making sure you're naked.  She starts to caress your breast.)
+Нет! (Она набрасывается на вас, убедившись, что вы обнажены, и начинает ласкать вашу грудь.)
+Yes!  (She pounces on you, making sure you're naked.  She starts to caress your breast.)
+Да! (Она набрасывается на вас, убедившись, что вы обнажены, и начинает ласкать вашу грудь.)
+(She blows a kiss back and pounces on you, making sure you're naked.  She starts to caress your breast.)
+(Она посылает вам ответный воздушный поцелуй и набрасывается на вас, убедившись, что вы обнажены. Она начинает ласкать вашу грудь.)
+I love you so much.  (She massages your breast with one hand and caresses your thigh with the other.)
+Я так тебя люблю. (Одной рукой она массирует вашу грудь, а другой гладит бедро.)
+These hands can do a lot.  (She massages your breast with one hand and caresses your thigh with the other.)
+Эти руки многое умеют. (Одной рукой она массирует вашу грудь, а другой гладит бедро.)
+So cute!  (She swirls her thumb on your clitoris and masturbates your pussy lovingly with her other fingers.)
+Какая прелесть! (Она кружит большим пальцем по вашему клитору, а остальными пальцами нежно мастурбирует вашу киску.)
+Adorable!  (She swirls her thumb on your clitoris and masturbates your pussy lovingly with her other fingers.)
+Очаровательно! (Она кружит большим пальцем по вашему клитору, а остальными пальцами нежно мастурбирует вашу киску.)
+Enjoy!  (She swirls her thumb on your clitoris and masturbates your pussy lovingly with her other fingers.)
+Наслаждайся! (Она кружит большим пальцем по вашему клитору, а остальными пальцами нежно мастурбирует вашу киску.)
+I'll break you!  (She swirls her thumb on your clitoris and masturbates your pussy lovingly with her other fingers.)
+Я тебя сломаю! (Она кружит большим пальцем по вашему клитору, а остальными пальцами нежно мастурбирует вашу киску.)
+Here's more.  (She slides two fingers inside and masturbates you rapidly and skillfully.)
+Вот тебе ещё. (Она вводит внутрь два пальца и быстро, умело мастурбирует вам.)
+Oh no, you're the best lover ever.  (She slides two fingers inside and masturbates you rapidly and skillfully.)
+О нет, ты лучшая любовница на свете. (Она вводит внутрь два пальца и быстро, умело мастурбирует вам.)
+We'll see if you're right.  (She slides two fingers inside and masturbates you rapidly and skillfully.)
+Посмотрим, права ли ты. (Она вводит внутрь два пальца и быстро, умело мастурбирует вам.)
+(She pulls her hand away and smiles.)  Wow!  That was strong.  Your kinky consequence is over now, I hope it was heavenly.
+(Она убирает руку и улыбается.) Ого! Вот это было сильно. Твоё пикантное наказание окончено. Надеюсь, было божественно.
+(She pulls her hand away and frowns.)  You're tough, and your kinky consequence is over now, I hope it was somewhat good.
+(Она убирает руку и хмурится.) Ты крепкая. Твоё пикантное наказание окончено. Надеюсь, было хоть немного приятно.
+(She pulls her hand away and giggles.)  That was quite an experience.  Your kinky consequence is over, I hope it was good.
+(Она убирает руку и хихикает.) Вот это было приключение. Твоё пикантное наказание окончено. Надеюсь, тебе понравилось.
+(She gives you GIFTNAME.)  I love you also.  Would you like to be restrained in it now?
+(Она даёт вам GIFTNAME.) Я тоже тебя люблю. Хочешь, я прямо сейчас надену это на тебя?
+(You wear the restraint as she watches you happily.)  What would you like to do today?
+(Вы надеваете устройство, а она радостно наблюдает за вами.) Чем бы ты хотела заняться сегодня?
+(She giggles and gives you GIFTNAME.)  I love you also.  Would you like to try it now Mistress?
+(Она хихикает и даёт вам GIFTNAME.) Я тоже вас люблю. Хотите попробовать прямо сейчас, Госпожа?
+(As you walk in the club, your Mistress waves at you and smiles.)  Well, hello my awesome subbie.
+(Когда вы идёте по клубу, ваша Госпожа машет вам и улыбается.) Здравствуй, моя чудесная покорная.
+(As you walk in the club, your Mistress grabs your wrist by surprise and pulls you to her.)  Slave!
+(Когда вы идёте по клубу, ваша Госпожа неожиданно хватает вас за запястье и притягивает к себе.) Рабыня!
+(As you walk in the club, your Mistress steps behind you and grabs your butt.)  Yo my sexy girl.
+(Когда вы идёте по клубу, ваша Госпожа подходит сзади и хватает вас за попку.) Привет, моя сексуальная девочка.
+(You meet your Mistress as you walk in the club.)  Once again, fortune brings us together.
+(Вы встречаете свою Госпожу, идя по клубу.) Судьба снова свела нас вместе.
+(She grumbles.)  Like it or not.  You're going to get into some bondage.  How tight do you want it?
+(Она ворчит.) Нравится тебе это или нет, ты будешь связана. Насколько туго тебя связать?
+No need to be confused.  You're going to get into some bondage.  How tight do you want it?
+Не нужно смущаться. Ты будешь связана. Насколько туго тебя связать?
+(She nods and smiles.)  You're going to get into some bondage.  How tight do you want it?
+(Она кивает и улыбается.) Ты будешь связана. Насколько туго тебя связать?
+(She brings lots of bondage items and gets you bound very securely in the main hall of the club.)
+(Она приносит множество устройств для связывания и очень надёжно связывает вас в главном зале клуба.)
+(She brings many bondage items and gets you in tight bondage in the main hall of the club.)
+(Она приносит много устройств для связывания и туго связывает вас в главном зале клуба.)
+(She brings a few bondage items and gets you in light bondage in the main hall of the club.)
+(Она приносит несколько устройств для связывания и слегка связывает вас в главном зале клуба.)
+Very tight you say?  Alright my girl.  (She brings lots of bondage items and gets you bound very securely in the main hall of the club.)
+Говоришь, очень туго? Хорошо, моя девочка. (Она приносит множество устройств для связывания и очень надёжно связывает вас в главном зале клуба.)
+I'm glad you do.  You look great in it.  I need to go, ask for a maid if you're stuck.
+Рада, что тебе нравится. Ты прекрасно в этом выглядишь. Мне пора. Если застрянешь, позови горничную.
+My lovely submissive, since you enjoy wandering in the Bondage Club, we shall do it together.
+Моя милая покорная, раз тебе нравится гулять по Bondage Club, мы будем делать это вместе.
+You're beautiful, there's no need to be shy.  Show me your neck, we need a cute collar for your parade.
+Ты прекрасна, нечего стесняться. Покажи шею: для твоего выхода в свет нам нужен милый ошейник.
+(She drags you first to the Shibari Dojo.  Talking with the Sensei and students there, she exposes your body to everyone.)
+(Сначала она ведёт вас в додзё сибари. Разговаривая с сэнсэем и ученицами, она выставляет ваше тело на всеобщее обозрение.)
+(She tugs on the chain and brings you to the Maid Quarters.  The maids giggle and smile seeing you.)
+(Она тянет за цепь и приводит вас в комнаты горничных. Увидев вас, горничные хихикают и улыбаются.)
+(She quickly binds you and brings you to the Maid Quarters.  The maids giggle and smile seeing you.)
+(Она быстро связывает вас и приводит в комнаты горничных. Увидев вас, горничные хихикают и улыбаются.)
+(You both get to the LARP room as she talks casually with friends while you stand there exposed.)
+(Вы вдвоём приходите в зал ролевых игр. Она непринуждённо болтает с подругами, пока вы стоите на всеобщем обозрении.)
+(She yanks on the chain and brings you to the movie studio.  You both watch the actors, as a scene is being filmed.)
+(Она дёргает за цепь и приводит вас в киностудию. Вы вдвоём наблюдаете за актрисами во время съёмки сцены.)
+(She quickly binds you and brings you to the movie studio.  You both watch the actors, as a scene is being filmed.)
+(Она быстро связывает вас и приводит в киностудию. Вы вдвоём наблюдаете за актрисами во время съёмки сцены.)
+(She stops by the Club Card Lounge to play a few games with a friend, while you wait naked.)
+(Она заходит в карточный салон, чтобы сыграть несколько партий с подругой, пока вы ждёте обнажённой.)
+(She finishes her games and smiles.  She then brings you back to the main hall.)  Did you enjoy the tour?
+(Она заканчивает играть и улыбается, затем отводит вас обратно в главный зал.) Тебе понравилась прогулка?
+(She quickly binds you and finishes her games.  She then brings you back to the main hall.)  Did you enjoy the tour?
+(Она быстро связывает вас и заканчивает играть, затем отводит вас обратно в главный зал.) Тебе понравилась прогулка?
+I will train you to be proud of your body.  I'm confiscating your clothes for 15 minutes.  See you soon!
+Я научу тебя гордиться своим телом. Конфискую твою одежду на 15 минут. Скоро увидимся!
+(She pets your head.)  Be a good submissive.  I need to go, call a maid if you need help.  See you soon!
+(Она гладит вас по голове.) Будь хорошей покорной. Мне пора. Если нужна помощь, позови горничную. Скоро увидимся!

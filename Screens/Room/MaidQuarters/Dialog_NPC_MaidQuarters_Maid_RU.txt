@@ -1,4 +1,4 @@
-﻿###_NPC
+###_NPC
 Lovely gag.  Do you need help with it?  Nod if you do.
 Прекрасный кляп.  Тебе нужна помощь с этим?  Кивни, если да.
 Can you go check on the Introduction Class?  Sometimes new members get out of control.
@@ -26,7 +26,7 @@ What happened to your tray, girl?  The club members are thirsty! Here, have anot
 (DialogCharacterName gets you back to the maid quarters and frowns.)  You failed to clean up in time.
 (DialogCharacterName возвращает тебя в комнату для горничных и хмурится.)  Ты не смогла вовремя убраться.
 (DialogCharacterName hugs you and gropes your red butt.)  You're now a full maid my sister.
-(DialogCharacterName обнимает тебя и лапает твою красную задницу. Ты теперь настоящая горничная, моя сестренка.
+(DialogCharacterName обнимает тебя и ласкает твою покрасневшую попку.) Теперь ты полноправная горничная, сестрёнка.
 I'm sorry Miss.  I cannot help you.
 Простите, Мисс.  Я не могу вам помочь.
 (She first shakes her head to avoid the gag, but finally surrenders as you silence her.)
@@ -97,7 +97,7 @@ You've done a lot for the maid sorority.  You should apply to become a full sist
 Ты много сделала для общества горничных.  Ты должна подать заявление, чтобы стать полноправной сестрой.
 It's great to see you sister!  How can I help you?
 Как я рада видеть тебя, сестра!  Чем я могу тебе помочь?
-+###_PLAYER
+###_PLAYER
 (Present the tray)
 (Вручить поднос)
 ###_NPC
@@ -105,7 +105,7 @@ Aww, sweetie, I'll miss tying you up if you do it all by yourself.  Come on!  Ou
 Ой, милая, мне будет не хватать связывания тебя, если ты будешь делать все это сам. Ну давай же! Наши гости ждут ваших напитков.
 ###_PLAYER
 (Wave the duster gag with your head.)
-(Помашите кляпом тряпкой головой.)
+(Помахать кляпом-метёлкой, двигая головой.)
 ###_NPC
 Aww, so pretty. You tied yourself for the cleaning chore.  I'll drag you to your workspace.
 Ой, так красиво. Вы связали себя уборкой. Я перетащу вас на ваше рабочее место.
@@ -569,7 +569,7 @@ I'll change first.  (Wear the maid uniform.)
 ###_NPC
 (You change into the maid uniform.)  Perfect!  Let me restrain you then.
 (Ты переодеваешься в униформу горничной.) Отлично!  Тогда позвольте мне тебя связать.
-+###_PLAYER
+###_PLAYER
 I’ll change first. (Leave her.)
 Я сначала переоденусь. (Оставь ее.)
 ###_NPC
@@ -708,7 +708,7 @@ Come sweetie!  Our guests are waiting for your drinks.
 (Подавай напитки в чат-комнатах.)
 ###_NPC
 Here's your share of the tips.  (She gives you $REPLACEMONEY.)
-Вот твоя доля чаевых.  (Она дает тебе REPLACEMONEY $.)
+Вот твоя доля чаевых. (Она даёт вам $REPLACEMONEY.)
 ###_PLAYER
 (Bow your head.)
 (Склони голову.)
@@ -716,9 +716,9 @@ Here's your share of the tips.  (She gives you $REPLACEMONEY.)
 Nice try, but maybe you're not fit for that job.  I can't pay you.
 Хорошая попытка, но, возможно, ты не подходишь для этой работы. Я не могу заплатить тебе.
 Excellent!  Here's your salary.  (She gives you $REPLACEMONEY.)
-Отлично!  Вот твоя зарплата.  (Она дает тебе REPLACEMONEY $.)
+Отлично! Вот твоя зарплата. (Она даёт вам $REPLACEMONEY.)
 Excellent!  Go see your owner and give her this.  (She gives you a sealed envelope with $REPLACEMONEY for your owner.)
-Отлично!  Иди к своей хозяйке и передай ей это.  (Она дает тебе запечатанный конверт с REPLACEMONEY $ для твоей хозяйке.)
+Отлично! Иди к своей хозяйке и передай ей это. (Она даёт вам запечатанный конверт с $REPLACEMONEY для вашей хозяйки.)
 (She releases you and helps you to get dressed.)  All set!  Are you ready for more chores?
 (Она освобождает тебя и помогает одеться.) Все готово!  Готова ли ты к большим хлопотам?
 ###_PLAYER
@@ -746,7 +746,7 @@ It's all better now.
 Все под контролем.
 ###_NPC
 Perfect!  Let me pay you for your efforts then.  (She gives you $REPLACEMONEY.)
-Отлично!  Тогда позвольте мне заплатить тебе за твои усилия.  (Она дает тебе REPLACEMONEY $.)
+Прекрасно! Тогда позволь заплатить за твои старания. (Она даёт вам $REPLACEMONEY.)
 (You change into the maid uniform.)  Wonderful!  Make the sorority proud.
 (Ты переодеваешься в форму горничной.) Замечательно!  Заставь женское общество гордиться тобой.
 ###_PLAYER
@@ -779,7 +779,7 @@ Everything is there in its place?
 Все ли там на своих местах?
 ###_PLAYER
 I'll go guard the Prison.  (Leave her.)
-I'll go guard the Prison.  (Leave her.)
+Пойду охранять тюрьму. (Оставить её.)
 Everyone will be safe as long as I'm in control.
 Все будут в безопасности, пока я контролирую ситуацию.
 ###_NPC
@@ -900,8 +900,6 @@ Very well, you can gag me.
 (She gets a gag with a duster attached in front of it and straps it around your head.)  Ready to go?
 (Она достает кляп с тряпкой, прикрепленной перед ним, и завязывает его вокруг твоей головы.) Готова начать?
 ###_PLAYER
-(Wave the duster gag with your head.)
-(Помаши тряпкой кляпом с твоей головой.)
 ###_NPC
 (She looks at you and laughs.)  You're learning the job pretty fast.  Are you ready now?
 (Она смотрит на тебя и смеется.)  Ты довольно быстро осваиваешь эту работу.  Теперь ты готова?
@@ -918,7 +916,7 @@ Come sweetie!  I'll drag you to your workspace.  You need to clean your area bef
 (Выбери самое грязное место, чтобы произвести на нее впечатление.)
 ###_NPC
 Here's your pay for your hard work.  (She gives you $REPLACEMONEY.)
-Вот тебе плата за твою тяжелую работу.  (Она дает тебе REPLACEMONEY $.)
+Вот плата за твою тяжёлую работу. (Она даёт вам $REPLACEMONEY.)
 I hope you understand why I can't reward you.  You can try again though.
 Надеюсь, ты понимаешь, почему я не могу вознаградить тебя.  Хотя, ты можешь попробовать еще раз.
 ###_PLAYER
@@ -961,11 +959,11 @@ Thank you for the instructions.
 (Список песен)
 ###_PLAYER
 見えない何かに怯える夜 (LV 2)
-見えない何かに怯える夜 (LV 2)
+見えない何かに怯える夜 (уровень 2)
 見えない何かに怯える夜 (LV 5)
-見えない何かに怯える夜 (LV 5)
+見えない何かに怯える夜 (уровень 5)
 見えない何かに怯える夜 (LV 7)
-見えない何かに怯える夜 (LV 7)
+見えない何かに怯える夜 (уровень 7)
 (Want more songs?)
 (Хочешь больше песен)
 ###_NPC
@@ -1089,3 +1087,37 @@ You are either not wearing the dress, or covering too much.
 Ты либо не носишь платье, либо слишком много прикрываешься.
 Does your outfit look like mine?
 Твой наряд похож на мой?
+I'll change first. (Leave her.)
+Сначала переоденусь. (Оставить её.)
+I want a latex uniform for my hard labor.
+Я хочу латексную форму для тяжёлой работы.
+(Nod proudly.)
+(Гордо кивнуть.)
+(Catch your breath.)
+(Перевести дух.)
+What is the gift Miss?
+Что за подарок, мисс?
+Thanks sister.
+Спасибо, сестра.
+(Make a curious look.)
+(Посмотреть с любопытством.)
+That's very generous.
+Это очень щедро.
+Don't mention it.  Are you ready for more chores?
+Не стоит благодарности. Готова к новым поручениям?
+The sorority will be proud of my work.
+Сестричество будет гордиться моей работой.
+I'm sure we will.  Are you ready for more chores?
+Уверена, будем. Готова к новым поручениям?
+(Take the latex maid outfit.)
+(Взять латексный наряд горничной.)
+Are you ready for more chores?
+Готова к новым поручениям?
+I'm surprised you don't have one Miss.  I will solve this problem right now (she gives you a latex uniform and headband).  Are you ready for more chores?
+Удивлена, что у вас её нет, мисс. Сейчас исправлю. (Она выдаёт вам латексную форму и ободок.) Готовы к новым поручениям?
+(You come back to DialogCharacterName with a sparkling platter.)  Congratulations on your perfect work sister!
+(Вы возвращаетесь к DialogCharacterName с сияющим подносом.) Поздравляю с безупречной работой, сестра!
+(She releases you and helps you to get dressed.)  Since you're such an awesome maid, I have a gift for you.
+(Она освобождает вас и помогает одеться.) Ты такая замечательная горничная, что я приготовила тебе подарок.
+(She hands you a latex maid outfit.)  Wear it proudly and serve the Bondage Club sister.
+(Она вручает вам латексный наряд горничной.) Носи его с гордостью и служи Бондаж-клубу, сестра.

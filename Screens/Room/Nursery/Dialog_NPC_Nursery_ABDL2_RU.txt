@@ -1,4 +1,4 @@
-﻿###_NPC
+###_NPC
 Heehee   you sound funny.
 Хеехехе. Звучит смешно.
 (She accepts the gag, giggles and tests its effects.)  Teehee.  This makes my voice sound funny
@@ -83,3 +83,5 @@ Is that all?
 ###_NPC
 For the time being.  The nursery is still under development.
 На данный момент.  Детская все еще находится в стадии разработки.
+I'm not sure it's just milk either.  We tend to need these diapers shortly afterwards.
+Я тоже не уверена, что это просто молоко. Обычно вскоре после него нам нужны эти подгузники.

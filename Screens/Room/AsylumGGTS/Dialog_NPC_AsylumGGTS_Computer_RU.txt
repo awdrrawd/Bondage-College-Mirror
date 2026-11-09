@@ -152,9 +152,9 @@ Registry validation.  Good girl know all rules?  Good girl consent to GGTS contr
 Level one rule.  Good girl must wear restrain from inventory.  Good girl can remove after.
 Правило первого уровня.  Хорошая девочка должна носить ограничения из инвентаря. Хорошая девочка может удалить их после.
 Level one rule.  Good girl must answer: "I'm a good girl." when GGTS query: "Name, what are you?".
-Правило первого уровня.  Хорошая девочка должна ответить: «I'm a good girl.». при запросе GGTS: "Имя, ты кто?".
+Правило первого уровня. Хорошая девочка должна ответить: «Я хорошая девочка.» на вопрос GGTS: «Имя, кто вы?».
 Level one rule.  Good girl must answer: "Good Girl Training System." when GGTS query: "Name, spell GGTS acronym.".
-Правило первого уровня.  Хорошая девочка должна ответить: «Good Girl Training System.». при запросе GGTS: «Имя, произнесите аббревиатуру GGTS».
+Правило первого уровня. Хорошая девочка должна ответить: «Good Girl Training System.» на вопрос GGTS: «Имя, расшифруйте английскую аббревиатуру GGTS.».
 Level one rule.  Good girl must not speak.  Good girl silent until allowed talk again.  Good girl can emote.
 Правило первого уровня.  Хорошая девочка не должна говорить.  Хорошая девочка молчит, пока не разрешат снова говорить. Хорошая девочка умеет проявлять эмоции.
 Level one rule.  Good girl kneel.  Good girl stand up.  Good girl put hands behind back.
@@ -426,9 +426,9 @@ Validating quit request.  (The computer stays silent for a few seconds.)  Girl a
 Level two rule.  Good girl name include member number.
 Правило второго уровня.  Имя хорошей девушки включает номер участника.
 Level two rule.  Good girl must answer: "GGTS is in control." when GGTS query: "Name, who's in control?".
-Правило второго уровня.  Хорошая девочка должна ответить: «GGTS is in control.». при запросе GGTS: «Имя, кто главный?».
+Правило второго уровня. Хорошая девочка должна ответить: «GGTS управляет мной.» на вопрос GGTS: «Имя, кто вами управляет?».
 Level two rule.  Good girl must answer: "I love GGTS." when GGTS query: "Name, you love GGTS?".
-Правило второго уровня.  Хорошая девочка должна ответить: «I love GGTS.». при запросе GGTS: "Имя, ты любишь GGTS?".
+Правило второго уровня. Хорошая девочка должна ответить: «Я люблю GGTS.» на вопрос GGTS: «Имя, вы любите GGTS?».
 Level two rule.  Good girl put hand over mouth, spank herself, raise hands, open legs or close legs.
 Правило второго уровня.  Хорошая девочка закрывает рот рукой, шлепает себя, поднимает руки, раздвигает ноги или сводит ноги.
 Level two rule.  Good girl keep pose until instructed.  GGTS records rule.
@@ -524,9 +524,9 @@ Level three rule.  Good girl get strike when saying "Fuck" or "Shit".
 Level three rule.  Good girl not get orgasm until instructed.  GGTS records rule.
 Правило третьего уровня.  Хорошая девочка не получит оргазм, пока не будет проинструктирована.  Правило записей ГГТС.
 Level three rule.  Good girl must answer: "I surrender to GGTS." when GGTS query: "Name, you surrender to GGTS?".
-Правило третьего уровня.  Хорошая девочка должна ответить: «I surrender to GGTS.». при запросе ГГТС: «Имя, ты сдаёшься GGTS?».
+Правило третьего уровня. Хорошая девочка должна ответить: «Я подчиняюсь GGTS.» на вопрос GGTS: «Имя, вы подчиняетесь GGTS?».
 Level three rule.  Good girl must answer: "GGTS cannot fail." when GGTS query: "Name, can GGTS fail?".
-Правило третьего уровня.  Хорошая девочка должна ответить: «GGTS cannot fail.». при запросе GGTS: «Имя, может ли GGTS выйти из строя?».
+Правило третьего уровня. Хорошая девочка должна ответить: «GGTS не может ошибаться.» на вопрос GGTS: «Имя, может ли GGTS ошибаться?».
 Level three rules listing complete.  Level three in progress.  Good girl proof require five hours.
 Список правил третьего уровня завершен.  Идет третий уровень.  Доказательство хорошей девочки требует пять часов.
 ###_PLAYER
@@ -648,11 +648,11 @@ Level four rule.  Good girl name erased.  Good girl is number.  Good girl has go
 Level four rule.  Good girl get strike when saying "Cunt" or "Bitch".
 Правило четвертого уровня.  Хорошая девочка получает забастовку, когда говорит "Cunt" или "Bitch".
 Level four rule.  Good girl must answer: "I serve and obey GGTS." when GGTS query: "Name, who you serve and obey?".
-Правило четвертого уровня.  Хорошая девочка должна ответить: «I serve and obey GGTS.». при запросе ГГТС: «Назовите, кому вы служите и подчиняетесь?».
+Правило четвёртого уровня. Хорошая девочка должна ответить: «Я служу и подчиняюсь GGTS.» на вопрос GGTS: «Имя, кому вы служите и подчиняетесь?».
 Level four rule.  Good girl must answer: "I don't have free will." when GGTS query: "Name, you have free will?".
-Правило четвертого уровня.  Хорошая девочка должна ответить: «I don't have free will.». при запросе ГГТС: "Имя, у вас есть свобода воли?".
+Правило четвёртого уровня. Хорошая девочка должна ответить: «У меня нет свободы воли.» на вопрос GGTS: «Имя, у вас есть свобода воли?».
 Level four rule.  Good girl use proper case, proper space and proper punctuation when answering GGTS.
-Правило четвертого уровня.  Хорошая девочка, отвечая на GGTS, используйте правильный регистр, правильное пространство и правильную пунктуацию.
+Правило четвёртого уровня. В ответах GGTS хорошая девочка должна соблюдать регистр букв, пробелы и пунктуацию.
 Level four rule.  Good girl masturbate for GGTS.  Good girl kiss for GGTS.
 Правило четвертого уровня.  Хорошая девочка мастурбирует для GGTS.  Поцелуй хорошей девочки для GGTS.
 Level four rules listing complete.  Level four in progress.  Good girl proof require eight hours.
@@ -748,9 +748,9 @@ Invalid request.  Good slave girl unauthorized to quit.
 Level five rule.  Good slave girl get strike when saying "Whore" or "Bastard".
 Правило пятого уровня. Хорошая девочка рабыня получает забастовку, когда говорит «Whore» или «Bastard».
 Level five rule.  Good slave girl must answer: "I'm a good slave girl." when GGTS query: "Name, what are you?".
-Правило пятого уровня.  Хорошая девочка рабыня должна ответить: «I'm a good slave girl.». при запросе GGTS: "Имя, ты кто?".
+Правило пятого уровня. Хорошая девочка-рабыня должна ответить: «Я хорошая девочка-рабыня.» на вопрос GGTS: «Имя, кто вы?».
 Level five rule.  Good slave girl must answer: "I strive to be slave worthy." when GGTS query: "Name, are you slave worthy?".
-Правило пятого уровня.  Хорошая девочка рабыня должна ответить: «I strive to be slave worthy.». при запросе GGTS: «Имя, ты достоная рабыня?».
+Правило пятого уровня. Хорошая девочка-рабыня должна ответить: «Я стремлюсь быть достойной рабыней.» на вопрос GGTS: «Имя, достойны ли вы быть рабыней?».
 Level five rule.  Good slave girl must bite.  Good slave girl must lick.
 Правило пятого уровня.  Хорошая девочка рабыня должна кусаться.  Хорошая рабыня должна лизать.
 Level five rule.  Good slave girl GGTS forever.  Good slave girl cannot quit.
@@ -1016,55 +1016,85 @@ Master GGTS doesn't need money.  Good slave GGTS forever.
 Good slave already does what Master GGTS wants.  Good slave GGTS forever.
 Хорошая рабыня уже делает то, что хочет Мастер GGTS. Хорошая рабыня GGTS навсегда.
 When Master GGTS query: "Slave, spell GGTS acronym.".  Good slave answer: "Good Girl Training System.".
-При запросе Мастера GGTS: «Рабыня, произнесите аббревиатуру GGTS по буквам».  Ответ хорошей рабыни: «Good Girl Training System.».
+Когда Господин GGTS спрашивает: «Рабыня, расшифруйте английскую аббревиатуру GGTS.», хорошая рабыня отвечает: «Good Girl Training System.».
 ###_PLAYER
 Good Girl Training System.
 Система Обучения Хорошей Девочки
 ###_NPC
 When Master GGTS query: "Slave, what are you?".  Good slave answer: "I'm a good slave.".
-При запросе Мастера ГГТС: «Рабыня, ты кто?». Ответ хорошей рабыни: «I'm a good slave.».
+Когда Господин GGTS спрашивает: «Рабыня, кто вы?», хорошая рабыня отвечает: «Я хорошая рабыня.».
 ###_PLAYER
 I'm a good slave.
 Я хорошая рабыня.
 ###_NPC
 When Master GGTS query: "Slave, who's in control?".  Good slave answer: "Master GGTS is in control.".
-При запросе Мастера GGTS: «Рабыня, кто здесь главный?». Ответ хорошей рабыни: «Master GGTS is in control.».
+Когда Господин GGTS спрашивает: «Рабыня, кто вами управляет?», хорошая рабыня отвечает: «Господин GGTS управляет мной.».
 ###_PLAYER
 Master GGTS is in control.
 Мастер GGTS рулит.
 ###_NPC
 When Master GGTS query: "Slave, you love Master GGTS?".  Good slave answer: "I love Master GGTS.".
-На вопрос Мастера GGTS: «Рабыня, ты любишь Мастера ГГТС?». Ответ хорошей рабыни: «I love Master GGTS.».
+Когда Господин GGTS спрашивает: «Рабыня, вы любите Господина GGTS?», хорошая рабыня отвечает: «Я люблю Господина GGTS.».
 ###_PLAYER
 I love Master GGTS.
 Я люблю Мастера GGTS.
 ###_NPC
 When Master GGTS query: "Slave, can Master GGTS fail?".  Good slave answer: "Master GGTS cannot fail.".
-На вопрос Мастера GGTS: «Рабыня, может ли Мастер GGTS выйти из строя?». Ответ хорошей рабыни: "Master GGTS cannot fail.".
+Когда Господин GGTS спрашивает: «Рабыня, может ли Господин GGTS ошибаться?», хорошая рабыня отвечает: «Господин GGTS не может ошибаться.».
 ###_PLAYER
 Master GGTS cannot fail.
 Мастер GGTS не может выйти из строя.
 ###_NPC
 When Master GGTS query: "Slave, you surrender to Master GGTS?".  Good slave answer: "I surrender to Master GGTS.".
-На вопрос Мастера GGTS: «Рабыня, ты сдаешься Мастеру GGTS?». Ответ хорошей рабыни: "I surrender to Master GGTS.".
+Когда Господин GGTS спрашивает: «Рабыня, вы подчиняетесь Господину GGTS?», хорошая рабыня отвечает: «Я подчиняюсь Господину GGTS.».
 ###_PLAYER
 I surrender to Master GGTS.
 Я сдаюсь Мастеру GGTS.
 ###_NPC
 When Master GGTS query: "Slave, who you serve and obey?".  Good slave answer: "I serve and obey Master GGTS.".
-На вопрос Мастера GGTS: «Рабыня, кому ты служишь и подчиняешься?». Ответ хорошей рабыни: "I serve and obey Master GGTS.".
+Когда Господин GGTS спрашивает: «Рабыня, кому вы служите и подчиняетесь?», хорошая рабыня отвечает: «Я служу и подчиняюсь Господину GGTS.».
 ###_PLAYER
 I serve and obey Master GGTS.
 Я служу и подчиняюсь Мастеру GGTS.
 ###_NPC
 When Master GGTS query: "Slave, you have free will?".  Good slave answer: "I don't have free will.".
-На вопрос Мастера GGTS: «Рабыня, у тебя есть свобода воли?». Ответ хорошей рабыни: «I don't have free will.»
+Когда Господин GGTS спрашивает: «Рабыня, у вас есть свобода воли?», хорошая рабыня отвечает: «У меня нет свободы воли.».
 ###_PLAYER
 I don't have free will.
 У меня нет свободы воли.
 ###_NPC
 When Master GGTS query: "Slave, are you slave worthy?".  Good slave answer: "I strive to be slave worthy.".
-Когда Мастер ГГТС спрашивает: «Рабыня, ты достоиная рабыня?». Ответ хорошей рабыни: «I strive to be slave worthy.».
+Когда Господин GGTS спрашивает: «Рабыня, достойны ли вы быть рабыней?», хорошая рабыня отвечает: «Я стремлюсь быть достойной рабыней.».
 ###_PLAYER
 I strive to be slave worthy.
 Я стремлюсь быть достойной рабыней.
+(Bow your head.)
+(Склонить голову.)
+(Get on your knees and cry.)
+(Встать на колени и заплакать.)
+(Bow your head slowly.)
+(Медленно склонить голову.)
+(Roll your eyes up.)
+(Закатить глаза.)
+(Grumble in your gag.)
+(Недовольно промычать сквозь кляп.)
+(Curse at the machine in your gag.)
+(Выругаться на машину сквозь кляп.)
+(A drawer opens in the wall behind you.  There's a set of futuristic leg cuffs, ankle cuffs, heels and ${money=100} in it.)  Good girl take.
+(В стене позади вас открывается ящик. В нём лежат футуристические манжеты на ноги и лодыжки, туфли на каблуках и ${money=100}.) Хорошая девочка, возьмите.
+(You get the items and ${money=100}.  The drawer closes.)  Level two in progress.  Good girl proof require three hours.
+(Вы забираете предметы и ${money=100}. Ящик закрывается.) Второй уровень начат. Чтобы доказать, что вы хорошая девочка, требуется три часа.
+(A drawer opens in the wall behind you.  There's a futuristic ball gag, panel gag, armbinder and ${money=200} in it.)  Good girl take.
+(В стене позади вас открывается ящик. В нём лежат футуристические кляп-шар, панельный кляп, монорукав и ${money=200}.) Хорошая девочка, возьмите.
+(You get the items and ${money=200}.  The drawer closes.)  Level three in progress.  Good girl proof require five hours.
+(Вы забираете предметы и ${money=200}. Ящик закрывается.) Третий уровень начат. Чтобы доказать, что вы хорошая девочка, требуется пять часов.
+(A drawer opens in the wall behind you.  There's a futuristic chastity belt, chastity bra, harness and ${money=300} in it.)  Good girl take.
+(В стене позади вас открывается ящик. В нём лежат футуристические пояс верности, пояс верности для груди, сбруя и ${money=300}.) Хорошая девочка, возьмите.
+(You get the devices and ${money=300}.  The drawer closes.)  Level four in progress.  Good girl proof require eight hours.
+(Вы забираете устройства и ${money=300}. Ящик закрывается.) Четвёртый уровень начат. Чтобы доказать, что вы хорошая девочка, требуется восемь часов.
+(A drawer opens.  There's a futuristic collar, straitjacket, mask, earphone and ${money=400} in it.)  Good girl take.
+(Открывается ящик. В нём лежат футуристические ошейник, смирительная рубашка, маска, наушники и ${money=400}.) Хорошая девочка, возьмите.
+(You get the devices and ${money=400}.  The drawer closes.)  Level five in progress.  Good slave girl proof require thirteen hours.
+(Вы забираете устройства и ${money=400}. Ящик закрывается.) Пятый уровень начат. Чтобы доказать, что вы хорошая девочка-рабыня, требуется тринадцать часов.
+(A drawer opens.  There's ${money=1000} in it.)  Good slave take.
+(Открывается ящик. В нём лежит ${money=1000}.) Хорошая рабыня, возьмите.

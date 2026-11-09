@@ -1077,10 +1077,9 @@ function PrivateRun() {
 	}
 
 	// In orgasm mode, we add a pink filter and different controls depending on the stage
-	if ((Player.ArousalSettings != null) && (Player.ArousalSettings.Active != null) && (Player.ArousalSettings.Active != "Inactive") && (Player.ArousalSettings.Active != "NoMeter")) {
-		if ((Player.ArousalSettings.OrgasmTimer != null) && (typeof Player.ArousalSettings.OrgasmTimer === "number") && !isNaN(Player.ArousalSettings.OrgasmTimer) && (Player.ArousalSettings.OrgasmTimer > 0)) {
+	if (PreferenceArousalIsActive(C)) {
+		if (Player.ArousalSettings.OrgasmTimer > 0) {
 			DrawRect(0, 0, 2000, 1000, "#FFB0B0B0");
-			if (Player.ArousalSettings.OrgasmStage == null) Player.ArousalSettings.OrgasmStage = 0;
 			if (Player.ArousalSettings.OrgasmStage == 0) {
 				DrawText(TextGet("OrgasmComing"), 1000, 410, "White", "Black");
 				DrawButton(700, 532, 250, 64, TextGet("OrgasmTryResist"), "White");
@@ -1090,7 +1089,7 @@ function PrivateRun() {
 			if (ActivityOrgasmRuined) ActivityOrgasmControl();
 			if (Player.ArousalSettings.OrgasmStage == 2) DrawText(TextGet("OrgasmRecovering"), 1000, 500, "White", "Black");
 			ActivityOrgasmProgressBar(550, 970);
-		} else if ((Player.ArousalSettings.Progress != null) && (Player.ArousalSettings.Progress >= 1) && (Player.ArousalSettings.Progress <= 99)) ChatRoomDrawArousalScreenFilter(0, 1000, 2000, Player.ArousalSettings.Progress);
+		} else if ((Player.ArousalSettings.Progress >= 1) && (Player.ArousalSettings.Progress <= 99)) ChatRoomDrawArousalScreenFilter(0, 1000, 2000, Player.ArousalSettings.Progress);
 	}
 
 	// Adds an arousal filter if needed
@@ -1185,23 +1184,22 @@ function PrivateClickCharacter() {
 			if (MouseIn(ButtonX + 50, 615, 100, 100) && char.ArousalZoom) { char.ArousalZoom = false; return; }
 
 			// If the player can manually control her arousal or wants to fight her desire
-			if ((char.IsPlayer()) && MouseIn(ButtonX + 50, 200, 100, 415) && char.ArousalZoom)
-				if ((Player.ArousalSettings != null) && (Player.ArousalSettings.Active != null) && (Player.ArousalSettings.Progress != null)) {
-					if ((Player.ArousalSettings.Active == "Manual") || (Player.ArousalSettings.Active == "Hybrid")) {
-						const Arousal = Math.round((625 - MouseY) / 4);
-						ActivitySetArousal(Player, Arousal);
-						ActivityExpression(Player, Player.ArousalSettings.Progress);
-						if (Player.ArousalSettings.Progress == 100) ActivityOrgasmPrepare(Player);
-					}
-					return;
+			if ((char.IsPlayer()) && MouseIn(ButtonX + 50, 200, 100, 415) && char.ArousalZoom) {
+				if (PreferenceArousalIsActive(C, ["Manual", "Hybrid"])) {
+					const Arousal = Math.round((625 - MouseY) / 4);
+					ActivitySetArousal(Player, Arousal);
+					ActivityExpression(Player, Player.ArousalSettings.Progress);
+					if (Player.ArousalSettings.Progress == 100) ActivityOrgasmPrepare(Player);
 				}
+				return;
+			}
 
 			// Don't do anything if the thermometer is clicked without access to it
 			if (MouseIn(ButtonX + 50, 200, 100, 415) && char.ArousalZoom) return;
 		}
 
 		// Cannot click on a character that's having an orgasm
-		if (!char.IsPlayer() && (char.ArousalSettings != null) && (char.ArousalSettings.OrgasmTimer != null) && (char.ArousalSettings.OrgasmTimer > 0))
+		if (!char.IsPlayer() && char.ArousalSettings.OrgasmTimer > 0)
 			return;
 
 		// Make Sure the NPC owner has the "PlayerCollaring" event set
@@ -1279,7 +1277,7 @@ function PrivateClickCharacter() {
 function PrivateClick() {
 
 	// If the player is having an orgasm, only the orgasm controls are available
-	if ((Player.ArousalSettings != null) && (Player.ArousalSettings.OrgasmTimer != null) && (typeof Player.ArousalSettings.OrgasmTimer === "number") && !isNaN(Player.ArousalSettings.OrgasmTimer) && (Player.ArousalSettings.OrgasmTimer > 0)) {
+	if (Player.ArousalSettings.OrgasmTimer > 0) {
 
 		// On stage 0, the player can choose to resist the orgasm or not.  At 1, the player plays a mini-game to fight her orgasm
 		if (Player.ArousalSettings.OrgasmStage == 0 && MouseIn(700, 532, 250, 64)) ActivityOrgasmGameGenerate(0);

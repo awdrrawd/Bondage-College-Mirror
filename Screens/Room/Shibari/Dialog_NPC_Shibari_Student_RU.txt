@@ -1,4 +1,4 @@
-﻿###_NPC
+###_NPC
 I love your gag, it looks both comfy and effective.
 Мне нравится ваш кляп, он выглядит одновременно и удобным и эффективным.
 (She licks her lips seeing the gag and allows you to silence her easily.)
@@ -190,3 +190,19 @@ The Head Mistress came with customers.  They tried Shibari on the teacher but di
 ###_PLAYER
 I'll go get help.  (Leave her.)
 Я пойду за помощью.  (Оставь ее.)
+Would you like to play Club Cards?
+Хочешь сыграть в клубные карты?
+Can I tie you up if I win?
+Можно я свяжу тебя, если выиграю?
+(Play Club Card with her.)
+(Сыграть с ней в клубные карты.)
+Congratulations Miss, you're a true card sensei.  I'm your prisoner to bind, we have more ropes in these bags.
+Поздравляю, мисс, вы настоящий карточный сенсей. Я ваша пленница, можете связать меня. В тех сумках есть ещё верёвки.
+That was good game Miss.  Sorry I won't tie you up, but we can play another match if you want.
+Хорошая была партия, мисс. Простите, связывать вас я не стану, но можем сыграть ещё, если хотите.
+(She stretches her arms.)  Yes Miss, it could be a nice pause after being bound for so long.
+(Она разминает руки.) Да, мисс, неплохо отдохнуть после столь долгого связывания.
+Of course Miss!  You can tie me up right now if you want.  (She giggles.)  I'm a submissive though, I won't restrain you if I win.
+Конечно, мисс! Можете связать меня прямо сейчас, если хотите. (Она хихикает.) Но я нижняя и не стану связывать вас, если выиграю.
+Yes Miss.  Would you like to use more ropes on me?
+Да, мисс. Хотите добавить мне верёвок?

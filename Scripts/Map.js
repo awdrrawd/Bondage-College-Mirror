@@ -163,6 +163,9 @@ var MapManager = (function () {
 		/** @type {Record<number,ChatRoomMapObjectConfig>} */
 		objectConfigs;
 
+		/** @type {Record<number, ChatRoomMapObjectSettings>} */
+		objectSettings;
+
 		/**
 		 * @param {number} width
 		 * @param {number} height
@@ -170,8 +173,9 @@ var MapManager = (function () {
 		 * @param {ChatRoomMapObject[]} [objects]
 		 * @param {ChatRoomMapEffect[][]} [effects]
 		 * @param {Record<number,ChatRoomMapObjectConfig>} [objectConfigs]
+		 * @param {Record<number, ChatRoomMapObjectSettings>} [objectSettings]
 		 */
-		constructor(width, height, tiles, objects, effects, objectConfigs) {
+		constructor(width, height, tiles, objects, effects, objectConfigs, objectSettings) {
 			const length = width * height;
 			const tile = MapDataGetTile(ChatRoomMapViewObjectStartID);
 			const object = MapDataGetObject(ChatRoomMapViewObjectStartID);
@@ -180,6 +184,7 @@ var MapManager = (function () {
 			this.objects = objects ?? Array.from({ length }).fill(object);
 			this.effects = effects ?? Array.from({ length }, () => [effect]);
 			this.objectConfigs = this.#sanitizeObjectConfigs(objectConfigs ?? {});;
+			this.objectSettings = objectSettings ?? {};
 			this.fogEnabled = false;
 		}
 
@@ -234,10 +239,36 @@ var MapManager = (function () {
 				const object = MapDataGetObject(data.Objects?.charCodeAt(index) ?? ChatRoomMapViewObjectStartID);
 				if (object) objects.push(object);
 			}
-			const map = new MapData(ChatRoomMapViewWidth, ChatRoomMapViewHeight, tiles, objects, effects, data.CellData);
+			const objectSettings = typeof data.ObjectSettings === "string" ? this.#_decodeObjectSettings(data.ObjectSettings) : {};
+			const map = new MapData(ChatRoomMapViewWidth, ChatRoomMapViewHeight, tiles, objects, effects, data.CellData, objectSettings);
 
 			map.fogEnabled = data.Fog ?? false;
 			return map;
+		}
+
+		/**
+		 * Decodes the object settings; settings that can't be read are dropped rather than failing the whole map
+		 * @param {string} str
+		 * @returns {Record<number, ChatRoomMapObjectSettings>}
+		 */
+		static #_decodeObjectSettings(str) {
+			const reader = BitStringReader.fromBase64(str);
+			if (reader === undefined) {
+				console.error("MapManager._decodeObjectSettings(): invalid encoded string");
+				return {};
+			}
+			try {
+				const version = reader.readUnsigned(MAP_SYNC_VERSION_BIT_SIZE);
+				const codec = MapObjectSettingsCodecs[version];
+				if (codec === undefined) {
+					console.error(`MapManager._decodeObjectSettings(): unknown object settings version ${version}`);
+					return {};
+				}
+				return codec.read(reader) ?? {};
+			} catch (e) {
+				console.error("MapManager._decodeObjectSettings(): decoding error", e);
+				return {};
+			}
 		}
 
 		/**
@@ -300,12 +331,29 @@ var MapManager = (function () {
 			data.Tiles = this.tiles.map(t => t ? String.fromCharCode(t.ID) : ChatRoomMapViewObjectStartID).join("");
 			data.Objects = this.objects.map(o => o ? String.fromCharCode(o.ID) : ChatRoomMapViewObjectStartID).join("");
 			data.CellData = this.objectConfigs;
+			const objectSettings = this.placedObjectSettings();
+			if (Object.keys(objectSettings).length) {
+				const writer = new BitStringWriter();
+				writer.writeUnsigned(CURRENT_OBJECT_SETTINGS_CODEC_VERSION, MAP_SYNC_VERSION_BIT_SIZE);
+				if (!MapObjectSettingsCodecs[CURRENT_OBJECT_SETTINGS_CODEC_VERSION].write(objectSettings, writer)) return false;
+				data.ObjectSettings = writer.toBase64();
+			} else {
+				delete data.ObjectSettings;
+			}
 			if (this.fogEnabled) {
 				data.Fog = true;
 			} else {
 				delete data.Fog;
 			}
 			return true;
+		}
+
+		/**
+		 * Gets the object settings that still apply: the ones whose object is still placed on their tile
+		 * @returns {Record<number, ChatRoomMapObjectSettings>}
+		 */
+		placedObjectSettings() {
+			return Object.fromEntries(Object.entries(this.objectSettings).filter(([index, settings]) => this.objects[Number(index)]?.ID === settings.ID));
 		}
 
 		/**
@@ -730,6 +778,105 @@ var MapManager = (function () {
 	};
 
 	/**
+	 * Codecs for how admins turned, sized and colored placed objects.
+	 * ## Version 0
+	 * The number of customized tiles (16 bits), then for each: its index (16 bits), the object ID (16 bits),
+	 * and four optional parts, each behind a flag bit: the rotation (9 bits), the size (8 bits),
+	 * the colors (8 bits count, then per color a flag bit for "Default", or 24 bits RGB),
+	 * and the decal's asset name (6 bits length, then 7 bits per character) followed by its optional color (a flag bit, then 24 bits RGB).
+	 * @type {Record<number, MapManager.ObjectSettingsCodec>}
+	 */
+	const MapObjectSettingsCodecs = {
+		0: (function () {
+			const INDEX_BITS = 16;
+			const ID_BITS = 16;
+			const ROTATION_BITS = 9;
+			const SIZE_BITS = 8;
+			const COLOR_COUNT_BITS = 8;
+			const COLOR_BITS = 24;
+			const DECAL_LENGTH_BITS = 6;
+			const DECAL_CHAR_BITS = 7;
+
+			/**
+			 * @param {Record<number, ChatRoomMapObjectSettings>} settingsByTile
+			 * @param {BitStringWriter} writer
+			 * @returns {boolean}
+			 */
+			function write(settingsByTile, writer) {
+				const entries = Object.entries(settingsByTile);
+				writer.writeUnsigned(entries.length, INDEX_BITS);
+				for (const [index, settings] of entries) {
+					writer.writeUnsigned(Number(index), INDEX_BITS);
+					writer.writeUnsigned(settings.ID, ID_BITS);
+					writer.writeBool(settings.Rotation != null);
+					if (settings.Rotation != null) writer.writeUnsigned(settings.Rotation, ROTATION_BITS);
+					writer.writeBool(settings.Size != null);
+					if (settings.Size != null) writer.writeUnsigned(settings.Size, SIZE_BITS);
+					writer.writeBool(settings.Colors != null);
+					if (settings.Colors != null) {
+						writer.writeUnsigned(settings.Colors.length, COLOR_COUNT_BITS);
+						for (const color of settings.Colors) {
+							const isDefault = color === "Default";
+							writer.writeBool(isDefault);
+							if (isDefault) continue;
+							writer.writeUnsigned(MapColorToNumber(color), COLOR_BITS);
+						}
+					}
+					writer.writeBool(settings.Decal != null);
+					if (settings.Decal != null) {
+						// Asset names are plain ASCII
+						if (settings.Decal.length >= 2 ** DECAL_LENGTH_BITS || [...settings.Decal].some(c => c.charCodeAt(0) >= 2 ** DECAL_CHAR_BITS)) return false;
+						writer.writeUnsigned(settings.Decal.length, DECAL_LENGTH_BITS);
+						for (const char of settings.Decal) writer.writeUnsigned(char.charCodeAt(0), DECAL_CHAR_BITS);
+						writer.writeBool(settings.DecalColor != null);
+						if (settings.DecalColor != null) writer.writeUnsigned(MapColorToNumber(settings.DecalColor), COLOR_BITS);
+					}
+				}
+				return true;
+			}
+
+			/**
+			 * @param {BitStringReader} reader
+			 * @returns {Record<number, ChatRoomMapObjectSettings> | undefined}
+			 */
+			function read(reader) {
+				/** @type {Record<number, ChatRoomMapObjectSettings>} */
+				const settingsByTile = {};
+				const count = reader.readUnsigned(INDEX_BITS);
+				for (let i = 0; i < count; i++) {
+					const index = reader.readUnsigned(INDEX_BITS);
+					/** @type {ChatRoomMapObjectSettings} */
+					const settings = { ID: reader.readUnsigned(ID_BITS) };
+					if (reader.readBool()) settings.Rotation = reader.readUnsigned(ROTATION_BITS);
+					if (reader.readBool()) settings.Size = reader.readUnsigned(SIZE_BITS);
+					if (reader.readBool()) {
+						const colorCount = reader.readUnsigned(COLOR_COUNT_BITS);
+						settings.Colors = [];
+						for (let c = 0; c < colorCount; c++) {
+							if (reader.readBool()) {
+								settings.Colors.push("Default");
+							} else {
+								settings.Colors.push(MapNumberToColor(reader.readUnsigned(COLOR_BITS)));
+							}
+						}
+					}
+					if (reader.readBool()) {
+						const length = reader.readUnsigned(DECAL_LENGTH_BITS);
+						let decal = "";
+						for (let c = 0; c < length; c++) decal += String.fromCharCode(reader.readUnsigned(DECAL_CHAR_BITS));
+						settings.Decal = /** @type {AssetName} */ (decal);
+						if (reader.readBool()) settings.DecalColor = MapNumberToColor(reader.readUnsigned(COLOR_BITS));
+					}
+					if (index < ChatRoomMapMaxLength) settingsByTile[index] = settings;
+				}
+				return settingsByTile;
+			}
+
+			return { write, read };
+		})(),
+	};
+
+	/**
 	 * @type {Record<number, MapManager.MapCodec<MapData>>}
 	 */
 	const MapDataCodecs = {
@@ -771,12 +918,50 @@ var MapManager = (function () {
 				read,
 			};
 		})(),
+		// Version 1: the effects as in version 0, followed by the object settings
+		1: (function () {
+			const EFFECTS_CODEC_VERSION = 0;
+			const OBJECT_SETTINGS_CODEC_VERSION = 0;
+
+			/**
+			 * @param {MapData} map
+			 * @param {BitStringWriter} writer
+			 * @returns {boolean}
+			 */
+			function write(map, writer) {
+				const effectsCodec = MapEffectsCodecs[EFFECTS_CODEC_VERSION];
+				return effectsCodec.write(map.effects, writer)
+					&& MapObjectSettingsCodecs[OBJECT_SETTINGS_CODEC_VERSION].write(map.placedObjectSettings(), writer);
+			}
+
+			/**
+			 * @param {BitStringReader} reader
+			 * @param {number | undefined} requiredTilesCount
+			 * @returns {MapData | undefined}
+			 */
+			function read(reader, requiredTilesCount) {
+				const effectsCodec = MapEffectsCodecs[EFFECTS_CODEC_VERSION];
+				const effects = effectsCodec.read(reader, requiredTilesCount);
+				const mapData = new MapData(ChatRoomMapViewWidth, ChatRoomMapViewHeight);
+				mapData.effects = effects ?? [];
+				mapData.objectSettings = MapObjectSettingsCodecs[OBJECT_SETTINGS_CODEC_VERSION].read(reader) ?? {};
+				return mapData;
+			}
+
+			return {
+				write,
+				read,
+			};
+		})(),
 	};
 
 	const MAP_EXPORT_VERSION_TAG = "@";
 	const MAP_SYNC_VERSION_BIT_SIZE = 8;
 	const MAP_SYNC_CURRENT_VERSION = 0;
+	/** Maps with object settings are exported with this version; others keep version 0, so older clients still read their effects */
+	const MAP_SYNC_OBJECT_SETTINGS_VERSION = 1;
 	const CURRENT_EFFECTS_CODEC_VERSION = 0;
+	const CURRENT_OBJECT_SETTINGS_CODEC_VERSION = 0;
 
 	/**
 	 * Decodes the string that was generated with the `/mapcopy` command.
@@ -886,6 +1071,7 @@ var MapManager = (function () {
 		const modernMap = decodeModernExportedMap(effectsPart);
 		if (modernMap) {
 			legacyMap.effects = modernMap.effects;
+			legacyMap.objectSettings = modernMap.objectSettings;
 		}
 		return legacyMap;
 	}
@@ -946,7 +1132,7 @@ var MapManager = (function () {
 			// Remove the effects from the legacy map data. They would be encoded later to avoid
 			// compressing/encoding them multiple times since they're already encoded in the ServerChatRoomMapData
 			// object.
-			const { Effects: _, ...legacyMapFiltered } = legacyMap;
+			const { Effects: _, ObjectSettings: __, ...legacyMapFiltered } = legacyMap;
 			legacyEncoded = LZString.compressToBase64(
 				JSON.stringify(legacyMapFiltered),
 			);
@@ -955,10 +1141,11 @@ var MapManager = (function () {
 		}
 
 		if (map !== undefined) {
-			const codec = MapDataCodecs[MAP_SYNC_CURRENT_VERSION];
+			const version = Object.keys(map.placedObjectSettings()).length ? MAP_SYNC_OBJECT_SETTINGS_VERSION : MAP_SYNC_CURRENT_VERSION;
+			const codec = MapDataCodecs[version];
 			const writer = new BitStringWriter();
 			writer.writeUnsigned(
-				MAP_SYNC_CURRENT_VERSION,
+				version,
 				MAP_SYNC_VERSION_BIT_SIZE,
 			);
 			if (!codec.write(map, writer)) {
@@ -982,6 +1169,7 @@ var MapManager = (function () {
 		TILES: 1 << 2,
 		OBJECTS: 1 << 3,
 		OBJECT_CONFIGS: 1 << 4,
+		OBJECT_SETTINGS: 1 << 5,
 
 		/**
 		 * @param {number} n
@@ -1015,7 +1203,7 @@ var MapManager = (function () {
 		 * @returns {number}
 		 */
 		all() {
-			return DirtyFlags.EFFECTS | DirtyFlags.OBJECTS | DirtyFlags.TILES | DirtyFlags.OBJECT_CONFIGS;
+			return DirtyFlags.EFFECTS | DirtyFlags.OBJECTS | DirtyFlags.TILES | DirtyFlags.OBJECT_CONFIGS | DirtyFlags.OBJECT_SETTINGS;
 		},
 	});
 
@@ -1436,6 +1624,7 @@ var MapManager = (function () {
 				case "Tether":
 					return !!cell?.CanBeTetherPoint;
 			}
+			return false;
 		}
 
 		/**
@@ -1622,6 +1811,105 @@ var MapManager = (function () {
 				delete this.#_mapData.objectConfigs[index];
 			} else {
 				this.#_mapData.objectConfigs[index] = config;
+			}
+			return true;
+		}
+
+		/**
+		 * Gets how an admin turned, sized and colored the object placed on a tile.
+		 * Only the settings the object currently placed there can take are returned.
+		 * @overload
+		 * @param {number} index
+		 * @returns {ChatRoomMapObjectSettings | null}
+		 */
+		/**
+		 * @overload
+		 * @param {number} x
+		 * @param {number} y
+		 * @returns {ChatRoomMapObjectSettings | null}
+		 */
+		/**
+		 * @param {MapDataIndexedArgs<[]>} args
+		 * @returns {ChatRoomMapObjectSettings | null}
+		 */
+		getObjectSettings(...args) {
+			if (!this.#_mapData) throw Error("No map loaded");
+			const [index] = this.unpackIndex(...args);
+			if (index < 0 || index >= ChatRoomMapMaxLength) return null;
+			const object = this.getObject(index);
+			const settings = this.#_mapData.objectSettings[index];
+			if (!object || settings?.ID !== object.ID) return null;
+			return this.#cleanObjectSettings(object, settings);
+		}
+
+		/**
+		 * Keeps only the settings an object can take, within their limits and not at their default
+		 * @param {ChatRoomMapObject} object
+		 * @param {ChatRoomMapObjectSettings} settings
+		 * @returns {ChatRoomMapObjectSettings | null} - null if the object can't be customized
+		 */
+		#cleanObjectSettings(object, settings) {
+			if (!MapCanCustomizeObject(object)) return null;
+			const transform = MapCanTransformObject(object);
+			const colors = MapIsValidObjectColors(settings.Colors, object) && settings.Colors.some(c => c !== "Default") ? settings.Colors : undefined;
+			const decal = MapIsValidObjectDecal(settings.Decal, object) ? settings.Decal : undefined;
+			const decalColor = decal && CommonIsColor(settings.DecalColor) ? settings.DecalColor : undefined;
+			return {
+				ID: object.ID,
+				...(transform && CommonIsInteger(settings.Rotation, 1, 359) && { Rotation: settings.Rotation }),
+				...(transform && CommonIsInteger(settings.Size, 50, 200) && settings.Size !== MapObjectDefaultSize && { Size: settings.Size }),
+				...(colors && { Colors: colors }),
+				...(decal && { Decal: decal }),
+				...(decalColor && { DecalColor: decalColor }),
+			};
+		}
+
+		/**
+		 * Turns, sizes or colors the object placed on a tile. Values back at their default are left out.
+		 * @overload
+		 * @param {number} index
+		 * @param {Omit<ChatRoomMapObjectSettings, "ID">} changes
+		 * @param {boolean} [undoable=true] - Whether the change is its own undo step; false merges it into the previous one
+		 * @returns {boolean} Whether there is an object there that can take the settings
+		 */
+		/**
+		 * @overload
+		 * @param {number} x
+		 * @param {number} y
+		 * @param {Omit<ChatRoomMapObjectSettings, "ID">} changes
+		 * @param {boolean} [undoable=true]
+		 * @returns {boolean}
+		 */
+		/**
+		 * @param {MapDataIndexedArgs<[changes: Omit<ChatRoomMapObjectSettings, "ID">, undoable?: boolean]>} args
+		 * @returns {boolean}
+		 */
+		setObjectSettings(...args) {
+			if (!this.#_mapData) throw Error("No map loaded");
+			const [index, changes, undoable = true] = this.unpackIndex(...args);
+			if (index < 0 || index >= ChatRoomMapMaxLength) return false;
+			const object = this.getObject(index);
+			const settings = object && this.#cleanObjectSettings(object, { ...this.getObjectSettings(index), ...changes, ID: object.ID });
+			if (!settings) return false;
+
+			if (undoable) {
+				const previous = this.#_mapData.objectSettings[index];
+				this.#registerUndo(() => {
+					if (!this.#_mapData) return;
+					this.#_markDirty(DirtyFlags.OBJECT_SETTINGS);
+					if (previous) {
+						this.#_mapData.objectSettings[index] = previous;
+					} else {
+						delete this.#_mapData.objectSettings[index];
+					}
+				});
+			}
+
+			this.#_markDirty(DirtyFlags.OBJECT_SETTINGS);
+			if (settings.Rotation || settings.Size || settings.Colors || settings.Decal) {
+				this.#_mapData.objectSettings[index] = settings;
+			} else {
+				delete this.#_mapData.objectSettings[index];
 			}
 			return true;
 		}
@@ -1964,6 +2252,31 @@ var MapManager = (function () {
 		}
 
 		/**
+		 * Marks the object settings as dirty, that is, changed and not yet synchronized with the server.
+		 * @returns {void}
+		 */
+		markDirtyObjectSettings() {
+			this.#_markDirty(DirtyFlags.OBJECT_SETTINGS);
+		}
+
+		/**
+		 * Marks the object settings as clean, that is, synchronized with the server.
+		 * @returns {void}
+		 */
+		markCleanObjectSettings() {
+			this.#_markClean(DirtyFlags.OBJECT_SETTINGS);
+		}
+
+		/**
+		 * Checks whether the object settings are dirty, that is, whether they need
+		 * to be synchronized with the server.
+		 * @returns {boolean}
+		 */
+		isDirtyObjectSettings() {
+			return DirtyFlags.hasFlag(this.#_dirtyFlags, DirtyFlags.OBJECT_SETTINGS);
+		}
+
+		/**
 		 * Mark all data in the current map as clean.
 		 * @returns {void}
 		 */
@@ -2012,7 +2325,7 @@ var MapManager = (function () {
 			this.markDirtyObjects();
 			this.markDirtyEffects();
 			this.markDirtyObjectConfigs();
-
+			this.markDirtyObjectSettings();
 			this.updateGlobalMapData();
 
 			return true;
@@ -2307,9 +2620,23 @@ var MapManager = (function () {
 /** @deprecated Use {@link MapManager} instead */
 var ChatRoomMapManager = MapManager;
 
+/**
+ * A single colorable layer over the whole plain image, for the white-filled numbers, letters and icons
+ * @type {readonly ChatRoomMapLayer[]}
+ */
+const MapDataLayersFill = [{ Name: "", IsColorable: true, DefaultColor: "#FFFFFF" }];
+
+/**
+ * The layer of objects that don't list any: the plain image, with its own colors
+ * @type {readonly ChatRoomMapLayer[]}
+ */
+const MapDataLayersPlain = [{ Name: "", IsColorable: false }];
+
 /** @type {Partial<Record<ChatRoomMapObject["Type"], Partial<Omit<ChatRoomMapObject, "ID">>>>} */
 const ChatRoomMapViewObjectDefaultValues = {
-	"WallPath": { CanPlaceInWalls: true, CanPlaceOnWalls: true, CanPlaceOnFloors: false,
+	"EmptySpace": { CanBeCustomized: false },
+	"Functional": { CanBeCustomized: false },
+	"WallPath": { CanPlaceInWalls: true, CanPlaceOnWalls: true, CanPlaceOnFloors: false, CanBeCustomized: false,
 		BuildImageName: function (X, Y) {
 			let name = this.Style;
 			if (this.OccupiedStyle != null && Player.X == X && Player.Y == Y) name = this.OccupiedStyle ?? "Blank";
@@ -2317,6 +2644,10 @@ const ChatRoomMapViewObjectDefaultValues = {
 			return name ?? "Blank";
 		}
 	},
+	"FloorDecorationExpanding": { JoinsNeighbors: true },
+	"FloorNumber": { Layers: MapDataLayersFill },
+	"FloorLetter": { Layers: MapDataLayersFill },
+	"FloorIcon": { Layers: MapDataLayersFill },
 	"WallDecoration": { CanPlaceOnWalls: true, CanPlaceOnFloors: false },
 	"Banners": { CanPlaceOnWalls: true, CanPlaceOnFloors: false },
 	"FloorObstacle": { CanBeTetherPoint: true, OnClick: (x, y) => ChatRoomMapViewOnClickTetherPoint(x, y) },
@@ -2386,7 +2717,7 @@ function MapDataLoadObjects(object) {
 		}
 		if (!MapDataCheckDeprecatedChain(obj, MapDataObjects, object, "object")) continue;
 		const defaults = ChatRoomMapViewObjectDefaultValues[obj.Type] ?? {};
-		MapDataObjects.set(obj.ID, { ...defaults, ...obj, DoodadType: "Object", });
+		MapDataObjects.set(obj.ID, { Layers: MapDataLayersPlain, ...defaults, ...obj, DoodadType: "Object", });
 		MapDataObjectTypes.add(obj.Type);
 	}
 }
@@ -2749,6 +3080,107 @@ function MapCanSetCell(id, type, x, y) {
 function MapIsCellValid(id, type, x, y) {
 	if (!MapCanSetCell(id, type, x, y)) return false;
 	return true;
+}
+
+/** The size of a placed map object, in percent, when an admin didn't change it */
+const MapObjectDefaultSize = 100;
+
+/**
+ * Whether admins can turn, size or color an object, see {@link ChatRoomMapObject.CanBeCustomized}
+ * @param {ChatRoomMapObject} object
+ * @returns {boolean}
+ */
+function MapCanCustomizeObject(object) {
+	return object.CanBeCustomized !== false;
+}
+
+/**
+ * Whether admins can turn and size an object; ones that join up with their neighbors or hang on walls only take colors
+ * @param {ChatRoomMapObject} object
+ * @returns {boolean}
+ */
+function MapCanTransformObject(object) {
+	return !object.JoinsNeighbors && !object.CanPlaceOnWalls;
+}
+
+/**
+ * Converts a color to the number written in a BitString; short #RGB colors are taken as #RRGGBB
+ * @param {HexColor} color
+ * @returns {number}
+ */
+function MapColorToNumber(color) {
+	const hex = color.length === 4 ? color.slice(1).replace(/./g, "$&$&") : color.slice(1);
+	return Number.parseInt(hex, 16);
+}
+
+/**
+ * Converts a number read from a BitString back to a #RRGGBB color
+ * @param {number} value
+ * @returns {HexColor}
+ */
+function MapNumberToColor(value) {
+	return /** @type {HexColor} */ ("#" + value.toString(16).toUpperCase().padStart(6, "0"));
+}
+
+/**
+ * Checks whether a decal can go on an object: the object has a {@link ChatRoomMapObject.DecalArea} and the decal is one of {@link AssetGetDecals}
+ * @param {string | undefined} decal
+ * @param {ChatRoomMapObject | null} object
+ * @returns {decal is AssetName}
+ */
+function MapIsValidObjectDecal(decal, object) {
+	return !!decal && !!object?.DecalArea && AssetGetDecals().some(asset => asset.Name === decal);
+}
+
+/**
+ * Gets the layers of an object that admins can color
+ * @param {ChatRoomMapObject | null} object
+ * @returns {ChatRoomMapColorableLayer[]}
+ */
+function MapGetColorableLayers(object) {
+	return (object?.Layers ?? []).filter(layer => layer.IsColorable);
+}
+
+/**
+ * Checks whether colors match the colorable layers of an object: one per layer, each `"Default"` or a color
+ * @param {string[] | undefined} colors
+ * @param {ChatRoomMapObject | null} object
+ * @returns {colors is NonNullable<ChatRoomMapObjectSettings["Colors"]>}
+ */
+function MapIsValidObjectColors(colors, object) {
+	const layers = MapGetColorableLayers(object);
+	if (!layers.length || colors?.length !== layers.length) return false;
+	return colors.every(c => CommonIsColor(c, { schema: ["Default"] }));
+}
+
+/**
+ * Checks whether a copied color format can be pasted on an object.
+ * Objects with the same colorable layers (same names and default colors, like the numbers and letters) accept each other's formats.
+ * @param {ChatRoomMapColorFormat | null} format
+ * @param {ChatRoomMapObject | null} object
+ * @returns {boolean}
+ */
+function MapCanPasteColorFormat(format, object) {
+	const layers = MapGetColorableLayers(object);
+	if (!format || !object || !layers.length) return false;
+	if (format.ObjectID === object.ID) return true;
+	const formatLayers = MapGetColorableLayers(MapDataObjects.get(format.ObjectID) ?? null);
+	return formatLayers.length === layers.length
+		&& formatLayers.every((layer, i) => layer.Name === layers[i].Name && layer.DefaultColor === layers[i].DefaultColor);
+}
+
+/**
+ * Gets the colors to draw each color layer of the object placed on a tile with; layers left at default get their default color
+ * @param {ChatRoomMapPos} pos
+ * @param {ChatRoomMapObject} object
+ * @returns {HexColor[]}
+ */
+function MapGetObjectLayerColors(pos, object) {
+	const colors = MapManager.Map.getObjectSettings(pos.X, pos.Y)?.Colors ?? [];
+	return MapGetColorableLayers(object).map((layer, i) => {
+		const color = colors[i];
+		return color && color !== "Default" ? color : layer.DefaultColor;
+	});
 }
 
 /**

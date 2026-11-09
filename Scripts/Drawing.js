@@ -243,15 +243,12 @@ function DrawArousalThermometer(X, Y, Zoom, Progress, Automatic, Orgasm) {
 function DrawArousalMeter(C, X, Y, Zoom) {
 	if (ActivityAllowed() && PreferenceArousalAtLeast(C, "Manual"))
 		if (C.IsPlayer() || (C.ArousalSettings.Visible == "Access" && C.AllowItem) || C.ArousalSettings.Visible == "All")
-			if (C.IsPlayer() || (Player.ArousalSettings.ShowOtherMeter == null) || Player.ArousalSettings.ShowOtherMeter) {
-				ActivitySetArousal(C, C.ArousalSettings.Progress);
+			if (C.IsPlayer() || Player.ArousalSettings.ShowOtherMeter) {
+				const orgasm = C.ArousalSettings.OrgasmTimer > 0;
 				if (Player.ArousalSettings.VFX != "VFXInactive" && C.ArousalSettings.Progress > 0 && PreferenceArousalAtLeast(C, "Hybrid")) {
-					let Progress = 0;
-					if (!(C.ArousalSettings.VibratorLevel == null || typeof C.ArousalSettings.VibratorLevel !== "number" || isNaN(C.ArousalSettings.VibratorLevel))) {
-						Progress = C.ArousalSettings.VibratorLevel;
-					}
+					const Progress = C.ArousalSettings.VibratorLevel;
 
-					if (Progress > 0) { // -1 is disabled
+					if (Progress > 0) {
 						const animationTimeMax = 5000; // 5 seconds
 						const animationTimeLeft = Math.min(C.ArousalSettings.ChangeTime - CommonTime(), 0) + animationTimeMax;
 
@@ -262,7 +259,7 @@ function DrawArousalMeter(C, X, Y, Zoom) {
 							Progress,
 							Player.ArousalSettings.VFX == "VFXAnimated" || (Player.ArousalSettings.VFX == "VFXAnimatedTemp" && C.ArousalSettings.ChangeTime != null && animationTimeLeft > 0),
 							Math.max(0, animationTimeLeft / animationTimeMax),
-							C.ArousalSettings.OrgasmTimer != null && typeof C.ArousalSettings.OrgasmTimer === "number" && !isNaN(C.ArousalSettings.OrgasmTimer) && C.ArousalSettings.OrgasmTimer > 0);
+							orgasm);
 					}
 				}
 
@@ -272,11 +269,11 @@ function DrawArousalMeter(C, X, Y, Zoom) {
 					C.ArousalZoom ? Zoom : Zoom * 0.2,
 					C.ArousalSettings.Progress,
 					PreferenceArousalAtLeast(C, "Automatic"),
-					C.ArousalSettings.OrgasmTimer != null && typeof C.ArousalSettings.OrgasmTimer === "number" && !isNaN(C.ArousalSettings.OrgasmTimer) && C.ArousalSettings.OrgasmTimer > 0);
+					orgasm);
 
-				if (C.ArousalZoom && (typeof C.ArousalSettings.OrgasmCount === "number") && (C.ArousalSettings.OrgasmCount >= 0) && (C.ArousalSettings.OrgasmCount <= 9999)) {
+				if (C.ArousalZoom && C.ArousalSettings.OrgasmCount <= 9999) {
 					MainCanvas.font = CommonGetFont(Math.round(36 * Zoom).toString());
-					DrawText(((C.ArousalSettings.OrgasmCount != null) ? C.ArousalSettings.OrgasmCount : 0).toString(), X + 100 * Zoom, Y + 655 * Zoom, "Black", "Gray");
+					DrawText(C.ArousalSettings.OrgasmCount.toString(), X + 100 * Zoom, Y + 655 * Zoom, "Black", "Gray");
 					MainCanvas.font = CommonGetFont(36);
 				}
 			}

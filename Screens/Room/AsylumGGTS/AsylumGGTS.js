@@ -1412,7 +1412,7 @@ function AsylumGGTSUngag() {
  * @param {Character} C - The character getting the orgasm
  * @returns {void} - Nothing
  */
-function AsylumGGTSTOrgasm(C) {
+function AsylumGGTSOrgasm(C) {
 	if (!C || ChatSearchGetSpace() !== "Asylum" || ChatRoomGetGame() !== "GGTS") return;
 	if (!C.IsPlayer()) return;
 	if (AsylumGGTSGetStrikes(Player) >= 3 && AsylumGGTSGetLevel(Player) <= 0) return;

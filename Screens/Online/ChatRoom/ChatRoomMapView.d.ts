@@ -7,6 +7,11 @@ declare namespace MapManager {
 		): ChatRoomMapEffect[][] | undefined;
 	}
 
+	interface ObjectSettingsCodec {
+		write(settingsByTile: Record<number, ChatRoomMapObjectSettings>, writer: BitStringWriter): boolean;
+		read(reader: BitStringReader): Record<number, ChatRoomMapObjectSettings> | undefined;
+	}
+
 	interface MapCodec<T> {
 		write(map: T, writer: BitStringWriter): boolean;
 		read(
@@ -62,7 +67,7 @@ type MapDataIndexedArgs<args extends readonly unknown[]> = [x: number, y: number
 
 type ChatRoomMapViewObjectModeType = "Tile" | "Object" | "Effect";
 
-type ChatRoomMapViewEditModeType = "" | ChatRoomMapViewObjectModeType | "TileType" | "ObjectType";
+type ChatRoomMapViewEditModeType = "" | ChatRoomMapViewObjectModeType | "TileType" | "ObjectType" | "ObjectSettings";
 
 type ChatRoomMapViewTool = {
 	canPaint: () => boolean;

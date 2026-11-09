@@ -1,4 +1,4 @@
-﻿###_NPC
+###_NPC
 Blessed those who have nothing to say and yet remain silent. 
 Благослови тех, кому нечего сказать и при этом молчат.
 (She shakes her head but you're able to gag and silence her.)
@@ -553,3 +553,9 @@ Alright, but take more care next time.
 ###_NPC
 I will, thanks.  Is there something I can do for you?
 Я так и сделаю, спасибо.  Я могу что-нибудь для тебя сделать?
+One player is the fox, the other is the hunter. The hunter pays a hunting lease of $5.
+Один игрок — лиса, другой — охотник. Охотник платит взнос за охоту в размере $5.
+If a player rolls the wrong number, they pay $1 and roll again.
+Если выпало неверное число, игрок платит $1 и бросает снова.
+Are you ready to pay $25?
+Готова заплатить $25?

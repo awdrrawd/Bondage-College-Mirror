@@ -64,3 +64,327 @@ OwnerPresenceBlockAccessSelf
 Доступ к себе запрещен, когда ваша хозяйка присутствует.
 OwnerPresenceBlockAccessOther
 Доступ к другим запрещен, когда ваша хозяйка присутствует.
+WhisperFrom
+Шёпот от
+WhisperTargetGone
+Персонаж, которому вы шептали, покинул комнату.
+WhisperTargetOutOfRange
+Собеседник слишком далеко для шёпота. Возврат в общий чат.
+MenuCustomizationOn
+Включить оформление комнаты
+MenuCustomizationOff
+Отключить оформление комнаты
+MenuNextCharacters
+Показать следующих 10 персонажей
+MenuPreviousCharacters
+Показать предыдущих 10 персонажей
+MenuCharacterView
+Перейти к виду персонажей
+MenuMapView
+Перейти к карте
+PandoraInvalidSource
+Эта команда доступна только охранникам Пандоры.
+PandoraInvalidTarget
+Выбранный персонаж не заключённый Пандоры.
+PandoraInvalidActivity
+Недопустимое действие Пандоры. Список: `/pandora help`.
+PandoraActivityHelp
+Доступные действия:
+PandoraInvalidActivityForTarget
+Нельзя выполнить это действие с выбранным персонажем.
+ChatRoomStruggleStruggling
+Попытка освободиться...
+ChatRoomStruggleLoosening
+Ослабление...
+ChatRoomStruggleImpossible
+Невозможно!
+ChatRoomStruggleLoosen
+Ослабить
+ChatRoomStruggleGiveUp
+Сдаться
+ChatRoomReply
+Ответ для
+ChatRoomNoMessageFound
+Сообщение не найдено.
+CommandBeepInvalidTarget
+Недопустимый номер получателя: $target.
+CommandBeepLink
+(Сигнал для {NAME} ({NUMBER}): {MESSAGE})
+CommandBeepNotFriend
+Участника $target нет в вашем списке друзей.
+CommandBeepEmptyMessage
+Введите сообщение для сигнала.
+FocusEnabled
+<strong>ВНИМАНИЕ</strong>: FocusEnabledWarningIcon <strong>список фокуса</strong> FocusEnabledWarningIcon теперь <strong>включён</strong>. <i>В комнате вам будут видны только персонажи из этого списка</i>. Чтобы отключить фильтр, используйте <code>/focus clear</code> или кнопку на панели меню.
+CommandFocusTargeterAmbiguous
+Пропущено «Targeter»: найдено несколько совпадений.
+CommandFocusTargeterDuplicate
+Пропущено «Targeter»: персонаж уже выбран.
+CommandFocusTargeterNoMatch
+Пропущено «Targeter»: совпадений нет.
+CommandFocusNoTargets
+<strong>ОШИБКА</strong>: персонажи не найдены (условия поиска не заданы или не дали совпадений). Изменений нет.
+CommandFocusSuccessAdd
+<strong>ГОТОВО</strong>: в список фокуса добавлены: Changed.
+CommandFocusSuccessRemove
+<strong>ГОТОВО</strong>: из списка фокуса удалены: Changed.
+CommandFocusSuccessClear
+<strong>ГОТОВО</strong>: список фокуса очищен.
+CommandFocusList
+Список фокуса:
+CommandFocusHelpSyntax
+/focus add/remove/list/clear/help [имена или номера]
+CommandFocusHelpSummary
+Изменяет список фокуса. Если в нём есть участники, в комнате вам будут видны только персонажи из этого списка. При включённом списке на всех персонажах отображается значок FocusEnabledWarningIcon. Чтобы снова видеть всех, используйте <code>/focus clear</code> или кнопку на панели меню.
+CommandFocusHelpNotesHeader
+Примечания:
+CommandFocusHelpNotes
+<li>Если персонаж из списка фокуса обычно вам не виден (например, из-за сенсорной депривации), он останется невидимым.</li><li>Список фокуса не влияет на сообщения чата и комнаты с картой.</li><li>Когда игрок покидает комнату, он удаляется из списка фокуса.</li>
+CommandFocusHelpSubcommandsHeader
+Подкоманды:
+CommandFocusHelpAdd
+Добавить участников в список фокуса
+CommandFocusHelpRemove
+Удалить участников из списка фокуса
+CommandFocusHelpList
+Показать участников из списка фокуса
+CommandFocusHelpClear
+Очистить список фокуса (снова показывать всех)
+CommandFocusHelpHelp
+Показать эту справку
+CommandFocusHelpTargeters
+Цели: имена или номера участников для подкоманды, разделённые пробелами. Можно указать часть имени, если она однозначно определяет персонажа. Полное совпадение имени имеет приоритет перед частичным.
+CommandChangeLogClear
+Очистить журнал изменений
+CommandChangeLogCollapse
+Свернуть раздел
+CommandChangeLogCollapseShift
+{shift}, чтобы свернуть всё
+CommandNoWhisperTarget
+Собеседник для шёпота не найден:
+CommandNoMessage
+Сообщение не задано.
+CommandMultipleWhisperTargets
+Вы можете шептать: $Targets Нажмите на имя или укажите номер участника.
+CommandWhisperTargetSuccess
+Шёпот для
+CommandWhisperStopSuccess
+Вы больше не шепчете.
+CommandNoWhisperTargetSelected
+Укажите номер или имя собеседника для шёпота.
+CommandHelpEscape
+Начните сообщение с \, чтобы отправить его как обычный текст. Например, \/message отправит /message, а \*emote отправит *emote.
+MapCopyDone
+Данные текущей карты скопированы в буфер обмена. Вставьте их в другое место, чтобы сохранить.
+MapCopyError
+Нет данных карты для копирования.
+MapPasteDone
+Вставленные данные карты загружены.
+MapPasteError
+Не удалось загрузить вставленные данные карты.
+MapPasteAdmin
+Вставлять карту могут только администраторы комнаты.
+MenuDressIsRestrained
+Вы связаны
+MenuDressIsClubSlave
+Вы клубная рабыня
+MenuDressGameBlocked
+Запрещено режимом игры
+MenuDressGGTSBlocked
+Запрещено GGTS
+MenuDressRuleBlocked
+Запрещено правилом
+MenuDressOwnerBlocked
+Запрещено вашим владельцем
+PonyNotJoin
+Вы не присоединились к пони
+PonyInvalidActivity
+Недопустимое действие пони. Введите /help, чтобы увидеть список.
+FriendRequestMessage
+SourceCharacter хочет добавить вас в друзья. {buttons}
+FriendAcceptMessage
+SourceCharacter принимает ваш запрос в друзья.
+FriendRemoveMessage
+SourceCharacter удаляет вас из друзей.
+FriendAddback
+Добавить в ответ
+FriendAddbackMessage
+SourceCharacter добавлен в друзья.
+FriendGhost
+Скрыть SourceCharacter
+FriendGhostMessage
+SourceCharacter добавлен в список скрытых.
+FriendIgnore
+Игнорировать запрос
+InvalidNumber
+Недопустимое число.
+ArousalNotChangeable
+Чтобы менять уровень возбуждения, выберите ручной или смешанный режим его активации.
+CommandModsListTitle
+Загруженные моды
+CommandModsListSummaryOne
+Зарегистрирован $count мод
+CommandModsListSummaryMany
+Зарегистрировано модов: $count
+CommandModsVersionFormat
+v$version
+CommandModsRepositoryLink
+Репозиторий
+CommandModsHelpList
+Показать в журнале чата моды Mod SDK, загруженные в вашем клиенте: название, версию и ссылку на репозиторий, если она есть.
+CommandModsHelpRemote
+Запросить список модов других игроков. Необязательный аргумент выбирает одного игрока в комнате. Для ответа игрок должен разрешить запросы в настройках онлайн-игры.
+CommandModsRemoteTitle
+Результаты удалённого запроса Mod SDK
+CommandModsRemoteAriaLabel
+Результаты запроса модов Mod SDK у других игроков
+CommandModsRemoteProgress
+Ответы: $done / $total
+CommandModsRemoteNoMods
+(Моды не зарегистрированы)
+CommandModsRemoteUnknownMember
+Участник $member
+CommandModsRemoteStatusOk
+Ответ получен
+CommandModsRemoteStatusDeclined
+Отказ
+CommandModsRemoteStatusError
+Ошибка
+CommandModsRemoteStatusYou
+Вы
+CommandModsRemoteStatusTimeout
+Нет ответа
+CommandModsRemoteDeclinedBody
+Этот игрок запретил удалённые запросы Mod SDK в настройках онлайн-игры.
+CommandModsRemoteErrorBody
+Не удалось прочитать список модов.
+CommandModsRemoteTimeoutBody
+Время ожидания ответа истекло. Ответ может блокироваться списком скрытых или проблемами соединения.
+CommandModsRemoteNotInRoom
+Эта команда доступна только в комнате чата.
+CommandModsRemoteInvalidTarget
+В комнате нет игрока с таким именем или номером.
+CommandModsListCopyDone
+Список модов скопирован в буфер обмена.
+CommandModsListCopyError
+Не удалось скопировать список модов в буфер обмена.
+CommandModsListCopyTooltip
+Копировать список модов
+ChatRoomMapViewRecentItemsLabel
+Недавние предметы
+MapViewTetherPoint
+Точка привязи
+MapViewTetherPointToggle
+К ней можно привязывать поводки
+MapViewTetherTieSelf
+Привязать здесь свой поводок
+MapViewTetherTieOther
+Привязать здесь поводок TargetCharacterName
+MapViewTetherUntieSelf
+Отвязать свой поводок
+MapViewTetherUntieOther
+Отвязать поводок TargetCharacterName
+MapViewTetherNobody
+Поблизости нет поводков, которые можно здесь привязать.
+TileTypeNameWall
+Стены
+TileTypeNameFloor
+Полы
+TileTypeNameFloorExterior
+Наружные покрытия
+TileTypeNameWater
+Вода
+ObjectTypeNameEmptySpace
+Пустое пространство
+ObjectTypeNameLivingRoom
+Гостиная
+ObjectTypeNameBathroom
+Ванная
+ObjectTypeNameBedroom
+Спальня
+ObjectTypeNameKitchen
+Кухня
+ObjectTypeNameOffice
+Офис
+ObjectTypeNameSchool
+Школа
+ObjectTypeNameABDL
+ABDL
+ObjectTypeNameFloorDecorationThemed
+Тематические
+ObjectTypeNameFloorDecorationParty
+Вечеринка
+ObjectTypeNameFloorDecorationCamping
+Поход
+ObjectTypeNameFloorDecorationExpanding
+Расширяемые
+ObjectTypeNameFloorDecorationAnimal
+Животные
+ObjectTypeNameFloorItem
+Предметы
+ObjectTypeNameFloorObstacle
+Препятствия
+ObjectTypeNameFloorNumber
+Цифры
+ObjectTypeNameFloorLetter
+Буквы
+ObjectTypeNameFloorIcon
+Значки
+ObjectTypeNameWallDecoration
+Настенные украшения
+ObjectTypeNameWallPath
+Двери
+ObjectTypeNameBanners
+Знамёна
+ObjectTypeNameFloorFoamTiles
+Мягкая плитка
+ObjectTypeNameFunctional
+Функциональные
+EffectTypeNameStaticLighting
+Эффекты
+EditorButtonTextUndo
+Отменить действие
+EditorButtonTextEditRange
+Область правки
+EditorButtonTextZoomIn
+Приблизить
+EditorButtonTextZoomOut
+Отдалить
+EditorButtonTextToggleFog
+Включить/отключить туман
+EditorButtonTextEditTiles
+Плитки
+EditorButtonTextEditObjects
+Объекты
+EditorButtonTextEditEffects
+Эффекты
+EditorButtonTextBack
+Назад
+EditorButtonTextEraser
+Ластик
+EditorButtonTextEraserAlt
+Ластик. Удерживайте Alt, чтобы рисовать непроходимое пустое пространство
+TeleportPadTitle
+Площадка телепорта
+TeleportPadNoDestination
+Место назначения ещё не задано
+TeleportPadSendsTo
+Переносит на выделенную плитку
+TeleportPadSendsBothWays
+Переносит на выделенную площадку и обратно
+TeleportPadPick
+Выбрать на карте
+TeleportPadPicking
+Нажмите на плитку назначения
+TeleportPadCancel
+Отмена
+TeleportPadTwoWay
+В обе стороны
+TeleportPadRemove
+Убрать
+TeleportPadColor
+Цвет
+TeleportPadInvalid
+Нельзя переместиться на ту же площадку или в стену
+FocusEnabledWarningIcon
+<img src='Icons/FocusEnabledWarning.png' style='display: inline-block; height: 1em; vertical-align: middle; transform: translateY(-0.15em);' aria-hidden='true'>

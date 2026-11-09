@@ -129,7 +129,7 @@ ActivityThrowItem
 ActivitySuckPenetrateItem
 Сосать
 OrgasmFailResist0
-SourceCharacter мучается от вибраций, пытаясь сохранить себя хладнокровной/ым.
+SourceCharacter мучается от вибраций, пытаясь сохранять самообладание.
 OrgasmFailResist1
 SourceCharacter борется с сильными вибрациями, с трудом контролируя себя.
 OrgasmFailResist2
@@ -139,9 +139,9 @@ SourceCharacter вибраторы резко останавливаются, о
 OrgasmFailTimeout1
 SourceCharacter стонет и содрогается, сдерживаясь только потому, что вибраторы резко остановились.
 OrgasmFailTimeout2
-SourceCharacter трясется и изворачивается, пытаясь сдержаться, из-за резкого прекращения своих мучений.
+SourceCharacter извивается, пытаясь сдержаться, и чувствует облегчение, когда мучения внезапно прекращаются.
 OrgasmFailSurrender0
-SourceCharacter закрывает свои глаза  и пытается отпустить PronounSelf, цепляясь за край, пока он резко не остановится и не оставит у PronounPossessive ощущение пустоты.
+SourceCharacter закрывает глаза и пытается расслабиться, оставаясь на грани, пока всё внезапно не прекращается и не оставляет ощущение пустоты.
 OrgasmFailSurrender1
 SourceCharacter стонет и тихо вскрикивает, когда вибраторы почти доводят PronounPossessive до края, прежде чем остановиться.
 OrgasmFailSurrender2
@@ -155,7 +155,7 @@ SourceCharacter беззвучно кричит и качает  своими б
 Orgasm3
 С сильным удовольствием SourceCharacter получает сокрушительный оргазм.
 Orgasm4
-SourceCharacter закрывает свои глаза  и отпускает PronounSelf, получая прекрасный оргазм.
+SourceCharacter закрывает глаза и расслабляется, испытывая приятный оргазм.
 Orgasm5
 SourceCharacter не может сопротивляться удовольствию и поддается сильнейшему оргазму.
 Orgasm6
@@ -167,25 +167,25 @@ Orgasm8
 Orgasm9
 SourceCharacter сходит с ума от удовольствия, доводя PronounObject до двух оргазмов подряд.
 OrgasmResist0
-Используя все свои сильные стороны, SourceCharacter способна/ен противостоять достижению  PronounPossessive оргазма.
+SourceCharacter собирает все силы и сдерживает нарастающий оргазм.
 OrgasmResist1
-SourceCharacter очень сильно борется с своим оргазмом и способна/ен противостоять ему.
+SourceCharacter изо всех сил борется с оргазмом и успешно его сдерживает.
 OrgasmResist2
-Задыхаясь и издавая стоны, SourceCharacter способен/на противостоять своему оргазму.
+Тяжело дыша и постанывая, SourceCharacter сдерживает оргазм.
 OrgasmResist3
-SourceCharacter отбивается от наступающего оргазма,  PronounPossessive сила воли превышает PronounPossessive влечение.
+SourceCharacter сдерживает надвигающийся оргазм: сила воли оказывается сильнее желаний.
 OrgasmResist4
-SourceCharacter сильно концентрируется и может успокоить свой предстоящий оргазм.
+SourceCharacter сосредотачивается и успокаивает приближающийся оргазм.
 OrgasmResist5
 SourceCharacter беззвучно кричит и изо всех сил борется, чтобы наконец-то сдержать свой оргазм.
 OrgasmResist6
-Даже дрожа от нехватки контроля, SourceCharacter может сопротивляться своему оргазму.
+Даже дрожа и почти не контролируя себя, SourceCharacter сдерживает оргазм.
 OrgasmResist7
-Тело SourceCharacter дергается во всех направлениях, но PronounPossessive удается отбиться от PronounPossessive оргазма.
+Тело SourceCharacter дёргается во все стороны, но оргазм удаётся сдержать.
 OrgasmResist8
 SourceCharacter медитирует и делает глубокие вдохи, сопротивляясь своему оргазму.
 OrgasmResist9
-По чистой удаче или каким-то чудом, SourceCharacter способна/ен бороться с своим оргазмом.
+По счастливой случайности или каким-то чудом SourceCharacter сдерживает оргазм.
 Label-ChatOther-ItemArms-Bite
 Укусить предплечье
 Label-ChatOther-ItemArms-Caress
@@ -1381,525 +1381,525 @@ Label-ChatSelf-ItemVulvaPiercings-SpankItem
 Label-ChatSelf-ItemVulvaPiercings-TickleItem
 Щекотать клитор
 ChatOther-ItemArms-Bite
-SourceCharacter кусает TargetCharacter's за предплечье.
+SourceCharacter кусает руку TargetCharacter.
 ChatOther-ItemArms-Caress
-SourceCharacter ласкает предплечье TargetCharacter's .
+SourceCharacter ласкает руки TargetCharacter.
 ChatOther-ItemArms-Cuddle
 SourceCharacter обнимается с TargetCharacter.
 ChatOther-ItemArms-GaggedKiss
-SourceCharacter касается кляпом предплечья TargetCharacter's .
+SourceCharacter трёт PronounPossessive ActivityAsset о руку TargetCharacter.
 ChatOther-ItemArms-Grope
-SourceCharacter крепко хватает TargetCharacter's за предплечье.
+SourceCharacter крепко хватает руку TargetCharacter.
 ChatOther-ItemArms-Inject
-SourceCharacter вводит в предплечье TargetCharacter's инъекцию.
+SourceCharacter делает укол в руку TargetCharacter.
 ChatOther-ItemArms-Kiss
-SourceCharacter целует предплечье TargetCharacter's .
+SourceCharacter целует руку TargetCharacter.
 ChatOther-ItemArms-Lick
-SourceCharacter лижет предплечье TargetCharacter's .
+SourceCharacter лижет руку TargetCharacter.
 ChatOther-ItemArms-MassageHands
-SourceCharacter массирует предплечье TargetCharacter's .
+SourceCharacter массирует руки TargetCharacter.
 ChatOther-ItemArms-Nibble
-SourceCharacter покусывает TargetCharacter's за предплечье.
+SourceCharacter покусывает руку TargetCharacter.
 ChatOther-ItemArms-Pinch
-SourceCharacter щипает предплечье TargetCharacter's .
+SourceCharacter щиплет плечо TargetCharacter.
 ChatOther-ItemArms-PourItem
-SourceCharacter капает ActivityAsset на предплечье TargetCharacter's .
+SourceCharacter льёт ActivityAsset на руку TargetCharacter.
 ChatOther-ItemArms-RollItem
-SourceCharacter катает ActivityAsset по предплечью TargetCharacter's .
+SourceCharacter катает ActivityAsset по руке TargetCharacter.
 ChatOther-ItemArms-RubItem
-SourceCharacter трет предплечье TargetCharacter's с помощью ActivityAsset.
+SourceCharacter трёт руку TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemArms-Scratch
-SourceCharacter царапает руку TargetCharacter's.
+SourceCharacter царапает руку TargetCharacter.
 ChatOther-ItemArms-ShockItem
-SourceCharacter шокирует предплечье TargetCharacter's с помощью ActivityAsset.
+SourceCharacter воздействует током на руку TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemArms-Spank
-SourceCharacter шлепает TargetCharacter's по предплечью.
+SourceCharacter шлёпает по руке TargetCharacter.
 ChatOther-ItemArms-SpankItem
-SourceCharacter попадает по предплечью TargetCharacter's  ActivityAsset.
+SourceCharacter бьёт по руке TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemArms-Tickle
-SourceCharacter щекочет предплечье TargetCharacter's .
+SourceCharacter щекочет руки TargetCharacter.
 ChatOther-ItemArms-TickleItem
-SourceCharacter щекочет предплечье TargetCharacter's с помощью ActivityAsset.
+SourceCharacter щекочет руку TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemBoots-Bite
-SourceCharacter кусает TargetCharacter's за ступню.
+SourceCharacter кусает ступню TargetCharacter.
 ChatOther-ItemBoots-Caress
 SourceCharacter ласкает ступню TargetCharacter.
 ChatOther-ItemBoots-GaggedKiss
-SourceCharacter касается ступни TargetCharacter's своим кляпом.
+SourceCharacter касается ступней TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemBoots-Kick
 SourceCharacter пинает TargetCharacter по TargetPronounPossessive ступне.
 ChatOther-ItemBoots-Kiss
-SourceCharacter целует ступню TargetCharacter's .
+SourceCharacter целует ступню TargetCharacter.
 ChatOther-ItemBoots-Lick
-SourceCharacter лижет ступню TargetCharacter's .
+SourceCharacter лижет ступню TargetCharacter.
 ChatOther-ItemBoots-MassageFeet
-SourceCharacter играет своими ступнями с ступнями TargetCharacter's .
+SourceCharacter играет со ступнями TargetCharacter, используя PronounPossessive собственные ступни.
 ChatOther-ItemBoots-MassageHands
-SourceCharacter массирует ступню TargetCharacter's .
+SourceCharacter массирует ступню TargetCharacter.
 ChatOther-ItemBoots-Nibble
-SourceCharacter покусывает TargetCharacter's за ступню.
+SourceCharacter покусывает ступню TargetCharacter.
 ChatOther-ItemBoots-PoliteKiss
-SourceCharacter слегка и вежливо целует ступню TargetCharacter's .
+SourceCharacter легко и учтиво целует ступню TargetCharacter.
 ChatOther-ItemBoots-PourItem
-SourceCharacter капает ActivityAsset на ступню TargetCharacter's .
+SourceCharacter льёт ActivityAsset на ступни TargetCharacter.
 ChatOther-ItemBoots-RollItem
-SourceCharacter катает ActivityAsset по ступне TargetCharacter's .
+SourceCharacter катает ActivityAsset по ступням TargetCharacter.
 ChatOther-ItemBoots-RubItem
-SourceCharacter трет ступню TargetCharacter's с помощью ActivityAsset.
+SourceCharacter трёт ступни TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemBoots-Scratch
-SourceCharacter царапает ступню TargetCharacter's.
+SourceCharacter царапает ступни TargetCharacter.
 ChatOther-ItemBoots-ShockItem
-SourceCharacter шокирует ступню TargetCharacter's с помощью ActivityAsset.
+SourceCharacter воздействует током на ступни TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemBoots-Spank
-SourceCharacter шлепает TargetCharacter's по ступне.
+SourceCharacter шлёпает по подошве TargetCharacter.
 ChatOther-ItemBoots-SpankItem
-SourceCharacter попадает по ступне TargetCharacter's ActivityAsset.
+SourceCharacter бьёт по ступням TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemBoots-Suck
-SourceCharacter сосет пальцы на ногах TargetCharacter's .
+SourceCharacter сосёт большой палец ноги TargetCharacter.
 ChatOther-ItemBoots-TakeCare
-SourceCharacter чистит и полирует ногти TargetCharacter's на ступнях.
+SourceCharacter чистит и полирует ногти на ногах TargetCharacter.
 ChatOther-ItemBoots-Tickle
-SourceCharacter щекочет ступню TargetCharacter's .
+SourceCharacter щекочет подошву TargetCharacter.
 ChatOther-ItemBoots-TickleItem
-SourceCharacter щекочет ступню TargetCharacter's с помощью ActivityAsset.
+SourceCharacter щекочет ступни TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemBreast-Bite
-SourceCharacter кусает TargetCharacter's за грудь.
+SourceCharacter кусает грудь TargetCharacter.
 ChatOther-ItemBreast-Caress
-SourceCharacter ласкает грудь TargetCharacter's .
+SourceCharacter ласкает грудь TargetCharacter.
 ChatOther-ItemBreast-GaggedKiss
-SourceCharacter прижимает свой кляп к груди TargetCharacter's .
+SourceCharacter прижимает PronounPossessive ActivityAsset к груди TargetCharacter.
 ChatOther-ItemBreast-Grope
-SourceCharacter ощупывает грудь TargetCharacter's .
+SourceCharacter ощупывает грудь TargetCharacter.
 ChatOther-ItemBreast-Inject
-SourceCharacter вводит в грудь TargetCharacter's инъекцию.
+SourceCharacter делает укол в грудь TargetCharacter.
 ChatOther-ItemBreast-Kiss
-SourceCharacter целует грудь TargetCharacter's .
+SourceCharacter целует грудь TargetCharacter.
 ChatOther-ItemBreast-Lick
-SourceCharacter лижет грудь TargetCharacter's .
+SourceCharacter лижет грудь TargetCharacter.
 ChatOther-ItemBreast-MasturbateHand
-SourceCharacter мастурбирует грудь TargetCharacter's .
+SourceCharacter стимулирует грудь TargetCharacter.
 ChatOther-ItemBreast-MasturbateItem
-SourceCharacter маструбирует грудь TargetCharacter's с помощью ActivityAsset.
+SourceCharacter стимулирует грудь TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemBreast-PourItem
-SourceCharacter капает ActivityAsset на грудь TargetCharacter's .
+SourceCharacter льёт ActivityAsset на грудь TargetCharacter.
 ChatOther-ItemBreast-RestHead
-SourceCharacter кладет свою голову на грудь TargetCharacter's .
+SourceCharacter кладёт PronounPossessive голову на грудь TargetCharacter.
 ChatOther-ItemBreast-RollItem
-SourceCharacter катает ActivityAsset по груди TargetCharacter's .
+SourceCharacter катает ActivityAsset по груди TargetCharacter.
 ChatOther-ItemBreast-RubItem
-SourceCharacter трет грудь TargetCharacter's с помощью ActivityAsset.
+SourceCharacter трёт грудь TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemBreast-Scratch
-SourceCharacter царапает грудь TargetCharacter's.
+SourceCharacter царапает грудь TargetCharacter.
 ChatOther-ItemBreast-ShockItem
-SourceCharacter шокирует грудь TargetCharacter's с помощью ActivityAsset.
+SourceCharacter воздействует током на грудь TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemBreast-Slap
-SourceCharacter шлепает TargetCharacter's по груди.
+SourceCharacter шлёпает по груди TargetCharacter.
 ChatOther-ItemBreast-SpankItem
-SourceCharacter попадает по груди TargetCharacter's  ActivityAsset.
+SourceCharacter бьёт по груди TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemBreast-Step
-SourceCharacter наступает на грудь TargetCharacter's .
+SourceCharacter наступает на грудь TargetCharacter.
 ChatOther-ItemBreast-Tickle
-SourceCharacter щекочет грудь TargetCharacter's .
+SourceCharacter щекочет грудь TargetCharacter.
 ChatOther-ItemBreast-TickleItem
-SourceCharacter щекочет грудь TargetCharacter's с помощью ActivityAsset.
+SourceCharacter щекочет грудь TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemBreast-ThrowItem
-SourceCharacter накидывает ActivityAsset на грудь TargetCharacter's.
+SourceCharacter бросает ActivityAsset на грудь TargetCharacter.
 ChatOther-ItemButt-GaggedKiss
-SourceCharacter трет кляпом о бедро TargetCharacter's .
+SourceCharacter трёт PronounPossessive ActivityAsset о ягодицы TargetCharacter.
 ChatOther-ItemButt-Kick
-SourceCharacter licks TargetCharacter's pussy lips.
+SourceCharacter пинает TargetCharacter в TargetPronounPossessive ягодицы.
 ChatOther-ItemButt-RubItem
-SourceCharacter трет пенис TargetCharacter's с помощью ActivityAsset.
+SourceCharacter трёт ягодицы TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemEars-Bite
-SourceCharacter кусает TargetCharacter's за ухо.
+SourceCharacter кусает ухо TargetCharacter.
 ChatOther-ItemEars-Caress
-SourceCharacter ласкает ухо TargetCharacter's .
+SourceCharacter ласкает ухо TargetCharacter.
 ChatOther-ItemEars-GaggedKiss
-SourceCharacter целует кляпом ухо TargetCharacter's .
+SourceCharacter с кляпом во рту целует ухо TargetCharacter.
 ChatOther-ItemEars-Kiss
-SourceCharacter целует TargetCharacter's в ухо.
+SourceCharacter целует ухо TargetCharacter.
 ChatOther-ItemEars-Lick
-SourceCharacter лижет ухо TargetCharacter's .
+SourceCharacter лижет ухо TargetCharacter.
 ChatOther-ItemEars-Nibble
-SourceCharacter покусывает TargetCharacter's за ухо.
+SourceCharacter покусывает ухо TargetCharacter.
 ChatOther-ItemEars-Pinch
-SourceCharacter щипает TargetCharacter's за ухо.
+SourceCharacter щиплет ухо TargetCharacter.
 ChatOther-ItemEars-RollItem
-SourceCharacter катает ActivityAsset по уху TargetCharacter's .
+SourceCharacter катает ActivityAsset по уху TargetCharacter.
 ChatOther-ItemEars-RubItem
-SourceCharacter трет ухо TargetCharacter's  с помощью ActivityAsset.
+SourceCharacter трёт ухо TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemEars-Scratch
-SourceCharacter царапает ухо TargetCharacter's.
+SourceCharacter царапает уши TargetCharacter.
 ChatOther-ItemEars-TickleItem
-SourceCharacter щекочет ухо TargetCharacter's с помощью ActivityAsset.
+SourceCharacter щекочет ухо TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemEars-Whisper
-SourceCharacter медленно шепчет на ухо TargetCharacter's .
+SourceCharacter медленно шепчет в ухо TargetCharacter.
 ChatOther-ItemFeet-Bite
-SourceCharacter кусает TargetCharacter's  за лодыжку.
+SourceCharacter кусает ногу TargetCharacter.
 ChatOther-ItemFeet-Caress
-SourceCharacter ласкает лодыжку TargetCharacter's .
+SourceCharacter ласкает ногу TargetCharacter.
 ChatOther-ItemFeet-GaggedKiss
-SourceCharacter касается своим кляпом лодыжки TargetCharacter's .
+SourceCharacter касается PronounPossessive ActivityAsset ноги TargetCharacter.
 ChatOther-ItemFeet-Grope
-SourceCharacter ощупывает лодыжку TargetCharacter's .
+SourceCharacter ощупывает ногу TargetCharacter.
 ChatOther-ItemFeet-Inject
-SourceCharacter вводит в лодыжку TargetCharacter's инъекцию.
+SourceCharacter делает укол в ногу TargetCharacter.
 ChatOther-ItemFeet-Kick
 SourceCharacter пинает TargetCharacter по TargetPronounPossessive лодыжке.
 ChatOther-ItemFeet-Kiss
-SourceCharacter целует лодыжку TargetCharacter's .
+SourceCharacter целует ногу TargetCharacter.
 ChatOther-ItemFeet-Lick
-SourceCharacter лижет лодыжку TargetCharacter's .
+SourceCharacter лижет ногу TargetCharacter.
 ChatOther-ItemFeet-MassageHands
-SourceCharacter массирует лодыжку TargetCharacter's .
+SourceCharacter массирует ногу TargetCharacter.
 ChatOther-ItemFeet-MasturbateItem
-SourceCharacter маструбирует лодыжку TargetCharacter's с помощью ActivityAsset.
+SourceCharacter стимулирует ногу TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemFeet-Nibble
-SourceCharacter покусывает лодыжку TargetCharacter's .
+SourceCharacter покусывает ногу TargetCharacter.
 ChatOther-ItemFeet-PourItem
-SourceCharacter капает ActivityAsset на лодыжку TargetCharacter's .
+SourceCharacter льёт ActivityAsset на ногу TargetCharacter.
 ChatOther-ItemFeet-RollItem
-SourceCharacter катает ActivityAsset по лодыжке TargetCharacter's .
+SourceCharacter катает ActivityAsset по ноге TargetCharacter.
 ChatOther-ItemFeet-RubItem
-SourceCharacter трет лодыжку TargetCharacter's с помощью ActivityAsset.
+SourceCharacter трёт ногу TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemFeet-Scratch
-SourceCharacter царапает лодыжку TargetCharacter's.
+SourceCharacter царапает ногу TargetCharacter.
 ChatOther-ItemFeet-ShockItem
-SourceCharacter шокирует лодыжку TargetCharacter's с помощью ActivityAsset.
+SourceCharacter воздействует током на ногу TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemFeet-Spank
-SourceCharacter шлепает TargetCharacter's по лодыжке.
+SourceCharacter шлёпает по ноге TargetCharacter.
 ChatOther-ItemFeet-SpankItem
-SourceCharacter попадает по лодыжке TargetCharacter's ActivityAsset.
+SourceCharacter бьёт по ступням TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemFeet-Tickle
-SourceCharacter щекочет лодыжку TargetCharacter's .
+SourceCharacter щекочет ногу TargetCharacter.
 ChatOther-ItemFeet-TickleItem
-SourceCharacter щекочет лодыжку TargetCharacter's с помощью ActivityAsset.
+SourceCharacter щекочет ногу TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemFeet-ThrowItem
-SourceCharacter накидывает ActivityAsset на лодыжку TargetCharacter's.
+SourceCharacter бросает ActivityAsset к ступням TargetCharacter.
 ChatOther-ItemGlans-Caress
-SourceCharacter ласкает своими пальцами головку TargetCharacter's .
+SourceCharacter ласкает головку TargetCharacter с помощью PronounPossessive пальцев.
 ChatOther-ItemGlans-GaggedKiss
-SourceCharacter целует кляпом головку TargetCharacter's .
+SourceCharacter целует головку TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemGlans-Inject
-SourceCharacter делает инъекцию в головку TargetCharacter's .
+SourceCharacter делает укол в головку TargetCharacter.
 ChatOther-ItemGlans-Kick
 SourceCharacter пинает TargetCharacter по TargetPronounPossessive головке.
 ChatOther-ItemGlans-Kiss
-SourceCharacter целует головку TargetCharacter's .
+SourceCharacter целует головку TargetCharacter.
 ChatOther-ItemGlans-Lick
-SourceCharacter лижет головку TargetCharacter's .
+SourceCharacter лижет головку TargetCharacter.
 ChatOther-ItemGlans-MasturbateFoot
-SourceCharacter маструбирует головку TargetCharacter's своими ступнями.
+SourceCharacter стимулирует головку TargetCharacter с помощью PronounPossessive ступни.
 ChatOther-ItemGlans-MasturbateHand
-SourceCharacter маструбирует головку TargetCharacter's своими пальцами.
+SourceCharacter стимулирует головку TargetCharacter с помощью PronounPossessive пальцев.
 ChatOther-ItemGlans-MasturbateItem
-SourceCharacter использует ActivityAsset чтобы маструбировать головку TargetCharacter's .
+SourceCharacter стимулирует головку TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemGlans-MasturbateTongue
-SourceCharacter маструбирует головку TargetCharacter's своим язычком.
+SourceCharacter стимулирует головку TargetCharacter с помощью PronounPossessive языка.
 ChatOther-ItemGlans-Nibble
-SourceCharacter покусывает TargetCharacter's за головку.
+SourceCharacter покусывает головку TargetCharacter.
 ChatOther-ItemGlans-RubItem
-SourceCharacter трет головку TargetCharacter's с помощью ActivityAsset.
+SourceCharacter трёт головку TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemGlans-ShockItem
-SourceCharacter шокирует головку TargetCharacter's с помощью ActivityAsset.
+SourceCharacter воздействует током на головку TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemGlans-Slap
-SourceCharacter шлепает TargetCharacter's по головке.
+SourceCharacter шлёпает по головке TargetCharacter.
 ChatOther-ItemGlans-SpankItem
-SourceCharacter попадает по головке TargetCharacter's ActivityAsset.
+SourceCharacter бьёт по головке TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemGlans-TickleItem
-SourceCharacter щекочет головку TargetCharacter's с помощью ActivityAsset.
+SourceCharacter щекочет головку TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemHands-SqueezeItem
-SourceCharacter shocks TargetCharacter's vulva with PronounPossessive ActivityAsset.
+SourceCharacter сжимает ActivityAsset TargetCharacter.
 ChatOther-ItemHands-Bite
-SourceCharacter кусает TargetCharacter's за кисть.
+SourceCharacter кусает кисть TargetCharacter.
 ChatOther-ItemHands-Caress
-SourceCharacter гладит кисть TargetCharacter's .
+SourceCharacter ласкает кисть TargetCharacter.
 ChatOther-ItemHands-GaggedKiss
-SourceCharacter прикасается своим кляпом к кисти TargetCharacter's .
+SourceCharacter касается PronounPossessive ActivityAsset кисти TargetCharacter.
 ChatOther-ItemHands-Kiss
-SourceCharacter целует кисть TargetCharacter's.
+SourceCharacter целует кисть TargetCharacter.
 ChatOther-ItemHands-Lick
-SourceCharacter лижет кисть TargetCharacter's .
+SourceCharacter лижет кисть TargetCharacter.
 ChatOther-ItemHands-Nibble
-SourceCharacter покусывает кисть TargetCharacter's .
+SourceCharacter покусывает кисть TargetCharacter.
 ChatOther-ItemHands-PoliteKiss
-SourceCharacter вежливо целует кисть TargetCharacter's .
+SourceCharacter учтиво целует кисть TargetCharacter.
 ChatOther-ItemHands-Scratch
-SourceCharacter царапает кисть TargetCharacter's.
+SourceCharacter царапает кисти TargetCharacter.
 ChatOther-ItemHands-Spank
-SourceCharacter шлепает TargetCharacter's по кисти.
+SourceCharacter шлёпает по кисти TargetCharacter.
 ChatOther-ItemHands-Suck
-SourceCharacter сосет пальцы TargetCharacter's .
+SourceCharacter сосёт пальцы TargetCharacter.
 ChatOther-ItemHands-TakeCare
-SourceCharacter чистит и полирует ногти TargetCharacter's на руках.
+SourceCharacter чистит и полирует ногти TargetCharacter.
 ChatOther-ItemHead-Bite
-SourceCharacter кусает волосы TargetCharacter's .
+SourceCharacter кусает волосы TargetCharacter.
 ChatOther-ItemHead-BrushItem
-SourceCharacter расчесывает волосы TargetCharacter's .
+SourceCharacter расчёсывает волосы TargetCharacter.
 ChatOther-ItemHead-Caress
-SourceCharacter ласкает лицо TargetCharacter's .
+SourceCharacter ласкает лицо TargetCharacter.
 ChatOther-ItemHead-GaggedKiss
-SourceCharacter целует кляпом TargetCharacter's в лоб.
+SourceCharacter с кляпом во рту целует лоб TargetCharacter.
 ChatOther-ItemHead-Kiss
 SourceCharacter целует TargetCharacter в лоб.
 ChatOther-ItemHead-Pet
-SourceCharacter нежно гладит голову TargetCharacter's .
+SourceCharacter нежно гладит голову TargetCharacter.
 ChatOther-ItemHead-Pull
-SourceCharacter дергает TargetCharacter's за волосы.
+SourceCharacter тянет TargetCharacter за волосы.
 ChatOther-ItemHead-Rub
-SourceCharacter трется грудью о лицо TargetCharacter's .
+SourceCharacter трётся PronounPossessive грудью о лицо TargetCharacter.
 ChatOther-ItemHead-Scratch
-SourceCharacter царапает голову TargetCharacter's.
+SourceCharacter царапает голову TargetCharacter.
 ChatOther-ItemHead-Slap
-SourceCharacter отвешивает пощечину TargetCharacter's по лицу.
+SourceCharacter шлёпает по лицу TargetCharacter.
 ChatOther-ItemHead-Step
-SourceCharacter трет ногой о лицо TargetCharacter's .
+SourceCharacter трёт PronounPossessive ступнёй лицо TargetCharacter.
 ChatOther-ItemHead-TakeCare
-SourceCharacter расчесывает волосы TargetCharacter's .
+SourceCharacter расчёсывает волосы TargetCharacter.
 ChatOther-ItemHead-ThrowItem
-SourceCharacter накидывает ActivityAsset на лицо TargetCharacter's.
+SourceCharacter бросает ActivityAsset на лицо TargetCharacter.
 ChatOther-ItemHood-RubItem
-SourceCharacter трет голову TargetCharacter's с помощью ActivityAsset.
+SourceCharacter трёт голову TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemHood-TickleItem
-SourceCharacter щекочет голову TargetCharacter's с помощью ActivityAsset.
+SourceCharacter щекочет голову TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemLegs-Bite
-SourceCharacter кусает TargetCharacter's за бедро.
+SourceCharacter кусает бедро TargetCharacter.
 ChatOther-ItemLegs-Caress
-SourceCharacter ласкает бедро TargetCharacter's .
+SourceCharacter ласкает бедро TargetCharacter.
 ChatOther-ItemLegs-GaggedKiss
-SourceCharacter трется своим кляпом о бедро TargetCharacter's .
+SourceCharacter трёт PronounPossessive ActivityAsset о бедро TargetCharacter.
 ChatOther-ItemLegs-Grope
-SourceCharacter ощупывает бедро TargetCharacter's .
+SourceCharacter ощупывает бедро TargetCharacter.
 ChatOther-ItemLegs-Inject
-SourceCharacter вводит инъекцию в бедро TargetCharacter's .
+SourceCharacter делает укол в бедро TargetCharacter.
 ChatOther-ItemLegs-Kick
 SourceCharacter пинает TargetCharacter по TargetPronounPossessive бедру.
 ChatOther-ItemLegs-Kiss
-SourceCharacter целует бедро TargetCharacter's .
+SourceCharacter целует бедро TargetCharacter.
 ChatOther-ItemLegs-Lick
-SourceCharacter лижет бедро TargetCharacter's .
+SourceCharacter лижет бедро TargetCharacter.
 ChatOther-ItemLegs-MassageHands
-SourceCharacter массирует бедро TargetCharacter's .
+SourceCharacter массирует бедро TargetCharacter.
 ChatOther-ItemLegs-MasturbateItem
-SourceCharacter маструбирует бедро TargetCharacter's с помощью ActivityAsset.
+SourceCharacter стимулирует бедро TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemLegs-Nibble
-SourceCharacter покусывает TargetCharacter's за бедро.
+SourceCharacter покусывает бедро TargetCharacter.
 ChatOther-ItemLegs-PourItem
-SourceCharacter капает ActivityAsset на бедро TargetCharacter's .
+SourceCharacter льёт ActivityAsset на бедро TargetCharacter.
 ChatOther-ItemLegs-RestHead
-SourceCharacter кладет свою голову на колени TargetCharacter's .
+SourceCharacter кладёт PronounPossessive голову на колени TargetCharacter.
 ChatOther-ItemLegs-RollItem
-SourceCharacter катает ActivityAsset по бедру TargetCharacter's .
+SourceCharacter катает ActivityAsset по бедру TargetCharacter.
 ChatOther-ItemLegs-RubItem
-SourceCharacter трет бедро TargetCharacter's с помощью ActivityAsset.
+SourceCharacter трёт бедро TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemLegs-Scratch
-SourceCharacter царапает бедро TargetCharacter's.
+SourceCharacter царапает бедро TargetCharacter.
 ChatOther-ItemLegs-ShockItem
-SourceCharacter шокирует бедро TargetCharacter's с помощью ActivityAsset.
+SourceCharacter воздействует током на бедро TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemLegs-Sit
-SourceCharacter садится на колени TargetCharacter's .
+SourceCharacter садится на колени TargetCharacter.
 ChatOther-ItemLegs-Spank
-SourceCharacter шлепает TargetCharacter's по бедру.
+SourceCharacter шлёпает по бедру TargetCharacter.
 ChatOther-ItemLegs-SpankItem
-SourceCharacter попадает по бедру TargetCharacter's ActivityAsset.
+SourceCharacter бьёт по бедру TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemLegs-Tickle
-SourceCharacter щекочет бедро TargetCharacter's .
+SourceCharacter щекочет бедро TargetCharacter.
 ChatOther-ItemLegs-TickleItem
-SourceCharacter щекочет бедро TargetCharacter's  ActivityAsset.
+SourceCharacter щекочет бедро TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemMouth-GagKiss
-SourceCharacter целует TargetCharacter в TargetPronounPossessive кляп.
+SourceCharacter целует TargetCharacter в TargetPronounPossessive ActivityAsset.
 ChatOther-ItemMouth-PenetrateFast
-SourceCharacter грубо проникает в рот TargetCharacter's помощью ActivityAsset.
+SourceCharacter грубо проникает в рот TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemMouth-PenetrateSlow
-SourceCharacter медленно проникает в рот TargetCharacter's с помощью ActivityAsset.
+SourceCharacter медленно проникает в рот TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemMouth-RollItem
-SourceCharacter катает ActivityAsset по губам TargetCharacter's .
+SourceCharacter катает ActivityAsset по рту TargetCharacter.
 ChatOther-ItemMouth-TickleItem
-SourceCharacter щекочет губы TargetCharacter's с помощью ActivityAsset.
+SourceCharacter щекочет рот TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemMouth-ThrowItem
-SourceCharacter накидывает ActivityAsset на рот TargetCharacter's.
+SourceCharacter бросает ActivityAsset в рот TargetCharacter.
 ChatOther-ItemNeck-Bite
-SourceCharacter кусает TargetCharacter's за шею.
+SourceCharacter кусает шею TargetCharacter.
 ChatOther-ItemNeck-Caress
-SourceCharacter ласкает шею TargetCharacter's .
+SourceCharacter ласкает шею TargetCharacter.
 ChatOther-ItemNeck-Choke
-SourceCharacter душит TargetCharacter's за шею.
+SourceCharacter сдавливает шею TargetCharacter.
 ChatOther-ItemNeck-GaggedKiss
-SourceCharacter прикасается своим кляпом к шее TargetCharacter's .
+SourceCharacter касается PronounPossessive ActivityAsset шеи TargetCharacter.
 ChatOther-ItemNeck-Kiss
-SourceCharacter целует TargetCharacter's в шею.
+SourceCharacter целует шею TargetCharacter.
 ChatOther-ItemNeck-Lick
-SourceCharacter лижет шею TargetCharacter's .
+SourceCharacter лижет шею TargetCharacter.
 ChatOther-ItemNeck-MassageHands
-SourceCharacter массирует шею TargetCharacter's .
+SourceCharacter массирует шею TargetCharacter.
 ChatOther-ItemNeck-Nibble
-SourceCharacter покусывает TargetCharacter's за шею.
+SourceCharacter покусывает шею TargetCharacter.
 ChatOther-ItemNeck-RubItem
-SourceCharacter трет шею TargetCharacter's с помощью ActivityAsset.
+SourceCharacter трёт шею TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemNeck-Scratch
-SourceCharacter царапает шею TargetCharacter's.
+SourceCharacter царапает шею TargetCharacter.
 ChatOther-ItemNeck-ShockItem
-SourceCharacter шокирует шею TargetCharacter's с помощью ActivityAsset.
+SourceCharacter воздействует током на шею TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemNeck-TickleItem
-SourceCharacter щекочет шею TargetCharacter's с помощью ActivityAsset.
+SourceCharacter щекочет шею TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemNipples-Bite
-SourceCharacter кусает TargetCharacter's за сосок.
+SourceCharacter кусает сосок TargetCharacter.
 ChatOther-ItemNipples-Caress
-SourceCharacter ласкает соски TargetCharacter's .
+SourceCharacter ласкает соски TargetCharacter.
 ChatOther-ItemNipples-GaggedKiss
-SourceCharacter прижимает свой кляп к соску TargetCharacter's .
+SourceCharacter прижимает PronounPossessive ActivityAsset к соску TargetCharacter.
 ChatOther-ItemNipples-Kiss
-SourceCharacter целует сосок TargetCharacter's .
+SourceCharacter целует сосок TargetCharacter.
 ChatOther-ItemNipples-Lick
-SourceCharacter лижет сосок TargetCharacter's .
+SourceCharacter лижет сосок TargetCharacter.
 ChatOther-ItemNipples-MasturbateItem
-SourceCharacter маструбирует сосок TargetCharacter's с помощью ActivityAsset.
+SourceCharacter стимулирует сосок TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemNipples-Nibble
-SourceCharacter покусывает сосок TargetCharacter's .
+SourceCharacter покусывает сосок TargetCharacter.
 ChatOther-ItemNipples-Pinch
-SourceCharacter сжимает сосок TargetCharacter's.
+SourceCharacter щиплет сосок TargetCharacter.
 ChatOther-ItemNipples-PourItem
-SourceCharacter капает ActivityAsset на сосок TargetCharacter's .
+SourceCharacter льёт ActivityAsset на сосок TargetCharacter.
 ChatOther-ItemNipples-Pull
-SourceCharacter тянет соски TargetCharacter's .
+SourceCharacter тянет соски TargetCharacter.
 ChatOther-ItemNipples-RollItem
-SourceCharacter катает ActivityAsset по соску TargetCharacter's 
+SourceCharacter катает ActivityAsset по соску TargetCharacter.
 ChatOther-ItemNipples-RubItem
-SourceCharacter трет сосок TargetCharacter's с помощью ActivityAsset.
+SourceCharacter трёт сосок TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemNipples-Scratch
-SourceCharacter царапает соски TargetCharacter's.
+SourceCharacter царапает соски TargetCharacter.
 ChatOther-ItemNipples-ShockItem
-SourceCharacter шокирует сосок TargetCharacter's с помощью ActivityAsset.
+SourceCharacter воздействует током на сосок TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemNipples-SpankItem
-SourceCharacter попадает по соску TargetCharacter's ActivityAsset.
+SourceCharacter бьёт по соску TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemNipples-Suck
-SourceCharacter сосет сосок TargetCharacter's .
+SourceCharacter сосёт сосок TargetCharacter.
 ChatOther-ItemNipples-TickleItem
-SourceCharacter щекочет сосок TargetCharacter's с помощью ActivityAsset.
+SourceCharacter щекочет сосок TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemNose-Bite
-SourceCharacter кусает TargetCharacter's за нос.
+SourceCharacter кусает нос TargetCharacter.
 ChatOther-ItemNose-Caress
-SourceCharacter ласкает нос TargetCharacter's .
+SourceCharacter ласкает нос TargetCharacter.
 ChatOther-ItemNose-Choke
-SourceCharacter зажимает ноздри TargetCharacter's .
+SourceCharacter плотно зажимает ноздри TargetCharacter.
 ChatOther-ItemNose-Cuddle
 SourceCharacter тыкается носом в нос TargetCharacter.
 ChatOther-ItemNose-GaggedKiss
-SourceCharacter тыкается кляпом в нос TargetCharacter's .
+SourceCharacter тычется PronounPossessive ActivityAsset в нос TargetCharacter.
 ChatOther-ItemNose-Kiss
-SourceCharacter целует нос TargetCharacter's .
+SourceCharacter целует нос TargetCharacter.
 ChatOther-ItemNose-Lick
-SourceCharacter лижет нос TargetCharacter's .
+SourceCharacter лижет нос TargetCharacter.
 ChatOther-ItemNose-Nibble
-SourceCharacter покусывает нос TargetCharacter's .
+SourceCharacter покусывает нос TargetCharacter.
 ChatOther-ItemNose-Pet
-SourceCharacter нажимает на нос TargetCharacter's .
+SourceCharacter легко тыкает в нос TargetCharacter.
 ChatOther-ItemNose-Pinch
-SourceCharacter щипает за нос TargetCharacter's .
+SourceCharacter щиплет нос TargetCharacter.
 ChatOther-ItemNose-Pull
-SourceCharacter тянет TargetCharacter's за нос.
+SourceCharacter тянет TargetCharacter за нос.
 ChatOther-ItemNose-Rub
-SourceCharacter трет нос TargetCharacter's .
+SourceCharacter трёт нос TargetCharacter.
 ChatOther-ItemNose-RubItem
-SourceCharacter трет нос TargetCharacter's с помощью ActivityAsset.
+SourceCharacter трёт нос TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemNose-Scratch
-SourceCharacter царапает нос TargetCharacter's.
+SourceCharacter царапает нос TargetCharacter.
 ChatOther-ItemNose-Step
 SourceCharacter заставляет TargetCharacter нюхать свои ноги.
 ChatOther-ItemNose-TickleItem
-SourceCharacter щекочет нос TargetCharacter's с помощью ActivityAsset.
+SourceCharacter щекочет нос TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemPelvis-Step
-SourceCharacter нажимает ногой на грудь TargetCharacter's .
+SourceCharacter вдавливает PronounPossessive ступню в грудь TargetCharacter.
 ChatOther-ItemPenis-Caress
-SourceCharacter ласкает своими пальцами пенис TargetCharacter's .
+SourceCharacter ласкает основание пениса TargetCharacter с помощью PronounPossessive пальцев.
 ChatOther-ItemPenis-GaggedKiss
-SourceCharacter касается своим кляпом пениса TargetCharacter's .
+SourceCharacter прижимает PronounPossessive ActivityAsset к основанию пениса TargetCharacter.
 ChatOther-ItemPenis-Kick
 SourceCharacter пинает TargetCharacter по TargetPronounPossessive пенису.
 ChatOther-ItemPenis-Kiss
-SourceCharacter целует пенис TargetCharacter's .
+SourceCharacter целует основание пениса TargetCharacter.
 ChatOther-ItemPenis-Lick
-SourceCharacter лижет пенис TargetCharacter's .
+SourceCharacter лижет основание пениса TargetCharacter.
 ChatOther-ItemPenis-MasturbateFoot
-SourceCharacter маструбирует своей ступней пенис TargetCharacter's .
+SourceCharacter стимулирует пенис TargetCharacter с помощью PronounPossessive ступни.
 ChatOther-ItemPenis-MasturbateHand
-SourceCharacter маструбирует своими пальцами пенис TargetCharacter's 
+SourceCharacter стимулирует пенис TargetCharacter с помощью PronounPossessive пальцев.
 ChatOther-ItemPenis-MasturbateItem
-SourceCharacter использует ActivityAsset чтобы маструбировать пенис TargetCharacter's .
+SourceCharacter стимулирует пенис TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemPenis-MasturbateTongue
-SourceCharacter маструбирует своим язычком пенис TargetCharacter's .
+SourceCharacter стимулирует пенис TargetCharacter с помощью PronounPossessive языка.
 ChatOther-ItemPenis-Nibble
-SourceCharacter покусывает пенис TargetCharacter's .
+SourceCharacter покусывает пенис TargetCharacter.
 ChatOther-ItemPenis-RubItem
-SourceCharacter трет пенис TargetCharacter's с помощью ActivityAsset.
+SourceCharacter трёт пенис TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemPenis-ShockItem
-SourceCharacter шокировать TargetCharacter's пенис с помощью ActivityAsset.
+SourceCharacter воздействует током на пенис TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemPenis-Slap
-SourceCharacter шлепает пенис TargetCharacter's .
+SourceCharacter шлёпает по пенису TargetCharacter.
 ChatOther-ItemPenis-SpankItem
-SourceCharacter попадает по пенису TargetCharacter's ActivityAsset.
+SourceCharacter бьёт по пенису TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemPenis-TickleItem
-SourceCharacter щекочет пенис TargetCharacter's с помощью ActivityAsset.
+SourceCharacter щекочет пенис TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemTorso-PourItem
-SourceCharacter капает ActivityAsset на спину TargetCharacter's .
+SourceCharacter льёт ActivityAsset на спину TargetCharacter.
 ChatOther-ItemTorso-RollItem
-SourceCharacter катает ActivityAsset по спине TargetCharacter's .
+SourceCharacter катает ActivityAsset по спине TargetCharacter.
 ChatOther-ItemTorso-ShockItem
-SourceCharacter шокирует спину TargetCharacter's с помощью ActivityAsset.
+SourceCharacter воздействует током на спину TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemTorso-SpankItem
-SourceCharacter попадает по спине TargetCharacter's ActivityAsset.
+SourceCharacter бьёт по спине TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatOther-ItemTorso-Step
-SourceCharacter кладет ноги на спину TargetCharacter's .
+SourceCharacter кладёт PronounPossessive ступни на спину TargetCharacter.
 ChatOther-ItemVulva-DeepThroat
-SourceCharacter shocks TargetCharacter's clitoris with PronounPossessive ActivityAsset.
+SourceCharacter глубоко заглатывает ActivityAsset TargetCharacter.
 ChatOther-ItemVulvaPiercings-MasturbateItem
-SourceCharacter использует ActivityAsset чтобы маструбировать пенис TargetCharacter's 
+SourceCharacter стимулирует клитор TargetCharacter с помощью PronounPossessive ActivityAsset.
 ChatSelf-ItemArms-Bite
-SourceCharacter кусает себя за предплечья.
+SourceCharacter кусает себя за руку.
 ChatSelf-ItemArms-Caress
-SourceCharacter ласкает свои предплечья.
+SourceCharacter ласкает свои руки.
 ChatSelf-ItemArms-Inject
-SourceCharacter вводит себе в предплечье инъекцию.
+SourceCharacter вводит себе в руку инъекцию.
 ChatSelf-ItemArms-Kiss
-SourceCharacter целует собственное преплечье.
+SourceCharacter целует свою руку.
 ChatSelf-ItemArms-Lick
-SourceCharacter облизывает собственное преплечье.
+SourceCharacter облизывает свою руку.
 ChatSelf-ItemArms-MassageHands
-SourceCharacter массирует свои предплечья.
+SourceCharacter массирует свои руки.
 ChatSelf-ItemArms-Nibble
-SourceCharacter покусывает себя за предплечье.
+SourceCharacter покусывает себя за руку.
 ChatSelf-ItemArms-Pinch
-SourceCharacter щипает себя за преплечье.
+SourceCharacter щипает себя за плечо.
 ChatSelf-ItemArms-PourItem
-SourceCharacter капает ActivityAsset на свое предплечье.
+SourceCharacter капает ActivityAsset на свою руку.
 ChatSelf-ItemArms-RollItem
-SourceCharacter катает ActivityAsset по своему предплечью.
+SourceCharacter катает ActivityAsset по своей руке.
 ChatSelf-ItemArms-RubItem
-SourceCharacter трет свое предплечье с помощью ActivityAsset.
+SourceCharacter трет свою руку с помощью ActivityAsset.
 ChatSelf-ItemArms-Scratch
-SourceCharacter царапает свое предплечье.
+SourceCharacter царапает свою руку.
 ChatSelf-ItemArms-ShockItem
-SourceCharacter шокирует свое предплечье ActivityAsset.
+SourceCharacter воздействует током на PronounPossessive руку с помощью PronounPossessive ActivityAsset.
 ChatSelf-ItemArms-Spank
-SourceCharacter шлепает себя по предплечью.
+SourceCharacter шлепает себя по руке.
 ChatSelf-ItemArms-SpankItem
-SourceCharacter попадает по своему предплечью ActivityAsset.
+SourceCharacter ударяет себя по руке с помощью ActivityAsset.
 ChatSelf-ItemArms-StruggleArms
 SourceCharacter борется со своими путами.
 ChatSelf-ItemArms-Tickle
-SourceCharacter щекочет собственное преплечье.
+SourceCharacter щекочет свои руки.
 ChatSelf-ItemArms-TickleItem
-SourceCharacter щекочет свое предплечье с помощью ActivityAsset.
+SourceCharacter щекочет свою руку с помощью ActivityAsset.
 ChatSelf-ItemArms-Wiggle
 SourceCharacter покачивает плечами.
 ChatSelf-ItemBoots-Bite
 SourceCharacter кусает себя за ступню.
 ChatSelf-ItemBoots-Caress
-SourceCharacter ласкает свою ступню.
+SourceCharacter ласкает свои ступни.
 ChatSelf-ItemBoots-Kiss
 SourceCharacter целует свою ступню.
 ChatSelf-ItemBoots-Lick
-SourceCharacter лижет свою ступню.
+SourceCharacter облизывает свои ступни.
 ChatSelf-ItemBoots-MassageHands
 SourceCharacter массирует свои ступни.
 ChatSelf-ItemBoots-Nibble
@@ -1907,27 +1907,27 @@ SourceCharacter покусывает себя за ступню.
 ChatSelf-ItemBoots-PoliteKiss
 SourceCharacter слегка целует свою ступню.
 ChatSelf-ItemBoots-PourItem
-SourceCharacter капает ActivityAsset на свою ступню.
+SourceCharacter льёт ActivityAsset на свои ступни.
 ChatSelf-ItemBoots-RollItem
-SourceCharacter катает ActivityAsset по своей ступне.
+SourceCharacter катает ActivityAsset по своим ступням.
 ChatSelf-ItemBoots-RubItem
-SourceCharacter трет свою ступню с помощью ActivityAsset.
+SourceCharacter трёт свои ступни с помощью ActivityAsset.
 ChatSelf-ItemBoots-Scratch
 SourceCharacter царапает свою ступню.
 ChatSelf-ItemBoots-ShockItem
-SourceCharacter шокирует свою ступню с помощью ActivityAsset.
+SourceCharacter воздействует током на PronounPossessive ступни с помощью PronounPossessive ActivityAsset.
 ChatSelf-ItemBoots-Spank
-SourceCharacter шлепает себя по ступне.
+SourceCharacter шлёпает себя по ступням.
 ChatSelf-ItemBoots-SpankItem
-SourceCharacter попадает по своей ступне ActivityAsset.
+SourceCharacter ударяет себя по ступням с помощью ActivityAsset.
 ChatSelf-ItemBoots-Suck
-SourceCharacter сосет пальцы на своих ногах.
+SourceCharacter сосёт большой палец своей ноги.
 ChatSelf-ItemBoots-TakeCare
 SourceCharacter чистит и полирует ногти на своих ступнях.
 ChatSelf-ItemBoots-Tickle
 SourceCharacter щекочет собственные ступни.
 ChatSelf-ItemBoots-TickleItem
-SourceCharacter щекочет свою ступню с помощью ActivityAsset.
+SourceCharacter щекочет свои ступни с помощью ActivityAsset.
 ChatSelf-ItemBoots-Wiggle
 SourceCharacter шевелит своими ступнями.
 ChatSelf-ItemBreast-Caress
@@ -1943,7 +1943,7 @@ SourceCharacter лижет свою грудь.
 ChatSelf-ItemBreast-MasturbateHand
 SourceCharacter мастурбирует свою грудь.
 ChatSelf-ItemBreast-MasturbateItem
-SourceCharacter маструбирует свою грудь с помощью ActivityAsset.
+SourceCharacter стимулирует PronounPossessive грудь с помощью PronounPossessive ActivityAsset.
 ChatSelf-ItemBreast-PourItem
 SourceCharacter капает ActivityAsset себе на грудь.
 ChatSelf-ItemBreast-RollItem
@@ -1953,11 +1953,11 @@ SourceCharacter трет свою грудь с помощью ActivityAsset.
 ChatSelf-ItemBreast-Scratch
 SourceCharacter царапает свою грудь
 ChatSelf-ItemBreast-ShockItem
-SourceCharacter шокирует свою грудь с помощью ActivityAsset.
+SourceCharacter воздействует током на PronounPossessive грудь с помощью PronounPossessive ActivityAsset.
 ChatSelf-ItemBreast-Slap
 SourceCharacter шлепает себя по груди.
 ChatSelf-ItemBreast-SpankItem
-SourceCharacter попадает себе по груди ActivityAsset.
+SourceCharacter ударяет себя по груди с помощью ActivityAsset.
 ChatSelf-ItemBreast-Tickle
 SourceCharacter щекочет свою грудь.
 ChatSelf-ItemBreast-TickleItem
@@ -1981,33 +1981,33 @@ SourceCharacter щекочет свое ухо с помощью ActivityAsset.
 ChatSelf-ItemEars-Wiggle
 SourceCharacter шевелит своими ушами.
 ChatSelf-ItemFeet-Bite
-SourceCharacter кусает свою лодыжку.
+SourceCharacter кусает свою ногу.
 ChatSelf-ItemFeet-Caress
-SourceCharacter ласкает свои лодыжки.
+SourceCharacter ласкает свои ноги.
 ChatSelf-ItemFeet-Inject
-SourceCharacter вводит в свою лодыжку инъекцию.
+SourceCharacter вводит в свою ногу инъекцию.
 ChatSelf-ItemFeet-MassageHands
-SourceCharacter массирует свои лодыжки.
+SourceCharacter массирует свои ноги.
 ChatSelf-ItemFeet-MasturbateItem
-SourceCharacter маструбирует свою лодыжку с помощью ActivityAsset.
+SourceCharacter стимулирует PronounPossessive ногу с помощью PronounPossessive ActivityAsset.
 ChatSelf-ItemFeet-PourItem
-SourceCharacter капает ActivityAsset на свою лодыжку.
+SourceCharacter капает ActivityAsset на свою ногу.
 ChatSelf-ItemFeet-RollItem
-SourceCharacter катает ActivityAsset по своей лодыжке.
+SourceCharacter катает ActivityAsset по своей ноге.
 ChatSelf-ItemFeet-RubItem
-SourceCharacter трет свою лодыжку с помощью ActivityAsset.
+SourceCharacter трет свою ногу с помощью ActivityAsset.
 ChatSelf-ItemFeet-Scratch
-SourceCharacter царапает свою лодыжку.
+SourceCharacter царапает свою ногу.
 ChatSelf-ItemFeet-ShockItem
-SourceCharacter шокирует свою лодыжку с помощью ActivityAsset.
+SourceCharacter воздействует током на PronounPossessive ногу с помощью PronounPossessive ActivityAsset.
 ChatSelf-ItemFeet-Spank
-SourceCharacter шлепает себя по лодыжке.
+SourceCharacter шлепает себя по ноге.
 ChatSelf-ItemFeet-SpankItem
-SourceCharacter попадает по своей лодыжке ActivityAsset.
+SourceCharacter ударяет себя по ноге с помощью ActivityAsset.
 ChatSelf-ItemFeet-Tickle
-SourceCharacter щекочет свои лодыжки.
+SourceCharacter щекочет свои ноги.
 ChatSelf-ItemFeet-TickleItem
-SourceCharacter щекочет свою лодыжку с помощью ActivityAsset.
+SourceCharacter щекочет свою ногу с помощью ActivityAsset.
 ChatSelf-ItemFeet-ThrowItem
 SourceCharacter накидывает ActivityAsset на свои ступни.
 ChatSelf-ItemFeet-Wiggle
@@ -2017,23 +2017,23 @@ SourceCharacter ласкает свою головку.
 ChatSelf-ItemGlans-Inject
 SourceCharacter делает инъекцию в свою головку.
 ChatSelf-ItemGlans-MasturbateHand
-SourceCharacter маструбирует свою головку.
+SourceCharacter стимулирует PronounPossessive головку.
 ChatSelf-ItemGlans-MasturbateItem
-SourceCharacter маструбирует свою головку с помощью ActivityAsset.
+SourceCharacter стимулирует PronounPossessive головку с помощью PronounPossessive ActivityAsset.
 ChatSelf-ItemGlans-RubItem
-SourceCharacter трет свою головку с поомщью ActivityAsset.
+SourceCharacter трет свою головку с помощью ActivityAsset.
 ChatSelf-ItemGlans-ShockItem
-SourceCharacter шокирует свою головку с помощью ActivityAsset.
+SourceCharacter воздействует током на PronounPossessive головку с помощью PronounPossessive ActivityAsset.
 ChatSelf-ItemGlans-Slap
 SourceCharacter шлепает себя по головке.
 ChatSelf-ItemGlans-SpankItem
-SourceCharacter попадает по своей головке ActivityAsset.
+SourceCharacter ударяет себя по головке с помощью ActivityAsset.
 ChatSelf-ItemGlans-TickleItem
 SourceCharacter щекочет свою головку с помощью ActivityAsset.
 ChatSelf-ItemHands-Bite
 SourceCharacter кусает свою кисть
 ChatSelf-ItemHands-Caress
-SourceCharacter потирает свои руки.
+SourceCharacter потирает ладони друг о друга.
 ChatSelf-ItemHands-Kiss
 SourceCharacter целует собственную кисть.
 ChatSelf-ItemHands-Lick
@@ -2071,7 +2071,7 @@ SourceCharacter расчесывает свои волосы.
 ChatSelf-ItemHead-ThrowItem
 SourceCharacter накидывает ActivityAsset на свою голову.
 ChatSelf-ItemHead-Wiggle
-SourceCharacter отрицательно мотает своей головой.
+SourceCharacter мотает головой.
 ChatSelf-ItemHood-RubItem
 SourceCharacter трет свою голову с помощью ActivityAsset.
 ChatSelf-ItemHood-TickleItem
@@ -2085,27 +2085,27 @@ SourceCharacter вводит себе в бедро инъекцию.
 ChatSelf-ItemLegs-MassageHands
 SourceCharacter массирует свои бедра.
 ChatSelf-ItemLegs-MasturbateItem
-SourceCharacter маструбирует свои бедра с помощью ActivityAsset.
+SourceCharacter стимулирует PronounPossessive бедро с помощью PronounPossessive ActivityAsset.
 ChatSelf-ItemLegs-PourItem
 SourceCharacter капает ActivityAsset на свое бедро.
 ChatSelf-ItemLegs-RollItem
 SourceCharacter катает ActivityAsset по своему бедру.
 ChatSelf-ItemLegs-RubItem
-SourceCharacter трет свои бедра с помощью ActivityAsset.
+SourceCharacter трёт своё бедро с помощью ActivityAsset.
 ChatSelf-ItemLegs-Scratch
 SourceCharacter царапает свои ноги.
 ChatSelf-ItemLegs-ShockItem
-SourceCharacter шокирует свое бедро с помощью ActivityAsset.
+SourceCharacter воздействует током на PronounPossessive бедро с помощью PronounPossessive ActivityAsset.
 ChatSelf-ItemLegs-Spank
 SourceCharacter шлепает себя по бедру.
 ChatSelf-ItemLegs-SpankItem
-SourceCharacter попадает по своему бедру ActivityAsset.
+SourceCharacter ударяет себя по бедру с помощью ActivityAsset.
 ChatSelf-ItemLegs-StruggleLegs
 SourceCharacter мечется в своих путах.
 ChatSelf-ItemLegs-Tickle
 SourceCharacter щекочет свои бедра.
 ChatSelf-ItemLegs-TickleItem
-SourceCharacter щекочет свои бедра с помощью ActivityAsset.
+SourceCharacter щекочет своё бедро с помощью ActivityAsset.
 ChatSelf-ItemLegs-Wiggle
 SourceCharacter потирает бедра друг о друга.
 ChatSelf-ItemNeck-Caress
@@ -2123,7 +2123,7 @@ SourceCharacter трет свою шею с помощью ActivityAsset.
 ChatSelf-ItemNeck-Scratch
 SourceCharacter царапает свою шею.
 ChatSelf-ItemNeck-ShockItem
-SourceCharacter шокирует свою шею с помощью ActivityAsset.
+SourceCharacter воздействует током на PronounPossessive шею с помощью PronounPossessive ActivityAsset.
 ChatSelf-ItemNeck-Tickle
 SourceCharacter щекочет себе шею.
 ChatSelf-ItemNeck-TickleItem
@@ -2135,7 +2135,7 @@ SourceCharacter целует свой сосок.
 ChatSelf-ItemNipples-Lick
 SourceCharacter облизывает свой сосок.
 ChatSelf-ItemNipples-MasturbateItem
-SourceCharacter маструбирует свой сосок с помощью ActivityAsset.
+SourceCharacter стимулирует PronounPossessive сосок с помощью PronounPossessive ActivityAsset.
 ChatSelf-ItemNipples-Nibble
 SourceCharacter покусывает свой сосок.
 ChatSelf-ItemNipples-Pinch
@@ -2143,7 +2143,7 @@ SourceCharacter щипает себя за сосок.
 ChatSelf-ItemNipples-PourItem
 SourceCharacter капает ActivityAsset на свой сосок.
 ChatSelf-ItemNipples-Pull
-SourceCharacter оттягивает свой сосок.
+SourceCharacter оттягивает свои соски.
 ChatSelf-ItemNipples-RollItem
 SourceCharacter катает ActivityAsset по своему соску.
 ChatSelf-ItemNipples-RubItem
@@ -2151,9 +2151,9 @@ SourceCharacter трет свой сосок с помощью ActivityAsset.
 ChatSelf-ItemNipples-Scratch
 SourceCharacter царапает свои соски.
 ChatSelf-ItemNipples-ShockItem
-SourceCharacter шокирует свой сосок с помощью ActivityAsset.
+SourceCharacter воздействует током на PronounPossessive сосок с помощью PronounPossessive ActivityAsset.
 ChatSelf-ItemNipples-SpankItem
-SourceCharacter попадает по своему соску ActivityAsset.
+SourceCharacter ударяет себя по соску с помощью ActivityAsset.
 ChatSelf-ItemNipples-Suck
 SourceCharacter сосет свой сосок.
 ChatSelf-ItemNipples-TickleItem
@@ -2181,17 +2181,17 @@ SourceCharacter шевелит носом.
 ChatSelf-ItemPenis-Caress
 SourceCharacter ласкает свой пенис.
 ChatSelf-ItemPenis-MasturbateHand
-SourceCharacter маструбирует свой пенис.
+SourceCharacter стимулирует PronounPossessive пенис.
 ChatSelf-ItemPenis-MasturbateItem
-SourceCharacter маструбирует свой пенис с помощью ActivityAsset.
+SourceCharacter стимулирует PronounPossessive пенис с помощью PronounPossessive ActivityAsset.
 ChatSelf-ItemPenis-RubItem
 SourceCharacter трет свой пенис с помощью ActivityAsset.
 ChatSelf-ItemPenis-ShockItem
-SourceCharacter шокирует свой пенис с помощью ActivityAsset.
+SourceCharacter воздействует током на PronounPossessive пенис с помощью PronounPossessive ActivityAsset.
 ChatSelf-ItemPenis-Slap
 SourceCharacter шлепает по своему пенису.
 ChatSelf-ItemPenis-SpankItem
-SourceCharacter попадает по своему пенису ActivityAsset.
+SourceCharacter ударяет себя по пенису с помощью ActivityAsset.
 ChatSelf-ItemPenis-TickleItem
 SourceCharacter щекочет свой пенис с помощью ActivityAsset.
 ChatSelf-ItemVulva-Caress
@@ -2204,3 +2204,599 @@ ChatSelf-ItemVulva-RubItem
 SourceCharacter трет свою вульву с помощью ActivityAsset.
 ChatSelf-ItemVulva-Slap
 SourceCharacter шлепает по своей киске.
+ActivityClean
+Очистить
+ActivityShakeItem
+Потрясти
+ActivitySqueezeItem
+Сжать
+ActivityBrushItem
+Почистить щёткой
+ActivitySpitOutGag
+Выплюнуть предмет
+ActivityChewItem
+Жевать
+ActivitySiblingsHug
+Родственные объятия
+ActivityCollarGrab
+Схватить за ошейник
+ActivityDeepThroat
+Глубокий минет
+Label-ChatOther-ItemArms-PowderItem
+Припудрить руку
+Label-ChatOther-ItemArms-SiblingsHug
+Родственные объятия
+Label-ChatOther-ItemBoots-PowderItem
+Припудрить ступни
+Label-ChatOther-ItemBreast-PowderItem
+Припудрить грудь
+Label-ChatOther-ItemButt-MassageHands
+Помассировать ягодицы
+Label-ChatOther-ItemButt-PowderItem
+Припудрить ягодицы
+Label-ChatOther-ItemFeet-PowderItem
+Припудрить ноги
+Label-ChatOther-ItemGlans-PowderItem
+Припудрить головку
+Label-ChatOther-ItemHands-SpankItem
+Шлёпнуть по кистям
+Label-ChatOther-ItemHands-PowderItem
+Припудрить кисти
+Label-ChatOther-ItemHands-ShakeItem
+Потрясти
+Label-ChatOther-ItemHands-SqueezeItem
+Сжать
+Label-ChatOther-ItemLegs-PowderItem
+Припудрить ноги
+Label-ChatOther-ItemMouth-Caress
+Погладить щёку
+Label-ChatOther-ItemMouth-MasturbateHand
+Ввести пальцы в рот
+Label-ChatOther-ItemMouth-ReversePenetrateAss
+Принять в анус
+Label-ChatOther-ItemMouth-ReversePenetratePussy
+Принять во влагалище
+Label-ChatOther-ItemMouth-ReverseSuckItem
+Взять в рот
+Label-ChatOther-ItemNeck-CollarGrab
+Схватить за ошейник
+Label-ChatOther-ItemNipples-PowderItem
+Припудрить соски
+Label-ChatOther-ItemPelvis-PowderItem
+Припудрить живот
+Label-ChatOther-ItemPenis-ReversePenetrateAss
+Принять в анус
+Label-ChatOther-ItemPenis-Scratch
+Поцарапать
+Label-ChatOther-ItemPenis-PowderItem
+Припудрить пенис
+Label-ChatOther-ItemPenis-DeepThroat
+Глубокий минет
+Label-ChatOther-ItemTorso-PowderItem
+Припудрить спину
+Label-ChatOther-ItemVulva-ReversePenetrateAss
+Принять в анус
+Label-ChatOther-ItemVulva-DeepThroat
+Глубокий минет
+Label-ChatOther-ItemVulva-ReversePenetratePussy
+Принять во влагалище
+Label-ChatOther-ItemVulva-PowderItem
+Припудрить вульву
+Label-ChatOther-ItemVulvaPiercings-PowderItem
+Припудрить клитор
+Label-ChatSelf-ItemArms-PowderItem
+Припудрить руку
+Label-ChatSelf-ItemBoots-PowderItem
+Припудрить ступни
+Label-ChatSelf-ItemBreast-PowderItem
+Припудрить грудь
+Label-ChatSelf-ItemButt-MassageHands
+Помассировать ягодицы
+Label-ChatSelf-ItemButt-PowderItem
+Припудрить ягодицы
+Label-ChatSelf-ItemFeet-PowderItem
+Припудрить ногу
+Label-ChatSelf-ItemGlans-PowderItem
+Припудрить головку
+Label-ChatSelf-ItemHands-SpankItem
+Шлёпнуть по кистям
+Label-ChatSelf-ItemHands-PowderItem
+Припудрить кисти
+Label-ChatSelf-ItemHands-SqueezeItem
+Сжать
+Label-ChatSelf-ItemHands-ShakeItem
+Потрясти
+Label-ChatSelf-ItemLegs-PowderItem
+Припудрить ногу
+Label-ChatSelf-ItemMouth-Caress
+Погладить щёку
+Label-ChatSelf-ItemMouth-ChewItem
+Пожевать предмет
+Label-ChatSelf-ItemMouth-MasturbateHand
+Ввести пальцы в рот
+Label-ChatSelf-ItemMouth-SpitOutGag
+Выплюнуть предмет
+Label-ChatSelf-ItemNeck-CollarGrab
+Схватить за ошейник
+Label-ChatSelf-ItemNipples-PowderItem
+Припудрить соски
+Label-ChatSelf-ItemPelvis-PowderItem
+Припудрить живот
+Label-ChatSelf-ItemPenis-MasturbateFist
+Обхватить пенис кулаком
+Label-ChatSelf-ItemPenis-Scratch
+Поцарапать
+Label-ChatSelf-ItemPenis-PowderItem
+Припудрить пенис
+Label-ChatSelf-ItemTorso-PowderItem
+Припудрить рёбра
+Label-ChatSelf-ItemVulva-PowderItem
+Припудрить вульву
+Label-ChatSelf-ItemVulvaPiercings-PowderItem
+Припудрить клитор
+ChatOther-ItemArms-PowderItem
+SourceCharacter припудривает руку TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemArms-SiblingsHug
+SourceCharacter тепло обнимает TargetCharacter по-родственному.
+ChatOther-ItemArms-SistersHug
+SourceCharacter тепло обнимает TargetCharacter по-сестрински.
+ChatOther-ItemBoots-PowderItem
+SourceCharacter припудривает ступни TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemBreast-PowderItem
+SourceCharacter припудривает грудь TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemButt-Bite
+SourceCharacter кусает ягодицы TargetCharacter.
+ChatOther-ItemButt-Caress
+SourceCharacter ласкает ягодицы TargetCharacter.
+ChatOther-ItemButt-Grope
+SourceCharacter ощупывает ягодицы TargetCharacter.
+ChatOther-ItemButt-Inject
+SourceCharacter делает укол в ягодицы TargetCharacter.
+ChatOther-ItemButt-Kiss
+SourceCharacter целует ягодицы TargetCharacter.
+ChatOther-ItemButt-MassageHands
+SourceCharacter массирует ягодицы TargetCharacter.
+ChatOther-ItemButt-MasturbateFist
+SourceCharacter стимулирует анус TargetCharacter с помощью PronounPossessive кулака.
+ChatOther-ItemButt-MasturbateHand
+SourceCharacter стимулирует анус TargetCharacter с помощью PronounPossessive пальцев.
+ChatOther-ItemButt-MasturbateItem
+SourceCharacter стимулирует ягодицы TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemButt-MasturbateTongue
+SourceCharacter стимулирует анус TargetCharacter с помощью PronounPossessive языка.
+ChatOther-ItemButt-PenetrateFast
+SourceCharacter грубо проникает в анус TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemButt-PenetrateSlow
+SourceCharacter медленно проникает в анус TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemButt-PourItem
+SourceCharacter льёт ActivityAsset на ягодицы TargetCharacter.
+ChatOther-ItemButt-RollItem
+SourceCharacter катает ActivityAsset по ягодицам TargetCharacter.
+ChatOther-ItemButt-Scratch
+SourceCharacter царапает ягодицы TargetCharacter.
+ChatOther-ItemButt-ShockItem
+SourceCharacter бьёт током ягодицы TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemButt-Spank
+SourceCharacter шлёпает по ягодицам TargetCharacter.
+ChatOther-ItemButt-SpankItem
+SourceCharacter бьёт по ягодицам TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemButt-PowderItem
+SourceCharacter припудривает грудь TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemButt-Step
+SourceCharacter вдавливает PronounPossessive ступню в анус TargetCharacter.
+ChatOther-ItemButt-TickleItem
+SourceCharacter щекочет ягодицы TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemFeet-PowderItem
+SourceCharacter припудривает ступни TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemGlans-PowderItem
+SourceCharacter припудривает головку TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemHands-BrothersHandshake
+SourceCharacter обменивается с TargetCharacter PronounPossessive тайным братским рукопожатием.
+ChatOther-ItemLegs-PowderItem
+SourceCharacter припудривает бедро TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemMouth-Bite
+SourceCharacter кусает губы TargetCharacter.
+ChatOther-ItemMouth-Caress
+SourceCharacter ласкает щёку TargetCharacter.
+ChatOther-ItemMouth-Clean
+SourceCharacter очищает рот TargetCharacter.
+ChatOther-ItemMouth-EatItem
+SourceCharacter кладёт немного ActivityAsset в рот TargetCharacter.
+ChatOther-ItemMouth-FrenchKiss
+SourceCharacter долго целуется с TargetCharacter по-французски.
+ChatOther-ItemMouth-GaggedKiss
+SourceCharacter с кляпом во рту целует щёку TargetCharacter.
+ChatOther-ItemMouth-HandGag
+SourceCharacter закрывает рот TargetCharacter PronounPossessive ладонью.
+ChatOther-ItemMouth-Kiss
+SourceCharacter целует губы TargetCharacter.
+ChatOther-ItemMouth-Lick
+SourceCharacter лижет губы TargetCharacter.
+ChatOther-ItemMouth-MasturbateHand
+SourceCharacter засовывает PronounPossessive пальцы в рот TargetCharacter.
+ChatOther-ItemMouth-Nibble
+SourceCharacter покусывает губы TargetCharacter.
+ChatOther-ItemMouth-ReversePenetrateAss
+SourceCharacter трахается с ActivityAsset TargetCharacter с помощью PronounPossessive ануса.
+ChatOther-ItemMouth-ReversePenetratePussy
+SourceCharacter трахается с ActivityAsset TargetCharacter с помощью PronounPossessive влагалища.
+ChatOther-ItemMouth-ReverseSuckItem
+SourceCharacter сосёт ActivityAsset TargetCharacter.
+ChatOther-ItemMouth-PoliteKiss
+SourceCharacter дружески целует щёку TargetCharacter.
+ChatOther-ItemMouth-RubItem
+SourceCharacter трёт рот TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemMouth-Scratch
+SourceCharacter царапает губы TargetCharacter.
+ChatOther-ItemMouth-SipItem
+SourceCharacter даёт TargetCharacter глотнуть из PronounPossessive ActivityAsset.
+ChatOther-ItemMouth-SiblingsCheekKiss
+SourceCharacter по-родственному нежно целует TargetCharacter в щёку.
+ChatOther-ItemNeck-Inject
+SourceCharacter делает укол в шею TargetCharacter.
+ChatOther-ItemNeck-RollItem
+SourceCharacter катает ActivityAsset по шее TargetCharacter.
+ChatOther-ItemNeck-Step
+SourceCharacter нежно кладёт PronounPossessive ступню на шею TargetCharacter.
+ChatOther-ItemNeck-Tickle
+SourceCharacter щекочет шею TargetCharacter.
+ChatOther-ItemNeck-CollarGrab
+SourceCharacter хватает ошейник TargetCharacter и притягивает PronounObject ближе.
+ChatOther-ItemNipples-PowderItem
+SourceCharacter припудривает сосок TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemPelvis-Caress
+SourceCharacter ласкает живот TargetCharacter.
+ChatOther-ItemPelvis-GaggedKiss
+SourceCharacter с кляпом во рту целует живот TargetCharacter.
+ChatOther-ItemPelvis-Grope
+SourceCharacter ощупывает живот TargetCharacter.
+ChatOther-ItemPelvis-Kiss
+SourceCharacter целует живот TargetCharacter.
+ChatOther-ItemPelvis-Lick
+SourceCharacter лижет живот TargetCharacter.
+ChatOther-ItemPelvis-MassageHands
+SourceCharacter массирует живот TargetCharacter.
+ChatOther-ItemPelvis-MasturbateItem
+SourceCharacter стимулирует живот TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemPelvis-Nibble
+SourceCharacter покусывает живот TargetCharacter.
+ChatOther-ItemPelvis-Pinch
+SourceCharacter щиплет живот TargetCharacter.
+ChatOther-ItemPelvis-PourItem
+SourceCharacter льёт ActivityAsset на живот TargetCharacter.
+ChatOther-ItemPelvis-RollItem
+SourceCharacter катает ActivityAsset по животу TargetCharacter.
+ChatOther-ItemPelvis-RubItem
+SourceCharacter трёт живот TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemPelvis-Scratch
+SourceCharacter царапает таз TargetCharacter.
+ChatOther-ItemPelvis-ShockItem
+SourceCharacter бьёт током живот TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemPelvis-Spank
+SourceCharacter шлёпает по животу TargetCharacter.
+ChatOther-ItemPelvis-SpankItem
+SourceCharacter бьёт по животу TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemPelvis-PowderItem
+SourceCharacter припудривает живот TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemPelvis-Tickle
+SourceCharacter щекочет живот TargetCharacter.
+ChatOther-ItemPelvis-TickleItem
+SourceCharacter щекочет живот TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemPenis-ReversePenetrateAss
+SourceCharacter трахается с ActivityAsset TargetCharacter с помощью PronounPossessive ануса.
+ChatOther-ItemPenis-ReversePenetratePussy
+SourceCharacter трахается с ActivityAsset TargetCharacter с помощью PronounPossessive пениса.
+ChatOther-ItemPenis-Scratch
+SourceCharacter царапает пенис TargetCharacter.
+ChatOther-ItemPenis-PowderItem
+SourceCharacter припудривает пенис TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemPenis-ReverseSuckItem
+SourceCharacter жадно сосёт ActivityAsset TargetCharacter.
+ChatOther-ItemPenis-SuckPenetrateItem
+SourceCharacter сосёт ActivityAsset TargetCharacter.
+ChatOther-ItemPenis-DeepThroat
+SourceCharacter глубоко заглатывает ActivityAsset TargetCharacter.
+ChatOther-ItemTorso-Bite
+SourceCharacter кусает спину TargetCharacter.
+ChatOther-ItemTorso-Caress
+SourceCharacter ласкает спину TargetCharacter.
+ChatOther-ItemTorso-GaggedKiss
+SourceCharacter с кляпом во рту целует спину TargetCharacter.
+ChatOther-ItemTorso-Kiss
+SourceCharacter целует спину TargetCharacter.
+ChatOther-ItemTorso-Lick
+SourceCharacter лижет спину TargetCharacter.
+ChatOther-ItemTorso-MassageFeet
+SourceCharacter массирует спину TargetCharacter с помощью PronounPossessive ступней.
+ChatOther-ItemTorso-MassageHands
+SourceCharacter массирует спину TargetCharacter с помощью PronounPossessive ладоней.
+ChatOther-ItemTorso-Nibble
+SourceCharacter покусывает рёбра TargetCharacter.
+ChatOther-ItemTorso-Rub
+SourceCharacter трётся PronounPossessive телом о тело TargetCharacter.
+ChatOther-ItemTorso-RubItem
+SourceCharacter трёт спину TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemTorso-Scratch
+SourceCharacter царапает спину TargetCharacter.
+ChatOther-ItemTorso-Spank
+SourceCharacter шлёпает по спине TargetCharacter.
+ChatOther-ItemTorso-PowderItem
+SourceCharacter припудривает спину TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemTorso-Tickle
+SourceCharacter щекочет рёбра TargetCharacter.
+ChatOther-ItemTorso-TickleItem
+SourceCharacter щекочет спину TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemTorso-ThrowItem
+SourceCharacter бросает ActivityAsset на спину TargetCharacter.
+ChatOther-ItemVulva-ReversePenetrateAss
+SourceCharacter трахается с ActivityAsset TargetCharacter с помощью PronounPossessive ануса.
+ChatOther-ItemVulva-Caress
+SourceCharacter ласкает вульву TargetCharacter с помощью PronounPossessive пальцев.
+ChatOther-ItemVulva-ReversePenetratePussy
+SourceCharacter трахается с ActivityAsset TargetCharacter с помощью PronounPossessive влагалища.
+ChatOther-ItemVulva-Kick
+SourceCharacter пинает TargetCharacter в TargetPronounPossessive вульву.
+ChatOther-ItemVulva-Kiss
+SourceCharacter целует половые губы TargetCharacter.
+ChatOther-ItemVulva-Lick
+SourceCharacter лижет половые губы TargetCharacter.
+ChatOther-ItemVulva-MasturbateFist
+SourceCharacter стимулирует влагалище TargetCharacter с помощью PronounPossessive целого кулака.
+ChatOther-ItemVulva-MasturbateFoot
+SourceCharacter стимулирует вульву TargetCharacter с помощью PronounPossessive ступни.
+ChatOther-ItemVulva-MasturbateHand
+SourceCharacter стимулирует вульву TargetCharacter с помощью PronounPossessive пальцев.
+ChatOther-ItemVulva-MasturbateItem
+SourceCharacter стимулирует половые губы TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemVulva-MasturbateTongue
+SourceCharacter стимулирует вульву TargetCharacter с помощью PronounPossessive языка.
+ChatOther-ItemVulva-Nibble
+SourceCharacter покусывает половые губы TargetCharacter.
+ChatOther-ItemVulva-PenetrateFast
+SourceCharacter грубо проникает в влагалище TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemVulva-PenetrateSlow
+SourceCharacter медленно проникает в влагалище TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemVulva-RubItem
+SourceCharacter трёт вульву TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemVulva-Scratch
+SourceCharacter царапает вульву TargetCharacter.
+ChatOther-ItemVulva-ShockItem
+SourceCharacter бьёт током вульву TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemVulva-SpankItem
+SourceCharacter бьёт по вульве TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemVulva-PowderItem
+SourceCharacter припудривает вульву TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemVulva-SuckPenetrateItem
+SourceCharacter сосёт ActivityAsset TargetCharacter.
+ChatOther-ItemVulva-ReverseSuckItem
+SourceCharacter жадно сосёт ActivityAsset TargetCharacter.
+ChatOther-ItemVulva-TickleItem
+SourceCharacter щекочет вульву TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemVulvaPiercings-Caress
+SourceCharacter ласкает клитор TargetCharacter с помощью PronounPossessive пальцев.
+ChatOther-ItemVulvaPiercings-GaggedKiss
+SourceCharacter целует клитор TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemVulvaPiercings-Inject
+SourceCharacter делает укол в клитор TargetCharacter.
+ChatOther-ItemVulvaPiercings-Kick
+SourceCharacter пинает TargetCharacter в TargetPronounPossessive клитор.
+ChatOther-ItemVulvaPiercings-Kiss
+SourceCharacter целует клитор TargetCharacter.
+ChatOther-ItemVulvaPiercings-Lick
+SourceCharacter лижет клитор TargetCharacter.
+ChatOther-ItemVulvaPiercings-MasturbateFoot
+SourceCharacter стимулирует клитор TargetCharacter с помощью PronounPossessive ступни.
+ChatOther-ItemVulvaPiercings-MasturbateHand
+SourceCharacter стимулирует клитор TargetCharacter с помощью PronounPossessive пальцев.
+ChatOther-ItemVulvaPiercings-MasturbateTongue
+SourceCharacter стимулирует клитор TargetCharacter с помощью PronounPossessive языка.
+ChatOther-ItemVulvaPiercings-Nibble
+SourceCharacter покусывает клитор TargetCharacter.
+ChatOther-ItemVulvaPiercings-RubItem
+SourceCharacter трёт клитор TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemVulvaPiercings-ShockItem
+SourceCharacter бьёт током клитор TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemVulvaPiercings-SpankItem
+SourceCharacter бьёт по клитору TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemVulvaPiercings-PowderItem
+SourceCharacter припудривает клитор TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemVulvaPiercings-TickleItem
+SourceCharacter щекочет клитор TargetCharacter с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemArms-PowderItem
+SourceCharacter припудривает PronounPossessive руку с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemBoots-PowderItem
+SourceCharacter припудривает PronounPossessive ступни с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemBreast-PowderItem
+SourceCharacter припудривает PronounPossessive грудь с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemButt-Caress
+SourceCharacter ласкает PronounPossessive ягодицы.
+ChatSelf-ItemButt-Grope
+SourceCharacter ощупывает PronounPossessive ягодицы.
+ChatSelf-ItemButt-Inject
+SourceCharacter делает укол в PronounPossessive ягодицы.
+ChatSelf-ItemButt-MassageHands
+SourceCharacter массирует PronounPossessive ягодицы.
+ChatSelf-ItemButt-MasturbateFist
+SourceCharacter вводит кулак в PronounPossessive анус и мастурбирует.
+ChatSelf-ItemButt-MasturbateHand
+SourceCharacter вводит пальцы в PronounPossessive анус и мастурбирует.
+ChatSelf-ItemButt-MasturbateItem
+SourceCharacter стимулирует PronounPossessive ягодицы с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemButt-PourItem
+SourceCharacter льёт ActivityAsset на PronounPossessive ягодицы.
+ChatSelf-ItemButt-RollItem
+SourceCharacter катает ActivityAsset по PronounPossessive ягодицам.
+ChatSelf-ItemButt-RubItem
+SourceCharacter трёт PronounPossessive ягодицы с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemButt-Scratch
+SourceCharacter царапает PronounPossessive ягодицы.
+ChatSelf-ItemButt-ShockItem
+SourceCharacter бьёт током PronounPossessive ягодицы с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemButt-Spank
+SourceCharacter шлёпает PronounSelf по ягодицам.
+ChatSelf-ItemButt-SpankItem
+SourceCharacter бьёт по PronounPossessive ягодицам с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemButt-PowderItem
+SourceCharacter припудривает PronounPossessive ягодицы с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemButt-TickleItem
+SourceCharacter щекочет PronounPossessive ягодицы с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemButt-Wiggle
+SourceCharacter покачивает PronounPossessive ягодицами.
+ChatSelf-ItemFeet-PowderItem
+SourceCharacter припудривает PronounPossessive ногу с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemGlans-PowderItem
+SourceCharacter припудривает PronounPossessive головку с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemHands-SqueezeItem
+SourceCharacter сжимает PronounPossessive ActivityAsset.
+ChatSelf-ItemLegs-PowderItem
+SourceCharacter припудривает PronounPossessive бедро с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemMouth-Bite
+SourceCharacter кусает PronounPossessive губы.
+ChatSelf-ItemMouth-Caress
+SourceCharacter ласкает PronounPossessive щёку.
+ChatSelf-ItemMouth-Clean
+SourceCharacter вытирает PronounPossessive рот начисто.
+ChatSelf-ItemMouth-EatItem
+SourceCharacter съедает немного ActivityAsset.
+ChatSelf-ItemMouth-HandGag
+SourceCharacter закрывает PronounPossessive рот PronounPossessive ладонью.
+ChatSelf-ItemMouth-Lick
+SourceCharacter лижет PronounPossessive губы.
+ChatSelf-ItemMouth-ChewItem
+SourceCharacter жуёт PronounPossessive ActivityAsset.
+ChatSelf-ItemMouth-MasturbateHand
+SourceCharacter вводит пальцы в PronounPossessive рот.
+ChatSelf-ItemMouth-MoanGag
+SourceCharacter стонет сквозь PronounPossessive кляп.
+ChatSelf-ItemMouth-MoanGagAngry
+SourceCharacter яростно кричит сквозь PronounPossessive ActivityAsset.
+ChatSelf-ItemMouth-MoanGagGiggle
+SourceCharacter хихикает сквозь PronounPossessive ActivityAsset.
+ChatSelf-ItemMouth-MoanGagGroan
+SourceCharacter отчаянно стонет сквозь PronounPossessive ActivityAsset.
+ChatSelf-ItemMouth-MoanGagTalk
+SourceCharacter невнятно бормочет сквозь PronounPossessive ActivityAsset.
+ChatSelf-ItemMouth-MoanGagWhimper
+SourceCharacter жалобно скулит сквозь PronounPossessive ActivityAsset.
+ChatSelf-ItemMouth-Nibble
+SourceCharacter покусывает PronounPossessive губы.
+ChatSelf-ItemMouth-RollItem
+SourceCharacter катает ActivityAsset по PronounPossessive рту.
+ChatSelf-ItemMouth-RubItem
+SourceCharacter трёт PronounPossessive рот с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemMouth-Scratch
+SourceCharacter царапает PronounPossessive рот.
+ChatSelf-ItemMouth-SipItem
+SourceCharacter делает глоток из PronounPossessive ActivityAsset.
+ChatSelf-ItemMouth-TickleItem
+SourceCharacter щекочет PronounPossessive рот с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemMouth-ThrowItem
+SourceCharacter бросает ActivityAsset в PronounPossessive рот.
+ChatSelf-ItemMouth-SpitOutGag
+SourceCharacter выплёвывает PronounPossessive ActivityAsset.
+ChatSelf-ItemNeck-CollarGrab
+SourceCharacter крепко держится за PronounPossessive ошейник.
+ChatSelf-ItemNipples-PowderItem
+SourceCharacter припудривает PronounPossessive сосок с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemPelvis-Caress
+SourceCharacter ласкает PronounPossessive живот.
+ChatSelf-ItemPelvis-MassageHands
+SourceCharacter массирует PronounPossessive живот.
+ChatSelf-ItemPelvis-MasturbateItem
+SourceCharacter стимулирует PronounPossessive живот с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemPelvis-Pinch
+SourceCharacter щиплет PronounPossessive живот.
+ChatSelf-ItemPelvis-PourItem
+SourceCharacter льёт ActivityAsset на PronounPossessive живот.
+ChatSelf-ItemPelvis-RollItem
+SourceCharacter катает ActivityAsset по PronounPossessive животу.
+ChatSelf-ItemPelvis-RubItem
+SourceCharacter трёт PronounPossessive живот с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemPelvis-Scratch
+SourceCharacter царапает PronounPossessive таз.
+ChatSelf-ItemPelvis-ShockItem
+SourceCharacter бьёт током PronounPossessive живот с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemPelvis-Spank
+SourceCharacter шлёпает по PronounPossessive животу.
+ChatSelf-ItemPelvis-SpankItem
+SourceCharacter бьёт по PronounPossessive животу с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemPelvis-PowderItem
+SourceCharacter припудривает PronounPossessive живот с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemPelvis-Tickle
+SourceCharacter щекочет PronounPossessive живот.
+ChatSelf-ItemPelvis-TickleItem
+SourceCharacter щекочет PronounPossessive живот с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemPelvis-Wiggle
+SourceCharacter покачивает PronounPossessive бёдрами.
+ChatSelf-ItemPenis-MasturbateFist
+SourceCharacter обхватывает PronounPossessive пенис кулаком и мастурбирует.
+ChatSelf-ItemPenis-Scratch
+SourceCharacter царапает PronounPossessive пенис.
+ChatSelf-ItemPenis-PowderItem
+SourceCharacter припудривает PronounPossessive пенис с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemTorso-Caress
+SourceCharacter ласкает PronounPossessive рёбра.
+ChatSelf-ItemTorso-MassageHands
+SourceCharacter массирует PronounPossessive спину.
+ChatSelf-ItemTorso-PourItem
+SourceCharacter льёт ActivityAsset на PronounPossessive спину.
+ChatSelf-ItemTorso-RollItem
+SourceCharacter катает ActivityAsset по PronounPossessive спине.
+ChatSelf-ItemTorso-RubItem
+SourceCharacter трёт PronounPossessive спину с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemTorso-Scratch
+SourceCharacter царапает PronounPossessive спину.
+ChatSelf-ItemTorso-ShockItem
+SourceCharacter бьёт током PronounPossessive спину с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemTorso-Spank
+SourceCharacter шлёпает по PronounPossessive рёбрам.
+ChatSelf-ItemTorso-SpankItem
+SourceCharacter бьёт по PronounPossessive рёбрам с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemTorso-PowderItem
+SourceCharacter припудривает PronounPossessive рёбра с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemTorso-Tickle
+SourceCharacter щекочет PronounPossessive рёбра.
+ChatSelf-ItemTorso-TickleItem
+SourceCharacter щекочет PronounPossessive спину с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemTorso-Wiggle
+SourceCharacter покачивает PronounPossessive телом.
+ChatSelf-ItemTorso-ThrowItem
+SourceCharacter бросает ActivityAsset на PronounPossessive спину.
+ChatSelf-ItemVulva-MasturbateItem
+SourceCharacter стимулирует PronounPossessive вульву с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemVulva-Scratch
+SourceCharacter царапает PronounPossessive вульву.
+ChatSelf-ItemVulva-ShockItem
+SourceCharacter бьёт током PronounPossessive вульву с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemVulva-SpankItem
+SourceCharacter бьёт по PronounPossessive вульве с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemVulva-PowderItem
+SourceCharacter припудривает PronounPossessive вульву с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemVulva-TickleItem
+SourceCharacter щекочет PronounPossessive вульву с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemVulvaPiercings-Caress
+SourceCharacter ласкает PronounPossessive клитор.
+ChatSelf-ItemVulvaPiercings-Inject
+SourceCharacter делает укол в PronounPossessive клитор.
+ChatSelf-ItemVulvaPiercings-MasturbateHand
+SourceCharacter стимулирует PronounPossessive клитор.
+ChatSelf-ItemVulvaPiercings-MasturbateItem
+SourceCharacter стимулирует PronounPossessive клитор с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemVulvaPiercings-RubItem
+SourceCharacter трёт PronounPossessive клитор с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemVulvaPiercings-ShockItem
+SourceCharacter бьёт током PronounPossessive клитор с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemVulvaPiercings-SpankItem
+SourceCharacter бьёт по PronounPossessive клитору с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemVulvaPiercings-PowderItem
+SourceCharacter припудривает PronounPossessive клитор с помощью PronounPossessive ActivityAsset.
+ChatSelf-ItemVulvaPiercings-TickleItem
+SourceCharacter щекочет PronounPossessive клитор с помощью PronounPossessive ActivityAsset.
+ChatOther-ItemVulva-GaggedKiss
+SourceCharacter вводит PronounPossessive ActivityAsset во влагалище TargetCharacter.
+ChatOther-ItemVulva-Slap
+SourceCharacter шлёпает по половым губам TargetCharacter.
+ChatOther-ItemVulvaPiercings-Slap
+SourceCharacter шлёпает по клитору TargetCharacter.
+ChatSelf-ItemVulvaPiercings-Slap
+SourceCharacter шлёпает по PronounPossessive клитору.

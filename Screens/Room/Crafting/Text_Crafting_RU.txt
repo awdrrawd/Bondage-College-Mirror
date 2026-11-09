@@ -1,17 +1,17 @@
 Accept
-Создайте свой предмет
+Создать предмет
 Cancel
 Отмена
 DescriptionArousing
 Сложнее сопротивляться оргазму.
 DescriptionComfy
-Комфортней для владельца.
+Комфортнее для того, кто носит предмет.
 DescriptionDecoy
-Всегда может вырваться.
+Из предмета всегда можно высвободиться.
 DescriptionDull
 Легче сопротивляться оргазму.
 DescriptionFlexible
-Невозможно использовать выдавливание, чтобы вырваться.
+Нельзя высвободиться методом выскальзывания.
 DescriptionLarge
 Сложнее понять речь с кляпом во рту.
 DescriptionLoose
@@ -19,17 +19,17 @@ DescriptionLoose
 DescriptionMalleable
 Требуется меньше времени на надевание и снятие.
 DescriptionNimble
-Невозможно использовать отстегнуть, чтобы вырваться.
+Нельзя высвободиться методом расстёгивания.
 DescriptionNormal
 Нет специального свойства.
 DescriptionPainful
-Более болезненно для владельца.
+Болезненнее для того, кто носит предмет.
 DescriptionPuzzling
 Сложнее взломать.
 DescriptionRigid
-Требуется больше времени нанадевание и снятие.
+Требуется больше времени на надевание и снятие.
 DescriptionSecure
-Сложнее бороться.
+Сложнее высвободиться.
 DescriptionSimple
 Легче взломать.
 DescriptionSmall
@@ -51,9 +51,9 @@ EnterDescription
 EnterName
 Название созданного предмета
 EnterPrivate
-Личный (только ты може использовать)
+Личный (использовать можете только вы)
 Exit
-Вернутся в главный зал
+Вернуться в главный зал
 JSONCancel
 Отмена
 Next
@@ -77,7 +77,7 @@ PropertyFlexible
 PropertyLarge
 Большой
 PropertyLoose
-Небрежный
+Свободный
 PropertyMalleable
 Податливый
 PropertyNimble
@@ -89,7 +89,7 @@ PropertyPainful
 PropertyPuzzling
 Головоломный
 PropertyRigid
-Стойкий
+Жёсткий
 PropertySecure
 Надежный
 PropertySimple
@@ -103,6 +103,138 @@ PropertyThick
 PropertyThin
 Тонкий
 SelectColor
-Выберите цвета элемента
+Выберите цвета предмета
 SelectSlot
-Выбери пустую ячейку, чтобы создать предмет, или нажми на него, чтобы отредактировать.
+Выберите слот, чтобы изменить предмет или создать новый
+AcceptInvalid
+: предмет не выбран
+AddProperty
+Добавить/усилить эффект
+DescriptionEdging
+Не даёт носителю достичь оргазма
+DescriptionHeavy
+Замедляет ходьбу.
+DescriptionLight
+Ускоряет ходьбу.
+DescriptionDeaf
+Через предмет хуже слышно.
+DescriptionAudible
+Через предмет лучше слышно.
+Download
+Экспортировать код предмета
+DownloadSuccess
+Код предмета скопирован в буфер обмена
+EnterDescriptionLong
+Выгравировать расширенное описание
+EnterExtendedDescription
+Разрешить длинные описания (только буквы и цифры)
+EnterPriority
+Приоритет отрисовки предмета
+EnterTighten
+Затянуть или ослабить предмет
+EnterType
+Настроить расширенные свойства предмета
+FilterAsset
+Фильтр предметов
+FilterCrafts
+Фильтр созданных предметов
+FilterLock
+Фильтр замков
+FilterProperty
+Фильтр эффектов
+JSONDescription0
+Загрузите новый набор созданных предметов следующим образом, заменив {all} существующие предметы:
+JSONDescription1
+Импортируйте файл {json} с экспортированными данными (кнопка {download-tooltip} в главном меню создания предметов)
+JSONDescription2
+(Необязательно) Выберите, какие новые предметы импортировать; по умолчанию выбраны все
+JSONDescription3
+(Необязательно) Измените порядок новых предметов перетаскиванием
+JSONDescriptionAll
+все
+JSONDownload
+Скачать все созданные предметы
+JSONError
+Ошибка разбора данных предмета
+JSONSelectNew
+Новые предметы (выбрать все)
+JSONSelectOld
+Прежние предметы (выбрать все)
+JSONToggle
+Показать/скрыть текст статуса
+JSONUpload
+Импортировать новый набор созданных предметов
+LabelDelete
+Удалить
+LabelReorder
+Изменить порядок
+LabelSelectCraft
+Выберите режим создания предметов
+LabelSlot
+Редактировать
+Layering
+Изменить положение предмета
+ModeAcceptDelete
+Режим удаления:{br}{click} или {shift} + {click} на слоты для удаления, затем нажмите эту кнопку, чтобы подтвердить их удаление {permanent}
+ModeAcceptReorder
+Режим изменения порядка:{br}{click} или {shift} + {click} на нужные слоты, перетащите их на новое место и нажмите эту кнопку для подтверждения
+ModeAcceptSlot
+Режим редактирования:{br}{click} на слот, чтобы изменить предмет или создать новый в пустом слоте
+ModeDeleteFail
+Не удалось удалить ни одного предмета
+ModeDeleteSuccess
+Удалено предметов: {nItems}
+ModeReorderFail
+Не удалось изменить порядок предметов
+ModeReorderSuccess
+Изменён порядок предметов: {nItems}
+MultipleProperties
+Несколько эффектов
+Page
+Страница
+PropertyAudible
+Усиливающий звук
+PropertyDeaf
+Заглушающий звук
+PropertyEdging
+Удержание на грани
+PropertyHeavy
+Тяжёлый
+PropertyLight
+Лёгкий
+RemoveProperty
+Убрать/ослабить эффект
+Return
+Вернуться к настройке предмета
+SelectDelete
+Удалить предметы: {n}
+SelectItem
+Выберите предмет
+SelectItemSuffix
+Выберите предмет для GroupName
+SelectLock
+Выберите замок
+SelectName
+Настройте создаваемый предмет
+SelectPriority
+Настройте приоритет слоёв
+SelectProperty
+Выберите эффекты предмета
+SelectReorder
+Изменить порядок предметов: {n}
+TermMouseClick
+нажмите
+TermPermanent
+без возможности восстановления
+TermShift
+Shift
+Undress
+Раздеть персонажа в предпросмотре
+Upload
+Импортировать код предмета
+UploadFailure
+Не удалось разобрать вставленный код предмета
+UploadPrompt
+Вставьте код предмета. Импорт заменит существующие настройки. Продолжить?
+UploadSuccess
+Код предмета успешно прочитан

@@ -279,7 +279,7 @@ function InventoryItemPelvisFuturisticTrainingBeltPublishGeneric(C, msg) {
  * @returns {VibratorMode}
  */
 function InventoryItemPelvisFuturisticTrainingBeltGetVibeMode(C, State, First) {
-	const ArousalActive = C.ArousalSettings && C.ArousalSettings.Progress && ["Manual", "Hybrid", "Automatic"].includes(C.ArousalSettings.Active);
+	const ArousalActive = PreferenceArousalIsActive(C) && C.ArousalSettings.Progress > 0;
 	if (State.includes("Edge")) {
 		if (First || (ArousalActive &&(C.ArousalSettings.Progress < 60 || C.ArousalSettings.Progress > 90)) || (CommonTime() % FuturisticTrainingBeltRandomEdgeCycle > FuturisticTrainingBeltRandomEdgeCycle / 5)) {
 			if ((ArousalActive && C.ArousalSettings.Progress > 90))
@@ -448,7 +448,7 @@ function AssetsItemPelvisFuturisticTrainingBeltScriptUpdatePlayer(data, drawData
 	let punishment = InventoryFuturisticChastityBeltCheckPunish(Item);
 	if (punishment != "") {
 		if (punishment == "Orgasm") {
-			if (Item.Property.PunishOrgasm && C.ArousalSettings && C.ArousalSettings.OrgasmStage > 1) {
+			if (Item.Property.PunishOrgasm && C.ArousalSettings.OrgasmStage > 1) {
 				AssetsItemPelvisFuturisticChastityBeltScriptTrigger(C, Item, "Orgasm");
 				Item.Property.NextShockTime = CurrentTime + FuturisticChastityBeltShockCooldownOrgasm; // Difficult to have two orgasms in 10 seconds
 			}
@@ -542,7 +542,7 @@ function AssetsItemPelvisFuturisticTrainingBeltScriptStateMachine(data, drawData
 	const PersistentData = drawData.PersistentData();
 	PersistentData.DeviceStateTimer ??= 0;
 
-	const ArousalActive = C.ArousalSettings && C.ArousalSettings.Progress && ["Manual", "Hybrid", "Automatic"].includes(C.ArousalSettings.Active);
+	const ArousalActive = PreferenceArousalIsActive(C) && C.ArousalSettings.Progress > 0;
 	const Property = Item ? Item.Property : null;
 	if (!Property) return;
 

@@ -3,7 +3,7 @@ import fs from "fs";
 import vm from "vm";
 import { TextEncoder as NodeTextEncoder, TextDecoder as NodeTextDecoder } from "util";
 import { loadImage } from "canvas";
-import { Blob } from "node:buffer";
+import { Blob as NodeBlob } from "node:buffer";
 
 class SocketMock {
 	private listeners: { [k in keyof ServerToClientEvents]?: ServerToClientEvents[k][] };
@@ -52,7 +52,7 @@ const postVMMocks = {
 			statusText: "OK",
 			ok: true,
 			async text() { return bytes.toString("utf8"); },
-			async blob() { return new Blob([bytes]); },
+			async blob() { return new NodeBlob([bytes]) as Blob; },
 		} as Response;
 		return obj;
 	},

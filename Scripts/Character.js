@@ -1298,16 +1298,19 @@ function CharacterLoadSimple(CharacterID) {
  * @param {number} SourceMemberNumber - Source number of the refresh
  */
 function CharacterOnlineRefresh(Char, data, SourceMemberNumber) {
-	if (!Char.IsPlayer() && Char.MemberNumber == SourceMemberNumber) {
+	const isSelf = !Char.IsPlayer() && Char.MemberNumber == SourceMemberNumber;
+	if (isSelf) {
 		Char.Title = ServerAccountDataSyncedValidate.Title(data.Title, Char);
 		Char.Nickname = ServerAccountDataSyncedValidate.Nickname(data.Nickname, Char);
 		Char.AllowedInteractions = ServerAccountDataSyncedValidate.AllowedInteractions(data.AllowedInteractions ?? data.ItemPermission, Char);
-		Char.ArousalSettings = ServerAccountDataSyncedValidate.ArousalSettings(data.ArousalSettings, Char);
 		Char.OnlineSharedSettings = ServerAccountDataSyncedValidate.OnlineSharedSettings(data.OnlineSharedSettings, Char);
 		Char.Game = ServerAccountDataSyncedValidate.Game(data.Game, Char);
 		Char.MapData = ServerAccountDataSyncedValidate.MapData(data.MapData, Char);
 		Char.Crafting = ServerAccountDataSyncedValidate.Crafting(data.Crafting, Char);
 	}
+	// Self-updates replace arousal. Anyone else's packet only fills it in the first time, so a later appearance sync cannot clobber the live meter.
+	if (isSelf || (!Char.IsPlayer() && Char.ArousalSettings.Active == null))
+		Char.ArousalSettings = ServerAccountDataSyncedValidate.ArousalSettings(data.ArousalSettings, Char);
 
 	// Fully validated in the `ActivePose` setter
 	Char.ActivePose = /** @type {readonly AssetPoseName[]} */(data.ActivePose ?? []);
@@ -2549,8 +2552,7 @@ function CharacterTransferItem(FromC, ToC, Group, Refresh=true) {
  * @returns {boolean} That character can be aroused
  */
 function CharacterHasArousalEnabled(C) {
-	return (C.ArousalSettings != null)
-		&& (C.ArousalSettings.Zone != null)
+	return (C.ArousalSettings.Zone != null)
 		&& (C.ArousalSettings.Active != null)
 		&& (C.ArousalSettings.Active != "Inactive");
 }

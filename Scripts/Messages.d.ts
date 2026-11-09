@@ -243,6 +243,24 @@ interface ServerChatRoomMapData {
 	Objects?: string;
 	Effects?: string;
 	CellData?: Record<number,ChatRoomMapObjectConfig> | undefined;
+	/** How admins turned, sized and colored placed objects, BitString-encoded by {@link MapManager} */
+	ObjectSettings?: string;
+}
+
+/** How an admin turned, sized and colored the object placed on a tile */
+type ChatRoomMapObjectSettings = {
+	/** The object it applies to; it no longer applies once another object is placed there */
+	ID: number
+	/** In degrees, from 1 to 359 */
+	Rotation?: number
+	/** In percent, from 50 to 200 */
+	Size?: number
+	/** One entry per colorable layer of {@link ChatRoomMapObject.Layers}, `"Default"` keeping the layer's default color */
+	Colors?: (HexColor | "Default")[]
+	/** A decal of {@link AssetGetDecals}, drawn on the object's {@link ChatRoomMapObject.DecalArea} */
+	Decal?: AssetName
+	/** The color the decal is tinted with, like a worn decal; without one the decal keeps its own colors */
+	DecalColor?: HexColor
 }
 
 interface ServerChatRoomCustomData {

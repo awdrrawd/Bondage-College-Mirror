@@ -584,6 +584,7 @@ ChainClampSetChain,SourceCharacter changes the chain style on DestinationCharact
 ChainClampSetChain2,SourceCharacter changes the chain style on DestinationCharacter chest.
 ChainClapNipplesChain,Style 1
 ChainClapNipplesChain2,Style 2
+NecklaceInitialLocketTextLabel,Engrave up to two characters
 chains,chains
 ChangeClothes,SourceCharacter changes DestinationCharacter clothes.
 CharacterNicknameUpdated,OldNick is now known as NewNick.

@@ -38,7 +38,7 @@ This is the only store in town that receives gagged customers.
 (You unlock the belt from her waist, and she smiles.)  I owe you one.
 (Ты отстегиваешь ремень с ее талии, и она улыбается.)  Я твя должница.
 (You strap the device on her head as she complains.)  The store!  Think about the store!
-(You strap the device on her head as she complains.)  Магазин!  Подумай о магазине!
+(Вы закрепляете устройство у неё на голове, а она жалуется.) Магазин! Подумай о магазине!
 (You remove the device and she looks relived.)  Thanks.  Nothing was stolen?
 (Ты снимаешь устройство, и она выглядит ожившей.)  Спасибо.  Ничего не украли?
 (She whimpers as you whip her breast.)  Ouch!  You're whipping too hard.
@@ -383,3 +383,5 @@ The sorority will always protect you.
 ###_NPC
 It's great to feel protected.  Would you like to buy something?
 Здорово чувствовать себя защищенной.  Хотите что-нибудь купить?
+I'd like to browse the shop.
+Я хочу посмотреть товары в магазине.

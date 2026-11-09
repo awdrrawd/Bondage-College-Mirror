@@ -1,4 +1,4 @@
-﻿###_NPC
+###_NPC
 Do you need help?  Nod if you do.
 Вам нужна помощь?  Кивните, если этого хотите.
 (DialogCharacterName comes to check on you again.)  You're in trouble again?  Do you need help?
@@ -264,8 +264,6 @@ Make sure to remember the rules.  Club slaves must stay naked, let me help you t
 (Выглядит удивленной.)
 (Look ashamed.)
 (Выглядит пристыженной.)
-(Shake your head no.)
-(Отрицательно покачайте головой.)
 Alright then.
 Ну ладно.
 ###_NPC
@@ -294,8 +292,6 @@ I understand.
 Very well.  I need to go now.
 Очень хорошо.  Мне пора идти.
 ###_PLAYER
-(Nod slowly.)
-(Медленно кивай.)
 (Grumble in disagreement.)
 (Ворчит в несогласии.)
 Wait!  Can you release me first?
@@ -674,3 +670,5 @@ Next, we need to make sure you know your place (She binds your arms)
 ###_NPC
 (She finishes restraining you and slaps you on the breast) Now go enjoy yourself.
 (Она заканчивает связывать вас и хлопает вас по груди) Теперь иди наслаждайся.
+(She checks your locks and frowns.)  Is that a family lock?  Your D/s family might not be pleased if I release you.
+(Она проверяет ваши замки и хмурится.) Это семейный замок? Твоя семья госпож и подчинённых может быть недовольна, если я тебя освобожу.

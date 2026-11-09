@@ -1,6 +1,6 @@
 ###_NPC
 (She giggles) You can play games while bound, but don't expect me to understand you.
-(Она хихикает) Ты можешь играть в игры, пока связанf, но не жди, что я тебя пойму.
+(Она хихикает.) Ты можешь играть и связанной, но не жди, что я тебя пойму.
 Having fun in there?
 Веселишься там?
 Hello and welcome to the arcade. Put on your VR headset and you can play our games for free!
@@ -50,3 +50,5 @@ I see what you're trying to say. Enjoy the games!
 ###_PLAYER
 (Leave her.)
 (Оставь ее.)
+You can rent one of ours for ${money=-10}.
+Можно взять одну из наших напрокат за ${money=-10}.

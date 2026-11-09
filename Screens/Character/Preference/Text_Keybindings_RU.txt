@@ -1,0 +1,160 @@
+action:beep_send_message:name
+Отправить сигнал
+action:beep_send_message:desc
+Отправляет сообщение в чате сигналов.
+action:chat_autocomplete:name
+Автодополнение
+action:chat_autocomplete:desc
+Пытается дополнить сообщение до команды или показать справку по ней.
+action:chat_focus_change:name
+Сменить фокус
+action:chat_focus_change:desc
+Переключает фокус между полем чата и основным видом.
+action:chat_history_next:name
+Следующее сообщение истории
+action:chat_history_next:desc
+Переходит к следующему сообщению в истории чата.
+action:chat_history_prev:name
+Предыдущее сообщение истории
+action:chat_history_prev:desc
+Переходит к предыдущему сообщению в истории чата.
+action:chat_send_chat:name
+Отправить сообщение
+action:chat_send_chat:desc
+Отправляет сообщение в комнату чата.
+action:chat_send_ooc_chat:name
+Отправить сообщение вне роли
+action:chat_send_ooc_chat:desc
+Отправляет в комнату чата сообщение вне роли (OOC).
+action:chat_send_chat_mobile:name
+Отправить сообщение (мобильное устройство)
+action:chat_send_chat_mobile:desc
+Отправляет сообщение в комнату чата с поддержкой виртуальной клавиатуры.
+action:chatroom_leave:name
+Покинуть комнату
+action:chatroom_leave:desc
+Пытается выйти из комнаты чата.
+action:chatroom_open_admin_screen:name
+Открыть настройки комнаты
+action:chatroom_open_admin_screen:desc
+Открывает экран администратора комнаты.
+action:chatroom_open_profile:name
+Открыть свой профиль
+action:chatroom_open_profile:desc
+Открывает ваш профиль.
+action:chatroom_open_wardrobe:name
+Открыть свой гардероб
+action:chatroom_open_wardrobe:desc
+Открывает ваш гардероб.
+action:chatroom_prev_page:name
+Предыдущая страница
+action:chatroom_prev_page:desc
+Переходит к предыдущей странице.
+action:chatroom_next_page:name
+Следующая страница
+action:chatroom_next_page:desc
+Переходит к следующей странице.
+action:chatroom_toggle_kneel:name
+Встать / опуститься на колени
+action:chatroom_toggle_kneel:desc
+Переключает положение на коленях.
+action:map_focus_chat:name
+Перейти к полю чата
+action:map_focus_chat:desc
+Перемещает фокус в поле ввода чата.
+action:map_zoom_in:name
+Приблизить
+action:map_zoom_in:desc
+Увеличивает масштаб карты.
+action:map_zoom_out:name
+Отдалить
+action:map_zoom_out:desc
+Уменьшает масштаб карты.
+action:map_admin_undo:name
+Отменить действие
+action:map_admin_undo:desc
+Отменяет последнее изменение карты.
+action:maproom_A:name
+Двигаться влево
+action:maproom_A:desc
+Перемещает персонажа влево в комнате с картой.
+action:maproom_arrowleft:name
+Двигаться влево
+action:maproom_arrowleft:desc
+Перемещает персонажа влево в комнате с картой.
+action:maproom_D:name
+Двигаться вправо
+action:maproom_D:desc
+Перемещает персонажа вправо в комнате с картой.
+action:maproom_arrowright:name
+Двигаться вправо
+action:maproom_arrowright:desc
+Перемещает персонажа вправо в комнате с картой.
+action:maproom_S:name
+Двигаться вниз
+action:maproom_S:desc
+Перемещает персонажа вниз в комнате с картой.
+action:maproom_arrowdown:name
+Двигаться вниз
+action:maproom_arrowdown:desc
+Перемещает персонажа вниз в комнате с картой.
+action:maproom_W:name
+Двигаться вверх
+action:maproom_W:desc
+Перемещает персонажа вверх в комнате с картой.
+action:maproom_arrowup:name
+Двигаться вверх
+action:maproom_arrowup:desc
+Перемещает персонажа вверх в комнате с картой.
+action:navigation_arrowdown:name
+Прокрутить вниз
+action:navigation_arrowdown:desc
+Прокручивает выбранный элемент вниз.
+action:navigation_pagedown:name
+Прокрутить вниз
+action:navigation_pagedown:desc
+Прокручивает выбранный элемент вниз.
+action:navigation_arrowup:name
+Прокрутить вверх
+action:navigation_arrowup:desc
+Прокручивает выбранный элемент вверх.
+action:navigation_pageup:name
+Прокрутить вверх
+action:navigation_pageup:desc
+Прокручивает выбранный элемент вверх.
+action:navigation_end:name
+Прокрутить в конец
+action:navigation_end:desc
+Прокручивает выбранный элемент до конца.
+action:navigation_home:name
+Прокрутить в начало
+action:navigation_home:desc
+Прокручивает выбранный элемент к началу.
+category:beep
+Сигналы
+category:chat
+Чат
+category:chatroom
+Комната чата
+category:maproom
+Комната с картой
+category:navigation
+Навигация
+context:always
+Всегда
+context:isBeepMessageFocused
+Фокус в поле сообщения сигнала
+context:isChatRoomCharacterMode
+Комната в режиме персонажей
+context:isChatRoomChatFocused
+Фокус в поле чата
+context:isChatRoomChatNOTFocused
+Фокус вне поля чата
+context:isChatRoomMapMode
+Комната в режиме карты
+context:isInChatRoom
+В комнате чата
+context:isOnChatRoomScreen
+На экране комнаты чата
+context:noModifiers
+Без клавиш-модификаторов

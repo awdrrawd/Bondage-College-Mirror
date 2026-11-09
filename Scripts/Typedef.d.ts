@@ -5480,6 +5480,8 @@ interface ChatRoomMapPhysicalElement extends ChatRoomMapDoodad {
 	CanPlaceOnFloors?: boolean; // default true
 	CanPlaceOnWalls?: boolean; // ex. Banners
 	CanPlaceInWalls?: boolean; // ex. Doors
+	/** Its picture joins up with the same objects next to it, so admins can't turn or size it */
+	JoinsNeighbors?: boolean;
 }
 
 /** {@link MapDoodadIsTile}  */
@@ -5502,7 +5504,37 @@ interface ChatRoomMapObject extends ChatRoomMapPhysicalElement {
 	OnClick?: (x: number, y: number) => void;
 	/** Whether admins can make the object a tether point, where leashes can be tied */
 	CanBeTetherPoint?: boolean;
+	/** Whether admins can turn, size and color the object once placed; default true */
+	CanBeCustomized?: boolean;
+	/**
+	 * The layers the object is drawn with, in order, on top of each other.
+	 * Objects that don't list any get a single plain layer when the map data is loaded.
+	 * The plain `<ImageName>.png` is still required for older clients and the object palette.
+	 */
+	Layers?: readonly ChatRoomMapLayer[];
+	/**
+	 * Where admins can put a decal on the object, in pixels of its image: `[left, top, width, height]`.
+	 * The decal is fitted and centered in it, and turns and sizes with the object. Any decal of {@link AssetGetDecals} can go there.
+	 */
+	DecalArea?: RectTuple;
 }
+
+/**
+ * A layer of a map object, loaded from `<ImageName>_<Name>.png`, or from the plain `<ImageName>.png` when its name is empty.
+ * Colorable layers must be grayscale images.
+ */
+type ChatRoomMapLayer = {
+	Name: string;
+	IsColorable: true;
+	/** The color of the layer when an admin didn't color it */
+	DefaultColor: HexColor;
+} | {
+	Name: string;
+	IsColorable: false;
+};
+
+/** A layer of a map object that admins can color */
+type ChatRoomMapColorableLayer = Extract<ChatRoomMapLayer, { IsColorable: true }>;
 
 /** {@link MapDoodadIsEffect}  */
 interface ChatRoomMapEffectStaticLighting extends ChatRoomMapDoodad {
@@ -5540,6 +5572,12 @@ interface ChatRoomMapTether {
 	Position: ChatRoomMapPos;
 	/** The member who tied the leash */
 	MemberNumber: number;
+}
+
+/** A color format copied from a map object, which can be pasted on other objects with the same ID */
+interface ChatRoomMapColorFormat {
+	ObjectID: number;
+	Colors: NonNullable<ChatRoomMapObjectSettings["Colors"]>;
 }
 
 /**

@@ -292,3 +292,11 @@ You will pay for this.
 ###_PLAYER
 (Start your sentence.)
 (Начните свой приговор.)
+Fine, I'm ready.  (Start a single-player sentence.)
+Ладно, я готова. (Начать отбывать срок в одиночном режиме.)
+Fine, I'm ready.  (Start a multi-player sentence.)
+Ладно, я готова. (Начать отбывать срок в многопользовательском режиме.)
+(Start a single-player sentence.)
+(Начать отбывать срок в одиночном режиме.)
+(Start a multi-player sentence.)
+(Начать отбывать срок в многопользовательском режиме.)

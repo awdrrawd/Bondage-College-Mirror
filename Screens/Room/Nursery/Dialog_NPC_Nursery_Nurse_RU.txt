@@ -1,4 +1,4 @@
-﻿###_NPC
+###_NPC
 Pacified big babies sound adorable when they try to talk.
 Усмеренные большие дети звучат восхитительно, когда они пытаются говорить.
 What do you think you're doing?  Bad babies like you shouldn't be free to cause more trouble.
@@ -894,7 +894,7 @@ At least you still have some manners.  (She makes sure you are completely stripp
 (Игнорируй медсестру.)
 ###_NPC
 HEY look at me when I am talking to you.  (She makes sure you are completely stripped naked and securely restrained. Then puts you in fresh diapers.)
-Эй, смотри на меня, когда я с тобой разговариваю.  ((Она следит за тем, чтобы ты была полностью обнажена и надежно связана. Потом одевает тебя в свежие подгузники.)
+ЭЙ, смотри на меня, когда я с тобой разговариваю. (Она убеждается, что ты полностью раздета и надёжно связана, затем надевает на тебя свежие подгузники.)
 ###_PLAYER
 This is so unfair.
 Это так несправедливо.
@@ -979,3 +979,47 @@ I have had enough of your bad behaviour.  (She forcibly makes sure you are kneel
 ###_NPC
 She finishes punishing you
 Она заканчивает наказывать тебя
+Good.  That will be ${money=-10} and you need to sign this form, then I will help you into your first diaper.
+Хорошо. Это стоит ${money=-10}. Подпишите эту форму, и я помогу вам надеть первый подгузник.
+The primary requirement is diapers.  Clean diapers are mandatory on entry.  We can provide a fresh diaper for each visit.  They cost ${money=-10} a time.
+Главное требование — подгузники. При входе они должны быть чистыми. На каждый визит мы можем выдать свежий подгузник за ${money=-10}.
+Wonderful.  That will be ${money=-10} and you will need to sign this form. Then I will help you into your first diaper.
+Замечательно. Это стоит ${money=-10}. Подпишите эту форму, и я помогу вам надеть первый подгузник.
+Yes, you can come in wearing your own diapers. But they must be clean and you can't wear clothes that prevent us from easily checking them.
+Да, можно приходить в своих подгузниках. Но они должны быть чистыми, а одежда не должна мешать нам легко их проверять.
+The primary requirement is diapers.  Clean diapers are mandatory on entry.  We can provide fresh diapers.  They cost ${money=-10} a time.
+Главное требование — подгузники. При входе они должны быть чистыми. Мы можем выдавать свежие подгузники за ${money=-10} каждый.
+That is a pity.  There are plenty of ways to make money in the club.  I'm sure you could earn ${money=-10} in no time at all.
+Очень жаль. В клубе полно способов заработать. Уверена, ты быстро заработаешь ${money=-10}.
+It's just a formal agreement that during your stay we will care for you, and in return you will abide by the rules of the nursery.
+Это лишь формальное соглашение: во время твоего пребывания мы заботимся о тебе, а взамен ты соблюдаешь правила яслей.
+You certainly can, but you will need to pay for the laundry, which is ${money=-5}.  We can't have our babies wearing dirty dresses.
+Конечно, можно, но за стирку нужно заплатить ${money=-5}. Мы не можем позволить нашим малышкам ходить в грязных платьях.
+We were all putting our hands in each other's diapers and masturbating each other and it felt so good and...
+Мы все засовывали руки друг другу в подгузники и мастурбировали друг другу, и было так хорошо, и...
+Yes.  The nursery has quite a stock of dresses in many lovely colors, but you will have to pay ${money=-5} for the extra laundry.
+Да. В яслях большой выбор платьев разных красивых цветов, но за дополнительную стирку придётся заплатить ${money=-5}.
+Of course you may, but that dress will have to be laundered. You will have to pay an extra ${money=-5}.
+Конечно, можно, но платье придётся постирать. Нужно доплатить ${money=-5}.
+Hey, let me go right now.
+Эй, отпустите меня немедленно.
+I can always give you more punishments until you are sure.  Now, are you going to be a good girl?
+Я могу наказывать тебя и дальше, пока ты не определишься. Так ты будешь хорошей девочкой?
+Wonderful, have you remembered the ${money=-10} fee for diapers?
+Чудесно! Ты не забыла про ${money=-10} за подгузники?
+You're welcome.  Have you remembered the ${money=-10} fee for diapers?
+Не за что. Ты не забыла про ${money=-10} за подгузники?
+Yes here it is. (Pay ${money=-10}.)
+Да, вот. (Заплатить ${money=-10}.)
+(Sign the form and pay ${money=-10}.)
+(Подписать форму и заплатить ${money=-10}.)
+What is the ${money=-10} charge for?
+За что берут ${money=-10}?
+You may, but you will have to pay ${money=-5} for the extra laundry.
+Можно, но за дополнительную стирку нужно заплатить ${money=-5}.
+Okay. (Pay ${money=-5})
+Ладно. (Заплатить ${money=-5}.)
+We are not hiring nurses at the moment.  When we do, we only hire club members with good reputations in the nursery and the maid sorority.
+Сейчас мы не нанимаем медсестёр. Когда нанимаем, берём только участниц клуба с хорошей репутацией в яслях и сестричестве горничных.
+DialogCharacterName puts the bottle down and hugs you.  One hand holding your head over her shoulder, while her other hand pats you firmly on the back.)
+(DialogCharacterName ставит бутылочку и обнимает вас. Одной рукой прижимает вашу голову к своему плечу, а другой уверенно похлопывает по спине.)

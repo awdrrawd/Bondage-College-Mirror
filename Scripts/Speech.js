@@ -646,10 +646,10 @@ function SpeechTransformShouldStutter(C) {
  * @returns {number}
  */
 function SpeechTransformStutterIntensity(C) {
-	const arousalProgress = CommonIsNumeric(C.ArousalSettings?.Progress) ? C.ArousalSettings?.Progress : 0;
-	const stutterMode = C.ArousalSettings?.AffectStutter;
-	// Validates that the preferences allow stuttering
-	if (!C.ArousalSettings || stutterMode === "None") return 0;
+	const stutterMode = C.ArousalSettings.AffectStutter;
+	// Uninitialized settings and an explicit "None" both produce no stutter
+	if (stutterMode == null || stutterMode === "None") return 0;
+	const arousalProgress = C.ArousalSettings.Progress;
 
 	// Gets the factor from current arousal
 	let intensity = 0;

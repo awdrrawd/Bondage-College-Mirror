@@ -479,3 +479,23 @@ Get out of my way.
 ###_NPC
 I'm not moving.  Surrender right now!
 Я не сдвинусь.  Сдавайтесь прямо сейчас!
+(She comes back with a beer for you to enjoy.  You give her ${money=-5}.)  Anything else?
+(Она приносит вам пиво. Вы платите ей ${money=-5}.) Что-нибудь ещё?
+(She comes back with a glass of wine for you to enjoy.  You give her ${money=-5}.)  Anything else?
+(Она приносит вам бокал вина. Вы платите ей ${money=-5}.) Что-нибудь ещё?
+(She comes back with a martini for you to enjoy.  You give her ${money=-10}.)  Anything else?
+(Она приносит вам мартини. Вы платите ей ${money=-10}.) Что-нибудь ещё?
+(She comes back with a margarita for you to enjoy.  You give her ${money=-10}.)  Anything else?
+(Она приносит вам «Маргариту». Вы платите ей ${money=-10}.) Что-нибудь ещё?
+A glass of water. (${money=-0})
+Стакан воды. (${money=-0})
+A cup of coffee. (${money=-0})
+Чашку кофе. (${money=-0})
+A beer please. (${money=-5})
+Пиво, пожалуйста. (${money=-5})
+A glass of wine. (${money=-5})
+Бокал вина. (${money=-5})
+A martini. (${money=-10})
+Мартини. (${money=-10})
+A margarita. (${money=-10})
+«Маргариту». (${money=-10})
