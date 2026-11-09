@@ -118,6 +118,15 @@ const AppearancePermissionColors = {
 	green: ["lime", "green"],
 };
 
+let AppearanceSearchString = "";
+const AppearanceMenuButtonWidth = 117;
+
+const Appearance = {
+	IDs: Object.freeze({
+		searchButton: "appearance-search-input",
+	}),
+};
+
 /**
  * Builds all the assets that can be used to dress up the character
  * @param {Character} C - The character whose appearance is modified
@@ -830,6 +839,68 @@ async function AppearanceLoad() {
 }
 
 /**
+ * Enter search mode
+ * @param {Character} C - The character we're searching items on
+ */
+function AppearanceEnterSearchMode(C) {
+	if (ElementWrap(Appearance.IDs.searchButton)) return;
+	const searchBar = ElementInput.Create(
+		Appearance.IDs.searchButton,
+		{ type: "text" },
+		{
+			attributes: { maxlength: 40 },
+			eventListeners: {
+				input: () => {
+					if (!CharacterAppearanceSelectedGroup) return;
+					DialogInventoryBuild(C, CharacterAppearanceSelectedGroup);
+					AppearanceSearchString = ElementValue(
+						Appearance.IDs.searchButton,
+					)?.toLocaleLowerCase();
+					AppearancePreviewBuild(C, CharacterAppearanceSelectedGroup, true);
+					AppearanceMenuBuild(C, CharacterAppearanceSelectedGroup);
+				},
+			},
+			parent: document.body,
+		},
+	);
+	searchBar.focus();
+}
+
+/**
+ * Exit from the search mode
+ */
+function AppearanceExitSearchMode() {
+	AppearanceSearchString = "";
+	ElementRemove(Appearance.IDs.searchButton);
+}
+
+/**
+ * Build the buttons in the top menu
+ * @returns {void} - Nothing
+ */
+function AppearanceBuildSearchMenu() {
+	AppearanceMenu = [];
+	const inventory = AppearanceInventoryBuild();
+	if (inventory.length > CharacterAppearanceNumClothPerPage) {
+		AppearanceMenu = ["Prev","Next", "Remove"];
+	} else {
+		AppearanceMenu = ["Remove"];
+	}
+	AppearanceMenu.push("Cancel", "Accept");
+}
+
+/**
+ * Returns filtered inventory or the original
+ * @returns {DialogInventoryItem[]} - Nothing
+ */
+function AppearanceInventoryBuild() {
+	return AppearanceSearchString === "" ? DialogInventory : DialogInventory.filter(item => {
+		return item.Asset.Description.toLocaleLowerCase().includes(AppearanceSearchString) ||
+						item.Asset.Name.toLocaleLowerCase().includes(AppearanceSearchString);
+	});
+}
+
+/**
  * Build the buttons in the top menu
  * @param {Character} C - The character the appearance is being set for
  * @param {AssetGroup | null} group - The currently selected group
@@ -837,9 +908,11 @@ async function AppearanceLoad() {
  */
 function AppearanceMenuBuild(C, group) {
 	AppearanceMenu = [];
+	const inventory = AppearanceInventoryBuild();
 
 	switch (CharacterAppearanceMode) {
 		case "":
+			AppearanceExitSearchMode();
 			if (C.IsPlayer()) {
 				AppearanceMenu.push(LogQuery("Wardrobe", "PrivateRoom") ? "Wardrobe" : "WardrobeDisabled");
 				if (!LogQuery("Wardrobe", "PrivateRoom") && AppearanceGroupAllowed(C, "ALL")) AppearanceMenu.push("Reset");
@@ -850,6 +923,11 @@ function AppearanceMenuBuild(C, group) {
 			break;
 		case "Cloth": {
 			if (!group) return;
+
+			if (ElementWrap(Appearance.IDs.searchButton)) {
+				AppearanceBuildSearchMenu();
+				return;
+			}
 			let Item = InventoryGet(C, group.Name);
 			if (Item?.Asset.Extended) AppearanceMenu.push(InventoryBlockedOrLimited(C, Item) ? "UseDisabled" : "Use");
 			if (C.IsPlayer()) AppearanceMenu.push("WearRandom");
@@ -865,11 +943,15 @@ function AppearanceMenuBuild(C, group) {
 				}
 				AppearanceMenu.push(ButtonName);
 			}
-			if (DialogInventory.length > CharacterAppearanceNumClothPerPage) AppearanceMenu.push("Prev", "Next");
+			if (inventory.length > CharacterAppearanceNumClothPerPage) AppearanceMenu.push("Prev", "Next");
+			AppearanceMenu.push("Search");
 			break;
 		}
 		case "Permissions":
-			if (DialogInventory.length > CharacterAppearanceNumClothPerPage) AppearanceMenu.push("Prev", "Next");
+			if (ElementWrap(Appearance.IDs.searchButton)) {
+				AppearanceBuildSearchMenu();
+				return;
+			} else if (inventory.length > CharacterAppearanceNumClothPerPage) AppearanceMenu.push("Prev", "Next", "Search");
 			break;
 	}
 
@@ -1012,11 +1094,12 @@ function AppearanceRun() {
 
 	// In cloth selection mode
 	if (CharacterAppearanceMode == "Cloth" || CharacterAppearanceMode === "Permissions") {
+		const inventory = AppearanceInventoryBuild();
 		// Prepares a 3x3 square of clothes to present all the possible options
 		let X = 1250;
 		let Y = 125;
-		for (let I = DialogInventoryOffset; (I < DialogInventory.length) && (I < DialogInventoryOffset + CharacterAppearanceNumClothPerPage); I++) {
-			const Item = DialogInventory[I];
+		for (let I = DialogInventoryOffset; (I < inventory.length) && (I < DialogInventoryOffset + CharacterAppearanceNumClothPerPage); I++) {
+			const Item = inventory[I];
 			const Hover = MouseIn(X, Y, 225, 275) && !CommonIsMobile;
 			const Background = AppearanceGetPreviewImageColor(C, Item, Hover);
 
@@ -1092,13 +1175,20 @@ function AppearanceGetPreviewImageColor(C, item, hover) {
  * @returns {void} - Nothing
  */
 function AppearanceMenuDraw() {
-	const X = 2000 - AppearanceMenu.length * 117;
+	const AppearanceMenuButtonsWidth = AppearanceMenu.length * AppearanceMenuButtonWidth;
+	const X = 2000 - AppearanceMenuButtonsWidth;
 	for (const [i, button] of AppearanceMenu.entries()) {
 		const ButtonName = button.replace(/Disabled$/, "");
 		const ButtonSuffix = button === "Character" && !AppearanceUseCharacterInPreviewsSetting ? "Off" : "";
 		const ButtonColor = DialogGetMenuButtonColor(button);
 		const ButtonDisabled = DialogIsMenuButtonDisabled(button);
 		DrawButton(X + 117 * i, 25, 90, 90, "", ButtonColor, "Icons/" + ButtonName + ButtonSuffix + ".png", TextGet(button), ButtonDisabled);
+	}
+	if (ElementWrap(Appearance.IDs.searchButton)) {
+		const InputWidth = 600;
+		// this makes it so search input doesnt jump left and right when Next, Prev buttons dissapear
+		const offset = AppearanceMenu.includes("Prev") || AppearanceMenu.includes("Next") ? X - InputWidth - 25 : X - InputWidth - AppearanceMenuButtonWidth*2 - 25;
+		ElementPositionFix(Appearance.IDs.searchButton, 40, offset, 35, 600, 60);
 	}
 }
 
@@ -1415,13 +1505,13 @@ function AppearanceClick() {
 
 	// In cloth selection mode
 	else if ((CharacterAppearanceMode == "Cloth" || CharacterAppearanceMode == "Permissions") && CharacterAppearanceSelectedGroup) {
-
+		const inventory = AppearanceInventoryBuild();
 		// Prepares a 3x3 square of clothes to present all the possible options
 		let X = 1250;
 		let Y = 125;
-		for (let I = DialogInventoryOffset; (I < DialogInventory.length) && (I < DialogInventoryOffset + CharacterAppearanceNumClothPerPage); I++) {
+		for (let I = DialogInventoryOffset; (I < inventory.length) && (I < DialogInventoryOffset + CharacterAppearanceNumClothPerPage); I++) {
 			if (MouseIn(X, Y, 225, 275)) {
-				const Item = DialogInventory[I];
+				const Item = inventory[I];
 				const CurrentItem = InventoryGet(C, CharacterAppearanceSelectedGroup.Name);
 				const worn = (!!CurrentItem && (CurrentItem.Asset.Name == Item.Asset.Name));
 
@@ -1431,12 +1521,16 @@ function AppearanceClick() {
 				} else {
 					if (InventoryBlockedOrLimited(C, Item)) return;
 					if (InventoryAllow(C, Item.Asset)) {
+						const group = CharacterAppearanceSelectedGroup;
 						if (worn && CurrentItem.Asset.Extended) {
 							DialogExtendItem(CurrentItem);
+							if (group) {
+								AppearanceExitSearchMode();
+								AppearanceMenuBuild(C, group);
+							}
 						} else {
-							const group = CharacterAppearanceSelectedGroup;
 							if (!group) return;
-							CharacterAppearanceSetItem(C, group.Name, DialogInventory[I].Asset);
+							CharacterAppearanceSetItem(C, group.Name, inventory[I].Asset);
 							CharacterRefresh(C);
 							DialogInventoryBuild(C, group);
 							AppearancePreviewBuild(C, group, true);
@@ -1462,6 +1556,7 @@ function AppearanceClick() {
  */
 function AppearanceMenuClick(C) {
 	const X = 2000 - AppearanceMenu.length * 117;
+	const inventory = AppearanceInventoryBuild();
 	for (const [i, button] of AppearanceMenu.entries()) {
 		if (MouseXIn(X + 117 * i, 90)) {
 			switch (CharacterAppearanceMode) {
@@ -1520,10 +1615,16 @@ function AppearanceMenuClick(C) {
 					if (button === "Next" || button === "Prev") {
 						const offset = button === "Next" ? CharacterAppearanceNumClothPerPage : -CharacterAppearanceNumClothPerPage;
 						DialogInventoryOffset = DialogInventoryOffset + offset;
-						if (DialogInventoryOffset >= DialogInventory.length) DialogInventoryOffset = 0;
+						if (DialogInventoryOffset >= inventory.length) DialogInventoryOffset = 0;
 						if (DialogInventoryOffset < 0)
-							DialogInventoryOffset = Math.floor((DialogInventory.length - 1) / CharacterAppearanceNumClothPerPage) * CharacterAppearanceNumClothPerPage;
+							DialogInventoryOffset = Math.floor((inventory.length - 1) / CharacterAppearanceNumClothPerPage) * CharacterAppearanceNumClothPerPage;
 						AppearancePreviewBuild(C, CharacterAppearanceSelectedGroup, true);
+					}
+
+					if (button === "Search") {
+						AppearanceEnterSearchMode(C);
+					} else if (button === "Remove") {
+						AppearanceExitSearchMode();
 					}
 
 					// Opens the color picker
@@ -1543,32 +1644,41 @@ function AppearanceMenuClick(C) {
 						CharacterRefresh(C, false);
 						if (AppearancePreviewUseCharacter(CharacterAppearanceSelectedGroup)) AppearancePreviewCleanup();
 						AppearanceExit();
+						AppearanceExitSearchMode();
 					}
 
 					// Accepts the new selection
 					if (button === "Accept") {
 						if (AppearancePreviewUseCharacter(CharacterAppearanceSelectedGroup)) AppearancePreviewCleanup();
 						AppearanceExit();
+						AppearanceExitSearchMode();
 					}
 
 					// Rebuild the menu buttons as selecting a button here can change what should appear
 					AppearanceMenuBuild(C, CharacterAppearanceSelectedGroup);
 					break;
 				case "Permissions":
+					if (button === "Search") {
+						AppearanceEnterSearchMode(C);
+					} else if (button === "Remove") {
+						AppearanceExitSearchMode();
+					}
+
 					// Jumps to the cloth page
 					if (button === "Next" || button === "Prev") {
 						if (!CharacterAppearanceSelectedGroup) return;
 						const offset = button === "Next" ? CharacterAppearanceNumClothPerPage : -CharacterAppearanceNumClothPerPage;
 						DialogInventoryOffset = DialogInventoryOffset + offset;
-						if (DialogInventoryOffset >= DialogInventory.length) DialogInventoryOffset = 0;
+						if (DialogInventoryOffset >= inventory.length) DialogInventoryOffset = 0;
 						if (DialogInventoryOffset < 0)
-							DialogInventoryOffset = Math.floor((DialogInventory.length - 1) / CharacterAppearanceNumClothPerPage) * CharacterAppearanceNumClothPerPage;
+							DialogInventoryOffset = Math.floor((inventory.length - 1) / CharacterAppearanceNumClothPerPage) * CharacterAppearanceNumClothPerPage;
 						AppearancePreviewBuild(C, CharacterAppearanceSelectedGroup, true);
 					}
 
 					// Accepts the new selection
 					if (button === "Accept" || button === "Cancel") {
 						CharacterAppearanceMode = "Cloth";
+						AppearanceExitSearchMode();
 					}
 
 					// Rebuild the menu buttons as selecting a button here can change what should appear

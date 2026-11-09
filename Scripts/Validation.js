@@ -714,8 +714,8 @@ function ValidationSanitizeProperties(C, item) {
 	changed = ValidationSanitizeStringArray(property, "Hide") || changed;
 
 	// If the property has an expression, it needs to be in the asset or group's AllowExpression array
-	const allowExpression = asset.AllowExpression || asset.Group.AllowExpression || [];
-	if (property.Expression != null && !allowExpression.includes(property.Expression)) {
+	const allowExpression = asset.AllowExpression ?? [];
+	if (property.Expression !== undefined && !allowExpression.includes(property.Expression)) {
 		console.error(`Removing invalid expression "${property.Expression}" from ${asset.Name}`);
 		delete property.Expression;
 		changed = true;
@@ -808,10 +808,7 @@ function ValidationSanitizeEffects(C, item) {
 	const assetEffect = item.Asset.Effect || [];
 	const allowEffect = item.Asset.AllowEffect || [];
 	property.Effect = property.Effect.filter((effect) => {
-		// The Lock effect is handled by ValidationSanitizeLock
-		if (effect === "Lock") return true;
-		// All other effects must be included in the AllowEffect array to be permitted
-		else if (!assetEffect.includes(effect) && !allowEffect.includes(effect)) {
+		if (!assetEffect.includes(effect) && !allowEffect.includes(effect)) {
 			console.error(`Filtering out invalid Effect entry on ${item.Asset.Name}:`, effect);
 			changed = true;
 			return false;

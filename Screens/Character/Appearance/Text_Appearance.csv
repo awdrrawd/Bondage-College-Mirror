@@ -29,3 +29,5 @@ ColorChangeMultiDisabled,Unable to change color due to player permissions,,
 OwnerBlock,blocked by owner
 Layering,Change item layering
 None,None
+Search,Filter Items
+Remove,Close

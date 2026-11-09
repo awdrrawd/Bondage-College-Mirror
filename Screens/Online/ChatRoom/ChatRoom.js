@@ -4820,8 +4820,10 @@ function ChatRoomMessageSetReply(msgId) {
 	chatInput.setAttribute("reply-id", msgId);
 	const type = ChatRoomMessageGetType(msgId);
 	const isWhisper = type === "Whisper";
-	if (isWhisper) {
-		const receiver = Number(replyMessage.getAttribute("data-sender")) === Player.MemberNumber ? Number(replyMessage.getAttribute("data-target")) : Number(replyMessage.getAttribute("data-sender"));
+	const sender = CommonParseInt(replyMessage.getAttribute("data-sender") ?? "");
+	const target = CommonParseInt(replyMessage.getAttribute("data-target") ?? "");
+	const receiver = (sender === Player.MemberNumber ? target : sender) ?? -1;
+	if (isWhisper && receiver !== -1 && ChatRoomTargetMemberNumber !== receiver) {
 		chatInput.value =  `/whisper ${receiver} ${chatInput.value.replace(/\/whisper\s*\d+ ?/u, "")}`;
 	}
 	const replyIndicator = document.getElementById("chat-room-reply-indicator");

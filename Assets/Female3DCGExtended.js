@@ -25591,6 +25591,49 @@ var AssetFemale3DCGExtended = {
 					},
 				},
 				{
+					Name: "FaircloughManor",
+					Key: "FaircloughManor",
+					DrawImages: true,
+					Options: [
+						{}, // Off
+						{}, // Gaige Fairclough
+						{}, // Miku Fairclough
+						{}, // Vanessa Fairclough
+						{}, // Runa Fairclough
+						{}, // Bianca Fairclough
+						{}, // Bella Fairclough
+					],
+					DrawData: {
+						elementData: [
+							{ imagePath: "Screens/Inventory/ItemHandheld/Plushies/None.png" },
+							{
+								imagePath:
+									"Assets/Female3DCG/ItemHandheld/Plushie_GaigeFairclough.png",
+							},
+							{
+								imagePath:
+									"Assets/Female3DCG/ItemHandheld/Plushie_MikuFairclough.png",
+							},
+							{
+								imagePath:
+									"Assets/Female3DCG/ItemHandheld/Plushie_VanessaFairclough.png",
+							},
+							{
+								imagePath:
+									"Assets/Female3DCG/ItemHandheld/Plushie_RunaFairclough.png",
+							},
+							{
+								imagePath:
+									"Assets/Female3DCG/ItemHandheld/Plushie_BiancaFairclough.png",
+							},
+							{
+								imagePath:
+									"Assets/Female3DCG/ItemHandheld/Plushie_BellaFairclough.png",
+							},
+						],
+					},
+				},
+				{
 					Name: "Position",
 					Key: "Position",
 					Options: [

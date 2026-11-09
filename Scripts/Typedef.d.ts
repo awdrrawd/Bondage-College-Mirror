@@ -396,7 +396,7 @@ type AppearanceMenuButtonType = (
 	"Wardrobe" | "WardrobeDisabled" | "Reset" | "WearRandom" | "Random" | "Copy"
 	| "Paste" | "Naked" | "Accept" | "Cancel" | "Character" | "Next" | "Prev" | "Swap"
 	| "Use" | "UseDisabled" | "PermissionMode" | "ColorChange" | "ColorChangeDisabled"
-	| "ColorChangeMulti" | "ColorChangeMultiDisabled"
+	| "ColorChangeMulti" | "ColorChangeMultiDisabled" | "Search" | "Remove"
 );
 
 declare namespace ElementDOMScreen {

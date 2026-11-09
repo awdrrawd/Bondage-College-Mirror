@@ -224,6 +224,16 @@ function AssetAdd(Group, AssetDef, ExtendedConfig, GroupDef) {
 	const allowLock = typeof AssetDef.AllowLock === "boolean" ? AssetDef.AllowLock : false;
 	const difficulty = AssetDef.Difficulty ?? 0;
 
+	let allowEffect = allowLock ? CommonArrayConcatDedupe(AssetDef.AllowEffect ?? [], ["Lock"]) : AssetDef.AllowEffect;
+	if (AssetDef.Effect) {
+		allowEffect = CommonArrayConcatDedupe(allowEffect ?? [], AssetDef.Effect);
+	}
+
+	let allowExpression = AssetDef.AllowExpression ?? GroupDef.AllowExpression;
+	if (allowExpression) {
+		allowExpression = CommonArrayConcatDedupe(allowExpression, [null]);
+	}
+
 	/** @type {Mutable<Asset>} */
 	const A = {
 		Name: AssetParseName(AssetDef.Name, `Asset name "${Group.Name}/${AssetDef.Name}"`),
@@ -280,7 +290,7 @@ function AssetAdd(Group, AssetDef, ExtendedConfig, GroupDef) {
 		FamilyOnly: (AssetDef.FamilyOnly == null) ? false : AssetDef.FamilyOnly,
 		ExpressionTrigger: AssetDef.ExpressionTrigger,
 		RemoveItemOnRemove: (AssetDef.RemoveItemOnRemove == null) ? Group.RemoveItemOnRemove : Group.RemoveItemOnRemove.concat(AssetDef.RemoveItemOnRemove),
-		AllowEffect: AssetDef.AllowEffect,
+		AllowEffect: allowEffect,
 		AllowBlock: AssetDef.AllowBlock,
 		AllowTighten: AssetDef.AllowTighten ?? (AssetDef.IsRestraint || difficulty > 0),
 		AllowHide: AssetDef.AllowHide,
@@ -312,7 +322,7 @@ function AssetAdd(Group, AssetDef, ExtendedConfig, GroupDef) {
 		AvailableLocations: AssetDef.AvailableLocations || [],
 		OverrideHeight: AssetDef.OverrideHeight,
 		DrawLocks: allowLock && (typeof AssetDef.DrawLocks === "boolean" ? AssetDef.DrawLocks : true),
-		AllowExpression: AssetDef.AllowExpression,
+		AllowExpression: allowExpression,
 		MirrorExpression: AssetDef.MirrorExpression,
 		FixedPosition: typeof AssetDef.FixedPosition === "boolean" ? AssetDef.FixedPosition : false,
 		Layer: [],

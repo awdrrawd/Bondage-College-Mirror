@@ -1177,8 +1177,8 @@ function testAssetHasPNG(assets, extendedDataRecords, poseRecord) {
 			}
 
 			// Combinations involving expressions
-			/** @type {readonly (null | ExpressionName)[]} */
-			let expressions = [null, ...(layer.Asset.AllowExpression ?? layer.Asset.Group.AllowExpression ?? [])];
+			/** @type {readonly ExpressionName[]} */
+			let expressions = layer.Asset.AllowExpression ?? [];
 			if (
 				!(expressionGroups.has(asset.Group.Name) || layer.MirrorExpression)
 				|| (asset.Group.Name === "Pussy" && asset.Name.startsWith("Pussy"))

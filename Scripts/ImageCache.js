@@ -110,7 +110,7 @@ class CachedImage {
 			if (this.state !== CachedImageState.LOADING) return;
 
 			// Load failed. Display the error in the console and mark it as failed.
-			console.error("Failed to load image " + this.url, err);
+			console.error("Failed to load image " + this.url, { err });
 			this.state = CachedImageState.FAILED;
 			this.cache._imageStateDidChange(this);
 		}

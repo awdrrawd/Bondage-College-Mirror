@@ -261,9 +261,7 @@ function fileSizes() {
 
 	const obj = through.obj(
 		async function (file, enc, cb) {
-			// @ts-expect-error Smuggling size through
 			if (!this.sizes) {
-				// @ts-expect-error Smuggling size through
 				this.sizes = sizes;
 			}
 

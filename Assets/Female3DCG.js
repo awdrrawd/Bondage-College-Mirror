@@ -6520,6 +6520,7 @@ var AssetFemale3DCG = [
 			},
 			{ Name: "SADollhouse", Left: 178, Top: 268 },
 			{ Name: "MansionValentine", Left: 200, Top: 264 },
+			{ Name: "FaircloughManor", Left: 200, Top: 264 },
 		],
 	},
 	// #endregion
@@ -12710,6 +12711,15 @@ var AssetFemale3DCG = [
 			{
 				Name: "Camisole",
 				InventoryID: 281,
+				StyleOverride: ["EchoV2"],
+				Top: {
+					AllFours: 209,
+				},
+				PoseMapping: {
+					...AssetPoseMapping.Bra,
+					AllFours: "Hogtied",
+					Yoked: PoseType.DEFAULT,
+				},
 				Gender: "F",
 				Prerequisite: ["HasBreasts"],
 				Priority: 22,
@@ -28982,8 +28992,8 @@ var AssetFemale3DCG = [
 					{ Name: "Webbing" },
 					{ Name: "Supports" },
 					{ Name: "Points" },
-					{ Name: "Buckles", Priority: 3 },
-					{ Name: "Straps" },
+					{ Name: "Buckles", Priority: 3, AllowTypes: { typed: [2] } },
+					{ Name: "Straps", AllowTypes: { typed: [2] } },
 				],
 			},
 			{
@@ -41323,7 +41333,6 @@ var AssetFemale3DCG = [
 				StyleOverride: ["EchoV2"],
 				Gender: "F",
 				Fetish: ["Leather"],
-				BuyGroup: "LeatherStrapHarness",
 				Value: 50,
 				Difficulty: 50,
 				Time: 15,
@@ -41335,9 +41344,7 @@ var AssetFemale3DCG = [
 				Layer: [
 					{ Name: "", Color: ["#101010"] },
 					{
-						Name: "Lock",
-						LockLayer: true,
-						ParentGroup: "",
+						...AssetDefaultLockLayer,
 						StyleOverride: [],
 					},
 				],
@@ -41497,10 +41504,8 @@ var AssetFemale3DCG = [
 			{
 				Name: "HighSecurityHarness",
 				InventoryID: 678,
-				StyleOverride: ["EchoV2"],
 				Gender: "F",
 				Fetish: ["Metal"],
-				BuyGroup: "HighSecurityHarness",
 				Value: 50,
 				Difficulty: 50,
 				Time: 20,
@@ -41518,6 +41523,8 @@ var AssetFemale3DCG = [
 				Layer: [
 					{
 						Name: "StrapsHarness",
+						StyleOverride: ["EchoV2"],
+						CreateLayerTypesOverride: [1, 3],
 						Color: ["#444444"],
 						ParentGroup: "",
 						Priority: 15,
@@ -41736,7 +41743,6 @@ var AssetFemale3DCG = [
 				Name: "ThinLeatherStraps",
 				Audio: "LeatherStretchingWithMetal",
 				InventoryID: 679,
-				StyleOverride: ["EchoV2"],
 				Gender: "F",
 				Fetish: ["Leather"],
 				Value: 70,
@@ -41751,7 +41757,7 @@ var AssetFemale3DCG = [
 				DrawLocks: false,
 				Extended: true,
 				Layer: [
-					{ Name: "Strap" },
+					{ Name: "Strap", StyleOverride: ["EchoV2"] },
 					{ Name: "Buckle" },
 					{ Name: "Locks", LockLayer: true },
 				],
@@ -53279,6 +53285,30 @@ var AssetFemale3DCG = [
 					{
 						Name: "puppygirl_Elaina",
 						AllowTypes: { AybesSuite: 4 },
+					},
+					{
+						Name: "GaigeFairclough",
+						AllowTypes: { FaircloughManor: 1 },
+					},
+					{
+						Name: "MikuFairclough",
+						AllowTypes: { FaircloughManor: 2 },
+					},
+					{
+						Name: "VanessaFairclough",
+						AllowTypes: { FaircloughManor: 3 },
+					},
+					{
+						Name: "RunaFairclough",
+						AllowTypes: { FaircloughManor: 4 },
+					},
+					{
+						Name: "BiancaFairclough",
+						AllowTypes: { FaircloughManor: 5 },
+					},
+					{
+						Name: "BellaFairclough",
+						AllowTypes: { FaircloughManor: 6 },
 					},
 				],
 			},

@@ -4697,7 +4697,7 @@ class _DialogExpressionMenu extends _DialogSelfMenu {
 			for (const group of AssetGroup) {
 				if (!group.HasExpression() || group.Name === "Eyes2") continue;
 				const { Name, AllowExpression } = group;
-				expressions[Name] = AllowExpression.includes(null) ? AllowExpression : [null, ...AllowExpression];
+				expressions[Name] = AllowExpression;
 			}
 			return this._facialExpressions = expressions;
 		} else {
