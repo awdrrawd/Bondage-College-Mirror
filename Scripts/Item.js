@@ -317,7 +317,7 @@ function ItemPropertiesDifference(propertyList, asset, output=undefined) {
 
 		/** @type {undefined | PropertyDataEntry<any>} */
 		const entry = PropertyData[propName];
-		const propList = [propValue, ...propertyList.map(properties => properties[propName])];
+		const propList = [propValue, ...propertyList.map(properties => properties === ret ? undefined : properties[propName])];
 		if (entry) {
 			/** @type {Unknown<ItemProperties>} */(ret)[propName] = entry.difference(propList, { asset });
 		} else if (propList.filter(i => i != null).length >= 2) {
@@ -327,20 +327,27 @@ function ItemPropertiesDifference(propertyList, asset, output=undefined) {
 	return ret;
 }
 
+/** @satisfies {Record<ItemProperty.ValidationStatus, number>} */
+const ItemPropertiesValidationStatus = /** @type {const} */({
+	ok: 0,
+	error: 1,
+	criticalError: 2,
+});
+
 /**
  * @param {ItemProperties} properties
  * @param {Asset} asset The asset
  * @param {object} [options]
  * @param {Character} [options.C] The character wearing/intended to wear the item
+ * @param {readonly (keyof ItemProperties)[]} [options.ignoreErrors] Exclude specific property outputs from affecting the final error status
  * @returns {ItemProperty.ValidationMultiOutput}
  */
 function ItemPropertiesValidate(properties, asset, options=undefined) {
-	/** @satisfies {Record<ItemProperty.ValidationStatus, number>} */
-	const statusMapping = /** @type {const} */({
-		ok: 0,
-		error: 1,
-		criticalError: 2,
-	});
+	options ??= {};
+
+	if (CommonIsObject(properties)) {
+		properties = {};
+	}
 
 	const { extendedOptions } = ItemPropertiesGetBundleProperties(AppearanceItem.fromAsset(asset, { property: properties }));
 	/** @type {ItemProperties} */
@@ -352,35 +359,98 @@ function ItemPropertiesValidate(properties, asset, options=undefined) {
 	/** @type {Omit<ItemProperty.ValidationMultiOutput, "status"> & { status: 0 | 1 | 2 }} */
 	const ret = {
 		value: {},
-		status: statusMapping.ok,
+		status: ItemPropertiesValidationStatus.ok,
 		errorDescriptions: {},
 	};
 	for (const [propName, propValue] of CommonEntries(properties)) {
 		/** @type {undefined | PropertyDataEntry<any>} */
 		const entry = PropertyData[propName];
 		if (!entry) {
-			ret.status = statusMapping.criticalError;
-			ret.errorDescriptions[propName] = `Missing "${propName}" validator function`;
+			// TODO: Consider bumping this to a (critical) error once `PropertyData` is complete
 			continue;
 		}
 
-		const output = entry.validate(propValue, { asset, C: options?.C }, defaults[propName]);
+		const output = entry.validate(propValue, { asset, C: options.C }, defaults[propName]);
 		switch (output.status) {
 			case "ok":
 				/** @type {Unknown<ItemProperties>} */(ret.value)[propName] = output.value;
 				break;
 			case "error":
-				ret.status = CommonMax(ret.status, statusMapping[output.status]);
+				if (!options.ignoreErrors?.includes(propName)) {
+					ret.status = CommonMax(ret.status, ItemPropertiesValidationStatus[output.status]);
+				}
 				/** @type {Unknown<ItemProperties>} */(ret.value)[propName] = output.value;
 				ret.errorDescriptions[propName] = output.errorDescription;
 				break;
 			case "criticalError":
-				ret.status = statusMapping.criticalError;
+				if (!options.ignoreErrors?.includes(propName)) {
+					ret.status = ItemPropertiesValidationStatus.criticalError;
+				}
 				ret.errorDescriptions[propName] = output.errorDescription;
 				break;
 		}
 	}
-	return { ...ret, status: CommonObjectFlip(statusMapping)[ret.status] };
+	return { ...ret, status: CommonObjectFlip(ItemPropertiesValidationStatus)[ret.status] };
+}
+
+/**
+ * @template {{ [key: string]: unknown }} T1
+ * @overload
+ * @param {{ readonly [k in keyof T1]?: ItemProperty.ValidationOutput<T1[k]> }} outputs
+ * @returns {ItemProperty.ValidationOutput<T1>}
+ */
+/**
+ * @template T2
+ * @overload
+ * @param {readonly ItemProperty.ValidationOutput<T2>[]} outputs
+ * @returns {ItemProperty.ValidationOutput<T2[]>}
+ */
+/**
+ * Merge the validation output of multiple sub-properties (be they provided as array or record) into a single output
+ * @template {{}} T
+ * @param {{ readonly [k in keyof T]?: ItemProperty.ValidationOutput<T[k]> }} outputs
+ * @returns {ItemProperty.ValidationOutput<T>}
+ */
+function ItemPropertiesMergeValidationOutputs(outputs) {
+	/** @type {{ value: T, status: 0 | 1 | 2, errorDescription: unknown[] }} */
+	const ret = {
+		value: /** @type {T} */({}),
+		status: ItemPropertiesValidationStatus.ok,
+		errorDescription: [],
+	};
+	for (const [name, output] of CommonEntries(outputs)) {
+		if (output === undefined) {
+			continue;
+		}
+		switch (output.status) {
+			case "ok":
+				ret.value[name] = output.value;
+				break;
+			case "error":
+				ret.value[name] = output.value;
+				ret.errorDescription.push(output.errorDescription);
+				break;
+			case "criticalError":
+				ret.errorDescription.push(output.errorDescription);
+				break;
+		}
+		ret.status = CommonMax(ret.status, ItemPropertiesValidationStatus[output.status]);
+	}
+
+	if (CommonIsArray(outputs)) {
+		// @ts-expect-error: convert back into an array
+		ret.value = Object.values(ret.value).filter(i => i !== undefined);
+	}
+
+	switch (ret.status) {
+		case ItemPropertiesValidationStatus.ok:
+			return { status: "ok", value: ret.value };
+		case ItemPropertiesValidationStatus.error:
+			// Trim the trailing \n from the error description
+			return { status: "error", value: ret.value, errorDescription: ret.errorDescription };
+		case ItemPropertiesValidationStatus.criticalError:
+			return { status: "criticalError", errorDescription: ret.errorDescription };
+	}
 }
 
 /**
@@ -390,7 +460,7 @@ function ItemPropertiesValidate(properties, asset, options=undefined) {
  * @param {Asset} asset The asset
  * @param {object} [options]
  * @param {boolean} [options.gatherNonEquivalancies] Whether to gather and return the names of all non-equivalent properties.
- * The returned set will always be empty otherwise. Defaults to `false`.
+ * The returned set will contain up to 1 entry otherwise. Defaults to `false`.
  * @param {boolean} [options.eqOrSubset] Whether to check whether the properties are either equivalent or form a (deep)
  * subset of each other (see {@link ItemPropertiesIsSubset}). Defaults to `false`.
  * @returns {{ result: boolean, nonEquivalencies: Set<keyof ItemProperties> }}
@@ -406,16 +476,19 @@ function ItemPropertiesCompare(properties1, properties2, asset, options=undefine
 	]);
 	const comparisonFunc = options.eqOrSubset ? "isSubset" : "compare";
 	propLoop: for (const propName of propNames) {
-		const propValue1 = properties1[propName];
-		const propValue2 = properties2[propName];
 		/** @type {undefined | PropertyDataEntry<any>} */
 		const entry = PropertyData[propName];
-		const isEquiv = entry?.[comparisonFunc](propValue1, propValue2, { asset }) ?? propValue1 === propValue2;
+		if (!entry) {
+			continue;
+		}
+
+		const propValue1 = properties1[propName];
+		const propValue2 = properties2[propName];
+		const isEquiv = entry[comparisonFunc](propValue1, propValue2, { asset });
 		if (!isEquiv) {
 			ret.result = false;
-			if (options.gatherNonEquivalancies) {
-				ret.nonEquivalencies.add(propName);
-			} else {
+			ret.nonEquivalencies.add(propName);
+			if (!options.gatherNonEquivalancies) {
 				break propLoop;
 			}
 		}
@@ -430,7 +503,7 @@ function ItemPropertiesCompare(properties1, properties2, asset, options=undefine
  * @param {Asset} asset The asset
  * @param {object} [options]
  * @param {boolean} [options.gatherNonEquivalancies] Whether to gather and return the names of all non-equivalent properties.
- * The returned set will always be empty otherwise. Defaults to `false`.
+ * The returned set will contain up to 1 entry otherwise. Defaults to `false`.
  * @returns {{ result: boolean, nonEquivalencies: Set<keyof ItemProperties> }}
  */
 function ItemPropertiesIsSubset(subProperties, superProperties, asset, options=undefined) {
@@ -444,9 +517,11 @@ function ItemPropertiesIsSubset(subProperties, superProperties, asset, options=u
  * @param {undefined | Readonly<ItemPropertiesMinimized>} properties The minimized item properties
  * @param {object} [options]
  * @param {boolean} [options.initExtendedItem] Whether to re-initialize any extended item options (including locks)
+ * @param {Character} [options.C] The character (if any)
  * @returns {ItemProperties} The maximized item properties
  */
 function ItemPropertiesDecompress(item, properties, options=undefined) {
+	options ??= {};
 	properties ??= {};
 	if (!CommonIsObject(properties)) {
 		console.error(`Invalid property data for item: "${item.Asset.Group.Name}/${item.Asset.Name}"`, properties);
@@ -470,10 +545,10 @@ function ItemPropertiesDecompress(item, properties, options=undefined) {
 		CommonArrayConcatDedupe(item.Property.Fetish ??= [], ["Masochism"]);
 	}
 
-	const C = ItemPropertiesDummy ??= CharacterLoadSimple("ItemBundleDummy");
-	if (options?.initExtendedItem ?? true) {
+	const C = options.C ?? (ItemPropertiesDummy ??= CharacterLoadSimple("ItemBundleDummy"));
+	if (options.initExtendedItem ?? true) {
 		if (item.Asset.Extended) {
-			// Init will respect the `TypeRecord` values assigned further up above via `ItemPropertiesMerge()`
+			// Init will respect the `TypeRecord` values assigned further up above via `ItemPropertiesUnion()`
 			ExtendedItemInit(C, item, false, false);
 		} else if (properties.LockedBy) {
 			// Code branch already taken care of by `ExtendedItemInit` for extended items
@@ -481,6 +556,16 @@ function ItemPropertiesDecompress(item, properties, options=undefined) {
 			const args = [C, item, false, false];
 			CommonCallFunctionByNameWarn(`InventoryItemMisc${properties.LockedBy}Init`, ...args);
 		}
+	} else {
+		// Code branch already taken care of by `ExtendedItemInit` for extended items
+		const { status, errorDescriptions } = ItemPropertiesValidate(item.Property, item.Asset, { C });
+		if (status !== "ok") {
+			console.error(
+				`Sanitizing invalid '${item.Asset.Group.Name}/${item.Asset.Name}' item properties: error status '${status}'`,
+				`\n${JSON.stringify(errorDescriptions, undefined, 4)}`,
+			);
+		}
 	}
+
 	return item.Property;
 }

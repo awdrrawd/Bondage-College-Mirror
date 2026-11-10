@@ -1650,7 +1650,7 @@ var ServerAccountDataSyncedValidate = {
 		return ValidationApplyRecord(arg, C, PreferenceOnlineSharedSettingsValidate, true);
 	},
 	Crafting: (arg, C) => {
-		return CraftingDecompressServerData(arg);
+		return CraftingDecompressServerData(arg, { C });
 	},
 	Game: (arg, C) => {
 		if (!CommonIsObject(arg)) {

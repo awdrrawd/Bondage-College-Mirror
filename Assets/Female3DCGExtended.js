@@ -12197,6 +12197,268 @@ var AssetFemale3DCGExtended = {
 			],
 			ChangeWhenLocked: false,
 		}, // Kennel
+		GiantJar: {
+			Archetype: ExtendedArchetype.MODULAR,
+			ChatTags: [
+				CommonChatTags.SOURCE_CHAR,
+				CommonChatTags.DEST_CHAR,
+				CommonChatTags.ASSET_NAME,
+			],
+			Modules: [
+				{
+					Name: "OpenClose",
+					Key: "a",
+					Options: [
+						{
+							Property: {
+								Difficulty: 0,
+							},
+						}, // a0
+						{
+							Property: {
+								Effect: [E.BlockWardrobe],
+								Block: [
+									"ItemAddon",
+									"ItemArms",
+									"ItemBoots",
+									"ItemBreast",
+									"ItemButt",
+									"ItemEars",
+									"ItemFeet",
+									"ItemHandheld",
+									"ItemHands",
+									"ItemHead",
+									"ItemHood",
+									"ItemLegs",
+									"ItemMisc",
+									"ItemMouth",
+									"ItemMouth2",
+									"ItemMouth3",
+									"ItemNeck",
+									"ItemNeckAccessories",
+									"ItemNeckRestraints",
+									"ItemNipples",
+									"ItemNipplesPiercings",
+									"ItemNose",
+									"ItemPelvis",
+									"ItemTorso",
+									"ItemTorso2",
+									"ItemVulva",
+									"ItemVulvaPiercings",
+								],
+								Difficulty: 1,
+							},
+						}, // a1
+					],
+				},
+				{
+					Name: "FillState",
+					Key: "b",
+					Options: [
+						{}, // b0
+						{
+							Property: {
+								Block: ["ItemBoots"],
+							},
+						}, // b1
+						{
+							Property: {
+								Block: ["ItemBoots", "ItemFeet"],
+							},
+						}, // b2
+						{
+							Property: {
+								Block: ["ItemBoots", "ItemFeet", "ItemLegs"],
+							},
+						}, // b3
+						{
+							Property: {
+								Block: [
+									"ItemBoots",
+									"ItemButt",
+									"ItemFeet",
+									"ItemLegs",
+									"ItemPelvis",
+									"ItemVulva",
+									"ItemVulvaPiercings",
+								],
+								Difficulty: 0,
+							},
+						}, // b4
+						{
+							Property: {
+								Block: [
+									"ItemArms",
+									"ItemBoots",
+									"ItemBreast",
+									"ItemButt",
+									"ItemFeet",
+									"ItemHandheld",
+									"ItemHands",
+									"ItemLegs",
+									"ItemNipples",
+									"ItemNipplesPiercings",
+									"ItemPelvis",
+									"ItemTorso",
+									"ItemTorso2",
+									"ItemVulva",
+									"ItemVulvaPiercings",
+								],
+								Difficulty: 1,
+							},
+						}, // b5
+						{
+							Property: {
+								Block: [
+									"ItemArms",
+									"ItemBoots",
+									"ItemBreast",
+									"ItemButt",
+									"ItemFeet",
+									"ItemHandheld",
+									"ItemHands",
+									"ItemLegs",
+									"ItemNeck",
+									"ItemNeckAccessories",
+									"ItemNeckRestraints",
+									"ItemNipples",
+									"ItemNipplesPiercings",
+									"ItemPelvis",
+									"ItemTorso",
+									"ItemTorso2",
+									"ItemVulva",
+									"ItemVulvaPiercings",
+								],
+								Difficulty: 2,
+							},
+						}, // b6
+					],
+				},
+				{
+					Name: "Bubbles",
+					Key: "c",
+					Options: [
+						{}, // c0
+						{}, // c1
+						{}, // c2
+						{}, // c3
+						{}, // c4
+					],
+				},
+				{
+					Name: "TextLabel",
+					Key: "d",
+					Options: [
+						{}, // d0
+						{
+							Property: {
+								DrawingLeft: {
+									"Text Fill": { [PoseType.DEFAULT]: 0 },
+									"Text Stroke": { [PoseType.DEFAULT]: 0 },
+								},
+								DrawingTop: {
+									"Text Fill": { [PoseType.DEFAULT]: 0 },
+									"Text Stroke": { [PoseType.DEFAULT]: 0 },
+								},
+							},
+							HasSubscreen: true,
+							ArchetypeConfig: {
+								Archetype: ExtendedArchetype.TEXT,
+								MaxLength: {
+									Text: 50,
+									Text2: 24,
+									Text3: 24,
+								},
+								Font: "Archivo Black",
+								ScriptHooks: {
+									AfterDraw: AssetsItemDevicesGiantJarAfterDrawHook,
+								},
+							},
+						}, // d1
+						{
+							Property: {
+								DrawingLeft: {
+									"Text Fill": { [PoseType.DEFAULT]: 0 },
+									"Text Stroke": { [PoseType.DEFAULT]: 0 },
+								},
+								DrawingTop: {
+									"Text Fill": { [PoseType.DEFAULT]: 0 },
+									"Text Stroke": { [PoseType.DEFAULT]: 0 },
+								},
+							},
+							HasSubscreen: true,
+							ArchetypeConfig: {
+								Archetype: ExtendedArchetype.TEXT,
+								MaxLength: {
+									Text: 30,
+									Text2: 30,
+									Text3: 30,
+								},
+								Font: "Archivo Black",
+								ScriptHooks: {
+									AfterDraw: AssetsItemDevicesGiantJarAfterDrawHook,
+								},
+							},
+						}, // d2
+						{
+							Property: {
+								DrawingLeft: {
+									"Text Fill": { [PoseType.DEFAULT]: 0 },
+									"Text Stroke": { [PoseType.DEFAULT]: 0 },
+								},
+								DrawingTop: {
+									"Text Fill": { [PoseType.DEFAULT]: 0 },
+									"Text Stroke": { [PoseType.DEFAULT]: 0 },
+								},
+							},
+							HasSubscreen: true,
+							ArchetypeConfig: {
+								Archetype: ExtendedArchetype.TEXT,
+								MaxLength: {
+									Text: 24,
+									Text2: 24,
+									Text3: 30,
+								},
+								Font: "Archivo Black",
+								ScriptHooks: {
+									AfterDraw: AssetsItemDevicesGiantJarAfterDrawHook,
+								},
+							},
+						}, // d3
+						{
+							Property: {
+								DrawingLeft: {
+									"Text Fill": { [PoseType.DEFAULT]: 0 },
+									"Text Stroke": { [PoseType.DEFAULT]: 0 },
+								},
+								DrawingTop: {
+									"Text Fill": { [PoseType.DEFAULT]: 0 },
+									"Text Stroke": { [PoseType.DEFAULT]: 0 },
+								},
+							},
+							HasSubscreen: true,
+							ArchetypeConfig: {
+								Archetype: ExtendedArchetype.TEXT,
+								MaxLength: {
+									Text: 24,
+									Text2: 24,
+									Text3: 24,
+								},
+								Font: "Archivo Black",
+								ScriptHooks: {
+									AfterDraw: AssetsItemDevicesGiantJarAfterDrawHook,
+								},
+							},
+						}, // d4
+					],
+				},
+			],
+			BaselineProperty: {
+				Text: "",
+				Text2: "",
+				Text3: "",
+			},
+		}, // GiantJar
 		Locker: {
 			Archetype: ExtendedArchetype.TYPED,
 			Options: [

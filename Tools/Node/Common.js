@@ -73,6 +73,7 @@ export const NEEDED_FILES = [
 	"Screens/Inventory/ItemMisc/MistressTimerPadlock/MistressTimerPadlock.js",
 	"Screens/Inventory/ItemMisc/OwnerTimerPadlock/OwnerTimerPadlock.js",
 	"Screens/Inventory/ItemMisc/OwnerPadlock/OwnerPadlock.js",
+	"Screens/Inventory/ItemDevices/GiantJar/GiantJar.js",
 	"Screens/Inventory/ItemMisc/LoversTimerPadlock/LoversTimerPadlock.js",
 	"Screens/Inventory/ItemMisc/FamilyPadlock/FamilyPadlock.js",
 	"Screens/Inventory/ItemMisc/MistressPadlock/MistressPadlock.js",

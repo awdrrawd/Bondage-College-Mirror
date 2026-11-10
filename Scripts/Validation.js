@@ -687,9 +687,17 @@ function ValidationSanitizeProperties(C, item) {
 
 	// Ensure that extended items always have properties set
 	let changed = false;
-	if (ExtendedItemInit(C, item, false)) {
-		console.error(`Initializing one or more missing extended item properties from ${asset.Group.Name}:${asset.Name}`);
-		changed = true;
+	if (item.Asset.Extended) {
+		changed = ExtendedItemInit(C, item, false, false, true);
+	} else {
+		const { status, errorDescriptions } = ItemPropertiesValidate(item.Property, asset, { C });
+		if (status !== "ok") {
+			changed = true;
+			console.error(
+				`Sanitizing invalid '${C.Name}' (${C.MemberNumber ?? C.Type}) '${asset.Group.Name}/${asset.Name}' item properties: error status '${status}'`,
+				`\n${JSON.stringify(errorDescriptions, undefined, 4)}`,
+			);
+		}
 	}
 
 	const property = item.Property;

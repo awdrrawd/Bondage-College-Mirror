@@ -59,6 +59,7 @@ var AudioList = [
 	{ Name: "Squeak", File: "SqueakToy" },
 	{ Name: "SqueakyToy", File: "SqueakyToy" },
 	{ Name: "Whip1", File: "SmackWhip1" },
+	{ Name: "Bubbles", File: "bubbles" },
 	{ Name: "Whip2", File: "SmackWhip2" },
 	{ Name: "Sybian", File: "Sybian" },
 	{ Name: "Unlock", File: "UnlockSmall" },
@@ -91,6 +92,7 @@ var AudioList = [
 	{ Name: "LeatherStretchingShort", File: "LeatherStretchingShort" },
 	{ Name: "LeatherStretchingWithMetal", File: ["LeatherStretchingWithMetal1", "LeatherStretchingWithMetal2", "TightLeatherStretchWithMetal"] },
 	{ Name: "PolyesterWoosh1", File: "PolyesterWoosh1" },
+	{ Name: "Pour", File: "pour" },
 	{ Name: "PolyesterWoosh2", File: "PolyesterWoosh2" },
 	{ Name: "PolyesterWooshWithMetal1", File: "PolyesterWooshWithMetal1" },
 	{ Name: "PolyesterWooshWithMetal2", File: "PolyesterWooshWithMetal2" },
@@ -229,6 +231,15 @@ var AudioActions = [
 			"FuturisticTrainingBeltSetStateHighPriorityEdgeLowSelf"
 		].some(A => data.Content.includes(A)),
 		GetSoundEffect: () => "VibrationEdgeLow"
+	},
+	{
+		IsAction: (data) => [
+			"ItemDevicesGiantJarSetc1",
+			"ItemDevicesGiantJarSetc2",
+			"ItemDevicesGiantJarSetc3",
+			"ItemDevicesGiantJarSetc4"
+		].some(A => data.Content.includes(A)),
+		GetSoundEffect: () => "Bubbles",
 	},
 	{
 		IsAction: (data) => [
@@ -387,6 +398,17 @@ var AudioActions = [
 			"ItemHoodBalloonSetExtreme",
 		].some(A => data.Content.includes(A)),
 		GetSoundEffect: () => "BalloonRubbing"
+	},
+	{
+		IsAction: (data) => [
+			"ItemDevicesGiantJarSetb1",
+			"ItemDevicesGiantJarSetb2",
+			"ItemDevicesGiantJarSetb3",
+			"ItemDevicesGiantJarSetb4",
+			"ItemDevicesGiantJarSetb5",
+			"ItemDevicesGiantJarSetb6"
+		].some(A => data.Content.includes(A)),
+		GetSoundEffect: () => "Pour",
 	},
 	{
 		IsAction: (data) => [

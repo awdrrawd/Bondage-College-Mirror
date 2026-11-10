@@ -135,6 +135,11 @@ ItemDevicesXFrameMetal, Metal
 ItemDevicesBarStoolModern,Modern
 ItemDevicesBarStoolDirty,Dirty
 ItemDevicesBarStoolWooden,Wooden
+ItemDevicesGiantJarGlass,Glass
+ItemDevicesGiantJarReflection,Reflection
+ItemDevicesGiantJarLiquid,Liquid
+ItemDevicesGiantJarBubbles,Bubbles
+ItemDevicesGiantJarLabel,Label
 ItemFeetSturdyLeatherBeltsBelts,Belts
 ItemFeetSturdyLeatherBeltsMetal,Metal
 ItemHandheldElectricGuitarStrap,Strap

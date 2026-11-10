@@ -226,16 +226,28 @@ function ExtendedItemParseScriptHooks(scriptHooks) {
  * @param {Item} Item - The item in question
  * @param {boolean} Push - Whether to push to changes to the server
  * @param {boolean} Refresh - Whether to refresh the character. This should generally be `true`, with custom script hooks being a potential exception.
+ * @param {boolean} log - Whether to log `Init()`-initialized property updates to the console
  * @returns {boolean} Whether properties were updated or not
  */
-function ExtendedItemInit(C, Item, Push=true, Refresh=true) {
+function ExtendedItemInit(C, Item, Push=true, Refresh=true, log=false) {
 	if (Item == null || C == null || !Item.Asset.Extended) {
 		return false;
 	}
 
+	let ret = false;
+	const { status, errorDescriptions } = ItemPropertiesValidate(Item.Property, Item.Asset, { C, ignoreErrors: ["TypeRecord"] });
+	if (status !== "ok") {
+		// Always errors related to invalid values; missing value logging however _is_ subject to the `log` parameter
+		ret = true;
+		console.error(
+			`Sanitizing invalid '${C.Name}' (${C.MemberNumber ?? C.Type}) '${Item.Asset.Group.Name}/${Item.Asset.Name}' item properties: error status '${status}'`,
+			`\n${JSON.stringify(errorDescriptions, undefined, 4)}`,
+		);
+	}
+
 	/** @type {Parameters<ExtendedItemCallbacks.Init>} */
-	const args = [C, Item, Push, Refresh];
-	let ret = CommonCallFunctionByNameWarn(`Inventory${Item.Asset.Group.Name}${Item.Asset.Name}Init`, ...args);
+	const args = [C, Item, Push, Refresh, log];
+	ret = CommonCallFunctionByNameWarn(`Inventory${Item.Asset.Group.Name}${Item.Asset.Name}Init`, ...args) || ret;
 	if (Item.Property.LockedBy && Item.Asset.AllowLock) {
 		ret = CommonCallFunctionByNameWarn(`InventoryItemMisc${Item.Property.LockedBy}Init`, ...args) || ret;
 	}
@@ -550,8 +562,8 @@ function ExtendedItemSetProperty(C, item, previousProperty, newProperty, push=fa
 		item.Property = {};
 	}
 	const Property = item.Property;
-	PropertyDifference(Property, previousProperty);
-	PropertyUnion(Property, newProperty);
+	ItemPropertiesDifference([previousProperty], item.Asset, Property);
+	ItemPropertiesUnion([newProperty], item.Asset, Property);
 
 	// If the item is locked, ensure it has the "Lock" effect
 	if (Property.LockedBy && !(Property.Effect || []).includes("Lock")) {
@@ -1149,14 +1161,18 @@ function ExtendedItemSetOption(data, C, item, newOption, previousOption, push=fa
 		CommonCallFunctionByNameWarn(`${data.functionPrefix}${newOption.Name}Init`, ...args);
 	}
 
-	const newProperty = PropertyUnion(
+	const newProperty = ItemPropertiesUnion(
+		[ExtendedItemGatherSubscreenProperty(item, newOption)],
+		item.Asset,
 		newOptionProperty,
-		ExtendedItemGatherSubscreenProperty(item, newOption),
 	);
-	const previousProperty = PropertyUnion(
+
+	const previousProperty = ItemPropertiesUnion(
+		[ExtendedItemGatherSubscreenProperty(item, previousOption)],
+		item.Asset,
 		previousOptionProperty,
-		ExtendedItemGatherSubscreenProperty(item, previousOption),
 	);
+
 	CommonKeys(data.baselineProperty || {}).forEach(i => delete previousProperty[i]);
 	ExtendedItemSetProperty(C, item, previousProperty, newProperty, push, refresh);
 

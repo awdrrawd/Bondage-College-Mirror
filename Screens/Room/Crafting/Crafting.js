@@ -1983,10 +1983,12 @@ function CraftingSaveServer() {
 /**
  * Deserialize a single crafted item from a string in order to parse data received from the server.
  * @param {string} craftString The serialized crafted item
+ * @param {object} [options]
+ * @param {Character} [options.C] The owner if the crafts (if any)
  * @returns {null | CraftingItem} The crafted item or `null` if either its {@link CraftingItem.Item} or {@link CraftingItem.Name} property is invalid
  * @see {@link CraftingDecompressServerData}
  */
-function CraftingDeserialize(craftString) {
+function CraftingDeserialize(craftString, options=undefined) {
 	const [
 		Item,
 		Property,
@@ -2011,7 +2013,7 @@ function CraftingDeserialize(craftString) {
 	const property = ItemPropertiesDecompress(
 		AppearanceItem.fromAsset(asset),
 		/** @type {ItemPropertiesMinimized} */(CommonJSONParse(ItemProperty || "{}") ?? {}),
-		{ initExtendedItem: false },
+		{ initExtendedItem: false, C: options?.C },
 	);
 	/** @type {CraftingItem & { ItemProperty: ItemProperties }} */
 	const craft = {
@@ -2040,9 +2042,11 @@ function CraftingDeserialize(craftString) {
 /**
  * Deserialize and unpack the crafting data from the server.
  * @param {string | undefined} Data The serialized crafting data or already-decompressed crafting item list
+ * @param {object} [options]
+ * @param {Character} [options.C] The owner of the craft (if any)
  * @returns {(null | CraftingItem)[]}
  */
-function CraftingDecompressServerData(Data) {
+function CraftingDecompressServerData(Data, options=undefined) {
 	if (typeof Data !== "string") return [];
 
 	// Decompress the data
@@ -2058,7 +2062,7 @@ function CraftingDecompressServerData(Data) {
 	}
 
 	// Builds the craft array to assign to the player
-	return DecompressedData.split(CraftingSerializeItemSep).map(CraftingDeserialize);
+	return DecompressedData.split(CraftingSerializeItemSep).map(i => CraftingDeserialize(i, options));
 }
 
 /**
@@ -2071,7 +2075,7 @@ function CraftingLoadServer(Packet) {
 	let Refresh = false;
 	/** @type {Record<number, unknown>} */
 	const CriticalErrors = {};
-	const data = CraftingDecompressServerData(Packet);
+	const data = CraftingDecompressServerData(Packet, { C: Player });
 	for (const [i, item] of CommonEnumerate(data)) {
 		if (item == null) {
 			Player.Crafting.push(null);

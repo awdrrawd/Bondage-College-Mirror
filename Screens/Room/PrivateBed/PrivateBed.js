@@ -111,7 +111,7 @@ function PrivateBedRun() {
 		PrivateBedDrawCharacter(C);
 
 	// In orgasm mode, we add a pink filter and different controls depending on the stage
-	if (PreferenceArousalIsActive(C)) {
+	if (PreferenceArousalIsActive(Player)) {
 		if (Player.ArousalSettings.OrgasmTimer > 0) {
 			DrawRect(0, 0, 2000, 1000, "#FFB0B0B0");
 			if (Player.ArousalSettings.OrgasmStage == 0) {

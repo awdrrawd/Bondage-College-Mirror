@@ -1,3 +1,4 @@
+/* eslint-disable jsdoc/valid-types */
 "use strict";
 
 /**
@@ -387,7 +388,6 @@ function PropertyPunishActivityCheck(name=null, clearCache=true) {
 
 /**
  * Assign a property on an {@link ItemProperties} record via dynamic key.
- * Used by {@link PropertyUnion} and {@link PropertyDifference} where keys are only known at runtime.
  * @template {ItemProperties} T
  * @template {keyof T} K
  * @param {T} output
@@ -400,101 +400,23 @@ function PropertyAssign(output, key, value) {
 
 /**
  * Merge all passed item properties into the passed output, merging (and shallow copying) arrays if necessary.
+ * @deprecated Use {@link ItemPropertiesUnion} instead
  * @param {ItemProperties} output - The to be updated properties
  * @param {readonly ItemProperties[]} args - The additional item properties to be merged into the output
  * @returns {ItemProperties} - The passed output modified inplace
  */
 function PropertyUnion(output, ...args) {
-	for (const property of args) {
-		for (const [key, value] of CommonEntries(property)) {
-			switch (key) {
-				case "Tint": {
-					if (!Array.isArray(value)) {
-						break;
-					}
-					const previousValue = Array.isArray(output[key]) ? [...output[key]] : [];
-					output[key] = [
-						...previousValue,
-						.../** @type {TintDefinition[]} */ (value.filter(i => !previousValue.some(j => CommonObjectEqual(i, j)))),
-					];
-					break;
-				}
-				case "HeightModifier":
-				case "Difficulty": {
-					const newValue = (output[key] || 0) + (/** @type {number} */ (value) || 0);
-					PropertyAssign(output, key, newValue);
-					break;
-				}
-				case "TypeRecord": {
-					output.TypeRecord = {
-						...(output.TypeRecord || {}),
-						.../** @type {TypeRecord} */ (value),
-					};
-					break;
-				}
-				default: {
-					if (Array.isArray(value)) {
-						const arrayKey = /** @type {keyof PropertiesArray.Item} */ (key);
-						const previousValue = Array.isArray(output[arrayKey]) ? [...output[arrayKey]] : [];
-						PropertyAssign(output, arrayKey, /** @type {PropertiesArray.Item[typeof arrayKey]} */ ([
-							...previousValue,
-							...value.filter(i => !previousValue.includes(i)),
-						]));
-					} else {
-						const propertyKey = /** @type {keyof PropertiesNoArray.Item} */ (key);
-						PropertyAssign(output, propertyKey, /** @type {PropertiesNoArray.Item[typeof propertyKey]} */ (value));
-					}
-				}
-			}
-		}
-	}
 	return output;
 }
 
 /**
  * Remove all passed item properties from the passed output, removing (and shallow copying) array entries if necessary.
+ * @deprecated Use {@link ItemPropertiesDifference} instead
  * @param {ItemProperties} output - The to-be updated properties
  * @param {readonly ItemProperties[]} args - The additional item properties to be removed from the output
  * @returns {ItemProperties} - The passed output modified inplace
  */
 function PropertyDifference(output, ...args) {
-	for (const property of args) {
-		for (const [key, value] of CommonEntries(property)) {
-			switch (key) {
-				case "Tint": {
-					if (!Array.isArray(value)) {
-						break;
-					}
-					const previousValue = Array.isArray(output[key]) ? output[key] : [];
-					output[key] = previousValue.filter(i => !value.some(j => CommonObjectEqual(i, j)));
-					break;
-				}
-				case "HeightModifier":
-				case "Difficulty": {
-					const newValue = (output[key] || 0) - (/** @type {number} */ (value) || 0);
-					PropertyAssign(output, key, newValue);
-					break;
-				}
-				case "TypeRecord": {
-					output.TypeRecord = CommonOmit(output.TypeRecord || {}, Object.keys(/** @type {TypeRecord} */ (value)));
-					break;
-				}
-				default: {
-					if (Array.isArray(value)) {
-						const arrayKey = /** @type {keyof PropertiesArray.Item} */ (key);
-						const previousValue = Array.isArray(output[arrayKey]) ? output[arrayKey] : [];
-						PropertyAssign(output, arrayKey, /** @type {PropertiesArray.Item[typeof arrayKey]} */ (
-							previousValue.filter(i => !value.includes(i))
-						));
-						if (output[arrayKey]?.length) {
-							break;
-						}
-					}
-					delete /** @type {ItemProperties} */ (output)[/** @type {keyof ItemProperties} */ (key)];
-				}
-			}
-		}
-	}
 	return output;
 }
 
@@ -577,7 +499,7 @@ class PropertyDataEntry {
 
 	/**
 	 * @readonly
-	 * @type {NonNullable<ItemProperty.PropertyMetaData[T]>}
+	 * @type {Required<ItemProperty.PropertyMetaData>[T]}
 	 */
 	metaData;
 
@@ -619,7 +541,7 @@ class PropertyDataEntry {
 
 	/**
 	 * @private
-	 * @type {undefined | ItemProperty.Validate<T>}
+	 * @type {ItemProperty.Validate<T>}
 	 */
 	_validate;
 
@@ -636,7 +558,7 @@ class PropertyDataEntry {
 	 */
 	constructor(name, metaData, functions) {
 		this.name = name;
-		this.metaData = metaData ?? /** @type {NonNullable<typeof metaData>} */({});
+		this.metaData = /** @type {Required<ItemProperty.PropertyMetaData>[T]} */(metaData ?? {});
 
 		const { compress, decompress, union, difference, compare, validate, isSubset } = functions;
 		this._compress = compress;
@@ -660,7 +582,8 @@ class PropertyDataEntry {
 		if (property === undefined) {
 			return {};
 		} else if (this._compress !== undefined) {
-			return this._compress.call(this, property, itemData, defaults ?? undefined) ?? {};
+			// @ts-expect-error: TS `never` hallucinations
+			return this._compress(property, itemData, defaults ?? undefined) ?? {};
 		} else if (defaults !== undefined && this.compare(property, defaults, itemData)) {
 			return {};
 		} else {
@@ -680,6 +603,7 @@ class PropertyDataEntry {
 		} else if (this._decompress === undefined) {
 			return { [this.name]: property };
 		} else {
+			// @ts-expect-error: TS `never` hallucinations
 			return this._decompress.call(this, property, itemData) ?? {};
 		}
 	}
@@ -687,18 +611,17 @@ class PropertyDataEntry {
 	/**
 	 * Property union function.
 	 *
-	 * By default, properties follow a "first non-nullish entry wins" approach if no property-specific merge function is available.
+	 * By default, properties follow a "first non-nullish entry wins" approach if no property-specific union function is available.
 	 * @param {readonly ItemProperties[T][]} properties The to-be merged property values
 	 * @param {ItemProperty.DataBundle} itemData The item data
 	 * @returns {undefined | ItemProperties[T]} The merged property
 	 */
 	union(properties, itemData) {
-		// TODO: Swap `!= null` for `!== undefined` once all the validation is hooked up
-		const propNonNull = properties.filter(i => i != null);
+		const propNonNull = properties.filter(i => i !== undefined);
 		if (this._union === undefined || propNonNull.length === 0) {
 			return propNonNull[0];
 		} else {
-			const arrayNonEmpty = /** @type {[p0: NonNullable<ItemProperties[T]>, ...pN: NonNullable<ItemProperties[T]>[]]} */(propNonNull);
+			const arrayNonEmpty = /** @type {[p0: Required<ItemProperties>[T], ...pN: Required<ItemProperties>[T][]]} */(propNonNull);
 			return this._union.call(this, arrayNonEmpty, itemData);
 		}
 	}
@@ -716,7 +639,7 @@ class PropertyDataEntry {
 		} else if (this._difference === undefined) {
 			return undefined;
 		} else {
-			const arrayNonEmpty = /** @type {[p0: NonNullable<ItemProperties[T]>, p1: NonNullable<ItemProperties[T]>, ...pN: NonNullable<ItemProperties[T]>[]]} */(propNonNull);
+			const arrayNonEmpty = /** @type {[p0: Required<ItemProperties>[T], p1: Required<ItemProperties>[T], ...pN: Required<ItemProperties>[T][]]} */(propNonNull);
 			return this._difference.call(this, arrayNonEmpty, itemData);
 		}
 	}
@@ -736,6 +659,7 @@ class PropertyDataEntry {
 		} else if (this._compare === undefined) {
 			return prop1 === prop2;
 		} else {
+			// @ts-expect-error: TS `never` hallucinations
 			return this._compare.call(this, prop1, prop2, itemData);
 		}
 	}
@@ -752,11 +676,13 @@ class PropertyDataEntry {
 			// `{ Foo: undefined }` (i.e. `{}`) is a subset of any other object (or is equivalent)
 			return true;
 		} else if (superProp !== undefined && this._isSubset !== undefined){
+			// @ts-expect-error: TS `never` hallucinations
 			return this._isSubset.call(this, subProp, superProp, itemData);
 		} else if (superProp !== undefined && this._compare !== undefined){
+			// @ts-expect-error: TS `never` hallucinations
 			return this._compare.call(this, subProp, superProp, itemData);
 		} else {
-			return false;
+			return subProp === superProp;
 		}
 	}
 
@@ -771,8 +697,9 @@ class PropertyDataEntry {
 		if (prop === undefined) {
 			return { status: "ok", value: undefined };
 		} else if (this._validate === undefined) {
-			return { status: "criticalError", errorDescription: `Missing "${this.name}" validator function` };
+			return { status: "criticalError", errorDescription: [`Missing '${this.name}' validator function`] };
 		} else {
+			// @ts-expect-error: TS `never` hallucinations
 			return this._validate.call(this, prop, itemData, defaults);
 		}
 	}
@@ -784,7 +711,7 @@ class PropertyDataEntry {
 	 * @template {keyof ItemProperties} T
 	 * @param {keyof ItemProperties} fromName The old property name of the to-be copied entry object
 	 * @param {T} toName The new property name
-	 * @param {ItemProperty.Entry<T>} [override] Override specific entries from the copied data
+	 * @param {Partial<ItemProperty.Entry<T>>} [override] Override specific entries from the copied data
 	 * @returns {PropertyDataEntry<T>} The newly copied entry
 	 */
 	static copyFrom(fromName, toName, override=undefined) {
@@ -925,6 +852,18 @@ class PropertyDataEntry {
 	}
 
 	/**
+	 * Subset checking function for set-like arrays
+	 * @satisfies {ItemProperty.IsSubset<any>}
+	 * @template {string | boolean | number} T
+	 * @param {readonly T[]} subArray
+	 * @param {readonly NoInfer<T>[]} superArray
+	 * @returns {boolean}
+	 */
+	static isSubsetSetLikeArrays(subArray, superArray) {
+		return subArray.every(i => superArray.includes(i));
+	}
+
+	/**
 	 * Comparison function for simple objects with scalar values (numbers, strings, etc.)
 	 * @satisfies {ItemProperty.Union<keyof ItemProperties>}
 	 * @template {string | boolean | number} T
@@ -934,6 +873,24 @@ class PropertyDataEntry {
 	static unionSetLikeArrays(values) {
 		return Array.from(new Set(values.flat()));
 	}
+
+	/**
+	 * Return the difference between the passed set-like arrays (unordered and unique elements)
+	 * @satisfies {ItemProperty.Difference<any>}
+	 * @template {string | boolean | number} T
+	 * @param {readonly [p0: readonly T[], ...pN: readonly (readonly T[])[]]} values
+	 * @returns {undefined | T[]}
+	 */
+	static differenceSetLikeArrays(values) {
+		const [head, ...tail] = values;
+		/** @type {Set<T>} */
+		const ret = new Set(head);
+		for (const i of tail.flat()) {
+			ret.delete(i);
+		}
+		return ret.size === 0 ? undefined : Array.from(ret);
+	}
+
 	/**
 	 * Comparison function for simple objects with scalar values (numbers, strings, etc.)
 	 * @satisfies {ItemProperty.Compare<keyof ItemProperties>}
@@ -957,6 +914,9 @@ class PropertyDataEntry {
 		/** @type {Record<string, undefined | null | string | boolean | number>} */
 		const ret = {};
 		for (const value of values) {
+			if (!CommonIsObject(value)) {
+				continue;
+			}
 			for (const [k, v] of Object.entries(value)) {
 				if (v !== undefined) {
 					ret[k] ??= v;
@@ -965,74 +925,642 @@ class PropertyDataEntry {
 		}
 		return /** @type {T} */(ret);
 	}
+
+	/**
+	 * Return the difference between the passed (shallow) objects
+	 * @satisfies {ItemProperty.Difference<any>}
+	 * @template {Record<string, undefined | string | boolean | number>} T
+	 * @param {readonly [p0: Readonly<T>, ...pN: readonly Readonly<T>[]]} values
+	 * @returns {undefined | T}
+	 */
+	static differenceShallowObjects(values) {
+		const [head, ...tail] = values;
+		/** @type {T} */
+		const ret = { ...head };
+		for (const obj of tail) {
+			innerLoop: for (const [k, v] of Object.entries(obj)) {
+				if (v === undefined) {
+					continue;
+				} else if (k in ret) {
+					delete ret[k];
+					break innerLoop;
+				}
+			}
+		}
+		return Object.keys(ret).length === 0 ? undefined : ret;
+	}
+
+	/**
+	 * Validate a scalar value w.r.t. to a reference set of all legal values (see {@link PropertyDataEntry.metaData["valueSet"]}).
+	 * @overload
+	 * @param {ItemProperty.Extract2<T, ScalarType>} value
+	 * @param {Required<ItemProperties>[T]} [defaults]
+	 * @param {undefined} [metaData]
+	 * @returns {ItemProperty.ValidationOutput<ItemProperty.Extract2<T, ScalarType> | Required<ItemProperties>[T]>}
+	 */
+	/**
+	 * Validate a scalar value w.r.t. to a reference set of all legal values. Reference values are explicitly passed in the metadata.
+	 * @template {ScalarType} T2
+	 * @overload
+	 * @param {T2} value
+	 * @param {undefined | NoInfer<T2>} defaults
+	 * @param {ItemProperty.MetaData2<NoInfer<T2>>} metaData
+	 * @returns {ItemProperty.ValidationOutput<T2>}
+	 */
+	/**
+	 * @param {ScalarType} value The to-be validated value
+	 * @param {Required<ItemProperties>[T]} [defaults] The fallback value in case the validation fails
+	 * @param {ItemProperty.MetaData2<ScalarType>} [metaData] Custom property metadata; defaults to {@link PropertyDataEntry.metaData}
+	 * @returns {ItemProperty.ValidationOutput<ScalarType | Required<ItemProperties>[T]>} The validation output
+	 */
+	validateAsSetMember(value, defaults, metaData=undefined) {
+		/** @type {{ name: string, valueSet?: ReadonlySet<unknown> }} */
+		const { name, valueSet } = metaData ?? { name: this.name, ...this.metaData };
+
+		/** @type {string[]} */
+		const errorDescription = [];
+		/** @type {undefined | number} */
+		let ret = undefined;
+		if (valueSet === undefined) {
+			errorDescription.push(`Missing '${name}' value set`);
+		} else if (!valueSet.has(value)) {
+			if (typeof value === "string") {
+				errorDescription.push(`Invalid '${name}' value '${value}'`);
+			} else {
+				errorDescription.push(`Invalid '${name}' value ${value}`);
+			}
+		} else {
+			return { status: "ok", value };
+		}
+
+		if (ret !== undefined) {
+			return { status: "error", value: ret, errorDescription };
+		} else if (defaults !== undefined) {
+			return { status: "error", value: defaults, errorDescription };
+		} else {
+			return { status: "criticalError", errorDescription };
+		}
+	}
+
+	/**
+	 * Validate a list of scalar values w.r.t. to a reference set of all legal values (see {@link PropertyDataEntry.metaData["valueSet"]})
+	 * @overload
+	 * @param {ItemProperty.Extract2<T, ScalarType[]>} value
+	 * @param {Required<ItemProperties>[T]} [defaults]
+	 * @param {undefined} [metaData]
+	 * @returns {ItemProperty.ValidationOutput<ItemProperty.Extract2<T, ScalarType[]> | Required<ItemProperties>[T]>}
+	 */
+	/**
+	 * Validate a list of scalar values w.r.t. to a reference set of all legal values. Reference values are explicitly passed in the metadata.
+	 * @template {ScalarType} T2
+	 * @overload
+	 * @param {T2[]} value
+	 * @param {undefined | NoInfer<T2[]>} defaults
+	 * @param {ItemProperty.MetaData2<NoInfer<T2>>} metaData
+	 * @returns {ItemProperty.ValidationOutput<T2[]>}
+	 */
+	/**
+	 * @param {ScalarType[]} value The to-be validated value
+	 * @param {any} [defaults] The fallback value in case the validation fails
+	 * @param {ItemProperty.MetaData2<ScalarType>} [metaData] Custom property metadata; defaults to {@link PropertyDataEntry.metaData}
+	 * @returns {ItemProperty.ValidationOutput<ScalarType[] | Required<ItemProperties>[T]>} The validation output
+	 */
+	validateAsLiteralSet(value, defaults, metaData=undefined) {
+		/** @type {{ name: string, valueSet?: ReadonlySet<unknown> }} */
+		const { name, valueSet } = metaData ?? { name: this.name, ...this.metaData };
+
+		/** @type {string[]} */
+		const errorDescription = [];
+		/** @type {undefined | ScalarType[]} */
+		let ret = undefined;
+		if (valueSet === undefined) {
+			errorDescription.push(`Missing '${name}' value set`);
+		} else if (!CommonIsArray(value)) {
+			errorDescription.push(`Invalid '${name}' non-array type '${typeof value}'`);
+		} else {
+			ret = value.filter((entry, i) => {
+				if (valueSet.has(entry)) {
+					return true;
+				} else {
+					if (typeof entry === "string") {
+						errorDescription.push(`Illegal '${name}[${i}]' value '${entry}'`);
+					} else {
+						errorDescription.push(`Illegal '${name}[${i}]' value ${entry}`);
+					}
+					return false;
+				}
+			});
+		}
+
+		if (ret) {
+			if (!errorDescription.length) {
+				return { status: "ok", value: ret };
+			} else {
+				return { status: "error", value: ret, errorDescription };
+			}
+		} else if (defaults !== undefined) {
+			return { status: "error", value: defaults, errorDescription };
+		} else {
+			return { status: "criticalError", errorDescription };
+		}
+	}
+
+	/**
+	 * Validate a number
+	 * @overload
+	 * @param {ItemProperty.Extract2<T, number>} value
+	 * @param {Required<ItemProperties>[T]} [defaults]
+	 * @param {undefined} [metaData]
+	 * @returns {ItemProperty.ValidationOutput<ItemProperty.Extract2<T, number> | Required<ItemProperties>[T]>}
+	 */
+	/**
+	 * Validate a number with explicitly passed metadata
+	 * @template {number} T2
+	 * @template [T3=T2]
+	 * @overload
+	 * @param {T2} value
+	 * @param {undefined | T3} defaults
+	 * @param {ItemProperty.MetaData2<NoInfer<T2>>} metaData
+	 * @returns {ItemProperty.ValidationOutput<T2 | Exclude<T3, undefined>>}
+	 */
+	/**
+	 * @param {number} value The to-be validated value
+	 * @param {Required<ItemProperties>[T]} [defaults] The fallback value in case the validation fails
+	 * @param {ItemProperty.MetaData2<number>} [metaData] Custom property metadata; defaults to {@link PropertyDataEntry.metaData}
+	 * @returns {ItemProperty.ValidationOutput<number | Required<ItemProperties>[T]>} The validation output
+	 */
+	validateNumber(value, defaults, metaData=undefined) {
+		let { name, min, max, isInteger } = metaData ?? { name: this.name, ...this.metaData };
+		min ??= -Infinity;
+		max ??= Infinity;
+		isInteger ??= true;
+
+		/** @type {string[]} */
+		const errorDescription = [];
+		/** @type {undefined | T2} */
+		let ret = undefined;
+		if (typeof value !== "number") {
+			errorDescription.push(`Invalid '${name}' type '${typeof value}'`);
+		} else if (!Number.isFinite(value)) {
+			errorDescription.push(`Invalid '${name}' finite value ${value}`);
+		} else if (isInteger && !Number.isInteger(value)) {
+			errorDescription.push(`Invalid '${name}' integer value ${value}`);
+		} else if (value > max || value < min) {
+			errorDescription.push(`Invalid '${name}" value range ${value} (expected interval [${min}, ${max}])`);
+			// @ts-expect-error
+			ret = CommonClamp(value, min, max);
+		} else {
+			return { status: "ok", value };
+		}
+
+		if (ret !== undefined) {
+			return { status: "error", value: ret, errorDescription };
+		} else if (defaults !== undefined) {
+			return { status: "error", value: defaults, errorDescription };
+		} else {
+			return { status: "criticalError", errorDescription };
+		}
+	}
+
+	/**
+	 * Validate a string
+	 * @overload
+	 * @param {ItemProperty.Extract2<T, string>} value
+	 * @param {Required<ItemProperties>[T]} [defaults]
+	 * @param {undefined} [metaData]
+	 * @returns {ItemProperty.ValidationOutput<ItemProperty.Extract2<T, string> | Required<ItemProperties>[T]>}
+	 */
+	/**
+	 * Validate a string with explicitly passed metadata
+	 * @template {string} T2
+	 * @template [T3=T2]
+	 * @overload
+	 * @param {T2} value
+	 * @param {undefined | T3} defaults
+	 * @param {ItemProperty.MetaData2<NoInfer<T2>>} metaData
+	 * @returns {ItemProperty.ValidationOutput<T2 | Exclude<T3, undefined>>}
+	 */
+	/**
+	 * @param {string} value The to-be validated value
+	 * @param {Required<ItemProperties>[T]} [defaults] The fallback value in case the validation fails
+	 * @param {ItemProperty.MetaData2<string>} [metaData] Custom property metadata; defaults to {@link PropertyDataEntry.metaData}
+	 * @returns {ItemProperty.ValidationOutput<string | Required<ItemProperties>[T]>} The validation output
+	 */
+	validateString(value, defaults, metaData=undefined) {
+		const { name, valuePattern: pattern, isColor, colorSchema } = metaData ?? { name: this.name, ...this.metaData };
+
+		/** @type {string[]} */
+		const errorDescription = [];
+		if (typeof value !== "string") {
+			errorDescription.push(`Invalid '${name}' type '${typeof value}'`);
+		} else if (pattern !== undefined && !pattern.test(value)) {
+			errorDescription.push(`Invalid '${name}' value '${value}' (mismatch w.r.t. '${pattern.source}' pattern)`);
+		} else if (isColor && !CommonIsColor(value, { schema: colorSchema ? Array.from(colorSchema) : undefined })) {
+			const suffix = colorSchema === undefined ? "invalid hex color" : "invalid BC color";
+			errorDescription.push(`Invalid '${name}' value '${value}' (${suffix})`);
+		} else {
+			return { status: "ok", value };
+		}
+
+		if (defaults !== undefined) {
+			return { status: "error", value: defaults, errorDescription };
+		} else {
+			return { status: "criticalError", errorDescription };
+		}
+	}
+
+	/**
+	 * Validate a boolean
+	 * @overload
+	 * @param {ItemProperty.Extract2<T, boolean>} value
+	 * @param {Required<ItemProperties>[T]} [defaults]
+	 * @param {undefined} [metaData]
+	 * @returns {ItemProperty.ValidationOutput<ItemProperty.Extract2<T, boolean> | Required<ItemProperties>[T]>}
+	 */
+	/**
+	 * Validate a boolean with explicitly passed metadata
+	 * @template {boolean} T2
+	 * @template [T3=T2]
+	 * @overload
+	 * @param {T2} value
+	 * @param {undefined | T3} defaults
+	 * @param {ItemProperty.MetaData2<NoInfer<T2>>} metaData
+	 * @returns {ItemProperty.ValidationOutput<T2 | Exclude<T3, undefined>>}
+	 */
+	/**
+	 * @param {boolean} value The to-be validated value
+	 * @param {Required<ItemProperties>[T]} [defaults] The fallback value in case the validation fails
+	 * @param {ItemProperty.MetaData2<boolean>} [metaData] Custom property metadata; defaults to {@link PropertyDataEntry.metaData}
+	 * @returns {ItemProperty.ValidationOutput<boolean | Required<ItemProperties>[T]>} The validation output
+	 */
+	validateBoolean(value, defaults, metaData=undefined) {
+		const { name } = metaData ?? { name: this.name, ...this.metaData };
+
+		/** @type {string[]} */
+		const errorDescription = [];
+		if (typeof value !== "boolean") {
+			errorDescription.push(`Invalid '${name}' type '${typeof value}'`);
+		} else {
+			return { status: "ok", value };
+		}
+
+		if (defaults !== undefined) {
+			return { status: "error", value: defaults, errorDescription };
+		} else {
+			return { status: "criticalError", errorDescription };
+		}
+	}
+
+	/**
+	 * @template {{ type: "boolean", value: boolean } | { type: "number", value: number } | { type: "string", value: string }} T2
+	 * @param {{ type: T2["type"], value: ItemProperty.Extract2<T, T2["value"][]> }} value
+	 * @param {readonly NoInfer<T2["value"]>[]} [defaults]
+	 * @param {ItemProperty.MetaData2<T2["value"]>} [metaData] Custom property metadata; defaults to {@link PropertyDataEntry.metaData}
+	 * @returns {ItemProperty.ValidationOutput<ItemProperty.Extract2<T, T2["value"][]>>}
+	 */
+	validateSetLikeArray(value, defaults, metaData=undefined) {
+		// Need an unfortunate amount of casts/ts-ignores here as TS sucks with handling templates
+		const { type, value: array } = value;
+		if (!CommonIsArray(array)) {
+			return { status: "criticalError", errorDescription: [`Invalid '${this.name}' non-array type '${typeof array}'`] };
+		}
+
+		/** @type {ItemProperty.ValidationOutput<unknown>[]} */
+		let newValue;
+		/** @type {ItemProperty.MetaData2<any>} */
+		const metadata = metaData ?? { name: this.name, ...this.metaData };
+		switch (type) {
+			case "number": {
+				const numberDefaults = /** @type {undefined | readonly number[]} */(defaults);
+				newValue = /** @type {number[]} */(array).map((v, i) => this.validateNumber(v, numberDefaults?.[i], { ...metadata, name: `${metadata.name}[${i}]` }));
+				break;
+			}
+			case "string": {
+				const stringDefaults = /** @type {undefined | readonly string[]} */(defaults);
+				newValue = /** @type {string[]} */(array).map((v, i) => this.validateString(v, stringDefaults?.[i], { ...metadata, name: `${metadata.name}[${i}]` }));
+				break;
+			}
+			case "boolean": {
+				const booleanDefaults = /** @type {undefined | readonly boolean[]} */(defaults);
+				newValue = /** @type {boolean[]} */(array).map((v, i) => this.validateBoolean(v, booleanDefaults?.[i], { ...metadata, name: `${metadata.name}[${i}]` }));
+				break;
+			}
+			default:
+				throw new Error();
+		}
+		// @ts-ignore
+		return ItemPropertiesMergeValidationOutputs(newValue);
+	}
 }
 
 /**
+ * Preset item property functions for set-like arrays consisting of literal members
+ * @private
+ * @type {Omit<ItemProperty.Entry<any>, "metaData">}
+ */
+var _PropertyDataArraysDefaults = {
+	compare: PropertyDataEntry.compareSetLikeArrays,
+	union: PropertyDataEntry.unionSetLikeArrays,
+	difference: PropertyDataEntry.differenceSetLikeArrays,
+	isSubset: PropertyDataEntry.isSubsetSetLikeArrays,
+	validate(prop, itemData, defaults) { return this.validateAsLiteralSet(prop, defaults); },
+};
+
+/**
  * Item property specific metadata and utility functions (compression, validation, merging, _etc._)
- * @satisfies {{ [k in keyof ItemProperties]?: PropertyDataEntry<k> }}
+ * @type {{ [k in keyof ItemProperties]: PropertyDataEntry<k> }}
  */
 var PropertyData = {
-	AccessMode: undefined,
-	AllowActivePose: undefined,
-	AllowActivity: undefined,
-	AllowActivityOn: undefined,
-	ArousalLvl: undefined,
-	Attribute: undefined,
-	AutoPunish: undefined,
-	AutoPunishUndoTime: undefined,
-	AutoPunishUndoTimeSetting: undefined,
-	BlinkState: new PropertyDataEntry("BlinkState", undefined, {
-		compress() {
-			return undefined; // Local-only property; should never be synced
+	AccessMode: new PropertyDataEntry("AccessMode",
+		{ get valueSet() { return this._valueSet ??= new Set(Object.values(ItemVulvaFuturisticVibratorAccessModes)); } },
+		{
+			validate(prop, itemData, defaults) { return this.validateAsSetMember(prop, defaults); },
 		},
-	}),
-	Block: new PropertyDataEntry("Block", undefined, {
-		compare: PropertyDataEntry.compareSetLikeArrays,
-		union: PropertyDataEntry.unionSetLikeArrays,
-	}),
-	BlockRemotes: new PropertyDataEntry("BlockRemotes", undefined, {
-		decompress(prop) {
-			return prop ? { BlockRemotes: prop, Effect: ["BlockRemotes"] } : { BlockRemotes: prop };
+	),
+	// Represents a pretty generic array of unordered & unique scalar elements
+	AllowActivePose: new PropertyDataEntry("AllowActivePose",
+		{ get valueSet() { return this._valueSet ??= new Set(CommonKeys(PoseRecord)); } },
+		{
+			..._PropertyDataArraysDefaults,
 		},
-	}),
-	CombinationNumber: undefined,
-	CustomBlindBackground: undefined,
-	DefaultColor: undefined,
-	Difficulty: undefined,
-	Door: undefined,
-	DrawingLeft: undefined,
-	DrawingTop: undefined,
-	Effect: new PropertyDataEntry("Effect", undefined, {
-		compare: PropertyDataEntry.compareSetLikeArrays,
-		union: PropertyDataEntry.unionSetLikeArrays,
-		compress(prop, { asset }) {
-			/** @type {Mandatory<ItemPropertiesMinimized, "Effect">} */
-			const ret = { Effect: /** @type {never} */(undefined) };
-			if (asset.AllowEffect?.includes("IsLeashed") && prop.includes("IsLeashed")) {
-				ret.IsLeashed = true;
-			}
-			return ret;
+	),
+	AllowActivity: new PropertyDataEntry("AllowActivity",
+		{ get valueSet() { return this._valueSet ??= new Set(ActivityFemale3DCG.map(a => a.Name)); } },
+		{
+			..._PropertyDataArraysDefaults,
 		},
-	}),
-	EnableRandomInput: undefined,
-	Expression: undefined,
-	Fetish: undefined,
-	HeartRate: PropertyDataEntry.copyFrom("BlinkState", "HeartRate"),
-	HeightModifier: undefined,
-	Hide: PropertyDataEntry.copyFrom("Block", "Hide"),
-	HideItem: PropertyDataEntry.copyFrom("Block", "HideItem"),
-	HideItemExclude: undefined,
-	Hint: undefined,
-	InflateLevel: undefined,
-	InsertedBeads: undefined,
-	Intensity: undefined,
-	IsLeashed: new PropertyDataEntry("IsLeashed", undefined, {
-		decompress(prop) {
-			return prop ? { IsLeashed: /** @type {never} */(undefined), Effect: ["IsLeashed"] } : undefined;
+	),
+	AllowActivityOn: new PropertyDataEntry("AllowActivityOn",
+		{ get valueSet() { return this._valueSet ??= new Set(AssetGroup.map(a => a.Name)); } },
+		{
+			..._PropertyDataArraysDefaults,
 		},
-	}),
-	Iterations: undefined,
-	LastShrinkWarningTime: undefined,
+	),
+	ArousalLvl: new PropertyDataEntry("ArousalLvl",
+		{ get valueSet() { return this._valueSet ??= new Set(Object.values(ItemVulvaChastityCageExcitementLevel)); } },
+		{
+			validate(prop, itemData, defaults) { return this.validateAsSetMember(prop, defaults); },
+		},
+	),
+	Attribute: new PropertyDataEntry("Attribute", undefined,
+		{
+			..._PropertyDataArraysDefaults,
+			validate(prop) { return this.validateSetLikeArray({ value: prop, type: "string" }); },
+		},
+	),
+	AutoPunish: new PropertyDataEntry("AutoPunish",
+		{ valueSet: new Set(/** @type {const} */([0, 1, 2, 3])) },
+		{
+			validate(prop, itemData, defaults) { return this.validateAsSetMember(prop, defaults); },
+		},
+	),
+	AutoPunishUndoTime: new PropertyDataEntry("AutoPunishUndoTime",
+		{ min: 0.0, isInteger: false },
+		{
+			validate(prop, itemData, defaults) { return this.validateNumber(prop, defaults); },
+		},
+	),
+	AutoPunishUndoTimeSetting: new PropertyDataEntry("AutoPunishUndoTimeSetting",
+		{ valueSet: new Set(/** @type {const} */([120_000, 300_000, 900_000, 360_000_0, 720_000_00])) },
+		{
+			validate(prop, itemData, defaults) { return this.validateAsSetMember(prop, defaults); },
+		},
+	),
+	BlinkState: new PropertyDataEntry("BlinkState", undefined,
+		{
+			compress() { return undefined; },  // Local-only property; should never be synced
+			validate(prop, itemData, defaults) { return this.validateBoolean(prop, defaults); },
+		},
+	),
+	Block: new PropertyDataEntry("Block",
+		{ get valueSet() { return this._valueSet ??= new Set(AssetGroup.filter(i => i.IsItem()).map(i => i.Name)); } },
+		{
+			..._PropertyDataArraysDefaults,
+			validate(prop, { asset }, defaults) {
+				const valueSet = new Set(asset.AllowBlock ?? []);
+				const metaData = { ...this.metaData, name: this.name, valueSet };
+				const ret = this.validateAsLiteralSet(prop, defaults, metaData);
+
+				// Always allow 0-length arrays
+				if (valueSet.size === 0 && ret.status !== "criticalError" && ret.value.length !== 0) {
+					return { status: "criticalError", errorDescription: [`Illegal property '${this.name}'`] };
+				} else {
+					return ret;
+				}
+			},
+		},
+	),
+	BlockRemotes: new PropertyDataEntry("BlockRemotes", undefined,
+		{
+			decompress(prop) {
+				return prop ? { BlockRemotes: prop, Effect: ["BlockRemotes"] } : { BlockRemotes: prop };
+			},
+			validate(prop, itemData, defaults) { return this.validateBoolean(prop, defaults); },
+		},
+	),
+	CombinationNumber: new PropertyDataEntry("CombinationNumber",
+		{ get valuePattern() { return ValidationCombinationNumberRegex; } },
+		{
+			validate(prop, itemData, defaults) { return this.validateString(prop, defaults); },
+		},
+	),
+	CustomBlindBackground: new PropertyDataEntry("CustomBlindBackground",
+		{ get valueSet() { return this._valueSet ??= new Set(["", ...BackgroundsList.map(i => i.Name)]); } },
+		{
+			validate(prop, itemData, defaults) { return this.validateAsSetMember(prop, defaults); },
+		},
+	),
+	DefaultColor: new PropertyDataEntry("DefaultColor",
+		{ isColor: true },
+		{
+			validate(prop, { asset }, defaults) {
+				const metaData = { ...this.metaData, name: this.name, colorSchema: new Set(asset.Group.ColorSchema) };
+				if (typeof prop === "string") {
+					return this.validateString(prop, defaults, metaData);
+				} else {
+					// TODO: Validate as an ordered array
+					return this.validateSetLikeArray(
+						{ type: "string", value: prop },
+						CommonIsArray(defaults) ? defaults : undefined,
+						metaData,
+					);
+				}
+			},
+		},
+	),
+	Difficulty: new PropertyDataEntry("Difficulty", undefined,
+		{
+			union(properties) { return properties.reduce((total, i) => total + i); },
+			difference(properties) { return properties.reduce((total, i) => total - i); },
+			validate(prop, itemData, defaults) { return this.validateNumber(prop, defaults); },
+			isSubset() { return true; }, // Just return true; subsetting doesn't make sense here with additive properties
+		},
+	),
+	Door: new PropertyDataEntry("Door", undefined,
+		{
+			validate(prop, itemData, defaults) { return this.validateBoolean(prop, defaults); },
+		},
+	),
+	DrawingLeft: undefined, // TODO: Deprecated property; remove at some point
+	DrawingTop: undefined, // TODO: Deprecated property; remove at some point
+	Effect: new PropertyDataEntry("Effect", undefined,
+		{
+			..._PropertyDataArraysDefaults,
+			compress(prop, { asset }) {
+				/** @type {Mandatory<ItemPropertiesMinimized, "Effect">} */
+				const ret = { Effect: /** @type {never} */(undefined) };
+				if (asset.AllowEffect?.includes("IsLeashed") && prop.includes("IsLeashed")) {
+					ret.IsLeashed = true;
+				}
+				return ret;
+			},
+			validate(prop, { asset }, defaults) {
+				// TODO: Automatically append `AllowEffect` with the "Lock" effect when appropriate
+				const valueSet = new Set(asset.AllowEffect ?? []);
+				if (asset.AllowLock) { valueSet.add("Lock"); }
+
+				const metaData = { ...this.metaData, name: this.name, valueSet };
+				const ret = this.validateAsLiteralSet(prop, defaults, metaData);
+
+				// Always allow 0-length arrays
+				if (valueSet.size === 0 && ret.status !== "criticalError" && ret.value.length !== 0) {
+					return { status: "criticalError", errorDescription: [`Illegal property '${this.name}'`] };
+				} else {
+					return ret;
+				}
+			},
+		},
+	),
+	EnableRandomInput: new PropertyDataEntry("EnableRandomInput", undefined,
+		{
+			validate(prop, itemData, defaults) { return this.validateBoolean(prop, defaults); },
+		},
+	),
+	Expression: new PropertyDataEntry("Expression", undefined,
+		{
+			validate(prop, { asset }, defaults) {
+				// TODO: Propagate group-level `AllowExpression` to the asset-level
+				if (asset.AllowExpression === undefined && asset.Group.AllowExpression === undefined) {
+					return { status: "criticalError", errorDescription: [`Illegal property '${this.name}'`] };
+				}
+
+				// TODO: Fix `AllowExpression` lacking a `null` entry
+				const valueSet = new Set(asset.AllowExpression ?? asset.Group.AllowExpression ?? []);
+				valueSet.add(null);
+
+				const metaData = { ...this.metaData, name: this.name, valueSet };
+				return this.validateAsSetMember(prop, defaults, metaData);
+			},
+		}
+	),
+	Fetish: new PropertyDataEntry("Fetish",
+		{ get valueSet() { return this._valueSet ??= new Set(FetishFemale3DCG.map(i => i.Name)); } },
+		{
+			..._PropertyDataArraysDefaults,
+		},
+	),
+	HeartRate: new PropertyDataEntry("HeartRate",
+		{ min: 0 },
+		{
+			compress() { return undefined; },  // Local-only property; should never be synced
+			validate(prop, itemData, defaults) { return this.validateNumber(prop, defaults); },
+		},
+	),
+	HeightModifier: new PropertyDataEntry("HeightModifier", undefined,
+		{
+			union(properties) { return properties.reduce((total, i) => total + i); },
+			difference(properties) { return properties.reduce((total, i) => total - i); },
+			validate(prop, itemData, defaults) { return this.validateNumber(prop, defaults); },
+			isSubset() { return true; }, // Just return true; subsetting doesn't make sense here with additive properties
+		}
+	),
+	Hide: new PropertyDataEntry("Hide",
+		{ get valueSet() { return this._valueSet ??= new Set(AssetGroup.map(a => a.Name)); } },
+		{
+			..._PropertyDataArraysDefaults,
+			validate(prop, { asset }, defaults) {
+				const valueSet = new Set(asset.AllowHide ?? []);
+				const metaData = { ...this.metaData, name: this.name, valueSet };
+				const ret = this.validateAsLiteralSet(prop, defaults, metaData);
+
+				// Always allow 0-length arrays
+				if (valueSet.size === 0 && ret.status !== "criticalError" && ret.value.length !== 0) {
+					return { status: "criticalError", errorDescription: [`Illegal property '${this.name}'`] };
+				} else {
+					return ret;
+				}
+			},
+		},
+	),
+	HideItem: new PropertyDataEntry("HideItem", undefined,
+		{
+			..._PropertyDataArraysDefaults,
+			validate(prop, { asset }, defaults) {
+				const valueSet = new Set(asset.AllowHideItem ?? []);
+				const metaData = { ...this.metaData, name: this.name, valueSet };
+				const ret = this.validateAsLiteralSet(prop, defaults, metaData);
+
+				// Always allow 0-length arrays
+				if (valueSet.size === 0 && ret.status !== "criticalError" && ret.value.length !== 0) {
+					return { status: "criticalError", errorDescription: [`Illegal property '${this.name}'`] };
+				} else {
+					return ret;
+				}
+			},
+		},
+	),
+	HideItemExclude: new PropertyDataEntry("HideItemExclude", undefined,
+		{
+			..._PropertyDataArraysDefaults,
+			validate(prop, itemData, defaults) { return this.validateSetLikeArray({ type: "string", value: prop }); },
+		},
+	),
+	Hint: new PropertyDataEntry("Hint", undefined,
+		{
+			validate(prop, itemData, defaults) { return this.validateString(prop, defaults); },
+		},
+	),
+	InflateLevel: new PropertyDataEntry("InflateLevel",
+		{ valueSet: new Set(/** @type {const} */([0, 1, 2, 3, 4])) },
+		{
+			validate(prop, itemData, defaults) { return this.validateAsSetMember(prop, defaults); },
+		},
+	),
+	InsertedBeads: new PropertyDataEntry("InsertedBeads",
+		{ valueSet: new Set(/** @type {const} */([1, 2, 3, 4, 5])) },
+		{
+			validate(prop, itemData, defaults) { return this.validateAsSetMember(prop, defaults); },
+		},
+	),
+	Intensity: new PropertyDataEntry("Intensity",
+		{ valueSet: new Set(/** @type {const} */([-1, 0, 1, 2, 3])) },
+		{
+			validate(prop, itemData, defaults) { return this.validateAsSetMember(prop, defaults); },
+			union(values) { return CommonMax(...values); },
+		},
+	),
+	IsLeashed: new PropertyDataEntry("IsLeashed", undefined,
+		{
+			decompress(prop) {
+				return prop ? { IsLeashed: /** @type {never} */(undefined), Effect: ["IsLeashed"] } : undefined;
+			},
+			validate() {
+				// Should only ever be present in item bundles; not regular items
+				return { status: "criticalError", errorDescription: [`Illegal property '${this.name}'`] };
+			},
+		}),
+	Iterations: new PropertyDataEntry("Iterations",
+		{ min: 0 },
+		{
+			validate(prop, itemData, defaults) { return this.validateNumber(prop, defaults); },
+		},
+	),
+	LastShrinkWarningTime: new PropertyDataEntry("LastShrinkWarningTime",
+		{ min: 0 },
+		{
+			validate(prop, itemData, defaults) { return this.validateNumber(prop, defaults); },
+		},
+	),
 	LayerRotation: new PropertyDataEntry("LayerRotation",
 		{ defaultNumber: 0, min: -180, max: 180 },
 		{
@@ -1050,39 +1578,184 @@ var PropertyData = {
 					return { [this.name]: prop };
 				}
 			},
+			validate(prop, { asset }, defaults) {
+				if (!CommonIsObject(prop)) {
+					return { status: "criticalError", errorDescription: [`Invalid '${this.name}' type '${typeof prop}'`] };
+				}
+
+				const keySet = new Set(asset.Layer.map(l => l.Name ?? ""));
+				/** @type {Partial<Record<LayerName, ItemProperty.ValidationOutput<number>>>} */
+				const propertyOutput = CommonFromEntries(CommonEntries(prop).map(([k, v]) => {
+					const metaData = { ...this.metaData, name: `${this.name}["${k}"]` };
+					if (v === undefined) {
+						return [k, undefined];
+					} if (!keySet.has(k)) {
+						return [k, { status: "criticalError", errorDescription: [`Invalid '${this.name}' key value '${k}'`] }];
+					} else {
+						return [k, this.validateNumber(v, defaults?.[k], metaData)];
+					}
+				}));
+				return ItemPropertiesMergeValidationOutputs(propertyOutput);
+			}
 		},
 	),
 	LayerScaleX: PropertyDataEntry.copyFrom("LayerRotation", "LayerScaleX",
-		{ metaData: { defaultNumber: 1.0, min: 0.01, max: 3.00, isInteger: false } },
+		{ metaData: { defaultNumber: 1.00, min: 0.01, max: 3.00, isInteger: false } },
 	),
 	LayerScaleY: PropertyDataEntry.copyFrom("LayerScaleX", "LayerScaleY"),
 	LayerTranslationX: PropertyDataEntry.copyFrom("LayerScaleX", "LayerTranslationX",
 		{ metaData: { defaultNumber: 0, min: -500, max: 500 } },
 	),
 	LayerTranslationY: PropertyDataEntry.copyFrom("LayerTranslationX", "LayerTranslationY"),
-	LockButt: undefined,
-	LockMemberName: undefined,
-	LockMemberNumber: undefined,
-	LockMessage: undefined,
-	LockPickSeed: undefined,
-	LockSet: undefined,
-	LockedBy: undefined,
-	MemberNumberList: new PropertyDataEntry("MemberNumberList", undefined, {
-		compare: PropertyDataEntry.compareSetLikeArrays,
-		union: PropertyDataEntry.unionSetLikeArrays,
+	LockButt: new PropertyDataEntry("LockButt", undefined,
+		{
+			validate(prop, itemData, defaults) { return this.validateBoolean(prop, defaults); },
+		},
+	),
+	LockMemberName: new PropertyDataEntry("LockMemberName", undefined,
+		{
+			validate(prop, itemData, defaults) { return this.validateString(prop, defaults); },
+		},
+	),
+	LockMemberNumber: new PropertyDataEntry("LockMemberNumber", undefined,
+		{
+			validate(prop, itemData, defaults) { return this.validateNumber(prop, defaults); },
+		},
+	),
+	LockMessage: new PropertyDataEntry("LockMessage", undefined,
+		{
+			validate(prop, itemData, defaults) { return this.validateString(prop, defaults); },
+		},
+	),
+	LockPickSeed: new PropertyDataEntry("LockPickSeed", undefined,
+		{
+			validate(prop, itemData, defaults) { return this.validateString(prop, defaults); },
+		},
+	),
+	LockSet: new PropertyDataEntry("LockSet", undefined,
+		{
+			validate(prop, itemData, defaults) { return this.validateBoolean(prop, defaults); },
+		},
+	),
+	LockedBy: new PropertyDataEntry("LockedBy",
+		{ get valueSet() { return this._valueSet ??= new Set(CommonKeys(AssetLocks)); } },
+		{
+			validate(prop, itemData, defaults) { return this.validateAsSetMember(prop, defaults); },
+		},
+	),
+	MemberNumberList: new PropertyDataEntry("MemberNumberList",
+		{ min: 0 },
+		{
+			..._PropertyDataArraysDefaults,
+			validate(prop, itemData, defaults) { return this.validateSetLikeArray({ type: "number", value: prop }); },
+		},
+	),
+	MemberNumberListKeys: new PropertyDataEntry("MemberNumberListKeys",  undefined,
+		{
+			validate(prop, itemData, defaults) { return this.validateString(prop, defaults); },
+		},
+	),
+	Mode: new PropertyDataEntry("Mode",
+		{ get valueSet() { return this._valueSet ??= new Set(Object.values(VibratorMode)); } },
+		{
+			validate(prop, itemData, defaults) { return this.validateAsSetMember(prop, defaults); },
+		},
+	),
+	NextShockTime: new PropertyDataEntry("NextShockTime",
+		{ min: 0.0, isInteger: false },
+		{
+			validate(prop, itemData, defaults) { return this.validateNumber(prop, defaults); },
+		},
+	),
+	NextShrinkTime: new PropertyDataEntry("NextShrinkTime",
+		{ min: 0.0, isInteger: false },
+		{
+			validate(prop, itemData, defaults) { return this.validateNumber(prop, defaults); },
+		},
+	),
+	Opacity: new PropertyDataEntry("Opacity",
+		{ min: 0.0, max: 1.0, isInteger: false },
+		{
+			validate(prop, { asset }, defaults) {
+				if (typeof prop === "number") {
+					return this.validateNumber(prop, defaults);
+				} else {
+					// TODO: Validate as an ordered array and enforce layer-specific extremas
+					return this.validateSetLikeArray(
+						{ type: "number", value: prop },
+						CommonIsArray(defaults) ? defaults : asset.Layer.map(l => l.Priority),
+					);
+				}
+			},
+		},
+	),
+	OpenPermission: new PropertyDataEntry("OpenPermission", undefined,
+		{
+			validate(prop, itemData, defaults) { return this.validateBoolean(prop, defaults); },
+		},
+	),
+	OpenPermissionArm: new PropertyDataEntry("OpenPermissionArm", undefined,
+		{
+			validate(prop, itemData, defaults) { return this.validateBoolean(prop, defaults); },
+		},
+	),
+	OpenPermissionChastity: new PropertyDataEntry("OpenPermissionChastity", undefined,
+		{
+			validate(prop, itemData, defaults) { return this.validateBoolean(prop, defaults); },
+		},
+	),
+	OpenPermissionLeg: new PropertyDataEntry("OpenPermissionLeg", undefined,
+		{
+			validate(prop, itemData, defaults) { return this.validateBoolean(prop, defaults); },
+		},
+	),
+	OrgasmCount: new PropertyDataEntry("OrgasmCount",
+		{ min: 0 },
+		{
+			validate(prop, itemData, defaults) { return this.validateNumber(prop, defaults); },
+		},
+	),
+	OriginalSetting: new PropertyDataEntry("OriginalSetting",
+		{ valueSet: new Set(/** @type {const} */([0, 1, 2, 3])) },
+		{
+			validate(prop, itemData, defaults) { return this.validateAsSetMember(prop, defaults); },
+		},
+	),
+	OverrideHeight: new PropertyDataEntry("OverrideHeight", undefined, {
+		union(properties) {
+			// Return the height override with the maximum priority
+			const propSorted = [...properties].sort((a, b) => a?.Priority - b?.Priority);
+			return { ...propSorted[0] };
+		},
+		isSubset(subProp, superProp) {
+			return subProp.Priority <= superProp.Priority;
+		},
+		validate(prop, itemData, defaults) {
+			if (!CommonIsObject(prop)) {
+				if (defaults !== undefined) {
+					return { status: "error", value: defaults, errorDescription: [`Invalid '${this.name}' type '${typeof prop}'`] };
+				} else {
+					return { status: "criticalError", errorDescription: [`Invalid '${this.name}' type '${typeof prop}'`] };
+				}
+			}
+
+			/** @type {{ [k in keyof AssetOverrideHeight]-?: ItemProperty.ValidationOutput<AssetOverrideHeight[k]> }} */
+			const propertyOutput = {
+				Height: this.validateNumber(
+					prop.Height, defaults?.Height, { name: `${this.name}['Height']` },
+				),
+				Priority: this.validateNumber(
+					prop.Priority, defaults?.Priority, { name: `${this.name}['Priority']` },
+				),
+				HeightRatioProportion: prop.HeightRatioProportion === undefined ? { status: "ok", value: undefined } : this.validateNumber(
+					prop.HeightRatioProportion,
+					defaults?.HeightRatioProportion,
+					{ name: `${this.name}['HeightRatioProportion']`, isInteger: false, min: 0.0, max: 1.0 },
+				),
+			};
+			return ItemPropertiesMergeValidationOutputs(propertyOutput);
+		},
 	}),
-	MemberNumberListKeys: undefined,
-	Mode: undefined,
-	NextShockTime: undefined,
-	NextShrinkTime: undefined,
-	Opacity: undefined,
-	OpenPermission: undefined,
-	OpenPermissionArm: undefined,
-	OpenPermissionChastity: undefined,
-	OpenPermissionLeg: undefined,
-	OrgasmCount: undefined,
-	OriginalSetting: undefined,
-	OverrideHeight: undefined,
 	OverridePriority: new PropertyDataEntry("OverridePriority",
 		{ min: -99, max: 99 },
 		{
@@ -1102,20 +1775,61 @@ var PropertyData = {
 			},
 			union(properties, { asset }) {
 				if (properties.every(i => typeof i === "number")) {
-					return properties.at(-1);
+					return properties[0];
 				}
 				const propOjbects = properties.map(i => {
 					if (typeof i === "number") {
 						return CommonFromEntries(asset.Layer.map(l => [l.Name ?? "", i]));
-					} else {
+					} else if (CommonIsObject(i)) {
 						return i;
+					} else {
+						return undefined;
 					}
-				});
+				}).filter(i => i !== undefined);
 				return PropertyDataEntry.unionShallowObjects(propOjbects);
+			},
+			difference(properties, { asset }) {
+				const [head, ...tail] = properties;
+				/** @type {AssetLayerOverridePriority} */
+				let ret = head;
+				for (const priority of tail) {
+					if (CommonIsObject(priority)) {
+						if (CommonIsObject(ret)) {
+							// obj/obj difference
+							for (const [k, v] of CommonEntries(ret)) {
+								if (priority[k] === v) {
+									delete ret[k];
+								}
+							}
+						} else {
+							// scalar/obj difference
+							/** @type {Partial<Record<LayerName, number>>} */
+							ret = CommonFromEntries(asset.Layer.map(layer => {
+								const defaultValue = /** @type {number} */(ret);
+								const k = layer.Name ?? "";
+								return [k, priority[k] === defaultValue ? undefined : defaultValue];
+							}));
+						}
+					} else {
+						if (CommonIsObject(ret)) {
+							// obj/scalar difference
+							for (const [k, v] of CommonEntries(ret)) {
+								if (v === priority) {
+									delete ret[k];
+								}
+							}
+						} else {
+							// scalar/scalar difference
+							if (ret === priority) {
+								return undefined;
+							}
+						}
+					}
+				}
+				return ret;
 			},
 			compress(prop, { asset }, defaults) {
 				/** @type {Partial<Record<LayerName, number>>} */
-				// @ts-ignore: Non-strict fails to narrow this down to an object; presumably due to `undefined` shenanigens
 				const defaultsObj = CommonIsObject(defaults) ? defaults : CommonFromEntries(asset.Layer.map(l => [l.Name ?? "", defaults ?? l.Priority]));
 				if (typeof prop === "number") {
 					return Object.values(defaultsObj).every(i => i === prop) ? undefined : { [this.name]: prop };
@@ -1132,69 +1846,444 @@ var PropertyData = {
 					return { [this.name]: prop };
 				}
 			},
+			validate(prop, { asset }, defaults) {
+				if (CommonIsObject(prop)) {
+					const defaultsScalar = typeof defaults === "number" ? defaults : undefined;
+					const defaultsObj = CommonIsObject(defaults) ? defaults : {};
+					const defaultsNonPartial = CommonFromEntries(asset.Layer.map(layer => {
+						const name = layer.Name ?? "";
+						return [name, defaultsScalar ?? defaultsObj[name] ?? layer.Priority];
+					}));
+
+					/** @type {Partial<Record<LayerName, ItemProperty.ValidationOutput<number>>>} */
+					const propertyOutput = CommonFromEntries(CommonEntries(prop).map(([k, v]) => {
+						const metaData = { ...this.metaData, name: `${this.name}["${k}"]` };
+						if (v === undefined) {
+							return [k, undefined];
+						} if (!(k in defaultsNonPartial)) {
+							return [k, { status: "criticalError", errorDescription: [`Invalid '${this.name}' key value '${k}'`] }];
+						} else {
+							return [k, this.validateNumber(v, defaultsNonPartial[k], metaData)];
+						}
+					}));
+					return ItemPropertiesMergeValidationOutputs(propertyOutput);
+				} else {
+					return this.validateNumber(prop, defaults);
+				}
+			},
 		},
 	),
-	Padding: undefined,
-	Password: undefined,
-	PortalLinkCode: undefined,
-	PublicModeCurrent: undefined,
-	PublicModePermission: undefined,
-	PunishActivity: undefined,
-	PunishOrgasm: undefined,
-	PunishProhibitedSpeech: undefined,
-	PunishProhibitedSpeechWords: undefined,
-	PunishRequiredSpeech: undefined,
-	PunishRequiredSpeechWord: undefined,
-	PunishSpeech: undefined,
-	PunishStandup: undefined,
-	PunishStruggle: undefined,
-	PunishStruggleOther: undefined,
-	RemoveItem: undefined,
-	RemoveOnUnlock: undefined,
-	RemoveTimer: undefined,
-	Revert: undefined,
-	Rotation: undefined,
-	RuinedOrgasmCount: undefined,
-	ScaleX: undefined,
-	ScaleY: undefined,
-	SelfUnlock: undefined,
-	SetPose: undefined,
-	ShockLevel: undefined,
-	ShowShrinkText: undefined,
-	ShowText: undefined,
-	ShowTimer: undefined,
-	ShrinkCooldown: undefined,
-	State: undefined,
-	SuctionLevel: undefined,
-	TargetAngle: undefined,
-	Text: undefined,
-	Text2: undefined,
-	Text3: undefined,
-	Texts: undefined,
-	TimeSinceLastOrgasm: new PropertyDataEntry("TimeSinceLastOrgasm", undefined, {
-		compress(prop) {
-			// Never compress
-			return { [this.name]: prop };
+	Padding: new PropertyDataEntry("Padding", undefined,
+		{
+			validate(prop, itemData, defaults) { return this.validateBoolean(prop, defaults); },
+		},
+	),
+	Password: new PropertyDataEntry("Password",
+		{ get valuePattern() { return ValidationPasswordRegex; } },
+		{
+			validate(prop, itemData, defaults) { return this.validateString(prop, defaults); },
+		},
+	),
+	PortalLinkCode: new PropertyDataEntry("PortalLinkCode",
+		{ get valuePattern() { return PortalLinkCodeRegex; } },
+		{
+			validate(prop, itemData, defaults) { return this.validateString(prop, defaults); },
+		},
+	),
+	PublicModeCurrent: new PropertyDataEntry("PublicModeCurrent",
+		{ get valueSet() { return this._valueSet ??= new Set(CommonRange(0, FuturisticTrainingBeltModes.length)); } },
+		{
+			validate(prop, itemData, defaults) { return this.validateAsSetMember(prop, defaults); },
+		},
+	),
+	PublicModePermission: new PropertyDataEntry("PublicModePermission",
+		{ get valueSet() { return this._valueSet ??= new Set(CommonRange(0, FuturisticTrainingBeltPermissions.length)); } },
+		{
+			validate(prop, itemData, defaults) { return this.validateAsSetMember(prop, defaults); },
+		},
+	),
+	PunishActivity: new PropertyDataEntry("PunishActivity", undefined,
+		{
+			validate(prop, itemData, defaults) { return this.validateBoolean(prop, defaults); },
+		},
+	),
+	PunishOrgasm: new PropertyDataEntry("PunishOrgasm", undefined,
+		{
+			validate(prop, itemData, defaults) { return this.validateBoolean(prop, defaults); },
+		},
+	),
+	PunishProhibitedSpeech: new PropertyDataEntry("PunishProhibitedSpeech",
+		{ get valueSet() { return this._valueSet ??= new Set(CommonRange(0, FuturisticTrainingBeltSpeechPunishments.length)); } },
+		{
+			validate(prop, itemData, defaults) { return this.validateAsSetMember(prop, defaults); },
+		},
+	),
+	PunishProhibitedSpeechWords: new PropertyDataEntry("PunishProhibitedSpeechWords", undefined,
+		{
+			validate(prop, itemData, defaults) { return this.validateString(prop, defaults); },
+		},
+	),
+	PunishRequiredSpeech: new PropertyDataEntry("PunishRequiredSpeech",
+		{ get valueSet() { return this._valueSet ??= new Set(CommonRange(0, FuturisticTrainingBeltSpeechPunishments.length)); } },
+		{
+			validate(prop, itemData, defaults) { return this.validateAsSetMember(prop, defaults); },
+		},
+	),
+	PunishRequiredSpeechWord: new PropertyDataEntry("PunishRequiredSpeechWord", undefined,
+		{
+			validate(prop, itemData, defaults) { return this.validateString(prop, defaults); },
+		},
+	),
+	PunishSpeech: new PropertyDataEntry("PunishSpeech",
+		{ get valueSet() { return this._valueSet ??= new Set(CommonRange(0, FuturisticTrainingBeltSpeechPunishments.length)); } },
+		{
+			validate(prop, itemData, defaults) { return this.validateAsSetMember(prop, defaults); },
+		},
+	),
+	PunishStandup: new PropertyDataEntry("PunishStandup", undefined,
+		{
+			validate(prop, itemData, defaults) { return this.validateBoolean(prop, defaults); },
+		},
+	),
+	PunishStruggle: new PropertyDataEntry("PunishStruggle", undefined,
+		{
+			validate(prop, itemData, defaults) { return this.validateBoolean(prop, defaults); },
+		},
+	),
+	PunishStruggleOther: new PropertyDataEntry("PunishStruggleOther", undefined,
+		{
+			validate(prop, itemData, defaults) { return this.validateBoolean(prop, defaults); },
+		},
+	),
+	RemoveItem: new PropertyDataEntry("RemoveItem", undefined,
+		{
+			validate(prop, itemData, defaults) { return this.validateBoolean(prop, defaults); },
+		},
+	),
+	RemoveOnUnlock: new PropertyDataEntry("RemoveOnUnlock", undefined,
+		{
+			validate(prop, itemData, defaults) { return this.validateBoolean(prop, defaults); },
+		},
+	),
+	RemoveTimer: new PropertyDataEntry("RemoveTimer",
+		{ min: 0.0, isInteger: false },
+		{
+			validate(prop, itemData, defaults) { return this.validateNumber(prop, defaults); },
+		},
+	),
+	Revert: new PropertyDataEntry("Revert", undefined,
+		{
+			validate(prop, itemData, defaults) { return this.validateBoolean(prop, defaults); },
+		},
+	),
+	Rotation: new PropertyDataEntry("Rotation",
+		{ defaultNumber: 0, min: -180, max: 180 },
+		{
+			validate(prop, itemData, defaults) { return this.validateNumber(prop, defaults); },
+		},
+	),
+	RuinedOrgasmCount: new PropertyDataEntry("RuinedOrgasmCount",
+		{ min: 0 },
+		{
+			validate(prop, itemData, defaults) { return this.validateNumber(prop, defaults); },
+		},
+	),
+	ScaleX: new PropertyDataEntry("ScaleX",
+		{ defaultNumber: 1.00, min: 0.01, max: 3.00, isInteger: false },
+		{
+			validate(prop, itemData, defaults) { return this.validateNumber(prop, defaults); },
+		},
+	),
+	ScaleY: new PropertyDataEntry("ScaleY",
+		{ defaultNumber: 1.00, min: 0.01, max: 3.00, isInteger: false },
+		{
+			validate(prop, itemData, defaults) { return this.validateNumber(prop, defaults); },
+		},
+	),
+	SelfUnlock: new PropertyDataEntry("SelfUnlock", undefined,
+		{
+			validate(prop, itemData, defaults) { return this.validateBoolean(prop, defaults); },
+		},
+	),
+	SetPose: new PropertyDataEntry("SetPose",
+		{ get valueSet() { return this._valueSet ??= new Set(CommonKeys(PoseRecord)); } },
+		{
+			..._PropertyDataArraysDefaults,
+		},
+	),
+	ShockLevel: new PropertyDataEntry("ShockLevel",
+		{ valueSet: new Set(/** @type {const} */([0, 1, 2])) },
+		{
+			validate(prop, itemData, defaults) { return this.validateAsSetMember(prop, defaults); },
+		},
+	),
+	ShowShrinkText: new PropertyDataEntry("ShowShrinkText", undefined,
+		{
+			validate(prop, itemData, defaults) { return this.validateBoolean(prop, defaults); },
+		},
+	),
+	ShowText: new PropertyDataEntry("ShowText", undefined,
+		{
+			validate(prop, itemData, defaults) { return this.validateBoolean(prop, defaults); },
+		},
+	),
+	ShowTimer: new PropertyDataEntry("ShowTimer", undefined,
+		{
+			validate(prop, itemData, defaults) { return this.validateBoolean(prop, defaults); },
+		},
+	),
+	ShrinkCooldown: new PropertyDataEntry("ShrinkCooldown",
+		{ isInteger: false, min: 0.0 },
+		{
+			validate(prop, itemData, defaults) { return this.validateNumber(prop, defaults); },
+		},
+	),
+	State: new PropertyDataEntry("State",
+		{ get valueSet() { return this._valueSet ??= new Set(Object.values(VibratorModeState)); } },
+		{
+			validate(prop, itemData, defaults) { return this.validateAsSetMember(prop, defaults); },
+		},
+	),
+	SuctionLevel: new PropertyDataEntry("SuctionLevel",
+		{ valueSet: new Set(/** @type {const} */([0, 1, 2, 3, 4])) },
+		{
+			validate(prop, itemData, defaults) { return this.validateAsSetMember(prop, defaults); },
+		},
+	),
+	TargetAngle: new PropertyDataEntry("TargetAngle",
+		{ min: 0, max: 360 },
+		{
+			validate(prop, itemData, defaults) { return this.validateNumber(prop, defaults); },
+		},
+	),
+	Text: new PropertyDataEntry("Text", undefined,
+		{
+			validate(prop, itemData, defaults) { return this.validateString(prop, defaults); },
+		},
+	),
+	Text2: new PropertyDataEntry("Text2", undefined,
+		{
+			validate(prop, itemData, defaults) { return this.validateString(prop, defaults); },
+		},
+	),
+	Text3: new PropertyDataEntry("Text3", undefined,
+		{
+			validate(prop, itemData, defaults) { return this.validateString(prop, defaults); },
+		},
+	),
+	// One of the rare few ordered, fixed length arrays as opposed to a set-like one
+	Texts: new PropertyDataEntry("Texts",
+		{
+			get valuePattern() { return this._valuePattern ??= DynamicDrawTextRegex; },
+			get minLength() { return this._minLength ??= ItemDevicesLuckyWheelMinTexts; },
+			get maxLength() { return this._maxLength ??= ItemDevicesLuckyWheelMaxTexts; },
+		},
+		{
+			compare(prop1, prop2) { return CommonArraysEqual(prop1, prop2, false); },
+			validate(prop, itemData, defaults) {
+				// TODO: Check length
+				return this.validateSetLikeArray(
+					{ type: "string", value: prop },
+					defaults,
+				);
+			},
+		},
+	),
+	TimeSinceLastOrgasm: new PropertyDataEntry("TimeSinceLastOrgasm",
+		{ min: 0.0, isInteger: false },
+		{
+			compress(prop) { return { [this.name]: prop }; }, // Never compress
+			validate(prop, itemData, defaults) { return this.validateNumber(prop, defaults); },
+		},
+	),
+	TimeWorn: new PropertyDataEntry("TimeWorn",
+		{ min: 0.0, isInteger: false },
+		{
+			compress(prop) { return { [this.name]: prop }; }, // Never compress
+			validate(prop, itemData, defaults) { return this.validateNumber(prop, defaults); },
+		},
+	),
+	Tint: new PropertyDataEntry("Tint", undefined, {
+		compare(prop1, prop2) {
+			for (const obj1 of prop1) {
+				if (!prop2.some(obj2 => CommonObjectEqual(obj1, obj2))) {
+					return false;
+				}
+			}
+			for (const obj2 of prop2) {
+				if (!prop1.some(obj1 => CommonObjectEqual(obj1, obj2))) {
+					return false;
+				}
+			}
+			return true;
+		},
+		union(properties) {
+			const [head, ...tail] = properties;
+			const ret = CommonIsArray(head) ? CommonCloneDeep(head) : [];
+			for (const tintList of tail) {
+				if (!CommonIsArray(tintList)) {
+					continue;
+				}
+				for (const tint1 of tintList) {
+					if (!ret.some(tint2 => CommonObjectEqual(tint1, tint2))) {
+						ret.push(tint1);
+					}
+				}
+			}
+			return ret;
+		},
+		difference(properties) {
+			const [head, ...tail] = properties;
+			const ret = new Map(CommonCloneDeep(head).entries());
+			const removals = new Set();
+			for (const [i, tint] of ret.entries()) {
+				innerLoop: for (const tintList of tail) {
+					if (tintList.some(j => CommonObjectEqual(tint, j))) {
+						removals.delete(i);
+						break innerLoop;
+					}
+				}
+			}
+			return ret.size === 0 ? undefined : Array.from(ret.values());
+		},
+		isSubset(subProp, superProp) {
+			for (const obj1 of subProp) {
+				if (!superProp.some(obj2 => CommonObjectEqual(obj1, obj2))) {
+					return false;
+				}
+			}
+			return true;
+		},
+		validate(prop, { asset }, defaults) {
+			if (!CommonIsArray(prop)) {
+				return { status: "criticalError", errorDescription: [`Invalid '${this.name}' non-array type '${typeof prop}'`] };
+			}
+
+			const colorSchema = new Set(asset.Group.ColorSchema);
+			/** @type {ItemProperty.ValidationOutput<TintDefinition>[]} */
+			const validationOutput = prop.map((value, i) => {
+				if (!CommonIsObject(value)) {
+					return { status: "criticalError", errorDescription: [`Invalid '${this.name}[${i}]' type '${typeof value}'`] };
+				}
+				/** @type {{ [k in keyof TintDefinition]: ItemProperty.ValidationOutput<TintDefinition[k]> }} */
+				const validationTintOutput = {
+					Color: (
+						typeof value.Color === "number"
+						? this.validateNumber(value.Color, undefined, { name: `${this.name}[${i}]['Color']`, min: 0, max: asset.Layer.length - 1 })
+						: this.validateString(value.Color, undefined, { name: `${this.name}[${i}]['Color']`, colorSchema, isColor: true })
+					),
+					Strength: this.validateNumber(value.Strength, undefined, { name: `${this.name}[${i}]['Strength']`, min: 0.0, max: 1.0, isInteger: false }),
+					DefaultColor: (
+						value.DefaultColor === undefined
+						? undefined
+						: this.validateString(value.DefaultColor, undefined, { name: `${this.name}[${i}]['DefaultColor']`, colorSchema, isColor: true })
+					),
+				};
+				if (validationTintOutput.DefaultColor?.status === "criticalError") {
+					// Optional value; demote criticalError to error
+					validationTintOutput.DefaultColor = { ...validationTintOutput.DefaultColor, status: "error", value: undefined };
+				}
+				return ItemPropertiesMergeValidationOutputs(validationTintOutput);
+			});
+			const ret = ItemPropertiesMergeValidationOutputs(validationOutput);
+
+			// Always allow 0-length arrays
+			if (!asset.AllowTint && ret.status !== "criticalError" && ret.value.length !== 0) {
+				return { status: "criticalError", errorDescription: [`Illegal property '${this.name}'`] };
+			} else {
+				return ret;
+			}
 		},
 	}),
-	TimeWorn: new PropertyDataEntry("TimeWorn", undefined, {
-		compress(prop) {
-			// Never compress
-			return { [this.name]: prop };
+	TranslationX: new PropertyDataEntry("TranslationX",
+		{ defaultNumber: 0, min: -500, max: 500 },
+		{
+			validate(prop, itemData, defaults) { return this.validateNumber(prop, defaults); },
 		},
-	}),
-	Tint: undefined,
-	TranslationX: undefined,
-	TranslationY: undefined,
-	TriggerCount: undefined,
-	TriggerValues: undefined,
+	),
+	TranslationY: new PropertyDataEntry("TranslationY",
+		{ defaultNumber: 0, min: -500, max: 500 },
+		{
+			validate(prop, itemData, defaults) { return this.validateNumber(prop, defaults); },
+		},
+	),
+	TriggerCount: new PropertyDataEntry("TriggerCount",
+		{ min: 0 },
+		{
+			validate(prop, itemData, defaults) { return this.validateNumber(prop, defaults); },
+		},
+	),
+	TriggerValues: new PropertyDataEntry("TriggerValues", undefined,
+		{
+			validate(prop, itemData, defaults) { return this.validateString(prop, defaults); },
+		},
+	),
 	TypeRecord: new PropertyDataEntry("TypeRecord", undefined, {
+		compare: PropertyDataEntry.compareShallowObjects,
+		union: PropertyDataEntry.unionShallowObjects,
+		difference: PropertyDataEntry.differenceShallowObjects,
 		compress(prop) {
 			const entries = CommonEntries(prop ?? {}).filter(([k, v]) => !!v);
 			return entries.length ? { [this.name]: CommonFromEntries(entries) } : undefined;
 		},
-		compare: PropertyDataEntry.compareShallowObjects,
-		union: PropertyDataEntry.unionShallowObjects,
+		validate(prop, itemData) {
+			const { C, asset } = itemData;
+
+			/** @type {string[]} */
+			const errorDescription = [];
+			if (!CommonIsObject(prop)) {
+				errorDescription.push(`Invalid '${this.name}' type '${typeof prop}'`);
+				prop = {};
+			}
+
+			/** @type {string[]} */
+			const blockedKeys = [];
+			const subTypeRecordList = CommonFilterMap(
+				ExtendedItemGatherOptions(AppearanceItem.fromAsset(itemData.asset, { property: { TypeRecord: { ...prop } } })),
+				(option) => {
+					const subTypeRecord = { ...(/** @type {ItemProperties} */(option.Property)?.TypeRecord ?? {}) };
+					for (const [key, value] of Object.entries(subTypeRecord)) {
+						if (value === undefined) {
+							continue;
+						} else if (C && value !== 0 && InventoryIsPermissionBlocked(C, asset.Name, asset.Group.Name, `${key}${value}`)) {
+							// Non-default option explicitly blocked by the user
+							subTypeRecord[key] = 0;
+							blockedKeys.push(`'${key}${value}'`);
+							return undefined;
+						} else if (option.OptionType === "VibratingItemOption" && VibratorModesAdvanced.includes(option.Property?.Mode) && C?.ArousalSettings.DisableAdvancedVibes) {
+							// Option blocked due to being an advanced vibrator mode
+							subTypeRecord[key] = 0;
+							blockedKeys.push(`'${key}${value}'`);
+							return undefined;
+						}
+					}
+					return subTypeRecord;
+				},
+			);
+			const newTypeRecord = this.union(subTypeRecordList, itemData);
+			if (blockedKeys.length) {
+				errorDescription.push(`Invalid user-blocked '${this.name}' keys: ${blockedKeys.sort().join(", ")}`);
+			}
+
+			const extraKeys = CommonFilterMap(Object.entries(prop), ([k, v]) => v !== undefined && newTypeRecord?.[k] === undefined ? `'${k}'` : undefined).sort();
+			const missingKeys = CommonFilterMap(Object.entries(newTypeRecord ?? {}), ([k, v]) => v !== undefined && prop?.[k] === undefined ? `'${k}'` : undefined).sort();
+			if (extraKeys.length) {
+				errorDescription.push(`invalid extra '${this.name}' keys: ${extraKeys.join(", ")}`);
+			}
+			if (missingKeys.length) {
+				errorDescription.push(`invalid missing '${this.name}' keys: ${missingKeys.join(", ")}`);
+			}
+			if (errorDescription.length) {
+				return { status: "error", value: prop, errorDescription };
+			} else {
+				return { status: "ok", value: prop };
+			}
+		},
 	}),
-	UnHide: PropertyDataEntry.copyFrom("Block", "UnHide"),
+	UnHide: new PropertyDataEntry("UnHide",
+		{ get valueSet() { return this._valueSet ??= new Set(AssetGroup.map(a => a.Name)); } },
+		{
+			..._PropertyDataArraysDefaults,
+		},
+	),
 };

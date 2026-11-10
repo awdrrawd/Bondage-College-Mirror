@@ -795,7 +795,7 @@ function WardrobeFastLoad(C, W, Update = false, Options = {}) {
 			// `CharacterAppearanceSetItem` initializes extended items to their default option.
 			// Property union keeps that first value, so a default `TypeRecord` of 0 blocks the saved option.
 			item.Property = {};
-			item.Property = ItemPropertiesDecompress(item, w.Property);
+			item.Property = ItemPropertiesDecompress(item, w.Property, { C });
 			item.Property.Expression = expression;
 		}
 	}

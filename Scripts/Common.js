@@ -1495,7 +1495,7 @@ function CommonIsCharacter(value) {
 function CommonCloneDeep(obj, reviver=null, replacer=null) {
 	reviver ??= undefined;
 	replacer ??= undefined;
-	return /** @type {T} */ (JSON.parse(JSON.stringify(obj, replacer), reviver));
+	return /** @type {T} */ (obj === undefined ? undefined : JSON.parse(JSON.stringify(obj, replacer), reviver));
 }
 
 /**

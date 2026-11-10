@@ -578,10 +578,38 @@ const AssetsMapDataObjects = [
 	},
 	{ ID: 166, Type: "Bedroom", Style: "Bed" , Top: -0.82, Left: 0.05, Height: 1.8, Width: 0.90, AssetName: "Bed", AssetGroup: "ItemDevices" },
 	{ ID: 170, Type: "LivingRoom", Style: "Stairs" , Top: 0, Left: 0 },
-	{ ID: 175, Type: "LivingRoom", Style: "ModernDiningChair", Top: -0.5, Height: 1.5 },
-	{ ID: 176, Type: "LivingRoom", Style: "ModernLampFloor", Top: -1.2, Height: 2.2 },
-	{ ID: 177, Type: "LivingRoom", Style: "ModernLampArc", Left: -0.25, Width: 1.5, Top: -1.2, Height: 2.2 },
-	{ ID: 178, Type: "LivingRoom", Style: "ModernLampTripod", Top: -1.1, Height: 2.1 },
+	{
+		ID: 175, Type: "LivingRoom", Style: "ModernDiningChair", Top: -0.5, Height: 1.5,
+		Layers: [
+			{ Name: "Body", IsColorable: true, DefaultColor: "#EDEBE6" },
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#B98A5A" },
+			{ Name: "Fabric", IsColorable: true, DefaultColor: "#6B7A8C" },
+		],
+	},
+	{
+		ID: 176, Type: "LivingRoom", Style: "ModernLampFloor", Top: -1.2, Height: 2.2,
+		Layers: [
+			{ Name: "Metal", IsColorable: true, DefaultColor: "#2B2B2B" },
+			{ Name: "Shade", IsColorable: true, DefaultColor: "#F5F0E6" },
+			{ Name: "Glow", IsColorable: false },
+		],
+	},
+	{
+		ID: 177, Type: "LivingRoom", Style: "ModernLampArc", Left: -0.25, Width: 1.5, Top: -1.2, Height: 2.2,
+		Layers: [
+			{ Name: "Metal", IsColorable: true, DefaultColor: "#2B2B2B" },
+			{ Name: "Shade", IsColorable: true, DefaultColor: "#F5F0E6" },
+			{ Name: "Glow", IsColorable: false },
+		],
+	},
+	{
+		ID: 178, Type: "LivingRoom", Style: "ModernLampTripod", Top: -1.1, Height: 2.1,
+		Layers: [
+			{ Name: "Metal", IsColorable: true, DefaultColor: "#2B2B2B" },
+			{ Name: "Shade", IsColorable: true, DefaultColor: "#F5F0E6" },
+			{ Name: "Glow", IsColorable: false },
+		],
+	},
 	{ ID: 180, Type: "LivingRoom", Style: "AirConditioner" , Top: 0, Left: 0 },
 	// Master LivingRoom set (keep published IDs)
 	{ ID: 190, Type: "LivingRoom", Style: "FloorLamp", Top: -1.15, Left: 0.13, Height: 2, Width: 0.74 },
@@ -591,12 +619,57 @@ const AssetsMapDataObjects = [
 	{ ID: 194, Type: "LivingRoom", Style: "FaintingCouch", Top: 0.3, Height: 0.55 },
 	{ ID: 195, Type: "LivingRoom", Style: "FiddleLeafFig", Top: -0.95, Left: 0.02, Height: 1.8, Width: 0.97 },
 	// Our LivingRoom set remapped off 190-195
-	{ ID: 185, Type: "LivingRoom", Style: "ModernLowboardSingle", Top: 0, Height: 1, JoinsNeighbors: true, BuildImageName: ChatRoomMapViewCreateRowImage("ModernLowboard") },
-	{ ID: 186, Type: "LivingRoom", Style: "ModernHighboardSingle", Top: -0.8, Height: 1.8, JoinsNeighbors: true, BuildImageName: ChatRoomMapViewCreateRowImage("ModernHighboard") },
-	{ ID: 187, Type: "LivingRoom", Style: "ModernBookshelfSingle", Top: -1.3, Height: 2.3, JoinsNeighbors: true, BuildImageName: ChatRoomMapViewCreateRowImage("ModernBookshelf") },
-	{ ID: 188, Type: "LivingRoom", Style: "NordicSideboardSingle", Top: -0.3, Height: 1.3, JoinsNeighbors: true, BuildImageName: ChatRoomMapViewCreateRowImage("NordicSideboard") },
-	{ ID: 189, Type: "LivingRoom", Style: "NordicCabinet", Top: -1.2, Height: 2.2 },
-	{ ID: 221, Type: "LivingRoom", Style: "ModernWardrobe", Top: -1.2, Height: 2.2 },
+	{
+		ID: 185, Type: "LivingRoom", Style: "ModernLowboardSingle", Top: 0, Height: 1, JoinsNeighbors: true, BuildImageName: ChatRoomMapViewCreateRowImage("ModernLowboard"),
+		Layers: [
+			{ Name: "Body", IsColorable: true, DefaultColor: "#EDEBE6" },
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#B98A5A" },
+			{ Name: "Metal", IsColorable: true, DefaultColor: "#2B2B2B" },
+			{ Name: "Glass", IsColorable: false },
+			{ Name: "Decor", IsColorable: false },
+		],
+	},
+	{
+		ID: 186, Type: "LivingRoom", Style: "ModernHighboardSingle", Top: -0.8, Height: 1.8, JoinsNeighbors: true, BuildImageName: ChatRoomMapViewCreateRowImage("ModernHighboard"),
+		Layers: [
+			{ Name: "Body", IsColorable: true, DefaultColor: "#EDEBE6" },
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#B98A5A" },
+			{ Name: "Metal", IsColorable: true, DefaultColor: "#2B2B2B" },
+			{ Name: "Glass", IsColorable: false },
+			{ Name: "Decor", IsColorable: false },
+		],
+	},
+	{
+		ID: 187, Type: "LivingRoom", Style: "ModernBookshelfSingle", Top: -1.3, Height: 2.3, JoinsNeighbors: true, BuildImageName: ChatRoomMapViewCreateRowImage("ModernBookshelf"),
+		Layers: [
+			{ Name: "Body", IsColorable: true, DefaultColor: "#EDEBE6" },
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#B98A5A" },
+			{ Name: "Metal", IsColorable: true, DefaultColor: "#2B2B2B" },
+			{ Name: "Decor", IsColorable: false },
+		],
+	},
+	{
+		ID: 188, Type: "LivingRoom", Style: "NordicSideboardSingle", Top: -0.3, Height: 1.3, JoinsNeighbors: true, BuildImageName: ChatRoomMapViewCreateRowImage("NordicSideboard"),
+		Layers: [
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#A0693C" },
+			{ Name: "Metal", IsColorable: true, DefaultColor: "#5A5A5E" },
+		],
+	},
+	{
+		ID: 189, Type: "LivingRoom", Style: "NordicCabinet", Top: -1.2, Height: 2.2,
+		Layers: [
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#A0693C" },
+			{ Name: "Metal", IsColorable: true, DefaultColor: "#5A5A5E" },
+		],
+	},
+	{
+		ID: 221, Type: "LivingRoom", Style: "ModernWardrobe", Top: -1.2, Height: 2.2,
+		Layers: [
+			{ Name: "Body", IsColorable: true, DefaultColor: "#EDEBE6" },
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#B98A5A" },
+			{ Name: "Metal", IsColorable: true, DefaultColor: "#2B2B2B" },
+		],
+	},
 	{
 		ID: 196,
 		Type: "FloorDecorationThemed",
@@ -606,14 +679,58 @@ const AssetsMapDataObjects = [
 		Transparency: 1,
 		// Cutout 0: redraw full cage over the character so the roof stone stays solid
 		TransparencyCutoutHeight: 0,
+		Layers: [
+			{ Name: "MetalGold", IsColorable: true, DefaultColor: "#C9A227" },
+			{ Name: "MetalBars", IsColorable: true, DefaultColor: "#3A3A40" },
+			{ Name: "Stone", IsColorable: true, DefaultColor: "#6A635C" },
+		],
 	},
-	{ ID: 197, Type: "FloorDecorationThemed", Style: "ThroneCageThrone", Top: -0.85, Height: 1.6 },
-	{ ID: 167, Type: "FloorDecorationThemed", Style: "ThroneCageStairsRight", Top: -0.25, Height: 1.25 },
-	{ ID: 198, Type: "FloorDecorationThemed", Style: "ThroneCageStairsLeft", Top: -0.25, Height: 1.25 },
-	{ ID: 181, Type: "FloorDecorationThemed", Style: "Stage", Top: -0.25, Height: 1.25 },
-	{ ID: 182, Type: "FloorDecorationThemed", Style: "StageWood", Top: -0.25, Height: 1.25 },
-	{ ID: 183, Type: "FloorDecorationThemed", Style: "StageStairsLeftWood", Top: -0.25, Height: 1.25 },
-	{ ID: 184, Type: "FloorDecorationThemed", Style: "StageStairsRightWood", Top: -0.25, Height: 1.25 },
+	{
+		ID: 197, Type: "FloorDecorationThemed", Style: "ThroneCageThrone", Top: -0.85, Height: 1.6,
+		Layers: [
+			{ Name: "Fabric", IsColorable: true, DefaultColor: "#B91C2C" },
+			{ Name: "MetalGold", IsColorable: true, DefaultColor: "#C9A227" },
+			{ Name: "Stone", IsColorable: true, DefaultColor: "#6A635C" },
+		],
+	},
+	{
+		ID: 167, Type: "FloorDecorationThemed", Style: "ThroneCageStairsRight", Top: -0.25, Height: 1.25,
+		Layers: [
+			{ Name: "Stone", IsColorable: true, DefaultColor: "#6A635C" },
+			{ Name: "MetalGold", IsColorable: true, DefaultColor: "#C9A227" },
+		],
+	},
+	{
+		ID: 198, Type: "FloorDecorationThemed", Style: "ThroneCageStairsLeft", Top: -0.25, Height: 1.25,
+		Layers: [
+			{ Name: "Stone", IsColorable: true, DefaultColor: "#6A635C" },
+			{ Name: "MetalGold", IsColorable: true, DefaultColor: "#C9A227" },
+		],
+	},
+	{
+		ID: 181, Type: "FloorDecorationThemed", Style: "Stage", Top: -0.25, Height: 1.25,
+		Layers: [
+			{ Name: "Stone", IsColorable: true, DefaultColor: "#6A635C" },
+		],
+	},
+	{
+		ID: 182, Type: "FloorDecorationThemed", Style: "StageWood", Top: -0.25, Height: 1.25,
+		Layers: [
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#A0693C" },
+		],
+	},
+	{
+		ID: 183, Type: "FloorDecorationThemed", Style: "StageStairsLeftWood", Top: -0.25, Height: 1.25,
+		Layers: [
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#A0693C" },
+		],
+	},
+	{
+		ID: 184, Type: "FloorDecorationThemed", Style: "StageStairsRightWood", Top: -0.25, Height: 1.25,
+		Layers: [
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#A0693C" },
+		],
+	},
 	{ ID: 401, Type: "Bedroom", Style: "TeddyBear" },
 	{ ID: 402, Type: "Bedroom", Style: "PinkTeddyBear" },
 	{
@@ -629,10 +746,41 @@ const AssetsMapDataObjects = [
 	{ ID: 407, Type: "Bedroom", Style: "FoldingScreen", Top: -0.13, Height: 0.98 },
 	{ ID: 408, Type: "Bedroom", Style: "DressForm", Top: -0.95, Left: 0.16, Height: 1.8, Width: 0.69 },
 	// Our Bedroom set remapped off 405-408
-	{ ID: 409, Type: "Bedroom", Style: "SlidingDoorCabinet", Top: -1.2, Height: 2.2 },
-	{ ID: 410, Type: "Bedroom", Style: "MakeupTable", Top: -0.8, Height: 1.8 },
-	{ ID: 411, Type: "Bedroom", Style: "ModernNightstand", Top: -0.25, Height: 1.0 },
-	{ ID: 412, Type: "Bedroom", Style: "ModernNightstandLamp", Top: -0.55, Height: 1.3 },
+	{
+		ID: 409, Type: "Bedroom", Style: "SlidingDoorCabinet", Top: -1.2, Height: 2.2,
+		Layers: [
+			{ Name: "Body", IsColorable: true, DefaultColor: "#EDEBE6" },
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#B98A5A" },
+			{ Name: "Metal", IsColorable: true, DefaultColor: "#2B2B2B" },
+		],
+	},
+	{
+		ID: 410, Type: "Bedroom", Style: "MakeupTable", Top: -0.8, Height: 1.8,
+		Layers: [
+			{ Name: "Body", IsColorable: true, DefaultColor: "#EDEBE6" },
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#B98A5A" },
+			{ Name: "Metal", IsColorable: true, DefaultColor: "#2B2B2B" },
+			{ Name: "Mirror", IsColorable: false },
+		],
+	},
+	{
+		ID: 411, Type: "Bedroom", Style: "ModernNightstand", Top: -0.25, Height: 1.0,
+		Layers: [
+			{ Name: "Body", IsColorable: true, DefaultColor: "#EDEBE6" },
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#B98A5A" },
+			{ Name: "Metal", IsColorable: true, DefaultColor: "#2B2B2B" },
+		],
+	},
+	{
+		ID: 412, Type: "Bedroom", Style: "ModernNightstandLamp", Top: -0.55, Height: 1.3,
+		Layers: [
+			{ Name: "Body", IsColorable: true, DefaultColor: "#EDEBE6" },
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#B98A5A" },
+			{ Name: "Metal", IsColorable: true, DefaultColor: "#2B2B2B" },
+			{ Name: "Shade", IsColorable: true, DefaultColor: "#F5F0E6" },
+			{ Name: "Glow", IsColorable: false },
+		],
+	},
 
 	{ ID: 210, Type: "School", Style: "TeacherDesk", Top: -0.25 },
 	{ ID: 212, Type: "School", Style: "Globe", Top: -0.25, Left: 0.16, Height: 1.1, Width: 0.69 },
@@ -650,18 +798,102 @@ const AssetsMapDataObjects = [
 	{ ID: 300, Type: "FloorDecorationThemed", Style: "ShibariFrame", Top: -1, Height: 2 },
 	{ ID: 310, Type: "LivingRoom", Style: "JapaneseTable", Top: -0.1 },
 	{ ID: 320, Type: "FloorDecorationThemed", Style: "BanzaiTree", Top: -0.1 },
-	{ ID: 330, Type: "Kitchen", Style: "KitchenCounterSingle", Top: -0.3, Height: 1.3, JoinsNeighbors: true, BuildImageName: ChatRoomMapViewCreateKitchenCounterImage("KitchenCounter") },
-	{ ID: 331, Type: "Kitchen", Style: "KitchenCounterSinkSingle", Top: -0.3, Height: 1.3, JoinsNeighbors: true, BuildImageName: ChatRoomMapViewCreateKitchenCounterImage("KitchenCounterSink") },
-	{ ID: 332, Type: "Kitchen", Style: "KitchenCounterStoveElectricSingle", Top: -0.3, Height: 1.3, JoinsNeighbors: true, BuildImageName: ChatRoomMapViewCreateKitchenCounterImage("KitchenCounterStoveElectric") },
-	{ ID: 333, Type: "Kitchen", Style: "KitchenCounterStoveGasSingle", Top: -0.3, Height: 1.3, JoinsNeighbors: true, BuildImageName: ChatRoomMapViewCreateKitchenCounterImage("KitchenCounterStoveGas") },
-	{ ID: 334, Type: "Kitchen", Style: "KitchenTallCabinetSingle", Top: -1.2, Height: 2.2 },
-	{ ID: 335, Type: "Kitchen", Style: "KitchenWallCabinetSingle", CanPlaceOnWalls: true, CanPlaceOnFloors: false, Top: 0.05, Height: 0.75, BuildImageName: ChatRoomMapViewCreateRowImage("KitchenWallCabinet") },
-	{ ID: 336, Type: "Office", Style: "OfficeStandingTable", Top: -0.5, Height: 1.5 },
-	{ ID: 337, Type: "Office", Style: "OfficeDeskComputer", Top: -0.35, Height: 1.35 },
-	{ ID: 338, Type: "Office", Style: "OfficeChair", Top: -0.5, Height: 1.5 },
-	{ ID: 339, Type: "Office", Style: "OfficeFilingCabinet", Top: -1.0, Height: 2.0 },
-	{ ID: 340, Type: "Office", Style: "OfficeFileDrawer", Top: -0.3, Height: 1.3 },
-	{ ID: 341, Type: "Office", Style: "OfficePrinter", Top: -0.5, Height: 1.5 },
+	{
+		ID: 330, Type: "Kitchen", Style: "KitchenCounterSingle", Top: -0.3, Height: 1.3, JoinsNeighbors: true, BuildImageName: ChatRoomMapViewCreateKitchenCounterImage("KitchenCounter"),
+		Layers: [
+			{ Name: "Body", IsColorable: true, DefaultColor: "#F2F0EB" },
+			{ Name: "Countertop", IsColorable: true, DefaultColor: "#8A6A4A" },
+			{ Name: "Handles", IsColorable: true, DefaultColor: "#A0A0A0" },
+		],
+	},
+	{
+		ID: 331, Type: "Kitchen", Style: "KitchenCounterSinkSingle", Top: -0.3, Height: 1.3, JoinsNeighbors: true, BuildImageName: ChatRoomMapViewCreateKitchenCounterImage("KitchenCounterSink"),
+		Layers: [
+			{ Name: "Body", IsColorable: true, DefaultColor: "#F2F0EB" },
+			{ Name: "Countertop", IsColorable: true, DefaultColor: "#8A6A4A" },
+			{ Name: "Handles", IsColorable: true, DefaultColor: "#A0A0A0" },
+			{ Name: "Sink", IsColorable: true, DefaultColor: "#C8C8C8" },
+		],
+	},
+	{
+		ID: 332, Type: "Kitchen", Style: "KitchenCounterStoveElectricSingle", Top: -0.3, Height: 1.3, JoinsNeighbors: true, BuildImageName: ChatRoomMapViewCreateKitchenCounterImage("KitchenCounterStoveElectric"),
+		Layers: [
+			{ Name: "Body", IsColorable: true, DefaultColor: "#F2F0EB" },
+			{ Name: "Countertop", IsColorable: true, DefaultColor: "#8A6A4A" },
+			{ Name: "Handles", IsColorable: true, DefaultColor: "#A0A0A0" },
+			{ Name: "Cooktop", IsColorable: false },
+		],
+	},
+	{
+		ID: 333, Type: "Kitchen", Style: "KitchenCounterStoveGasSingle", Top: -0.3, Height: 1.3, JoinsNeighbors: true, BuildImageName: ChatRoomMapViewCreateKitchenCounterImage("KitchenCounterStoveGas"),
+		Layers: [
+			{ Name: "Body", IsColorable: true, DefaultColor: "#F2F0EB" },
+			{ Name: "Countertop", IsColorable: true, DefaultColor: "#8A6A4A" },
+			{ Name: "Handles", IsColorable: true, DefaultColor: "#A0A0A0" },
+			{ Name: "Cooktop", IsColorable: false },
+			{ Name: "Grates", IsColorable: false },
+		],
+	},
+	{
+		ID: 334, Type: "Kitchen", Style: "KitchenTallCabinetSingle", Top: -1.2, Height: 2.2,
+		Layers: [
+			{ Name: "Body", IsColorable: true, DefaultColor: "#F2F0EB" },
+			{ Name: "Handles", IsColorable: true, DefaultColor: "#A0A0A0" },
+		],
+	},
+	{
+		ID: 335, Type: "Kitchen", Style: "KitchenWallCabinetSingle", CanPlaceOnWalls: true, CanPlaceOnFloors: false, Top: 0.05, Height: 0.75, BuildImageName: ChatRoomMapViewCreateRowImage("KitchenWallCabinet"),
+		Layers: [
+			{ Name: "Body", IsColorable: true, DefaultColor: "#F2F0EB" },
+			{ Name: "Handles", IsColorable: true, DefaultColor: "#A0A0A0" },
+		],
+	},
+	{
+		ID: 336, Type: "Office", Style: "OfficeStandingTable", Top: -0.5, Height: 1.5,
+		Layers: [
+			{ Name: "Body", IsColorable: true, DefaultColor: "#EDEBE6" },
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#B98A5A" },
+			{ Name: "Metal", IsColorable: true, DefaultColor: "#2B2B2B" },
+		],
+	},
+	{
+		ID: 337, Type: "Office", Style: "OfficeDeskComputer", Top: -0.35, Height: 1.35,
+		Layers: [
+			{ Name: "Body", IsColorable: true, DefaultColor: "#EDEBE6" },
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#B98A5A" },
+			{ Name: "Metal", IsColorable: true, DefaultColor: "#2B2B2B" },
+			{ Name: "Screen", IsColorable: false },
+		],
+	},
+	{
+		ID: 338, Type: "Office", Style: "OfficeChair", Top: -0.5, Height: 1.5,
+		Layers: [
+			{ Name: "Body", IsColorable: true, DefaultColor: "#EDEBE6" },
+			{ Name: "Fabric", IsColorable: true, DefaultColor: "#6B7A8C" },
+			{ Name: "Metal", IsColorable: true, DefaultColor: "#2B2B2B" },
+		],
+	},
+	{
+		ID: 339, Type: "Office", Style: "OfficeFilingCabinet", Top: -1.0, Height: 2.0,
+		Layers: [
+			{ Name: "Body", IsColorable: true, DefaultColor: "#EDEBE6" },
+			{ Name: "Metal", IsColorable: true, DefaultColor: "#2B2B2B" },
+		],
+	},
+	{
+		ID: 340, Type: "Office", Style: "OfficeFileDrawer", Top: -0.3, Height: 1.3,
+		Layers: [
+			{ Name: "Body", IsColorable: true, DefaultColor: "#EDEBE6" },
+			{ Name: "Metal", IsColorable: true, DefaultColor: "#2B2B2B" },
+		],
+	},
+	{
+		ID: 341, Type: "Office", Style: "OfficePrinter", Top: -0.5, Height: 1.5,
+		Layers: [
+			{ Name: "Body", IsColorable: true, DefaultColor: "#EDEBE6" },
+			{ Name: "Metal", IsColorable: true, DefaultColor: "#2B2B2B" },
+		],
+	},
 	{ ID: 350, Type: "FloorDecorationThemed", Style: "MedicalDesk", Top: -0.15 },
 	{ ID: 360, Type: "FloorDecorationThemed", Style: "anvil", Top: 0.03, Left: 0.05, Height: 0.9, Width: 0.9 },
 	{ ID: 361, Type: "FloorDecorationThemed", Style: "grindstone", Top: 0.03, Left: 0.05, Height: 0.9, Width: 0.9 },
@@ -669,8 +901,22 @@ const AssetsMapDataObjects = [
 	{ ID: 363, Type: "Kitchen", Style: "microwave", Top: 0.03, Left: 0.05, Height: 0.9, Width: 0.9 },
 	{ ID: 364, Type: "Kitchen", Style: "stove", Top: -0.29, Left: 0.05, Height: 1.22, Width: 0.9 },
 	{ ID: 365, Type: "Kitchen", Style: "fridge", Top: -0.8, Left: 0.05, Height: 1.8, Width: 0.9 },
-	{ ID: 366, Type: "Kitchen", Style: "KitchenWallKnifeMagnet", CanPlaceOnWalls: true, CanPlaceOnFloors: false, Top: 0.05, Height: 0.5 },
-	{ ID: 367, Type: "Kitchen", Style: "KitchenWallCoffeeArt", CanPlaceOnWalls: true, CanPlaceOnFloors: false, Top: 0.05, Height: 0.8 },
+	{
+		ID: 366, Type: "Kitchen", Style: "KitchenWallKnifeMagnet", CanPlaceOnWalls: true, CanPlaceOnFloors: false, Top: 0.05, Height: 0.5,
+		Layers: [
+			{ Name: "Body", IsColorable: true, DefaultColor: "#F2F0EB" },
+			{ Name: "Metal", IsColorable: true, DefaultColor: "#2B2B2B" },
+		],
+	},
+	{
+		ID: 367, Type: "Kitchen", Style: "KitchenWallCoffeeArt", CanPlaceOnWalls: true, CanPlaceOnFloors: false, Top: 0.05, Height: 0.8,
+		Layers: [
+			{ Name: "Body", IsColorable: true, DefaultColor: "#F2F0EB" },
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#B98A5A" },
+			{ Name: "Accent", IsColorable: true, DefaultColor: "#6B4A32" },
+			{ Name: "Metal", IsColorable: true, DefaultColor: "#2B2B2B" },
+		],
+	},
 	{ ID: 370, Type: "Bathroom", Style: "Toilet", Top: -0.65, Left: 0.05, Height: 1.5, Width: 0.9 },
 	{ ID: 380, Type: "FloorDecorationThemed", Style: "DeskBlue" },
 	{ ID: 381, Type: "FloorDecorationThemed", Style: "DeskPurple" },
@@ -740,7 +986,14 @@ const AssetsMapDataObjects = [
 			return "LogFireAnim" + Frame.toString();
 		}
 	},
-	{ ID: 612, Type: "FloorDecorationCamping", Style: "NordicFireBowl", Left: -0.5, Width: 2, Top: -1, Height: 2, CanEnter: () => false },
+	{
+		ID: 612, Type: "FloorDecorationCamping", Style: "NordicFireBowl", Left: -0.5, Width: 2, Top: -1, Height: 2, CanEnter: () => false,
+		Layers: [
+			{ Name: "Metal", IsColorable: true, DefaultColor: "#5A5A5E" },
+			{ Name: "Fire", IsColorable: false },
+			{ Name: "Glow", IsColorable: false },
+		],
+	},
 	{ ID: 620, Type: "FloorDecorationCamping", Style: "LogSingle", Top: -0.2 },
 	{
 		ID: 630, Type: "FloorDecorationCamping", Style: "TentBlue", Top: -0.3,
@@ -1176,9 +1429,29 @@ const AssetsMapDataObjects = [
 	{ ID: 2013, Type: "FloorObstacle", Style: "Totem", Top: -1, Height: 2, CanEnter: () => false, },
 	{ ID: 2014, Type: "FloorObstacle", Style: "EasterIsland", Top: -1, Height: 2, CanEnter: () => false, },
 	{ ID: 2015, Type: "FloorObstacle", Style: "OrderOfTheVoidTotem", Top: -1, Height: 2, CanEnter: () => false, },
-	{ ID: 2016, Type: "FloorObstacle", Style: "NordicPillar", Top: -1.35, Left: 0.15, Height: 2.3, Width: 0.7, CanEnter: () => false, },
-	{ ID: 2017, Type: "FloorObstacle", Style: "FreyaStatue", Top: -1.55, Height: 2.5, CanEnter: () => false, },
-	{ ID: 2018, Type: "FloorObstacle", Style: "NordicTreasureChest", Top: -0.2, Height: 1.2, CanEnter: () => false, },
+	{
+		ID: 2016, Type: "FloorObstacle", Style: "NordicPillar", Top: -1.35, Left: 0.15, Height: 2.3, Width: 0.7, CanEnter: () => false,
+		Layers: [
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#A0693C" },
+			{ Name: "Stone", IsColorable: true, DefaultColor: "#6A635C" },
+			{ Name: "Metal", IsColorable: true, DefaultColor: "#5A5A5E" },
+		],
+	},
+	{
+		ID: 2017, Type: "FloorObstacle", Style: "FreyaStatue", Top: -1.55, Height: 2.5, CanEnter: () => false,
+		Layers: [
+			{ Name: "Stone", IsColorable: true, DefaultColor: "#6A635C" },
+			{ Name: "Gold", IsColorable: true, DefaultColor: "#C9A227" },
+			{ Name: "Pedestal", IsColorable: false },
+		],
+	},
+	{
+		ID: 2018, Type: "FloorObstacle", Style: "NordicTreasureChest", Top: -0.2, Height: 1.2, CanEnter: () => false,
+		Layers: [
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#A0693C" },
+			{ Name: "Metal", IsColorable: true, DefaultColor: "#5A5A5E" },
+		],
+	},
 	{ ID: 2020, Type: "FloorObstacle", Style: "Barrel", Top: -0.5, Height: 1.5, CanEnter: () => false, },
 	{ ID: 2025, Type: "FloorObstacle", Style: "Chest", Top: 0, Height: 1, CanEnter: () => false, },
 	{ ID: 2030, Type: "FloorObstacle", Style: "IronBars", Top: -1, Height: 2, CanEnter: () => false, },
@@ -1206,6 +1479,9 @@ const AssetsMapDataObjects = [
 		Top: -0.15,
 		Height: 1.1,
 		CanEnter: () => false,
+		Layers: [
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#A0693C" },
+		],
 		// Row join; intermediate post every 2 tiles from the left end of the run
 		BuildImageName: function(x, y) {
 			const left = MapManager.Map.getObjectId(x - 1, y) === this.ID;
@@ -1225,6 +1501,9 @@ const AssetsMapDataObjects = [
 		Top: -0.15,
 		Height: 1.1,
 		CanEnter: () => false,
+		Layers: [
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#A0693C" },
+		],
 		// Row join; intermediate post every 2 tiles from the left end of the run
 		BuildImageName: function(x, y) {
 			const left = MapManager.Map.getObjectId(x - 1, y) === this.ID;
@@ -1309,14 +1588,69 @@ const AssetsMapDataObjects = [
 	{ ID: 3131, Type: "WallDecoration", Style: "WallSconce", Top: 0.1, Left: 0.11, Height: 0.8, Width: 0.78 },
 	{ ID: 3132, Type: "WallDecoration", Style: "CoatRack", Top: 0.1, Left: 0.1, Height: 0.8, Width: 0.79 },
 	// Our wall set remapped off 3130-3132
-	{ ID: 3133, Type: "WallDecoration", Style: "NordicAxesCrossed", Top: 0.1, Height: 0.85 },
-	{ ID: 3134, Type: "WallDecoration", Style: "NordicShieldRound", Top: 0.1, Height: 0.85 },
-	{ ID: 3135, Type: "WallDecoration", Style: "NordicShieldKnot", Top: 0.1, Height: 0.85 },
-	{ ID: 3136, Type: "WallDecoration", Style: "NordicShieldAxes", Top: 0, Height: 1 },
-	{ ID: 3137, Type: "WallDecoration", Style: "NordicDragonHeadLeft", Top: 0.1, Height: 0.85 },
-	{ ID: 3138, Type: "WallDecoration", Style: "NordicDragonHeadRight", Top: 0.1, Height: 0.85 },
-	{ ID: 3139, Type: "WallDecoration", Style: "ModernWallSconce", Top: 0.05, Height: 0.9 },
-	{ ID: 3140, Type: "WallDecoration", Style: "ModernWallSconceDouble", Top: 0.05, Height: 0.9 },
+	{
+		ID: 3133, Type: "WallDecoration", Style: "NordicAxesCrossed", Top: 0.1, Height: 0.85,
+		Layers: [
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#A0693C" },
+			{ Name: "Metal", IsColorable: true, DefaultColor: "#5A5A5E" },
+			{ Name: "Leather", IsColorable: true, DefaultColor: "#5C4033" },
+		],
+	},
+	{
+		ID: 3134, Type: "WallDecoration", Style: "NordicShieldRound", Top: 0.1, Height: 0.85,
+		Layers: [
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#A0693C" },
+			{ Name: "Metal", IsColorable: true, DefaultColor: "#5A5A5E" },
+			{ Name: "Paint", IsColorable: true, DefaultColor: "#C45C26" },
+		],
+	},
+	{
+		ID: 3135, Type: "WallDecoration", Style: "NordicShieldKnot", Top: 0.1, Height: 0.85,
+		Layers: [
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#A0693C" },
+			{ Name: "Metal", IsColorable: true, DefaultColor: "#5A5A5E" },
+			{ Name: "Paint", IsColorable: true, DefaultColor: "#C45C26" },
+		],
+	},
+	{
+		ID: 3136, Type: "WallDecoration", Style: "NordicShieldAxes", Top: 0, Height: 1,
+		Layers: [
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#A0693C" },
+			{ Name: "Metal", IsColorable: true, DefaultColor: "#5A5A5E" },
+			{ Name: "Paint", IsColorable: true, DefaultColor: "#C45C26" },
+			{ Name: "Leather", IsColorable: true, DefaultColor: "#5C4033" },
+		],
+	},
+	{
+		ID: 3137, Type: "WallDecoration", Style: "NordicDragonHeadLeft", Top: 0.1, Height: 0.85,
+		Layers: [
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#A0693C" },
+			{ Name: "Paint", IsColorable: true, DefaultColor: "#C45C26" },
+		],
+	},
+	{
+		ID: 3138, Type: "WallDecoration", Style: "NordicDragonHeadRight", Top: 0.1, Height: 0.85,
+		Layers: [
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#A0693C" },
+			{ Name: "Paint", IsColorable: true, DefaultColor: "#C45C26" },
+		],
+	},
+	{
+		ID: 3139, Type: "WallDecoration", Style: "ModernWallSconce", Top: 0.05, Height: 0.9,
+		Layers: [
+			{ Name: "Metal", IsColorable: true, DefaultColor: "#2B2B2B" },
+			{ Name: "Shade", IsColorable: true, DefaultColor: "#F5F0E6" },
+			{ Name: "Glow", IsColorable: false },
+		],
+	},
+	{
+		ID: 3140, Type: "WallDecoration", Style: "ModernWallSconceDouble", Top: 0.05, Height: 0.9,
+		Layers: [
+			{ Name: "Metal", IsColorable: true, DefaultColor: "#2B2B2B" },
+			{ Name: "Shade", IsColorable: true, DefaultColor: "#F5F0E6" },
+			{ Name: "Glow", IsColorable: false },
+		],
+	},
 	{ ID: 3200, Type: "School", Style: "SchoolBoard", CanPlaceOnWalls: true, CanPlaceOnFloors: false },
 	{ ID: 3201, Type: "School", Style: "Clock",Top: 0.25, Left: 0.13, CanPlaceOnWalls: true, CanPlaceOnFloors: false, Height: 0.75, Width: 0.75 },
 	{ ID: 3250, Type: "WallDecoration", Style: "FirstAidKit" },

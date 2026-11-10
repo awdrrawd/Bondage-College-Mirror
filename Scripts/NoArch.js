@@ -119,9 +119,10 @@ const NoArch = {
 	 * @param {Item} item — The item in question
 	 * @param {boolean} push - Whether to push to changes to the server
 	 * @param {boolean} refresh - Whether to refresh the character. This should generally be `true`, with custom script hooks being a potential exception.
+	 * @param {boolean} log - Whether to log `Init()`-initialized property updates to the console
 	 * @returns {boolean} Whether properties were updated or not
 	 */
-	Init: function (data, C, item, push=true, refresh=true) {
+	Init: function (data, C, item, push=true, refresh=true, log=false) {
 		if (!CommonIsObject(item.Property)) {
 			item.Property = {};
 		}

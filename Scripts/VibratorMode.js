@@ -793,11 +793,12 @@ function VibratorModePublish(data, C, item, oldIntensity, newIntensity) {
  * @param {Item} item - The item in question
  * @param {boolean} push - Whether to push to changes to the server
  * @param {boolean} refresh - Whether to refresh the character. This should generally be `true`, with custom script hooks being a potential exception.
+ * @param {boolean} log - Whether to log `Init()`-initialized property updates to the console
  * @returns {boolean} Whether properties were initialized or not
  */
-function VibratorModeInit(data, C, item, push=true, refresh=true) {
+function VibratorModeInit(data, C, item, push=true, refresh=true, log=false) {
 	const status = [
-		TypedItemInit(data, C, item, push, refresh, "Mode"),
+		TypedItemInit(data, C, item, push, refresh, log),
 		VibratorModeSetAdvancedProperties(item, item.Property.Mode ?? VibratorMode.OFF),
 	];
 	return status.some(i => i);

@@ -366,9 +366,10 @@ function VariableHeightSetOverrideHeight(property, height, maxHeight, minHeight)
  * @param {Item} Item - The item in question
  * @param {boolean} Push - Whether to push to changes to the server
  * @param {boolean} Refresh - Whether to refresh the character. This should generally be `true`, with custom script hooks being a potential exception.
+ * @param {boolean} log - Whether to log `Init()`-initialized property updates to the console
  * @returns {boolean} Whether properties were initialized or not
  */
-function VariableHeightInit(Data, C, Item, Push, Refresh) {
+function VariableHeightInit(Data, C, Item, Push, Refresh, log=false) {
 	if (!CommonIsObject(Item.Property)) {
 		Item.Property = {};
 	}

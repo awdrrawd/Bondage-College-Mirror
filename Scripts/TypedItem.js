@@ -565,122 +565,44 @@ function TypedItemSetRandomOption(C, itemOrGroupName, push = false, C_Source=nul
  * @param {Item} Item - The item in question
  * @param {boolean} Push - Whether to push to changes to the server
  * @param {boolean} Refresh - Whether to refresh the character. This should generally be `true`, with custom script hooks being a potential exception.
- * @param {"Type" | "Mode"} field
+ * @param {boolean} log - Whether to log `Init()`-initialized property updates to the console
  * @returns {boolean} Whether properties were initialized or not
  */
-function TypedItemInit({ options, name, baselineProperty, asset }, C, Item, Push=true, Refresh=true, field="Type") {
-	if (!CommonIsObject(Item.Property)) {
-		Item.Property = { TypeRecord: {} };
-	} else if (!CommonIsObject(Item.Property.TypeRecord)) {
-		Item.Property.TypeRecord = {};
-	}
+function TypedItemInit({ options, name, baselineProperty, asset }, C, Item, Push=true, Refresh=true, log=false) {
+	const option = options[Item.Property.TypeRecord?.[name] ?? 0] ?? options[0];
 
-	/** @type {TypeRecord} */
-	const typeRecord = Item.Property.TypeRecord ?? {};
-	const optionIndex = typeRecord[name];
-	const option = options[optionIndex];
+	// Check if all the expected properties are present; extra properties are ignored
+	const expectedProps = { ...option.Property };
+	const customPropertiesBackup = CommonPick(expectedProps, ExtendedItemInitPropertyIgnore);
+	CommonKeys(customPropertiesBackup).forEach(k => delete expectedProps[k]);
+	CommonKeys(baselineProperty ?? {}).forEach(k => delete expectedProps[k]);
+
+	const isSubset = ItemPropertiesIsSubset(expectedProps, Item.Property, Item.Asset, { gatherNonEquivalancies: log });
+	let update = !isSubset.result;
+
+	const customProperties = CommonPick(Item.Property, ExtendedItemInitPropertyIgnore);
+	Item.Property = ItemPropertiesUnion([customProperties, expectedProps, Item.Property, customPropertiesBackup, baselineProperty ?? {}], Item.Asset);
 
 	// Initialize subscreen(s) in a DFS manner
-	let update = ExtendedItemInitSubscreen(option ?? options[0], Item, C, false, false);
+	update = ExtendedItemInitSubscreen(option, Item, C, false, false) || update;
 
-	validateType: if (
-		option !== undefined
-		&& !InventoryIsPermissionBlocked(C, asset.Name, asset.Group.Name, `${name}${optionIndex}`)
-		&& !(C.ArousalSettings.DisableAdvancedVibes && VibratorModesAdvanced.includes(options[optionIndex].Property.Mode))
-	) {
-		if (!C.IsNpc && (!C.OnlineSharedSettings || C.OnlineSharedSettings.GameVersion !== GameVersion)) {
-			// We cannot reliably validate properties of people in different versions
-			break validateType;
+	if (update) {
+		if (Refresh) {
+			CharacterRefresh(C, Push, false);
 		}
-
-		// Check if all the expected properties are present; extra properties are ignored
-		const newProps = CommonCloneDeep(/** @type {ItemProperties} */(option.Property ?? {}));
-		/** @type {ItemProperties} */
-		const mutableProperties = {};
-		const baseline = /** @type {Partial<ItemProperties> | null} */ (baselineProperty);
-		for (const propName of ExtendedItemInitPropertyIgnore) {
-			/** @type {Unknown<ItemProperties>} */(mutableProperties)[propName] = newProps[propName] ?? baseline?.[propName];
-			delete newProps[propName];
-		}
-		if (CommonIncludes(VibratorModesAdvanced, option.Name)) {
-			// The intensity is dynamically managed by the `SetOption` hook for advanced vibrator modes
-			delete newProps.Intensity;
-		}
-		const baseLineProps = CommonEntries(/** @type {ItemProperties} */ (CommonCloneDeep(baselineProperty || {}))).filter(([k, v]) => {
-			const existingValue = Item.Property[k];
-			return existingValue == null && typeof existingValue !== typeof v && !ExtendedItemInitPropertyIgnore.has(k);
-		});
-
-		// `delete` narrows `newProps` to `never`, and a failed subset check does the same to its argument.
-		const remainingProps = /** @type {ItemProperties} */ (newProps);
-		const remainingEntries = CommonEntries(remainingProps);
-		if (!CommonDeepIsSubset(remainingProps, Item.Property)) {
-			for (const [k, v] of remainingEntries) {
-				const current = Item.Property[k];
-				if (CommonIsObject(current) && CommonIsObject(v)) {
-					/** @type {Unknown<ItemProperties>} */(Item.Property)[k] = CommonAssign(current, v);
-				} else if (Array.isArray(current) && CommonIsArray(v)) {
-					/** @type {Unknown<ItemProperties>} */(Item.Property)[k] = CommonArrayConcatDedupe(/** @type {unknown[]} */ (current), /** @type {readonly unknown[]} */ (v));
-				} else {
-					/** @type {Unknown<ItemProperties>} */(Item.Property)[k] = v;
-				}
-			}
-			update = true;
-		}
-		for (const [propName, propValue] of CommonEntries(mutableProperties)) {
-			// Be more lenient with the mutable property validation (e.g. layering) as their values are allowed to be manually modified by the user
-			if (Item.Property[propName] === undefined && propValue !== undefined) {
-				/** @type {Unknown<ItemProperties>} */(Item.Property)[propName] = propValue;
-				update = true;
-			}
-		}
-
-		if (baseLineProps.length > 0) {
-			baseLineProps.forEach(([k, v]) => {
-				PropertyAssign(Item.Property, k, v);
-			});
-			update = true;
-		}
-
-		// Initialize subscreen(s)
-		update = ExtendedItemInitSubscreen(option, Item, C, false, false) || update;
-
-		if (!update) {
-			return false;
-		}
-	} else {
-		// Always pick the first option unless NPCs are involved (in which case `NPCDefault` must be respected)
-		const newOption = C.IsNpc() ? (options.find(o => o.NPCDefault) || options[0]) : options[0];
-		const newProperty = CommonCloneDeep(newOption.Property);
-		newProperty.TypeRecord = CommonAssign(Item.Property.TypeRecord ?? {}, newProperty.TypeRecord);
-		Item.Property = CommonAssign(Item.Property, newProperty);
-		for (const [propName, baselineValue] of CommonEntries(baselineProperty ?? {})) {
-			if (baselineValue === undefined) {
-				continue;
-			} else if (ExtendedItemInitPropertyIgnore.has(propName)) {
-				if (Item.Property[propName] === undefined) {
-					/** @type {Unknown<ItemProperties>} */(Item.Property)[propName] = baselineValue;
-				}
-			} else {
-				if (typeof Item.Property[propName] !== typeof baselineValue) {
-					/** @type {Unknown<ItemProperties>} */(Item.Property)[propName] = baselineValue;
-				}
-			}
+		if (Push) {
+			ChatRoomCharacterItemUpdate(C, asset.Group.Name);
 		}
 	}
 
-	// Make sure that the `Lock` effect persists if the `Effect` array is reset
-	if (Item.Property.LockedBy && Item.Asset.AllowLock) {
-		Item.Property.Effect = CommonArrayConcatDedupe(Item.Property.Effect ?? [], ["Lock"]);
+	if (update && log) {
+		console.error(
+			`Updated incomplete/missing ${C.Name} (${C.MemberNumber ?? C.Type}) "${Item.Asset.Group.Name}/${Item.Asset.Name}" properties`,
+			{ changes: Array.from(isSubset.nonEquivalencies).sort() },
+		);
 	}
 
-	if (Refresh) {
-		CharacterRefresh(C, Push, false);
-	}
-	if (Push) {
-		ChatRoomCharacterItemUpdate(C, asset.Group.Name);
-	}
-	return true;
+	return update;
 }
 
 /**

@@ -3015,9 +3015,10 @@ declare namespace ExtendedItemCallbacks {
 	 * @param item The item in question
 	 * @param push Whether to push to changes to the server
 	 * @param refresh Whether to refresh the character. This should generally be `true`, with custom script hooks being a potential exception.
+	 * @param log Whether to log `Init()`-initialized property updates to the console
 	 * @returns Whether the items properties were actually updated or not
 	 */
-	type Init = ExtendedItemCallback<[C: Character, item: Item, push: boolean, refresh: boolean], boolean>;
+	type Init = ExtendedItemCallback<[C: Character, item: Item, push: boolean, refresh: boolean, log?: boolean], boolean>;
 	/**
 	 * Callback for extended item `SetOption` functions.
 	 * @param C The character that has the item equipped
@@ -3138,11 +3139,12 @@ declare namespace ExtendedItemScriptHookCallbacks {
 	 * @param item The item in question
 	 * @param push Whether to push to changes to the server
 	 * @param refresh Whether to refresh the character. This should generally be `true`, with custom script hooks being a potential exception.
+	 * @param log Whether to log `Init()`-initialized property updates to the console
 	 * @returns Whether the items properties were actually updated or not
 	 */
 	type Init<
 		DataType extends ExtendedItemData<any>
-	> = ExtendedItemScriptHookCallbackNoNull<DataType, [C: Character, item: Item, push: boolean, refresh: boolean], boolean>;
+	> = ExtendedItemScriptHookCallbackNoNull<DataType, [C: Character, item: Item, push: boolean, refresh: boolean, log?: boolean], boolean>;
 	/**
 	 * Callback for extended item `SetOption` functions.
 	 * @param data The items extended item data
@@ -3393,7 +3395,7 @@ interface AssetDefinitionProperties {
 	 *
 	 * @see {@link Asset.CustomBlindBackground}
 	 */
-	CustomBlindBackground?: string | null;
+	CustomBlindBackground?: string;
 
 	/**
 	 * A list of fetishes affected by the item
@@ -4360,6 +4362,7 @@ type GGTSTask =
 // #region Audio
 
 type AudioEffectName =
+	| "AdultBabyHarness"
 	| "AirDoorClosing"
 	| "AirDoorOpening"
 	| "Bag"
@@ -4369,102 +4372,102 @@ type AudioEffectName =
 	| "BellMedium"
 	| "BellSmall"
 	| "Belt"
+	| "BondageBouquet"
 	| "BrushHair"
 	| "BrushSpank"
+	| "Bubbles"
 	| "Buckle"
 	| "CageClose"
 	| "CageEquip"
 	| "CageOpen"
 	| "CageStruggle"
 	| "ChainLong"
+	| "ChainShort"
+	| "Cigarette"
 	| "ClothKnot"
 	| "ClothSlip"
-	| "SciFiEffect"
-	| "SciFiPump"
-	| "SciFiConfigure"
-	| "SciFiBeeps"
-	| "ChainShort"
 	| "CuffsMetal"
-	| "EMLevitate"
-	| "EMDisable"
-	| "FanOpen"
-	| "Hallo"
-	| "FuturisticApply"
-	| "HoodedCloak"
-	| "HydraulicLock"
-	| "HydraulicUnlock"
 	| "Deflation"
 	| "DuctTape"
 	| "DuctTapeRoll"
 	| "DuctTapeRollShort"
-	| "Inflation"
-	| "MetalClose"
-	| "MetalCuffs"
-	| "LeatherStretching1"
-	| "LockLarge"
-	| "LockSmall"
-	| "RopeLong"
-	| "RopeShort"
-	| "Shocks"
-	| "SmackCrop"
-	| "Squeak"
-	| "SqueakyToy"
-	| "Whip1"
-	| "Whip2"
-	| "Sybian"
-	| "Unlock"
-	| "VibrationLong1"
-	| "VibrationLong2"
-	| "VibrationShort"
-	| "VibrationEdgeLow"
-	| "VibrationEdgeMedium"
-	| "VibrationEdgeHigh"
-	| "VibrationTeaseLow"
-	| "VibrationTeaseMedium"
-	| "VibrationMaximum"
-	| "VibrationCooldown"
-	| "Vibrator"
-	| "Wand"
-	| "WandBig"
-	| "WoodenCuffs"
-	| "ZipTie"
-	| "SpankSkin"
-	| "WhipCrack"
-	| "LeverShort"
-	| "Zipper1"
-	| "HighChair"
-	| "AdultBabyHarness"
-	| "BondageBouquet"
-	| "Cigarette"
+	| "EMDisable"
+	| "EMLevitate"
+	| "EnemaFixture"
+	| "FanOpen"
 	| "Flogger"
+	| "FuturisticApply"
+	| "Hallo"
+	| "HighChair"
+	| "HoodedCloak"
+	| "HydraulicLock"
+	| "HydraulicUnlock"
+	| "Inflation"
 	| "LeatherCreak"
 	| "LeatherCreakWithMetal"
+	| "LeatherStretching1"
 	| "LeatherStretchingShort"
 	| "LeatherStretchingWithMetal"
+	| "LeverShort"
+	| "LockerClose"
+	| "LockLarge"
+	| "LockSmall"
+	| "MetalClip"
+	| "MetalClose"
+	| "MetalCuffs"
+	| "MetalShut"
+	| "MetalStraps"
+	| "PlaceBowl"
+	| "PlasticRustle"
 	| "PolyesterWoosh1"
 	| "PolyesterWoosh2"
 	| "PolyesterWooshWithMetal1"
 	| "PolyesterWooshWithMetal2"
 	| "PolyesterWooshWithMetal3"
+	| "Pour"
+	| "PutDownPlastic"
+	| "RopeLong"
+	| "RopeShort"
+	| "SciFiBeeps"
+	| "SciFiConfigure"
+	| "SciFiEffect"
+	| "SciFiPump"
+	| "Shocks"
 	| "Slime"
-	| "SofterCageClose"
-	| "LockerClose"
+	| "SmackCrop"
 	| "SoftCloth1"
 	| "SoftCloth2"
 	| "SoftClothWithMetal1"
 	| "SoftClothWithMetal2"
-	| "TightLeatherStretchWithMetalLong"
-	| "TightLeatherStretch"
-	| "PlasticRustle"
-	| "PlaceBowl"
-	| "MetalStraps"
-	| "MetalShut"
-	| "MetalClip"
+	| "SofterCageClose"
 	| "SoftFurniture"
+	| "SpankSkin"
+	| "Squeak"
+	| "SqueakyToy"
+	| "Sybian"
+	| "TightLeatherStretch"
+	| "TightLeatherStretchWithMetalLong"
+	| "Unlock"
+	| "VibrationCooldown"
+	| "VibrationEdgeHigh"
+	| "VibrationEdgeLow"
+	| "VibrationEdgeMedium"
+	| "VibrationLong1"
+	| "VibrationLong2"
+	| "VibrationMaximum"
+	| "VibrationShort"
+	| "VibrationTeaseLow"
+	| "VibrationTeaseMedium"
+	| "Vibrator"
+	| "Wand"
+	| "WandBig"
+	| "Whip1"
+	| "Whip2"
+	| "WhipCrack"
+	| "WoodenCuffs"
 	| "WoodFurniture"
-	| "PutDownPlastic"
-	| "EnemaFixture"
-;
+	| "Zipper1"
+	| "ZipTie";
 
 type AudioSoundEffect = [sound: AudioEffectName, volume: number];
 

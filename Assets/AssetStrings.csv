@@ -10083,5 +10083,52 @@ ItemDevicesInflatableRestraintBagSetg0,SourceCharacter removes the canister on T
 ItemDevicesInflatableRestraintBagSetg1,SourceCharacter adds a canister on TargetCharacter
 ItemDevicesLongBagSetOpaque,SourceCharacter made DestinationCharacter sack opaque.
 ItemDevicesLongBagSetTranslucent,SourceCharacter made DestinationCharacter sack translucent.
+ItemDevicesGiantJarSelectBase,Change the Jar
+ItemDevicesGiantJarModuleOpenClose,Open/Close
+ItemDevicesGiantJarSelectOpenClose,Open or close the jar
+ItemDevicesGiantJarModuleFillState,Fill State
+ItemDevicesGiantJarSelectFillState,Fill the Jar
+ItemDevicesGiantJarModuleBubbles,Bubbles
+ItemDevicesGiantJarSelectBubbles,Add some Bubbles
+ItemDevicesGiantJarModuleTextLabel,Text Label
+ItemDevicesGiantJarSelectTextLabel,Choose the Text Label
+ItemDevicesGiantJarOptiona0,No Lid
+ItemDevicesGiantJarSeta0,SourceCharacter removes the lid from DestinationCharacter AssetName.
+ItemDevicesGiantJarOptiond0,No Text Label
+ItemDevicesGiantJarSetd0,DestinationCharacter adds text labels to DestinationCharacter AssetName.
+ItemDevicesGiantJarOptionc0,No Bubbles
+ItemDevicesGiantJarSetc0,SourceCharacter removes the bubbles from DestinationCharacter AssetName.
+ItemDevicesGiantJarOptionb0,Empty
+ItemDevicesGiantJarSetb0,SourceCharacter removes the liquid from DestinationCharacter AssetName.
+ItemDevicesGiantJarOptiona1,Lid
+ItemDevicesGiantJarSeta1,SourceCharacter adds a lid to DestinationCharacter AssetName.
+ItemDevicesGiantJarOptionb1,Foot Deep
+ItemDevicesGiantJarSetb1,SourceCharacter fills the AssetName to DestinationCharacter feet.
+ItemDevicesGiantJarOptionb2,Knee Deep
+ItemDevicesGiantJarSetb2,SourceCharacter fills the AssetName to DestinationCharacter knees.
+ItemDevicesGiantJarOptionb3,Leg Deep
+ItemDevicesGiantJarSetb3,SourceCharacter fills the AssetName to DestinationCharacter legs.
+ItemDevicesGiantJarOptionb4,Waist Deep
+ItemDevicesGiantJarSetb4,SourceCharacter fills the AssetName to DestinationCharacter waist.
+ItemDevicesGiantJarOptionb5,Chest Deep
+ItemDevicesGiantJarSetb5,SourceCharacter fills the AssetName to DestinationCharacter chest.
+ItemDevicesGiantJarOptionb6,Head Deep
+ItemDevicesGiantJarSetb6,SourceCharacter fills the AssetName to DestinationCharacter head.
+ItemDevicesGiantJarOptionc1,Tiny Bubbles
+ItemDevicesGiantJarSetc1,SourceCharacter adds tiny bubbles to DestinationCharacter AssetName.
+ItemDevicesGiantJarOptionc2,Medium
+ItemDevicesGiantJarSetc2,SourceCharacter adds medium bubbles to DestinationCharacter AssetName.
+ItemDevicesGiantJarOptionc3,Large Bubbles
+ItemDevicesGiantJarSetc3,SourceCharacter adds large bubbles to DestinationCharacter AssetName.
+ItemDevicesGiantJarOptionc4,XLarge Bubbles
+ItemDevicesGiantJarSetc4,SourceCharacter adds extra large bubbles to DestinationCharacter AssetName.
+ItemDevicesGiantJarOptiond1,Text Label
+ItemDevicesGiantJarSetd1,SourceCharacter adds a text label to DestinationCharacter AssetName.
+ItemDevicesGiantJarOptiond2,Diagonal Text Label
+ItemDevicesGiantJarSetd2,SourceCharacter adds a diagonal text label to DestinationCharacter AssetName.
+ItemDevicesGiantJarOptiond3,Text Labels
+ItemDevicesGiantJarSetd3,SourceCharacter adds text labels to DestinationCharacter AssetName.
+ItemDevicesGiantJarOptiond4,Diagonal Text Labels
+ItemDevicesGiantJarSetd4,SourceCharacter adds diagonal text labels to DestinationCharacter AssetName.
 ItemNipplesPiercingsPiercingNameBadgeSetRightNipple,SourceCharacter puts the AssetName on DestinationCharacter right nipple.
 ItemNipplesPiercingsPiercingNameBadgeSetLeftNipple,SourceCharacter puts the AssetName on DestinationCharacter left nipple.

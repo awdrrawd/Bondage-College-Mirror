@@ -104,121 +104,46 @@ function ModularItemRegister(asset, config) {
  * @param {Item} Item - The item in question
  * @param {boolean} Push - Whether to push to changes to the server
  * @param {boolean} Refresh - Whether to refresh the character. This should generally be `true`, with custom script hooks being a potential exception.
+ * @param {boolean} log - Whether to log `Init()`-initialized property updates to the console
  * @returns {boolean} Whether properties were initialized or not
  */
-function ModularItemInit(Data, C, Item, Push=true, Refresh=true) {
-	if (!CommonIsObject(Item.Property)) {
-		Item.Property = { TypeRecord: {} };
-	} else if (!CommonIsObject(Item.Property.TypeRecord)) {
-		Item.Property.TypeRecord = {};
-	}
+function ModularItemInit(Data, C, Item, Push=true, Refresh=true, log=false) {
+	// Check if all the expected properties are present; extra properties are ignored
+	const expectedProps = ModularItemMergeModuleValues(Data, ModularItemParseCurrent(Data, Item.Property.TypeRecord));
+	const customPropertiesBackup = CommonPick(expectedProps, ExtendedItemInitPropertyIgnore);
+	CommonKeys(customPropertiesBackup).forEach(k => delete expectedProps[k]);
+	CommonKeys(Data.baselineProperty ?? {}).forEach(k => delete expectedProps[k]);
 
-	/** @type {TypeRecord} */
-	const wornTypeRecord = Item.Property.TypeRecord ?? {};
+	const isSubset = ItemPropertiesIsSubset(expectedProps, Item.Property, Item.Asset, { gatherNonEquivalancies: log });
+	let update = !isSubset.result;
+
+	const customProperties = CommonPick(Item.Property, ExtendedItemInitPropertyIgnore);
+	Item.Property = ItemPropertiesUnion([customProperties, expectedProps, Item.Property, customPropertiesBackup, Data.baselineProperty ?? {}], Item.Asset);
 
 	// Initialize subscreen(s) in a DFS manner
-	let update = false;
+	const typeRecord = Item.Property.TypeRecord ?? {};
 	for (const mod of Data.modules) {
-		const option = mod.Options[wornTypeRecord[mod.Key]];
-		if (option) {
-			update = ExtendedItemInitSubscreen(option, Item, C, false, false) || update;
+		const option = mod.Options[typeRecord[mod.Key]];
+		update = ExtendedItemInitSubscreen(option, Item, C, false, false) || update;
+	}
+
+	if (update) {
+		if (Refresh) {
+			CharacterRefresh(C, Push, false);
+		}
+		if (Push) {
+			ChatRoomCharacterItemUpdate(C, Data.asset.Group.Name);
 		}
 	}
 
-	const validSubTypes = Data.modules.map(m => m.Options[wornTypeRecord[m.Key]] !== undefined);
-	const permissionBlocked = Data.modules.map(m => InventoryIsPermissionBlocked(C, Item.Asset.Name, Item.Asset.Group.Name, `${m.Key}${wornTypeRecord[m.Key]}`));
-	validateType: if (validSubTypes.every(i => i) && !permissionBlocked.some(i => i)) {
-		if (!C.IsNpc && (!C.OnlineSharedSettings || C.OnlineSharedSettings.GameVersion !== GameVersion)) {
-			// We cannot reliably validate properties of people in different versions
-			break validateType;
-		}
-
-		// Check if all the expected properties are present; extra properties are ignored
-		const currentModuleValues = ModularItemParseCurrent(Data, wornTypeRecord);
-		const newProps = ModularItemMergeModuleValues(Data, currentModuleValues);
-		/** @type {ItemProperties} */
-		const mutableProperties = {};
-		/** @type {ItemProperties | null} */
-		const baseline = Data.baselineProperty;
-		for (const propName of ExtendedItemInitPropertyIgnore) {
-			PropertyAssign(mutableProperties, propName, newProps[propName] ?? baseline?.[propName]);
-			delete newProps[propName];
-		}
-		const baseLineProps = CommonEntries(/** @type {ItemProperties} */ (CommonCloneDeep(Data.baselineProperty || {}))).filter(([k, v]) => {
-			const existingValue = Item.Property[k];
-			return existingValue == null && typeof existingValue !== typeof v && !ExtendedItemInitPropertyIgnore.has(k);
-		});
-
-		const remainingProps = newProps;
-		const remainingEntries = CommonEntries(remainingProps);
-		if (!CommonDeepIsSubset(remainingProps, Item.Property)) {
-			for (const [k, v] of remainingEntries) {
-				const current = Item.Property[k];
-				if (CommonIsObject(current) && CommonIsObject(v)) {
-					PropertyAssign(Item.Property, k, CommonAssign(current, v));
-				} else if (Array.isArray(current) && CommonIsArray(v)) {
-					/** @type {Unknown<ItemProperties>} */(Item.Property)[k] = CommonArrayConcatDedupe(/** @type {unknown[]} */ (current), /** @type {readonly unknown[]} */ (v));
-				} else {
-					PropertyAssign(Item.Property, k, v);
-				}
-			}
-			update = true;
-		}
-		for (const [propName, propValue] of CommonEntries(mutableProperties)) {
-			// Be more lenient with the mutable property validation (e.g. layering) as their values are allowed to be manually modified by the user
-			if (Item.Property[propName] === undefined && propValue !== undefined) {
-				/** @type {Unknown<ItemProperties>} */(Item.Property)[propName] = propValue;
-				update = true;
-			}
-		}
-
-		if (baseLineProps.length > 0) {
-			baseLineProps.forEach(([k, v]) => {
-				PropertyAssign(Item.Property, k, v);
-			});
-			update = true;
-		}
-
-		if (!update) {
-			return false;
-		}
-	} else {
-		const typeRecord = CommonAssign(
-			wornTypeRecord,
-			Object.fromEntries(Data.modules.map((mod, i) => {
-				const index = (validSubTypes[i] && !permissionBlocked[i]) ? wornTypeRecord[mod.Key] : 0;
-				return /** @type {const} */([mod.Key, index ?? 0]);
-			})),
+	if (update && log) {
+		console.error(
+			`Updating incomplete/missing ${C.Name} (${C.MemberNumber ?? C.Type}) "${Item.Asset.Group.Name}/${Item.Asset.Name}" item properties`,
+			{ changes: Array.from(isSubset.nonEquivalencies).sort() },
 		);
-		const newProperties = ModularItemMergeModuleValues(Data, ModularItemParseCurrent(Data, typeRecord), Item.Property);
-		Item.Property = CommonAssign(Item.Property, newProperties, { TypeRecord: typeRecord });
-		for (const [propName, baselineValue] of CommonEntries(Data.baselineProperty ?? {})) {
-			if (baselineValue === undefined) {
-				continue;
-			} else if (ExtendedItemInitPropertyIgnore.has(propName)) {
-				if (Item.Property[propName] === undefined) {
-					/** @type {Unknown<ItemProperties>} */(Item.Property)[propName] = baselineValue;
-				}
-			} else {
-				if (typeof Item.Property[propName] !== typeof baselineValue) {
-					/** @type {Unknown<ItemProperties>} */(Item.Property)[propName] = baselineValue;
-				}
-			}
-		}
 	}
 
-	// Make sure that the `Lock` effect persists if the `Effect` array is reset
-	if (Item.Property.LockedBy && Item.Asset.AllowLock) {
-		Item.Property.Effect = CommonArrayConcatDedupe(Item.Property.Effect ?? [], ["Lock"]);
-	}
-
-	if (Refresh) {
-		CharacterRefresh(C, Push, false);
-	}
-	if (Push) {
-		ChatRoomCharacterItemUpdate(C, Data.asset.Group.Name);
-	}
-	return true;
+	return update;
 }
 
 /**
@@ -656,7 +581,8 @@ function ModularItemParseCurrent({ asset, modules }, typeRecord) {
 	return modules.map(module => {
 		const index = typeRecord[module.Key];
 		if (module.Options[index] === undefined) {
-			console.error(`${asset.Group.Name}:${asset.Name}: invalid key for module "${module.Key}": ${index}`);
+			// FIXME
+			// console.error(`${asset.Group.Name}:${asset.Name}: invalid key for module "${module.Key}": ${index}`);
 			return 0;
 		} else {
 			return index;
@@ -672,182 +598,20 @@ function ModularItemParseCurrent({ asset, modules }, typeRecord) {
  * @returns {ItemProperties} - A property object created from combining each module of the modular item
  */
 function ModularItemMergeModuleValues({ asset, modules }, moduleValues, BaselineProperty=null) {
-	const options = modules.map((module, i) => module.Options[moduleValues[i] || 0]);
-	const typeRecord = options.reduce(
-		(rec, option) => CommonAssign(rec, option.Property.TypeRecord),
-		/** @type {TypeRecord} */({}),
-	);
-
 	/** @type {ItemProperties} */
 	const BaseLineProperties = {
-		TypeRecord: typeRecord,
-		Difficulty: 0,
 		Block: Array.isArray(asset.Block) ? asset.Block.slice() : [],
 		Effect: Array.isArray(asset.Effect) ? asset.Effect.slice() : [],
 		Hide: Array.isArray(asset.Hide) ? asset.Hide.slice() : [],
 		HideItem: Array.isArray(asset.HideItem) ? asset.HideItem.slice() : [],
 		AllowActivity: Array.isArray(asset.AllowActivity) ? asset.AllowActivity.slice() : [],
 		Attribute: Array.isArray(asset.Attribute) ? asset.Attribute.slice() : [],
+		Tint: asset.AllowTint ? [...asset.Tint] : undefined,
+		CustomBlindBackground: asset.CustomBlindBackground,
 	};
-	if (typeof asset.CustomBlindBackground === "string") BaseLineProperties.CustomBlindBackground = asset.CustomBlindBackground;
-	if (asset.AllowTint) BaseLineProperties.Tint = CommonIsArray(asset.Tint) ? [...asset.Tint] : [];
-
-	if (BaselineProperty != null) {
-		ModularItemSanitizeProperties(BaselineProperty, BaseLineProperties, asset);
-	}
-
-	return options.reduce((mergedProperty, { Property }) => {
-		return ModularItemSanitizeProperties(Property, mergedProperty, asset);
-	}, BaseLineProperties);
+	const properties = modules.map((module, i) => module.Options[moduleValues[i] || 0].Property);
+	return ItemPropertiesUnion([BaselineProperty ?? {}, ...properties], asset, BaseLineProperties);
 }
-
-/**
- * Sanitize and merge all modular item properties
- * @param {ItemProperties} Property - The to-be sanitized properties
- * @param {ItemProperties} mergedProperty - The to-be returned object with the newly sanitized properties
- * @param {Asset} Asset - The relevant asset
- * @returns {ItemProperties} - The updated merged properties
- */
-function ModularItemSanitizeProperties(Property, mergedProperty, Asset) {
-	const layerNames = new Set(Asset.Layer.map(l => l.Name ?? ""));
-	Property = Property || {};
-	mergedProperty.Difficulty ??= 0;
-	mergedProperty.Difficulty += Property.Difficulty ?? 0;
-	if (Property.CustomBlindBackground === null) {
-		mergedProperty.CustomBlindBackground = null;
-	} else if (typeof Property.CustomBlindBackground === "string" || Property.CustomBlindBackground === undefined) {
-		if (mergedProperty.CustomBlindBackground !== null) {
-			// We only allow propagating a blind background if another Property block hasn't disabled it
-			mergedProperty.CustomBlindBackground ??= Property.CustomBlindBackground;
-		}
-	}
-	if (Property.Block) mergedProperty.Block = CommonArrayConcatDedupe(mergedProperty.Block ?? [], Property.Block);
-	if (Property.Effect) mergedProperty.Effect = CommonArrayConcatDedupe(mergedProperty.Effect ?? [], Property.Effect);
-	if (Property.Hide) mergedProperty.Hide = CommonArrayConcatDedupe(mergedProperty.Hide ?? [], Property.Hide);
-	if (Property.HideItem) mergedProperty.HideItem = CommonArrayConcatDedupe(mergedProperty.HideItem ?? [], Property.HideItem);
-	if (Property.SetPose) mergedProperty.SetPose = CommonArrayConcatDedupe(mergedProperty.SetPose ?? [], Property.SetPose);
-	if (Property.AllowActivePose) mergedProperty.AllowActivePose = CommonArrayConcatDedupe(mergedProperty.AllowActivePose ?? [], Property.AllowActivePose);
-	if (Property.AllowActivity) mergedProperty.AllowActivity = CommonArrayConcatDedupe(mergedProperty.AllowActivity ?? [], Property.AllowActivity);
-	if (Property.Attribute) mergedProperty.Attribute = CommonArrayConcatDedupe(mergedProperty.Attribute ?? [], Property.Attribute);
-	if (typeof Property.OverridePriority === "number") {
-		// Numeric priorities are whole-item defaults (for example DroneMask advanced layering).
-		// Per-layer custom layering is stored in the same field, so a number must not replace an
-		// existing map; unset layers still inherit the default.
-		if (CommonIsObject(mergedProperty.OverridePriority)) {
-			const priority = Property.OverridePriority;
-			for (const layerName of layerNames) {
-				mergedProperty.OverridePriority[layerName] ??= priority;
-			}
-		} else {
-			mergedProperty.OverridePriority = Property.OverridePriority;
-		}
-	} else if (CommonIsObject(Property.OverridePriority)) {
-		let valid = true;
-		for (const layerName of Object.keys(Property.OverridePriority)) {
-			if (!layerNames.has(layerName)) {
-				console.error(`invalid OverridePriority property: unknown layer name ${layerName}`);
-				valid = false;
-				break;
-			}
-		}
-		if (valid) {
-			if (CommonIsObject(mergedProperty.OverridePriority)) {
-				/** @type {Partial<Record<LayerName, number>>} */
-				let overridePriority;
-				if (typeof mergedProperty.OverridePriority === "number") {
-					const priority = mergedProperty.OverridePriority;
-					overridePriority = {};
-					for (const layerName of layerNames) {
-						overridePriority[layerName] = priority;
-					}
-				} else if (CommonIsObject(mergedProperty.OverridePriority)) {
-					overridePriority = mergedProperty.OverridePriority;
-				} else {
-					overridePriority = {};
-				}
-				for (const [k, v] of CommonEntries(Property.OverridePriority)) {
-					// First come; first served
-					overridePriority[k] ??= v;
-				}
-				mergedProperty.OverridePriority = overridePriority;
-			} else {
-				mergedProperty.OverridePriority = Property.OverridePriority;
-			}
-		}
-	}
-	if (CommonIsObject(Property.DrawingTop)) { mergedProperty.DrawingTop = ModularItemMergeDrawingTopLeft(mergedProperty.DrawingTop, Property.DrawingTop, layerNames); }
-	if (CommonIsObject(Property.DrawingLeft)) { mergedProperty.DrawingLeft = ModularItemMergeDrawingTopLeft(mergedProperty.DrawingLeft, Property.DrawingLeft, layerNames); }
-	if (typeof Property.HeightModifier === "number") mergedProperty.HeightModifier = (mergedProperty.HeightModifier || 0) + Property.HeightModifier;
-	if (Property.OverrideHeight) mergedProperty.OverrideHeight = ModularItemMergeOverrideHeight(mergedProperty.OverrideHeight, Property.OverrideHeight);
-	if (Asset.AllowTint && Property.Tint) mergedProperty.Tint = CommonArrayConcatDedupe(mergedProperty.Tint ?? [], Property.Tint);
-	if (typeof Property.Door === "boolean") mergedProperty.Door = Property.Door;
-	if (typeof Property.Padding === "boolean") mergedProperty.Padding = Property.Padding;
-	if (typeof Property.ShockLevel === "number") mergedProperty.ShockLevel = Property.ShockLevel;
-	if (typeof Property.TriggerCount === "number") mergedProperty.TriggerCount = Property.TriggerCount;
-	if (typeof Property.OrgasmCount === "number") mergedProperty.OrgasmCount = Property.OrgasmCount;
-	if (typeof Property.RuinedOrgasmCount === "number") mergedProperty.RuinedOrgasmCount = Property.RuinedOrgasmCount;
-	if (typeof Property.TimeWorn === "number") mergedProperty.TimeWorn = Property.TimeWorn;
-	if (typeof Property.TimeSinceLastOrgasm === "number") mergedProperty.TimeSinceLastOrgasm = Property.TimeSinceLastOrgasm;
-	if (typeof Property.ShowText === "boolean") mergedProperty.ShowText = Property.ShowText;
-	if (typeof Property.InflateLevel === "number") mergedProperty.InflateLevel = Property.InflateLevel;
-	if (typeof Property.Intensity === "number") mergedProperty.Intensity = CommonMax(mergedProperty.Intensity ?? -1, Property.Intensity);
-	if (typeof Property.Opacity === "number") mergedProperty.Opacity = Property.Opacity;
-	if (typeof Property.AutoPunishUndoTimeSetting === "number") mergedProperty.AutoPunishUndoTimeSetting = Property.AutoPunishUndoTimeSetting;
-	if (typeof Property.OriginalSetting === "number") mergedProperty.OriginalSetting = Property.OriginalSetting;
-	if (typeof Property.BlinkState === "boolean") mergedProperty.BlinkState = Property.BlinkState;
-	if (typeof Property.AutoPunishUndoTime === "number") mergedProperty.AutoPunishUndoTime = Property.AutoPunishUndoTime;
-	if (typeof Property.AutoPunish === "number") mergedProperty.AutoPunish = Property.AutoPunish;
-	if (typeof Property.Text === "string" && DynamicDrawTextRegex.test(Property.Text)) mergedProperty.Text = Property.Text;
-	if (typeof Property.Text2 === "string" && DynamicDrawTextRegex.test(Property.Text2)) mergedProperty.Text2 = Property.Text2;
-	if (typeof Property.Text3 === "string" && DynamicDrawTextRegex.test(Property.Text3)) mergedProperty.Text3 = Property.Text3;
-	if (typeof Property.PunishOrgasm === "boolean") mergedProperty.PunishOrgasm = Property.PunishOrgasm;
-	if (typeof Property.PunishStandup === "boolean") mergedProperty.PunishStandup = Property.PunishStandup;
-	if (typeof Property.NextShockTime === "number") mergedProperty.NextShockTime = Property.NextShockTime;
-	if (typeof Property.TargetAngle === "number") mergedProperty.TargetAngle = Property.TargetAngle;
-	if (typeof Property.PortalLinkCode === "string" && PortalLinkCodeRegex.test(Property.PortalLinkCode)) mergedProperty.PortalLinkCode = Property.PortalLinkCode;
-	if (Array.isArray(Property.Texts)) mergedProperty.Texts = Property.Texts;
-	return mergedProperty;
-}
-
-/**
- * Generates the type string for a modular item from its modules and their current values.
- * @param {AssetOverrideHeight | undefined} currentValue - The OverrideHeight for the future item
- * @param {AssetOverrideHeight} newValue - The OverrideHeight being merged
- * @returns {AssetOverrideHeight | undefined} - A string type generated from the selected option values for each module
- */
-function ModularItemMergeOverrideHeight(currentValue, newValue) {
-	if (typeof newValue.Height === "number" && typeof newValue.Priority === "number" &&
-	(!currentValue || (currentValue.Priority < currentValue.Priority)))
-		return {Height: newValue.Height, Priority: newValue.Priority};
-	return currentValue;
-}
-
-/**
- * @param {undefined | TopLeft.ItemData} currentValue
- * @param {TopLeft.ItemData} newValue
- * @param {Set<LayerName>} layerNames
- * @returns {undefined | TopLeft.ItemData}
- */
-function ModularItemMergeDrawingTopLeft(currentValue, newValue, layerNames) {
-	let validCount = 0;
-	const ret = currentValue ?? {};
-	for (const [layerName, config] of Object.entries(newValue)) {
-		if (!CommonIsObject(config) || (!layerNames.has(layerName) && layerName !== AssetOverride)) {
-			continue;
-		}
-
-		ret[layerName] ??= {};
-		for (const [poseName, translation] of CommonEntries(config)) {
-			if (CommonIsInteger(translation) && (poseName === PoseType.DEFAULT || poseName in PoseRecord)) {
-				ret[layerName][poseName] = translation;
-				validCount += 1;
-			}
-		}
-	}
-	// Return the original (potentially nullish) value of no new valid values were set
-	return validCount === 0 ? currentValue : ret;
-}
-
 
 /**
  * Sets a modular item's type based on a change in a module's option selection.

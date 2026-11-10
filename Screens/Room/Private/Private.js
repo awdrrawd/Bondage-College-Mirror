@@ -1077,7 +1077,7 @@ function PrivateRun() {
 	}
 
 	// In orgasm mode, we add a pink filter and different controls depending on the stage
-	if (PreferenceArousalIsActive(C)) {
+	if (PreferenceArousalIsActive(Player)) {
 		if (Player.ArousalSettings.OrgasmTimer > 0) {
 			DrawRect(0, 0, 2000, 1000, "#FFB0B0B0");
 			if (Player.ArousalSettings.OrgasmStage == 0) {
@@ -1185,7 +1185,7 @@ function PrivateClickCharacter() {
 
 			// If the player can manually control her arousal or wants to fight her desire
 			if ((char.IsPlayer()) && MouseIn(ButtonX + 50, 200, 100, 415) && char.ArousalZoom) {
-				if (PreferenceArousalIsActive(C, ["Manual", "Hybrid"])) {
+				if (PreferenceArousalIsActive(Player, ["Manual", "Hybrid"])) {
 					const Arousal = Math.round((625 - MouseY) / 4);
 					ActivitySetArousal(Player, Arousal);
 					ActivityExpression(Player, Player.ArousalSettings.Progress);

@@ -404,6 +404,11 @@ describe("CommonCloneDeep", () => {
 		expect(clone).toEqual({ a: 1, b: [2, 3], c: { d: 4 } });
 		expect(clone).not.toBe(mixed);
 	});
+
+	it("deep clones of undefined", () => {
+		const clone = Game.CommonCloneDeep(undefined);
+		expect(clone).toBe(undefined);
+	});
 });
 
 describe("CommonIsNonNegativeInteger", () => {
