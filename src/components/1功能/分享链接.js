@@ -5,34 +5,155 @@ import { messager } from "../../messager";
  * @typedef { "nm" | "bili" | "ytb" | "phb" } ShareType
  */
 
-/** @type {Record<ShareType, { displayName: string | (() => string), get: (info: string) => string }>} */
+// 分享内容由其他客户端发送，其中每个字段都可能被伪造。
+// 下面的规则是唯一的信任边界：只有符合规则的字符才允许进入 iframe 地址。
+const MAX_PAYLOAD_LENGTH = 512; // base64 长度上限，避免超长内容
+const NUM_ID = /^\d{1,20}$/;
+const ALPHA_ID = /^[A-Za-z0-9_-]{1,64}$/;
+const PHB_ID = /^[A-Za-z0-9]{1,64}$/;
+
+/**
+ * 解码 base64 载荷，非法编码或超长时返回 undefined
+ * @param {unknown} info
+ * @returns {string | undefined}
+ */
+function decodePayload(info) {
+    if (typeof info !== "string" || info.length === 0 || info.length > MAX_PAYLOAD_LENGTH) return undefined;
+    if (!/^[A-Za-z0-9+/]+={0,2}$/.test(info)) return undefined;
+    try {
+        return atob(info);
+    } catch {
+        return undefined;
+    }
+}
+
+/**
+ * 解码 JSON 数组，并校验前 size 项都是字符串
+ * @param {string} text
+ * @param {number} size
+ * @returns {string[] | undefined}
+ */
+function decodeIdList(text, size) {
+    /** @type {unknown} */
+    let parsed;
+    try {
+        parsed = JSON.parse(text);
+    } catch {
+        return undefined;
+    }
+    if (!Array.isArray(parsed) || parsed.length < size) return undefined;
+    const ids = parsed.slice(0, size);
+    return ids.every((id) => typeof id === "string") ? /** @type {string[]} */ (ids) : undefined;
+}
+
+/**
+ * HTML 属性值转义。地址由 URL 对象生成、本不含引号，此处做二次防护。
+ * @param {string} value
+ */
+function escapeAttribute(value) {
+    return value.replace(/[&<>"']/g, (ch) => `&#${ch.charCodeAt(0)};`);
+}
+
+/**
+ * @typedef {{
+ *   displayName: string | (() => string),
+ *   origin: string,
+ *   attributes: string,
+ *   parse: (payload: string) => string[] | undefined,
+ *   src: (ids: string[]) => string,
+ * }} ShareProvider
+ */
+
+/** @type {Record<ShareType, ShareProvider>} */
 const frame = {
     nm: {
         displayName: () => (TranslationLanguage === "CN" ? "网易云" : "Netease Cloud Music"),
-        get: (Id) =>
-            `<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=${Id}&auto=0&height=66"></iframe>`,
+        origin: "https://music.163.com",
+        attributes: `frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86"`,
+        parse: (payload) => (NUM_ID.test(payload) ? [payload] : undefined),
+        src: ([id]) => {
+            const url = new URL("/outchain/player", "https://music.163.com");
+            url.searchParams.set("type", "2");
+            url.searchParams.set("id", id);
+            url.searchParams.set("auto", "0");
+            url.searchParams.set("height", "66");
+            return url.toString();
+        },
     },
     bili: {
         displayName: "Bilibili",
-        get: (info) => {
-            const IDs = JSON.parse(info);
-            return `<iframe width="100%" height="100%" src="//player.bilibili.com/player.html?autoplay=0&isOutside=true&aid=${IDs[0]}&bvid=${IDs[1]}&cid=${IDs[2]}&p=${IDs[3]}" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>`;
+        origin: "https://player.bilibili.com",
+        attributes: `width="100%" height="100%" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"`,
+        parse: (payload) => {
+            const ids = decodeIdList(payload, 4);
+            if (!ids) return undefined;
+            const [aid, bvid, cid, p] = ids;
+            if (!NUM_ID.test(aid) || !NUM_ID.test(cid) || !NUM_ID.test(p) || !ALPHA_ID.test(bvid)) return undefined;
+            return ids;
+        },
+        src: ([aid, bvid, cid, p]) => {
+            const url = new URL("/player.html", "https://player.bilibili.com");
+            url.searchParams.set("autoplay", "0");
+            url.searchParams.set("isOutside", "true");
+            url.searchParams.set("aid", aid);
+            url.searchParams.set("bvid", bvid);
+            url.searchParams.set("cid", cid);
+            url.searchParams.set("p", p);
+            return url.toString();
         },
     },
     ytb: {
         displayName: "Youtube",
-        get: (info) => {
-            const IDs = JSON.parse(info);
-            const fakeSI = Math.random().toString(36).substring(2);
-            return `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${IDs[0]}?si=${fakeSI}" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+        origin: "https://www.youtube.com",
+        attributes: `width="100%" height="100%" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen`,
+        parse: (payload) => {
+            const ids = decodeIdList(payload, 1);
+            return ids && ALPHA_ID.test(ids[0]) ? ids : undefined;
+        },
+        src: ([id]) => {
+            const url = new URL(`/embed/${encodeURIComponent(id)}`, "https://www.youtube.com");
+            url.searchParams.set("si", Math.random().toString(36).substring(2));
+            return url.toString();
         },
     },
     phb: {
         displayName: "Pornhub",
-        get: (Id) =>
-            `<iframe width="100%" height="100%" src="https://www.pornhub.com/embed/${Id}" frameborder="0"  scrolling="no" allowfullscreen></iframe>`,
+        origin: "https://www.pornhub.com",
+        attributes: `width="100%" height="100%" frameborder="0" scrolling="no" allowfullscreen`,
+        parse: (payload) => (PHB_ID.test(payload) ? [payload] : undefined),
+        src: ([id]) => new URL(`/embed/${encodeURIComponent(id)}`, "https://www.pornhub.com").toString(),
     },
 };
+
+/**
+ * 把来自网络的分享数据渲染成聊天室内的 iframe。
+ * 校验不通过时返回 undefined，调用方应直接丢弃该消息。
+ * @param {unknown} linkType
+ * @param {unknown} info
+ * @returns {string | undefined}
+ */
+function renderShare(linkType, info) {
+    // 用自有属性查找，避免 __proto__ / constructor 等命中原型链
+    if (typeof linkType !== "string" || !Object.prototype.hasOwnProperty.call(frame, linkType)) return undefined;
+    const provider = frame[/** @type {ShareType} */ (linkType)];
+
+    const payload = decodePayload(info);
+    if (payload === undefined) return undefined;
+    const ids = provider.parse(payload);
+    if (!ids) return undefined;
+
+    /** @type {URL} */
+    let url;
+    try {
+        url = new URL(provider.src(ids));
+    } catch {
+        return undefined;
+    }
+    // 二次校验：即使校验规则被放宽，也只允许嵌入白名单站点
+    if (url.protocol !== "https:" || url.origin !== provider.origin) return undefined;
+
+    return `<div style="width: 100%; aspect-ratio: 4 / 3;"><iframe ${provider.attributes} src="${escapeAttribute(url.toString())}"></iframe></div>`;
+}
 
 /** @type {(str: string | (()=>string))=>string} */
 const valuify = (str) => (typeof str === "function" ? str() : str);
@@ -197,6 +318,7 @@ function shareHandle(parsed, lang = "CN") {
             if (!src) return undefined;
             try {
                 const shareUrl = new URL(window.location.protocol + src);
+                if (shareUrl.hostname !== "player.bilibili.com") return undefined;
                 const args = ["aid", "bvid", "cid", "p"].map((key) => shareUrl.searchParams.get(key));
                 if (args.some((v) => !v)) return undefined;
                 return [
@@ -233,7 +355,7 @@ function shareHandle(parsed, lang = "CN") {
         return undefined;
     })();
 
-    if (!result) {
+    if (!result || !renderShare(result[0].linkType, result[0].info)) {
         shareErrReport(lang);
     } else {
         const [sendv, src] = result;
@@ -260,17 +382,22 @@ function shareHandle(parsed, lang = "CN") {
 export default function () {
     ChatRoomEvents.on("Hidden", (message) => {
         const { Content, Dictionary, Sender } = message;
-        if (Content === "Share_Link") {
-            const { linkType, info } = /** @type { any } */ (Dictionary[0]);
-            const result = frame[linkType]?.get(atob(info));
-            if (result) {
-                ChatRoomMessage({
-                    Type: "LocalMessage",
-                    Sender,
-                    Content: `<div style="width: 100%; aspect-ratio: 4 / 3;">${result}</div>`,
-                });
-            }
+        if (Content !== "Share_Link") return;
+
+        const shared = Array.isArray(Dictionary) ? Dictionary[0] : undefined;
+        if (!shared || typeof shared !== "object") return;
+
+        const { linkType, info } = /** @type {{ linkType?: unknown, info?: unknown }} */ (shared);
+        const html = renderShare(linkType, info);
+        if (!html) {
+            console.warn("Share_Link: 收到不合法的分享内容，已忽略。");
+            return;
         }
+        ChatRoomMessage({
+            Type: "LocalMessage",
+            Sender,
+            Content: html,
+        });
     });
 
     CommandCombine({
