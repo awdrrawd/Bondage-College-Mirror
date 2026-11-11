@@ -7055,7 +7055,7 @@ MaidDrinkPickRoundShooters,"SourceCharacter buys a round of shooters for everyon
 MaidDrinkPickSexOnTheBeachJug,"SourceCharacter buys a jug of Sex on the Beach for everyone, from TargetCharacter."
 MaidDrinkPickVirginMojito,SourceCharacter buys a Virgin Mojito from DestinationCharacter tray.
 MaidDrinkPickWhiskey,SourceCharacter buys a glass of Whiskey from TargetCharacter.
-MapViewTetherSlip,"DestinationCharacter leash slips off the post, with nobody left to keep it there."
+MapViewTetherSlip,"SourceCharacter's leash slips off the post, with nobody left to keep it there."
 MapViewTetherTie,SourceCharacter ties DestinationCharacter leash to the post.
 MapViewTetherUntie,SourceCharacter unties DestinationCharacter leash from the post.
 MaskDroneMaskModuleEyes,Eyes
@@ -9266,6 +9266,8 @@ ItemHandheldPlushieOptionVelvetBunnyCabaret20,Hajime
 ItemHandheldPlushieSetVelvetBunnyCabaret20,SourceCharacter places a cute Hajime plushie in DestinationCharacter hands.
 ItemHandheldPlushieOptionVelvetBunnyCabaret21,Lilly
 ItemHandheldPlushieSetVelvetBunnyCabaret21,SourceCharacter places a cute Lilly plushie in DestinationCharacter hands.
+ItemHandheldPlushieOptionVelvetBunnyCabaret22,Chris
+ItemHandheldPlushieSetVelvetBunnyCabaret22,SourceCharacter places a cute Chris plushie in DestinationCharacter hands.
 ItemHandheldPlushieModuleSubbycatsPlace,Subbycat's Place
 ItemHandheldPlushieSelectSubbycatsPlace,Subbycat's Place
 ItemHandheldPlushieSubbycatsPlaceSelect,Choose the plushie:
@@ -9363,6 +9365,17 @@ ItemHandheldPlushieOptionFaircloughManor5,Bianca Fairclough
 ItemHandheldPlushieSetFaircloughManor5,SourceCharacter places a cute Bianca Fairclough plushie in DestinationCharacter hands.
 ItemHandheldPlushieOptionFaircloughManor6,Bella Fairclough
 ItemHandheldPlushieSetFaircloughManor6,SourceCharacter places a cute Bella Fairclough plushie in DestinationCharacter hands.
+ItemHandheldPlushieModuleFoxDen,Fox Den
+ItemHandheldPlushieSelectFoxDen,Fox Den
+ItemHandheldPlushieFoxDenSelect,Choose the plushie:
+ItemHandheldPlushieOptionFoxDen0,None
+ItemHandheldPlushieSetFoxDen0,SourceCharacter removes a plushie from DestinationCharacter hands.
+ItemHandheldPlushieOptionFoxDen1,Nicole
+ItemHandheldPlushieSetFoxDen1,SourceCharacter places a cute Nicole plushie in DestinationCharacter hands.
+ItemHandheldPlushieOptionFoxDen2,Tifa
+ItemHandheldPlushieSetFoxDen2,SourceCharacter places a cute Tifa plushie in DestinationCharacter hands.
+ItemHandheldPlushieOptionFoxDen3,Felix
+ItemHandheldPlushieSetFoxDen3,SourceCharacter places a cute Felix plushie in DestinationCharacter hands.
 ItemHandheldPlushieModulePosition,Position
 ItemHandheldPlushieSelectPosition,Where the plushie is:
 ItemHandheldPlushieOptionPosition0,In hands

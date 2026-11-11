@@ -309,7 +309,7 @@ function ItemPropertiesUnion(propertyList, asset, output=undefined) {
  */
 function ItemPropertiesDifference(propertyList, asset, output=undefined) {
 	/** @type {ItemProperties} */
-	const ret = output ?? {};
+	const ret = output ?? CommonCloneDeep(propertyList[0]) ?? {};
 	for (const [propName, propValue] of CommonEntries(ret)) {
 		if (propValue === undefined) {
 			continue;
@@ -320,7 +320,7 @@ function ItemPropertiesDifference(propertyList, asset, output=undefined) {
 		const propList = [propValue, ...propertyList.map(properties => properties === ret ? undefined : properties[propName])];
 		if (entry) {
 			/** @type {Unknown<ItemProperties>} */(ret)[propName] = entry.difference(propList, { asset });
-		} else if (propList.filter(i => i != null).length >= 2) {
+		} else if (propList.filter(i => i === propValue).length >= 2) {
 			delete ret[propName];
 		}
 	}

@@ -53232,6 +53232,10 @@ var AssetFemale3DCG = [
 						AllowTypes: { VelvetBunnyCabaret: 21 },
 					},
 					{
+						Name: "Chris",
+						AllowTypes: { VelvetBunnyCabaret: 22 },
+					},
+					{
 						Name: "Shadow",
 						AllowTypes: { SubbycatsPlace: 1 },
 					},
@@ -53366,6 +53370,18 @@ var AssetFemale3DCG = [
 					{
 						Name: "BellaFairclough",
 						AllowTypes: { FaircloughManor: 6 },
+					},
+					{
+						Name: "Nicole",
+						AllowTypes: { FoxDen: 1 },
+					},
+					{
+						Name: "Tifa",
+						AllowTypes: { FoxDen: 2 },
+					},
+					{
+						Name: "Felix2",
+						AllowTypes: { FoxDen: 3 },
 					},
 				],
 			},

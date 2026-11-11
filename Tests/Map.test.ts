@@ -1,3 +1,5 @@
+import * as fs from "node:fs";
+import * as path from "node:path";
 import { Game } from "./Utils";
 
 // Mock out all the stuff that's required before ChatRoom.js can load
@@ -80,6 +82,24 @@ describe("MapManager", () => {
 
 	const tintBlueEffect = Game.MapDataGetEffect(15);
 	expect(tintBlueEffect).not.toBe(null);
+
+	describe("fog", () => {
+		it("persists into room map data so joiners load the same setting", () => {
+			expect(Game.MapManager.Map.hasFogEnabled).toBe(false);
+			expect(Game.ChatRoomData.MapData.Fog).toBeUndefined();
+
+			Game.MapManager.Map.hasFogEnabled = true;
+			expect(Game.ChatRoomData.MapData.Fog).toBe(true);
+
+			Game.MapManager.Map.loadGlobalMapData(Game.ChatRoomData.MapData);
+			expect(Game.MapManager.Map.hasFogEnabled).toBe(true);
+
+			Game.MapManager.Map.hasFogEnabled = false;
+			expect(Game.ChatRoomData.MapData.Fog).toBeUndefined();
+			Game.MapManager.Map.loadGlobalMapData(Game.ChatRoomData.MapData);
+			expect(Game.MapManager.Map.hasFogEnabled).toBe(false);
+		});
+	});
 
 	describe("setTile", () => {
 		it('should set a tile (x,y)', () => {
@@ -290,6 +310,66 @@ describe("MapManager", () => {
 			expect(Game.MapManager.Map.getEffects(10, 11)).toEqual([blankEffect]);
 			expect(Game.MapManager.Map.getEffects(11, 11)).toEqual([blankEffect]);
 			expect(Game.MapManager.Map.undo()).toBe(false);
+		});
+
+		it("keeps the history when the map view is activated again in the same room", () => {
+			Game.ChatRoomData.Name = "Undo Room";
+			Game.MapManager.OnViewActivate();
+			expect(Game.MapManager.Map.setObject(10, 10, table)).toBe(true);
+			Game.MapManager.Map.updateGlobalMapData();
+			Game.MapManager.OnViewActivate();
+			expect(Game.MapManager.Map.getObject(10, 10)).toEqual(table);
+			expect(Game.MapManager.Map.undo()).toBe(true);
+			expect(Game.MapManager.Map.getObject(10, 10)).toEqual(blankObject);
+		});
+
+		it("drops the history when the map view is activated in another room", () => {
+			Game.ChatRoomData.Name = "Undo Room";
+			Game.MapManager.OnViewActivate();
+			expect(Game.MapManager.Map.setObject(10, 10, table)).toBe(true);
+			Game.ChatRoomData.Name = "Other Room";
+			Game.MapManager.OnViewActivate();
+			expect(Game.MapManager.Map.undo()).toBe(false);
+		});
+
+		it("restores each tile under the brush on undo", () => {
+			expect(Game.MapManager.Map.setTile(11, 11, stoneWall)).toBe(true);
+			expect(Game.MapManager.Map.setObject(11, 10, table)).toBe(true);
+			expect(Game.MapManager.Map.setEffects(10, 11, [shadowMediumEffect])).toBe(true);
+			expect(Game.MapManager.Map.setTile(10, 10, blankTile, 1)).toBe(true);
+			expect(Game.MapManager.Map.setObject(10, 10, blankObject, 1)).toBe(true);
+			expect(Game.MapManager.Map.setEffects(10, 10, [tintBlueEffect], 1)).toBe(true);
+			expect(Game.MapManager.Map.undo()).toBe(true);
+			expect(Game.MapManager.Map.undo()).toBe(true);
+			expect(Game.MapManager.Map.undo()).toBe(true);
+			expect(Game.MapManager.Map.getTile(11, 11)).toEqual(stoneWall);
+			expect(Game.MapManager.Map.getObject(11, 10)).toEqual(table);
+			expect(Game.MapManager.Map.getEffects(10, 11)).toEqual([shadowMediumEffect]);
+			expect(Game.MapManager.Map.getTile(10, 10)).toEqual(blankTile);
+			expect(Game.MapManager.Map.getEffects(10, 10)).toEqual([blankEffect]);
+		});
+
+		it("undoes a whole brush stroke in a single step", () => {
+			expect(Game.MapManager.Map.setTile(10, 10, stoneWall)).toBe(true);
+			Game.MapManager.Map.startUndoStroke();
+			Game.MapManager.Map.setTile(10, 10, blankTile);
+			Game.MapManager.Map.setTile(10, 10, stoneWall);
+			Game.MapManager.Map.setTile(11, 11, stoneWall);
+			Game.MapManager.Map.setTile(11, 11, stoneWall);
+			Game.MapManager.Map.endUndoStroke();
+			expect(Game.MapManager.Map.undo()).toBe(true);
+			expect(Game.MapManager.Map.getTile(10, 10)).toEqual(stoneWall);
+			expect(Game.MapManager.Map.getTile(11, 11)).toEqual(blankTile);
+			expect(Game.MapManager.Map.undo()).toBe(true);
+			expect(Game.MapManager.Map.getTile(10, 10)).toEqual(blankTile);
+			expect(Game.MapManager.Map.undo()).toBe(false);
+		});
+
+		it("keeps only the latest 500 edits", () => {
+			for (let i = 0; i < 501; i++) Game.MapManager.Map.setObject(10, 10, table);
+			for (let i = 0; i < 500; i++) expect(Game.MapManager.Map.undo()).toBe(true);
+			expect(Game.MapManager.Map.undo()).toBe(false);
+			expect(Game.MapManager.Map.getObject(10, 10)).toEqual(table);
 		});
 	});
 
@@ -631,6 +711,60 @@ describe("tether points", () => {
 		expect(Game.Player.MapData.Tether).toBe(tether);
 	});
 
+	it("is announced by whoever tied or untied the leash, once it's done", () => {
+		const realServerSend = Game.ServerSend;
+		const realRefreshLeash = Game.CharacterRefreshLeash;
+		const sent: { Content: string, Type: string, Dictionary: { Tag?: string, MemberNumber?: number, SourceCharacter?: number }[] }[] = [];
+		Game.ServerSend = (message: string, data: { Content: string, Type: string, Dictionary: [] }) => {
+			if (message === "ChatRoomChat") sent.push(data);
+		};
+		Game.CharacterRefreshLeash = () => {};
+		const realNickname = Game.CharacterNickname;
+		Game.CharacterNickname = (C: { Name: string }) => C.Name;
+		Game.Player.MemberNumber = 1;
+		Game.Player.IsPlayer = () => true;
+		Game.Player.IsOnline = () => true;
+		const other = { MemberNumber: 3, Name: "Other", IsPlayer: () => false, IsOnline: () => true, MapData: { Pos: { X: 6, Y: 6 } } };
+		Game.ChatRoomCharacter = [Game.Player, other];
+		const actions = () => sent.filter(m => m.Type === "Action");
+		const tags = (m: { Dictionary: { Tag?: string, MemberNumber?: number, SourceCharacter?: number }[] }) =>
+			m.Dictionary.map(e => (e.Tag ? `${e.Tag}:${e.MemberNumber}` : `SourceCharacter:${e.SourceCharacter}`));
+		const tether = { Position: { X: 5, Y: 5 }, MemberNumber: 1 };
+
+		// Her own leash: her client says so
+		Game.ChatRoomMapViewAcceptTether(Game.Player, tether);
+		expect(actions().map(m => m.Content)).toEqual(["MapViewTetherTie"]);
+		expect(tags(actions()[0])).toEqual(["SourceCharacter:1", "DestinationCharacter:1"]);
+		sent.length = 0;
+
+		// Someone else's request: her client changes the leash without a word, the one who asked tells the room
+		Game.ChatRoomMapViewAcceptTether(other, null);
+		expect(actions()).toEqual([]);
+
+		// Tying someone else's leash: said once their map data shows it (ChatRoomMapViewSyncMapData calls this), by the one who tied it, and only once
+		Game.ChatRoomMapViewSendTetherRequest(other, tether);
+		other.MapData = { Pos: { X: 6, Y: 6 } };
+		Game.ChatRoomMapViewTetherAnnounce(other);
+		expect(actions()).toEqual([]);
+		other.MapData = { Pos: { X: 6, Y: 6 }, Tether: tether };
+		Game.ChatRoomMapViewTetherAnnounce(other);
+		other.MapData = { Pos: { X: 6, Y: 6 }, Tether: tether };
+		Game.ChatRoomMapViewTetherAnnounce(other);
+		expect(actions().map(m => m.Content)).toEqual(["MapViewTetherTie"]);
+		expect(tags(actions()[0])).toEqual(["SourceCharacter:1", "DestinationCharacter:3"]);
+
+		// Untying it
+		Game.ChatRoomMapViewSendTetherRequest(other, null);
+		other.MapData = { Pos: { X: 6, Y: 6 } };
+		Game.ChatRoomMapViewTetherAnnounce(other);
+		expect(actions().map(m => m.Content)).toEqual(["MapViewTetherTie", "MapViewTetherUntie"]);
+		expect(tags(actions()[1])).toEqual(["SourceCharacter:1", "DestinationCharacter:3"]);
+
+		Game.ServerSend = realServerSend;
+		Game.CharacterRefreshLeash = realRefreshLeash;
+		Game.CharacterNickname = realNickname;
+	});
+
 	describe("holding the player", () => {
 		const realCanBeLeashedBy = Game.ChatRoomCanBeLeashedBy;
 		const member = (MemberNumber: number) => ({ MemberNumber, IsPlayer: () => false });
@@ -780,6 +914,36 @@ describe("placed object settings", () => {
 		expect(map().getObjectId(1, 1)).toBe(362);
 	});
 
+	it("are deleted when the object is erased or replaced by another one", () => {
+		place(1, 1, 362);
+		map().setObjectSettings(1, 1, { Rotation: 30, Size: 150 });
+		place(1, 1, 100);
+		place(1, 1, 362);
+		expect(map().getObjectSettings(1, 1)).toBe(null);
+		map().setObjectSettings(1, 1, { Rotation: 30 });
+		place(1, 1, 362);
+		expect(map().getObjectSettings(1, 1)).toEqual({ ID: 362, Rotation: 30 });
+		place(1, 1, 365);
+		place(1, 1, 362);
+		expect(map().getObjectSettings(1, 1)).toBe(null);
+		expect(map().undo()).toBe(true);
+		expect(map().undo()).toBe(true);
+		expect(map().getObjectSettings(1, 1)).toEqual({ ID: 362, Rotation: 30 });
+	});
+
+	it("only restores the erased tiles on undo, keeping changes made since on other tiles", () => {
+		place(1, 1, 362);
+		place(2, 1, 362);
+		map().setObjectSettings(1, 1, { Rotation: 30 });
+		place(1, 1, 100);
+		map().setObjectSettings(2, 1, { Rotation: 60 }, false);
+		map().updateGlobalMapData();
+		Game.MapManager.OnMapDataUpdated();
+		expect(map().undo()).toBe(true);
+		expect(map().getObjectSettings(1, 1)).toEqual({ ID: 362, Rotation: 30 });
+		expect(map().getObjectSettings(2, 1)).toEqual({ ID: 362, Rotation: 60 });
+	});
+
 	it("only turns and sizes objects standing on their own", () => {
 		expect(Game.MapCanTransformObject(Game.MapDataGetObject(362))).toBe(true);
 		expect(Game.MapCanTransformObject(Game.MapDataGetObject(710))).toBe(false);
@@ -796,7 +960,7 @@ describe("placed object settings", () => {
 	describe("colors", () => {
 		const throne = Game.MapDataGetObject(150);
 		const couch = Game.MapDataGetObject(710);
-		const plainObject = Game.MapDataGetObject(151);
+		const plainObject = Game.MapDataGetObject(170);
 		const pos = { X: 1, Y: 1 };
 
 		it("are defined as valid color layers in the map data", () => {
@@ -804,7 +968,7 @@ describe("placed object settings", () => {
 			const colorableIDs = [
 				130, 140, 150, 165, 167, 175, 176, 177, 178, 181, 182, 183, 184, 185, 186, 187, 188, 189,
 				196, 197, 198, 220, 221, 330, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341,
-				366, 367, 389, 403, 409, 410, 411, 412, 511, 560, 570, 612, 630, 640, 650, 710, 720, 730, 740, 750,
+				366, 367, 389, 403, 409, 410, 411, 412, 511, 560, 570, 599, 612, 630, 640, 650, 710, 720, 730, 740, 750,
 				1010, 1020, 1030, 1050, 1090, 2016, 2017, 2018, 2034, 2036,
 				3075, 3076, 3121, 3133, 3134, 3135, 3136, 3137, 3138, 3139, 3140, 5014,
 				...range(1110, 1119), ...range(1201, 1226), ...range(1301, 1309),
@@ -817,6 +981,34 @@ describe("placed object settings", () => {
 				}
 				const names = object.Layers.map(l => l.Name);
 				expect(new Set(names).size).toBe(names.length);
+			}
+		});
+
+		it("include the bedroom and living room furniture", () => {
+			const furniture = [120, 151, 166, 190, 191, 192, 193, 194, 195, 180, 310, 387, 401, 402, 404, 405, 406, 407, 408, 3050, 3270];
+			for (const object of furniture.map(id => Game.MapDataGetObject(id))) {
+				expect(Game.MapGetColorableLayers(object).length).toBeGreaterThan(0);
+				for (const layer of object.Layers) {
+					expect(layer.Name).toMatch(/^[A-Z][A-Za-z]+$/);
+					if (layer.IsColorable) expect(layer.DefaultColor).toMatch(/^#[0-9A-F]{6}$/);
+				}
+			}
+		});
+
+		it("include the kitchen, school and bathroom objects", () => {
+			const rooms = [210, 212, 213, 3200, 3201, 250, 363, 364, 365, 260, 270, 370, 3020, 3021, 3022, 3023, 3024, 3025, 3026, 3027, 3028, 3280, 3290];
+			for (const object of rooms.map(id => Game.MapDataGetObject(id))) {
+				expect(Game.MapGetColorableLayers(object).length).toBeGreaterThan(0);
+			}
+		});
+
+		it("have a picture for every named layer", () => {
+			const objects = Array.from({ length: 6000 }, (_, id) => Game.MapGetDoodad("Object", id)).filter(o => o && !o.BuildImageName);
+			for (const object of objects) {
+				for (const layer of object.Layers.filter(l => l.Name)) {
+					const file = path.join(__dirname, "..", "Assets", "Map", "Objects", object.Type, `${object.Style}_${layer.Name}.png`);
+					expect([file, fs.existsSync(file)]).toEqual([file, true]);
+				}
 			}
 		});
 
@@ -909,6 +1101,13 @@ describe("placed object settings", () => {
 			expect(map().getObjectSettings(1, 1)).toEqual({ ID: djBooth, Decal: "VelvetBunny" });
 			map().setObjectSettings(2, 1, { Decal: "VelvetBunny" });
 			expect(map().getObjectSettings(2, 1)).toBe(null);
+		});
+
+		it("leave the object's own colors to its layers", () => {
+			place(1, 1, djBooth);
+			expect(Game.MapGetColorableLayers(Game.MapDataGetObject(djBooth)).map(l => l.Name)).toEqual(["Body", "Lights"]);
+			map().setObjectSettings(1, 1, { Colors: ["#A01818", "#FFC020"], Decal: "VelvetBunny", DecalColor: "#FFFFFF" });
+			expect(map().getObjectSettings(1, 1)).toEqual({ ID: djBooth, Colors: ["#A01818", "#FFC020"], Decal: "VelvetBunny", DecalColor: "#FFFFFF" });
 		});
 
 		it("only take the decals other items can show", () => {

@@ -107,6 +107,7 @@
 #chat-room-div {
 	background: black;
 	flex: 1;
+	min-width: 0;
 	--button-size: min(8vh, 4vw);
 	/* NOTE: Variable is also referenced in `ChatRoomInputResize()` */
 	--gap-size: max(3px, min(0.4vh, 0.2vw));

@@ -929,7 +929,7 @@ class PropertyDataEntry {
 	/**
 	 * Return the difference between the passed (shallow) objects
 	 * @satisfies {ItemProperty.Difference<any>}
-	 * @template {Record<string, undefined | string | boolean | number>} T
+	 * @template {Partial<Record<string, ScalarType>>} T
 	 * @param {readonly [p0: Readonly<T>, ...pN: readonly Readonly<T>[]]} values
 	 * @returns {undefined | T}
 	 */
@@ -938,16 +938,15 @@ class PropertyDataEntry {
 		/** @type {T} */
 		const ret = { ...head };
 		for (const obj of tail) {
-			innerLoop: for (const [k, v] of Object.entries(obj)) {
+			for (const [k, v] of Object.entries(obj)) {
 				if (v === undefined) {
 					continue;
-				} else if (k in ret) {
+				} else if (ret[k] === v) {
 					delete ret[k];
-					break innerLoop;
 				}
 			}
 		}
-		return Object.keys(ret).length === 0 ? undefined : ret;
+		return Object.values(ret).filter(i => i !== undefined).length === 0 ? undefined : ret;
 	}
 
 	/**

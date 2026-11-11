@@ -298,13 +298,14 @@ function ChatRoomMapViewCreateOnClickSignLogic(name) {
 const AssetsMapDataTeleportPadColors = ["#3C8CFF", "#FF4060", "#40D080", "#FFC830", "#A050FF", "#FF60C0", "#FF8A30", "#30E0E0"];
 
 /**
- * Opens the menu of an object that can be a tether point: admins make it one, and leashes are tied to it there
+ * Opens the user menu of an object that is already a tether point (tie / untie). Admins configure tether in Object Settings.
  * @param {number} x - The X position of the object
  * @param {number} y - The Y position of the object
  * @returns {void} - Nothing
  */
 function ChatRoomMapViewOnClickTetherPoint(x, y) {
 	if (!MapManager.Map.getObject(x, y)?.CanBeTetherPoint) return;
+	if (ChatRoomMapViewEditMode === "ObjectSettings") return;
 	ChatRoomMapViewShowTetherPointMenu(x, y);
 }
 
@@ -546,7 +547,15 @@ const AssetsMapDataObjects = [
 
 	{ ID: 110, Type: "Functional", Style: "EntryFlag", Top: -0.125, Exit: true, Unique: true },
 	{ ID: 115, Type: "Functional", Style: "ExitFlag", Top: -0.125, Exit: true },
-	{ ID: 120, Type: "Bedroom", Style: "BedTeal", Top: -0.25, AssetName: "Bed", AssetGroup: "ItemDevices"},
+	{
+		ID: 120, Type: "Bedroom", Style: "BedTeal", Top: -0.25, AssetName: "Bed", AssetGroup: "ItemDevices",
+		Layers: [
+			{ Name: "Sheets", IsColorable: true, DefaultColor: "#0E8696" },
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#995721" },
+			{ Name: "Pillows", IsColorable: true, DefaultColor: "#919796" },
+			{ Name: "Mattress", IsColorable: true, DefaultColor: "#959685" },
+		],
+	},
 	{
 		ID: 130, Type: "LivingRoom", Style: "PillowPink",
 		Layers: [
@@ -566,7 +575,12 @@ const AssetsMapDataObjects = [
 			{ Name: "Cushion", IsColorable: true, DefaultColor: "#F7644C" },
 		],
 	},
-	{ ID: 151, Type: "LivingRoom", Style: "ChairWood", Top: -0.5, Height: 1.5 },
+	{
+		ID: 151, Type: "LivingRoom", Style: "ChairWood", Top: -0.5, Height: 1.5,
+		Layers: [
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#BA9356" },
+		],
+	},
 	{ ID: 160, Type: "Functional", Style: "KeyBronze", OnEnter: function(){ Player.SetMapState("BronzeKey", true); }, IsVisible: function(){ return !Player.HasMapState("BronzeKey"); } },
 	{ ID: 162, Type: "Functional", Style: "KeySilver", OnEnter: function(){ Player.SetMapState("SilverKey", true); }, IsVisible: function(){ return !Player.HasMapState("SilverKey"); } },
 	{ ID: 164, Type: "Functional", Style: "KeyGold" , OnEnter: function(){ Player.SetMapState("GoldKey", true); }, IsVisible: function(){ return !Player.HasMapState("GoldKey"); } },
@@ -576,7 +590,13 @@ const AssetsMapDataObjects = [
 			{ Name: "Wood", IsColorable: true, DefaultColor: "#AC784C" },
 		],
 	},
-	{ ID: 166, Type: "Bedroom", Style: "Bed" , Top: -0.82, Left: 0.05, Height: 1.8, Width: 0.90, AssetName: "Bed", AssetGroup: "ItemDevices" },
+	{
+		ID: 166, Type: "Bedroom", Style: "Bed" , Top: -0.82, Left: 0.05, Height: 1.8, Width: 0.90, AssetName: "Bed", AssetGroup: "ItemDevices",
+		Layers: [
+			{ Name: "Sheets", IsColorable: true, DefaultColor: "#949496" },
+			{ Name: "Frame", IsColorable: true, DefaultColor: "#786948" },
+		],
+	},
 	{ ID: 170, Type: "LivingRoom", Style: "Stairs" , Top: 0, Left: 0 },
 	{
 		ID: 175, Type: "LivingRoom", Style: "ModernDiningChair", Top: -0.5, Height: 1.5,
@@ -610,14 +630,59 @@ const AssetsMapDataObjects = [
 			{ Name: "Glow", IsColorable: false },
 		],
 	},
-	{ ID: 180, Type: "LivingRoom", Style: "AirConditioner" , Top: 0, Left: 0 },
+	{
+		ID: 180, Type: "LivingRoom", Style: "AirConditioner" , Top: 0, Left: 0,
+		Layers: [
+			{ Name: "Body", IsColorable: true, DefaultColor: "#7E8081" },
+			{ Name: "Lights", IsColorable: false },
+		],
+	},
 	// Master LivingRoom set (keep published IDs)
-	{ ID: 190, Type: "LivingRoom", Style: "FloorLamp", Top: -1.15, Left: 0.13, Height: 2, Width: 0.74 },
-	{ ID: 191, Type: "LivingRoom", Style: "VelvetArmchair", Top: -0.26, Height: 1.11 },
-	{ ID: 192, Type: "LivingRoom", Style: "CoffeeTable", Top: 0.17, Height: 0.68 },
-	{ ID: 193, Type: "LivingRoom", Style: "Piano", Top: -0.08, Height: 0.93 },
-	{ ID: 194, Type: "LivingRoom", Style: "FaintingCouch", Top: 0.3, Height: 0.55 },
-	{ ID: 195, Type: "LivingRoom", Style: "FiddleLeafFig", Top: -0.95, Left: 0.02, Height: 1.8, Width: 0.97 },
+	{
+		ID: 190, Type: "LivingRoom", Style: "FloorLamp", Top: -1.15, Left: 0.13, Height: 2, Width: 0.74,
+		Layers: [
+			{ Name: "Shade", IsColorable: true, DefaultColor: "#998873" },
+			{ Name: "Metal", IsColorable: true, DefaultColor: "#DC903C" },
+		],
+	},
+	{
+		ID: 191, Type: "LivingRoom", Style: "VelvetArmchair", Top: -0.26, Height: 1.11,
+		Layers: [
+			{ Name: "Body", IsColorable: true, DefaultColor: "#78121E" },
+			{ Name: "Legs", IsColorable: true, DefaultColor: "#80442C" },
+			{ Name: "Studs", IsColorable: false },
+		],
+	},
+	{
+		ID: 192, Type: "LivingRoom", Style: "CoffeeTable", Top: 0.17, Height: 0.68,
+		Layers: [
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#9E5A39" },
+			{ Name: "Vase", IsColorable: false },
+		],
+	},
+	{
+		ID: 193, Type: "LivingRoom", Style: "Piano", Top: -0.08, Height: 0.93,
+		Layers: [
+			{ Name: "Body", IsColorable: true, DefaultColor: "#81807F" },
+			{ Name: "Brass", IsColorable: true, DefaultColor: "#966D25" },
+			{ Name: "Keys", IsColorable: false },
+		],
+	},
+	{
+		ID: 194, Type: "LivingRoom", Style: "FaintingCouch", Top: 0.3, Height: 0.55,
+		Layers: [
+			{ Name: "Frame", IsColorable: true, DefaultColor: "#964C28" },
+			{ Name: "Cushion", IsColorable: true, DefaultColor: "#8D1022" },
+		],
+	},
+	{
+		ID: 195, Type: "LivingRoom", Style: "FiddleLeafFig", Top: -0.95, Left: 0.02, Height: 1.8, Width: 0.97,
+		Layers: [
+			{ Name: "Leaves", IsColorable: true, DefaultColor: "#6A7F32" },
+			{ Name: "Pot", IsColorable: true, DefaultColor: "#807971" },
+			{ Name: "Trunk", IsColorable: true, DefaultColor: "#78603E" },
+		],
+	},
 	// Our LivingRoom set remapped off 190-195
 	{
 		ID: 185, Type: "LivingRoom", Style: "ModernLowboardSingle", Top: 0, Height: 1, JoinsNeighbors: true, BuildImageName: ChatRoomMapViewCreateRowImage("ModernLowboard"),
@@ -731,20 +796,65 @@ const AssetsMapDataObjects = [
 			{ Name: "Wood", IsColorable: true, DefaultColor: "#A0693C" },
 		],
 	},
-	{ ID: 401, Type: "Bedroom", Style: "TeddyBear" },
-	{ ID: 402, Type: "Bedroom", Style: "PinkTeddyBear" },
+	{
+		ID: 401, Type: "Bedroom", Style: "TeddyBear",
+		Layers: [
+			{ Name: "Fur", IsColorable: true, DefaultColor: "#E67B46" },
+			{ Name: "Bow", IsColorable: true, DefaultColor: "#82747C" },
+			{ Name: "Face", IsColorable: false },
+		],
+	},
+	{
+		ID: 402, Type: "Bedroom", Style: "PinkTeddyBear",
+		Layers: [
+			{ Name: "Fur", IsColorable: true, DefaultColor: "#D38D93" },
+			{ Name: "Eyes", IsColorable: false },
+		],
+	},
 	{
 		ID: 403, Type: "Bedroom", Style: "Nightstand",
 		Layers: [
 			{ Name: "Wood", IsColorable: true, DefaultColor: "#86705C" },
 		],
 	},
-	{ ID: 404, Type: "Bedroom", Style: "PinkNightstand" },
+	{
+		ID: 404, Type: "Bedroom", Style: "PinkNightstand",
+		Layers: [
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#B683A2" },
+		],
+	},
 	// Master Bedroom set (keep published IDs)
-	{ ID: 405, Type: "Bedroom", Style: "Vanity", Top: -0.44, Height: 1.29 },
-	{ ID: 406, Type: "Bedroom", Style: "Dresser", Top: -0.63, Height: 1.48 },
-	{ ID: 407, Type: "Bedroom", Style: "FoldingScreen", Top: -0.13, Height: 0.98 },
-	{ ID: 408, Type: "Bedroom", Style: "DressForm", Top: -0.95, Left: 0.16, Height: 1.8, Width: 0.69 },
+	{
+		ID: 405, Type: "Bedroom", Style: "Vanity", Top: -0.44, Height: 1.29,
+		Layers: [
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#96897C" },
+			{ Name: "Trim", IsColorable: true, DefaultColor: "#966E3C" },
+			{ Name: "Mirror", IsColorable: false },
+		],
+	},
+	{
+		ID: 406, Type: "Bedroom", Style: "Dresser", Top: -0.63, Height: 1.48,
+		Layers: [
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#853618" },
+			{ Name: "Handles", IsColorable: true, DefaultColor: "#947141" },
+		],
+	},
+	{
+		ID: 407, Type: "Bedroom", Style: "FoldingScreen", Top: -0.13, Height: 0.98,
+		Layers: [
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#823B21" },
+			{ Name: "Panels", IsColorable: false },
+			{ Name: "Hinges", IsColorable: false },
+		],
+	},
+	{
+		ID: 408, Type: "Bedroom", Style: "DressForm", Top: -0.95, Left: 0.16, Height: 1.8, Width: 0.69,
+		Layers: [
+			{ Name: "Corset", IsColorable: true, DefaultColor: "#807162" },
+			{ Name: "Torso", IsColorable: true, DefaultColor: "#968A7C" },
+			{ Name: "Stand", IsColorable: true, DefaultColor: "#B37746" },
+		],
+	},
 	// Our Bedroom set remapped off 405-408
 	{
 		ID: 409, Type: "Bedroom", Style: "SlidingDoorCabinet", Top: -1.2, Height: 2.2,
@@ -782,9 +892,30 @@ const AssetsMapDataObjects = [
 		],
 	},
 
-	{ ID: 210, Type: "School", Style: "TeacherDesk", Top: -0.25 },
-	{ ID: 212, Type: "School", Style: "Globe", Top: -0.25, Left: 0.16, Height: 1.1, Width: 0.69 },
-	{ ID: 213, Type: "School", Style: "Lectern", Top: -0.4, Height: 1.25 },
+	{
+		ID: 210, Type: "School", Style: "TeacherDesk", Top: -0.25,
+		Layers: [
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#DC8F60" },
+			{ Name: "Chair", IsColorable: true, DefaultColor: "#7E87B6" },
+			{ Name: "Items", IsColorable: false },
+			{ Name: "Legs", IsColorable: true, DefaultColor: "#808081" },
+		],
+	},
+	{
+		ID: 212, Type: "School", Style: "Globe", Top: -0.25, Left: 0.16, Height: 1.1, Width: 0.69,
+		Layers: [
+			{ Name: "Stand", IsColorable: true, DefaultColor: "#B47C2B" },
+			{ Name: "Base", IsColorable: true, DefaultColor: "#B26239" },
+			{ Name: "Globe", IsColorable: false },
+		],
+	},
+	{
+		ID: 213, Type: "School", Style: "Lectern", Top: -0.4, Height: 1.25,
+		Layers: [
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#95552F" },
+			{ Name: "Book", IsColorable: false },
+		],
+	},
 	{
 		ID: 220, Type: "School", Style: "StudentDesk", Top: -0.1,
 		Layers: [
@@ -792,11 +923,37 @@ const AssetsMapDataObjects = [
 			{ Name: "Metal", IsColorable: true, DefaultColor: "#546970" },
 		],
 	},
-	{ ID: 250, Type: "Kitchen", Style: "SinkDishes", Top: -0.35 },
-	{ ID: 260, Type: "Bathroom", Style: "LaundryMachine", Top: -0.55, Height: 1.25 },
-	{ ID: 270, Type: "Bathroom", Style: "IroningBoard", Top: -0.35 },
+	{
+		ID: 250, Type: "Kitchen", Style: "SinkDishes", Top: -0.35,
+		Layers: [
+			{ Name: "Cabinet", IsColorable: true, DefaultColor: "#B5B0A1" },
+			{ Name: "Top", IsColorable: true, DefaultColor: "#808B96" },
+			{ Name: "Fittings", IsColorable: true, DefaultColor: "#CE8826" },
+			{ Name: "Dishes", IsColorable: false },
+		],
+	},
+	{
+		ID: 260, Type: "Bathroom", Style: "LaundryMachine", Top: -0.55, Height: 1.25,
+		Layers: [
+			{ Name: "Body", IsColorable: true, DefaultColor: "#808182" },
+			{ Name: "Laundry", IsColorable: false },
+		],
+	},
+	{
+		ID: 270, Type: "Bathroom", Style: "IroningBoard", Top: -0.35,
+		Layers: [
+			{ Name: "Cover", IsColorable: true, DefaultColor: "#B54528" },
+			{ Name: "Frame", IsColorable: true, DefaultColor: "#7D817D" },
+			{ Name: "Items", IsColorable: false },
+		],
+	},
 	{ ID: 300, Type: "FloorDecorationThemed", Style: "ShibariFrame", Top: -1, Height: 2 },
-	{ ID: 310, Type: "LivingRoom", Style: "JapaneseTable", Top: -0.1 },
+	{
+		ID: 310, Type: "LivingRoom", Style: "JapaneseTable", Top: -0.1,
+		Layers: [
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#958066" },
+		],
+	},
 	{ ID: 320, Type: "FloorDecorationThemed", Style: "BanzaiTree", Top: -0.1 },
 	{
 		ID: 330, Type: "Kitchen", Style: "KitchenCounterSingle", Top: -0.3, Height: 1.3, JoinsNeighbors: true, BuildImageName: ChatRoomMapViewCreateKitchenCounterImage("KitchenCounter"),
@@ -898,9 +1055,25 @@ const AssetsMapDataObjects = [
 	{ ID: 360, Type: "FloorDecorationThemed", Style: "anvil", Top: 0.03, Left: 0.05, Height: 0.9, Width: 0.9 },
 	{ ID: 361, Type: "FloorDecorationThemed", Style: "grindstone", Top: 0.03, Left: 0.05, Height: 0.9, Width: 0.9 },
 	{ ID: 362, Type: "FloorDecorationThemed", Style: "furnace", Top: -0.8, Left: 0.05, Height: 1.8, Width: 0.9 },
-	{ ID: 363, Type: "Kitchen", Style: "microwave", Top: 0.03, Left: 0.05, Height: 0.9, Width: 0.9 },
-	{ ID: 364, Type: "Kitchen", Style: "stove", Top: -0.29, Left: 0.05, Height: 1.22, Width: 0.9 },
-	{ ID: 365, Type: "Kitchen", Style: "fridge", Top: -0.8, Left: 0.05, Height: 1.8, Width: 0.9 },
+	{
+		ID: 363, Type: "Kitchen", Style: "microwave", Top: 0.03, Left: 0.05, Height: 0.9, Width: 0.9,
+		Layers: [
+			{ Name: "Cabinet", IsColorable: true, DefaultColor: "#60636A" },
+			{ Name: "Microwave", IsColorable: true, DefaultColor: "#8A8886" },
+		],
+	},
+	{
+		ID: 364, Type: "Kitchen", Style: "stove", Top: -0.29, Left: 0.05, Height: 1.22, Width: 0.9,
+		Layers: [
+			{ Name: "Body", IsColorable: true, DefaultColor: "#818282" },
+		],
+	},
+	{
+		ID: 365, Type: "Kitchen", Style: "fridge", Top: -0.8, Left: 0.05, Height: 1.8, Width: 0.9,
+		Layers: [
+			{ Name: "Body", IsColorable: true, DefaultColor: "#7A7A7A" },
+		],
+	},
 	{
 		ID: 366, Type: "Kitchen", Style: "KitchenWallKnifeMagnet", CanPlaceOnWalls: true, CanPlaceOnFloors: false, Top: 0.05, Height: 0.5,
 		Layers: [
@@ -917,7 +1090,13 @@ const AssetsMapDataObjects = [
 			{ Name: "Metal", IsColorable: true, DefaultColor: "#2B2B2B" },
 		],
 	},
-	{ ID: 370, Type: "Bathroom", Style: "Toilet", Top: -0.65, Left: 0.05, Height: 1.5, Width: 0.9 },
+	{
+		ID: 370, Type: "Bathroom", Style: "Toilet", Top: -0.65, Left: 0.05, Height: 1.5, Width: 0.9,
+		Layers: [
+			{ Name: "Body", IsColorable: true, DefaultColor: "#7E7F81" },
+			{ Name: "Shadow", IsColorable: false },
+		],
+	},
 	{ ID: 380, Type: "FloorDecorationThemed", Style: "DeskBlue" },
 	{ ID: 381, Type: "FloorDecorationThemed", Style: "DeskPurple" },
 	{ ID: 382, Type: "FloorDecorationThemed", Style: "ConsoleLeft", Top: -0.3, Left: 0, Height: 1.3, Width: 1 },
@@ -925,7 +1104,14 @@ const AssetsMapDataObjects = [
 	{ ID: 384, Type: "FloorDecorationThemed", Style: "LongDeskLeft", Top: -0.3, Left: 0, Height: 1.3, Width: 1 },
 	{ ID: 385, Type: "FloorDecorationThemed", Style: "LongDeskRight", Top: -0.3, Left: 0, Height: 1.3, Width: 1 },
 	{ ID: 386, Type: "FloorDecorationThemed", Style: "Cabinet", Top: -0.9, Left: 0, Height: 2, Width: 1 },
-	{ ID: 387, Type: "LivingRoom", Style: "Television", Top: -0.3, Left: 0, Height: 1.3, Width: 1 },
+	{
+		ID: 387, Type: "LivingRoom", Style: "Television", Top: -0.3, Left: 0, Height: 1.3, Width: 1,
+		Layers: [
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#96877E" },
+			{ Name: "Screen", IsColorable: false },
+			{ Name: "Glow", IsColorable: false },
+		],
+	},
 	{ ID: 388, Type: "LivingRoom", Style: "TelevisionBack", Top: -0.3, Left: 0, Height: 1.3, Width: 1 },
 	{
 		ID: 389, Type: "Bedroom", Style: "Wardrobe", Top: -0.9, Left: 0, Height: 2, Width: 1,
@@ -972,7 +1158,13 @@ const AssetsMapDataObjects = [
 	{ ID: 595, Type: "FloorDecorationParty", Style: "Pumpkin", Top: 0.25, Left: 0.25, Height: 0.5, Width: 0.5 },
 	{ ID: 596, Type: "FloorDecorationParty", Style: "JackOLantern", Top: 0.25, Left: 0, Height: 0.5, Width: 1 },
 	{ ID: 598, Type: "FloorDecorationParty", Style: "ChampagneTower", Top: -0.45, Height: 1.3 },
-	{ ID: 599, Type: "FloorDecorationParty", Style: "DJBooth", Name: "DJ Booth", Top: 0.38, Height: 0.47, DecalArea: [55, 45, 90, 30] },
+	{
+		ID: 599, Type: "FloorDecorationParty", Style: "DJBooth", Name: "DJ Booth", Top: 0.38, Height: 0.47, DecalArea: [55, 45, 90, 30],
+		Layers: [
+			{ Name: "Body", IsColorable: true, DefaultColor: "#808080" },
+			{ Name: "Lights", IsColorable: true, DefaultColor: "#8035A0" },
+		],
+	},
 
 	{ ID: 610, Type: "FloorDecorationCamping", Style: "LogFire", Top: -0.35 },
 	{
@@ -1535,15 +1727,66 @@ const AssetsMapDataObjects = [
 	{ ID: 2098, Type: "FloorObstacle", Style: "Pillar", Top: -1.25, Left: 0.16, Height: 2, Width: 0.70, CanEnter: () => false, },
 
 	{ ID: 3010, Type: "WallDecoration", Style: "Painting" },
-	{ ID: 3020, Type: "Bathroom", Style: "Mirror", CanPlaceOnWalls: true },
-	{ ID: 3021, Type: "Bathroom", Style: "BlueBathroomMat" },
-	{ ID: 3022, Type: "Bathroom", Style: "GreenBathroomMat" },
-	{ ID: 3023, Type: "Bathroom", Style: "PinkBathroomMat" },
-	{ ID: 3024, Type: "Bathroom", Style: "Sink" },
-	{ ID: 3025, Type: "Bathroom", Style: "ToiletPaper" },
-	{ ID: 3026, Type: "Bathroom", Style: "Bathtub" },
-	{ ID: 3027, Type: "Bathroom", Style: "TowelRack", Top: -0.34, Height: 1.19 },
-	{ ID: 3028, Type: "Bathroom", Style: "LaundryBasket", Top: 0.05, Left: 0.01, Height: 0.8, Width: 0.98 },
+	{
+		ID: 3020, Type: "Bathroom", Style: "Mirror", CanPlaceOnWalls: true,
+		Layers: [
+			{ Name: "Frame", IsColorable: true, DefaultColor: "#82714A" },
+			{ Name: "Glass", IsColorable: false },
+			{ Name: "Gems", IsColorable: false },
+		],
+	},
+	{
+		ID: 3021, Type: "Bathroom", Style: "BlueBathroomMat",
+		Layers: [
+			{ Name: "Mat", IsColorable: true, DefaultColor: "#8281AA" },
+		],
+	},
+	{
+		ID: 3022, Type: "Bathroom", Style: "GreenBathroomMat",
+		Layers: [
+			{ Name: "Mat", IsColorable: true, DefaultColor: "#7C9A82" },
+		],
+	},
+	{
+		ID: 3023, Type: "Bathroom", Style: "PinkBathroomMat",
+		Layers: [
+			{ Name: "Mat", IsColorable: true, DefaultColor: "#A28683" },
+		],
+	},
+	{
+		ID: 3024, Type: "Bathroom", Style: "Sink",
+		Layers: [
+			{ Name: "Porcelain", IsColorable: true, DefaultColor: "#7F8082" },
+		],
+	},
+	{
+		ID: 3025, Type: "Bathroom", Style: "ToiletPaper",
+		Layers: [
+			{ Name: "Holder", IsColorable: true, DefaultColor: "#82817F" },
+			{ Name: "Paper", IsColorable: true, DefaultColor: "#82817F" },
+		],
+	},
+	{
+		ID: 3026, Type: "Bathroom", Style: "Bathtub",
+		Layers: [
+			{ Name: "Body", IsColorable: true, DefaultColor: "#828181" },
+		],
+	},
+	{
+		ID: 3027, Type: "Bathroom", Style: "TowelRack", Top: -0.34, Height: 1.19,
+		Layers: [
+			{ Name: "Rack", IsColorable: true, DefaultColor: "#808080" },
+			{ Name: "Towels", IsColorable: true, DefaultColor: "#808080" },
+		],
+	},
+	{
+		ID: 3028, Type: "Bathroom", Style: "LaundryBasket", Top: 0.05, Left: 0.01, Height: 0.8, Width: 0.98,
+		Layers: [
+			{ Name: "Basket", IsColorable: true, DefaultColor: "#B1704A" },
+			{ Name: "Liner", IsColorable: false },
+			{ Name: "Towels", IsColorable: false },
+		],
+	},
 	{
 		ID: 3030,
 		Type: "WallDecoration",
@@ -1555,7 +1798,15 @@ const AssetsMapDataObjects = [
 		}
 	},
 	{ ID: 3040, Type: "WallDecoration", Style: "Whip" },
-	{ ID: 3050, Type: "LivingRoom", Style: "Fireplace", CanPlaceOnWalls: true, CanPlaceOnFloors: false },
+	{
+		ID: 3050, Type: "LivingRoom", Style: "Fireplace", CanPlaceOnWalls: true, CanPlaceOnFloors: false,
+		Layers: [
+			{ Name: "Stone", IsColorable: true, DefaultColor: "#B4B3B2" },
+			{ Name: "Iron", IsColorable: true, DefaultColor: "#4B8083" },
+			{ Name: "Fire", IsColorable: true, DefaultColor: "#AA7311" },
+			{ Name: "Glow", IsColorable: false },
+		],
+	},
 	{ ID: 3060, Type: "WallDecoration", Style: "Stocking",Top: 0.35, Left: 0.25, Height: 0.5, Width: 0.5 },
 	{ ID: 3070, Type: "WallDecoration", Style: "Moss", Top: 0.15, Height: 0.8 },
 	{
@@ -1651,16 +1902,45 @@ const AssetsMapDataObjects = [
 			{ Name: "Glow", IsColorable: false },
 		],
 	},
-	{ ID: 3200, Type: "School", Style: "SchoolBoard", CanPlaceOnWalls: true, CanPlaceOnFloors: false },
-	{ ID: 3201, Type: "School", Style: "Clock",Top: 0.25, Left: 0.13, CanPlaceOnWalls: true, CanPlaceOnFloors: false, Height: 0.75, Width: 0.75 },
+	{
+		ID: 3200, Type: "School", Style: "SchoolBoard", CanPlaceOnWalls: true, CanPlaceOnFloors: false,
+		Layers: [
+			{ Name: "Board", IsColorable: true, DefaultColor: "#518153" },
+			{ Name: "Frame", IsColorable: true, DefaultColor: "#996244" },
+			{ Name: "Chalk", IsColorable: false },
+		],
+	},
+	{
+		ID: 3201, Type: "School", Style: "Clock",Top: 0.25, Left: 0.13, CanPlaceOnWalls: true, CanPlaceOnFloors: false, Height: 0.75, Width: 0.75,
+		Layers: [
+			{ Name: "Frame", IsColorable: true, DefaultColor: "#808080" },
+			{ Name: "Face", IsColorable: false },
+		],
+	},
 	{ ID: 3250, Type: "WallDecoration", Style: "FirstAidKit" },
 	{ ID: 3260, Type: "WallDecoration", Style: "EyeTest" },
 	{ ID: 3261, Type: "WallDecoration", Style: "Scroll", Left: 0.2, Top: 0.3, Height: 0.6, Width: 0.60 },
 	{ ID: 3262, Type: "WallDecoration", Style: "Wanted", Left: 0.2, Top: 0.25, Height: 0.7, Width: 0.6 },
-	{ ID: 3270, Type: "LivingRoom", Style: "Bookshelf", CanPlaceOnWalls: true, CanPlaceOnFloors: false },
+	{
+		ID: 3270, Type: "LivingRoom", Style: "Bookshelf", CanPlaceOnWalls: true, CanPlaceOnFloors: false,
+		Layers: [
+			{ Name: "Wood", IsColorable: true, DefaultColor: "#966945" },
+			{ Name: "Books", IsColorable: false },
+		],
+	},
 	{ ID: 3275, Type: "WallDecoration", Style: "AirConditioner", Top: 0.27, Height: 0.8 },
-	{ ID: 3280, Type: "Bathroom", Style: "ShowerHead", CanPlaceOnWalls: true, CanPlaceOnFloors: false },
-	{ ID: 3290, Type: "Bathroom", Style: "EnemaHead", CanPlaceOnWalls: true, CanPlaceOnFloors: false },
+	{
+		ID: 3280, Type: "Bathroom", Style: "ShowerHead", CanPlaceOnWalls: true, CanPlaceOnFloors: false,
+		Layers: [
+			{ Name: "Metal", IsColorable: true, DefaultColor: "#8F9092" },
+		],
+	},
+	{
+		ID: 3290, Type: "Bathroom", Style: "EnemaHead", CanPlaceOnWalls: true, CanPlaceOnFloors: false,
+		Layers: [
+			{ Name: "Metal", IsColorable: true, DefaultColor: "#7E7F82" },
+		],
+	},
 	{ ID: 3301, Type: "WallDecoration", Style: "MonitorSmall" },
 	{ ID: 3302, Type: "WallDecoration", Style: "MonitorBigLeft" },
 	{ ID: 3303, Type: "WallDecoration", Style: "MonitorBigRight" },

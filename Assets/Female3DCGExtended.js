@@ -776,6 +776,13 @@ var AssetFemale3DCGExtended = {
 		}, // Transparentraincoat
 	},
 	Cloth: {
+		TransparentBunnyGirl: {
+			Archetype: ExtendedArchetype.TYPED,
+			CopyConfig: {
+				AssetName: "TransparentBunnyGirl",
+				GroupName: "Suit",
+			},
+		}, // TransparentBunnyGirl
 		CuteBikini1: {
 			Archetype: ExtendedArchetype.TYPED,
 			CopyConfig: { AssetName: "SexyBikini1", GroupName: "Bra" },
@@ -22525,6 +22532,13 @@ var AssetFemale3DCGExtended = {
 		}, // Customizable Cow Ears
 	}, // ItemEars
 	Bra: {
+		TransparentBunnyGirl: {
+			Archetype: ExtendedArchetype.TYPED,
+			CopyConfig: {
+				AssetName: "TransparentBunnyGirl",
+				GroupName: "Suit",
+			},
+		}, // TransparentBunnyGirl
 		Ribbons: {
 			Archetype: ExtendedArchetype.TYPED,
 			CopyConfig: {
@@ -23658,6 +23672,10 @@ var AssetFemale3DCGExtended = {
 					Property: { Opacity: [1, 1, 1, 1, 1, 1, 1] },
 				},
 			],
+			DialogPrefix: {
+				Header: "SuitTransparentBunnyGirlSelect",
+				Option: "SuitTransparentBunnyGirl",
+			},
 		}, // TransparentBunnyGirl
 	}, // Suit
 	SuitLower: {
@@ -25642,6 +25660,7 @@ var AssetFemale3DCGExtended = {
 						{}, // Shyy
 						{}, // Hajime
 						{}, // Lilly
+						{}, // Chris
 					],
 					DrawData: {
 						elementData: [
@@ -25713,6 +25732,9 @@ var AssetFemale3DCGExtended = {
 							},
 							{
 								imagePath: "Assets/Female3DCG/ItemHandheld/Plushie_Lilly.png",
+							},
+							{
+								imagePath: "Assets/Female3DCG/ItemHandheld/Plushie_Chris.png",
 							},
 						],
 					},
@@ -25946,6 +25968,31 @@ var AssetFemale3DCGExtended = {
 							{
 								imagePath:
 									"Assets/Female3DCG/ItemHandheld/Plushie_BellaFairclough.png",
+							},
+						],
+					},
+				},
+				{
+					Name: "FoxDen",
+					Key: "FoxDen",
+					DrawImages: true,
+					Options: [
+						{}, // Off
+						{}, // Nicole
+						{}, // Tifa
+						{}, // Felix
+					],
+					DrawData: {
+						elementData: [
+							{ imagePath: "Screens/Inventory/ItemHandheld/Plushies/None.png" },
+							{
+								imagePath: "Assets/Female3DCG/ItemHandheld/Plushie_Nicole.png",
+							},
+							{
+								imagePath: "Assets/Female3DCG/ItemHandheld/Plushie_Tifa.png",
+							},
+							{
+								imagePath: "Assets/Female3DCG/ItemHandheld/Plushie_Felix2.png",
 							},
 						],
 					},

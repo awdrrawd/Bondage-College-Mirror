@@ -1207,6 +1207,12 @@ var MapManager = (function () {
 		},
 	});
 
+	/** How many edits the map keeps to undo; the oldest are dropped first */
+	const MAP_UNDO_LIMIT = 500;
+
+	/** @type {string | null} - The room the undo history belongs to */
+	let MapUndoRoomName = null;
+
 	/**
 	 * The class holding the map data and responsible for keeping it synchronized with the outside
 	 * global state, notably, ChatRoomData.MapData.
@@ -1318,14 +1324,18 @@ var MapManager = (function () {
 			if (tile?.Unique) range = 0;
 
 			const clean = this.isDirtyObjects();
-			const previousTile = this.getTile(index) ?? MapDataGetTile(ChatRoomMapViewObjectStartID);
+			/** @type {Record<number, ChatRoomMapTile>} */
+			const previousTiles = {};
+			MapForEachIndexInRange(index, range, (curIndex) => {
+				previousTiles[curIndex] = this.getTile(curIndex) ?? MapDataGetTile(ChatRoomMapViewObjectStartID);
+			});
 			const undoGroup = this.#registerUndo(() => {
 				if (!this.#_mapData) return;
 				const undoMap = this.#_mapData;
 				if (clean) this.markCleanTiles();
 				MapForEachIndexInRange(index, range, (curIndex) => {
 					if (this.canSetTile(index, tile)) {
-						undoMap.tiles[curIndex] = previousTile;
+						undoMap.tiles[curIndex] = previousTiles[curIndex];
 					}
 				});
 			});
@@ -1490,13 +1500,21 @@ var MapManager = (function () {
 			if (object?.DefaultObjectConfig?.Type === "Teleporter") range = 0;
 
 			const clean = this.isDirtyObjects();
-			const previousObject = this.getObject(index) ?? MapDataGetObject(ChatRoomMapViewObjectStartID);
+			/** @type {Record<number, ChatRoomMapObject>} */
+			const previousObjects = {};
+			/** @type {Record<number, ChatRoomMapObjectSettings | undefined>} */
+			const previousSettings = {};
+			MapForEachIndexInRange(index, range, (curIndex) => {
+				previousObjects[curIndex] = this.getObject(curIndex) ?? MapDataGetObject(ChatRoomMapViewObjectStartID);
+				previousSettings[curIndex] = CommonCloneDeep(this.#_mapData?.objectSettings[curIndex]);
+			});
 			const undo = this.#registerUndo(() => {
 				if (!this.#_mapData) return;
 				if (clean) this.markCleanObjects();
 				const undoMap = this.#_mapData;
 				MapForEachIndexInRange(index, range, (curIndex) => {
-					undoMap.objects[curIndex] = previousObject;
+					undoMap.objects[curIndex] = previousObjects[curIndex];
+					if (previousSettings[curIndex]) undoMap.objectSettings[curIndex] = previousSettings[curIndex];
 				});
 			});
 
@@ -1511,11 +1529,12 @@ var MapManager = (function () {
 			MapForEachIndexInRange(index, range, (curIndex) => {
 				if (this.canSetObject(index, object)) {
 					map.objects[curIndex] = object;
+					if (map.objectSettings[curIndex]?.ID !== object.ID) delete map.objectSettings[curIndex];
 				}
 			});
 
 			// A newly placed object starts with its default config
-			if (object.DefaultObjectConfig && previousObject.ID !== object.ID && this.getObjectId(index) === object.ID) {
+			if (object.DefaultObjectConfig && previousObjects[index]?.ID !== object.ID && this.getObjectId(index) === object.ID) {
 				this.setObjectConfig(index, CommonCloneDeep(object.DefaultObjectConfig));
 				if (object.DefaultObjectConfig.Type === "Teleporter") this.#pairNewTeleporter(index);
 			}
@@ -2019,13 +2038,17 @@ var MapManager = (function () {
 			if (index < 0 || index >= ChatRoomMapMaxLength) return false;
 
 			const clean = this.isDirtyEffects();
-			const previousEffects = [...this.#_mapData.effects[index]];
+			/** @type {Record<number, ChatRoomMapEffect[]>} */
+			const previousEffects = {};
+			MapForEachIndexInRange(index, range, (curIndex) => {
+				previousEffects[curIndex] = [...this.#_mapData?.effects[curIndex] ?? []];
+			});
 			this.#registerUndo(() => {
 				if (!this.#_mapData) return;
 				if (clean) this.markCleanEffects();
 				const undoMap = this.#_mapData;
 				MapForEachIndexInRange(index, range, (curIndex) => {
-					undoMap.effects[curIndex] = previousEffects;
+					undoMap.effects[curIndex] = previousEffects[curIndex];
 				});
 			});
 
@@ -2128,11 +2151,15 @@ var MapManager = (function () {
 		}
 
 		/**
+		 * Enables or disables fog of war and persists it into the room map data for sync.
 		 * @param {boolean} val
 		 */
 		set hasFogEnabled(val) {
 			if (!this.#_mapData) throw Error("No map loaded");
-			this.#_mapData.fogEnabled = val;
+			const enabled = !!val;
+			if (this.#_mapData.fogEnabled === enabled) return;
+			this.#_mapData.fogEnabled = enabled;
+			this.updateGlobalMapData();
 		}
 
 		/**
@@ -2563,8 +2590,38 @@ var MapManager = (function () {
 					this.cbs.push(icb);
 				},
 			};
+			if (this.#undoStroke) {
+				this.#undoStroke.push(group);
+				return group;
+			}
 			this.#undoStack.push(group);
+			if (this.#undoStack.length > MAP_UNDO_LIMIT) this.#undoStack.shift();
 			return group;
+		}
+
+		/** @type {MapManager.UndoGroup[] | null} - The edits of the brush stroke being drawn */
+		#undoStroke = null;
+
+		/**
+		 * Starts a brush stroke: the edits made until {@link endUndoStroke} are undone as a single step
+		 */
+		startUndoStroke() {
+			this.endUndoStroke();
+			this.#undoStroke = [];
+		}
+
+		/**
+		 * Ends the brush stroke started with {@link startUndoStroke}
+		 */
+		endUndoStroke() {
+			const stroke = this.#undoStroke;
+			this.#undoStroke = null;
+			if (!stroke?.length) return;
+			this.#registerUndo(() => {
+				for (const group of stroke.reverse()) {
+					for (const cb of group.cbs) cb();
+				}
+			});
 		}
 
 		/**
@@ -2572,6 +2629,7 @@ var MapManager = (function () {
 		 * @returns {boolean} Whether there was anything to undo
 		 */
 		undo() {
+			this.endUndoStroke();
 			const group = this.#undoStack.pop();
 			if (!group) return false;
 			for (const cb of group.cbs) {
@@ -2583,10 +2641,14 @@ var MapManager = (function () {
 
 		/**
 		 * Clear and reset the entire map
+		 * @param {boolean} [keepUndo] - Whether to keep the undo history
 		 */
-		clear() {
+		clear(keepUndo = false) {
 			this.#_mapData = new MapData(ChatRoomMapViewWidth, ChatRoomMapViewHeight);
-			this.#undoStack = [];
+			if (!keepUndo) {
+				this.#undoStack = [];
+				this.#undoStroke = null;
+			}
 			this.markCleanAll();
 		}
 	}
@@ -2611,7 +2673,9 @@ var MapManager = (function () {
 		 * @returns {void}
 		 */
 		OnViewActivate() {
-			this.Map.clear();
+			const roomName = ChatRoomData?.Name ?? null;
+			this.Map.clear(roomName != null && roomName === MapUndoRoomName);
+			MapUndoRoomName = roomName;
 			this.Map.loadGlobalMapData(ChatRoomData?.MapData);
 		},
 	};

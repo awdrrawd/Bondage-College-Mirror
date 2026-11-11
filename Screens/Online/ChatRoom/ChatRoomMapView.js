@@ -22,6 +22,11 @@ var ChatRoomMapViewEditObject = null;
  */
 var ChatRoomMapViewEditSelection = [];
 var ChatRoomMapViewEditRange = 1;
+/**
+ * Leashes the player asked others' clients to tie or untie, by member number, until their map data shows it done
+ * @type {Map<number, { tie: boolean, time: number }>}
+ */
+var ChatRoomMapViewTetherRequests = new Map();
 var ChatRoomMapViewMaxEditRange = 5;
 /**
  * @type {ServerChatRoomMapData[]}
@@ -54,6 +59,10 @@ var ChatRoomMapViewEditorMaxRecentElements = 16;
 var ChatRoomMapViewSplitPosition = 1000;
 var ChatRoomMapViewSplitPositionMax = 1500;
 var ChatRoomMapViewSplitPositionMin = 500;
+/** The narrowest the map color picker gets while still fitting its header buttons */
+var ChatRoomMapViewColorPickerMinWidth = 600;
+/** @type {null | number} - The split position before the color picker widened the chat, restored when it closes */
+var ChatRoomMapViewColorPickerSplitRestore = null;
 
 /**
  * @type {boolean[]}
@@ -130,11 +139,34 @@ function ChatRoomMapViewInitialize(mode) {
 }
 
 /**
+ * The shape of the map color picker, following the chat column. The width is clamped so the header buttons
+ * always fit and the tint square (as tall as it is wide) never outgrows the panel.
+ * @returns {RectTuple}
+ */
+function ChatRoomMapViewColorPickerShape() {
+	const width = CommonClamp(MainCanvasWidth - ChatRoomMapViewSplitPosition, ChatRoomMapViewColorPickerMinWidth, 910);
+	return [MainCanvasWidth - width, 15, width, 970];
+}
+
+/** Applies the current shapes of the map color picker and of the backdrop hiding the chat behind it, if the picker is open */
+function ChatRoomMapViewColorPickerSyncShape() {
+	if (!ChatRoomMapViewColorPicker) return;
+	const root = ElementWrap(ColorPicker.ids.root);
+	if (!root) return;
+	ColorPicker._shapes.set(root, ChatRoomMapViewColorPickerShape());
+	ColorPickerResize(false);
+	const backdrop = ElementWrap("chat-room-map-view-color-picker-backdrop");
+	if (backdrop) ElementPositionFixed(backdrop, ChatRoomMapViewSplitPosition, 0, MainCanvasWidth - ChatRoomMapViewSplitPosition, 1000);
+}
+
+/**
  * Sets the width of the chat room map
  * @param {number} width
  */
 function ChatRoomMapViewSetSplitPosition(width) {
 	const chatDiv = ElementWrap("chat-room-div");
+	// The chat can't get narrower than the open color picker, so the picker never covers the map
+	if (ChatRoomMapViewColorPicker) width = Math.min(width, MainCanvasWidth - ChatRoomMapViewColorPickerMinWidth);
 	if (chatDiv && width >= 2000) {
 		ChatRoomMapViewSplitPosition = 2000;
 		ElementSetSize("chat-room-content", 2000);
@@ -147,6 +179,7 @@ function ChatRoomMapViewSetSplitPosition(width) {
 	}
 	ChatRoomMapViewSplitPosition = CommonClamp(width, ChatRoomMapViewSplitPositionMin, ChatRoomMapViewSplitPositionMax);
 	ElementSetSize("chat-room-content", ChatRoomMapViewSplitPosition);
+	ChatRoomMapViewColorPickerSyncShape();
 }
 
 /**
@@ -218,7 +251,7 @@ function ChatRoomMapViewActivate() {
 function ChatRoomMapViewResize() {
 	if (ElementWrap("chat-room-map-view-panel-editor")) ElementPositionFixed("chat-room-map-view-panel-editor", 0, 0, 300, 800);
 	if (ElementWrap("chat-room-map-view-panel")) ElementPositionFixed("chat-room-map-view-panel", 0, 0, ChatRoomMapViewSplitPosition, 1000);
-	if (ChatRoomMapViewColorPicker) ColorPickerResize(false);
+	ChatRoomMapViewColorPickerSyncShape();
 	ElementSetSize("chat-room-content", ChatRoomMapViewSplitPosition);
 }
 
@@ -245,6 +278,7 @@ function ChatRoomMapViewCreateEditorUI() {
 function ChatRoomMapViewCreateMapMovementButtons() {
 	const content = ElementWrap("chat-room-content");
 	const superPowersBtn = ElementWrap("chat-room-map-superpowers-btn") ?? ElementButton.Create("chat-room-map-superpowers-btn", () => {
+		if (!ChatRoomPlayerIsAdmin()) return;
 		ChatRoomMapViewSuperPowersActive = !ChatRoomMapViewSuperPowersActive;
 		ElementButton.SetImage(superPowersBtn, "Icons/" + (ChatRoomMapViewSuperPowersActive ? "SuperPowersActive" : "SuperPowersInactive") + ".png");
 		MapManager.Map.updatePlayerPerception();
@@ -257,7 +291,7 @@ function ChatRoomMapViewCreateMapMovementButtons() {
 		}
 	});
 
-	superPowersBtn.classList.toggle("hidden", !ChatRoomPlayerIsAdmin());
+	superPowersBtn.toggleAttribute("concealed", !ChatRoomPlayerIsAdmin());
 	if (!ElementWrap("chat-room-map-controls")) ElementCreate({
 		tag: "div",
 		attributes: { id: "chat-room-map-controls" },
@@ -999,10 +1033,14 @@ function ChatRoomMapViewGetRecentItems() {
 function ChatRoomMapViewColorPickerToggle(options) {
 	const chatInput = /** @type {null | HTMLTextAreaElement} */(ElementWrap("InputChat"));
 	if (!ChatRoomMapViewColorPicker) {
+		if (ChatRoomMapViewSplitPosition > MainCanvasWidth - ChatRoomMapViewColorPickerMinWidth) {
+			ChatRoomMapViewColorPickerSplitRestore = ChatRoomMapViewSplitPosition;
+			ChatRoomMapViewSetSplitPosition(MainCanvasWidth - ChatRoomMapViewColorPickerMinWidth);
+		}
 		CommonPromiseCatch(
 			ColorPickerInit({
 				...options,
-				shape: ChatRoomDivRect,
+				shape: ChatRoomMapViewColorPickerShape(),
 				onExit: (state, save, root) => {
 					ChatRoomMapViewColorPickerToggle();
 					options?.onExit?.(state, save, root);
@@ -1010,18 +1048,32 @@ function ChatRoomMapViewColorPickerToggle(options) {
 			}).then(root => {
 				root.classList.add("chat-room-map-view-color-picker");
 				ElementSetDataAttribute(root, "ColorTheme", Player.ChatSettings.ColorTheme);
+				const backdrop = ElementCreate({
+					tag: "div",
+					attributes: { id: "chat-room-map-view-color-picker-backdrop" },
+				});
+				ElementSetDataAttribute(backdrop, "ColorTheme", Player.ChatSettings.ColorTheme);
+				root.before(backdrop);
+				ChatRoomMapViewColorPickerSyncShape();
 			})
 		);
 		chatInput?.blur();
 	} else {
-		ColorPickerHide();
 		ChatRoomMapViewTeleportPadPreview = null;
 		const root = ElementWrap(ColorPicker.ids.root);
 		root?.classList.remove("chat-room-map-view-color-picker");
 		root?.removeAttribute("data-colortheme");
+		// A hidden picker is screen-generated and would reappear on other screens
+		ColorPickerExit(true);
+		ElementRemove("chat-room-map-view-color-picker-backdrop");
 	}
 	ChatRoomMapViewColorPicker = !ChatRoomMapViewColorPicker;
 	if (chatInput) chatInput.disabled = ChatRoomMapViewColorPicker;
+	if (!ChatRoomMapViewColorPicker && ChatRoomMapViewColorPickerSplitRestore != null) {
+		const restore = ChatRoomMapViewColorPickerSplitRestore;
+		ChatRoomMapViewColorPickerSplitRestore = null;
+		ChatRoomMapViewSetSplitPosition(restore);
+	}
 }
 
 /**
@@ -1029,6 +1081,7 @@ function ChatRoomMapViewColorPickerToggle(options) {
  * @returns {void} - Nothing
  */
 function ChatRoomMapViewDeactivate() {
+	ChatRoomMapViewColorPickerSplitRestore = null;
 	ChatRoomMapViewSetSplitPosition(1000);
 	ChatRoomMapViewResetColorTool();
 	ChatRoomMapViewDestroyElements();
@@ -1038,6 +1091,8 @@ function ChatRoomMapViewDestroyElements() {
 	document.removeEventListener("blur", ChatRoomMapViewBlur);
 	ChatRoomMapViewEndColorEditing();
 	if (ChatRoomMapViewColorPicker) ChatRoomMapViewColorPickerToggle();
+	else ColorPickerExit(true);
+	ElementRemove("chat-room-map-view-color-picker-backdrop");
 	ElementRemove("chat-room-map-view-panel");
 	ElementRemove("chat-room-map-controls");
 }
@@ -1862,10 +1917,11 @@ function ChatRoomMapViewDrawGrid(Left, Top, Width, Height) {
 
 	}
 
+	// Placed like the tiles and characters, which are centered in the map's width since it can be resized
 	ChatRoomMapViewDrawTethers(
 		pos => [
-			Left + (pos.X - PlayerX) * TileSize + ChatRoomMapViewPerceptionRange * TileSize,
-			Top + (pos.Y - PlayerY) * TileSize + ChatRoomMapViewPerceptionRange * TileSize,
+			Left + (pos.X - PlayerX) * TileSize + OffsetX,
+			Top + (pos.Y - PlayerY) * TileSize + OffsetY,
 		],
 		TileSize,
 		TileSize,
@@ -2072,6 +2128,7 @@ function ChatRoomMapViewSyncMapData(data) {
 
 	// Assigns the MapData to the chatroom character
 	char.MapData = ServerAccountDataSyncedValidate.MapData(data.MapData, char);
+	ChatRoomMapViewTetherAnnounce(char);
 }
 
 /**
@@ -2281,62 +2338,43 @@ function ChatRoomMapViewCanTetherUntie(C) {
 }
 
 /**
- * Shows the menu of a tether point: admins choose if it is one, and anyone within reach ties leashes to it or unties them
+ * Shows the user menu of a tether point: anyone within reach ties leashes to it or unties them
  * @param {number} x
  * @param {number} y
  * @returns {void} - Nothing
  */
 function ChatRoomMapViewShowTetherPointMenu(x, y) {
 	const pos = { X: x, Y: y };
-	const isTetherPoint = ChatRoomMapViewIsTetherPoint(pos);
-	if (!isTetherPoint && !ChatRoomPlayerIsAdmin()) return;
+	if (!ChatRoomMapViewIsTetherPoint(pos)) return;
 
+	/** @type {(label: string, onClick: () => void) => HTMLButtonElement} */
+	const button = (label, onClick) => ElementCreate({
+		tag: "button",
+		classList: ["chat-room-map-view-dialog-button"],
+		children: [label],
+		eventListeners: {
+			click: () => {
+				onClick();
+				ChatRoomMapViewHideDialogMenu();
+			},
+		},
+	});
+	const buttons = [];
+	for (const C of [Player, ...ChatRoomCharacter.filter(c => !c.IsPlayer())]) {
+		const tether = C.MapData?.Tether;
+		const tiedHere = tether?.Position.X === x && tether.Position.Y === y;
+		if (tiedHere && ChatRoomMapViewCanTetherUntie(C)) {
+			const label = C.IsPlayer() ? TextGet("MapViewTetherUntieSelf") : TextGet("MapViewTetherUntieOther").replace("TargetCharacterName", CharacterNickname(C));
+			buttons.push(button(label, () => ChatRoomMapViewSendTetherRequest(C, null)));
+		} else if (ChatRoomMapViewCanTetherTie(C, pos)) {
+			const label = C.IsPlayer() ? TextGet("MapViewTetherTieSelf") : TextGet("MapViewTetherTieOther").replace("TargetCharacterName", CharacterNickname(C));
+			buttons.push(button(label, () => ChatRoomMapViewSendTetherRequest(C, { Position: pos, MemberNumber: Player.MemberNumber })));
+		}
+	}
 	/** @type {HTMLElement[]} */
-	const children = [];
-	if (ChatRoomPlayerIsAdmin()) {
-		children.push(ElementCheckbox.CreateLabelled(
-			null,
-			TextGet("MapViewTetherPointToggle"),
-			function() {
-				MapManager.Map.setObjectConfig(x, y, this.checked ? { Type: "Tether" } : undefined);
-				MapManager.Map.updateGlobalMapData();
-				ChatRoomMapViewShowTetherPointMenu(x, y);
-			},
-			{ checked: isTetherPoint },
-		));
-	}
-
-	if (isTetherPoint) {
-		/** @type {(label: string, onClick: () => void) => HTMLButtonElement} */
-		const button = (label, onClick) => ElementCreate({
-			tag: "button",
-			classList: ["chat-room-map-view-dialog-button"],
-			children: [label],
-			eventListeners: {
-				click: () => {
-					onClick();
-					ChatRoomMapViewHideDialogMenu();
-				},
-			},
-		});
-		const buttons = [];
-		for (const C of [Player, ...ChatRoomCharacter.filter(c => !c.IsPlayer())]) {
-			const tether = C.MapData?.Tether;
-			const tiedHere = tether?.Position.X === x && tether.Position.Y === y;
-			if (tiedHere && ChatRoomMapViewCanTetherUntie(C)) {
-				const label = C.IsPlayer() ? TextGet("MapViewTetherUntieSelf") : TextGet("MapViewTetherUntieOther").replace("TargetCharacterName", CharacterNickname(C));
-				buttons.push(button(label, () => ChatRoomMapViewSendTetherRequest(C, null)));
-			} else if (ChatRoomMapViewCanTetherTie(C, pos)) {
-				const label = C.IsPlayer() ? TextGet("MapViewTetherTieSelf") : TextGet("MapViewTetherTieOther").replace("TargetCharacterName", CharacterNickname(C));
-				buttons.push(button(label, () => ChatRoomMapViewSendTetherRequest(C, { Position: pos, MemberNumber: Player.MemberNumber })));
-			}
-		}
-		if (buttons.length > 0) {
-			children.push(ElementCreate({ tag: "div", classList: ["chat-room-map-view-dialog-buttons"], children: buttons }));
-		} else {
-			children.push(ElementCreate({ tag: "div", children: [TextGet("MapViewTetherNobody")] }));
-		}
-	}
+	const children = buttons.length > 0
+		? [ElementCreate({ tag: "div", classList: ["chat-room-map-view-dialog-buttons"], children: buttons })]
+		: [ElementCreate({ tag: "div", children: [TextGet("MapViewTetherNobody")] })];
 
 	ChatRoomMapViewShowDialogMenu(TextGet("MapViewTetherPoint"), ElementCreate({
 		tag: "div",
@@ -2347,7 +2385,7 @@ function ChatRoomMapViewShowTetherPointMenu(x, y) {
 
 /**
  * Asks a character's client to tie her leash to a tether point, or to untie it
- * @param {Character} C - The character whose leash is tied or untied
+ * @param {OnlineCharacter} C - The character whose leash is tied or untied
  * @param {ChatRoomMapTether | null} tether - The tether, or `null` to untie the leash
  * @returns {void} - Nothing
  */
@@ -2358,6 +2396,28 @@ function ChatRoomMapViewSendTetherRequest(C, tether) {
 	}
 	const dictionary = new DictionaryBuilder().mapViewTether(tether).build();
 	ServerSend("ChatRoomChat", { Content: "ChatRoomMapViewTether", Type: "Hidden", Dictionary: dictionary, Target: C.MemberNumber });
+	ChatRoomMapViewTetherRequests.set(C.MemberNumber, { tie: !!tether, time: CommonTime() });
+}
+
+/**
+ * Tells the room the player tied or untied a character's leash, once that character's map data shows it done.
+ * Their client only changes it if they allow it, so a refused request never gets announced.
+ * @param {OnlineCharacter} C - The character whose map data just changed
+ * @returns {void} - Nothing
+ */
+function ChatRoomMapViewTetherAnnounce(C) {
+	const request = ChatRoomMapViewTetherRequests.get(C.MemberNumber);
+	if (!request) return;
+	const tether = C.MapData?.Tether;
+	const done = request.tie ? tether?.MemberNumber === Player.MemberNumber : !tether;
+	if (!done) {
+		// Their client never did it (refused, or the request got lost): stop waiting after a while
+		if (CommonTime() - request.time > 10000) ChatRoomMapViewTetherRequests.delete(C.MemberNumber);
+		return;
+	}
+	ChatRoomMapViewTetherRequests.delete(C.MemberNumber);
+	const dictionary = new DictionaryBuilder().sourceCharacter(Player).destinationCharacter(C).build();
+	ServerSend("ChatRoomChat", { Content: request.tie ? "MapViewTetherTie" : "MapViewTetherUntie", Type: "Action", Dictionary: dictionary });
 }
 
 /**
@@ -2389,14 +2449,17 @@ function ChatRoomMapViewTetherHiddenMessage(sender, data) {
 }
 
 /**
- * Ties the player's leash to a tether point, or unties it, as a character asked, and tells the room who did it
+ * Ties the player's leash to a tether point, or unties it, as a character asked.
+ * When it's her own doing she tells the room; when someone else did it, they tell it (see {@link ChatRoomMapViewTetherAnnounce}).
  * @param {Character} C - The character who ties or unties the leash
  * @param {ChatRoomMapTether | null} tether - The tether, or `null` to untie the leash
  * @returns {void} - Nothing
  */
 function ChatRoomMapViewAcceptTether(C, tether) {
-	const dictionary = new DictionaryBuilder().sourceCharacter(C).destinationCharacter(Player).build();
-	ServerSend("ChatRoomChat", { Content: tether ? "MapViewTetherTie" : "MapViewTetherUntie", Type: "Action", Dictionary: dictionary });
+	if (C.IsPlayer()) {
+		const dictionary = new DictionaryBuilder().sourceCharacter(Player).destinationCharacter(Player).build();
+		ServerSend("ChatRoomChat", { Content: tether ? "MapViewTetherTie" : "MapViewTetherUntie", Type: "Action", Dictionary: dictionary });
+	}
 	ChatRoomMapViewSetTether(tether);
 }
 
@@ -2463,7 +2526,7 @@ function ChatRoomMapViewTetherRelease() {
 	const tether = Player.MapData?.Tether;
 	if (!tether) return;
 	if (ChatRoomMapViewTetherIsValid(tether)) {
-		const dictionary = new DictionaryBuilder().destinationCharacter(Player).build();
+		const dictionary = new DictionaryBuilder().sourceCharacter(Player).build();
 		ServerSend("ChatRoomChat", { Content: "MapViewTetherSlip", Type: "Action", Dictionary: dictionary });
 	}
 	ChatRoomMapViewSetTether(null);
@@ -2840,14 +2903,12 @@ function ChatRoomMapViewSetSelectedTile(pos) {
 }
 
 /**
- * Shows admins the sliders turning and sizing the object placed on a tile, its colors if it has color layers, and its decal if it can take one
+ * Builds the rotation, size, color and decal controls for an object on a tile
  * @param {ChatRoomMapPos} pos
- * @param {number} objectId
- * @returns {void}
+ * @param {ChatRoomMapObject} object
+ * @returns {HTMLElement | null}
  */
-function ChatRoomMapViewShowObjectSettings(pos, objectId) {
-	const object = MapGetDoodad("Object", objectId);
-	if (!object) return;
+function ChatRoomMapViewCreateObjectSettingsControls(pos, object) {
 	const settings = MapManager.Map.getObjectSettings(pos.X, pos.Y);
 	let changing = false;
 	/**
@@ -2906,8 +2967,41 @@ function ChatRoomMapViewShowObjectSettings(pos, objectId) {
 			...object.DecalArea ? [ChatRoomMapViewCreateDecalPicker(pos, object)] : [],
 		],
 	});
-	if (!controls.childElementCount) return;
-	ChatRoomMapViewShowDialogMenu(ChatRoomMapViewGetObjectDisplayName(object), controls);
+	return controls.childElementCount ? controls : null;
+}
+
+/**
+ * Shows admins the sliders turning and sizing the object placed on a tile, its colors if it has color layers, its decal if it can take one, and the tether toggle when the object can be a tether point
+ * @param {ChatRoomMapPos} pos
+ * @param {number} objectId
+ * @returns {void}
+ */
+function ChatRoomMapViewShowObjectSettings(pos, objectId) {
+	const object = MapGetDoodad("Object", objectId);
+	if (!object) return;
+	/** @type {HTMLElement[]} */
+	const children = [];
+	if (object.CanBeTetherPoint) {
+		const isTetherPoint = ChatRoomMapViewIsTetherPoint(pos);
+		children.push(ElementCheckbox.CreateLabelled(
+			null,
+			TextGet("MapViewTetherPointToggle"),
+			function() {
+				MapManager.Map.setObjectConfig(pos.X, pos.Y, this.checked ? { Type: "Tether" } : undefined);
+				MapManager.Map.updateGlobalMapData();
+				ChatRoomMapViewShowObjectSettings(pos, objectId);
+			},
+			{ checked: isTetherPoint },
+		));
+	}
+	const controls = ChatRoomMapViewCreateObjectSettingsControls(pos, object);
+	if (controls) children.push(controls);
+	if (!children.length) return;
+	ChatRoomMapViewShowDialogMenu(ChatRoomMapViewGetObjectDisplayName(object), ElementCreate({
+		tag: "div",
+		classList: ["chat-room-map-view-dialog-tether-point"],
+		children,
+	}));
 }
 
 /**
@@ -2921,6 +3015,7 @@ function ChatRoomMapViewMouseDown(event) {
 	const mapMouseIn = ChatRoomMapViewEditMode !== ""
 		&& MouseIn(0, 0, ChatRoomMapViewSplitPosition, 1000)
 		&& !MouseIn(10, 10, 60, 60) && !MouseIn(10, 80, 60, 60);
+	if (mapMouseIn) MapManager.Map.startUndoStroke();
 
 	// In tile edit mode
 	if ((ChatRoomMapViewEditMode == "Tile") && mapMouseIn) {
@@ -3087,6 +3182,7 @@ const ChatRoomMapViewTools = {
 function ChatRoomMapViewMouseUp() {
 	if ((CurrentScreen != "ChatRoom") || !ChatRoomMapViewIsActive()) return;
 	ChatRoomMapViewEditStarted = false;
+	MapManager.Map.endUndoStroke();
 }
 
 /**

@@ -728,9 +728,14 @@ function WardrobeReorderModeSet(newMode = null) {
  * Set a wardrobe character name, sync it with server
  * @param {number} W - The number of the wardrobe slot to save
  * @param {string} Name - The name of the wardrobe slot
- * @param {boolean} [Push] -If set to true, the changes are pushed to the server
+ * @param {boolean} [Push] - If set to true, the changes are pushed to the server
+ * @returns {boolean} - Whether the rename was performed
  */
 function WardrobeSetCharacterName(W, Name, Push = false) {
+	if (Player.WardrobeCharacterNames[W] === Name) {
+		return false;
+	}
+
 	Player.WardrobeCharacterNames[W] = Name;
 	if (WardrobeCharacter[W]) {
 		WardrobeCharacter[W].Name = Name;
@@ -739,6 +744,7 @@ function WardrobeSetCharacterName(W, Name, Push = false) {
 	if (Push) {
 		ServerAccountUpdate.QueueData({ WardrobeCharacterNames: Player.WardrobeCharacterNames });
 	}
+	return true;
 }
 
 /**
@@ -1609,9 +1615,10 @@ function WardrobeDeleteSelectedOutfit() {
 
 /**
  * @param {boolean} [push]
+ * @param {boolean} [showToast]
  * @returns {boolean}
  */
-function WardrobeRenameSelectedOutfit(push = false) {
+function WardrobeRenameSelectedOutfit(push = false, showToast = true) {
 	if (WardrobeSelection === -1) return false;
 
 	const name = ElementValue(WardrobeID.name);
@@ -1621,8 +1628,8 @@ function WardrobeRenameSelectedOutfit(push = false) {
 		return false;
 	}
 
-	WardrobeSetCharacterName(WardrobeSelection, name, push);
-	ToastManager.success(TextGet("OutfitRenamed"));
+	if (!WardrobeSetCharacterName(WardrobeSelection, name, push) && showToast)
+		ToastManager.success(TextGet("OutfitRenamed"));
 	WardrobeSetSearch(Wardrobe.search);
 	return true;
 }
@@ -1662,7 +1669,7 @@ function WardrobeSaveSelectedOutfit() {
 	if (!confirmed) return;
 
 	WardrobeFastSave(Wardrobe.selectedCharacter, WardrobeSelection);
-	if (WardrobeRenameSelectedOutfit()) {
+	if (WardrobeRenameSelectedOutfit(false, false)) {
 		WardrobePushAll();
 	} else {
 		ServerAccountUpdate.QueueData({ Wardrobe: CharacterCompressWardrobe(Player.Wardrobe) });

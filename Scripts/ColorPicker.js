@@ -1074,12 +1074,23 @@ var ColorPicker = {
 	},
 
 	/**
+	 * @private
+	 * @type {WeakMap<Element, Readonly<Pick<ItemColorStateType, "initialColors" | "initialOpacity">>>}
+	 * Object for storing the initial color & opacity state of each color picker `.screen`.
+	 * Need this as the DOM inputs can store up two values (`value` and `defaultValue`), but lacks an easy way of storing a third one (the initial value).
+	 *
+	 * Only really relevant when the picker is not backed by {@link ItemColorState}.
+	 */
+	_initialStates: new WeakMap(),
+
+	/**
 	 * Get the color and opacity of the passed color picker screen
 	 * @param {ElementHelp.ElementOrId} root - The color picker screen or its ID
 	 * @returns {null | ItemColorExitState}
 	 */
 	getColor(root) {
-		const screen = ElementWrap(root);
+		const screenCandidate = ElementWrap(root);
+		const screen = screenCandidate?.matches(".screen") ? screenCandidate : screenCandidate?.closest(".screen");
 		if (!screen) {
 			return null;
 		}
@@ -1113,7 +1124,8 @@ var ColorPicker = {
 			const [opacityInput, outputInput] = [elements.opacity, elements.output];
 
 			const initialOpacity = (opacityInput ? CommonParseInt(opacityInput.defaultValue) : null) ?? 255;
-			let initialColor = (outputInput ? /** @type {BCColor} */(outputInput.defaultValue) : "Default") || "Default";
+			const defaultColor = /** @type {BCColor | undefined} */(outputInput?.defaultValue) ?? "Default";
+			let initialColor = ColorPicker._initialStates.get(screen)?.initialColors?.[0] ?? defaultColor;
 			if (CommonIsColor(initialColor, { allowAlpha: true })) {
 				initialColor = CommonColorTrimAlpha(initialColor);
 			}
@@ -1226,7 +1238,7 @@ async function ColorPickerLoad() {
 /**
  * Reload and refresh the color picker based on the current item color data.
  * @param {null | ColorPickerInitOptions} options
- * @returns {null | HTMLElement} The paseed root element
+ * @returns {null | Element} The passed element or, if a child of the screen, its `.screen` root
  */
 function ColorPickerReload(options=null) {
 	options ??= {};
@@ -1234,7 +1246,8 @@ function ColorPickerReload(options=null) {
 		return null;
 	}
 
-	const root = ElementWrap(options.root ?? ColorPicker.ids.root);
+	const rootCandidate = ElementWrap(options.root ?? ColorPicker.ids.root);
+	const root = rootCandidate?.matches(".screen") ? rootCandidate : rootCandidate?.closest(".screen");
 	if (!root) {
 		return null;
 	}
@@ -1257,7 +1270,7 @@ function ColorPickerReload(options=null) {
 	let opacities;
 	/** @type {number[]} */
 	let defaultOpacities;
-	/** @type {string[]} */
+	/** @type {BCColor[]} */
 	let colors;
 	/** @type {string[]} */
 	let defaultColors;
@@ -1275,6 +1288,8 @@ function ColorPickerReload(options=null) {
 	} else {
 		return null;
 	}
+
+	ColorPicker._initialStates.set(root, { initialColors: [...colors], initialOpacity: [...opacities] });
 	const singularOpacity = opacities.length === 0 ? 1 : Math.max(...opacities);
 	const singularColor = (colors.length >= 1 && colors.every(i => i === colors[0])) ? colors[0] : "";
 	const singularDefaultOpacity = defaultOpacities.length === 0 ? 1 : Math.max(...defaultOpacities);
@@ -1418,5 +1433,9 @@ function ColorPickerExit(forceExit=false) {
 	}
 	ColorPickerExitCallback = null;
 	ColorPickerInputCallback = null;
-	document.getElementById(ColorPicker.ids.root)?.remove();
+	const root = document.getElementById(ColorPicker.ids.root);
+	if (root) {
+		ColorPicker._initialStates.delete(root);
+		root.remove();
+	}
 }
