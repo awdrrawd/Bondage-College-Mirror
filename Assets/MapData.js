@@ -992,6 +992,16 @@ const AssetsMapDataObjects = [
 		],
 	},
 	{
+		ID: 343, Type: "Kitchen", Style: "KitchenCounterSinkWater", Name: "Kitchen Sink With Water", Top: -0.3, Height: 1.3,
+		Layers: [
+			{ Name: "Body", IsColorable: true, DefaultColor: "#F2F0EB" },
+			{ Name: "Countertop", IsColorable: true, DefaultColor: "#8A6A4A" },
+			{ Name: "Handles", IsColorable: true, DefaultColor: "#A0A0A0" },
+			{ Name: "Sink", IsColorable: true, DefaultColor: "#C8C8C8" },
+			{ Name: "Water", IsColorable: true, DefaultColor: "#6FB4DC" },
+		],
+	},
+	{
 		ID: 334, Type: "Kitchen", Style: "KitchenTallCabinetSingle", Top: -1.2, Height: 2.2,
 		Layers: [
 			{ Name: "Body", IsColorable: true, DefaultColor: "#F2F0EB" },

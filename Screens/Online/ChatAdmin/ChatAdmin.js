@@ -129,7 +129,7 @@ async function ChatAdminLoad() {
 		},
 		eventListeners: {
 			input: function () {
-				if (ChatAdminData && ChatAdminCanEdit()) ChatAdminData.Name = this.value;
+				if (ChatAdminData && ChatAdminCanEdit()) ChatAdminData.Name = this.value.trim();
 			},
 		},
 	});
@@ -161,7 +161,7 @@ async function ChatAdminLoad() {
 		children: [canEdit ? adminData.Description : ChatSearchMuffle(adminData.Description)],
 		eventListeners: {
 			input: function () {
-				if (ChatAdminData && ChatAdminCanEdit()) ChatAdminData.Description = this.value;
+				if (ChatAdminData && ChatAdminCanEdit()) ChatAdminData.Description = this.value.trim();
 			},
 		},
 	});
@@ -243,7 +243,7 @@ async function ChatAdminLoad() {
 		adminData.Language,
 		function () {
 			if (!ChatAdminData) return;
-			ChatAdminData.Language = /** @type {ServerChatRoomLanguage} */ (this.value);
+			ChatAdminData.Language = /** @type {ServerChatRoomLanguage} */ (this.value.trim());
 		},
 	);
 
@@ -253,7 +253,7 @@ async function ChatAdminLoad() {
 		adminData.Game,
 		function () {
 			if (!ChatAdminData) return;
-			ChatAdminData.Game = /** @type {ServerChatRoomGame} */ (this.value);
+			ChatAdminData.Game = /** @type {ServerChatRoomGame} */ (this.value.trim());
 		},
 	);
 
@@ -263,7 +263,7 @@ async function ChatAdminLoad() {
 		adminData.MapData.Type,
 		function () {
 			if (!ChatAdminData) return;
-			ChatAdminData.MapData.Type = /** @type {ChatRoomMapType} */ (this.value);
+			ChatAdminData.MapData.Type = /** @type {ChatRoomMapType} */ (this.value.trim());
 			this.title = TextGet(`Map${this.value}Tooltip`);
 		},
 	);
@@ -274,7 +274,7 @@ async function ChatAdminLoad() {
 		visibilityKey,
 		function () {
 			if (!ChatAdminData) return;
-			ChatAdminData.Visibility = ChatRoomVisibilityMode[/** @type {ChatRoomVisibilityModeLabel} */ (this.value)];
+			ChatAdminData.Visibility = ChatRoomVisibilityMode[/** @type {ChatRoomVisibilityModeLabel} */ (this.value.trim())];
 		},
 	);
 
@@ -284,14 +284,14 @@ async function ChatAdminLoad() {
 		accessKey,
 		function () {
 			if (!ChatAdminData) return;
-			ChatAdminData.Access = ChatRoomAccessMode[/** @type {ChatRoomAccessModeLabel} */ (this.value)];
+			ChatAdminData.Access = ChatRoomAccessMode[/** @type {ChatRoomAccessModeLabel} */ (this.value.trim())];
 		},
 	);
 
 	const backgroundButton = ElementButton.Create(ChatAdminID.backgroundSelect, () => {
 		if (!ChatAdminCanEdit() || !ChatAdminData) return;
 		BackgroundSelectionMake(ChatSearchBackgroundTagList, ChatAdminData.Background, (name, setBackground) => {
-			if (setBackground && ChatAdminData) ChatAdminData.Background = name;
+			if (setBackground && ChatAdminData) ChatAdminData.Background = name.trim();
 			CommonSetScreen("Online", "ChatAdmin");
 		});
 	}, {
@@ -929,7 +929,7 @@ function ChatEditorGetAdminSettings() {
 		Language: ChatAdminData.Language,
 		Description: ElementValue(ChatAdminID.descriptionInput).trim(),
 		Background: ChatAdminData.Background,
-		Limit: parseInt(ElementValue(ChatAdminID.sizeInput), 10) || 10,
+		Limit: CommonParseInt(ElementValue(ChatAdminID.sizeInput)) || 10,
 		Admin: CommonConvertStringToArray(ElementValue(ChatAdminID.adminListInput).trim()),
 		Whitelist: CommonConvertStringToArray(ElementValue(ChatAdminID.whitelistInput).trim()),
 		Ban: CommonConvertStringToArray(ElementValue(ChatAdminID.banListInput).trim()),
@@ -1005,7 +1005,7 @@ function ChatEditorCreateRoom() {
 		Admin: CommonConvertStringToArray(ElementValue(ChatAdminID.adminListInput).trim()),
 		Whitelist: CommonConvertStringToArray(ElementValue(ChatAdminID.whitelistInput).trim()),
 		Ban: CommonConvertStringToArray(ElementValue(ChatAdminID.banListInput).trim()),
-		Limit: parseInt(ElementValue(ChatAdminID.sizeInput), 10),
+		Limit: CommonParseInt(ElementValue(ChatAdminID.sizeInput)) || 10,
 		BlockCategory: ChatAdminData.BlockCategory,
 		Custom: ChatAdminData.Custom
 	};

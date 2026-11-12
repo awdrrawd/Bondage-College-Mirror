@@ -967,7 +967,7 @@ describe("placed object settings", () => {
 			const range = (from: number, to: number) => Array.from({ length: to - from + 1 }, (_, i) => from + i);
 			const colorableIDs = [
 				130, 140, 150, 165, 167, 175, 176, 177, 178, 181, 182, 183, 184, 185, 186, 187, 188, 189,
-				196, 197, 198, 220, 221, 330, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341,
+				196, 197, 198, 220, 221, 330, 331, 332, 333, 343, 334, 335, 336, 337, 338, 339, 340, 341,
 				366, 367, 389, 403, 409, 410, 411, 412, 511, 560, 570, 599, 612, 630, 640, 650, 710, 720, 730, 740, 750,
 				1010, 1020, 1030, 1050, 1090, 2016, 2017, 2018, 2034, 2036,
 				3075, 3076, 3121, 3133, 3134, 3135, 3136, 3137, 3138, 3139, 3140, 5014,
@@ -1010,6 +1010,12 @@ describe("placed object settings", () => {
 					expect([file, fs.existsSync(file)]).toEqual([file, true]);
 				}
 			}
+		});
+
+		it("let the kitchen sink with water recolor its water", () => {
+			const sink = Game.MapDataGetObject(343);
+			expect(Game.MapGetColorableLayers(sink).map(l => l.Name)).toContain("Water");
+			expect(sink.JoinsNeighbors).toBeFalsy();
 		});
 
 		it("give every object at least one layer once loaded", () => {

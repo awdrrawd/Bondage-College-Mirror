@@ -1003,6 +1003,32 @@ describe("persistent store", () => {
 			expect(request.headers.has("If-Modified-Since")).toBe(false);
 		});
 
+		it("offers the bare ETag too when the stored one carries a -gzip suffix", async () => {
+			const store = await bucket();
+			store.store.set(KEY, new StoreResponse(200, { body: "old", headers: { ETag: '"abc-gzip"' } }));
+			Game.CommonFetch.mockResolvedValue(new StoreResponse(304));
+
+			const cached = await cache.browserCache!.match(URL_V123);
+			await cache.browserCache!.revalidate(URL_V123, cached!);
+			await flush();
+
+			const request = Game.CommonFetch.mock.calls[0][0];
+			expect(request.headers.get("If-None-Match")).toBe('"abc-gzip", "abc"');
+		});
+
+		it("does the same for a weak -br ETag", async () => {
+			const store = await bucket();
+			store.store.set(KEY, new StoreResponse(200, { body: "old", headers: { ETag: 'W/"abc-br"' } }));
+			Game.CommonFetch.mockResolvedValue(new StoreResponse(304));
+
+			const cached = await cache.browserCache!.match(URL_V123);
+			await cache.browserCache!.revalidate(URL_V123, cached!);
+			await flush();
+
+			const request = Game.CommonFetch.mock.calls[0][0];
+			expect(request.headers.get("If-None-Match")).toBe('W/"abc-br", W/"abc"');
+		});
+
 		it("replaces the entry and reports a 200", async () => {
 			await seed();
 			const fresh = new StoreResponse(200, { body: "new", headers: { "Last-Modified": "Thu, 02 Jan 2025 00:00:00 GMT" } });

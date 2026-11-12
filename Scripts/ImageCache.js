@@ -484,6 +484,23 @@ class BrowserCache {
 	}
 
 	/**
+	 * The ETags to offer when asking whether a stored response is current.
+	 *
+	 * Apache's mod_deflate appends `-gzip` to the ETag of a compressed response, but
+	 * matches a request's ETag against the bare one, so a stored tag never matches
+	 * itself and the server answers with the whole file every time. Offering both
+	 * forms gets a 304 from those servers without inventing a tag.
+	 *
+	 * @param {string} etag
+	 * @returns {string}
+	 * @private
+	 */
+	_etagCandidates(etag) {
+		const bare = etag.replace(/-(?:gzip|br)"$/, "\"");
+		return bare === etag ? etag : `${etag}, ${bare}`;
+	}
+
+	/**
 	 * Ask the server whether a stored response is still current.
 	 *
 	 * Runs at most once per key per session. Resolves with the fresh storable
@@ -506,7 +523,7 @@ class BrowserCache {
 		const lastModified = cached.headers.get("Last-Modified");
 		if (lastModified) headers["If-Modified-Since"] = lastModified;
 		const etag = cached.headers.get("ETag");
-		if (etag) headers["If-None-Match"] = etag;
+		if (etag) headers["If-None-Match"] = this._etagCandidates(etag);
 
 		const revalidation = (async () => {
 			try {
