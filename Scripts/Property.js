@@ -1101,11 +1101,11 @@ class PropertyDataEntry {
 		if (typeof value !== "number") {
 			errorDescription.push(`Invalid '${name}' type '${typeof value}'`);
 		} else if (!Number.isFinite(value)) {
-			errorDescription.push(`Invalid '${name}' finite value ${value}`);
+			errorDescription.push(`Invalid '${name}' non-finite value ${value}`);
 		} else if (isInteger && !Number.isInteger(value)) {
 			errorDescription.push(`Invalid '${name}' integer value ${value}`);
 		} else if (value > max || value < min) {
-			errorDescription.push(`Invalid '${name}" value range ${value} (expected interval [${min}, ${max}])`);
+			errorDescription.push(`Invalid '${name}' out of range value ${value} (expected interval [${min}, ${max}])`);
 			// @ts-expect-error
 			ret = CommonClamp(value, min, max);
 		} else {
@@ -1221,7 +1221,13 @@ class PropertyDataEntry {
 		// Need an unfortunate amount of casts/ts-ignores here as TS sucks with handling templates
 		const { type, value: array } = value;
 		if (!CommonIsArray(array)) {
-			return { status: "criticalError", errorDescription: [`Invalid '${this.name}' non-array type '${typeof array}'`] };
+			const errorDescription = [`Invalid '${this.name}' non-array type '${typeof array}'`];
+			if (defaults !== undefined) {
+				// @ts-ignore
+				return { status: "error", value: [...defaults], errorDescription };
+			} else {
+				return { status: "criticalError", errorDescription };
+			}
 		}
 
 		/** @type {ItemProperty.ValidationOutput<unknown>[]} */

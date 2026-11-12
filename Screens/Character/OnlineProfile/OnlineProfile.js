@@ -110,7 +110,7 @@ function OnlineProfileRun() {}
 function OnlineProfileClick() {}
 
 function OnlineProfileResize() {
-	ElementPositionFixed(OnlineProfile.IDs.screen, 50, 50, 1900, 900);
+	ElementPositionFixed(OnlineProfile.IDs.screen, 50, 70, 1900, 870);
 }
 
 /**

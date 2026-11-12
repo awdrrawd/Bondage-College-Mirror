@@ -1,0 +1,285 @@
+{
+	"validateAsLiteralSet": {
+		"Invalid type (no fallback)": {
+			"name": "Block",
+			"value": 1,
+			"output": { "status": "criticalError", "errorDescription": ["Invalid 'Block' non-array type 'number'"] }
+		},
+		"Invalid type (with fallback)": {
+			"name": "Block",
+			"value": 1,
+			"defaults": ["ItemMouth"],
+			"output": { "status": "error", "value": ["ItemMouth"], "errorDescription": ["Invalid 'Block' non-array type 'number'"] }
+		},
+		"Missing reference set (no fallback)": {
+			"name": "Difficulty",
+			"value": ["ItemArms"],
+			"output": { "status": "criticalError", "errorDescription": ["Missing 'Difficulty' value set"] }
+		},
+		"Missing reference set (with fallback)": {
+			"name": "Difficulty",
+			"value": ["ItemArms"],
+			"defaults": ["ItemMouth"],
+			"output": { "status": "error", "value": ["ItemMouth"], "errorDescription": ["Missing 'Difficulty' value set"] }
+		},
+		"Illegal array value (non-string)": {
+			"name": "Block",
+			"value": [0, "ItemArms", 2],
+			"output": { "status": "error", "value": ["ItemArms"], "errorDescription": ["Illegal 'Block[0]' value 0", "Illegal 'Block[2]' value 2"] }
+		},
+		"Illegal array value (string)": {
+			"name": "Block",
+			"value": ["ItemArms", "bleb"],
+			"output": { "status": "error", "value": ["ItemArms"], "errorDescription": ["Illegal 'Block[1]' value 'bleb'"] }
+		},
+		"Ok": {
+			"name": "Block",
+			"value": ["ItemArms"],
+			"output": { "status": "ok", "value": ["ItemArms"] }
+		},
+		"Ok (explicit metadata)": {
+			"name": "Block",
+			"value": ["ItemArms"],
+			"metaData": { "name": "Definitely-not-Block", "valueSet": ["ItemArms", "ItemMouth"] },
+			"output": { "status": "ok", "value": ["ItemArms"] }
+		}
+	},
+
+	"validateAsSetMember": {
+		"Missing reference set (no fallback)": {
+			"name": "Difficulty",
+			"value": "ItemArms",
+			"output": { "status": "criticalError", "errorDescription": ["Missing 'Difficulty' value set"] }
+		},
+		"Missing reference set (with fallback)": {
+			"name": "Difficulty",
+			"value": "ItemArms",
+			"defaults": "ItemMouth",
+			"output": { "status": "error", "value": "ItemMouth", "errorDescription": ["Missing 'Difficulty' value set"] }
+		},
+		"Illegal value (non-string)": {
+			"name": "AutoPunish",
+			"value": -1,
+			"output": { "status": "criticalError", "errorDescription": ["Invalid 'AutoPunish' value -1"] }
+		},
+		"Illegal value (string)": {
+			"name": "AutoPunish",
+			"value": "bleb",
+			"output": { "status": "criticalError", "errorDescription": ["Invalid 'AutoPunish' value 'bleb'"] }
+		},
+		"Illegal value (non-string; with fallback)": {
+			"name": "AutoPunish",
+			"value": -1,
+			"defaults": 1,
+			"output": { "status": "error", "value": 1, "errorDescription": ["Invalid 'AutoPunish' value -1"] }
+		},
+		"Illegal value (string; with fallback)": {
+			"name": "AutoPunish",
+			"value": "bleb",
+			"defaults": 1,
+			"output": { "status": "error", "value": 1, "errorDescription": ["Invalid 'AutoPunish' value 'bleb'"] }
+		},
+		"Ok": {
+			"name": "AutoPunish",
+			"value": 1,
+			"output": { "status": "ok", "value": 1 }
+		},
+		"Ok (explicit metadata)": {
+			"name": "AutoPunish",
+			"value": 1,
+			"metaData": { "name": "Definitely-not-AutoPunish", "valueSet": [1, 2, 3] },
+			"output": { "status": "ok", "value": 1 }
+		}
+	},
+
+	"validateNumber": {
+		"Invalid type": {
+			"name": "Iterations",
+			"value": "bleb",
+			"output": { "status": "criticalError", "errorDescription": ["Invalid 'Iterations' type 'string'"] }
+		},
+		"Non-finite value": {
+			"name": "Iterations",
+			"value": "// manually substitute this for an actual NaN in the tests",
+			"output": { "status": "criticalError", "errorDescription": ["Invalid 'Iterations' non-finite value NaN"] }
+		},
+		"Non-integer value": {
+			"name": "Iterations",
+			"value": 1.5,
+			"output": { "status": "criticalError", "errorDescription": ["Invalid 'Iterations' integer value 1.5"] }
+		},
+		"Invalid type (with fallback)": {
+			"name": "Iterations",
+			"value": "bleb",
+			"defaults": 42,
+			"output": { "status": "error", "value": 42, "errorDescription": ["Invalid 'Iterations' type 'string'"] }
+		},
+		"Non-finite value (with fallback)": {
+			"name": "Iterations",
+			"value": "// manually add a NaN here",
+			"defaults": 42,
+			"output": { "status": "error", "value": 42, "errorDescription": ["Invalid 'Iterations' non-finite value NaN"] }
+		},
+		"Non-integer value (with fallback)": {
+			"name": "Iterations",
+			"value": 1.5,
+			"defaults": 42,
+			"output": { "status": "error", "value": 42, "errorDescription": ["Invalid 'Iterations' integer value 1.5"] }
+		},
+		"Out of range value": {
+			"name": "Iterations",
+			"value": -1,
+			"output": { "status": "error", "value": 0, "errorDescription": ["Invalid 'Iterations' out of range value -1 (expected interval [0, Infinity])"] }
+		},
+		"Ok": {
+			"name": "Iterations",
+			"value": 1,
+			"output": { "status": "ok", "value": 1 }
+		},
+		"Ok (explicit metadata)": {
+			"name": "Iterations",
+			"value": -4.5,
+			"metaData": { "name": "Definitely-not-Iterations", "min": -5, "isInteger": false },
+			"output": { "status": "ok", "value": -4.5 }
+		}
+	},
+
+	"validateString": {
+		"Invalid type": {
+			"name": "Text",
+			"value": 1,
+			"output": { "status": "criticalError", "errorDescription": ["Invalid 'Text' type 'number'"] }
+		},
+		"Invalid regex pattern": {
+			"name": "Text",
+			"value": "aaaa",
+			"output": { "status": "criticalError", "errorDescription": ["Invalid 'Definitely-not-Text' value 'aaaa' (mismatch w.r.t. 'b+' pattern)"] },
+			"metaData": { "name": "Definitely-not-Text", "valuePattern": "// manually add a regex pattern here" }
+		},
+		"Invalid hex color": {
+			"name": "Text",
+			"value": "#0011ZZ",
+			"output": { "status": "criticalError", "errorDescription": ["Invalid 'Definitely-not-Text' value '#0011ZZ' (invalid hex color)"] },
+			"metaData": { "name": "Definitely-not-Text", "isColor": true }
+		},
+		"Invalid BC color": {
+			"name": "Text",
+			"value": "#0011ZZ",
+			"output": { "status": "criticalError", "errorDescription": ["Invalid 'Definitely-not-Text' value '#0011ZZ' (invalid BC color)"] },
+			"metaData": { "name": "Definitely-not-Text", "isColor": true, "colorSchema": "// manually add a color set here" }
+		},
+		"Invalid type (with fallback)": {
+			"name": "Text",
+			"value": 1,
+			"defaults": "foo",
+			"output": { "status": "error", "value": "foo", "errorDescription": ["Invalid 'Text' type 'number'"] }
+		},
+		"Invalid regex pattern (with fallback)": {
+			"name": "Text",
+			"value": "aaaa",
+			"defaults": "foo",
+			"output": { "status": "error", "value": "foo", "errorDescription": ["Invalid 'Definitely-not-Text' value 'aaaa' (mismatch w.r.t. 'b+' pattern)"] },
+			"metaData": { "name": "Definitely-not-Text", "valuePattern": "// manually add a regex pattern here" }
+		},
+		"Invalid hex color (with fallback)": {
+			"name": "Text",
+			"value": "#0011ZZ",
+			"defaults": "foo",
+			"output": { "status": "error", "value": "foo", "errorDescription": ["Invalid 'Definitely-not-Text' value '#0011ZZ' (invalid hex color)"] },
+			"metaData": { "name": "Definitely-not-Text", "isColor": true }
+		},
+		"Invalid BC color (with fallback)": {
+			"name": "Text",
+			"value": "#0011ZZ",
+			"defaults": "foo",
+			"output": { "status": "error", "value": "foo", "errorDescription": ["Invalid 'Definitely-not-Text' value '#0011ZZ' (invalid BC color)"] },
+			"metaData": { "name": "Definitely-not-Text", "isColor": true, "colorSchema": "// manually add a color set here" }
+		},
+		"Ok": {
+			"name": "Iterations",
+			"value": "bleb",
+			"output": { "status": "ok", "value": "bleb" }
+		},
+		"Ok (explicit metadata)": {
+			"name": "Iterations",
+			"value": "#001122",
+			"output": { "status": "ok", "value": "#001122" },
+			"metaData": { "name": "Definitely-not-Text", "isColor": true }
+		}
+	},
+
+	"validateBoolean": {
+		"Invalid type": {
+			"name": "ShowTimer",
+			"value": 1,
+			"output": { "status": "criticalError", "errorDescription": ["Invalid 'ShowTimer' type 'number'"] }
+		},
+		"Invalid type (with fallback)": {
+			"name": "ShowTimer",
+			"value": 1,
+			"defaults": true,
+			"output": { "status": "error", "value": true, "errorDescription": ["Invalid 'ShowTimer' type 'number'"] }
+		},
+		"Ok": {
+			"name": "ShowTimer",
+			"value": false,
+			"output": { "status": "ok", "value": false }
+		},
+		"Ok (explicit metadata)": {
+			"name": "ShowTimer",
+			"value": true,
+			"output": { "status": "ok", "value": true },
+			"metaData": { "name": "Definitely-not-ShowTimer" }
+		}
+	},
+
+	"validateSetLikeArray": {
+		"Invalid type": {
+			"name": "MemberNumberList",
+			"value": { "type": "number", "value": 1 },
+			"output": { "status": "criticalError", "errorDescription": ["Invalid 'MemberNumberList' non-array type 'number'"] }
+		},
+		"Invalid type (with fallback)": {
+			"name": "MemberNumberList",
+			"value": { "type": "number", "value": 1 },
+			"defaults": [1, 2, 3],
+			"output": { "status": "error", "value": [1, 2, 3], "errorDescription": ["Invalid 'MemberNumberList' non-array type 'number'"] }
+		},
+		"Invalid element (string)": {
+			"name": "HideItemExclude",
+			"value": { "type": "string", "value": ["ItemVulvaWandBelt", "ItemVulvaFullLatexSuitWand", 1, "ItemVulvaWiredEgg"] },
+			"output": {
+				"status": "error",
+				"value": ["ItemVulvaWandBelt", "ItemVulvaFullLatexSuitWand", "ItemVulvaWiredEgg"],
+				"errorDescription": ["Invalid 'HideItemExclude[2]' type 'number'"]
+			}
+		},
+		"Invalid element (number)": {
+			"name": "MemberNumberList",
+			"value": { "type": "number", "value": [1, 2, 3, "bleb"] },
+			"output": { "status": "error", "value": [1, 2, 3], "errorDescription": ["Invalid 'MemberNumberList[3]' type 'string'"] }
+		},
+		"Invalid element (boolean)": {
+			"name": "MemberNumberList",
+			"value": { "type": "boolean", "value": [true, false, 2] },
+			"output": { "status": "error", "value": [true, false], "errorDescription": ["Invalid 'Custom-boolean-array-property[2]' type 'number'"] },
+			"metaData": { "name": "Custom-boolean-array-property"}
+		},
+		"ok (string)": {
+			"name": "HideItemExclude",
+			"value": { "type": "string", "value": ["ItemVulvaWandBelt", "ItemVulvaFullLatexSuitWand", "ItemVulvaWiredEgg"] },
+			"output": { "status": "ok", "value": ["ItemVulvaWandBelt", "ItemVulvaFullLatexSuitWand", "ItemVulvaWiredEgg"] }
+		},
+		"ok (number)": {
+			"name": "MemberNumberList",
+			"value": { "type": "number", "value": [1, 2, 3] },
+			"output": { "status": "ok", "value": [1, 2, 3] }
+		},
+		"ok (boolean)": {
+			"name": "MemberNumberList",
+			"value": { "type": "boolean", "value": [true, false] },
+			"output": { "status": "ok", "value": [true, false] },
+			"metaData": { "name": "Custom-boolean-array-property" }
+		}
+	}
+}

@@ -190,6 +190,7 @@ async function TitleLoad() {
 		{
 			menubarButtons: [ElementButton.Create(TitleSelec.exit, TitleExit, { image: "Icons/Exit.png" })],
 			header: TextGet("SelectTitle"),
+			hgroupInHeader: true,
 			parent: document.body,
 			mainContent: [
 				labeledInput,
@@ -253,9 +254,7 @@ function TitleExit() {
 }
 
 function TitleResize() {
-	ElementSetPosition(TitleSelec.exit, 1815, 75);
-	ElementPositionFixed(TitleSelec.titleGroup, 100, 75, 1615, 90);
-	ElementPositionFixed(TitleSelec.titleMain, 100, 175, 1775, 750);
+	ElementPositionFixed(TitleSelec.subscreen, 50, 70, 1900, 870);
 }
 
 function TitleSearch() {

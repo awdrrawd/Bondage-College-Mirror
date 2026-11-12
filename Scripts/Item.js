@@ -277,18 +277,27 @@ function ItemPropertiesCompress(item, options=undefined) {
  * By default, properties follow a "first non-nullish entry wins" approach if no property-specific merge function is available.
  * @param {readonly ItemProperties[]} propertyList The list of to-be merged property objects
  * @param {Asset} asset The asset
- * @param {ItemProperties} [output] The object in which the merged properties will be stored and returned
+ * @param {object} [options]
+ * @param {ItemProperties} [options.output] The object in which the merged properties will be stored and returned
+ * @param {Iterable<keyof ItemProperties>} [options.omit] Properties to be ignored during the differencing process
  * @returns {ItemProperties}
  */
-function ItemPropertiesUnion(propertyList, asset, output=undefined) {
+function ItemPropertiesUnion(propertyList, asset, options=undefined) {
+	options ??= {};
+	const omit = new Set(options.omit ?? []);
+
 	/** @type {ItemProperties} */
-	const ret = output ?? {};
+	const ret = options.output ?? {};
 	for (const properties of propertyList) {
-		if (properties === output) {
+		if (properties === ret) {
 			// Don't bother going through the output twice if it happens to be included in `propertyList` as well
 			continue;
 		}
 		for (const [propName, propValue] of CommonEntries(properties)) {
+			if (omit.has(propName)) {
+				continue;
+			}
+
 			/** @type {undefined | PropertyDataEntry<any>} */
 			const entry = PropertyData[propName];
 			const value = entry?.union([ret[propName], propValue], { asset }) ?? propValue;
@@ -304,14 +313,19 @@ function ItemPropertiesUnion(propertyList, asset, output=undefined) {
  * Subtract the passed item properties from each other into a single property set.
  * @param {readonly ItemProperties[]} propertyList The list of to-be differenced property objects
  * @param {Asset} asset The asset
- * @param {ItemProperties} [output] The object in which the differenced properties will be stored and returned
+ * @param {object} [options]
+ * @param {ItemProperties} [options.output] The object in which the differenced properties will be stored and returned
+ * @param {Iterable<keyof ItemProperties>} [options.omit] Properties to be ignored during the differencing process
  * @returns {ItemProperties}
  */
-function ItemPropertiesDifference(propertyList, asset, output=undefined) {
+function ItemPropertiesDifference(propertyList, asset, options=undefined) {
+	options ??= {};
+	const omit = new Set(options.omit ?? []);
+
 	/** @type {ItemProperties} */
-	const ret = output ?? CommonCloneDeep(propertyList[0]) ?? {};
+	const ret = options.output ?? CommonCloneDeep(propertyList[0]) ?? {};
 	for (const [propName, propValue] of CommonEntries(ret)) {
-		if (propValue === undefined) {
+		if (propValue === undefined || omit.has(propName)) {
 			continue;
 		}
 
@@ -340,10 +354,12 @@ const ItemPropertiesValidationStatus = /** @type {const} */({
  * @param {object} [options]
  * @param {Character} [options.C] The character wearing/intended to wear the item
  * @param {readonly (keyof ItemProperties)[]} [options.ignoreErrors] Exclude specific property outputs from affecting the final error status
+ * @param {Iterable<keyof ItemProperties>} [options.omit] Properties to be ignored during the validation process
  * @returns {ItemProperty.ValidationMultiOutput}
  */
 function ItemPropertiesValidate(properties, asset, options=undefined) {
 	options ??= {};
+	const omit = new Set(options.omit ?? []);
 
 	if (CommonIsObject(properties)) {
 		properties = {};
@@ -365,7 +381,7 @@ function ItemPropertiesValidate(properties, asset, options=undefined) {
 	for (const [propName, propValue] of CommonEntries(properties)) {
 		/** @type {undefined | PropertyDataEntry<any>} */
 		const entry = PropertyData[propName];
-		if (!entry) {
+		if (!entry || omit.has(propName)) {
 			// TODO: Consider bumping this to a (critical) error once `PropertyData` is complete
 			continue;
 		}
@@ -428,10 +444,10 @@ function ItemPropertiesMergeValidationOutputs(outputs) {
 				break;
 			case "error":
 				ret.value[name] = output.value;
-				ret.errorDescription.push(output.errorDescription);
+				ret.errorDescription.push(...output.errorDescription);
 				break;
 			case "criticalError":
-				ret.errorDescription.push(output.errorDescription);
+				ret.errorDescription.push(...output.errorDescription);
 				break;
 		}
 		ret.status = CommonMax(ret.status, ItemPropertiesValidationStatus[output.status]);
@@ -440,6 +456,11 @@ function ItemPropertiesMergeValidationOutputs(outputs) {
 	if (CommonIsArray(outputs)) {
 		// @ts-expect-error: convert back into an array
 		ret.value = Object.values(ret.value).filter(i => i !== undefined);
+
+		// TODO: Only clamp the error level to `error` when dealing with set-like arrays
+		// Set-like arrays are of arbitrary length, meaning that any and all of its elements can be considered optional
+		// and thereof unworthy of a `criticalError` as the offending elements can safely be removed
+		ret.status = CommonMin(ItemPropertiesValidationStatus.error, ret.status);
 	}
 
 	switch (ret.status) {
@@ -463,10 +484,12 @@ function ItemPropertiesMergeValidationOutputs(outputs) {
  * The returned set will contain up to 1 entry otherwise. Defaults to `false`.
  * @param {boolean} [options.eqOrSubset] Whether to check whether the properties are either equivalent or form a (deep)
  * subset of each other (see {@link ItemPropertiesIsSubset}). Defaults to `false`.
+ * @param {Iterable<keyof ItemProperties>} [options.omit] Properties to be ignored during the comparison process
  * @returns {{ result: boolean, nonEquivalencies: Set<keyof ItemProperties> }}
  */
 function ItemPropertiesCompare(properties1, properties2, asset, options=undefined) {
 	options ??= {};
+	const omit = new Set(options.omit ?? []);
 
 	/** @type {{ result: boolean, nonEquivalencies: Set<keyof ItemProperties> }} */
 	const ret = { result: true, nonEquivalencies: new Set() };
@@ -478,7 +501,7 @@ function ItemPropertiesCompare(properties1, properties2, asset, options=undefine
 	propLoop: for (const propName of propNames) {
 		/** @type {undefined | PropertyDataEntry<any>} */
 		const entry = PropertyData[propName];
-		if (!entry) {
+		if (!entry || omit.has(propName)) {
 			continue;
 		}
 
@@ -504,6 +527,7 @@ function ItemPropertiesCompare(properties1, properties2, asset, options=undefine
  * @param {object} [options]
  * @param {boolean} [options.gatherNonEquivalancies] Whether to gather and return the names of all non-equivalent properties.
  * The returned set will contain up to 1 entry otherwise. Defaults to `false`.
+ * @param {Iterable<keyof ItemProperties>} [options.omit] Properties to be ignored during the comparison process
  * @returns {{ result: boolean, nonEquivalencies: Set<keyof ItemProperties> }}
  */
 function ItemPropertiesIsSubset(subProperties, superProperties, asset, options=undefined) {
@@ -539,7 +563,7 @@ function ItemPropertiesDecompress(item, properties, options=undefined) {
 			return {};
 		}
 	});
-	item.Property = ItemPropertiesUnion(propertyList, item.Asset, item.Property);
+	item.Property = ItemPropertiesUnion(propertyList, item.Asset, { output: item.Property });
 
 	if (item.Craft?.Effects?.Painful) {
 		CommonArrayConcatDedupe(item.Property.Fetish ??= [], ["Masochism"]);

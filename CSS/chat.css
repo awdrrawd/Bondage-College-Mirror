@@ -114,7 +114,7 @@
 	--gap-size: max(3px, min(0.4dvh, 0.2dvw));
 
 	pointer-events: none;
-	border: var(--border-width) solid black;
+	margin-inline: var(--gap-size);
 }
 
 #chat-room-div > * {
@@ -145,6 +145,7 @@
 		/ auto min-content min-content min-content;
 	background-color: white;
 	column-gap: min(0.4vh, 0.2vw);
+	border: var(--border-width) inset black;
 }
 
 #chat-room-bot:has(#InputChat:invalid) {

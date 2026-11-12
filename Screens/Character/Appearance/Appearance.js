@@ -864,6 +864,9 @@ function AppearanceEnterSearchMode(C) {
 		},
 	);
 	searchBar.focus();
+
+	// reset pagination when enter search
+	DialogInventoryOffset = 0;
 }
 
 /**

@@ -209,7 +209,7 @@ async function PreferenceOpenSubscreen(subscreen, page = 1) {
 const PreferenceIDs = Object.freeze({
 	subscreen: 'preference-subscreen',
 	exit: 'preference-exit',
-	title: 'preference-subscreen-hgroup',
+	title: 'preference-subscreen-h1',
 });
 
 /**
@@ -328,9 +328,9 @@ function PreferenceSubscreenCreateSubscreen(subscreenName) {
 
 /** @type {ScreenResizeHandler} */
 function PreferenceSubscreenResize(onLoad) {
-	ElementPositionFixed(PreferenceIDs.subscreen, 0, 0, 2000, 1000);
-	ElementPositionFixed(PreferenceIDs.title, 500, 100, 1000, 45);
-	ElementSetPosition(`${PreferenceIDs.subscreen}-menu`, 1905, 75, "top-right");
+	ElementPositionFixed(PreferenceIDs.subscreen, 50, 70, 1900, 870);
+	const playerDrawn = PreferenceSubscreen?.name !== "Keybindings";
+	ElementWrap(PreferenceIDs.title)?.style.setProperty("margin-left", playerDrawn ? `${ElementCanvasScaledWidth(450)}px` : "");
 }
 
 /**

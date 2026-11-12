@@ -610,7 +610,7 @@ function ModularItemMergeModuleValues({ asset, modules }, moduleValues, Baseline
 		CustomBlindBackground: asset.CustomBlindBackground,
 	};
 	const properties = modules.map((module, i) => module.Options[moduleValues[i] || 0].Property);
-	return ItemPropertiesUnion([BaselineProperty ?? {}, ...properties], asset, BaseLineProperties);
+	return ItemPropertiesUnion([BaselineProperty ?? {}, ...properties], asset, { output: BaseLineProperties });
 }
 
 /**

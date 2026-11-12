@@ -562,8 +562,8 @@ function ExtendedItemSetProperty(C, item, previousProperty, newProperty, push=fa
 		item.Property = {};
 	}
 	const Property = item.Property;
-	ItemPropertiesDifference([previousProperty], item.Asset, Property);
-	ItemPropertiesUnion([newProperty], item.Asset, Property);
+	ItemPropertiesDifference([previousProperty], item.Asset, { output: Property });
+	ItemPropertiesUnion([newProperty], item.Asset, { output: Property });
 
 	// If the item is locked, ensure it has the "Lock" effect
 	if (Property.LockedBy && !(Property.Effect || []).includes("Lock")) {
@@ -1164,13 +1164,13 @@ function ExtendedItemSetOption(data, C, item, newOption, previousOption, push=fa
 	const newProperty = ItemPropertiesUnion(
 		[ExtendedItemGatherSubscreenProperty(item, newOption)],
 		item.Asset,
-		newOptionProperty,
+		{ output: newOptionProperty },
 	);
 
 	const previousProperty = ItemPropertiesUnion(
 		[ExtendedItemGatherSubscreenProperty(item, previousOption)],
 		item.Asset,
-		previousOptionProperty,
+		{ output: previousOptionProperty },
 	);
 
 	CommonKeys(data.baselineProperty || {}).forEach(i => delete previousProperty[i]);
