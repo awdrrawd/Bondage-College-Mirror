@@ -311,7 +311,7 @@ function VibratorModeCreateData(
 			option: DialogPrefix.Option || "VibeMode",
 		},
 		chatSetting: "default",
-		baselineProperty: BaselineProperty,
+		baselineProperty: BaselineProperty ?? {},
 		dictionary: Array.isArray(Dictionary) ? Dictionary : [],
 		chatTags: Array.isArray(ChatTags) ? ChatTags : [
 			CommonChatTags.SOURCE_CHAR,

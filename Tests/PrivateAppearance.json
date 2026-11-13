@@ -120,8 +120,7 @@
 		"Property": {
 			"TypeRecord": {
 				"vibrating": 4
-			},
-			"Intensity": 3
+			}
 		}
 	},
 	{
@@ -131,8 +130,7 @@
 		"Property": {
 			"TypeRecord": {
 				"vibrating": 2
-			},
-			"Intensity": 1
+			}
 		}
 	},
 	{

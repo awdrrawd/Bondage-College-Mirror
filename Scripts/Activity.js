@@ -287,7 +287,7 @@ function ActivityGenerateItemActivitiesFromNeed(acting, acted, needsItem, activi
 
 		// FIXME: workaround for reverse activities because those are in a non-activity group
 
-		if (InventoryItemHasEffect(item, "UseRemote")) {
+		if (InventoryItemHasEffect(item, "UseRemote") && !item.Asset.Group.Name.startsWith("ItemMouth")) {
 			// That item actually needs a remote, so handle it separately
 		} else {
 			ActivityLog(`${acting.Name} on ${acted.Name}: act: ${activity.Name} needs item ${needsItem} satisfied by ${item.Asset.Name}`);

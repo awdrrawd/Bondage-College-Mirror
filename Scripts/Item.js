@@ -192,6 +192,8 @@ function ItemPropertiesGetBundleProperties(item, options=undefined) {
 	allowedProperties.add("wceOverrideHide"); // WCE as of v6.3.19
 
 	const extendedOptions = item.Asset.Extended ? ExtendedItemGatherOptions(item) : [];
+	/** @type {Set<keyof ItemProperties>} */
+	const baselineCandidates = new Set();
 	for (const option of extendedOptions) {
 		switch (option.OptionType) {
 			case "VariableHeightOption":
@@ -204,6 +206,16 @@ function ItemPropertiesGetBundleProperties(item, options=undefined) {
 				break;
 		}
 		for (const key of CommonKeys(option.ParentData.baselineProperty ?? {})) {
+			baselineCandidates.add(key);
+		}
+	}
+
+	// Only add baseline properties if they do not intersect with a type-fixed property
+	const typedModularNames = new Set(["TypedItemOption", "ModularItemOption", "VibratingItemOption"]);
+	for (const key of baselineCandidates) {
+		/** @type {ExtendedItemOption[]} */
+		const extendedOptions2 = extendedOptions;
+		if (extendedOptions2.every(o => !typedModularNames.has(o.OptionType) || o.Property?.[key] === undefined)) {
 			allowedProperties.add(key);
 		}
 	}
@@ -288,22 +300,22 @@ function ItemPropertiesUnion(propertyList, asset, options=undefined) {
 
 	/** @type {ItemProperties} */
 	const ret = options.output ?? {};
-	for (const properties of propertyList) {
-		if (properties === ret) {
-			// Don't bother going through the output twice if it happens to be included in `propertyList` as well
+	const propNames = new Set(propertyList.flatMap(prop => CommonKeys(prop)));
+	for (const propName of propNames) {
+		const propValue = ret[propName];
+		if (omit.has(propName)) {
 			continue;
 		}
-		for (const [propName, propValue] of CommonEntries(properties)) {
-			if (omit.has(propName)) {
-				continue;
-			}
 
-			/** @type {undefined | PropertyDataEntry<any>} */
-			const entry = PropertyData[propName];
-			const value = entry?.union([ret[propName], propValue], { asset }) ?? propValue;
-			if (value !== undefined) {
-				/** @type {Unknown<ItemProperties>} */(ret)[propName] = value;
-			}
+		/** @type {undefined | PropertyDataEntry<any>} */
+		const entry = PropertyData[propName];
+		const propList = [propValue, ...propertyList.map(properties => properties === ret ? undefined : properties[propName])];
+		if (propList.every(i => i === undefined)) {
+			continue;
+		} else if (entry) {
+			/** @type {Unknown<ItemProperties>} */(ret)[propName] = entry.union(propList, { asset });
+		} else {
+			/** @type {Unknown<ItemProperties>} */(ret)[propName] = propList.find(i => i !== undefined);
 		}
 	}
 	return ret;

@@ -387,8 +387,7 @@
 					"Effect": ["Egged", "Vibrating"]
 				},
 				"itemBundleProperty": {
-					"TypeRecord": { "vibrating": 1 },
-					"Intensity": 0
+					"TypeRecord": { "vibrating": 1 }
 				},
 				"finalItemProperty": {
 					"TypeRecord": { "vibrating": 1 },
@@ -406,8 +405,7 @@
 					"Effect": ["Egged", "Vibrating"]
 				},
 				"itemBundleProperty": {
-					"TypeRecord": { "vibrating": 2 },
-					"Intensity": 1
+					"TypeRecord": { "vibrating": 2 }
 				},
 				"finalItemProperty": {
 					"TypeRecord": { "vibrating": 2 },
@@ -425,8 +423,7 @@
 					"Effect": ["Egged", "Vibrating"]
 				},
 				"itemBundleProperty": {
-					"TypeRecord": { "vibrating": 3 },
-					"Intensity": 2
+					"TypeRecord": { "vibrating": 3 }
 				},
 				"finalItemProperty": {
 					"TypeRecord": { "vibrating": 3 },
@@ -444,8 +441,7 @@
 					"Effect": ["Egged", "Vibrating"]
 				},
 				"itemBundleProperty": {
-					"TypeRecord": { "vibrating": 4 },
-					"Intensity": 3
+					"TypeRecord": { "vibrating": 4 }
 				},
 				"finalItemProperty": {
 					"TypeRecord": { "vibrating": 4 },
@@ -550,6 +546,22 @@
 					"Mode": "Edge",
 					"Intensity": 1,
 					"Effect": ["Egged", "Vibrating", "Edged"],
+					"State": "Default"
+				}
+			},
+			"Corrupted 'Off' state with invalid 'Intensity'": {
+				"initialItemProperty": {
+					"TypeRecord": { "vibrating": 0 },
+					"Mode": "Off",
+					"Intensity": 3,
+					"Effect": ["Egged"]
+				},
+				"itemBundleProperty": null,
+				"finalItemProperty": {
+					"TypeRecord": { "vibrating": 0 },
+					"Mode": "Off",
+					"Intensity": -1,
+					"Effect": ["Egged"],
 					"State": "Default"
 				}
 			}

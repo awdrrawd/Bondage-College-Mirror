@@ -205,7 +205,7 @@ function TypedItemCreateTypedItemData(asset, {
 		scriptHooks: ExtendedItemParseScriptHooks(ScriptHooks || {}),
 		dictionary: Dictionary || [],
 		chatSetting: ChatSetting || TypedItemChatSetting.TO_ONLY,
-		baselineProperty: typeof BaselineProperty === "object" ? BaselineProperty : null,
+		baselineProperty: BaselineProperty ?? {},
 		parentOption: null,
 		drawData: TypedItemGetDrawData(asset, DrawData, optionsParsed, { drawImage: DrawImages }),
 		allowEffect: Array.isArray(AllowEffect) ? AllowEffect : [],
@@ -575,13 +575,15 @@ function TypedItemInit({ options, name, baselineProperty, asset }, C, Item, Push
 	const expectedProps = { ...option.Property };
 	const customPropertiesBackup = CommonPick(expectedProps, ExtendedItemInitPropertyIgnore);
 	CommonKeys(customPropertiesBackup).forEach(k => delete expectedProps[k]);
-	CommonKeys(baselineProperty ?? {}).forEach(k => delete expectedProps[k]);
+
+	// Ensure that the baseline properties are disjoint w.r.t. the normal ExtendedItemOption-specified properties
+	baselineProperty = CommonOmit(/** @type {ItemProperties} */(baselineProperty), CommonKeys(expectedProps));
 
 	const isSubset = ItemPropertiesIsSubset(expectedProps, Item.Property, Item.Asset, { gatherNonEquivalancies: log });
 	let update = !isSubset.result;
 
 	const customProperties = CommonPick(Item.Property, ExtendedItemInitPropertyIgnore);
-	Item.Property = ItemPropertiesUnion([customProperties, expectedProps, Item.Property, customPropertiesBackup, baselineProperty ?? {}], Item.Asset);
+	Item.Property = ItemPropertiesUnion([customProperties, expectedProps, Item.Property, customPropertiesBackup, baselineProperty], Item.Asset);
 
 	// Initialize subscreen(s) in a DFS manner
 	update = ExtendedItemInitSubscreen(option, Item, C, false, false) || update;

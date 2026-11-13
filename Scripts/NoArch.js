@@ -105,7 +105,7 @@ function NoArchCreateNoArchItemData(asset, {
 		scriptHooks: ExtendedItemParseScriptHooks(ScriptHooks || {}),
 		dictionary: Dictionary || [],
 		chatSetting: "default",
-		baselineProperty: BaselineProperty || null,
+		baselineProperty: BaselineProperty ?? {},
 		parentOption,
 		drawData: NoArchGetDrawData(DrawData),
 		allowEffect: Array.isArray(AllowEffect) ? AllowEffect : [],

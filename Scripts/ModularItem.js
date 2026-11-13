@@ -112,13 +112,15 @@ function ModularItemInit(Data, C, Item, Push=true, Refresh=true, log=false) {
 	const expectedProps = ModularItemMergeModuleValues(Data, ModularItemParseCurrent(Data, Item.Property.TypeRecord));
 	const customPropertiesBackup = CommonPick(expectedProps, ExtendedItemInitPropertyIgnore);
 	CommonKeys(customPropertiesBackup).forEach(k => delete expectedProps[k]);
-	CommonKeys(Data.baselineProperty ?? {}).forEach(k => delete expectedProps[k]);
+
+	// Ensure that the baseline properties are disjoint w.r.t. the normal ExtendedItemOption-specified properties
+	const baselineProperty = CommonOmit(/** @type {ItemProperties} */(Data.baselineProperty), CommonKeys(expectedProps));
 
 	const isSubset = ItemPropertiesIsSubset(expectedProps, Item.Property, Item.Asset, { gatherNonEquivalancies: log });
 	let update = !isSubset.result;
 
 	const customProperties = CommonPick(Item.Property, ExtendedItemInitPropertyIgnore);
-	Item.Property = ItemPropertiesUnion([customProperties, expectedProps, Item.Property, customPropertiesBackup, Data.baselineProperty ?? {}], Item.Asset);
+	Item.Property = ItemPropertiesUnion([customProperties, expectedProps, Item.Property, customPropertiesBackup, baselineProperty], Item.Asset);
 
 	// Initialize subscreen(s) in a DFS manner
 	const typeRecord = Item.Property.TypeRecord ?? {};
@@ -279,7 +281,7 @@ function ModularItemCreateModularData(asset, {
 		scriptHooks: ExtendedItemParseScriptHooks(ScriptHooks || {}),
 		drawFunctions: {},
 		clickFunctions: {},
-		baselineProperty: typeof BaselineProperty === "object" ? BaselineProperty : null,
+		baselineProperty: BaselineProperty ?? {},
 		dictionary: Array.isArray(Dictionary) ? Dictionary : [],
 		parentOption: null,
 		allowEffect: Array.isArray(AllowEffect) ? AllowEffect : [],

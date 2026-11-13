@@ -15,21 +15,21 @@ Fame
 Money
 金钱
 PlayCard
-打出这张卡牌
+打出这张牌
 GameEnded
 游戏已结束。
 SelectOption
-选择一个选项。
+请选择一个选项。
 InspectPile
-检查街道。
+查看街道牌堆。
 Draw
-抽牌并结束你的回合
+抽牌并结束回合
 CannotDraw
-结束你的回合
+结束回合
 SelectCard
 选择这张牌
 SelectTier
-选择等级NUMBER
+选择NUMBER级
 CancelPending
 不打出这张牌
 Bankrupt
@@ -43,11 +43,11 @@ StopWatch
 OnlineConcede
 PLAYERNAME认输并离开了游戏。
 OnlineStopWatch
-PLAYERNAME结束观战并离开了了游戏。
+PLAYERNAME停止观战并离开了游戏。
 OnlinePlayerDisconnected
-SOURCEPLAYER已经断开连接。
+SOURCEPLAYER已断开连接。
 SelectPrerequisite
-选择目标卡牌。
+请选择目标牌。
 Yes
 是
 No
@@ -57,17 +57,17 @@ DeckNumber
 Play
 打出
 CanWinNewCard
-你得队友拥有这张你可以赢得的卡牌：
+对手拥有这张可赢得的牌:
 WonNewCard
-你到达了100声望并赢得了这张卡牌：
+你已达到100声望，并赢得了这张牌：
 NoValidDeckFound
-PLAYERNAME的牌组不合规则。改为使用默认牌组。
+PLAYERNAME的牌组不合规。改用默认牌组。
 SelectDeck
-选择要游玩的牌组。
+请选择要使用的牌组。
 WaitingSelectDeck
 等待选择牌组。
 UsingDeck
-PLAYERNAME选择了牌组。
+已选择PLAYERNAME的牌组。
 ConfirmBankrupt
 宣布破产并重新开始一个新的俱乐部？
 ConfirmConcede
@@ -75,77 +75,89 @@ ConfirmConcede
 ConfirmExit
 你想要停止观战这场游戏吗？
 WentBankrupt
-SOURCEPLAYER破产了，并并开始了一个新的俱乐部。
+SOURCEPLAYER破产了，并开始了一个新的俱乐部。
 VictoryForPlayer
-恭喜！你达到了100声望，并赢得了这场游戏。
+恭喜！你已达到100声望，赢得本局胜利。
 VictoryForAI
-你的对手达到了100声望并赢得了游戏。
+遗憾! 对手已达到100声望，赢得本局胜利。
 VictoryOnline
-PLAYERNAME达到了100声望并赢得了游戏。
+PLAYERNAME已达到100声望，赢得本局胜利。
 VictoryForConcedePlayer
-OPPONENTPLAYER认输。你赢了。
+OPPONENTPLAYER认输了。你赢了。
 VictoryForConcede
-OPPONENTPLAYER认输。PLAYERNAME赢得了游戏。
+OPPONENTPLAYER认输了。PLAYERNAME赢得了本局胜利。
 Return
 结束游戏
 OpponentPlaying
-你的对手正在打出卡牌……
+你的对手正在行动……
 WatchingGame
-观战游戏中……
+正在观战……
 PlayACard
 PLAYERNAME打出了CARDNAME。
 PlayACardOpponentBoard
 PLAYERNAME将CARDNAME打出到了对手的区域。
 PlayAnotherCard
-PLAYERNAME可以打出另一张卡牌。回合继续。
+PLAYERNAME可以再打出一张牌。回合继续。
 StartPlayer
-由你开始游戏。选择一张卡牌打出，或者抽牌来结束回合。
+由你先手。请打出一张牌，或抽牌结束回合。
 StartOpponent
-由你的对手开始游戏。请等待她的行动。
+由你的对手先手。请等待她的行动。
 StartOnline
-PLAYERNAME选择了开始。每位玩家必须选择一个牌组。
+PLAYERNAME被选为先手。双方玩家都必须选择牌组。
 StartTurnLogChat
-回合TURNNUMBER - PLAYERNAME
+第TURNNUMBER回合 - PLAYERNAME
+EndTurnPlayer
+SOURCEPLAYER FAMELABEL声望，MONEYLABEL金钱。
 EndDrawPlayer
-SOURCEPLAYER抽了一张卡牌。FAMEMONEY。
+SOURCEPLAYER抽了一张牌。FAMELABEL声望，MONEYLABEL金钱。
 UpgradeToLevel2
-获得小屋(MONEY)
+获得小屋（MONEYAMOUNT）
+UpgradeToLevel3
+获得房屋（MONEYAMOUNT）
 UpgradeToLevel4
-获得豪宅(MONEY)
+获得豪宅（MONEYAMOUNT）
+UpgradeToLevel5
+获得庄园（MONEYAMOUNT）
 UpgradedToLevel2
-PLAYERNAME花费MONEYLABEL升级到小屋。
+PLAYERNAME花费MONEYLABEL金钱升级为小屋。
 UpgradedToLevel3
-PLAYERNAME花费MONEYLABEL升级到房屋。
+PLAYERNAME花费MONEYLABEL金钱升级为房屋。
 UpgradedToLevel4
-PLAYERNAME花费MONEYLABEL升级到豪宅。
+PLAYERNAME花费MONEYLABEL金钱升级为豪宅。
 UpgradedToLevel5
-PLAYERNAME花费MONEYLABEL升级到庄园。
+PLAYERNAME花费MONEYLABEL金钱升级为庄园。
 GainFame
-SOURCEPLAYER从CARDNAME获得了AMOUNT声望。
+SOURCEPLAYER从CARDNAME获得了FAMELABEL声望。
 GainMoney
-SOURCEPLAYER从CARDNAME获得了AMOUNT金钱。
+SOURCEPLAYER从CARDNAME获得了MONEYLABEL金钱。
 GainFameMoney
-SOURCEPLAYER从CARDNAME获得了FAMEAMOUNT声望和MONEYAMOUNT金钱。
+SOURCEPLAYER从CARDNAME获得了FAMELABEL声望和MONEYLABEL金钱。
 LoseFame
-SOURCEPLAYER失去了AMOUNT声望。
+SOURCEPLAYER失去了FAMELABEL声望。
 LoseMoney
-SOURCEPLAYER失去了AMOUNT金钱。
+SOURCEPLAYER失去了MONEYLABEL金钱。
 StealFame
-SOURCEPLAYER从OPPONENTPLAYER偷取了AMOUNT声望。
+SOURCEPLAYER从OPPONENTPLAYER处偷取了FAMELABEL声望。
 StealMoney
-SOURCEPLAYER从OPPONENTPLAYER偷取了AMOUNT金钱。
+SOURCEPLAYER从OPPONENTPLAYER处偷取了MONEYLABEL金钱。
 StealFameMoney
-SOURCEPLAYER从OPPONENTPLAYER偷取了FAMEAMOUNT声望和MONEYAMOUNT金钱。
+SOURCEPLAYER从OPPONENTPLAYER处偷取了FAMELABEL声望和MONEYLABEL金钱。
 MemberLeaveClub
-CARDNAME离开了SOURCEPLAYER俱乐部。
+CARDNAME离开了SOURCEPLAYER的俱乐部。
 EventRemoved
-CARDNAME事件被移除。
+事件CARDNAME已被移除。
 EventExpired
-CARDNAME事件已经失效。
+事件CARDNAME已结束。
+SelectedPlayerToStart
+PLAYERNAME被随机选为先手。
+JoinedClubCardGame
+PLAYERNAME加入了Club Card游戏。
+PlayerMessage
+PLAYERNAME：MSG
 ChatHere
-在这里聊天……
+在此聊天……
 GroupLiability
-闹事者
+累赘
 GroupStaff
 工作人员
 GroupPolice
@@ -155,7 +167,7 @@ GroupCriminal
 GroupFetishist
 恋物癖者
 GroupPornActress
-色情演员
+色情女演员
 GroupMaid
 女仆
 GroupAsylumPatient
@@ -179,207 +191,253 @@ GroupPlayer
 GroupShibari
 绳艺
 GroupExhibitionist
-露出癖
+露出狂
 Title Kinky Neighbor
 变态邻居
+Text Kinky Neighbor
+若有友方可爱邻家女孩，每回合+2金钱。
 Title Cute Girl Next Door
 可爱邻家女孩
 Text Cute Girl Next Door
-<F>每天邻居都在变得更好。
+<F>邻里关系一天比一天好了。
 Title Voyeur
 窥视癖
+Text Voyeur
+每有2名可见的露出狂，每回合+1金钱（最多+3)。若可见的露出狂有10名及以上，每回合+2声望。
+Title Nudist
+裸体主义者
 Text Nudist
-<F>我们更喜欢自然主义者这个称呼。
+<F>我们更喜欢天体主义者这个叫法。
 Title Party Animal
-聚会动物
+派对动物
 Text Party Animal
-<F>最好的计划开头：拿起我的啤酒。
+<F>最棒的计划总是从这句话开始：帮我拿一下啤酒。
 Title Auctioneer
 拍卖师
 Text Auctioneer
-拍卖所有收益翻倍。
+拍卖奖励翻倍。
 Title Uptown Girl
 上城女孩
 Text Uptown Girl
-<F>她活在她的精致世界里。
+<F>她一直活在自己的养尊处优的小世界里。
 Title Tourist
 游客
 Text Tourist
-<F>我的假期需要一个假期。
+<F>我需要从假期里再休个假。
 Title Diplomat
-交涉家
+外交官
 Text Diplomat
-<F>业务或休闲？痛苦和快乐。
+<F>是出差还是度假？痛苦与欢愉。
 Title Gambler
 赌徒
+Text Gambler
+回合结束（50%几率）：+1金钱。
 Title Red Twin
 红色双子
 Text Red Twin
-<F>我们不能共享思维，但能共享高潮。
+<F>我们不能共享思想，但能共享高潮。
 Title Blue Twin
 蓝色双子
+Text Blue Twin
+若有友方红色双子，每回合+1声望。
 Title Rope Bunny
 小绳兔
+Text Rope Bunny
+若有友方支配者，每回合+2金钱。
 Title Shy Submissive
 羞涩顺从者
+Text Shy Submissive
+回合开始：若有6名及以上友方，则离场。
 Title Rope Sensei
 绳艺老师
 Text Rope Sensei
-<F>（日语）尊重绳子
+<F>（日语）尊重绳索
 Title LARP Queen
 LARP女王
 Text LARP Queen
-<F>在我的下个任务里，我需要附魔绳子，情欲药剂以及一个诅咒贞操带。
+<F>我下一个任务需要附魔绳索、爱情药水和一条被诅咒的贞操带。
 Title Local Influencer
-地区领袖
+本地网红
 Text Local Influencer
-+3金钱并抽1张牌。
+进场：-4金钱，抽一张牌。
 Title Wannabe Princess
 梦想公主
+Text Wannabe Princess
+俱乐部5级时，每回合+2声望。
 Title Waitress
-女招待
+女服务员
+Text Waitress
+若有友方派对动物，每回合+1金钱。若有友方游客，每回合+1金钱。
 Title Bouncer
 门卫
 Text Bouncer
-<F>如果你惹我生气，你的屁股会撞上街。
+<F>你要是惹毛了我，小心一脚把你踹到街上去。
 Title Accountant
 会计
+Text Accountant
+俱乐部3级及以上时，每回合+1金钱。俱乐部5级时，每回合+1金钱。
 Title Secretary
 秘书
 Text Secretary
-你的有时间限制的卡牌持续时间减少1回合。
+你的限时事件持续时间延长一回合。
 Title Associate
 助理
+Text Associate
+每回合+1行动。
 Title Human Resource
 人力资源
 Text Human Resource
-在4回合内，每次你抽牌时，你额外抽一张卡牌。
+抽牌行动：多抽一张牌。
 Title Policewoman
 女警察
 Text Policewoman
-<F>我为了免费的手铐选择这个工作。
+<F>我接这份工作，就是为了那副免费手铐。
 Title Pusher
 毒贩
+Text Pusher
+若有友方Sidney，每回合+1金钱。回合结束：若有友方警察，则离场。
 Title Junkie
 瘾君子
+Text Junkie
+若有友方毒贩，每回合+2金钱。回合结束：若有友方警察，则离场。
 Title Zealous Cop
 狂热条子
 Text Zealous Cop
-<F>规则就是规则，我会保证规则被遵守。
+<F>规则就是规则，我会确保所有人都严格遵守。
 Title Gangster
 歹徒
+Text Gangster
+每有一名其他友方罪犯，每回合+1金钱（最多+5）。回合结束：若有友方警察，则离场。
 Title Paroled Thief
 假释小偷
+Text Paroled Thief
+回合结束：若没有友方警察，对手偷取一金钱。
 Title Police Cadet
-警察学院
+见习警员
 Text Police Cadet
-<F>嘿！把我的钥匙还给我！
+<F>喂！把我的钥匙还给我！
 Title Stepmother
 继母
+Text Stepmother
+友方（-声望+金钱）进场时：偷取等同于其金钱的声望。进场：每有一名友方（-声望），+1声望。
 Title Sheriff
 警长
 Text Sheriff
-当她进入你的俱乐部时，抽2张卡牌。
+进场：抽2张牌。
 Title Maid Lover
 女仆爱好者
+Text Maid Lover
+每有一名友方女仆，每回合+1金钱（最多+3）。若有友方4级及以上女仆，每回合+2声望且-2金钱。
 Title Diaper Lover
 尿布爱好者
+Text Diaper Lover
+每有一名友方宝宝，每回合+1金钱（最多+3）。友方宝宝进场时：若有3名及以上其他友方宝宝，抽一张牌。
 Title Masochist
 受虐狂
+Text Masochist
+若有友方支配者，每回合+1声望和+1金钱。你弃牌时：+1金钱。
 Title Feet Worshiper
 足崇拜者
 Title Fin-Dom Simp
 取款机小虾奴
 Text Fin-Dom Simp
-获得等于在场的最高等级支配者的金钱。进场：获得3金钱。
+每回合获得金钱，数值等于友方支配者中的最高等级。进场：+3金钱。
 Title Fin-Dom Whale
 取款机大鲸奴
 Text Fin-Dom Whale
-每有一个女主人在场，每回合+2金钱。当她进入你的俱乐部时，抽一张卡牌。
+每有一名友方女主人，每回合+2金钱。进场：抽一张牌。
 Title Porn Addict
 色情成瘾者
 Text Porn Addict
-每有一个色情会员在场，每回合+1金钱。（最多+2）
+每有一名友方色情会员，每回合+1金钱（最多+2）。
 Title Porn Amateur
 业余色情工作者
 Text Porn Amateur
-<F>我就是下一个玛丽莲·猛撸。
+<F>我会成为下一个玛丽莲·梦浪。
 Title Porn Movie Director
 色情电影导演
 Text Porn Movie Director
-每有一个色情演员在场，获得+1声望和+1金钱。（最多4）
+每有一名友方色情女演员，每回合+1声望和+1金钱（各最多+4）。
 Title Porn Lesbian
 色情女同性恋
+Text Porn Lesbian
+若有友方恋物癖者，每回合+1声望。若有其他友方色情女演员，每回合+2金钱。
 Title Porn Veteran
 色情老手
 Text Porn Veteran
-进场：获得3声望和金钱。
+进场：+3声望和金钱。
 Title Porn Star
 色情明星
 Text Porn Star
-进场：获得5声望和金钱。
+进场：+5声望和金钱。
 Title Cam Girl
 直播女孩
 Text Cam Girl
-当她进入你的俱乐部时，随机弃一张卡牌，然后抽一张卡牌。
+进场：抽一张牌。
 Title Rookie Maid
 菜鸟女仆
 Text Rookie Maid
-<F>我等不及参加协会入会式了。
+<F>我都等不及参加姐妹会的入会仪式了。
 Title Coat Check Maid
 衣帽女仆
 Text Coat Check Maid
-<F>不要弄丢你的收据。
+<F>请收好您的寄存小票，别弄丢了。
 Title Regular Maid
 常规女仆
 Text Regular Maid
-<F>要续杯饮料吗，女士？
+<F>小姐，需要给您续杯吗？
 Title French Maid
 法国女仆
 Text French Maid
-<F>（法语）为您带来无可挑剔的调皮服务。
+<F>（法语）提供无可挑剔又调皮的服务。
 Title Head Maid
 女仆长
 Text Head Maid
-每有一个其他女仆在场，每回合+1声望。（最多6）
+每有一名其他友方女仆，每回合+1声望（最多+6）。
 Title Confused Maid
 迷糊女仆
 Text Confused Maid
-<F>我用过三个掸子了但是这个马桶还是堵着的。
+<F>我已经换了三把掸子，这个马桶还是堵着。
 Title Curious Patient
 好奇病人
 Text Curious Patient
-<F>为什么墙壁有软垫？
+<F>为什么墙壁上都包了软垫？
 Title Part-Time Patient
 业余病人
+Text Part-Time Patient
+抽牌行动：+1金钱和-1声望。
 Title Novice Nurse
 菜鸟护士
 Text Novice Nurse
-每有一个收容所病人在场，每回合+1声望。最多3
+每有一名友方病人，每回合+1声望（最多+3）。
 Title Commited Patient
 忠诚病人
 Text Commited Patient
 <F>我的拘束衣永远不够紧。
 Title Veteran Nurse
 老练护士
+Text Veteran Nurse
+每有一名友方病人，每回合+2声望且-1金钱（最多=俱乐部等级+3）。
 Title Permanent Patient
 永久病人
 Text Permanent Patient
-<F>周一的检查和周二的治疗差不多。
+<F>周一的检查和周二的治疗相差不大。
 Title Doctor
 医生
 Text Doctor
-每有一个收容所病人在场，每回合+3声望。最多12
+每有一名友方病人，每回合+3声望（最多+12）。
 Title Picky Nurse
 难伺候的护士
+Text Picky Nurse
+每回合+声望，数值等同于友方病人中的最高等级。
 Title Amateur Rigger
 业余绳师
 Text Amateur Rigger
-<F>手发紫？我确定这是正常的。
+<F>手变紫了？我确定这是正常的。
 Title Domme
 支配者
 Text Domme
-<F>今晚你的膝盖会悲鸣。
+<F>你今晚的膝盖会很酸。
 Title Madam
 夫人
 Text Madam
@@ -387,11 +445,11 @@ Text Madam
 Title Mistress
 女主人
 Text Mistress
-<F>这项圈会让你想起我的力量。
+<F>这条项圈会提醒你我的权力。
 Title Dominatrix
 女王
 Text Dominatrix
-<F>带上你的信用卡，奴隶。
+<F>带上你的信用卡来，奴隶。
 Title Mistress Sophie
 女主人Sophie
 Text Mistress Sophie
@@ -399,9 +457,11 @@ Text Mistress Sophie
 Title Scammer
 骗子
 Text Scammer
-你的有时间限制的卡牌能额外持续一回合。
+你的限时事件少持续一回合。
 Title Pyramid Schemer
 传销骗子
+Text Pyramid Schemer
+友方进场时：每有2名等级低于其的友方，-1金钱。
 Title Ponzi Schemer
 庞氏骗子
 Text Ponzi Schemer
@@ -409,63 +469,87 @@ Text Ponzi Schemer
 Title Party Pooper
 派对冷场客
 Text Party Pooper
-<F>为什么最近大家都这么无聊。
+<F>为什么现在大家都这么无聊？
 Title College Dropout
 大学肄业人
 Text College Dropout
-如果你的声望比对手高，失去-2声望，如果你的俱乐部等级是4级或更高，失去-1声望。
+若你的声望高于对手，每回合-2声望。俱乐部4级及以上时，改为每回合-1声望。
 Title Union Leader
 工会领袖
+Text Union Leader
+每有一名友方，每回合+1声望；每有一名敌方，每回合-1声望（最多±5）。
 Title No-Fap Advocate
 不撸倡议者
+Text No-Fap Advocate
+本回合每执行一次打牌行动，每回合-1声望。
 Title Pandora Infiltrator
 潘多拉潜入者
+Text Pandora Infiltrator
+进场：选择一名会员，然后获得其类型。友方进场时：若与其共享类型，随机-1/-0或-0/-1（最多-3/-2）。
 Prerequisite Pandora Infiltrator
-从你的俱乐部选择一个会员，复制TA的类型。
+进场：选择一名会员，然后获得其所有类型。友方进场：若与其拥有相同类型，则随机获得 -1/-0 或 -0/-1（上限 -3/-2）
 Title Uncontrollable Sub
 失控顺从者
+Text Uncontrollable Sub
+停留2回合。非累赘友方进场时：其获得-1/0。进场：-8声望。
 Title Baby Girl
 女宝宝
+Text Baby Girl
+若有友方ABDL妈咪，每回合+1金钱。
 Title Caring Mother
 贴心妈妈
 Text Caring Mother
 <F>妈妈，你觉得她们会弄坏我的球球吗。
 Title Diaper Baby
 尿布宝宝
+Text Diaper Baby
+若有友方女仆，每回合+3金钱。
 Title Sugar Baby
 糖果宝贝
 Text Sugar Baby
-<F>这个宝贝想要一个钻石奶嘴。
+<F>这个宝宝想要一个钻石奶嘴。
 Title Babysitter
 保姆
 Text Babysitter
-每有一个ABDL宝宝在场，每回合+2声望。最多4
+每有一名友方ABDL宝宝，每回合+2声望（最多+4）。
 Title Soap Opera Mother
 肥皂剧妈妈
+Text Soap Opera Mother
+进场：若有友方ABDL宝宝，+25声望。
 Title Amanda
 Amanda
 Text Amanda
-<F>我没想到在这种色情的地方能找到第二个家。
+<F>我从没想过会在这个变态的地方找到第二个家。
 Title Sarah
 Sarah
+Text Sarah
+若有友方女主人Sophie，每回合+2声望。若有友方Amanda，每回合+1声望。若有友方Sidney，每回合-1声望。
 Title Sidney
 Sidney
 Text Sidney
-<F>叫我小猪的都会被五花大绑。
+<F>谁要是叫我小猪，就会被五花大绑。
 Title Jennifer
 Jennifer
+Text Jennifer
+进场：选择一名友方移除。
 Prerequisite Jennifer
-在Jennifer进场前，从你的俱乐部里选择一个会员移除。
+请选择你俱乐部中的一名会员，在Jennifer进场前将其移除。
 Title College Freshwoman
 大学女新生
+Text College Freshwoman
+若有友方Julia或Yuki，每回合+1声望。
 Title College Nerd
 大学书呆子
+Text College Nerd
+若有友方Julia或Yuki，每回合+1金钱。
 Title College Hidden Genius
 隐藏天才
+Text College Hidden Genius
+若有友方Mildred，每回合+4声望。
 Title Substitute Teacher
 代课老师
 Text Substitute Teacher
-每有一个大学学生在场，每回合+1声望。最多4
+每有yi 名友方学生，每回合+1声望（最多+4）。
 Title Julia
 Julia
 Text Julia
@@ -473,277 +557,375 @@ Text Julia
 Title Yuki
 Yuki
 Text Yuki
-<F>闭上脑子或者闭上腿，你都无法学习。
+<F>思想封闭或双腿紧闭，都学不到东西。
 Title Mildred
 Mildred
 Text Mildred
-<F>在我的课上，沉默是金，并且强制执行。
+<F>在我的课上，沉默是金，必须强制执行
 Title Sam the Busty Cow
 大奶牛Sam
 Text Sam the Busty Cow
 <F>有牛奶吗?
 Title Suki
 Suki
+Text Suki
+若有其他友方兽耳娘，每回合+1金钱。
 Title Angela
 Angela
 Text Angela
-<F>呼喵~我可以让你对色色药水感兴趣吗喵~
+<F>嗯嗯喵~ 要不要来点色色的药水喵？~
 Title Scratch and Win
 刮刮彩
+Text Scratch and Win
+打出：+7-10金钱。
 Title Kinky Garage Sale
 变态车库销售会
+Text Kinky Garage Sale
+打出：+15金钱。
 Title Second Mortgage
 次级贷款
 Text Second Mortgage
-+20金币。
+打出：+20金钱。
 Title Foreign Investment
 外部投资
 Text Foreign Investment
-+30金钱。
+打出：+30金钱。
 Title Cat Burglar
 入室盗贼
 Text Cat Burglar
-进入：如果没有警察在场，偷取4金钱。然后如果对手的俱乐部中没有警察在场，偷取4声望。
+打出：偷取等同于对手俱乐部等级的金钱和声望，然后若没有敌方警察，则重复一次。
 Title Money Heist
 金钱大盗
+Text Money Heist
+打出：偷取6金钱，然后若有友方罪犯，偷取2金钱，然后若没有敌方警察，偷取4金钱。
 Title BDSM Ball
 BDSM舞会
+Text BDSM Ball
+打出：所有友方顺从者或支配者获得+1/+0。
 Title Vampire Ball
 吸血鬼舞会
 Text Vampire Ball
-每有一个不是支配者、闹事者、兽耳娘、女仆、玩家或者工作人员的会员，获得2声望。
+打出：每有一名不是支配者、累赘、兽耳娘、女仆、在线玩家或工作人员的友方，+2声望。
 Title Straitjacket Saturday
 拘束衣周末
+Text Straitjacket Saturday
+打出：每有一名友方病人，+4金钱，并随机抽一名护士。
 Title Charity Auction
 慈善拍卖
+Text Charity Auction
+打出：选择一名友方移除，每一级俱乐部等级获得+1声望。
 Prerequisite Charity Auction
-从你的俱乐部选择一个会员，移除以换取声望。
+请从你的俱乐部选择一个会员，移除以换取声望。
 Title Slave Auction
 奴隶拍卖
+Text Slave Auction
+打出：选择一名友方移除，每一级俱乐部等级获得+1金钱。
 Prerequisite Slave Auction
-从你的俱乐部选择一个会员，移除以换取金钱。
+请从你的俱乐部选择一个会员，移除以换取金钱。
 Title College Bash
 大学狂欢
+Text College Bash
+打出：每有一名友方学生，+2声望且-1金钱；然后若有友方Sidney，每有一名友方学生再+1声望。
 Title Ransomware
 勒索软件
+Text Ransomware
+打出：对手失去等同于其俱乐部等级×4的金钱；若有敌方Jennifer或Amanda，则减半。
 Title Shibari Evening
 绳艺之夜
+Text Shibari Evening
+打出：每有一名非支配者友方，+1声望；每有一名友方绳艺，再+1声望。
 Title Moving Out of Town
 搬出城市
+Text Moving Out of Town
+打出：选择一名敌方移除。
 Prerequisite Moving Out of Town
-从你对手的俱乐部里选择一个会员移除。
+请选择对手俱乐部中的一名会员将其移除。
 Prerequisite Kidnapping
-从你对手的俱乐部里选择一个会员绑架。
+请选择对手俱乐部中的一名会员将其绑架。
 Title Virtual Meeting
 虚拟聚会
+Text Virtual Meeting
+打出：抽2张牌。
 Title Weekend Meeting
 周末聚会
+Text Weekend Meeting
+打出：抽3张牌。
 Title Fancy Meeting
 奢华聚会
+Text Fancy Meeting
+打出：抽4张牌。
 Title Prank
 恶作剧
 Text Prank
-你的对手弃2张随机卡牌。
+打出：对手随机弃2张牌。
 Title Sabotage
 蓄意破坏
+Text Sabotage
+持续3回合。对手回合结束：若对手执行了抽牌行动，对手失去10声望；若对手执行了打牌行动，对手弃一张牌。
 Title Nursery Night
 幼儿之夜
+Text Nursery Night
+打出：每有一对友方妈咪-宝宝组合，对手失去6声望；然后若有友方女仆，+声望，数值等同于该数值的一半。
 Title Bad Press
 负面新闻
+Text Bad Press
+持续3回合。对手无法获得每回合的声望。打出：结束对手的精妙营销。
 Effect Bad Press
-由于OPPONENTPLAYER的负面新闻事件，没有获得声望。
+OPPONENTPLAYER的负面新闻事件使其无法获得声望。
 Title Clever Marketing
 精妙营销
+Text Clever Marketing
+持续3回合。每在场一回合，每回合声望+50%。打出：结束对手的负面新闻。
 Effect Clever Marketing
-由于SOURCEPLAYER的精妙营销事件，获得声望。翻倍1
+SOURCEPLAYER的精妙营销事件使获得的声望增加。
 Title Repay Loan
 偿付借贷
+Text Repay Loan
+持续3回合。对手无法获得每回合的金钱。打出：结束对手的银行贷款。
 Effect Repay Loan
-由于OPPONENTPLAYER的偿付借贷事件，没有金钱收入。
+OPPONENTPLAYER的偿付借贷事件使其无法获得金钱。
 Title Bank Loan
 银行贷款
 Text Bank Loan
-在3回合内，你在回合结束时获得双倍金钱。取消对手的偿付借贷。
+持续3回合。你每回合的金钱会翻倍。打出：结束对手的偿付借贷。
 Effect Bank Loan
-由于OPPONENTPLAYER的银行贷款事件，金钱收入翻倍。
+SOURCEPLAYER的银行贷款事件使获得的金钱翻倍。
 Title Teamwork
 合作
+Text Teamwork
+持续4回合。抽牌行动：多抽一张牌。
 Title Overtime
 加班
+Text Overtime
+持续3回合。每回合+1行动。
 Title Porn Convention
 色情大会
 Text Porn Convention
-在3回合内，所有玩家在回合结束时每有一个色情演员在场，获得3声望（最多12）。
+持续3回合。双方玩家每有一名自己俱乐部中的色情女演员，每回合+3声望（各最多+12）。
 Title Kidnapping
 绑架
+Text Kidnapping
+打出：选择一名敌方移除，然后失去等同于对手俱乐部等级平方的金钱。
 Title Pandora Box
 潘多拉魔盒
 Text Pandora Box
-弃掉你的手牌。每个玩家抽牌，直到TA手牌中至少有4张牌。每个玩家抽一张牌。
+打出：弃掉你的手牌，然后双方玩家抽牌直到手牌至少有4张，然后双方玩家各抽一张牌。
 Effect Pandora Box
-SOURCEPLAYER打开了潘多拉魔盒并弃掉了TA的手牌。所有玩家抽牌，直到TA手牌中有4张牌，然后抽一张牌。
+SOURCEPLAYER打开了潘多拉魔盒并弃掉了手牌。所有玩家抽牌直到手牌有4张，然后各抽一张牌。
 Title Toy Box
 玩具箱
 Text Toy Box
-当她进入你的俱乐部时，抽一张卡牌。如果有游客在场，获得+3金钱，如果有外交官在场，获得+3声望。
+打出：+3声望、+3金钱，并抽一张牌。
 Title Restrain
 束缚
+Text Restrain
+持续2回合。若你的俱乐部等级低2级及以上，则改为持续一回合。玩家无法打出事件。使所有生效中的事件无效。
 Title Detective
 侦探
+Text Detective
+对手抽牌行动：+2金钱；若没有友方累赘，+1声望。
 Title Launder
 跑分佬
+Text Launder
+需要罪犯才能打出。打出：花费你所有金钱，然后每花费3金钱，+1声望。回合结束（在街道中）：返回牌组。
 Title Big Baby
 大宝贝
 Text Big Baby
-如果对手的手牌中卡牌更多，+1金钱。当她进入你的俱乐部时，对手抽一张牌。
+进场：对手抽一张牌。
 Title Fussy Baby
 挑剔宝贝
 Text Fussy Baby
-当对手打出事件时返回手牌，你获得4声望。
+对手打出事件时：+4声望，并返回手牌。
 Effect Fussy Baby
-挑剔宝贝返回到SOURCEPLAYER的手牌并且给了4声望。
+挑剔宝贝返回了SOURCEPLAYER的手牌，并给予了4声望。
 Title Daycare Enthusiast
 托儿所狂热者
+Text Daycare Enthusiast
+友方妈咪进场时：从你的手牌中随机打出一名宝宝。
 Title Daycare Party
 托儿所派对
+Text Daycare Party
+打出：每有一名友方妈咪，+4声望并抽一张牌。
 Title Nanny
 保姆奶奶
+Text Nanny
+友方ABDL宝宝进场时：+声望，数值等同于你的俱乐部等级。
 Title Dommy Mommy
 支配妈咪
 Text Dommy Mommy
-每有一个ABDL宝宝在场，每回合+1声望。当她进入你的俱乐部时，每有一个会员在场，获得1声望。
+每有一名友方ABDL宝宝，每回合+1声望。进场：每有一名友方会员，+1声望。
 Title Contract Caretaker
 合同保姆
 Text Contract Caretaker
-当一个ABDL宝宝进入你的俱乐部时，你的对手失去4声望。
+友方ABDL宝宝进场时：对手失去4声望。
 Title Teacher's Aide
 助教
 Text Teacher's Aide
-<F>日夜帮助她的老师
+<F>日夜辅佐她的老师
 Title Homeroom
 班主任
+Text Homeroom
+需要3名及以上大学会员才能打出。持续4回合。玩家无法升级自己的俱乐部。
 Title Student Custodian
 学生管理员
+Text Student Custodian
+每有2名友方学生，每回合+1金钱。俱乐部4级及以上时，改为每回合+1声望（上限为友方老师和工作人员的数量）。
 Title Recess
 课间休息
+Text Recess
+打出：每有一名友方宝宝或学生，+2金钱，然后抽2张牌。
 Title Med Student
 医学生
+Text Med Student
+若有友方病人，每回合+1金钱；若有友方老师，每回合+1声望。
 Title First Bell
 预备铃
+Text First Bell
+打出：随机抽一名学生，然后在第一回合或若有友方老师时，+1行动。
 Effect First Bell Draw
-SOURCEPLAYER由于预备铃抽取了1张牌
+SOURCEPLAYER通过预备铃抽了一张牌
 Effect First Bell No Draw
-SOURCEPLAYER无法由于预备铃抽取任何卡牌
+SOURCEPLAYER无法通过预备铃抽到任何牌
 Title Debuter
-首次亮相
+初登舞台者
+Text Debuter
+进场：随机抽一个事件。
 Effect Debuter Draw
-SOURCEPLAYER由于首次亮相抽取了1个随机事件
+SOURCEPLAYER通过初登舞台者随机抽了一个事件
 Effect Debuter No Draw
-SOURCEPLAYER无法由于首次亮相抽取任何事件
+SOURCEPLAYER无法通过初登舞台者抽到任何事件
 Title Re-Run
 重播
+Text Re-Run
+打出：+1行动，从你的街道随机返回一个视频到手牌，然后+声望，数值等同于其等级。
 Effect Re-Run
-SOURCEPLAYER从他们的街道中返回了CARDNAME到他们的手牌并获得了AMOUNT声望。
+SOURCEPLAYER将CARDNAME从其街道返回了手牌，并获得了FAMELABEL声望。
 Title Naughty Knotter
 调皮缚手
 Text Naughty Knotter
-进场：从你的街道中打出2个随机绳结。
+进场：从你的街道随机打出2个绳结。
 Title Gangbang Banger
 群交狂人
 Text Gangbang Banger
-将你俱乐部中的所有色情女演员返回到你的手牌中，然后打出你手牌中的所有色情会员。
+打出：将所有友方色情女演员返回手牌，然后打出你手牌中所有的色情会员。
 Effect Gangbang Banger
-SOURCEPLAYER的俱乐部中的色情女演员离开了...然后立刻又走了进来！
+SOURCEPLAYER俱乐部中的色情女演员离场了……然后立刻大摇大摆地走了回来！
 Title Alvin
 Alvin
+Text Alvin
+你打出束缚或绳艺事件，或绑架一名支配者或女主人时：召唤一名绳奴（俱乐部中最多3名）。
 Title Rope Slave
 绳奴
 Text Rope Slave
-当你打出一个绳结或者绳艺事件时，获得1金钱。
+你打出绳艺事件或绳结时：+1金钱。
 Effect Rope Slave
-SOURCEPLAYER由于绳奴获得了AMOUNT金钱。
+SOURCEPLAYER从绳奴获得了MONEYLABEL金钱。
 Title Quack Doctor
 江湖郎中
+Text Quack Doctor
+回合开始：双方玩家每有一名友方病人，失去一声望（最多-4）。
 Effect Quack Doctor
-SOURCEPLAYER和OPPONENTPLAYER失去了AMOUNT声望。
+SOURCEPLAYER和OPPONENTPLAYER失去了FAMELABEL声望。
 Title Sophie
 Sophie
+Text Sophie
+若有友方LARP女王，每回合+2声望。若有3名及以上友方兽耳娘，每回合+1金钱。进场：选择一名非累赘会员，使其数值翻倍。
 Effect Sophie
-CARDNAME的声望和金钱被可爱的Sophie翻倍了~
+CARDNAME的声望和金钱被可爱的Sophie提升了~
 Prerequisite Sophie
-在Sophie进入之前选择一个会员进行强化。
+请选择一名会员，在Sophie进场前对其进行强化。
 Title Hypnotherapist
 催眠治疗师
 Text Hypnotherapist
-当她进入你的俱乐部时，将所有一级会员返回到TA的所有者手中，然后再进行一次行动。
+进场：+1行动，并将所有1级会员返回手牌。
 Effect Hypnotherapist
-所有一级会员已经返回到他们的所有者手中。
+所有1级会员已返回其所有者的手牌。
 Title Help Button
 帮助按钮
+Text Help Button
+打出：选择一名友方返回牌组，然后从你的牌组中随机打出一名同级的女仆或护士。
 Effect Help Button No Draw
-SOURCEPLAYER无法由于帮助按钮召唤任何卡牌。
+SOURCEPLAYER无法通过呼叫按钮召唤任何牌。
 Prerequisite Help Button
-选择一个会员从你的俱乐部返回到牌组。
+请选择你俱乐部中的一名会员返回牌组。
 Title Prodigious Patient
 神童病人
 Text Prodigious Patient
-当她离开你的俱乐部时，你的对手失去15声望并丢弃一张随机卡牌。在6回合后离开你的俱乐部。
+停留6回合。离场：对手失去15声望并随机弃一张牌。
 Title Theatre Nurse
 剧院护士
 Text Theatre Nurse
-当一个收容所病人进入你的俱乐部时，获得3金钱并抽一张卡牌。
+友方病人进场时：+3金钱并抽一张牌。
 Title Knot Nut
 绳结狂
 Text Knot Nut
-<F>这些绳子不会永远困住我...最好再加一些。
+<F>这些绳子不会永远困住我……最好再多加几根。
 Title Quality Maid
 优质女仆
+Text Quality Maid
+你的俱乐部升级费用减少10金钱。
 Title Public Spanking
 公开鞭打
+Text Public Spanking
+持续3回合。回合结束：对手失去声望，数值等同于4加上友方支配者中的最高等级。
 Effect Public Spanking
-SOURCEPLAYER因为公开鞭打失去了AMOUNT声望。
+SOURCEPLAYER因当众打屁股失去了FAMELABEL声望。
 Title Nawashi
 绳师
 Text Nawashi
-当她进入你的俱乐部时，对手在下个回合结束时不会获得声望。
+进场：对手下回合无法获得每回合的声望。
 Effect Nawashi
-由于OPPONENTPLAYER的绳师，没有获得声望。
+由于OPPONENTPLAYER的绳师，没有获得任何声望。
 DiscardPile
 街道（弃牌堆）
 Close
 关闭
 Title Burlington Bowtie
 伯灵顿蝴蝶结
+Text Burlington Bowtie
+打出：+4声望，每有一名友方绳艺老师，再+2声望。
 Effect Burlington Bowtie
-SOURCEPLAYER由于伯灵顿蝴蝶结获得了AMOUNT声望。
+SOURCEPLAYER从伯灵顿领结获得了FAMELABEL声望。
 Title Square Knot
 方结
+Text Square Knot
+打出：对手失去4声望，若有友方绳艺老师，+4声望。
 Effect Square Knot
-OPPONENTPLAYER由于方结失去了AMOUNT声望。
+OPPONENTPLAYER因平结失去了FAMELABEL声望。
 Effect Square Knot Sensei
-SOURCEPLAYER由于方结获得了AMOUNT声望。
+SOURCEPLAYER从平结获得了FAMELABEL声望。
 Title Closed Hitch
 双套结
+Text Closed Hitch
+打出：抽一张牌。
 Effect Closed Hitch
-SOURCEPLAYER由于双套结抽了一张卡牌。
+SOURCEPLAYER通过闭合系结抽了一张牌。
 Title Struggler's Knot
 称人结
+Text Struggler's Knot
+打出：+1行动。
 Title Quick Release Knot
 快解结
+Text Quick Release Knot
+打出：+4金钱，你街道中每有一个绳结再+1金钱，然后将此牌及你街道中所有绳结返回牌组。
 Effect Quick Release Knot
-SOURCEPLAYER由于快解结获得了AMOUNT金钱。
+SOURCEPLAYER从快解结获得了MONEYLABEL金钱。
 Title Master Class
 大师课程
 Text Master Class
-在接下来的3回合内，如果有一个绳艺老师在场，你的回合开始时从你的牌组中打出一个随机绳结。
+持续4回合。回合开始：若有友方绳艺老师，从你的牌组中随机打出一个绳结。
 Title Tie Tight
 绑紧
+Text Tie Tight
+打出：选择一名敌方返回牌组，然后除非有友方绳艺老师，否则对手抽一张牌。
 Prerequisite Tie Tight
-从你对手的俱乐部里选择一个会员移除。
+请选择对手俱乐部中的一名会员将其移除。
 Title Rope Auction
 绳索拍卖
+Text Rope Auction
+打出：选择一名友方移除，然后从你的牌组中随机打出一个绳结。
 Prerequisite Rope Auction
-从你的俱乐部选择一个会员移除。
+请选择你俱乐部中的一名会员将其移除。
 GroupSensei
 绳艺老师
 GroupKnot
@@ -751,135 +933,191 @@ GroupKnot
 Title Shibari Lover
 绳艺爱好者
 Text Shibari Lover
-当这张卡牌或者另一个绳艺会员进入你的俱乐部时，从你的牌组中打出一个随机绳结。
+进场，或友方绳艺进场时：从你的牌组中随机打出一个绳结。
 Title Goddess of Ropes
 绳艺女神
 Text Goddess of Ropes
-当你打出一个绳艺卡牌时，从你的牌组中打出一个随机绳结。
+你打出绳艺牌时：从你的牌组中随机打出一个绳结。
 Title Rope Slinger
 绳索射手
+Text Rope Slinger
+主动（每回合一次）：打出你手牌中所有的绳结。
+Effect Rope Slinger
+甩绳者打出了SOURCEPLAYER手牌中所有的绳结。
 Title Fit To Be Tied
 绑得紧紧
+Text Fit To Be Tied
+打出：打出你手牌、牌组和街道中所有的绳结，然后将你街道中所有的绳结返回牌组。
 Title Living Art
 人体艺术
 Text Living Art
-当你打出一个绳结或者绳艺事件时，获得1声望。
+你打出绳艺事件或绳结时：+1声望。
 Effect Living Art
-SOURCEPLAYER由于人体艺术获得了AMOUNT声望。
+SOURCEPLAYER从活体艺术获得了FAMELABEL声望。
 Title Attention Whore
 渴求关注
+Text Attention Whore
+进场：选择一个生效中的事件将其结束。
 Prerequisite Attention Whore
-在渴求关注进入时，选择一个正在生效的事件来移除。
+请选择一个生效中的事件，在求关注者进场前将其移除。
 MemberSummoned
-CARDNAME进入了SOURCEPLAYER的俱乐部。
+CARDNAME加入了SOURCEPLAYER的俱乐部。
 GroupPet
 宠物
 GroupOwner
 主人
 Title Bun Bun
 兔兔
+Text Bun Bun
+若有友方主人，每回合+1金钱。俱乐部5级及以上时，每回合+1声望。进场：+1声望且-1金钱。
 Title Naughty Kitty
 调皮猫咪
 Text Naughty Kitty
-当她进入俱乐部时，丢弃你的手牌，并失去3金钱。你每抽一张牌，获得等于你的建筑等级的金钱。
+进场：-3金钱并弃掉你的手牌。你抽牌时：+金钱，数值等同于你的俱乐部等级。
 Title Jessica
 Jessica
+Text Jessica
+宠物视你的俱乐部等级高2级。友方宠物进场时：+1声望并抽一张牌。
 Title MerMaid
 美人鱼
 Text MerMaid
-进场：失去25金钱。抽1张牌。如果有主人在场，进行额外一个行动。
+进场：-25金钱，抽一张牌，若有友方主人，+1行动。
 Title Puppy
 小狗狗
+Text Puppy
+俱乐部每2级，每回合+1金钱。若有友方主人，每回合+1声望。进场：-5金钱。
 Title Protective Owner
 保护欲主人
+Text Protective Owner
+宠物视你的俱乐部等级高一级。你弃掉宠物时：将其返回牌组。
 Title Feline Fatale
 危险猫女
+Text Feline Fatale
+进场：-13金钱，然后若有等级大于或等于其的友方主人，选择一名敌方移除。
 Prerequisite Feline Fatale
-从你对手的俱乐部里选择一个会员移除。
+请选择对手俱乐部中的一名会员将其移除。
 Title Wolf Girl
 狼女孩
+Text Wolf Girl
+俱乐部每2级，每回合+1声望。若有友方主人，每回合+1金钱。进场：-7金钱，且对手随机弃一张牌。
 Title Pet toys
 宠物玩具
+Text Pet toys
+打出：每有一名友方宠物，+2声望且-1金钱；若有友方主人，每有一名友方宠物再+1声望。
 Title Pet Sitter
 宠物保姆
+Text Pet Sitter
+每有一名宠物，每回合+1金钱（最多+5）。若对手有宠物，对手每回合+1金钱。
 Title Pet Rock
 宠物石头
 Text Pet Rock
 <F>只是一块石头...
 Title Tips
 小费
+Text Tips
+持续5回合。回合开始：+1金钱。
 Title Pet Trainer
 宠物训练师
+Text Pet Trainer
+若有友方表演犬，每回合+3声望。友方宠物进场时：+2声望。
 Title Show Dog
 表演犬
 Text Show Dog
-当她进入俱乐部时，失去15金钱。只要这个会员在你的俱乐部中，你的对手可以看到你的手牌。
+进场：-15金钱并展示你的手牌。
 Title Miss Mouse
 小老鼠小姐
+Text Miss Mouse
+若有友方主人，每回合+1声望。友方宠物进场时：你的俱乐部每2级，对手失去一声望。进场：-1金钱。
 Title Rich Owner
 富有的主人
 Text Rich Owner
-每有一个女仆在场，获得+1金钱（最多3）。如果你的俱乐部有4级或更高级别的女仆，获得+2声望和-2金钱。
+宠物视你的俱乐部等级高一级。若有友方女仆，每回合+1声望。友方宠物进场时：每有一名友方宠物，+1金钱（最多+5）。
 Title Tour Guide
 导游
+Text Tour Guide
+若有友方游客，每回合+3金钱。若有友方外交官，每回合+3声望。进场：抽一张牌。
 Title Moon
 月亮女士
+Text Moon
+无法成为目标。进场：-16金钱，并选择一名会员复制到你的手牌。
 Prerequisite Moon
-选择一个会员来创建一个该卡牌的幻象副本到你的手牌。
+请选择一名会员，在你的手牌中创建一张完全相同的幻象牌。
 Title Sticky Fingers
 手不干净
 Text Sticky Fingers
-进场：偷取2声望。当你通过其他效果偷取时，偷取1声望和金钱。
+进场：偷取2声望。你通过其他效果偷取时：偷取一声望和一金钱。
 Title Earner
 赚钱者
+Text Earner
+你街道中每有一名友方，每回合+1金钱（最多+5）。进场：从你的牌组中随机弃一名友方，然后+金钱，数值等同于其等级。
 Title Naughty Baby
 调皮宝贝
+Text Naughty Baby
+进场：若没有友方警察，偷取4金钱；然后若没有敌方警察，偷取4声望。
 Title Consigliere
 顾问
 Text Consigliere
-在你的回合结束时，花费8金钱抽一张卡牌并获得3声望。
+回合结束：花费8金钱，抽一张牌并+3声望。
 Title Con Artist
 骗术师
+Text Con Artist
+抽牌行动：若没有敌方警察，偷取一声望。
 Title Inspector
 检查员
 Text Inspector
-你升级俱乐部的费用减少10。
+除非你的俱乐部等级更高，否则双方的俱乐部升级费用各增加10。
 Title Troublemaker
 闹事者
 Text Troublemaker
-对手每次升级时失去3声望，除非他们有一个保镖。
+对手升级时：除非对手有门卫，否则对手失去3声望。
 Title Housekeeper
 女管家
+Text Housekeeper
+非女仆友方进场时：每有一名与其共享类型的友方，+1声望（最多+3）。
 Effect Housekeeper
-SOURCEPLAYER从CARDNAME获得了AMOUNT声望。
+SOURCEPLAYER从CARDNAME获得了FAMELABEL声望。
 Title Maid Manager
 女仆经理
+Text Maid Manager
+每有2名友方女仆，每回合+1金钱。俱乐部4级及以上时，改为每回合+1声望（最多+4）。
 Title Throne Room Servant
 王座间服务员
+Text Throne Room Servant
+每有一名友方5级会员，每回合+2声望（最多+7）。
 Title Feather Duster
 羽毛扫帚
+Text Feather Duster
+打出：选择一个生效中的事件将其结束，然后+金钱，数值等同于其等级；若有友方女仆，抽一张牌。
 Prerequisite Feather Duster
-选择一个正在进行的事件来结束。
+请选择一个生效中的事件将其结束。
 Title Afterhours Service
 夜间服务
+Text Afterhours Service
+持续3回合。每有一名友方女仆或工作人员，每回合+2声望且-2金钱（最多±18）。
 Title Night Maid
 夜间女仆
 Text Night Maid
-只要你有一个正在进行的事件，获得+2声望和+4金钱。
+若你有生效中的事件，每回合+4声望和+2金钱。
 Title Tax Auditor
 税务审计员
+Text Tax Auditor
+进场：选择一名3级及以下的敌方，将其金钱设为一。
 Prerequisite Tax Auditor
-选择对手俱乐部中的一个会员，将TA的金钱设置为1
+请选择对手俱乐部中的一名会员，将其金钱设为一
 GroupKemonomimi
-兽耳
+兽耳娘
 Title Beat Cop
 巡警
+Text Beat Cop
+无法被指定。进场：从玩家的街道中随机各返回最多3张牌到其牌组。
 Title Knot Tester
 绳缚测试员
 Text Knot Tester
-进场：从你的牌组中打出一个随机绳结事件。
+进场：从你的牌组中随机打出一个绳结事件。
 Title Insurance Agent
 保险代理人
+Text Insurance Agent
+你抽牌时：+1金钱。回合开始：若你的手牌为空则离场，然后抽3张牌。
 GroupPorn
 色情
 GroupVideo
@@ -887,75 +1125,99 @@ GroupVideo
 Title Talent Agent
 天赋经纪人
 Text Talent Agent
-进场：将两个色情业余演员添加到你的手牌中。如果你的街道中有3个或更多视频
+若你的街道中有3个及以上视频，每回合+1声望。进场：将2张业余色情工作者加入你的手牌。
 Title Eden
 Eden
 Text Eden
-进场：再次行动。选择一个等级。你的对手在下个回合不能打出该等级的卡牌。3回合后返回手牌。
+进场：+1行动，选择一个等级，对手下回合无法打出所选等级的牌。3回合后返回手牌。
 Effect Eden
-Eden阻止对手打出等级为AMOUNT的卡牌。
+Eden使对手无法打出AMOUNT级的牌。
 Title Adoption
 收养
+Text Adoption
+打出：从你的牌组或街道中将一名随机宠物加入手牌，然后除非其等级高于你的俱乐部等级，否则+1行动。
 Title Loving Owner
 贴心主人
+Text Loving Owner
+宠物视你的俱乐部等级高一级。若有友方女仆，每回合+1金钱。若有6名及以上友方宠物，每回合+2声望。
 Title Cheeky Hamster
 顽皮仓鼠
+Text Cheeky Hamster
+每回合+声望，数值等同于俱乐部等级。进场：-10金钱。
 Title Vanilla Classic
 标准经典
+Text Vanilla Classic
+打出：选择一名友方色情女演员返回手牌，然后+1行动并抽一张牌。
 Prerequisite Vanilla Classic
-从你的俱乐部中选择一个色情女演员。
+请选择你俱乐部中的一名色情女演员。
 Title Guest Star
 嘉宾明星
+Text Guest Star
+视频被打出时：+声望和+金钱，数值等同于其等级加上友方色情女演员的数量（各最多+6）。
 Title Skye
 Skye
+Text Skye
+其他友方进场时（每回合一次）：若其拥有新类型，-2金钱并抽一张牌。
 Title Vintage Maid
 最佳女仆
+Text Vintage Maid
+无法成为目标。进场：你可以选择街道中的一名友方返回你的手牌。
 Title Fetish Flick
 癖好随机
+Text Fetish Flick
+打出：随机返回2名友方色情女演员到手牌，然后+3行动。
 Title Ball Buster
 蛋蛋破坏者
+Text Ball Buster
+持续2回合。对手无法打出事件或累赘。打出：随机返回2名友方色情女演员到手牌。
 GroupTimedEvent
 限时事件
+GroupContinuousEvent
+持续事件
 GroupAuction
 拍卖
 Title Kira
 Kira
+Text Kira
+无法离场。每有2名友方，每回合+1声望（最多+8）。进场：选择一名友方，将其及与其相邻的会员设为0/-2。
 Prerequisite Kira
-从你的俱乐部中选择一个会员。
+请选择你俱乐部中的一名会员。
 InfoPopupTitle
 信息
 InfoFameTitle
 声望
 InfoFameDescription1
-首先达到100声望的玩家获胜！
+率先达到100声望即可获胜！
 InfoFameDescription2
-一些卡牌每回合生成声望（显示在方形图标中）。
+部分牌每回合产生声望（显示为方形图标）。
 InfoFameDescription3
-声望生成在你的金钱低于0时停止。
+若你的金钱低于0，声望产生将停止。
 InfoMoneyTitle
 金钱
 InfoMoneyDescription1
-一些卡牌每回合生成金钱（显示在圆形图标中）。
+部分牌每回合产生金钱（显示为圆形图标）。
 InfoMoneyDescription2
 可以花费金钱来升级你的俱乐部等级。
 InfoBuildingTiersTitle
 俱乐部
 InfoBuildingTiersDescription1
-更高的俱乐部等级解锁更多空间并允许你打出更好的卡牌：⤵️
+更高的俱乐部等级可解锁更多空间，并让你打出更强的牌：⤵️
 InfoBuildingTiersDescription2
-T1: 公寓（免费，5🀆）→ T2: 小屋（10💲，8🀆）→
+1级：公寓（免费，5🀆）→ 2级：小屋（10💲，7🀆）→
 InfoBuildingTiersDescription3
-T3: 房子（20💲，13🀆）→ T4: 豪宅（30💲，20🀆）→ T5: 庄园（40💲，40🀆）
+3级：房屋（20💲，13🀆）→ 4级：豪宅（30💲，20🀆）→ 5级：庄园（40💲，40🀆）
 InfoLiabilitiesTitle
-闹事者
+累赘
 InfoLiabilitiesDescription1
-打入对手的俱乐部，占用空间并造成负面效果。
+打出到对手的俱乐部中，占用空间并造成负面效果。
 InfoStreetsTitle
 街道
 InfoStreetsDescription1
-街道是已使用的卡牌，这些卡牌不再在游戏中。
+不再在场的已用牌会进入街道。
 Title Drunkard
 酒鬼
+Text Drunkard
+你抽牌时：除非有友方门卫，否则-1声望；除非有友方女服务员，否则-1声望。
 GroupSlave
 奴隶
 GroupSubmissive
@@ -963,102 +1225,370 @@ GroupSubmissive
 Title Country Gal
 乡村女孩
 Text Country Gal
-<F>每次反弹它都会变得更紧...我对公牛的控制，呃！
+<F>每弹一下就更紧一点……我抓牛的劲儿也是，懂吧！
 Title Kneeling Sub
 跪地奴
 Text Kneeling Sub
-<F>我跪了这么多次，以至于我需要护膝
+<F>我跪得太多了，不得不买护膝
 Title Humbled Harper
 谦卑竖琴师
+Text Humbled Harper
+对手抽牌时：+1金钱；若有6名及以上友方，+1声望。
 Title Miss N Spection
 N女士的检查
+Text Miss N Spection
+抽牌行动：若你的手牌为空，多抽2张牌。进场：选择手牌中的一张牌弃掉，然后抽一张牌。
 Prerequisite Miss N Spection
-选择你手牌中的一张卡牌来丢弃。
+请选择你手牌中的一张牌弃掉。
 Title Bottom Bitch
 下等妓女
+Text Bottom Bitch
+每有一名其他友方顺从者，每回合+2声望（最多+10）。回合结束：若没有友方女主人则离场。
 Title Nadu Nyla
 Nadu姿势的Nyla
+Text Nadu Nyla
+若你有生效中的事件，每回合+2声望和+1金钱。
 Title Surrender
 投降
+Text Surrender
+打出：所有友方奴隶获得+1/+0。
 Title Hands Out
 双手奉上
+Text Hands Out
+打出：选择手牌中的一张牌，然后弃掉你的手牌；若有友方奴隶，保留所选的牌；然后每弃一张牌，抽一张牌，再多抽一张。
 Prerequisite Hands Out
-选择你手牌中的一张卡牌。
+请选择你手牌中的一张牌。
 Title Carol
 Carol
+Text Carol
+进场：若有其他友方收容所护士，从你的街道中随机打出一名收容所病人；若无法打出，则改为从你的牌组中打出。
 Title Rizom
 Rizom
+Text Rizom
+进场：选择一名友方获得+1/+1；若有友方ABDL妈咪，再+1/+0；若有友方主人，再+0/+1。
 Prerequisite Rizom
-'从你的俱乐部选择一个会员中进行强化。'
+请选择你俱乐部中的一名会员进行强化。
 Effect Rizom
-CARDNAME得到了Rizom的按摩，他们的声望和金钱得到了提升。
+CARDNAME从Rizom处得到了按摩，其声望和金钱获得了提升。
 Title Chirumi
 Chirumi
 Text Chirumi
-获得与你的俱乐部等级相等的+1声望。如果你的街道中有超过3张卡牌，离开你的俱乐部。
+每回合+声望，数值等同于俱乐部等级。回合结束：若你的街道中有3张及以上的牌，则离场。
 Title Pack Member
 狼群成员
 Text Pack Member
-进场：如果你的俱乐部中的会员比对手少，将一个狼群成员添加到你的手牌中。
+进场：若你的会员数量比对手少，将一名狼群成员加入你的手牌。
 Title Brutus
 Brutus
 Text Brutus
-<F>我通常在工作之外使用这些手铐。
+<F>我通常下班后才用这副手铐。
 Title Yunari
 Yunari
 Text Yunari
-如果你的街道中有的卡牌少于对手的，在你的回合结束时离开你的俱乐部。
+回合结束：若你的街道中的牌少于4张，则离场。
 Title Pack Leader
 狼群首领
+Text Pack Leader
+每有一名友方狼群成员，每回合+1声望（最多+5）。若你的街道中有狼群成员，每回合+2声望。
 Title Mama Bear
 熊妈妈
+Text Mama Bear
+进场：每有一种不同的友方类型，+1声望；每有一名友方宝宝，+1金钱。
 Title Instincts
 本能
+Text Instincts
+你无法获得每回合的声望。若有友方兽耳娘，则结束。打出：-12声望并抽3张牌。
 Title Pack Tactics
 狼群战术
+Text Pack Tactics
+持续2回合。回合结束：每有一名友方狼群成员，对手失去一声望。打出：召唤一名狼群成员。
 Title Conservation Efforts
 环保努力
+Text Conservation Efforts
+持续4回合。你抽牌时：若有友方兽耳娘，+2声望和+2金钱。
 Title Artie
 Artie
 Text Artie
-每有2个建筑等级，获得+1声望。进场：失去6金钱并从你的牌组中抽取一个随机主人。
+俱乐部每2级，每回合+1声望。进场：-6金钱并随机抽一名主人。
 Title Cute Bunny
 可爱兔兔
 Text Cute Bunny
-如果可爱兔兔的数量高于你的俱乐部等级，离开。进场：将可爱兔兔添加到你的手牌中，你的对手获得2声望。
+若友方可爱兔子的数量多于你的俱乐部等级，则离场。进场：将一名可爱兔子加入你的手牌，且对手+2声望。
 Title Ganguro Girl
 黑皮辣妹
 Text Ganguro Girl
-在你的回合结束时，拥有更多非闹事者会员的玩家失去1声望。
+回合结束：非累赘会员更多的玩家失去一声望。
 Title Collector
 收藏家
+Text Collector
+若有友方奴隶，每回合+1声望。每有一名友方兽耳娘，每回合+1金钱（最多+2）。
 Title Sewer Rat
 下水道老鼠
 Text Sewer Rat
-在你的回合结束时，如果你的街道中至少有7个会员，离开你的俱乐部并且对手失去25声望。
+回合结束：若你的街道中有7名及以上会员，则离场，然后对手失去25声望。
 Title Hustler
 骗子
 Text Hustler
-当你通过其他效果偷取时，每有一个罪犯在你的街道中（最多2个），随机获得1声望或1金钱。
+你偷取时：你街道中每有一名罪犯，随机+1声望或+1金钱（各最多+2）。
 Title Enforcer
 执法者
 Text Enforcer
-每有一个会员在你的街道中，获得+1声望（最多7）。进场：从你的牌组中随机丢弃3个会员并获得等于它们等级的金钱。
+你街道中每有一名会员，每回合+1声望（最多+7）。进场：从你的牌组中随机弃3名会员，然后+金钱，数值等同于它们的等级之和。
 Title Ball Gag
 口塞球
+Text Ball Gag
+需要女主人才能打出。打出：选择一名会员使其无效，然后-金钱，数值等同于其等级的平方。
 Prerequisite Ball Gag
-选择一个会员进行口塞。
+请选择一名会员将其堵嘴。
 Effect Ball Gag
 CARDNAME的效果被无效了。
 Title Akira
 Akira
 Text Akira
-进场：选择双方俱乐部中的一个会员进行口塞。
+进场：选择一名会员，对其使用口球。
 Prerequisite Akira
-选择一个会员来使其效果无效。
+请选择一名会员，使其效果无效。
+Title Ari
+Ari
+Text Ari
+每有2名友方学生，每回合+1声望（上限为俱乐部等级)。
+Title Mei
+Mei
+Text Mei
+进场：你可以从牌组中选择一张牌，展示后加入你的手牌。若其为5级，+3金钱；否则Mei获得顺从者类型。
+Prerequisite Mei
+请选择一张牌加入你的手牌
+Title Cafe Maid
+咖啡馆女仆
+Text Cafe Maid
+你抽牌时：+1金钱；俱乐部4级及以上时，另外+1声望。
+Title Jailbird
+囚鸟
+Text Jailbird
+即使对手没有声望，你也可以偷取。
+Title Riot
+暴动
+Text Riot
+持续3回合。每有一名友方罪犯，每回合+3金钱。回合结束：你街道中每有一名罪犯，偷取2声望。
+Title Tabled Tessa
+Tabled Tessa
+Text Tabled Tessa
+若你的俱乐部等级低于对手，每回合+1声望和+1金钱。
+Title Stalker
+跟踪狂
+Text Stalker
+有被展示的会员进场时（在手牌中）：进场。
+Title Lewd Photographer
+猥亵摄影师
+Text Lewd Photographer
+友方露出狂进场时：-1金钱，并将一张裸照加入对手的牌组。
+Title Streaker
+裸奔者
+Text Streaker
+进场：将一张新衣服加入对手的牌组。4回合后返回手牌，且双方玩家各抽一张牌。
+Title Exotic Dancer
+艳舞女郎
+Text Exotic Dancer
+若有16名及以上友方，每回合+1声望。若有友方老鸨，每回合+1金钱。
+Title Flasher
+暴露狂
+Text Flasher
+友方进场时：+1声望。进场：将2张裸照加入对手的牌组。
+Title Window Shopper
+橱窗顾客
+Text Window Shopper
+若可见的露出狂有12名及以上，每回合+4声望。友方裸奔者、艳舞女郎或裸体主义者进场时（每回合一次）：+1行动。
+Title Lingerie Model
+内衣模特
+Text Lingerie Model
+进场：将3张新衣服加入对手的牌组。
+Title Procuress
+老鸨
+Text Procuress
+每进场第6名友方时：-2金钱，并将一名艳舞女郎加入你的手牌。
+Title Covert Canvas
+隐秘之躯
+Text Covert Canvas
+牌抽时：+1声望。进场：双方玩家抽3张牌。
+Title Temptress
+妖妇
+Text Temptress
+若对手的牌组为空，对手每回合失去7声望。对手抽牌时：偷取一声望。
+Title Sexhibitionist
+性暴露狂
+Text Sexhibitionist
+进场：将3张裸照加入对手的牌组，然后双方玩家抽3张牌。
+Title New Clothes
+新衣服
+Text New Clothes
+被抽到时：-3金钱，抽一张牌，对手+3声望，然后将此牌从游戏中移除。
+Title Nude Photos
+裸照
+Text Nude Photos
+被抽到时：-4声望，抽一张牌，对手+2金钱，然后将此牌从游戏中移除。
+Title Walkies
+牵出去遛遛
+Text Walkies
+打出：选择手牌中的一名宠物或露出狂送入你的街道。+4行动。本回合只能打出宠物或露出狂。
+Prerequisite Walkies
+请选择你手牌中的一名宠物或露出狂。
+Title Peek Performance
+偷窥表演
+Text Peek Performance
+打出：双方玩家抽一张牌。每有3名可见的露出狂，重复一次。
+Title Unlucky Undresser
+倒霉脱衣者
+Text Unlucky Undresser
+进场：将一张新衣服和2张裸照加入对手的牌组。
+Title Lumi
+Lumi
+Text Lumi
+主动（每级一次）：+1行动，双方玩家展示手牌，然后手牌等级总和较高的玩家+声望，数值等同于其俱乐部等级。
+Title Public Advertisement
+公开广告
+Text Public Advertisement
+友方进场时：+1金钱，且对手+2声望。
+Title Tifa
+Tifa
+Text Tifa
+主动（每回合一次）：-3金钱，查看你牌组顶部的牌，然后你可以将其送入街道，然后抽一张牌。
+Effect Tifa Discard
+SOURCEPLAYER通过Tifa将一张牌送入街道并抽了一张牌
+Effect Tifa Draw
+SOURCEPLAYER通过Tifa抽了一张牌
+ActiveEffect
+发动效果。
 DrawThisCard
-每抽一张牌获得1金钱。如果你在你的回合开始时手牌中没有卡牌，移除此会员并抽3张牌。
+抽这张牌。
+SendToStreets
+送入街道。
+GroupLatex
+乳胶
+Title Latex Amateur
+乳胶新手
+Text Latex Amateur
+抽牌行动：+1/+0（最多3声望）。你打出牌时：将此牌的声望设为0。
+Title Suit Polisher
+套装抛光师
+Text Suit Polisher
+若有友方精致套装，每回合+1声望。抽牌行动：+0/+1（最多3金钱。你打出牌时：将此牌的金钱设为0。
+Title Latex Lover
+乳胶爱好者
+Text Latex Lover
+抽牌行动：每有一名友方乳胶，+1金钱（最多=俱乐部等级）。
+Title Color Mixer
+调色师
+Text Color Mixer
+进场：选择一名非累赘友方，然后获得其类型。
 Prerequisite Color Mixer
-从你的俱乐部中选择一个会员。
+请选择你俱乐部中的一名会员。
+Title Vac-bed Patient
+真空床病人
+Text Vac-bed Patient
+抽牌行动：+1声望和金钱。
+Title Shine Simp
+光泽迷
+Text Shine Simp
+抽牌行动：每有一名友方乳胶，双方玩家失去一声望（最多-4）。
+Title Latex Drone
+乳胶无人机
+Text Latex Drone
+<F>1684 :: 代码 050 :: 声明 :: 本无人机已准备好服从
+Title Encased
+包裹
+Text Encased
+你打出非乳胶且非支配者的会员时：离场。
+Title Condom Suit
+避孕套服
+Text Exquisite Suit
+抽牌行动：+1/-1（最多6/-4）。你打出非乳胶会员时：使此牌无效。
+Title Latex Nurse
+乳胶护士
+Text Latex Nurse
+进场：选择手牌中的一名会员弃掉，以召唤一名真空床病人。
 Prerequisite Latex Nurse
-进场：失去16金钱，选择一个在场的会员（除了月亮女士）来添加一个副本到你的手牌。
+请选择你手牌中的一名会员。
+Title Exquisite Suit
+精致套装
+Text Condom Suit
+其他乳胶会员无法被移除。
+Title Full Catsuit
+全身紧身衣
+Text Full Catsuit
+抽牌行动：+2/+2（最多13/13），且对手失去一声望和一金钱。
+Title Goddess Gleam
+女神光泽
+Text Goddess Gleam
+抽牌行动：+3/-2（最多18/-10），且对手失去2声望。
+Title Polish and Shine
+抛光闪耀
+Text Polish and Shine
+打出：随机打出2名3级及以下的友方，然后每打出一名恋物癖者、足系或乳胶会员，+4声望。
+Title Shiny Parade
+闪亮游行
+Text Shiny Parade
+打出：每有2名友方乳胶，抽一张牌（最多2张），然后执行抽牌行动。
+Title Intense Training
+强化训练
+Text Intense Training
+打出：+1行动，选择你街道中的一张绳艺牌返回你的手牌。
+Prerequisite Intense Training
+请选择你街道中的一张绳艺牌。
+Title The Butler
+管家
+Text The Butler
+即使有警察，对手也可以偷取。对手打出罪犯时：对手偷取一金钱。
+Title Reverse Prayer
+后手观音缚
+Text Reverse Prayer
+若你的声望不高于40，每回合+1金钱。进场：选择一个等级。你无法弃掉该等级的牌。
+Effect Reverse Prayer
+已为后手观音缚选择了AMOUNT级。
+Title Creaking
+地板呻吟
+Text Creaking
+持续6回合。选择一名友方乳胶使其无效。抽牌行动：每有一名友方乳胶，+2声望（最多=俱乐部等级×3）。
+Prerequisite Creaking
+请选择你俱乐部中的一名乳胶会员。
+Your Decks
+你的牌组
+Default Decks
+预构筑牌组
+Title Plushie
+毛绒玩偶
+Text Plushie
+进场：+2声望，并将其金钱设为友方毛绒玩偶的数量（上限为俱乐部等级）。
+Title Delta
+Delta
+Text Delta
+当友方毛绒玩偶达到9名及以上时，你获胜。游戏开始：若你的牌组有40张牌，将9名毛绒玩偶加入你的牌组。
+Title Felix
+Felix
+Text Felix
+进场：将一张随机玩家牌加入你牌组顶部的6张牌中。
+Title Jae
+Jae
+Text Jae
+友方离场时（每回合一次）：+声望和+金钱，数值等同于Jae的数值。
+Title anna
+anna
+Text anna
+你可以查看你牌组顶部的牌。
+Play Precon
+使用预构筑牌组
+Title Clare
+狡诈拍卖师Clare
+Text Clare
+主动（每级一次)：+1行动，选择牌组中的一名会员弃掉，然后偷取金钱，数值等同于其等级。
+Title arella
+arella
+Text arella
+进场：所有友方顺从者、学生和奴隶获得+0/+1。
+Title Ramona
+Ramona
+Text Ramona
+<F>我只是个想在宇宙里闯出一条路的普通女孩。
+Title Debt Slave
+债奴
+Text Debt Slave
+俱乐部3级及以上时，每回合-1金钱。友方离场到你的街道时：将其返回牌组，然后此牌离场。

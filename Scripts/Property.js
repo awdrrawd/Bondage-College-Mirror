@@ -1541,7 +1541,9 @@ var PropertyData = {
 		{ valueSet: new Set(/** @type {const} */([-1, 0, 1, 2, 3])) },
 		{
 			validate(prop, itemData, defaults) { return this.validateAsSetMember(prop, defaults); },
+			// Grab the largest one if multiple options set an intensity
 			union(values) { return CommonMax(...values); },
+			isSubset(subProp, superProp) { return subProp <= superProp; },
 		},
 	),
 	IsLeashed: new PropertyDataEntry("IsLeashed", undefined,
