@@ -334,8 +334,8 @@ function ShibariClubCardStart() {
  * @returns {SafePromise<void>}
  */
 async function ShibariClubCardEnd() {
-	if (!CurrentCharacter) return;
 	await CommonSetScreen("Room", "Shibari");
 	CharacterSetCurrent(ShibariStudent);
+	if (!CurrentCharacter) return;
 	CurrentCharacter.CurrentDialog = DialogFind(CurrentCharacter, MiniGameVictory ? "ClubCardVictory" : "ClubCardDefeat");
 }

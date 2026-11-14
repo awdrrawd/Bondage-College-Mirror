@@ -38,7 +38,7 @@ This changelog follows the format outlined in [keepachangelog.com](https://keepa
 * FreyaCoding - Map: Garden Fence and Ranch Fence added ([#6852](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6852))
 * FreyaCoding - Map: Added Recolor Options for a lot of Decoration Furniture ([#6930](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6930))
 * duckduckgoose420 - Allow dynamic IsLeashed on PelvisChainLeash ([#6910](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6910))
-* Feldob66 - Adds new item: Frog Hat ([#6895](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6895))
+* Bruh & Tifa & Felix - Adds new item: Frog Hat ([#6895](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6895))
 * x3mmusic - make locks colorable: ItemMouth ([#6840](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6840))
 * x3mmusic - Add panties mask as hood option ([#6816](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6816))
 * x3mmusic - Another batch of missing stuff ([#6793](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6793))
@@ -99,7 +99,7 @@ This changelog follows the format outlined in [keepachangelog.com](https://keepa
 
 ### [Fixes]
 
-* Feldob66 - Fix language switching and long password-reset labels ([#6861](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6861))
+* Felix - Fix language switching and long password-reset labels ([#6861](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6861))
 * FemboyNicole - Timer lock limit setting not working as expected ([#6850](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6850))
 * x3mmusic - Restraint set priority values and added a lock ([#6819](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6819))
 * x3mmusic - Mark some ItemTorso items as restraints ([#6842](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6842))
@@ -229,7 +229,7 @@ This changelog follows the format outlined in [keepachangelog.com](https://keepa
 
 * Likulisu - crafted item name and icons lost for the currently worn item in the item menu ([#6663](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6663))
 * superj - Fix chat room admin save behavior ([#6730](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6730))
-* Feldob66 - FIX: Correct Club Card card text ([#6767](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6767))
+* Felix - FIX: Correct Club Card card text ([#6767](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6767))
 * x3mmusic - gags in the ItemMouth slots shown as handheld items ([#6678](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6678))
 * x3mmusic - fix handheld penetrative items allowed activities while acting char is restrained ([#6753](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6753))
 * x3mmusic - fix some of the gags got lost in the merge ([#6754](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6754))
@@ -768,7 +768,7 @@ This changelog follows the format outlined in [keepachangelog.com](https://keepa
 * FemboyNicole - Changed the UI for adding time to timer padlocks ([#6281](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6281))
 * FemboyNicole - Changed the maximum time of the Owner Timer Padlock to 35 days ([#6287](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6287))
 * FemboyNicole - Show the remaining time to the owner of the Owner Timer Padlock even if it's hidden ([#6278](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6278))
-* Feldob66 - Felix & Tifa - Add Customizable Leather Paddle handheld item ([#6299](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6299))
+* Felix & Tifa - Add Customizable Leather Paddle handheld item ([#6299](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6299))
 * Sin - added several object, banners, doors, floor items from Magdalena ([#6289](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6289))
 * Sin - Adding Wolf, Monster, and Shapeshifter titles. ([#6290](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6290))
 * Deep - DOM creation screen ([#6283](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6283))
@@ -938,7 +938,7 @@ This changelog follows the format outlined in [keepachangelog.com](https://keepa
 * KyraObscura - Add Running Mascara Eyeshadow ([#6167](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6167))
 * KyraObscura - Running Mascara and Piercing asset updates ([#6171](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6171))
 * KyraObscura - Add Bishop Gag ([#6173](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6173))
-* Feldob66 - Asset/ribbon collar by Tifa & Felix ([#6179](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6179))
+* Felix - Asset/ribbon collar by Tifa & Felix ([#6179](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6179))
 * Sin - Added several map items provided by Magdalena and realigned the tracks ([#6180](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6180))
 * Sin - Adding flowerdress override for suspension pose ([#6191](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6191))
 * Ben987 - Maid Sorority - Integration of Maid Dresses 3 & 4
@@ -1064,7 +1064,7 @@ This changelog follows the format outlined in [keepachangelog.com](https://keepa
 
 * leah - Add Nel plushie ([#6072](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6072))
 * lera - Don't trigger Talk StimulationMessage on fully OOC messages ([#6093](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6093))
-* Feldob66 - New Kitsune 9 tails tail + new NPC in MagicSchool with earnable rewards by Felix, Tifa & Nicole ([#6089](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6089))
+* Felix - New Kitsune 9 tails tail + new NPC in MagicSchool with earnable rewards by Felix, Tifa & Nicole ([#6089](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6089))
 * Kane - Adds an X-Frame by Jess the vampire and Hareo ([#6071](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6071))
 * LisaTheOrange - Allow creating rooms with customization ([#6092](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6092))
 * RavenCreative - Mystery Box... Just in time for a new year... if not the holidays! XD ([#6064](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6064))
@@ -1183,7 +1183,7 @@ This changelog follows the format outlined in [keepachangelog.com](https://keepa
 ### [Changes]
 
 * Raven - Added fingering to mouth~ ([#5924](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5924))
-* Feldob66 - Improvements to some tails & removed unnecessary Echo Override images by Felix, Tifa & Nicole ([#5974](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5974))
+* Felix - Improvements to some tails & removed unnecessary Echo Override images by Felix, Tifa & Nicole ([#5974](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5974))
 * ewhac - Add Owner's Notes ([#5968](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5968))
 * Haruhi - Added Minidolls item ([#5951](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5951))
 * Haruhi - Updates Customizable Ears to be available in ItemEars and Womb Tattoos in ItemPelvis ([#5955](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5955))
@@ -1224,7 +1224,7 @@ This changelog follows the format outlined in [keepachangelog.com](https://keepa
 
 ### [Fixes]
 
-* Feldob66 - fix: LARP pronouns ([#5917](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5917))
+* Felix - fix: LARP pronouns ([#5917](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5917))
 * dDeepLb - fixes ([#5994](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5994))
 * dDeepLb - keybinding fixes ([#5995](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5995))
 * dDeepLb - Fix for mobile chat ([#6009](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6009))
@@ -1401,14 +1401,14 @@ This changelog follows the format outlined in [keepachangelog.com](https://keepa
 * EllieThePink - Fix username field autofocus ([#5798](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5798))
 * Zoe - Smooth keyboard movement on maps ([#5806](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5806))
 * Zoe - Added info page to rooms and extended search options ([#5775](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5775))
-* Feldob66 - Slave Helpline sleeve ([#5814](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5814))
-* Feldob66 - Jacket Hoodie by K-Chan and Felix ([#5788](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5788))
-* Feldob66 - Sport Panties by K-Chan and Felix ([#5789](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5789))
-* Feldob66 - Ruffled Miniskirt by K-Chan and Felix ([#5790](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5790))
-* Feldob66 - Sport Swimsuit by K-Chan and Felix ([#5791](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5791))
-* Feldob66 - Sport Bra by K-Chan and Felix ([#5792](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5792))
-* Feldob66 - Trim decal transparency and adjust offsets ([#5797](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5797))
-* Feldob66 - Gym Shorts by K-Chan and Felix ([#5793](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5793))
+* Felix - Slave Helpline sleeve ([#5814](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5814))
+* Felix - Jacket Hoodie by K-Chan and Felix ([#5788](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5788))
+* Felix - Sport Panties by K-Chan and Felix ([#5789](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5789))
+* Felix - Ruffled Miniskirt by K-Chan and Felix ([#5790](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5790))
+* Felix - Sport Swimsuit by K-Chan and Felix ([#5791](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5791))
+* Felix - Sport Bra by K-Chan and Felix ([#5792](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5792))
+* Felix - Trim decal transparency and adjust offsets ([#5797](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5797))
+* Felix - Gym Shorts by K-Chan and Felix ([#5793](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5793))
 * anna - Club Card Subs, Slaves, Kemonomimi and extras ([#5784](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5784))
 * Rama - Add the option to disable the arousal VFX filter ([#5745](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5745))
 * Estsanatlehi - Reorder Suit and Eye groups in the appearance editor ([#5802](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5802))
@@ -1621,7 +1621,7 @@ This changelog follows the format outlined in [keepachangelog.com](https://keepa
 * Sin - Adding LatexFloor tile by Katsumi and xenodragon20 ([#5639](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5639))
 * Sin - Adding bookshelf wall decoration for maps. ([#5635](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5635))
 * Zoe - Added Hypnotic Visor by Xenodragon20 with text support and adjusted Floral Panties 2 ([#5623](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5623))
-* Feldob66 - Added The Void Order's community logo to the custom tshirt. ([#5588](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5588))
+* Felix - Added The Void Order's community logo to the custom tshirt. ([#5588](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5588))
 * Da'Inihlus - Remove unnecessary prerequisite for ExtremeCorset item ([#5614](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5614))
 * Da'Inihlus - CN translation updates ([#5613](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5613))
 * RavenCreative - + Leather Jacket Asset by Raven Creative with new Cloth Outer group! ([#5609](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5609))
@@ -1776,7 +1776,7 @@ This changelog follows the format outlined in [keepachangelog.com](https://keepa
 
 ### [Fixes]
 
-* Feldob66 - Found missing translation for bra port ([#5539](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5539))
+* Felix - Found missing translation for bra port ([#5539](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5539))
 * EllieThePink - Fix limited items being rejected ([#5490](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5490))
 * EllieThePink - Fix broken lucky wheel drawing ([#5523](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5523))
 * EllieThePink - Fix new character creation ([#5547](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/5547))

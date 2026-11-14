@@ -35817,6 +35817,7 @@ var AssetFemale3DCG = [
 				Time: 30,
 				RemoveTime: 20,
 				AllowLock: true,
+				DrawLocks: false,
 				AllowTighten: true,
 				HideItem: [
 					"ItemFeetOrnateAnkleCuffs",
@@ -35837,7 +35838,11 @@ var AssetFemale3DCG = [
 				Effect: [E.BlockWardrobe, E.Slow],
 				Block: ["ItemFeet"],
 				AllowActivePose: ["Kneel"],
-				Layer: [{ Name: "Latex", Color: ["#222"] }, { Name: "Belts" }],
+				Layer: [
+					{ Name: "Latex", Color: ["#222"] },
+					{ Name: "Belts" },
+					{ ...AssetDefaultLockLayer, StyleOverride: [] },
+				],
 			},
 			{
 				Name: "ShinyLegBinder",

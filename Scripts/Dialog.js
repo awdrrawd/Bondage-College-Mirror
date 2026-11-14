@@ -3685,9 +3685,8 @@ class _DialogItemMenu extends _DialogFocusMenu {
 		}
 
 		if (options.reset) {
-			buttonGrid.innerHTML = "";
-			DialogInventory.forEach((clickedItem, i) => ElementButton.CreateForAsset(
-				`dialog-inventory-${i}`,
+			buttonGrid.replaceChildren(...DialogInventory.map((clickedItem, i) => ElementButton.CreateForAsset(
+				null,
 				clickedItem,
 				C,
 				this.eventListeners._ClickButton,
@@ -3698,7 +3697,7 @@ class _DialogItemMenu extends _DialogFocusMenu {
 					attributes: { "aria-checked": clickedItem.Worn.toString(), "screen-generated": undefined },
 					dataAttributes: { index: i },
 				}},
-			));
+			)));
 		}
 
 		const equippedItem = InventoryGet(C, focusGroup.Name);
@@ -3765,7 +3764,7 @@ class _DialogItemMenu extends _DialogFocusMenu {
 			icon.replaceChildren(...checkedButton.cloneNode(true).children);
 			dataAttr.forEach(attr => icon.toggleAttribute(attr, checkedButton.hasAttribute(attr)));
 		} else {
-			icon.innerHTML = "";
+			icon.replaceChildren();
 			dataAttr.forEach(attr => icon.toggleAttribute(attr, false));
 		}
 	}
@@ -3859,9 +3858,8 @@ class _DialogLockingMenu extends _DialogFocusMenu {
 		}
 
 		if (options.reset) {
-			buttonGrid.innerHTML = "";
-			DialogInventory.forEach((clickedItem, i) => ElementButton.CreateForAsset(
-				`dialog-locking-${i}`,
+			buttonGrid.replaceChildren(...DialogInventory.map((clickedItem, i) => ElementButton.CreateForAsset(
+				null,
 				clickedItem,
 				C,
 				this.eventListeners._ClickButton,
@@ -3872,7 +3870,7 @@ class _DialogLockingMenu extends _DialogFocusMenu {
 					attributes: { "screen-generated": undefined },
 					dataAttributes: { index: i },
 				}},
-			));
+			)));
 		}
 
 		const equippedItem = InventoryGet(C, focusGroup.Name);
@@ -3973,9 +3971,8 @@ class _DialogPermissionMenu extends _DialogFocusMenu {
 		}
 
 		if (options.reset) {
-			buttonGrid.innerHTML = "";
-			DialogInventory.forEach((clickedItem, i) => ElementButton.CreateForAsset(
-				`dialog-permission-${i}`,
+			buttonGrid.replaceChildren(...DialogInventory.map((clickedItem, i) => ElementButton.CreateForAsset(
+				null,
 				clickedItem,
 				C,
 				this.eventListeners._ClickButton,
@@ -3986,7 +3983,7 @@ class _DialogPermissionMenu extends _DialogFocusMenu {
 					attributes: { "screen-generated": undefined },
 					dataAttributes: { index: i },
 				}},
-			));
+			)));
 		}
 
 		const equippedItem = InventoryGet(C, focusGroup.Name);
@@ -4099,9 +4096,8 @@ class _DialogActivitiesMenu extends _DialogFocusMenu {
 		}
 
 		if (options.reset) {
-			buttonGrid.innerHTML = "";
-			DialogActivity.forEach((clickedActivity, index) => ElementButton.CreateForActivity(
-				`dialog-activities-${index}`,
+			buttonGrid.replaceChildren(...DialogActivity.map((clickedActivity, index) => ElementButton.CreateForActivity(
+				null,
 				clickedActivity,
 				C,
 				this.eventListeners._ClickButton,
@@ -4112,7 +4108,7 @@ class _DialogActivitiesMenu extends _DialogFocusMenu {
 					attributes: { "screen-generated": undefined },
 					dataAttributes: { index, group: focusGroup.Name },
 				}},
-			));
+			)));
 		}
 
 		const equippedItem = InventoryGet(C, focusGroup.Name);
@@ -4234,7 +4230,7 @@ class _DialogCraftedMenu extends _DialogFocusMenu {
 		const ids = this.ids;
 		const item = /** @type {Item} */ (InventoryGet(C, focusGroup.Name));
 
-		icon.innerHTML = "";
+		icon.replaceChildren();
 		[
 			ElementButton._ParseImage(icon.id, `./Assets/Female3DCG/${item.Asset.DynamicGroupName}/Preview/${item.Asset.Name}.png`),
 			ElementButton._ParseLabel(icon.id, item.Asset.Description),
@@ -4946,9 +4942,8 @@ class _DialogExpressionMenu extends _DialogSelfMenu {
 			}
 
 			if (options.reset) {
-				buttonGrid.innerHTML = "";
 				buttonGrid.replaceChildren(...expressions.map((name, i) => ElementButton.Create(
-					`${this.ids.grid}-${group}-${name}`,
+					null,
 					this.eventListeners._ClickButton,
 					{
 						clickDisabled: this.eventListeners._ClickDisabledButton,
@@ -5224,10 +5219,9 @@ class _DialogPoseMenu extends _DialogSelfMenu {
 			}
 
 			if (options.reset) {
-				poseGrid.innerHTML = "";
 				poseGrid.replaceChildren(...poses.map((pose, i) => {
 					const button = ElementButton.Create(
-						`${this.ids.grid}-${pose.Category}-${pose.Name}`,
+						null,
 						this.eventListeners._ClickButton,
 						{
 							clickDisabled: this.eventListeners._ClickDisabledButton,

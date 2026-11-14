@@ -1844,7 +1844,7 @@ function StruggleChatRoomInterrupt() {
  */
 function StruggleChatRoomSuccess() {
 	if (!ChatRoomStruggleData) return;
-	if (DialogStrugglePrevItem != null) {
+	if (ChatRoomStruggleData.Item != null) {
 		ChatRoomPublishAction(Player, "ChatRoomStruggleSuccess", ChatRoomStruggleData.Item, null);
 		InventoryRemove(Player, ChatRoomStruggleData.Item.Asset.Group.Name);
 		ChatRoomCharacterItemUpdate(Player, ChatRoomStruggleData.Item.Asset.Group.Name);
