@@ -235,7 +235,8 @@ function ExtendedItemInit(C, Item, Push=true, Refresh=true, log=false) {
 	}
 
 	let ret = false;
-	const { status, errorDescriptions } = ItemPropertiesValidate(Item.Property, Item.Asset, { C, ignoreErrors: ["TypeRecord"] });
+	const { status, errorDescriptions, value: properties } = ItemPropertiesValidate(Item.Property, Item.Asset, { C, ignoreErrors: ["TypeRecord"] });
+	Item.Property = properties;
 	if (status !== "ok") {
 		// Always errors related to invalid values; missing value logging however _is_ subject to the `log` parameter
 		ret = true;

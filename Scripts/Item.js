@@ -155,7 +155,8 @@ var AppearanceItem = {
 };
 
 /**
- * Dummy character for {@link ItemPropertiesDecompress} validation
+ * Dummy character for {@link ItemPropertiesDecompress} validation.
+ * Serves as fallback for when no explicit character is provided.
  * @type {null | Character}
  */
 let ItemPropertiesDummy = null;
@@ -361,7 +362,8 @@ const ItemPropertiesValidationStatus = /** @type {const} */({
 });
 
 /**
- * @param {ItemProperties} properties
+ * Validate the passed properties and return a validated shallow copy in the output
+ * @param {ItemProperties} properties The to-be validated properties
  * @param {Asset} asset The asset
  * @param {object} [options]
  * @param {Character} [options.C] The character wearing/intended to wear the item
@@ -373,7 +375,7 @@ function ItemPropertiesValidate(properties, asset, options=undefined) {
 	options ??= {};
 	const omit = new Set(options.omit ?? []);
 
-	if (CommonIsObject(properties)) {
+	if (!CommonIsObject(properties)) {
 		properties = {};
 	}
 
@@ -425,21 +427,34 @@ function ItemPropertiesValidate(properties, asset, options=undefined) {
  * @template {{ [key: string]: unknown }} T1
  * @overload
  * @param {{ readonly [k in keyof T1]?: ItemProperty.ValidationOutput<T1[k]> }} outputs
+ * @param {object} [options]
+ * @param {boolean} [options.partial]
+ * @param {Iterable<keyof T1>} [options.partialFields]
  * @returns {ItemProperty.ValidationOutput<T1>}
  */
 /**
  * @template T2
  * @overload
  * @param {readonly ItemProperty.ValidationOutput<T2>[]} outputs
+ * @param {object} [options]
+ * @param {boolean} [options.partial]
+ * @param {Iterable<`${number}`>} [options.partialFields]
  * @returns {ItemProperty.ValidationOutput<T2[]>}
  */
 /**
  * Merge the validation output of multiple sub-properties (be they provided as array or record) into a single output
  * @template {{}} T
  * @param {{ readonly [k in keyof T]?: ItemProperty.ValidationOutput<T[k]> }} outputs
+ * @param {object} [options]
+ * @param {boolean} [options.partial] Whether the object should be considered partial (_i.e._ all fields are optional). This will cause critical errors to be demoted to normal errors.
+ * @param {Iterable<keyof T>} [options.partialFields] Which specific fields (if any) should be considered partial. Critical errors in the specified fields will be demoted to normal errors.
  * @returns {ItemProperty.ValidationOutput<T>}
  */
-function ItemPropertiesMergeValidationOutputs(outputs) {
+function ItemPropertiesMergeValidationOutputs(outputs, options=undefined) {
+	options ??= {};
+	const partial = options.partial ?? false;
+	const partialFields = new Set(options.partialFields ?? []);
+
 	/** @type {{ value: T, status: 0 | 1 | 2, errorDescription: unknown[] }} */
 	const ret = {
 		value: /** @type {T} */({}),
@@ -462,17 +477,15 @@ function ItemPropertiesMergeValidationOutputs(outputs) {
 				ret.errorDescription.push(...output.errorDescription);
 				break;
 		}
-		ret.status = CommonMax(ret.status, ItemPropertiesValidationStatus[output.status]);
+		ret.status = CommonMin(
+			(partial || partialFields.has(name)) ? ItemPropertiesValidationStatus.error : ItemPropertiesValidationStatus.criticalError,
+			CommonMax(ret.status, ItemPropertiesValidationStatus[output.status])
+		);
 	}
 
 	if (CommonIsArray(outputs)) {
 		// @ts-expect-error: convert back into an array
 		ret.value = Object.values(ret.value).filter(i => i !== undefined);
-
-		// TODO: Only clamp the error level to `error` when dealing with set-like arrays
-		// Set-like arrays are of arbitrary length, meaning that any and all of its elements can be considered optional
-		// and thereof unworthy of a `criticalError` as the offending elements can safely be removed
-		ret.status = CommonMin(ItemPropertiesValidationStatus.error, ret.status);
 	}
 
 	switch (ret.status) {
@@ -594,7 +607,8 @@ function ItemPropertiesDecompress(item, properties, options=undefined) {
 		}
 	} else {
 		// Code branch already taken care of by `ExtendedItemInit` for extended items
-		const { status, errorDescriptions } = ItemPropertiesValidate(item.Property, item.Asset, { C });
+		const { status, errorDescriptions, value: newProperties } = ItemPropertiesValidate(item.Property, item.Asset, { C });
+		item.Property = newProperties;
 		if (status !== "ok") {
 			console.error(
 				`Sanitizing invalid '${item.Asset.Group.Name}/${item.Asset.Name}' item properties: error status '${status}'`,

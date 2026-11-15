@@ -180,3 +180,18 @@ describe("PropertyDataEntry.validateSetLikeArray", () => {
 		}
 	});
 });
+
+describe("Object validation", () => {
+	it("Invalid layer rotation entry", () => {
+		const entry: ItemProperty.EntryNullable<"LayerRotation"> = Game.PropertyData.LayerRotation;
+		expect(entry).not.toBe(undefined);
+
+		const asset: Asset = Game.AssetGet("Female3DCG", "ItemMouth", "BallGag");
+		expect(asset).not.toBe(undefined);
+
+		const output = entry.validate({ Ball: 99, Foo: 1 }, { asset });
+		expect(output.status).toBe("error");
+		expect(output.value?.Ball).toBe(99);
+		expect(output.value?.Foo).toBe(undefined);
+	});
+});

@@ -31,7 +31,7 @@
 			"CombinationPadlock": {
 				"initialItemProperty": {
 					"LockedBy": "CombinationPadlock",
-					"CombinationNumber": 9001,
+					"CombinationNumber": "9001",
 					"LockMemberNumber": 5,
 					"LockMemberName": "The Mighty Kevin",
 					"Effect": ["Lock"],
@@ -39,13 +39,13 @@
 				},
 				"itemBundleProperty": {
 					"LockedBy": "CombinationPadlock",
-					"CombinationNumber": 9001,
+					"CombinationNumber": "9001",
 					"LockMemberNumber": 5,
 					"LockMemberName": "The Mighty Kevin"
 				},
 				"finalItemProperty": {
 					"LockedBy": "CombinationPadlock",
-					"CombinationNumber": 9001,
+					"CombinationNumber": "9001",
 					"LockMemberNumber": 5,
 					"LockMemberName": "The Mighty Kevin",
 					"LockMessage": "",
@@ -55,7 +55,7 @@
 			"PasswordPadlock": {
 				"initialItemProperty": {
 					"LockedBy": "PasswordPadlock",
-					"Password": "test123",
+					"Password": "TEST",
 					"LockSet": true,
 					"RemoveOnUnlock": false,
 					"Hint": "Take a guess...",
@@ -66,14 +66,14 @@
 				},
 				"itemBundleProperty": {
 					"LockedBy": "PasswordPadlock",
-					"Password": "test123",
+					"Password": "TEST",
 					"LockSet": true,
 					"LockMemberNumber": 5,
 					"LockMemberName": "The Mighty Kevin"
 				},
 				"finalItemProperty": {
 					"LockedBy": "PasswordPadlock",
-					"Password": "test123",
+					"Password": "TEST",
 					"LockSet": true,
 					"RemoveOnUnlock": false,
 					"Hint": "Take a guess...",
@@ -86,7 +86,7 @@
 			"TimerPasswordPadlock": {
 				"initialItemProperty": {
 					"LockedBy": "TimerPasswordPadlock",
-					"Password": "test123",
+					"Password": "TEST",
 					"LockSet": true,
 					"Hint": "Take a guess...",
 					"RemoveItem": false,
@@ -99,7 +99,7 @@
 				},
 				"itemBundleProperty": {
 					"LockedBy": "TimerPasswordPadlock",
-					"Password": "test123",
+					"Password": "TEST",
 					"LockSet": true,
 					"LockMemberNumber": 5,
 					"LockMemberName": "The Mighty Kevin",
@@ -108,7 +108,7 @@
 				},
 				"finalItemProperty": {
 					"LockedBy": "TimerPasswordPadlock",
-					"Password": "test123",
+					"Password": "TEST",
 					"LockSet": true,
 					"Hint": "Take a guess...",
 					"LockMemberNumber": 5,
@@ -228,21 +228,24 @@
 				"TypeRecord": { "typed": 8 },
 				"OverrideHeight": {
 					"HeightRatioProportion": 0.5,
-					"Height": -288
+					"Height": -288,
+					"Priority": 99
 				}
 			},
 			"itemBundleProperty": {
 				"TypeRecord": { "typed": 8 },
 				"OverrideHeight": {
 					"HeightRatioProportion": 0.5,
-					"Height": -288
+					"Height": -288,
+					"Priority": 99
 				}
 			},
 			"finalItemProperty": {
 				"TypeRecord": { "typed": 8 },
 				"OverrideHeight": {
 					"HeightRatioProportion": 0.5,
-					"Height": -288
+					"Height": -288,
+					"Priority": 99
 				}
 			}
 		}

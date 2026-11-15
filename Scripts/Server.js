@@ -691,7 +691,7 @@ function ServerAppearanceLoadFromBundle(C, AssetFamily, Bundle, SourceMemberNumb
 		Bundle = [];
 	}
 
-	const appearanceDiffs = ServerBuildAppearanceDiff(AssetFamily, C.Appearance, Bundle);
+	const appearanceDiffs = ServerBuildAppearanceDiff(AssetFamily, C.Appearance, Bundle, { C });
 	ServerAddRequiredAppearance(AssetFamily, appearanceDiffs);
 
 	if (SourceMemberNumber == null) SourceMemberNumber = C.MemberNumber;
@@ -730,17 +730,19 @@ function ServerAppearanceLoadFromBundle(C, AssetFamily, Bundle, SourceMemberNumb
  * @param {IAssetFamily} assetFamily - The asset family of the appearance
  * @param {readonly Item[]} appearance - The current appearance to compare against
  * @param {AppearanceBundle} bundle - The new appearance bundle
+ * @param {object} [options]
+ * @param {Character} [options.C] The owner of the appearance bundle (if any)
  * @returns {AppearanceDiffMap} - An appearance diff map representing the changes that have been made to the character's
  * appearance
  */
-function ServerBuildAppearanceDiff(assetFamily, appearance, bundle) {
+function ServerBuildAppearanceDiff(assetFamily, appearance, bundle, options=undefined) {
 	/** @type {AppearanceDiffMap} */
 	const diffMap = {};
 	appearance.forEach((item) => {
 		diffMap[item.Asset.Group.Name] = [item, null];
 	});
 	bundle.forEach((item) => {
-		const appearanceItem = ServerBundledItemToAppearanceItem(assetFamily, item);
+		const appearanceItem = ServerBundledItemToAppearanceItem(assetFamily, item, options);
 		if (appearanceItem) {
 			const diff = diffMap[item.Group] = (diffMap[item.Group] || [null, null]);
 			diff[1] = appearanceItem;
@@ -754,9 +756,11 @@ function ServerBuildAppearanceDiff(assetFamily, appearance, bundle) {
  * appearance item, as used by the game client
  * @param {IAssetFamily} assetFamily - The asset family of the appearance item
  * @param {ItemBundle | ServerCharacterItemUpdate} itemBundle - The bundled appearance item
+ * @param {object} [options]
+ * @param {Character} [options.C] - The owner of the item bundle (if any)
  * @returns {null | Item} - A full appearance item representation of the provided bundled appearance item
  */
-function ServerBundledItemToAppearanceItem(assetFamily, itemBundle) {
+function ServerBundledItemToAppearanceItem(assetFamily, itemBundle, options=undefined) {
 	if (!CommonIsObject(itemBundle) || typeof itemBundle.Name !== "string" || typeof itemBundle.Group !== "string") return null;
 
 	const asset = AssetGet(assetFamily, itemBundle.Group, itemBundle.Name);
@@ -767,7 +771,7 @@ function ServerBundledItemToAppearanceItem(assetFamily, itemBundle) {
 		color: itemBundle.Color,
 		craft: itemBundle.Craft,
 	});
-	item.Property = ItemPropertiesDecompress(item, itemBundle.Property);
+	item.Property = ItemPropertiesDecompress(item, itemBundle.Property, options);
 	return item;
 }
 

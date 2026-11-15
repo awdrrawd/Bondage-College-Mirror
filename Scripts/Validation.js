@@ -690,7 +690,8 @@ function ValidationSanitizeProperties(C, item) {
 	if (item.Asset.Extended) {
 		changed = ExtendedItemInit(C, item, false, false, true);
 	} else {
-		const { status, errorDescriptions } = ItemPropertiesValidate(item.Property, asset, { C });
+		const { status, errorDescriptions, value: properties } = ItemPropertiesValidate(item.Property, asset, { C });
+		item.Property = properties;
 		if (status !== "ok") {
 			changed = true;
 			console.error(

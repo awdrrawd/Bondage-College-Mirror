@@ -5570,7 +5570,7 @@ function ChatRoomSyncItem(data) {
 
 	const updateParams = ValidationCreateDiffParams(targetChar, data.Source);
 	const previousItem = InventoryGet(targetChar, data.Item.Group);
-	const newItem = ServerBundledItemToAppearanceItem(targetChar.AssetFamily, data.Item);
+	const newItem = ServerBundledItemToAppearanceItem(targetChar.AssetFamily, data.Item, { C: targetChar });
 	const unknownAsset = data.Item.Name !== undefined && newItem === null;
 
 	let { item, valid } = ValidationResolveAppearanceDiff(data.Item.Group, previousItem, newItem, updateParams, unknownAsset);

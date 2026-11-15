@@ -1254,7 +1254,7 @@ class PropertyDataEntry {
 				throw new Error();
 		}
 		// @ts-ignore
-		return ItemPropertiesMergeValidationOutputs(newValue);
+		return ItemPropertiesMergeValidationOutputs(newValue, { partial: true });
 	}
 }
 
@@ -1342,7 +1342,7 @@ var PropertyData = {
 		{
 			..._PropertyDataArraysDefaults,
 			validate(prop, { asset }, defaults) {
-				const valueSet = new Set(asset.AllowBlock ?? []);
+				const valueSet = asset.Group.IsScript() ? this.metaData.valueSet : new Set(asset.AllowBlock ?? []);
 				const metaData = { ...this.metaData, name: this.name, valueSet };
 				const ret = this.validateAsLiteralSet(prop, defaults, metaData);
 
@@ -1484,7 +1484,7 @@ var PropertyData = {
 		{
 			..._PropertyDataArraysDefaults,
 			validate(prop, { asset }, defaults) {
-				const valueSet = new Set(asset.AllowHide ?? []);
+				const valueSet = asset.Group.IsScript() ? this.metaData.valueSet : new Set(asset.AllowHide ?? []);
 				const metaData = { ...this.metaData, name: this.name, valueSet };
 				const ret = this.validateAsLiteralSet(prop, defaults, metaData);
 
@@ -1501,6 +1501,10 @@ var PropertyData = {
 		{
 			..._PropertyDataArraysDefaults,
 			validate(prop, { asset }, defaults) {
+				if (asset.Group.IsScript()) {
+					return this.validateSetLikeArray({ type: "string", value: prop });
+				}
+
 				const valueSet = new Set(asset.AllowHideItem ?? []);
 				const metaData = { ...this.metaData, name: this.name, valueSet };
 				const ret = this.validateAsLiteralSet(prop, defaults, metaData);
@@ -1593,7 +1597,7 @@ var PropertyData = {
 				const keySet = new Set(asset.Layer.map(l => l.Name ?? ""));
 				/** @type {Partial<Record<LayerName, ItemProperty.ValidationOutput<number>>>} */
 				const propertyOutput = CommonFromEntries(CommonEntries(prop).map(([k, v]) => {
-					const metaData = { ...this.metaData, name: `${this.name}["${k}"]` };
+					const metaData = { ...this.metaData, name: `${this.name}['${k}']` };
 					if (v === undefined) {
 						return [k, undefined];
 					} if (!keySet.has(k)) {
@@ -1602,7 +1606,7 @@ var PropertyData = {
 						return [k, this.validateNumber(v, defaults?.[k], metaData)];
 					}
 				}));
-				return ItemPropertiesMergeValidationOutputs(propertyOutput);
+				return ItemPropertiesMergeValidationOutputs(propertyOutput, { partial: true });
 			}
 		},
 	),
@@ -1760,7 +1764,7 @@ var PropertyData = {
 					{ name: `${this.name}['HeightRatioProportion']`, isInteger: false, min: 0.0, max: 1.0 },
 				),
 			};
-			return ItemPropertiesMergeValidationOutputs(propertyOutput);
+			return ItemPropertiesMergeValidationOutputs(propertyOutput, { partialFields: ["HeightRatioProportion"] });
 		},
 	}),
 	OverridePriority: new PropertyDataEntry("OverridePriority",
@@ -1873,7 +1877,7 @@ var PropertyData = {
 							return [k, this.validateNumber(v, defaultsNonPartial[k], metaData)];
 						}
 					}));
-					return ItemPropertiesMergeValidationOutputs(propertyOutput);
+					return ItemPropertiesMergeValidationOutputs(propertyOutput, { partial: true });
 				} else {
 					return this.validateNumber(prop, defaults);
 				}
@@ -1898,13 +1902,13 @@ var PropertyData = {
 		},
 	),
 	PublicModeCurrent: new PropertyDataEntry("PublicModeCurrent",
-		{ get valueSet() { return this._valueSet ??= new Set(CommonRange(0, FuturisticTrainingBeltModes.length)); } },
+		{ get valueSet() { return this._valueSet ??= new Set(CommonRange(0, FuturisticTrainingBeltModes.length - 1)); } },
 		{
 			validate(prop, itemData, defaults) { return this.validateAsSetMember(prop, defaults); },
 		},
 	),
 	PublicModePermission: new PropertyDataEntry("PublicModePermission",
-		{ get valueSet() { return this._valueSet ??= new Set(CommonRange(0, FuturisticTrainingBeltPermissions.length)); } },
+		{ get valueSet() { return this._valueSet ??= new Set(CommonRange(0, FuturisticTrainingBeltPermissions.length - 1)); } },
 		{
 			validate(prop, itemData, defaults) { return this.validateAsSetMember(prop, defaults); },
 		},
@@ -1920,7 +1924,7 @@ var PropertyData = {
 		},
 	),
 	PunishProhibitedSpeech: new PropertyDataEntry("PunishProhibitedSpeech",
-		{ get valueSet() { return this._valueSet ??= new Set(CommonRange(0, FuturisticTrainingBeltSpeechPunishments.length)); } },
+		{ get valueSet() { return this._valueSet ??= new Set(CommonRange(0, FuturisticTrainingBeltSpeechPunishments.length - 1)); } },
 		{
 			validate(prop, itemData, defaults) { return this.validateAsSetMember(prop, defaults); },
 		},
@@ -1931,7 +1935,7 @@ var PropertyData = {
 		},
 	),
 	PunishRequiredSpeech: new PropertyDataEntry("PunishRequiredSpeech",
-		{ get valueSet() { return this._valueSet ??= new Set(CommonRange(0, FuturisticTrainingBeltSpeechPunishments.length)); } },
+		{ get valueSet() { return this._valueSet ??= new Set(CommonRange(0, FuturisticTrainingBeltSpeechPunishments.length - 1)); } },
 		{
 			validate(prop, itemData, defaults) { return this.validateAsSetMember(prop, defaults); },
 		},
@@ -1942,7 +1946,7 @@ var PropertyData = {
 		},
 	),
 	PunishSpeech: new PropertyDataEntry("PunishSpeech",
-		{ get valueSet() { return this._valueSet ??= new Set(CommonRange(0, FuturisticTrainingBeltSpeechPunishments.length)); } },
+		{ get valueSet() { return this._valueSet ??= new Set(CommonRange(0, FuturisticTrainingBeltSpeechPunishments.length - 1)); } },
 		{
 			validate(prop, itemData, defaults) { return this.validateAsSetMember(prop, defaults); },
 		},
@@ -2190,9 +2194,9 @@ var PropertyData = {
 					// Optional value; demote criticalError to error
 					validationTintOutput.DefaultColor = { ...validationTintOutput.DefaultColor, status: "error", value: undefined };
 				}
-				return ItemPropertiesMergeValidationOutputs(validationTintOutput);
+				return ItemPropertiesMergeValidationOutputs(validationTintOutput, { partialFields: ["DefaultColor"] });
 			});
-			const ret = ItemPropertiesMergeValidationOutputs(validationOutput);
+			const ret = ItemPropertiesMergeValidationOutputs(validationOutput, { partial: true });
 
 			// Always allow 0-length arrays
 			if (!asset.AllowTint && ret.status !== "criticalError" && ret.value.length !== 0) {

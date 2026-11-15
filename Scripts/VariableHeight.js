@@ -378,7 +378,9 @@ function VariableHeightInit(Data, C, Item, Push, Refresh, log=false) {
 		// to make regarding the presence/absence of properties
 
 		// @ts-expect-error: OverrideHeight properties are initialized by `Data.setHeight`
-		Item.Property.OverrideHeight = {};
+		Item.Property.OverrideHeight = { Priority: 99 };
+	} else {
+		Item.Property.OverrideHeight.Priority ??= 99;
 	}
 
 	let currentHeight = Data.getHeight(Item.Property);
