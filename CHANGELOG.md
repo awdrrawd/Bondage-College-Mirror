@@ -11,9 +11,11 @@ This changelog follows the format outlined in [keepachangelog.com](https://keepa
 
 **Note to contributors:** To avoid merge conflicts, please don't update this file yourself in your PRs - one of the developers will update the changelog with your change before your PR is merged.
 
-* Changelog last updated: 2026-11-10
-* Last recorded PR: [#6916](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6916)
-* Last recorded commit hash: `4f52851bdc2b7af8f7079283be71c96790ff6bf9`
+* Changelog last updated: 2026-11-16
+* Last recorded PR: [#6974](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6974)
+* Last recorded commit hash: `5169f4ade98ece50518324be69c1aac6eb301ef6`
+
+## [Generated]
 
 ## [R134]
 
@@ -39,6 +41,7 @@ This changelog follows the format outlined in [keepachangelog.com](https://keepa
 * FreyaCoding - Map: Added Recolor Options for a lot of Decoration Furniture ([#6930](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6930))
 * duckduckgoose420 - Allow dynamic IsLeashed on PelvisChainLeash ([#6910](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6910))
 * Bruh & Tifa & Felix - Adds new item: Frog Hat ([#6895](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6895))
+* Felix - Club Card Chinese translation update by Lumi ([#6969](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6969))
 * x3mmusic - make locks colorable: ItemMouth ([#6840](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6840))
 * x3mmusic - Add panties mask as hood option ([#6816](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6816))
 * x3mmusic - Another batch of missing stuff ([#6793](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6793))
@@ -64,6 +67,13 @@ This changelog follows the format outlined in [keepachangelog.com](https://keepa
 * SlimeQueenSamantha - New Velvet Bunny Cabaret plushies ([#6897](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6897))
 * SlimeQueenSamantha - New Fairclough Manor plushies and decal ([#6901](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6901))
 * SlimeQueenSamantha - Map: turn, size and color placed objects ([#6827](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6827))
+* SlimeQueenSamantha - Map: DJ booth colors ([#6931](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6931))
+* SlimeQueenSamantha - Fairclough Manor decal: FF monogram ([#6932](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6932))
+* SlimeQueenSamantha - Map: tether leash drawn at the post, and the right names in its messages ([#6933](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6933))
+* SlimeQueenSamantha - New plushies: Chris (Velvet Bunny Cabaret) and the Fox Den (Nicole, Tifa, Felix) ([#6937](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6937))
+* SlimeQueenSamantha - Map: colour layers for bedroom and living room furniture ([#6938](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6938))
+* SlimeQueenSamantha - Map: colour layers for kitchen, school and bathroom objects ([#6939](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6939))
+* SlimeQueenSamantha - Map: kitchen sink with water ([#6940](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6940))
 * Zoe - Added resizability to the map view ([#6877](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6877))
 * Deep - Wardrobe - Add back wraparound when using page change buttons ([#6811](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6811))
 * Deep - Muffle whispers when deafened ([#6781](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6781))
@@ -108,16 +118,31 @@ This changelog follows the format outlined in [keepachangelog.com](https://keepa
 * x3mmusic - ThinLeatherStraps in ItemTorso had missing echo layers ([#6914](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6914))
 * x3mmusic - Camisole not using it's echov2 assets ([#6919](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6919))
 * x3mmusic - DragonWings, HighSecurityHarness requested non existing assets ([#6921](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6921))
+* x3mmusic - Transparent bunny suit missing extended options ([#6944](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6944))
+* x3mmusic - Appearance search ([#6960](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6960))
+* x3mmusic - LegBinder missing asset ([#6966](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6966))
+* maple - Stop re-downloading every cached image on some servers ([#6953](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6953))
 * SlimeQueenSamantha - Click areas, chat commands, texts and small logic mistakes ([#6826](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6826))
 * SlimeQueenSamantha - Review follow-up ([#6831](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6831))
 * Fareeha - Gag garbling interfered OOC content in Chinese ([#6815](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6815))
 * FreyaCoding - Map Viking Table Cutout removed ([#6822](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6822))
 * FreyaCoding - Some crafted items losing custom layer settings ([#6821](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6821))
 * FreyaCoding - Some Small Code Optimazations ([#6862](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6862))
+* FreyaCoding - Mapfix - Adapt the Color Wheel for resizable Chat window ([#6934](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6934))
+* FreyaCoding - Mapfix restore fog toggle sync for players ([#6935](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6935))
+* FreyaCoding - Map-fix show the super powers button to room admins only ([#6936](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6936))
+* FreyaCoding - Mapfix move tether toggle into Object Settings ([#6941](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6941))
+* FreyaCoding - Map: clear object settings on erase or replace and Undo Fixes ([#6942](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6942))
+* FreyaCoding - Map-Fix Prevent long URLs/Messages from expanding the chat panel ([#6950](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6950))
+* FreyaCoding - Restore gag activities on UseRemote mouth items ([#6967](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6967))
+* FreyaCoding - Remove item when chat-room struggle reaches 100% ([#6971](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6971))
 * superj - Fix display of chat room search/filter inputs ([#6836](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6836))
 * Deep - Wardrobe - properly load/display extended data ([#6797](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6797))
 * Deep - Modular Item - keep custom layer priorities when a module sets a numeric default ([#6798](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6798))
 * Deep - Beep - add keybinding instead of hardcoding enter ([#6800](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6800))
+* Deep - Wardrobe - do not show toast on outfix save; do not save same name ([#6949](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6949))
+* Deep - Chat admin - trim stuff ([#6956](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6956))
+* Deep - Align buttons on some screens ([#6961](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6961))
 * Rama - Fix an issue wherein invalid `null` properties could crash the property union machinery ([#6795](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6795))
 * Rama - Ensure that the image cache traceback contains both the sync and async... ([#6801](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6801))
 * Rama - Explicitly delete all 0-valued effects when exiting the crafting item config UI ([#6802](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6802))
@@ -129,6 +154,14 @@ This changelog follows the format outlined in [keepachangelog.com](https://keepa
 * Rama - Always cast the `DialogPrerequisite()` output to booleans ([#6845](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6845))
 * Rama - Fix reference errors related to the Private room ([#6927](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6927))
 * Rama - Fix altering layer-specific priorities raising an exception ([#6882](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6882))
+* Rama - Fix non-default modular item options failing to apply ([#6947](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6947))
+* Rama - Fix the `colorDefault` dialog mode failing to properly apply a color reset ([#6951](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6951))
+* Rama - Add `PropertyDataEntry` tests and fix & tweak some of the validation output ([#6954](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6954))
+* Rama - Restore the R133 outer chat area margin styling and border style ([#6957](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6957))
+* Rama - Fix vibrator intensities failing to decrement upon type changes ([#6963](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6963))
+* Rama - Fix hard dialog updates failing to clear all previous button icons ([#6968](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6968))
+* Rama - Fix the range endpoints in the item property validation ([#6973](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6973))
+* Rama - More item property validation fixes ([#6974](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6974))
 * Estsanatlehi - Fix a crash when WebGL doesn't start properly ([#6794](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6794))
 * Estsanatlehi - Fix relogging into female-only rooms ([#6796](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6796))
 * Estsanatlehi - Make sure we clear the cache on a GL break ([#6799](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6799))
@@ -138,7 +171,9 @@ This changelog follows the format outlined in [keepachangelog.com](https://keepa
 * Estsanatlehi - Fix validation wiping NPCs ([#6844](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6844))
 * Estsanatlehi - Eraser tool for the map ([#6846](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6846))
 * Estsanatlehi - Random improvement and fixes ([#6876](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6876))
+* Estsanatlehi - Fix a bug with the club card end game in the Shibari Dojo ([#6972](https://gitgud.io/BondageProjects/Bondage-College/-/merge_requests/6972))
 * Ben987 - Paw Padded Petsuit Arms Preview Image
+* Ben987 - Proper Credits
 
 ### [Technical]
 

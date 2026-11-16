@@ -688,3 +688,14 @@ describe("CommonRange", () => {
 		expect(Game.CommonRange(3)).toEqual([0, 1, 2, 3]);
 	});
 });
+
+describe("CommonStringShuffle", () => {
+	it("basic stringified number sequence", () => {
+		const inputArray = [1, 2, 3];
+		const output: string = Game.CommonStringShuffle(inputArray.join(""));
+		expect(typeof output).toBe("string");
+
+		const outputArray = output.split("").map(i => Number.parseInt(i, 10));
+		expect(new Set(outputArray)).toEqual(new Set(inputArray));
+	});
+});

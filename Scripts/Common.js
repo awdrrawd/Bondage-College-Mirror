@@ -882,7 +882,7 @@ function CommonConvertStringToArray(s) {
 function CommonStringShuffle(string) {
 	let parts = string.split('');
 	for (let i = parts.length; i > 0;) {
-		const random = Math.random() * i;
+		const random = Math.floor(Math.random() * i);
 		const temp = parts[--i];
 		parts[i] = parts[random];
 		parts[random] = temp;
