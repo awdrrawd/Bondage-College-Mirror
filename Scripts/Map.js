@@ -147,6 +147,7 @@ const MapDataEffectTypes = new Set();
  *   we would require slightly above 5.3 bits per tile after base64 encoding.
  */
 var MapManager = (function () {
+
 	/**
 	 * The class storing the game map data.
 	 */
@@ -233,11 +234,37 @@ var MapManager = (function () {
 			}
 			let objects = [];
 			let tiles = [];
+			/** @type {Map<number, number[]>} */
+			const unknownTiles = new Map();
+			/** @type {Map<number, number[]>} */
+			const unknownObjects = new Map();
 			for (let index = 0; index < length; index++) {
-				const tile = MapDataGetTile(data.Tiles?.charCodeAt(index) ?? ChatRoomMapViewObjectStartID);
-				if (tile) tiles.push(tile);
-				const object = MapDataGetObject(data.Objects?.charCodeAt(index) ?? ChatRoomMapViewObjectStartID);
-				if (object) objects.push(object);
+				const tileId = data.Tiles?.[index]?.charCodeAt(0) ?? ChatRoomMapViewObjectStartID;
+				const tile = MapDataTiles.get(tileId);
+				if (!tile) {
+					CommonMapGetOrInsert(unknownTiles, tileId, []).push(index);
+					tiles.push(/** @type {ChatRoomMapTile} */ ({ ID: tileId, Type: "Floor", Style: "", DoodadType: "Tile" }));
+				} else {
+					tiles.push(tile);
+				}
+
+				const objectId = data.Objects?.[index]?.charCodeAt(0) ?? ChatRoomMapViewObjectStartID;
+				const object = MapDataObjects.get(objectId);
+				if (!object) {
+					CommonMapGetOrInsert(unknownObjects, objectId, []).push(index);
+					objects.push(/** @type {ChatRoomMapObject} */ ({ ID: objectId, Type: "EmptySpace", Style: "Passable", DoodadType: "Object" }));
+				} else {
+					objects.push(object.DeprecatedID === undefined ? object : MapDataGetObject(objectId));
+				}
+			}
+			for (const [kind, unknown] of /** @type {const} */ ([ ["tile", unknownTiles], ["object", unknownObjects] ])) {
+				for (const [id, indices] of unknown) {
+					const positions = indices.map(index => {
+						const { X, Y } = MapIndexToCoordinates(index);
+						return `(${X}, ${Y})`;
+					});
+					console.warn(`Unknown ${kind} ID ${id} (${positions.length} cells): ${positions.join(", ")}`);
+				}
 			}
 			const objectSettings = typeof data.ObjectSettings === "string" ? this.#_decodeObjectSettings(data.ObjectSettings) : {};
 			const map = new MapData(ChatRoomMapViewWidth, ChatRoomMapViewHeight, tiles, objects, effects, data.CellData, objectSettings);
@@ -1327,7 +1354,7 @@ var MapManager = (function () {
 			/** @type {Record<number, ChatRoomMapTile>} */
 			const previousTiles = {};
 			MapForEachIndexInRange(index, range, (curIndex) => {
-				previousTiles[curIndex] = this.getTile(curIndex) ?? MapDataGetTile(ChatRoomMapViewObjectStartID);
+				previousTiles[curIndex] = this.getTile(curIndex) ?? { ID: this.getTileId(curIndex) ?? ChatRoomMapViewObjectStartID, Type: "Floor", Style: "", DoodadType: "Tile" };
 			});
 			const undoGroup = this.#registerUndo(() => {
 				if (!this.#_mapData) return;
@@ -1499,13 +1526,14 @@ var MapManager = (function () {
 
 			if (object?.DefaultObjectConfig?.Type === "Teleporter") range = 0;
 
+			const map = this.#_mapData;
 			const clean = this.isDirtyObjects();
 			/** @type {Record<number, ChatRoomMapObject>} */
 			const previousObjects = {};
 			/** @type {Record<number, ChatRoomMapObjectSettings | undefined>} */
 			const previousSettings = {};
 			MapForEachIndexInRange(index, range, (curIndex) => {
-				previousObjects[curIndex] = this.getObject(curIndex) ?? MapDataGetObject(ChatRoomMapViewObjectStartID);
+				previousObjects[curIndex] = this.getObject(curIndex) ?? { ID: this.getObjectId(curIndex) ?? ChatRoomMapViewObjectStartID, Type: "EmptySpace", Style: "Passable", DoodadType: "Object" };
 				previousSettings[curIndex] = CommonCloneDeep(this.#_mapData?.objectSettings[curIndex]);
 			});
 			const undo = this.#registerUndo(() => {
@@ -1525,7 +1553,6 @@ var MapManager = (function () {
 			this.#_markDirty(DirtyFlags.OBJECTS);
 			object ??= MapDataGetObject(ChatRoomMapViewObjectStartID);
 
-			const map = this.#_mapData;
 			MapForEachIndexInRange(index, range, (curIndex) => {
 				if (this.canSetObject(index, object)) {
 					map.objects[curIndex] = object;

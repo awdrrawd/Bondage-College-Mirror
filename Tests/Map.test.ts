@@ -592,6 +592,133 @@ describe("with a test map", () => {
 	});
 });
 
+describe("with an old map using unknown tile IDs", () => {
+	// A maze from before the map rework. Its dark cells use tile ID 66, which never existed:
+	// the game used to draw nothing there (pitch black) and let players walk on them.
+	const mapData = "N4IgKgngDgpiBcIASEBGAnAlgExAGnEwBsYBnBEUq0gOzvocccDAQJtu05r7n3v/gVxqd2o1jVbiJHatVYjBAiZPrdOPEdKmit05Q2aaJmlb2VDdU8WtMLuuutfOShT08e3vPeqz/NaTV1V7FUAOEHDwlyDbJ0dLONZQ+iSE/0lAkNVnGhSctJYPOIMeP1zcxz5C7L0srgAhCMiLdkNYqMy6zq7uxS4TfU9XbuHtJlai9pZhnucS8b9anmmu+zZ59q8JZc7Tfn7NqW2uhzHU31MjzKV4kKXt3xqJ+KYjusmNs9mh+8eVJ6jLHw3nNHhVYicigVipVvAN3pUdFoLC5agYaDMwfwsr9XGZuG9sWMgl9CZ4ANejZHnSHBVbZLG0hwbKwlU7BVHgmlogAhNAASzReX8OX48Z9Th93Cc/rsscLNrMkc8ZfkPjUVVKVZ8HucDqlVcSFr9CRD9erMb05pazIjbXaGPgQAB5VAAKxgAGMAC7kRDYf0BwNB4Mh0Nh8PBwBt8NhAK3w/rjYYTEeTKdToejYYzaezOdzeYD0azyazSfzZcDgHr4cOllOAWvhg0mAEXllu5mutoNFjsF7OAGvhu7GB/nAPfgw/9o+wE6HgbH4+npYns9nXYHw4AJZPp8Gx0ut9up3udzO9/vZ+Ws1nR4vW+3ByGV/etxmHyeT4Af4BbpcAdfCv1MAAqHQtO39QA78H9F9f0gqDoILaM40jCDE2wRD8zgmDINLQAIIHQx9AwvNMVxQk8QAAXyAA==";
+	const voidTileId = 66;
+
+	/** The map's own data, straight from the code */
+	const legacyData = JSON.parse(Game.LZString.decompressFromBase64(mapData));
+	const voidCells: number[] = [];
+	for (let index = 0; index < legacyData.Tiles.length; index++) {
+		if (legacyData.Tiles.charCodeAt(index) === voidTileId) voidCells.push(index);
+	}
+
+	beforeEach(() => {
+		Game.ChatRoomData = {};
+		Game.ChatRoomData.MapData = Game.ChatRoomMapViewInitialize("Always");
+		expect(Game.MapManager.Map.importString(mapData)).toBe(true);
+	});
+
+	afterEach(() => {
+		Game.Player.MapData = null;
+	});
+
+	/** Whether a player next to the cell could step onto it */
+	const canWalkOnto = (index: number) => {
+		const { X, Y } = Game.MapIndexToCoordinates(index);
+		Game.Player.MapData = { Pos: { X: X - 1, Y }, PrivateState: {} };
+		return !Game.ChatRoomMapViewIsWall(X, Y) && !Game.ChatRoomMapViewPositionIsBlocked(X, Y);
+	};
+
+	it("is a tile the game doesn't know", () => {
+		expect(Game.MapGetDoodad("Tile", voidTileId)).toBe(null);
+		expect(voidCells).toHaveLength(101);
+	});
+
+	it("keeps the unknown tiles as voids", () => {
+		for (const index of voidCells) {
+			expect(Game.MapManager.Map.getTileId(index), `cell ${index}`).toBe(voidTileId);
+			expect(Game.MapManager.Map.getTile(index), `cell ${index}`).toBe(null);
+		}
+	});
+
+	it("lets players walk on the empty voids", () => {
+		const emptyVoids = voidCells.filter(index => Game.MapManager.Map.getObjectId(index) === Game.ChatRoomMapViewObjectStartID);
+		expect(emptyVoids).toHaveLength(69);
+		for (const index of emptyVoids) expect(canWalkOnto(index), `cell ${index}`).toBe(true);
+	});
+
+	it("still blocks the fences standing on voids", () => {
+		const barbFence = 2031;
+		const fencedVoids = voidCells.filter(index => Game.MapManager.Map.getObjectId(index) === barbFence);
+		expect(fencedVoids).toHaveLength(31);
+		for (const index of fencedVoids) expect(canWalkOnto(index), `cell ${index}`).toBe(false);
+	});
+
+	it("loads the known tiles and the objects as they are", () => {
+		for (let index = 0; index < Game.ChatRoomMapMaxLength; index++) {
+			if (!voidCells.includes(index)) expect(Game.MapManager.Map.getTileId(index), `cell ${index}`).toBe(legacyData.Tiles.charCodeAt(index));
+			expect(Game.MapManager.Map.getObjectId(index), `cell ${index}`).toBe(legacyData.Objects.charCodeAt(index));
+		}
+	});
+
+	it("exports the same tiles and objects, and loads its own export again", () => {
+		const exported = Game.MapManager.Map.exportString();
+		const exportedData = JSON.parse(Game.LZString.decompressFromBase64(exported.split("@")[0]));
+		expect(exportedData.Tiles).toBe(legacyData.Tiles);
+		expect(exportedData.Objects).toBe(legacyData.Objects);
+
+		expect(Game.MapManager.Map.importString(exported)).toBe(true);
+		expect(Game.MapManager.Map.exportString()).toBe(exported);
+	});
+
+	it("brings a void back when painting over it is undone", () => {
+		const [index] = voidCells;
+		Game.MapManager.Map.setTile(index, Game.MapDataGetTile(Game.ChatRoomMapViewObjectStartID));
+		expect(Game.MapManager.Map.getTileId(index)).toBe(Game.ChatRoomMapViewObjectStartID);
+		expect(Game.MapManager.Map.undo()).toBe(true);
+		expect(Game.MapManager.Map.getTileId(index)).toBe(voidTileId);
+	});
+
+	it("preserves an unknown object ID through validation, save and export", () => {
+		const unknownObjectId = 9876;
+		expect(Game.MapGetDoodad("Object", unknownObjectId)).toBe(null);
+		const objects = String.fromCharCode(unknownObjectId) + legacyData.Objects.slice(1);
+		const code = Game.LZString.compressToBase64(JSON.stringify({ ...legacyData, Objects: objects }));
+		expect(Game.MapManager.Map.importString(code)).toBe(true);
+		const map = Game.MapManager.Map;
+		expect(map.getObjectId(0)).toBe(unknownObjectId);
+		expect(map.getObject(0)).toBe(null);
+		expect(map.getObjectSettings(0)).toBe(null);
+		expect(map.updateGlobalMapData()).toBe(true);
+		expect(Game.ChatRoomData.MapData.Objects).toBe(objects);
+		const exported = map.exportString();
+		const exportedData = JSON.parse(Game.LZString.decompressFromBase64(exported.split("@")[0]));
+		expect(exportedData.Tiles).toBe(legacyData.Tiles);
+		expect(exportedData.Objects).toBe(objects);
+		map.setObject(0, null);
+		expect(map.undo()).toBe(true);
+		expect(map.exportString()).toBe(exported);
+	});
+});
+
+describe("with a room map from a newer game version", () => {
+	// A room set up by an admin on the beta (or a local dev build) can use tiles and objects
+	// other players' games don't have yet. Their game loads the room's map when they join and on every update.
+	const newTileId = 9001;
+	const newObjectId = 9002;
+
+	it("still loads for a player whose game doesn't have those tiles and objects", () => {
+		expect(Game.MapGetDoodad("Tile", newTileId)).toBe(null);
+		expect(Game.MapGetDoodad("Object", newObjectId)).toBe(null);
+		const length = Game.ChatRoomMapViewWidth * Game.ChatRoomMapViewHeight;
+		const tiles = Array.from({ length }, () => String.fromCharCode(Game.ChatRoomMapViewObjectStartID));
+		const objects = [...tiles];
+		tiles[5] = String.fromCharCode(newTileId);
+		objects[6] = String.fromCharCode(newObjectId);
+		Game.ChatRoomData.MapData.Tiles = tiles.join("");
+		Game.ChatRoomData.MapData.Objects = objects.join("");
+
+		expect(() => Game.MapManager.OnMapDataUpdated()).not.toThrow();
+		expect(Game.MapManager.Map.getTileId(5)).toBe(newTileId);
+		expect(Game.MapManager.Map.getTile(5)).toBe(null);
+		expect(Game.MapManager.Map.getObjectId(6)).toBe(newObjectId);
+		expect(Game.MapManager.Map.getObject(6)).toBe(null);
+	});
+});
+
 describe("deprecated objects", () => {
 	it("replaces a deprecated object with another on load", () => {
 		const passable = Game.MapDataGetObject(100);
