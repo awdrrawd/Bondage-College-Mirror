@@ -398,7 +398,7 @@ function CommandHandleArgumentCompletion(cmd, remaining, parts, options) {
 	/** @type {string} */
 	let currentInput = "";
 
-	while (remaining[currentArgIndex] !== undefined || remaining.length === 0 || currentArgIndex < argumentsDef.length) {
+	while (currentArgIndex < argumentsDef.length) {
 		currentInput = remaining[currentArgIndex] || '';
 		const currentArgDef = argumentsDef[currentArgIndex];
 		const hints = CommonUnwrapThunk(currentArgDef.suggestions, CommandBuildSuggestionsContext({

@@ -2269,7 +2269,7 @@ function PlatformGetAnim(C, Pose, Cycle = null) {
 			if (AnimPos < 0) AnimPos = 0;
 			if (AnimPos >= CycleList.length) AnimPos = CycleList.length - 1;
 			if ((C.FaceLeft === true) && (C.Animation[A].CycleLeft != null)) Pose = Pose + "Left";
-			if ((C.Anim == null) || (C.Anim.Name == null) || (C.Anim.Name != C.Animation[A].Name)) PlatformSoundEffect("Animation", C.Animation[A].Audio ?? []);
+			if ((C.Anim == null) || (C.Anim.Name == null) || (C.Anim.Name != C.Animation[A].Name)) PlatformSoundEffect("Animation", C.Animation[A].Audio);
 			return {
 				Name: Pose,
 				Image: CycleList[AnimPos],
@@ -2618,7 +2618,7 @@ function PlatformHitBoxClash(Source, Target, HitBox) {
 /**
  * Plays a sound effect if needed
  * @param {Platform.SoundCategory} Category - The sound effect category
- * @param {Platform.SoundEffect | Platform.SoundEffect[]} Sound - The sound or array of sound to play
+ * @param {Platform.SoundEffect | Platform.SoundEffect[] | undefined} Sound - The sound or array of sound to play
  * @param {number} Factor - The volume factor to apply
  * @returns {void} - Nothing
  */
@@ -3689,9 +3689,9 @@ function PlatformCooldownActive(Name) {
 
 /**
  * Sets Bondage Brawl in standalone mode, not requiring any login from BC
- * @returns {void} - Nothing
+ * @returns {Promise<void>} - Nothing
  */
-function PlatformRunStandalone() {
+async function PlatformRunStandalone() {
 	if (Player == null) {
 		setTimeout(PlatformRunStandalone, 100);
 		return;
@@ -3700,5 +3700,6 @@ function PlatformRunStandalone() {
 	ElementRemove("InputName");
 	ElementRemove("InputPassword");
 	ElementRemove("LanguageDropdown");
-	CommonSetScreen("Room", "PlatformIntro");
+	await TextPrefetch("Room", "PlatformIntro").loadedPromise;
+	await CommonSetScreen("Room", "PlatformIntro");
 }

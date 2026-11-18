@@ -19307,7 +19307,7 @@ var AssetFemale3DCGExtended = {
 				{
 					Name: "Canteen",
 					Key: "c",
-					Options: [{}, { Property: { Effect: [E.GagEasy] } }],
+					Options: [{}, {}],
 				},
 				{
 					Name: "Layering",
@@ -19750,6 +19750,67 @@ var AssetFemale3DCGExtended = {
 				Module: "ItemHoodKirugumiMaskModule",
 				Option: "ItemHoodKirugumiMaskOption",
 			},
+			Modules: [
+				{
+					Name: "Eyes",
+					Key: "e",
+					Options: [{}, {}, {}, {}], // All options are merely cosmetic
+				},
+				{
+					Name: "Mouth",
+					Key: "m",
+					Options: [{}, {}, {}, {}], // All options are merely cosmetic,
+				},
+				{
+					Name: "Blush",
+					Key: "b",
+					Options: [{}, {}, {}, {}], // All options are merely cosmetic,
+				},
+				{
+					Name: "Brows",
+					Key: "br",
+					Options: [{}, {}, {}, {}], // All options are merely cosmetic,
+				},
+				{
+					Name: "Opacity",
+					Key: "op",
+					Options: [{}], // Opacity
+				},
+				{
+					Name: "MaskStyle",
+					Key: "ms",
+					Options: [
+						{
+							Property: {
+								Effect: [E.BlockMouth],
+								Hide: [
+									"Glasses",
+									"ItemMouth",
+									"ItemMouth2",
+									"ItemMouth3",
+									"Mask",
+									"ItemHead",
+								],
+								HideItem: ["ItemHeadSnorkel"],
+								Block: [
+									"ItemMouth",
+									"ItemMouth2",
+									"ItemMouth3",
+									"ItemHead",
+									"ItemNose",
+									"ItemEars",
+								],
+							},
+						},
+						{
+							Property: {
+								OverridePriority: 35,
+								Hide: ["Head"],
+							},
+						},
+					],
+				},
+			],
 		},
 	}, // Mask
 	ItemLegs: {

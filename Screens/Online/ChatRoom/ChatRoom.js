@@ -1311,7 +1311,7 @@ function ChatRoomCreateElement() {
 	if (!wrapper) {
 		wrapper = ElementCreate({
 			tag: "div",
-			attributes: { id: "chat-room-wrapper" },
+			attributes: { id: "chat-room-wrapper", "screen-generated": CurrentScreen },
 			parent: document.body,
 			children: [
 				{
@@ -1339,8 +1339,11 @@ function ChatRoomCreateElement() {
 				}
 			]
 		});
+	} else if (ChatRoomChatHidden) {
+		ChatRoomShowElements();
+		ChatRoomRefreshChatSettings();
+		ElementFocus("InputChat");
 	}
-
 
 	let elem = /** @type {null | HTMLDivElement} */(document.getElementById("chat-room-div"));
 	if (!elem) {
@@ -1443,11 +1446,6 @@ function ChatRoomCreateElement() {
 		ChatRoomRefreshChatSettings();
 		ElementFocus("InputChat");
 		window.addEventListener("resize", ChatRoomResizeManager.ChatRoomResizeEvent);
-	} else if (ChatRoomChatHidden) {
-		elem.toggleAttribute("hidden", false);
-		ElementScrollToEnd("TextAreaChatLog");
-		ChatRoomRefreshChatSettings();
-		ElementFocus("InputChat");
 	}
 	if (topMenu.parentElement !== elem) {
 		elem.prepend(topMenu);
@@ -1464,9 +1462,9 @@ function ChatRoomCreateElement() {
 
 /** Hide the UI elements of the chatroom screen */
 function ChatRoomShowElements() {
-	const elem = document.getElementById("chat-room-div");
-	if (elem) {
-		elem.toggleAttribute("hidden", false);
+	const wrapper = document.getElementById("chat-room-wrapper");
+	if (wrapper) {
+		wrapper.toggleAttribute("hidden", false);
 
 		// We can't accurately keep track of the scroll height within the likes of `ChatRoomAppendChat` when an element is hidden via `[hidden]`,
 		// so as a compromise just scroll to the very bottom of the chat log when unhiding (which should be desireable in the majority cases)
@@ -1478,7 +1476,7 @@ function ChatRoomShowElements() {
 
 /** Show the UI elements of the chatroom screen */
 function ChatRoomHideElements() {
-	document.getElementById("chat-room-div")?.toggleAttribute("hidden", true);
+	document.getElementById("chat-room-wrapper")?.toggleAttribute("hidden", true);
 	ChatRoomChatHidden = true;
 }
 

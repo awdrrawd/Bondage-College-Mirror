@@ -2,8 +2,8 @@
 	"compilerOptions": {
 		"module": "nodenext",
 		"moduleResolution": "nodenext",
-		"target": "es2022",
-		"lib": ["ES2022"],
+		"target": "esnext",
+		"lib": ["esnext"],
 		"checkJs": true,
 		"allowJs": true,
 		"noEmit": true,

@@ -1386,6 +1386,34 @@ function testSelfBlock(assets, extendedDataRecords) {
 }
 
 /**
+ * Test whether an appearance asset does not contain any restraint-only effects
+ * @param {Asset[]} assets
+ * @param {Record<string, Set<EffectName>>} effects
+ */
+function testIllegalClothesEffects(assets, effects) {
+	for (const asset of assets) {
+		if (!(asset.Group.IsAppearance() && asset.AllowEffect?.length)) {
+			continue;
+		}
+
+		const assetEffects = new Set(asset.AllowEffect);
+		/** @type {Map<string, EffectName[]>} */
+		const illegalEffects = new Map;
+		for (const [category, refEffects] of Object.entries(effects)) {
+			const intersection = assetEffects.intersection(refEffects);
+			if (intersection.size) {
+				illegalEffects.set(category, Array.from(intersection).sort());
+			}
+		}
+
+		if (illegalEffects.size) {
+			const effectsString = JSON.stringify(Object.fromEntries(illegalEffects.entries()), undefined, 4);
+			error(`${asset.Group.Name}:${asset.Name} illegal restraints-only effects on an appearance item: ${effectsString}`);
+		}
+	}
+}
+
+/**
  * Strigify and parse the passed object to get the correct Array and Object prototypes, because VM uses different ones.
  * This unfortunately results in Functions being lost and replaced with a dummy function
  * @template {object} T
@@ -1495,6 +1523,14 @@ function sanitizeVMOutput(input) {
 	/** @type {Pose[]} */
 	const pose = context.PoseFemale3DCG;
 	const poseRecord = fromEntries(pose.map(p => [p.Name, p]));
+	/** @type {Record<string, Set<EffectName>>} */
+	const effectCategories = {
+		"Gag effects": context.TestingGagLevels,
+		"Blindness effects": context.TestingBlindEffects,
+		"Vision blurring effects": context.TestingBlurLevels,
+		"Deafening effects": context.TestingDeafLevels,
+		"Restraining effects": new Set(["Block", "Freeze"]), // TODO: this set is probably incomplete
+	};
 
 	const extendedItemSuperRecord = {
 		modular: ModularItemDataLookup,
@@ -1634,4 +1670,5 @@ function sanitizeVMOutput(input) {
 	testAssetHasPNG(assetList, extendedItemSuperRecord, poseRecord);
 	testSetPose(assetList, pose);
 	testSelfBlock(assetList, extendedItemSuperRecord);
+	testIllegalClothesEffects(assetList, effectCategories);
 })();

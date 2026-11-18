@@ -101,3 +101,12 @@ for (const { Category, Name } of Pose) {
 		TestingPoseMap[Category] = new Set([Name]);
 	}
 }
+
+/** @type {Set<BlindEffectName>} */
+var TestingBlindEffects = new Set(CharacterBlindLevels.keys());
+/** @type {Set<DeafEffectName>} */
+var TestingDeafLevels = new Set(CharacterDeafLevels.keys());
+/** @type {Set<BlurEffectName>} */
+var TestingBlurLevels = new Set(CharacterBlurLevels.keys());
+/** @type {Set<GagEffectName>} */
+var TestingGagLevels = new Set(CommonKeys(SpeechGagLevelLookup));

@@ -111,6 +111,7 @@ function OnlineProfileClick() {}
 
 function OnlineProfileResize() {
 	ElementPositionFixed(OnlineProfile.IDs.screen, 50, 70, 1900, 870);
+	ElementSetFontSize(OnlineProfile.IDs.screen, 36);
 }
 
 /**

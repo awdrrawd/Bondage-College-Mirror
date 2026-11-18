@@ -5527,11 +5527,13 @@ function PlatformDialogClick() {
  * @returns {Platform.DialogCharacter} - The character object
  */
 function PlatformDialogGetCharacter(Name) {
-	if (PlatformDialogCharacter != null)
-		for (let Character of PlatformDialogCharacter)
-			if (Character.Name == Name)
-				return Character;
-	throw new Error("not supposed to happen");
+	const char = PlatformDialogCharacter?.find(c => c.Name === Name);
+	if (!char) {
+		// XXX: This is a complete hack. But as long as you only pass valid character names, it's fine.
+		// The one exception is PlatformDialogDrawDialog() sometimes passes nicknames in for some reason.
+		return /** @type {never} */ (undefined);
+	}
+	return char;
 }
 
 /**

@@ -17,6 +17,8 @@ export const NEEDED_FILES = [
 	"Scripts/TextItem.js",
 	"Scripts/NoArch.js",
 	"Scripts/PortalLink.js",
+	"Scripts/Speech.js",
+	"Scripts/Character.js",
 	"Screens/Inventory/Futuristic/Futuristic.js",
 	"Screens/Inventory/ItemTorso/FuturisticHarness/FuturisticHarness.js",
 	"Screens/Inventory/ItemNeckAccessories/CollarNameTag/CollarNameTag.js",
