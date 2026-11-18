@@ -1,0 +1,13 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    # Wait 7 days after a release before proposing it (supply-chain safety).
+    cooldown:
+      default-days: 7
+    # Only group first-party actions; third-party actions (dawidd6/*) get their own PRs.
+    groups:
+      actions:
+        patterns: ['actions/*']
