@@ -156,6 +156,24 @@ describe("PropertyDataEntry.validateBoolean", () => {
 	});
 });
 
+describe("PropertyDataEntry.isSubsetShallowObjects", () => {
+	it("TypeRecord", () => {
+		// Yes, we're cheating here
+		const asset = {} as Asset;
+		const entry: ItemProperty.EntryNullable<any> & Record<string, any> = Game.PropertyData.TypeRecord;
+		expect(entry).not.toBe(undefined);
+
+		const output1 = entry.isSubset({ a: 1 }, { a: 1, b: 2 }, { asset });
+		expect(output1).toBe(true);
+
+		const output2 = entry.isSubset({ a: 1, b: 2 }, { a: 1, b: 2 }, { asset });
+		expect(output2).toBe(true);
+
+		const output3 = entry.isSubset({ a: 1 }, { a: 2, b: 2 }, { asset });
+		expect(output3).toBe(false);
+	});
+});
+
 describe("PropertyDataEntry.validateSetLikeArray", () => {
 	const param = Object.entries(valdiationTestParam.validateSetLikeArray).map(([key, value]) => {
 		return { description: key, ...value };

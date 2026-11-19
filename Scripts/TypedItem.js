@@ -599,8 +599,8 @@ function TypedItemInit({ options, name, baselineProperty, asset }, C, Item, Push
 
 	if (update && log) {
 		console.error(
-			`Updated incomplete/missing ${C.Name} (${C.MemberNumber ?? C.Type}) "${Item.Asset.Group.Name}/${Item.Asset.Name}" properties`,
-			{ changes: Array.from(isSubset.nonEquivalencies).sort() },
+			`Updated incomplete/missing ${C.Name} (${C.MemberNumber ?? C.Type}) "${Item.Asset.Group.Name}/${Item.Asset.Name}" properties\n`,
+			JSON.stringify({ changes: Array.from(isSubset.nonEquivalencies).sort() }, undefined, 4),
 		);
 	}
 

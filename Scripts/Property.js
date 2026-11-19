@@ -904,6 +904,25 @@ class PropertyDataEntry {
 	}
 
 	/**
+	 * Subset checking function for simple objects with scalar values (numbers, strings, etc.)
+	 * @satisfies {ItemProperty.IsSubset<keyof ItemProperties>}
+	 * @template {Readonly<Record<string, undefined | null | string | boolean | number>>} T
+	 * @param {T} subProp
+	 * @param {Readonly<Record<string, undefined | null | string | boolean | number>>} superProp
+	 * @returns {boolean}
+	 */
+	static isSubsetShallowObjects(subProp, superProp) {
+		for (const [key, value] of Object.entries(subProp)) {
+			if (value === undefined) {
+				continue;
+			} else if (value !== superProp[key]) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	/**
 	 * Comparison function for simple objects with scalar values (numbers, strings, etc.)
 	 * @satisfies {ItemProperty.Union<keyof ItemProperties>}
 	 * @template {Record<string, undefined | null | string | boolean | number>} T
@@ -1576,6 +1595,7 @@ var PropertyData = {
 		{ defaultNumber: 0, min: -180, max: 180 },
 		{
 			compare: PropertyDataEntry.compareShallowObjects,
+			isSubset: PropertyDataEntry.isSubsetShallowObjects,
 			union: PropertyDataEntry.unionShallowObjects,
 			compress(prop, { asset }, defaults) {
 				const value = this.compressNumberRecord(prop, asset, defaults);
@@ -1783,6 +1803,20 @@ var PropertyData = {
 					prop2 = CommonFromEntries(asset.Layer.map(l => [l.Name ?? "", prop2Num]));
 				}
 				return PropertyDataEntry.compareShallowObjects(prop1, prop2);
+			},
+			isSubset(subProp, superProp, { asset }) {
+				if (typeof subProp === "number" && typeof superProp === "number") {
+					return subProp === superProp;
+				}
+				if (typeof subProp === "number") {
+					const prop1Num = subProp;
+					subProp = CommonFromEntries(asset.Layer.map(l => [l.Name ?? "", prop1Num]));
+				}
+				if (typeof superProp === "number") {
+					const prop2Num = superProp;
+					superProp = CommonFromEntries(asset.Layer.map(l => [l.Name ?? "", prop2Num]));
+				}
+				return PropertyDataEntry.isSubsetShallowObjects(subProp, superProp);
 			},
 			union(properties, { asset }) {
 				if (properties.every(i => typeof i === "number")) {
@@ -2231,6 +2265,7 @@ var PropertyData = {
 	),
 	TypeRecord: new PropertyDataEntry("TypeRecord", undefined, {
 		compare: PropertyDataEntry.compareShallowObjects,
+		isSubset: PropertyDataEntry.isSubsetShallowObjects,
 		union: PropertyDataEntry.unionShallowObjects,
 		difference: PropertyDataEntry.differenceShallowObjects,
 		compress(prop) {

@@ -1483,6 +1483,8 @@ function DialogMenuButtonBuild(C) {
 			return;
 		}
 
+		if (Player.CanInteract()) DialogMenuButton.push("FilterItems");
+
 		if (IsItemLocked && DialogCanUnlock(C, Item) && !IsGroupBlocked && (!C.IsPlayer() || Player.CanInteract()))
 			DialogMenuButton.push("Remove");
 
@@ -1558,7 +1560,6 @@ function DialogMenuButtonBuild(C) {
 		}
 
 		if (DialogActivity.length > 0) DialogMenuButton.push("Activity");
-		if (Player.CanInteract()) DialogMenuButton.push("FilterItems");
 
 		// Item permission enter/exit
 		if (C.IsPlayer()) {

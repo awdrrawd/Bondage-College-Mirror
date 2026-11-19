@@ -140,8 +140,8 @@ function ModularItemInit(Data, C, Item, Push=true, Refresh=true, log=false) {
 
 	if (update && log) {
 		console.error(
-			`Updating incomplete/missing ${C.Name} (${C.MemberNumber ?? C.Type}) "${Item.Asset.Group.Name}/${Item.Asset.Name}" item properties`,
-			{ changes: Array.from(isSubset.nonEquivalencies).sort() },
+			`Updating incomplete/missing ${C.Name} (${C.MemberNumber ?? C.Type}) "${Item.Asset.Group.Name}/${Item.Asset.Name}" item properties\n`,
+			JSON.stringify({ changes: Array.from(isSubset.nonEquivalencies).sort() }, undefined, 4),
 		);
 	}
 

@@ -230,8 +230,9 @@ function AssetAdd(Group, AssetDef, ExtendedConfig, GroupDef) {
 	}
 
 	let allowExpression = AssetDef.AllowExpression ?? GroupDef.AllowExpression;
-	if (allowExpression) {
-		allowExpression = CommonArrayConcatDedupe(allowExpression, [null]);
+	if (allowExpression && !allowExpression.includes(null)) {
+		// Ensure the null/empty expression is first
+		allowExpression.splice(0, 0, null);
 	}
 
 	/** @type {Mutable<Asset>} */
