@@ -120,7 +120,15 @@ function ModularItemInit(Data, C, Item, Push=true, Refresh=true, log=false) {
 	let update = !isSubset.result;
 
 	const customProperties = CommonPick(Item.Property, ExtendedItemInitPropertyIgnore);
-	Item.Property = ItemPropertiesUnion([customProperties, expectedProps, Item.Property, customPropertiesBackup, baselineProperty], Item.Asset);
+	Item.Property = ItemPropertiesUnion([
+		customProperties,
+		expectedProps,
+		// FIXME (maybe?): Ban these summation-based numbers as there's no way of knowing what is and isn't already included in their pre-existing sum,
+		// meaning they are at great risk of double counting for successive ExtendedItemInit() calls
+		CommonOmit(Item.Property, ["Difficulty", "HeightModifier"]),
+		customPropertiesBackup,
+		baselineProperty,
+	], Item.Asset);
 
 	// Initialize subscreen(s) in a DFS manner
 	const typeRecord = Item.Property.TypeRecord ?? {};

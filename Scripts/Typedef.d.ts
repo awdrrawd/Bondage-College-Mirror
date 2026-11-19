@@ -3237,7 +3237,9 @@ interface ExtendedItemData<OptionType extends ExtendedItemOption> {
 	 * To-be initialized properties independent of the selected item module(s).
 	 * Relevant if there are properties that are (near) exclusively managed by {@link ExtendedItemData.scriptHooks} functions.
 	 */
-	baselineProperty: PropertiesNoArray.Item;
+	// FIXME (maybe?): Ban these summation-based numbers as there's no way of knowing what is and isn't already included in their pre-existing sum,
+	// meaning they are at great risk of double counting for successive ExtendedItemInit() calls
+	baselineProperty: Omit<PropertiesNoArray.Item, "Difficulty" | "HeightModifier">;
 	/** The extended item option of the super screen that this archetype was initialized from (if any) */
 	parentOption: null | ExtendedItemOption;
 	/** An interface with element-specific drawing data for a given screen. */
