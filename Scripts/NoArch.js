@@ -136,7 +136,7 @@ const NoArch = {
 			}
 		}
 
-		if (item.Property.LockedBy && item.Asset.AllowLock) {
+		if (item.Property.LockedBy && InventoryDoesItemAllowLock(item)) {
 			if (!item.Property.Effect?.includes("Lock")) {
 				update = true;
 				CommonArrayConcatDedupe(item.Property.Effect ??= [], ["Lock"]);

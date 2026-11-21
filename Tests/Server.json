@@ -25,7 +25,8 @@
 		"assets": [
 			{ "asset": "ModularChastityBelt", "group": "ItemPelvis", "comment": "modular item" },
 			{ "asset": "MetalChastityBelt", "group": "ItemPelvis", "comment": "typed item" },
-			{ "asset": "HipHarness", "group": "ItemPelvis", "comment": "non-extended item" }
+			{ "asset": "HipHarness", "group": "ItemPelvis", "comment": "non-extended item" },
+			{ "asset": "AOMGag", "group": "ItemMouth", "comment": "type-specific AllowLock", "type": { "typed": 1 } }
 		],
 		"locks": {
 			"CombinationPadlock": {

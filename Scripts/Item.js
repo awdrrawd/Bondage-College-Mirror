@@ -599,7 +599,7 @@ function ItemPropertiesDecompress(item, properties, options=undefined) {
 		if (item.Asset.Extended) {
 			// Init will respect the `TypeRecord` values assigned further up above via `ItemPropertiesUnion()`
 			ExtendedItemInit(C, item, false, false);
-		} else if (properties.LockedBy) {
+		} else if (properties.LockedBy && InventoryDoesItemAllowLock(item)) {
 			// Code branch already taken care of by `ExtendedItemInit` for extended items
 			/** @type {Parameters<ExtendedItemCallbacks.Init>} */
 			const args = [C, item, false, false];

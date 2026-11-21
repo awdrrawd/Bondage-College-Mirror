@@ -249,7 +249,8 @@ var Layering = {
 	 * @param {string} defaultPriority - The stringified default priority of the layer
 	 */
 	_ApplyLayerPriority(name, priority, defaultPriority) {
-		if (this.OverridePriority === undefined || !this.Character) throw new Error("called before Layering.Init()");
+		if (!this.Character) throw new Error("called before Layering.Init()");
+		// Undefined, number and Record<LayerName, number> are all reasonable `OverridePriority` values at this point
 		const old = CommonIsObject(this.OverridePriority) ? this.OverridePriority[name] : this.OverridePriority;
 		if (!CommonIsObject(this.OverridePriority)) {
 			this._UpdateInputColors("layer-priority");

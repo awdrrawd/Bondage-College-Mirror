@@ -61,15 +61,15 @@
 .information-sheet-body[data-layout="player"] {
 	grid-template-rows: auto minmax(0, 1fr) auto;
 	grid-template-areas:
-		"identity identity relationships"
-		"skills reputation relationships"
-		"permissions permissions relationships";
+		"identity identity stats"
+		"lovers owner stats"
+		"permissions permissions stats";
 }
 
 .information-sheet-body[data-layout="online"] {
 	grid-template-areas:
-		"identity identity relationships"
-		"reputation reputation relationships";
+		"identity identity stats"
+		"lovers owner stats";
 }
 
 .information-sheet-body[data-layout="npc"] {
@@ -90,20 +90,67 @@
 	font-size: 1.15em;
 }
 
-.information-sheet-area-skills {
-	grid-area: skills;
+.information-sheet-identity-name {
+	margin: 0;
+	display: flex;
+	gap: var(--half-gap);
+	color: #3a2c22;
 }
-.information-sheet-area-reputation {
-	grid-area: reputation;
+
+.information-sheet-nickname,
+.information-sheet-name {
+	font-weight: 600;
 }
+
+.information-sheet-pronouns {
+	font-size: 0.9em;
+}
+
+.information-sheet-identity-member-number {
+	margin: 0;
+	font-size: 0.8em;
+	color: #3a2c22;
+	font-weight: 600;
+}
+
+.information-sheet-area-lovers {
+	grid-area: lovers;
+}
+
+.information-sheet-area-owner {
+	grid-area: owner;
+}
+
 .information-sheet-area-traits {
 	grid-area: traits;
+}
+
+.information-sheet-stats {
+	grid-area: stats;
+	display: flex;
+	flex-direction: column;
+	gap: 0.35em;
+}
+
+#information-sheet-screen .information-sheet-stats-panel {
+	flex: 1 1 auto;
+	display: flex;
+	flex-direction: column;
+	gap: 0.55em;
+	padding-top: 0.45em;
+	padding-bottom: 0.55em;
+}
+
+.information-sheet-stats-panel > .information-sheet-column {
+	flex: none;
+	padding: 0;
+	gap: 0.45em;
 }
 
 .information-sheet-note,
 .information-sheet-since,
 .information-sheet-duration,
-.information-sheet-entry-title,
+.information-sheet-lover,
 .information-sheet-empty,
 .information-sheet-owner {
 	margin: 0;
@@ -112,20 +159,22 @@
 .information-sheet-identity {
 	display: flex;
 	flex-direction: column;
-	gap: 0.28em;
 	padding: 0.45em var(--scrollbar-gutter) 0.55em;
 	overflow-wrap: break-word;
 }
 
 .information-sheet-facts {
 	display: grid;
-	grid-template-columns: max-content minmax(0, 1fr);
-	column-gap: 0.7em;
 	row-gap: 0.16em;
 	margin: 0;
 }
 
-.information-sheet-facts dt,
+.information-sheet-fact {
+	display: flex;
+	gap: var(--half-gap);
+}
+
+.information-sheet-facts,
 .information-sheet-since,
 .information-sheet-duration,
 .information-sheet-note,
@@ -134,7 +183,7 @@
 	font-weight: 500;
 }
 
-.information-sheet-facts dd {
+.information-sheet-facts .information-sheet-fact-value {
 	margin: 0;
 	font-weight: 600;
 }
@@ -149,15 +198,15 @@
 }
 
 .information-sheet-title-forced {
-	color: red;
+	color: #b44a42;
 }
 
 .information-sheet-title-earned {
-	color: #0000bf;
+	color: #3d4d96;
 }
 
 .information-sheet-birthday {
-	color: blue;
+	color: #2f6494;
 }
 
 .information-sheet-copy {
@@ -223,25 +272,16 @@
 	border-bottom: var(--border-width) solid rgb(26 18 12 / 35%);
 }
 
-.information-sheet-entry {
-	display: flex;
-	flex-direction: column;
-	gap: 0.1em;
-}
-
-.information-sheet-entry-title {
-	font-size: 1.05em;
-	font-weight: 700;
-	overflow-wrap: break-word;
-}
-
-.information-sheet-owner {
+.information-sheet-owner,
+.information-sheet-empty,
+.information-sheet-lover {
 	font-size: 1.08em;
 	font-weight: 700;
 	overflow-wrap: break-word;
 }
 
-.information-sheet-ownership {
+.information-sheet-ownership,
+.information-sheet-lovership {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;

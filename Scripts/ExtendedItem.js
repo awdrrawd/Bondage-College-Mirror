@@ -249,7 +249,7 @@ function ExtendedItemInit(C, Item, Push=true, Refresh=true, log=false) {
 	/** @type {Parameters<ExtendedItemCallbacks.Init>} */
 	const args = [C, Item, Push, Refresh, log];
 	ret = CommonCallFunctionByNameWarn(`Inventory${Item.Asset.Group.Name}${Item.Asset.Name}Init`, ...args) || ret;
-	if (Item.Property.LockedBy && Item.Asset.AllowLock) {
+	if (Item.Property.LockedBy && InventoryDoesItemAllowLock(Item)) {
 		ret = CommonCallFunctionByNameWarn(`InventoryItemMisc${Item.Property.LockedBy}Init`, ...args) || ret;
 	}
 	return ret ?? false;

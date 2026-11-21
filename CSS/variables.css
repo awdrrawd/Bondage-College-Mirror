@@ -18,6 +18,6 @@
 	 * The size of the gutter as reserved for scrollbars.
 	 * Note the absolute `px` component of the gutter width, which is there to accommodate the fixed (browser-enforced) width of scrollbars.
 	 */
-	--scrollbar-gutter: max(20px, min(2.5vh, 1.25vw));
-	--scrollbar-gutter: max(20px, min(2.5dvh, 1.25dvw));
+	--scrollbar-gutter: max(15px, min(2.5vh, 1.25vw));
+	--scrollbar-gutter: max(15px, min(2.5dvh, 1.25dvw));
 }

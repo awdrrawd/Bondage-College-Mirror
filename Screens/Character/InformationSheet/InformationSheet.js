@@ -21,6 +21,7 @@ const InformationSheetIDs = Object.freeze({
 	tooltip: "information-sheet-tooltip",
 	portrait: "information-sheet-portrait",
 	allowedInteractions: "information-sheet-allowed-interactions",
+	statsPanel: "information-sheet-stats-panel",
 });
 
 const InformationSheetLoverStages = /** @type {const} */({
@@ -226,18 +227,26 @@ function InformationSheetContent(C) {
 			classList: ["information-sheet-identity-slot"],
 			children: [InformationSheetIdentitySection(C)],
 		}),
-		ElementCreate({
+	];
+
+	if (C.IsPlayer() || C.IsOnline()) {
+		sections.push(
+			InformationSheetRelationshipSection(C, "lovers"),
+			InformationSheetOwnerSection(C, "owner"),
+			InformationSheetStatsSection(C),
+		);
+		if (C.IsPlayer()) sections.push(InformationSheetPermissionsSection());
+	} else {
+		sections.push(ElementCreate({
 			tag: "div",
 			classList: ["information-sheet-relations-slot"],
 			children: [
 				InformationSheetOwnerSection(C),
 				InformationSheetRelationshipSection(C),
 			],
-		}),
-	];
-	if (C.IsPlayer()) sections.push(InformationSheetSkillSection(C), InformationSheetPermissionsSection());
-	if (C.IsPlayer() || C.IsOnline()) sections.push(InformationSheetReputationSection(C));
-	if (C.IsNpc()) sections.push(InformationSheetTraitSection(C));
+		}));
+		if (C.IsNpc()) sections.push(InformationSheetTraitSection(C));
+	}
 
 	return ElementCreate({
 		tag: "div",
@@ -276,12 +285,7 @@ function InformationSheetLayout(C) {
  */
 function InformationSheetIdentitySection(C) {
 	/** @type {HTMLElement[]} */
-	const facts = [
-		...InformationSheetFact("Name", C.Name, null, true),
-	];
-	if (C.Name !== CharacterNickname(C)) {
-		facts.push(...InformationSheetFact("Nickname", CharacterNickname(C), null, true));
-	}
+	const facts = [];
 
 	const title = TitleGet(C);
 	if (title !== "None") {
@@ -290,17 +294,14 @@ function InformationSheetIdentitySection(C) {
 			if (TitleIsEarned(title)) return "information-sheet-title-earned";
 			return null;
 		})();
-		facts.push(...InformationSheetFact("Title", TitleGetName(title), titleClass, true));
+		facts.push(InformationSheetFact("Title", TitleGetName(title), titleClass, true));
 	}
-	if (C.MemberNumber != null) {
-		facts.push(...InformationSheetFact("MemberNumber", C.MemberNumber.toString(), null, true));
-	}
-	facts.push(...InformationSheetFact("Pronouns", CharacterPronounDescription(C)));
-
+	const pronouns = CharacterPronounDescription(C);
+	const nickname = CharacterNickname(C);
 	/** @type {HTMLElement[]} */
 	const notes = [];
 	if (C.IsPlayer()) {
-		facts.push(...InformationSheetFact("Money", `$${C.Money.toLocaleString(TranslationLanguage)}`));
+		facts.push(InformationSheetFact("Money", `$${C.Money.toLocaleString(TranslationLanguage)}`));
 		notes.push(InformationSheetDuration(
 			TextGet(C.IsBirthday() ? "Birthday" : "MemberFor"),
 			C.Creation,
@@ -316,7 +317,7 @@ function InformationSheetIdentitySection(C) {
 			));
 		}
 		notes.push(InformationSheetDifficulty(C));
-		facts.push(...InformationSheetFact(
+		facts.push(InformationSheetFact(
 			"AllowedInteractions",
 			TextGet("AllowedInteraction" + C.AllowedInteractions.toString()),
 		));
@@ -328,6 +329,17 @@ function InformationSheetIdentitySection(C) {
 		tag: "div",
 		classList: ["information-sheet-identity", "information-sheet-panel"],
 		children: [
+			C.MemberNumber != null ? { tag: "span", classList: ["information-sheet-identity-member-number"], children: ["#", InformationSheetCopy(C.MemberNumber.toString())] } : null,
+			{
+				tag: "p",
+				classList: ["information-sheet-identity-name"],
+				children: [
+					C.Name !== nickname ? { tag: "span", classList: ["information-sheet-nickname"], children: [InformationSheetCopy(nickname)] } : null,
+					{ tag: "span", classList: ["information-sheet-name"], children: C.Name !== nickname ? ["(", InformationSheetCopy(C.Name), ")"] : [InformationSheetCopy(C.Name)] },
+					"•",
+					pronouns ? { tag: "span", classList: ["information-sheet-pronouns"], children: [pronouns.toLocaleLowerCase()] } : null,
+				],
+			},
 			{
 				tag: "dl",
 				classList: ["information-sheet-facts"],
@@ -343,18 +355,15 @@ function InformationSheetIdentitySection(C) {
  * @param {string} value
  * @param {string | null} [valueClass]
  * @param {boolean} [copy]
- * @returns {[HTMLElement, HTMLElement]}
+ * @returns {HTMLElement}
  */
 function InformationSheetFact(key, value, valueClass, copy = false) {
-	return [
-		ElementCreate({ tag: "dt", dataAttributes: { fact: key }, children: [TextGet(key)] }),
-		ElementCreate({
-			tag: "dd",
-			dataAttributes: { fact: key },
-			classList: valueClass ? [valueClass] : [],
-			children: [copy ? InformationSheetCopy(value) : value],
-		}),
-	];
+	return ElementCreate({
+		tag: "div",
+		dataAttributes: { fact: key },
+		classList: ["information-sheet-fact", ...(valueClass ? [valueClass] : [])],
+		children: [{ tag: "span", classList: ["information-sheet-fact-key"], children: [TextGet(key)] }, { tag: "span", classList: ["information-sheet-fact-value"], children: [copy ? InformationSheetCopy(value) : value] }],
+	});
 }
 
 /**
@@ -437,8 +446,29 @@ function InformationSheetTimestampTooltip(start) {
  */
 function InformationSheetHover(host, text) {
 	host.classList.add("information-sheet-hover");
-	host.addEventListener("pointerenter", () => InformationSheetShowTooltip(host, text));
-	host.addEventListener("pointerleave", InformationSheetHideTooltip);
+	host.setAttribute("tabindex", "-1");
+	/** @type {string} */
+	let pointerType = "mouse";
+	host.addEventListener("pointerdown", (ev) => {
+		pointerType = ev.pointerType;
+	});
+	host.addEventListener("pointerenter", (ev) => {
+		pointerType = ev.pointerType;
+		if (ev.pointerType !== "mouse") return;
+		InformationSheetShowTooltip(host, text);
+	});
+	host.addEventListener("pointerleave", (ev) => {
+		if (ev.pointerType !== "mouse") return;
+		InformationSheetHideTooltip();
+	});
+	host.addEventListener("click", () => {
+		if (pointerType === "mouse") return;
+		host.focus();
+		InformationSheetShowTooltip(host, text);
+	});
+	host.addEventListener("focusout", () => {
+		InformationSheetHideTooltip();
+	});
 }
 
 /**
@@ -477,15 +507,12 @@ function InformationSheetHideTooltip() {
 
 /**
  * @param {Character} C
- * @returns {HTMLElement}
+ * @returns {HTMLElement | null}
  */
 function InformationSheetOwnership(C) {
+	if (!C) return null;
 	if (!C.IsOwned()) {
-		return ElementCreate({
-			tag: "p",
-			classList: ["information-sheet-owner"],
-			children: [TextGet("Unowned")],
-		});
+		return null;
 	}
 
 	const stageText = C.IsFullyOwned() ? "Collared" : "Trial";
@@ -544,17 +571,20 @@ function InformationSheetSection(titleKey, entries, emptyKey = "None", area, scr
 
 /**
  * @param {Character} C
+ * @param {string} [area]
  * @returns {HTMLElement}
  */
-function InformationSheetOwnerSection(C) {
-	return InformationSheetSection("Owner", [InformationSheetOwnership(C)], "Unowned", undefined, false);
+function InformationSheetOwnerSection(C, area) {
+	const ownership = InformationSheetOwnership(C);
+	return InformationSheetSection("Owner", ownership ? [ownership] : [], "Unowned", area, false);
 }
 
 /**
  * @param {Character} C
+ * @param {string} [area]
  * @returns {HTMLElement}
  */
-function InformationSheetRelationshipSection(C) {
+function InformationSheetRelationshipSection(C, area) {
 	/** @type {HTMLElement[]} */
 	const entries = [];
 
@@ -578,7 +608,7 @@ function InformationSheetRelationshipSection(C) {
 
 	const titleKey = C.IsNpc() ?  "YourRelations" : "Relationships";
 
-	return InformationSheetSection(titleKey, entries);
+	return InformationSheetSection(titleKey, entries, "None", area);
 }
 
 /**
@@ -592,11 +622,11 @@ function InformationSheetLoverEntry(name, stage, start, memberNumber) {
 	const stageKey = InformationSheetLoverStages[stage ?? 0];
 	return ElementCreate({
 		tag: "article",
-		classList: ["information-sheet-entry"],
+		classList: ["information-sheet-lovership"],
 		children: [
 			{
 				tag: "p",
-				classList: ["information-sheet-entry-title"],
+				classList: ["information-sheet-lover"],
 				children: [
 					`${TextGet(`${stageKey}With`)} `,
 					InformationSheetCopy(name),
@@ -677,7 +707,33 @@ function InformationSheetSkillSection(C) {
 		if (SkillGetLevelReal(C, type) === 0 && SkillGetProgress(C, type) === 0) continue;
 		entries.push(InformationSheetSkill(C, type));
 	}
-	return InformationSheetSection("Skill", entries, "SkillNone", "skills");
+	return InformationSheetSection("Skill", entries, "SkillNone", undefined, false);
+}
+
+/**
+ * Skills and reputation, hidden until the header button is pressed.
+ * @param {Character} C
+ * @returns {HTMLElement}
+ */
+function InformationSheetStatsSection(C) {
+	/** @type {HTMLElement[]} */
+	const entries = [];
+	if (C.IsPlayer()) entries.push(InformationSheetSkillSection(C));
+	entries.push(InformationSheetReputationSection(C));
+
+	const panel = ElementCreate({
+		tag: "div",
+		attributes: { id: InformationSheetIDs.statsPanel },
+		classList: ["information-sheet-stats-panel", "scroll-box"],
+		eventListeners: { scroll: InformationSheetHideTooltip },
+		children: entries,
+	});
+
+	return ElementCreate({
+		tag: "div",
+		classList: ["information-sheet-stats"],
+		children: [panel],
+	});
 }
 
 /**
@@ -858,7 +914,7 @@ function InformationSheetReputationSection(C) {
 			));
 		}
 	}
-	return InformationSheetSection("Reputation", entries, "ReputationNone", "reputation");
+	return InformationSheetSection("Reputation", entries, "ReputationNone", undefined, false);
 }
 
 /**

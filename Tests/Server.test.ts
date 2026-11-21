@@ -179,10 +179,10 @@ describe("ServerBundledItemFromAppearanceItem", () => {
 		expect(itemRestored?.Property?.TypeRecord, "bundle to item re-conversion").toEqual(finalItemType);
 	});
 
-	const lockParam = testParam.lock.assets.flatMap(({ asset, group, comment }) => {
+	const lockParam = testParam.lock.assets.flatMap(({ asset, group, comment, type }) => {
 		return Object.entries(testParam.lock.locks).map(([lock, _data]) => {
 			const data = _data as Record<"initialItemProperty" | "itemBundleProperty" | "finalItemProperty", ItemProperties>;
-			return { name: `${lock} - ${group}/${asset} (${comment})`, assetParam: { asset, group }, ...data };
+			return { name: `${lock} - ${group}/${asset} (${comment})`, assetParam: { asset, group, type }, ...data };
 		});
 	 });
 	it.each(lockParam)("lock item: $name", ({ initialItemProperty, itemBundleProperty, finalItemProperty, assetParam }) => {
@@ -191,15 +191,21 @@ describe("ServerBundledItemFromAppearanceItem", () => {
 
 		const item = {
 			Asset: asset,
-			Property: initialItemProperty,
-		};
+			Property: {
+				...initialItemProperty,
+				TypeRecord: assetParam.type,
+			},
+		} as Item;
 		const bundle: ItemBundle = Game.ServerBundledItemFromAppearanceItem(item);
 		const itemRestored: null | Item = Game.ServerBundledItemToAppearanceItem("Female3DCG", bundle);
 
 		expect(bundle, "item to bundle conversion").toEqual({
 			Group: asset.Group.Name,
 			Name: asset.Name,
-			Property: itemBundleProperty,
+			Property: {
+				...itemBundleProperty,
+				TypeRecord: assetParam.type,
+			},
 		});
 
 		expect(itemRestored, "bundle to item re-conversion").not.toBe(null);
