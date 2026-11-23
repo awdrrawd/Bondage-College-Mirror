@@ -235,7 +235,7 @@ function PrivateBedActivityStart(Source, Target, Group, Activity) {
  * @param {Character} Target - The target character.
  * @param {AssetGroup} Group - The zone / group to target.
  * @param {Activity} Activity - The activity to do.
- * @returns {boolean} - TRUE if the activity is valid for the group
+ * @returns {Group is AssetItemGroup} - TRUE if the activity is valid for the group
  */
 function PrivateBedGroupActivityIsValid(Source, Target, Group, Activity) {
 	if (Group.Name == "ItemNose") return false; // Skip the noses activities

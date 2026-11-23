@@ -59,7 +59,7 @@ function AdvancedRuleOpen(RuleType) {
 
 /**
  * Convert an option to its descriptive name
- * @param {AdvancedRuleType} type
+ * @param {LogNameAdvanced} type
  * @param {string} option
  */
 function AdvancedRuleTextGet(type, option) {

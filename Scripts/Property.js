@@ -1115,7 +1115,7 @@ class PropertyDataEntry {
 
 		/** @type {string[]} */
 		const errorDescription = [];
-		/** @type {undefined | T2} */
+		/** @type {undefined | number} */
 		let ret = undefined;
 		if (typeof value !== "number") {
 			errorDescription.push(`Invalid '${name}' type '${typeof value}'`);
@@ -1123,9 +1123,10 @@ class PropertyDataEntry {
 			errorDescription.push(`Invalid '${name}' non-finite value ${value}`);
 		} else if (isInteger && !Number.isInteger(value)) {
 			errorDescription.push(`Invalid '${name}' integer value ${value}`);
+			// @ts-expect-error
+			ret = CommonClamp(Math.round(value), min, max);
 		} else if (value > max || value < min) {
 			errorDescription.push(`Invalid '${name}' out of range value ${value} (expected interval [${min}, ${max}])`);
-			// @ts-expect-error
 			ret = CommonClamp(value, min, max);
 		} else {
 			return { status: "ok", value };
@@ -1171,7 +1172,7 @@ class PropertyDataEntry {
 		const errorDescription = [];
 		if (typeof value !== "string") {
 			errorDescription.push(`Invalid '${name}' type '${typeof value}'`);
-		} else if (pattern !== undefined && !pattern.test(value)) {
+		} else if (pattern !== undefined && value !== "" && !pattern.test(value)) {
 			errorDescription.push(`Invalid '${name}' value '${value}' (mismatch w.r.t. '${pattern.source}' pattern)`);
 		} else if (isColor && !CommonIsColor(value, { schema: colorSchema ? Array.from(colorSchema) : undefined })) {
 			const suffix = colorSchema === undefined ? "invalid hex color" : "invalid BC color";
@@ -1309,7 +1310,12 @@ var PropertyData = {
 		},
 	),
 	AllowActivity: new PropertyDataEntry("AllowActivity",
-		{ get valueSet() { return this._valueSet ??= new Set(ActivityFemale3DCG.map(a => a.Name)); } },
+		{
+			get valueSet() {
+				// FIXME: Certain `ActivityNameItem` activities are missing from `ActivityFemale3DCG` (why?)
+				return this._valueSet ??= new Set([...ActivityFemale3DCG.map(a => a.Name), "Brush", "GagItem", "PenetrateItem", "SpitItem"]);
+			},
+		},
 		{
 			..._PropertyDataArraysDefaults,
 		},
@@ -1397,6 +1403,15 @@ var PropertyData = {
 	DefaultColor: new PropertyDataEntry("DefaultColor",
 		{ isColor: true },
 		{
+			compare(prop1, prop2, { asset }) {
+				if (typeof prop1 === "string") {
+					prop1 = Array(asset.ColorableLayerCount).fill(prop1);
+				}
+				if (typeof prop2 === "string") {
+					prop2 = Array(asset.ColorableLayerCount).fill(prop2);
+				}
+				return CommonArraysEqual(prop1, prop2, false);
+			},
 			validate(prop, { asset }, defaults) {
 				const metaData = { ...this.metaData, name: this.name, colorSchema: new Set(asset.Group.ColorSchema) };
 				if (typeof prop === "string") {
@@ -1707,6 +1722,15 @@ var PropertyData = {
 	Opacity: new PropertyDataEntry("Opacity",
 		{ min: 0.0, max: 1.0, isInteger: false },
 		{
+			compare(prop1, prop2, { asset }) {
+				if (typeof prop1 === "number") {
+					prop1 = Array(asset.Layer.length).fill(prop1);
+				}
+				if (typeof prop2 === "number") {
+					prop2 = Array(asset.Layer.length).fill(prop2);
+				}
+				return CommonArraysEqual(prop1, prop2, false);
+			},
 			validate(prop, { asset }, defaults) {
 				if (typeof prop === "number") {
 					return this.validateNumber(prop, defaults);

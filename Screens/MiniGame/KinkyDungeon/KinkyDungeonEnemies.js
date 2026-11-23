@@ -4584,7 +4584,7 @@ function KDPushModifier(power, enemy, allowNeg = false) {
  * @param {entity} enemy
  * @param {number} amount
  * @param {string} type
- * @param {any} Damage
+ * @param {any} [Damage]
  * @returns {*}
  */
 function KDTieUpEnemy(enemy, amount, type = "Leather", Damage) {
@@ -5103,7 +5103,7 @@ function KDGetTags(enemy, removeSpecial) {
  *
  * @param {entity} enemy
  * @param {boolean} useSpecial
- * @returns {Record<string, boolean>}
+ * @returns {Record<string, number>}
  */
 function KDGetExtraTags(enemy, useSpecial) {
 	let addOn = enemy.Enemy.bound ? KDExtraEnemyTags : undefined;
@@ -5123,7 +5123,7 @@ function KDGetExtraTags(enemy, useSpecial) {
  * @param {entity} enemy
  * @param {string} faction
  * @param {restraint[]} restraintsToAdd
- * @param {(item) => void} blockFunction
+ * @param {(item?: any) => void} blockFunction
  * @param {string[]} [restraintFromInventory]
  * @param {spell} [spell]
  * @returns {restraint[]}

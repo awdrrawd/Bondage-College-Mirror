@@ -2257,7 +2257,7 @@ async function PlatformLoad() {
  * @param {Platform.Character} C - The character to evaluate
  * @param {Platform.AnimationName} Pose - The pose we want
  * @param {boolean | null} [Cycle] - TRUE if we must use the animation cycle
- * @returns {Platform.AnimationSpec} - An object with the image, width & height to draw
+ * @returns {Platform.AnimationSpec | undefined} - An object with the image, width & height to draw
  */
 function PlatformGetAnim(C, Pose, Cycle = null) {
 	for (let A = 0; A < C.Animation.length; A++)
@@ -2280,7 +2280,7 @@ function PlatformGetAnim(C, Pose, Cycle = null) {
 				Mirror: ((C.FaceLeft === true) && (C.Animation[A].CycleLeft == null))
 			};
 		}
-	throw new Error("Anim: " + Pose + " not found for character: " + C.Name);
+	return undefined;
 }
 
 /**

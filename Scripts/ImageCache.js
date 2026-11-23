@@ -25,7 +25,7 @@
  * - LOADING -> LOADED (final)
  * - LOADING -> FAILED (final)
  *
- * @enum {string}
+ * @satisfies {Record<string, CachedImageState>}
  */
 var CachedImageState = {
 	/** Image is known, but not yet cached */

@@ -95,7 +95,7 @@ SkillInfiltration
 SkillDressage
 马术：
 SkillModifier
-ABSVAL持续了DURATION
+ABSVAL
 Trait
 - 特点 -
 TraitUnknown

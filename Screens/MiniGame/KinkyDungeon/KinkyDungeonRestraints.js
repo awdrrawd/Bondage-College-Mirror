@@ -584,6 +584,9 @@ function KDGetCurse(item) {
 /**
  *
  * @param {string} shrine
+ * @param {boolean} [ignoreGold]
+ * @param {boolean} [recursive]
+ * @param {boolean} [ignoreNoShrine]
  * @returns {item[]}
  */
 function KinkyDungeonGetRestraintsWithShrine(shrine, ignoreGold, recursive, ignoreNoShrine) {
@@ -613,6 +616,11 @@ function KinkyDungeonGetRestraintsWithShrine(shrine, ignoreGold, recursive, igno
 /**
  *
  * @param {string} shrine
+ * @param {number} [maxCount]
+ * @param {boolean} [recursive]
+ * @param {boolean} [noPlayer]
+ * @param {boolean} [ignoreGold]
+ * @param {boolean} [ignoreNoShrine]
  * @returns {number}
  */
 function KinkyDungeonRemoveRestraintsWithShrine(shrine, maxCount, recursive, noPlayer, ignoreGold, ignoreNoShrine) {
@@ -729,6 +737,7 @@ function KinkyDungeonPlayerGetLockableRestraints() {
 
 /**
  * @param {string[]} Locks
+ * @param {boolean} [recursive]
  * @returns {item[]}
  */
 function KinkyDungeonPlayerGetRestraintsWithLocks(Locks, recursive) {
@@ -826,6 +835,7 @@ let KDAffinityList = ["Hook", "Edge", "Sticky", "Sharp"];
  *
  * @param {boolean} Message - Show a message?
  * @param {string} affinity
+ * @param {string} [group]
  * @returns {boolean}
  */
 function KinkyDungeonGetAffinity(Message, affinity, group) {
@@ -2339,15 +2349,15 @@ let KDNoOverrideTags = [
 /**
  *
  * @param {KDHasTags} enemy
- * @param {*} Level
- * @param {*} Index
- * @param {*} Bypass
- * @param {*} Lock
- * @param {*} RequireWill
- * @param {*} LeashingOnly
- * @param {*} NoStack
- * @param {*} extraTags
- * @param {*} agnostic - Determines if playertags and current bondage are ignored
+ * @param {number} Level
+ * @param {string} Index
+ * @param {boolean} Bypass
+ * @param {string} Lock
+ * @param {boolean} RequireWill
+ * @param {boolean} LeashingOnly
+ * @param {boolean} NoStack
+ * @param {Record<string, number>} [extraTags]
+ * @param {boolean} [agnostic] - Determines if playertags and current bondage are ignored
  * @param {entity} [securityEnemy] - Bypass is treated separately for these groups
  * @param {{minPower?: number, maxPower?: number, onlyLimited?: boolean, noUnlimited?: boolean, noLimited?: boolean, onlyUnlimited?: boolean, ignore?: string[], require?: string[], looseLimit?: boolean, ignoreTags?: string[]}} [filter] - Filters for items
  * @returns {{restraint: restraint, weight: number}[]}
@@ -2441,15 +2451,15 @@ function KDGetRestraintsEligible(enemy, Level, Index, Bypass, Lock, RequireWill,
 /**
  *
  * @param {KDHasTags} enemy
- * @param {*} Level
- * @param {*} Index
- * @param {*} Bypass
- * @param {*} Lock
- * @param {*} RequireWill
- * @param {*} LeashingOnly
- * @param {*} NoStack
- * @param {*} extraTags
- * @param {*} agnostic - Determines if playertags and current bondage are ignored
+ * @param {number} Level
+ * @param {string} Index
+ * @param {boolean} [Bypass]
+ * @param {string} [Lock]
+ * @param {boolean} [RequireWill]
+ * @param {boolean} [LeashingOnly]
+ * @param {boolean} [NoStack]
+ * @param {Record<string, number>} [extraTags]
+ * @param {boolean} [agnostic] - Determines if playertags and current bondage are ignored
  * @param {entity} [securityEnemy] - Bypass is treated separately for these groups
  * @param {{minPower?: number, maxPower?: number, onlyLimited?: boolean, noUnlimited?: boolean, noLimited?: boolean, onlyUnlimited?: boolean, ignore?: string[], require?: string[], looseLimit?: boolean, ignoreTags?: string[]}} [filter] - Filters for items
  * @returns
@@ -3368,6 +3378,7 @@ function KinkyDungeonLinkItem(newRestraint, oldItem, tightness, Lock, Keep, fact
  *
  * @param {item} item
  * @param {boolean} Keep
+ * @param {boolean} [dynamic]
  * @returns
  */
 function KinkyDungeonUnLinkItem(item, Keep, dynamic) {
@@ -3540,7 +3551,7 @@ function KDAddDelayedStruggle(amount, time, StruggleType, struggleGroup, index, 
 /**
  * Gets the goddess bonus for this item
  * @param {item} item
- * @param {any} data - Escape chance data
+ * @param {any} [data] - Escape chance data
  */
 function KDGetItemGoddessBonus(item, data) {
 	if (!item) return 0;

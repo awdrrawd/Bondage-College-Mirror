@@ -1179,7 +1179,18 @@ function ChatRoomMapViewCanStartWhisper(C) {
  * @returns {void} - Nothing.
  */
 function ChatRoomMapViewRoomUpdated() {
-	// If the chat room map is visible, we need to update the perception map
+	// Leaving admin mid-edit removes the Back button; clear mode so painting cannot stick
+	if (!ChatRoomPlayerIsAdmin() && ChatRoomMapViewEditMode !== "") {
+		ChatRoomMapViewHideDialogMenu();
+		ChatRoomMapViewResetColorTool();
+		ChatRoomMapViewEditStarted = false;
+		ChatRoomMapViewEditorSetMode("", "");
+	}
+	const panel = ElementWrap("chat-room-map-view-panel-editor");
+	if (panel) {
+		if (ChatRoomPlayerIsAdmin()) panel.setAttribute("data-is-admin", "true");
+		else panel.removeAttribute("data-is-admin");
+	}
 	ChatRoomMapViewReloadEditorPanel(false, ChatRoomMapViewLastSearch);
 	MapManager.OnMapDataUpdated();
 }
@@ -1337,7 +1348,7 @@ function ChatRoomMapViewIsWall(x, y) {
  * Checks for connectivity in 4 directions based on a provided validation function
  * @param {number} X - The X position on the map
  * @param {number} Y - The Y position on the map
- * @param {function(number, number): boolean} Condition - Function that returns true if the position is connected
+ * @param {(tX: number, tY: number) => boolean} Condition - Function that returns true if the position is connected
  * @returns {{ North: boolean, South: boolean, East: boolean, West: boolean }} - The connectivity status
  */
 function ChatRoomMapViewGetConnectivityDirections(X, Y, Condition) {
@@ -3048,8 +3059,8 @@ function ChatRoomMapViewMouseDown(event) {
 
 /**
  *
- * @param {ChatRoomData | null} data
- * @returns {data is ChatRoomData & { MapData: { Objects: string, Tiles: string }}}
+ * @param {ServerChatRoomData | null} data
+ * @returns {data is ServerChatRoomData & { MapData: { Objects: string, Tiles: string }}}
  */
 function validMapData(data) {
 	return !!data && !!data.MapData && !!data.MapData.Objects && !!data.MapData.Tiles;

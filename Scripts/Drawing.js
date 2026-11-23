@@ -59,7 +59,7 @@ var DrawCanvasPosition = [0, 0, 0, 0];
 
 /**
  * An enum for the method for resizing custom backgrounds
- * @enum {number}
+ * @satisfies {Record<string, DrawingResizeMode>}
  */
 var DrawingResizeMode = {
 	Fill: 1,

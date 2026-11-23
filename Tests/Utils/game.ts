@@ -117,6 +117,11 @@ const _Game = {
 	TextEncoder: NodeTextEncoder,
 	TextDecoder: NodeTextDecoder,
 	URL,
+	CSS: {
+		supports(foo: string) {
+			return false;
+		},
+	},
 	Worker: class {
 		constructor(scriptURL: string | URL, options: WorkerOptions) {
 		}

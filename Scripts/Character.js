@@ -2289,9 +2289,20 @@ function CharacterHasItemWithAttribute(C, Attribute) {
  * @returns {Item[]} - A list of items allowing that activity
  */
 function CharacterItemsForActivity(C, Activity) {
+	/** @type {null | Set<EffectName>} */
+	let effects = null;
 	return C.Appearance.filter(item => {
-		return Activity === "GagItem" && item.Asset.Group.Name.startsWith("ItemMouth")
-			|| InventoryGetItemProperty(item, "AllowActivity")?.includes(Activity);
+		if (InventoryGetItemProperty(item, "AllowActivity")?.includes(Activity)) {
+			return true;
+		}
+		switch (Activity) {
+			case "GagItem": {
+				const gagEffects = effects ??= new Set(CommonKeys(SpeechGagLevelLookup));
+				return InventoryGetItemProperty(item, "Effect")?.some(i => gagEffects.has(i));
+			}
+			default:
+				return false;
+		}
 	});
 }
 
@@ -2682,6 +2693,7 @@ function CharacterSetNickname(C, Nick, fromOwner = false) {
 	// @ts-ignore Strict-TS: Types only say 'undefined', but we need `null`
 	// to survive JSON serialization to the server
 	ServerAccountUpdate.QueueData({ Nickname: Nick });
+	CommonSetDocumentTitle();
 
 	if (ServerPlayerIsInChatRoom()) {
 		// When in a chatroom, send a notification that the player updated their nick
@@ -2777,7 +2789,9 @@ function CharacterRefreshLeash(C) {
 		if (!Array.isArray(dynamicLeash.Property.Effect)) dynamicLeash.Property.Effect = [];
 
 		if (ChatRoomLeashPlayer !== null || Player.MapData?.Tether) {
-			dynamicLeash.Property.Effect.push("IsLeashed");
+			if (!dynamicLeash.Property.Effect.includes("IsLeashed")) {
+				dynamicLeash.Property.Effect.push("IsLeashed");
+			}
 		} else if (ChatRoomLeashPlayer === null) {
 			dynamicLeash.Property.Effect = dynamicLeash.Property.Effect.filter(e => e !== "IsLeashed");
 		}

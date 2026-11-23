@@ -95,7 +95,7 @@ SkillInfiltration
 SkillDressage
 Виїздка:
 SkillModifier
-ABSVAL на DURATION
+ABSVAL
 Trait
 - Риси -
 TraitUnknown

@@ -11,7 +11,6 @@ var CraftingSlots = {
 
 	/**
 	 * @readonly
-	 * @satisfies {Record<string, (this: HTMLElement, ev: Event) => any>}
 	 */
 	eventListeners: {
 		/**

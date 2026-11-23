@@ -54,7 +54,7 @@ function KinkyDungeonResetEventVariablesTick(delta) {
 /**
  * Function mapping
  * to expand, keep (e, item, data) => {...} as a constant API call
- * @type {Object.<string, Object.<string, function(KinkyDungeonEvent, item, *): void>>}
+ * @type {Record<string, Record<string, (KinkyDungeonEvent: any, item: any, data: any) => void>>}
  */
 let KDEventMapInventory = {
 	"postApply": {
@@ -1286,7 +1286,7 @@ function KinkyDungeonHandleInventoryEvent(Event, kinkyDungeonEvent, item, data) 
 
 
 /**
- * @type {Object.<string, Object.<string, function(KinkyDungeonEvent, *, entity, *): void>>}
+ * @type {Record<string, Record<string, (ev: KinkyDungeonEvent, buff: any, entity: any, data: any) => void>>}
  */
 const KDEventMapBuff = {
 	"beforeDamageEnemy": {
@@ -1778,7 +1778,7 @@ function KinkyDungeonHandleBuffEvent(Event, e, buff, entity, data) {
 
 
 /**
- * @type {Object.<string, Object.<string, function(KinkyDungeonEvent, *, *): void>>}
+ * @type {Record<string, Record<string, (ev: KinkyDungeonEvent, outfit: any, data: any) => void>>}
  */
 let KDEventMapOutfit = {
 	"calcEvasion": {
@@ -1808,7 +1808,7 @@ function KinkyDungeonHandleOutfitEvent(Event, e, outfit, data) {
 }
 
 /**
- * @type {Object.<string, Object.<string, function(KinkyDungeonEvent, *, *): void>>}
+ * @type {Record<string, Record<string, (ev: KinkyDungeonEvent, item: any, data: any) => void>>}
  */
 let KDEventMapSpell = {
 	"blockPlayer": {
@@ -2441,7 +2441,7 @@ function KinkyDungeonHandleMagicEvent(Event, e, spell, data) {
 
 
 /**
- * @type {Object.<string, Object.<string, function(KinkyDungeonEvent, weapon, *): void>>}
+ * @type {Record<string, Record<string, (ev: KinkyDungeonEvent, weapon: any, data: any) => void>>}
  */
 let KDEventMapWeapon = {
 	"beforePlayerDamage": {
@@ -3021,7 +3021,7 @@ function KinkyDungeonHandleWeaponEvent(Event, e, weapon, data) {
 
 
 /**
- * @type {Object.<string, Object.<string, function(KinkyDungeonEvent, *, *): void>>}
+ * @type {Record<string, Record<string, (ev: KinkyDungeonEvent, b: any, data: any) => void>>}
  */
 let KDEventMapBullet = {
 	"beforeBulletHit": {
@@ -3407,7 +3407,7 @@ function KinkyDungeonHandleBulletEvent(Event, e, b, data) {
 
 
 /**
- * @type {Object.<string, Object.<string, function(KinkyDungeonEvent, entity, *): void>>}
+ * @type {Record<string, Record<string, (ev: KinkyDungeonEvent, entity: any, data: any) => void>>}
  */
 let KDEventMapEnemy = {
 	"passout": {
@@ -3911,7 +3911,7 @@ function KinkyDungeonHandleEnemyEvent(Event, e, enemy, data) {
 
 
 /**
- * @type {Object.<string, Object.<string, function(string, *): void>>}
+ * @type {Record<string, Record<string, (e: string, data: any) => void>>}
  */
 let KDEventMapGeneric = {
 	"calcEnemyTags": {
@@ -3929,7 +3929,7 @@ let KDEventMapGeneric = {
 		}
 	},
 	"defeat": {
-		"dollRoomRemove": (e, enemy, data) => {
+		"dollRoomRemove": (e, data) => {
 			// Removes the excess dollsmiths that are spawned when you escape the dollroom
 			if (KDGameData.RoomType && alts[KDGameData.RoomType].data?.dollroom) {
 				for (let en of KinkyDungeonEntities) {

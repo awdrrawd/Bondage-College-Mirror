@@ -619,7 +619,7 @@ function AudioShouldSilenceSound(IsPlayerInvolved = false) {
  * @param {ServerChatRoomMessage} data - Data received
  * @param {Character} sender
  * @param {string} msg
- * @param {any} metadata
+ * @param {IChatRoomMessageMetadata} [metadata]
  * @returns {boolean}
  */
 function AudioPlaySoundForChatMessage(data, sender, msg, metadata) {

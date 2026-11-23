@@ -90,7 +90,7 @@ function InventoryItemMouthFuturisticPanelGagSetOptionHook(data, originalFunctio
  */
 function InventoryItemMouthFuturisticPanelGagPublishActionTrigger(C, Item, OptionName, Deflate) {
 	const Data = ExtendedItemGetData(Item.Asset, ExtendedArchetype.MODULAR);
-	const Prefix = (Data == null) ? "" : ExtendedItemCustomChatPrefix("Pump", Data);
+	const Prefix = (Data == null) ? "" : ExtendedItemCustomChatPrefix("Pump", Data, C);
 	const ActionTag = `${Prefix}Pump${Deflate ? "Deflate" : "Inflate"}${OptionName}`;
 
 	const Dictionary = new DictionaryBuilder()

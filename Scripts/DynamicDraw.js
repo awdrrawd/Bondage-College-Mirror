@@ -109,7 +109,7 @@ const DynamicDrawFontMeasurements = {};
 
 /**
  * An enum encapsulating the directions that circular text can be drawn in (clockwise and anticlockwise)
- * @enum {number}
+ * @satisfies {Record<string, DynamicDrawTextDirection>}
  */
 const DynamicDrawTextDirection = {
 	CLOCKWISE: 1,
@@ -119,7 +119,7 @@ const DynamicDrawTextDirection = {
 /**
  * An enum encapsulating the possible curve directions of circular text. Can be "SMILEY" (bottom of text on the outer arc) or "FROWNY"
  * (bottom of text on the inner arc).
- * @enum {number}
+ * @satisfies {Record<string, DynamicDrawTextCurve>}
  */
 const DynamicDrawTextCurve = {
 	SMILEY: -1,
@@ -128,7 +128,7 @@ const DynamicDrawTextCurve = {
 
 /**
  * An enum encapsulating the available drawing effects that can be applied to dynamic text.
- * @type {{ BURN: "burn" }}
+ * @satisfies {Record<string, DynamicDrawTextEffect>}
  */
 const DynamicDrawTextEffect = {
 	BURN: "burn",

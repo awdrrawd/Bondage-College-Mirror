@@ -49,7 +49,7 @@
 .information-sheet-body {
 	box-sizing: border-box;
 	display: grid;
-	grid-template-columns: minmax(0, 0.625fr) minmax(0, 0.625fr) minmax(0, 0.55fr);
+	grid-template-columns: minmax(0, 0.65fr) minmax(0, 0.65fr) minmax(0, 1.15fr);
 	grid-template-rows: auto minmax(0, 1fr);
 	gap: 0.55em;
 	height: 100%;
@@ -61,15 +61,15 @@
 .information-sheet-body[data-layout="player"] {
 	grid-template-rows: auto minmax(0, 1fr) auto;
 	grid-template-areas:
-		"identity identity stats"
-		"lovers owner stats"
-		"permissions permissions stats";
+		"identity identity relationships"
+		"skills reputation relationships"
+		"permissions permissions relationships";
 }
 
 .information-sheet-body[data-layout="online"] {
 	grid-template-areas:
-		"identity identity stats"
-		"lovers owner stats";
+		"identity identity relationships"
+		". reputation relationships";
 }
 
 .information-sheet-body[data-layout="npc"] {
@@ -113,38 +113,16 @@
 	font-weight: 600;
 }
 
-.information-sheet-area-lovers {
-	grid-area: lovers;
+.information-sheet-area-skills {
+	grid-area: skills;
 }
 
-.information-sheet-area-owner {
-	grid-area: owner;
+.information-sheet-area-reputation {
+	grid-area: reputation;
 }
 
 .information-sheet-area-traits {
 	grid-area: traits;
-}
-
-.information-sheet-stats {
-	grid-area: stats;
-	display: flex;
-	flex-direction: column;
-	gap: 0.35em;
-}
-
-#information-sheet-screen .information-sheet-stats-panel {
-	flex: 1 1 auto;
-	display: flex;
-	flex-direction: column;
-	gap: 0.55em;
-	padding-top: 0.45em;
-	padding-bottom: 0.55em;
-}
-
-.information-sheet-stats-panel > .information-sheet-column {
-	flex: none;
-	padding: 0;
-	gap: 0.45em;
 }
 
 .information-sheet-note,
@@ -241,6 +219,7 @@
 	border: var(--border-width) solid black;
 	box-shadow: 0.15em 0.15em 0.4em rgb(0 0 0 / 45%);
 	text-align: center;
+	white-space: pre-line;
 }
 
 .information-sheet-relations-slot {

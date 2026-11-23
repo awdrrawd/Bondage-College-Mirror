@@ -196,7 +196,7 @@ function PandoraRun() {
 
 /**
  * Enters a new mode for the Pandora screen, such as rest or search mode
- * @param {PandoraMode} NewMode
+ * @param {"" | "Search" | "Rest" | "Paint"} NewMode
  * @returns {void} - Nothing
  */
 function PandoraSetMode(NewMode) {
@@ -632,17 +632,16 @@ function PandoraGenerateRoom(EntryRoom, DirectionFrom, RoomLevel, MaxRoom) {
 
 		// Creates the room
 		/** @type {PandoraBaseRoom} */
-		let Room = {};
-		Room.Character = [];
-		Room.Floor = EntryRoom.Floor;
-		Room.Background = RoomBack;
+		let Room = {
+			Character: [],
+			Floor: EntryRoom.Floor,
+			Background: RoomBack,
+			Path: [],
+			PathMap: [EntryRoom],
+			Direction: [],
+			DirectionMap: [PandoraDirectionList[PathNum]],
+		};
 		PandoraCreateChest(Room);
-		Room.Path = [];
-		Room.PathMap = [];
-		Room.PathMap.push(EntryRoom);
-		Room.Direction = [];
-		Room.DirectionMap = [];
-		Room.DirectionMap.push(PandoraDirectionList[PathNum]);
 		PandoraRoom.push(Room);
 		EntryRoom.PathMap.push(Room);
 		EntryRoom.DirectionMap.push(PandoraDirectionListFrom[PathNum]);
@@ -685,16 +684,15 @@ function PandoraGenerateFloor(FloorName, EntryRoom, DirectionFrom, DirectionTo, 
 
 	// Always create the same entrance room
 	/** @type {PandoraBaseRoom} */
-	let Room = {};
-	Room.Character = [];
-	Room.Floor = FloorName;
-	Room.Background = "Entrance";
-	Room.Path = [];
-	Room.Path.push(EntryRoom);
-	Room.PathMap = [];
-	Room.Direction = [];
-	Room.Direction.push(DirectionFrom);
-	Room.DirectionMap = [];
+	let Room = {
+		Character: [],
+		Floor: FloorName,
+		Background: "Entrance",
+		Path: [EntryRoom],
+		PathMap: [],
+		Direction: [DirectionFrom],
+		DirectionMap: [],
+	};
 	PandoraRoom.push(Room);
 	EntryRoom.Path.push(Room);
 	EntryRoom.Direction.push(DirectionTo);
@@ -713,8 +711,16 @@ function PandoraBuildMainHall() {
 	// Creates the ground entrance room with a maid
 	PandoraParty = [];
 	/** @type {PandoraBaseRoom} */
-	let Room = {};
-	Room.Character = [];
+	let Room = {
+		Character: [],
+		Floor: "Ground",
+		Background: "Entrance",
+		PathMap: [],
+		DirectionMap: [],
+		Path: [],
+		Direction: [],
+	};
+
 	if (InfiltrationMissionState.Mission != "CatBurglar") {
 		let Char = PandoraGenerateNPC("Entrance", "Maid", "RANDOM", false);
 		if (InfiltrationMissionState.Mission == "ReverseMaid") Char.Stage = "40";
@@ -723,12 +729,8 @@ function PandoraBuildMainHall() {
 		else if (SkillGetLevel(Player, "Infiltration") >= 3) Char.Stage = "10";
 		Room.Character.push(Char);
 	}
-	Room.Floor = "Ground";
-	Room.Background = "Entrance";
-	Room.PathMap = [];
 	/** @type {PandoraSpecialRoom} */
 	let ExitRoom = { Floor: "Exit" };
-	Room.DirectionMap = [];
 
 	// Generates the floors and sets the starting room, there's a min-max number of rooms based on difficulty
 	let MinRoom = 25;

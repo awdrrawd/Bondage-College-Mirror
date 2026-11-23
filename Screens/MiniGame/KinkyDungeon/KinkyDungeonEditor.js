@@ -620,7 +620,7 @@ function KDDrawEditorUI() {
 		navigator.clipboard.readText()
 			.then(text => {
 				let tile = JSON.parse(text);
-				if (CommonIsObject(tile) && tile.name) {
+				if (CommonIsObject(tile) && "name" in tile && tile.name) {
 					console.log(JSON.parse(text));
 					console.log("Parse successful!!!");
 					KDTE_LoadTile(tile.name, tile);

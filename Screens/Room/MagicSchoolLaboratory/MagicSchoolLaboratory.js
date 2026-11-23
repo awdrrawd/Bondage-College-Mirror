@@ -332,7 +332,7 @@ function MagicSchoolLaboratoryFindStudent() {
 
 /**
  * When a fight begins between the player and a student
- * @param {string} Type - The type of battle to do (Normal, Wage or Honor)
+ * @param {"Wage25" | "Honor" | "RainbowWand" | "Normal"} Type - The type of battle to do (Normal, Wage or Honor)
  * @returns {void} - Nothing
  */
 function MagicSchoolLaboratoryBattleStudentStart(Type) {

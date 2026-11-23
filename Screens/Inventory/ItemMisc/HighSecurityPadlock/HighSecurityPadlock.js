@@ -11,7 +11,7 @@ function InventoryItemMiscHighSecurityPadlockInitHook({ asset }, originalFunctio
 		item.Property = {};
 	}
 
-	if (item.Property.LockMemberNumber && !item.Property.MemberNumberListKeys) {
+	if (item.Property.LockMemberNumber !== undefined && item.Property.LockMemberNumber !== -1 && !item.Property.MemberNumberListKeys) {
 		item.Property.MemberNumberListKeys = item.Property.LockMemberNumber.toString();
 	} else {
 		return (originalFunction == null) ? false : originalFunction(C, item, push, refresh);
@@ -121,7 +121,7 @@ function InventoryItemMiscHighSecurityPadlockClickHook(data, originalFunction) {
 	}
 	if (!InventoryGroupIsBlocked(C, C.FocusGroup.Name) && CommonConvertStringToArray(item.Property?.MemberNumberListKeys ?? "").includes(Player.MemberNumber)) {
 		if (MouseIn(1135, 920, 230, 64)) {
-			let list = new Set(CommonConvertStringToArray("" + ElementValue("MemberNumberList").trim()));
+			let list = new Set(CommonConvertStringToArray("" + ElementValue("MemberNumberList").trim()).filter(i => CommonIsInteger(i, 0)));
 			if (!InventoryItemMiscHighSecurityPadlockPlayerCanUnlock && list.has(Player.MemberNumber)) {
 				list.delete(Player.MemberNumber);
 			}

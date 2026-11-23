@@ -171,7 +171,7 @@ DifficultyDaysTillCanChange
 SkillLockPicking
 Вскрытие замков
 SkillModifier
-ABSVAL на DURATION
+ABSVAL
 AllowedInteractions
 Допустимые взаимодействия:
 YourRelations

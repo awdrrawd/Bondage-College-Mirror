@@ -1823,7 +1823,7 @@ interface KinkyDungeonSave {
 	spells: string[];
 	inventory: item[];
 	KDGameData: KDGameDataBase;
-	KDEventData: Object;
+	KDEventData: { SlimeLevel: number, SlimeLevelStart: number, };
 	flags: [string, number][];
 	stats: {
 		picks: number;
@@ -1839,7 +1839,7 @@ interface KinkyDungeonSave {
 		npp: number;
 		diff: number;
 	};
-	faction: Record<string, Record<string, number>>;
+	faction: typeof KinkyDungeonFactionRelationsBase;
 
 
 	KinkyDungeonTiles: Record<string, any>;
@@ -1914,10 +1914,19 @@ type AIType = {
 	/** This executes after enemy is determined to be idle or not. If true, prevents spells.*/
 	afteridle?: (enemy, player, aidata) => boolean,
 	/** Returns the current wander long delay.*/
-	wanderDelay_long?: (enemy, aidata) => number,
+	wanderDelay_long?: (enemy, aidata?: unknown) => number,
 	/** Returns the current wander short delay.*/
-	wanderDelay_short?: (enemy, aidata) => number,
+	wanderDelay_short?: (enemy, aidata?: unknown) => number,
 
+}
+
+interface KinkyDungeonGameData {
+	enemies?: string;
+	items?: string;
+	bullets?: string;
+	map?: string;
+	inventory?: string;
+	meta?: Record<string, number>;
 }
 
 type EnemyEvent = {

@@ -26,6 +26,7 @@ BodyMarkings,FaceScars,Face Scars
 BodyMarkings,FacePaints,Face paints
 BodyMarkings,Splatters,Splatters
 BodyMarkings,BabyPowderDust,Baby Powder
+BodyMarkings,LowerBodyScars,Lower Body Scars
 BodyStyle,,Body Style
 BodyStyle,Original,Original
 BodyStyle,EchoV1,Echo V1
@@ -396,6 +397,7 @@ Decals,CTSimplified, Cybertech (simplified)
 Decals,BFPin, Bellflower Consortium (pin)
 Decals,DisciplineCorner,Discipline Corner
 Decals,TheOddRoom,The Odd Room
+Decals,ACF,Amelia Crime Family
 Emoticon,,Emoticon
 Emoticon,Emoticon,Emoticon
 Eyebrows,,Eyebrows
@@ -704,6 +706,9 @@ HairBack,HairBack82,Style 82
 HairBack,HairBack83,Style 83
 HairBack,HairBack84,Style 84
 HairBack,HairBack85,Style 85
+HairBack,HairBack86,Style 86
+HairBack,HairBack86b,Style 86b
+HairBack,HairBack87,Style 87
 HairBack,HairNone,None
 HairFront,,Front Hair
 HairFront,HairFront1,Style 1
@@ -1646,6 +1651,8 @@ ItemNeck,MoonCollar,Moon Collar
 ItemNeck,SunCollar,Sun Collar
 ItemNeck,SteampunkCollar,Steampunk Collar
 ItemNeck,RibbonCollar,Ribbon Collar
+ItemNeck,RestrictCollar,Bold Collar
+ItemNeck,PaddedChoker,Padded Choker
 ItemNeckAccessories,,Collar
 ItemNeckAccessories,CollarAutoShockUnit,Automatic Shock Unit
 ItemNeckAccessories,CollarBell,Bell

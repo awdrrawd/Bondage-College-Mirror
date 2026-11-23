@@ -27,7 +27,11 @@ let KDPFTrim = 40;
  * @param {number} endy - the end positon
  * @param {boolean} blockEnemy - Do enemies block movement?
  * @param {boolean} blockPlayer - Does player block movement?
+ * @param {boolean} ignoreLocks
  * @param {string} Tiles - Allowed move tiles!
+ * @param {boolean} [RequireLight]
+ * @param {boolean} [noDoors]
+ * @param {boolean} [needDoorMemory]
  * @param {entity} [Enemy] - Enemy trying to pathfind
  * @param {boolean} [trimLongDistance] - Give up after 1000 or so tiles checked
  * @returns {any} - Returns an array of x, y points in order

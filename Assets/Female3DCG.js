@@ -2742,7 +2742,6 @@ var AssetFemale3DCG = [
 				Value: 70,
 				Top: 0,
 				Left: 0,
-				Prerequisite: ["HasBreasts"],
 				Layer: [
 					{
 						Name: "Bow",
@@ -6521,6 +6520,7 @@ var AssetFemale3DCG = [
 			{ Name: "SADollhouse", Left: 178, Top: 268 },
 			{ Name: "MansionValentine", Left: 200, Top: 264 },
 			{ Name: "FaircloughManor", Left: 200, Top: 264 },
+			{ Name: "ACF", Left: 195, Top: 258 },
 		],
 	},
 	// #endregion
@@ -11653,8 +11653,6 @@ var AssetFemale3DCG = [
 				InventoryID: 221,
 				BuyGroup: "PencilSkirt",
 				Value: -1,
-				Gender: "F",
-				Prerequisite: ["HasVagina"],
 				Fetish: ["Leather"],
 				Left: 160,
 				Top: 390,
@@ -30256,6 +30254,48 @@ var AssetFemale3DCG = [
 					BuyGroup: true,
 				},
 			},
+			{
+				Name: "LowerBodyScars",
+				Priority: 13,
+				Value: 10,
+				InventoryID: 1437,
+				Top: 200,
+				Left: 0,
+				ParentGroup: "BodyLower",
+				BuyGroup: "LowerBodyScars",
+				StyleOverride: ["EchoV2"],
+				PoseMapping: { ...AssetPoseMapping.ClothLower, Hogtied: PoseType.HIDE },
+				Extended: true,
+				BodyCosplay: true,
+				Layer: [
+					{
+						Name: "bruise",
+						Color: ["#A476B1AD"],
+						AllowTypes: { a: 1 },
+					},
+					{
+						Name: "canemark",
+						Color: ["#DD0707AD"],
+						AllowTypes: { b: 1 },
+					},
+					{
+						Name: "whipmark1",
+						Color: ["#C32A2ABD"],
+						AllowTypes: { c: 1 },
+					},
+					{
+						Name: "whipmark2",
+						Color: ["#BE3D3D"],
+						AllowTypes: { d: 1 },
+					},
+					{
+						Name: "crotch",
+						Color: ["#B52C2CD4"],
+						AllowTypes: { e: 1 },
+					},
+				],
+			},
+
 		],
 		Color: [
 			"Default",
@@ -31886,9 +31926,21 @@ var AssetFemale3DCG = [
 				Layer: [
 					{
 						Name: "Main",
+						AllowTypes: { typed: 0 },
 					},
 					{
 						Name: "Tone",
+						AllowTypes: { typed: 0 },
+					},
+					{
+						Name: "BMain",
+						CopyLayerColor: "Main",
+						AllowTypes: { typed: 1 },
+					},
+					{
+						Name: "BTone",
+						CopyLayerColor: "Tone",
+						AllowTypes: { typed: 1 },
 					},
 				],
 			},
@@ -33675,6 +33727,97 @@ var AssetFemale3DCG = [
 					},
 					{
 						Name: "Clip",
+					},
+				],
+			},
+			{
+				Name: "HairBack86",
+				Top: 20,
+				Left: 46,
+				Extended: true,
+				Layer: [
+					{
+						Name: "LeftBraid",
+						AllowTypes: { typed: [0, 1] },
+						Priority: 48,
+					},
+					{
+						Name: "LeftBack",
+						AllowTypes: { typed: [0, 1] },
+						CopyLayerColor: "LeftBraid",
+					},
+					{
+						Name: "LeftClip",
+						AllowTypes: { typed: [0, 1] },
+						Priority: 48,
+					},
+					{
+						Name: "RightBraid",
+						AllowTypes: { typed: [1, 2] },
+						Priority: 48,
+					},
+					{
+						Name: "RightBack",
+						AllowTypes: { typed: [1, 2] },
+						CopyLayerColor: "RightBraid",
+					},
+					{
+						Name: "RightClip",
+						AllowTypes: { typed: [1, 2] },
+						Priority: 48,
+					},
+				],
+			},
+			{
+				Name: "HairBack86b",
+				Top: 0,
+				Left: 46,
+				Extended: true,
+				Layer: [
+					{
+						Name: "LeftBraid",
+						AllowTypes: { typed: [0, 1] },
+						Priority: 48,
+					},
+					{
+						Name: "LeftBack",
+						AllowTypes: { typed: [0, 1] },
+						CopyLayerColor: "LeftBraid",
+					},
+					{
+						Name: "LeftClip",
+						AllowTypes: { typed: [0, 1] },
+						Priority: 48,
+					},
+					{
+						Name: "RightBraid",
+						AllowTypes: { typed: [1, 2] },
+						Priority: 48,
+					},
+					{
+						Name: "RightBack",
+						AllowTypes: { typed: [1, 2] },
+						CopyLayerColor: "RightBraid",
+					},
+					{
+						Name: "RightClip",
+						AllowTypes: { typed: [1, 2] },
+						Priority: 48,
+					},
+				],
+			},
+			{
+				Name: "HairBack87",
+				Top: 0,
+				Left: 49,
+				Layer: [
+					{
+						Name: "Back",
+					},
+					{
+						Name: "Front",
+						CopyLayerColor: "Back",
+						Priority: 48,
 					},
 				],
 			},
@@ -37967,6 +38110,9 @@ var AssetFemale3DCG = [
 				AllowLock: true,
 				DrawLocks: false,
 				Effect: [E.Leash, E.CanEdge],
+				AllowEffect: [E.Leash, E.Block, E.IsLeashed],
+				DynamicBeforeDraw: true,
+				Random:false,
 				Layer: [
 					{
 						Name: "Lock",
@@ -41556,7 +41702,6 @@ var AssetFemale3DCG = [
 			{
 				Name: "HighSecurityHarness",
 				InventoryID: 678,
-				Gender: "F",
 				Fetish: ["Metal"],
 				Value: 50,
 				Difficulty: 50,
@@ -41565,7 +41710,7 @@ var AssetFemale3DCG = [
 				Effect: [],
 				AllowLock: true,
 				DrawLocks: false,
-				Prerequisite: ["AccessTorso", "HasBreasts"],
+				Prerequisite: ["AccessTorso"],
 				PoseMapping: {
 					AllFours: PoseType.HIDE,
 					Hogtied: PoseType.HIDE,
@@ -43733,8 +43878,7 @@ var AssetFemale3DCG = [
 			{
 				Name: "NippleClamps2",
 				InventoryID: 703,
-				Gender: "M",
-				Prerequisite: ["AccessBreast", "HasFlatChest"],
+				Prerequisite: ["AccessBreast"],
 				Fetish: ["Metal", "Masochism"],
 				Value: 20,
 				ParentGroup: "",
@@ -46146,7 +46290,7 @@ var AssetFemale3DCG = [
 				AllowLock: true,
 				ParentGroup: "",
 				Bonus: "KidnapDomination",
-				Prerequisite: ["NotMasked", "HasBreasts"],
+				Prerequisite: ["NotMasked"],
 				SetPose: ["Yoked"],
 				Effect: [E.Block, E.BlockWardrobe, E.NotSelfPickable],
 				Layer: [{ Name: "Wood" }, { Name: "Metal" }],
@@ -47128,7 +47272,6 @@ var AssetFemale3DCG = [
 				Audio: "LeatherCreakWithMetal",
 				InventoryID: 766,
 				Gender: "F",
-				Prerequisite: ["HasBreasts"],
 				Value: 65,
 				Fetish: ["Leather"],
 				Difficulty: 7,
@@ -53241,6 +53384,22 @@ var AssetFemale3DCG = [
 						AllowTypes: { VelvetBunnyCabaret: 22 },
 					},
 					{
+						Name: "Kara",
+						AllowTypes: { VelvetBunnyCabaret: 23 },
+					},
+					{
+						Name: "Robin2",
+						AllowTypes: { VelvetBunnyCabaret: 24 },
+					},
+					{
+						Name: "Blake",
+						AllowTypes: { VelvetBunnyCabaret: 25 },
+					},
+					{
+						Name: "Fosco",
+						AllowTypes: { VelvetBunnyCabaret: 26 },
+					},
+					{
 						Name: "Shadow",
 						AllowTypes: { SubbycatsPlace: 1 },
 					},
@@ -53387,6 +53546,42 @@ var AssetFemale3DCG = [
 					{
 						Name: "Felix2",
 						AllowTypes: { FoxDen: 3 },
+					},
+					{
+						Name: "Shari",
+						AllowTypes: { LMF: 1 },
+					},
+					{
+						Name: "Tina",
+						AllowTypes: { LMF: 2 },
+					},
+					{
+						Name: "Becky",
+						AllowTypes: { LMF: 3 },
+					},
+					{
+						Name: "Erica",
+						AllowTypes: { LMF: 4 },
+					},
+					{
+						Name: "Seb",
+						AllowTypes: { LMF: 5 },
+					},
+					{
+						Name: "Rose",
+						AllowTypes: { LMF: 6 },
+					},
+					{
+						Name: "Amelia",
+						AllowTypes: { ACF: 1 },
+					},
+					{
+						Name: "Fel",
+						AllowTypes: { ACF: 2 },
+					},
+					{
+						Name: "Rose2",
+						AllowTypes: { Vagabond: 1 },
 					},
 				],
 			},
@@ -55064,11 +55259,11 @@ var AssetFemale3DCG = [
 				Layer: [
 					{
 						Name: "Base",
-						Color: ["#2E2E2E"],
+						Color: ["#1E1E1E"],
 					},
 					{
 						Name: "Shine",
-						Color: ["#BABABA"],
+						Color: ["#1E1E1E"],
 					},
 					{
 						Name: "Spikes",
@@ -55370,6 +55565,54 @@ var AssetFemale3DCG = [
 					{ Name: "MainRibbon", Color: ["#FF0000"] },
 					{ Name: "SideRibbons", Color: ["#FF0000"] },
 					{ Name: "Chain", Color: ["#D4AF37"] },
+				],
+			},
+			{
+				Name: "RestrictCollar",
+				Audio: "LeatherStretchingWithMetal",
+				InventoryID: 1438,
+				Fetish: ["Leather","Latex"],
+				Value: 30,
+				Difficulty: 50,
+				Time: 5,
+				AllowLock: true,
+				DrawLocks: false,
+				Layer: [
+					{
+						Name: "Base",
+					},
+					{
+						Name: "Shadow",
+					},
+					{
+						Name: "Shine",
+					},
+					{
+						Name: "Ring",
+					},
+				],
+			},
+			{
+				Name: "PaddedChoker",
+				Audio: "LeatherStretchingWithMetal",
+				InventoryID: 1439,
+				Fetish: ["Leather"],
+				Value: 30,
+				Difficulty: 50,
+				Time: 5,
+				AllowLock: true,
+				DrawLocks: false,
+				Layer: [
+					{
+						Name: "Base",
+					},
+					{
+						Name: "Buckle",
+					},
+					{
+						Name: "Lock",
+						LockLayer: true,
+					},
 				],
 			},
 		],
@@ -69196,14 +69439,7 @@ var AssetFemale3DCG = [
 					"Garters",
 				],
 				SetPose: ["Yoked", "BaseLower"],
-				Effect: [
-					E.BlockWardrobe,
-					E.Freeze,
-					E.Block,
-					E.Mounted,
-					E.Chaste,
-					E.ButtChaste,
-				],
+				Effect: [E.BlockWardrobe, E.Freeze, E.Block, E.Mounted],
 				HideItem: ["ShoesFlippers"],
 				CreateLayerTypes: ["typed"],
 				Alpha: [
@@ -69348,7 +69584,21 @@ var AssetFemale3DCG = [
 					"ItemVulva",
 					"ItemVulvaPiercings",
 				],
-				AllowActivityOn: ["ItemArms", "ItemFeet", "ItemLegs", "ItemBoots"],
+				AllowActivityOn: [
+					"ItemNeck",
+					"ItemArms",
+					"ItemHands",
+					"ItemHandheld",
+					"ItemBreast",
+					"ItemNipples",
+					"ItemPelvis",
+					"ItemLegs",
+					"ItemFeet",
+					"ItemBoots",
+					"ItemButt",
+					"ItemVulva",
+					"ItemVulvaPiercings",
+				],
 				Effect: [E.BlockWardrobe, E.Freeze, E.Block, E.Mounted],
 				AllowActivePose: [],
 				DrawLocks: false,
@@ -69425,14 +69675,7 @@ var AssetFemale3DCG = [
 				],
 				HideItem: ["ItemMiscTeddyBear", "ItemMiscBunPlush", "ItemMiscFoxPlush"],
 				SetPose: ["Yoked", "BaseLower"],
-				Effect: [
-					E.BlockWardrobe,
-					E.Freeze,
-					E.Block,
-					E.Mounted,
-					E.Chaste,
-					E.ButtChaste,
-				],
+				Effect: [E.BlockWardrobe, E.Freeze, E.Block, E.Mounted],
 				Alpha: [
 					{
 						Masks: [
@@ -70884,14 +71127,19 @@ var AssetFemale3DCG = [
 				],
 				AllowActivityOn: [
 					"ItemArms",
+					"ItemHands",
+					"ItemHandheld",
 					"ItemBoots",
 					"ItemBreast",
+					"ItemButt",
 					"ItemFeet",
 					"ItemLegs",
 					"ItemNipples",
 					"ItemPelvis",
 					"ItemTorso",
 					"ItemTorso2",
+					"ItemVulva",
+					"ItemVulvaPiercings",
 				],
 				OverrideHeight: {
 					Height: -570,

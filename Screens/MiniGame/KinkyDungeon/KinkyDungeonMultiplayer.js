@@ -32,12 +32,13 @@ function KinkyDungeonMultiplayerUpdate(Delay) {
 
 /**
  * Converts a string into Kinky Game Data
+ * @param {string} KinkyData
  * @returns {void}
  */
 function KinkyDungeonUnpackData(KinkyData) {
 	if (CurrentScreen != "KinkyDungeon" || KinkyDungeonState != "Game" || !KinkyDungeonPlayerCharacter) return;
 	if (KinkyDungeonIsPlayer()) return; // Prevent griefing
-	let data = /** @type {any} */ (JSON.parse(LZString.decompressFromBase64(KinkyData)));
+	let data = /** @type {KinkyDungeonGameData} */ (JSON.parse(LZString.decompressFromBase64(KinkyData)));
 
 	if (!KinkyDungeonGameData) KinkyDungeonGameData = {};
 
@@ -250,6 +251,8 @@ function KinkyDungeonSendData(data) {
 
 /**
  * Handles kinky dungeon data after receiving it from another player
+ * @param {string} data
+ * @param {number} SourceMemberNumber
  * @returns {void}
  */
 function KinkyDungeonHandleData(data, SourceMemberNumber) {

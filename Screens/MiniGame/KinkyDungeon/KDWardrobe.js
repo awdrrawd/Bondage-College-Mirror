@@ -176,6 +176,7 @@ function KDDrawColorSliders(X, Y, C, Model) {
 	DrawButtonKDEx("KDPasteLayer", (bdata) => {
 		navigator.clipboard.readText()
 			.then(text => {
+				/** @type {Partial<Record<"red" | "green" | "blue", any>>} */
 				let parsed = JSON.parse(text);
 				if (CommonIsObject(parsed) && parsed?.red != undefined && parsed.green != undefined && parsed.blue != undefined) {
 					console.log(Object.assign({}, parsed));

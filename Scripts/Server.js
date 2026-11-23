@@ -2036,7 +2036,7 @@ var ServerChatRoomDataValidationRecord = {
 					return undefined;
 				return imgURL;
 			},
-			SizeMode: ServerValidation.isInt(DrawingResizeMode.Fill, DrawingResizeMode.ShowFullOriginalRatio, DrawingResizeMode.Fill),
+			SizeMode: ServerValidation.isItem(Object.values(DrawingResizeMode), DrawingResizeMode.Fill),
 			ImageFilter: ServerValidation.isColorCode(true, undefined),
 			/**
 			 * @param {string | undefined} musicURL

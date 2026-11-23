@@ -1,0 +1,15 @@
+{
+	"needsGagItem": {
+		"accept": [
+			{ "group": "ItemMouth", "name": "BallGag" },
+			{ "group": "ItemMouth2", "name": "BallGag" },
+			{ "group": "ItemMouth3", "name": "BallGag" },
+			{ "group": "ItemTorso", "name": "TentacleSuit", "type": { "m": 1 } },
+			{ "group": "ItemTorso2", "name": "TentacleSuit", "type": { "m": 1 } },
+			{ "group": "ItemArms", "name": "InflatableDress", "type": { "h": 1 } },
+			{ "group": "ItemNeck", "name": "ExtendablePostureCollar", "type": { "g": 2 } },
+			{ "group": "ItemHood", "name": "LeatherHoodSealed" },
+			{ "group": "ItemDevices", "name": "SmallWoodenBox" }
+		]
+	}
+}

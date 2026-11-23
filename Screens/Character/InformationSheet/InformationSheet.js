@@ -21,7 +21,6 @@ const InformationSheetIDs = Object.freeze({
 	tooltip: "information-sheet-tooltip",
 	portrait: "information-sheet-portrait",
 	allowedInteractions: "information-sheet-allowed-interactions",
-	statsPanel: "information-sheet-stats-panel",
 });
 
 const InformationSheetLoverStages = /** @type {const} */({
@@ -32,7 +31,7 @@ const InformationSheetLoverStages = /** @type {const} */({
 
 /**
  * Skill rows whose modifier can expire while the sheet is open.
- * @type {{ type: SkillType, value: HTMLElement, modifier: HTMLElement }[]}
+ * @type {{ type: SkillType, value: HTMLElement, modifier: HTMLElement, row: HTMLElement, tooltip: () => string }[]}
  */
 let InformationSheetSkillWatches = [];
 /** @type {number} */
@@ -229,24 +228,17 @@ function InformationSheetContent(C) {
 		}),
 	];
 
-	if (C.IsPlayer() || C.IsOnline()) {
-		sections.push(
-			InformationSheetRelationshipSection(C, "lovers"),
-			InformationSheetOwnerSection(C, "owner"),
-			InformationSheetStatsSection(C),
-		);
-		if (C.IsPlayer()) sections.push(InformationSheetPermissionsSection());
-	} else {
-		sections.push(ElementCreate({
-			tag: "div",
-			classList: ["information-sheet-relations-slot"],
-			children: [
-				InformationSheetOwnerSection(C),
-				InformationSheetRelationshipSection(C),
-			],
-		}));
-		if (C.IsNpc()) sections.push(InformationSheetTraitSection(C));
-	}
+	sections.push(ElementCreate({
+		tag: "div",
+		classList: ["information-sheet-relations-slot"],
+		children: [
+			InformationSheetOwnerSection(C),
+			InformationSheetRelationshipSection(C),
+		],
+	}));
+	if (C.IsPlayer()) sections.push(InformationSheetSkillSection(C), InformationSheetPermissionsSection());
+	if (C.IsPlayer() || C.IsOnline()) sections.push(InformationSheetReputationSection(C));
+	if (C.IsNpc()) sections.push(InformationSheetTraitSection(C));
 
 	return ElementCreate({
 		tag: "div",
@@ -442,7 +434,7 @@ function InformationSheetTimestampTooltip(start) {
 
 /**
  * @param {HTMLElement} host
- * @param {string} text
+ * @param {Thunk<string>} text
  */
 function InformationSheetHover(host, text) {
 	host.classList.add("information-sheet-hover");
@@ -455,7 +447,7 @@ function InformationSheetHover(host, text) {
 	host.addEventListener("pointerenter", (ev) => {
 		pointerType = ev.pointerType;
 		if (ev.pointerType !== "mouse") return;
-		InformationSheetShowTooltip(host, text);
+		InformationSheetShowTooltip(host, CommonUnwrapThunk(text));
 	});
 	host.addEventListener("pointerleave", (ev) => {
 		if (ev.pointerType !== "mouse") return;
@@ -464,7 +456,7 @@ function InformationSheetHover(host, text) {
 	host.addEventListener("click", () => {
 		if (pointerType === "mouse") return;
 		host.focus();
-		InformationSheetShowTooltip(host, text);
+		InformationSheetShowTooltip(host, CommonUnwrapThunk(text));
 	});
 	host.addEventListener("focusout", () => {
 		InformationSheetHideTooltip();
@@ -478,6 +470,10 @@ function InformationSheetHover(host, text) {
 function InformationSheetShowTooltip(anchor, text) {
 	const tip = ElementWrap(InformationSheetIDs.tooltip);
 	if (!tip) return;
+	if (!text) {
+		InformationSheetHideTooltip();
+		return;
+	}
 	tip.textContent = text;
 	tip.removeAttribute("hidden");
 	tip.style.setProperty("left", "0px");
@@ -496,6 +492,22 @@ function InformationSheetShowTooltip(anchor, text) {
 	}
 	tip.style.setProperty("left", `${left}px`);
 	tip.style.setProperty("top", `${top}px`);
+}
+
+/**
+ * Keeps an open tooltip in place while its text changes.
+ * @param {HTMLElement} anchor
+ * @param {string} text
+ */
+function InformationSheetRefreshTooltip(anchor, text) {
+	if (!anchor.matches(":hover") && document.activeElement !== anchor) return;
+	const tip = ElementWrap(InformationSheetIDs.tooltip);
+	if (!tip || tip.hasAttribute("hidden")) return;
+	if (!text) {
+		InformationSheetHideTooltip();
+		return;
+	}
+	tip.textContent = text;
 }
 
 function InformationSheetHideTooltip() {
@@ -571,20 +583,18 @@ function InformationSheetSection(titleKey, entries, emptyKey = "None", area, scr
 
 /**
  * @param {Character} C
- * @param {string} [area]
  * @returns {HTMLElement}
  */
-function InformationSheetOwnerSection(C, area) {
+function InformationSheetOwnerSection(C) {
 	const ownership = InformationSheetOwnership(C);
-	return InformationSheetSection("Owner", ownership ? [ownership] : [], "Unowned", area, false);
+	return InformationSheetSection("Owner", ownership ? [ownership] : [], "Unowned", "owner", false);
 }
 
 /**
  * @param {Character} C
- * @param {string} [area]
  * @returns {HTMLElement}
  */
-function InformationSheetRelationshipSection(C, area) {
+function InformationSheetRelationshipSection(C) {
 	/** @type {HTMLElement[]} */
 	const entries = [];
 
@@ -608,7 +618,7 @@ function InformationSheetRelationshipSection(C, area) {
 
 	const titleKey = C.IsNpc() ?  "YourRelations" : "Relationships";
 
-	return InformationSheetSection(titleKey, entries, "None", area);
+	return InformationSheetSection(titleKey, entries, "None", "lovers");
 }
 
 /**
@@ -707,33 +717,7 @@ function InformationSheetSkillSection(C) {
 		if (SkillGetLevelReal(C, type) === 0 && SkillGetProgress(C, type) === 0) continue;
 		entries.push(InformationSheetSkill(C, type));
 	}
-	return InformationSheetSection("Skill", entries, "SkillNone", undefined, false);
-}
-
-/**
- * Skills and reputation, hidden until the header button is pressed.
- * @param {Character} C
- * @returns {HTMLElement}
- */
-function InformationSheetStatsSection(C) {
-	/** @type {HTMLElement[]} */
-	const entries = [];
-	if (C.IsPlayer()) entries.push(InformationSheetSkillSection(C));
-	entries.push(InformationSheetReputationSection(C));
-
-	const panel = ElementCreate({
-		tag: "div",
-		attributes: { id: InformationSheetIDs.statsPanel },
-		classList: ["information-sheet-stats-panel", "scroll-box"],
-		eventListeners: { scroll: InformationSheetHideTooltip },
-		children: entries,
-	});
-
-	return ElementCreate({
-		tag: "div",
-		classList: ["information-sheet-stats"],
-		children: [panel],
-	});
+	return InformationSheetSection("Skill", entries, "SkillNone", "skills");
 }
 
 /**
@@ -761,9 +745,8 @@ function InformationSheetSkill(C, type) {
 				"information-sheet-modifier",
 				modifier > 0 ? "information-sheet-positive" : "information-sheet-negative",
 			],
-			children: [InformationSheetModifierText(modifier, SkillGetModifierDuration(C, type))],
+			children: [InformationSheetModifierText(modifier)],
 		});
-		InformationSheetSkillWatches.push({ type, value, modifier: modifierEl });
 	}
 
 	const skill = ElementCreate({
@@ -782,12 +765,11 @@ function InformationSheetSkill(C, type) {
 		],
 	});
 
-	const key = type === "Bondage" || type === "Evasion" ? `SkillRatio${type}` : "SkillRatio";
-	const ratioText = TextSubstitute(key, {
-		RATIO: Math.round(ratio * 100).toString(),
-	}).join("");
-
-	if (ratio !== 1) InformationSheetHover(skill, ratioText);
+	if (modifier && modifierEl || ratio !== 1) {
+		const tooltip = () => InformationSheetSkillTooltip(C, type, ratio);
+		if (modifierEl) InformationSheetSkillWatches.push({ type, value, modifier: modifierEl, row: skill, tooltip });
+		InformationSheetHover(skill, tooltip);
+	}
 	return skill;
 }
 
@@ -851,17 +833,34 @@ function InformationSheetSkillValue(C, type) {
 
 /**
  * @param {number} modifier
- * @param {number} duration
  * @returns {string}
  */
-function InformationSheetModifierText(modifier, duration) {
+function InformationSheetModifierText(modifier) {
 	/** @type {CommonSubtituteSubstitution[]} */
 	const subst = [
 		["ABS", modifier > 0 ? "+" : "-"],
 		["VAL", Math.abs(modifier).toString()],
-		["DURATION", TimermsToTime(duration)],
 	];
 	return CommonStringSubstitute(TextGet("SkillModifier"), subst);
+}
+
+/**
+ * Ratio text, with the modifier duration on the following line when both exist.
+ * @param {PlayerCharacter} C
+ * @param {SkillType} type
+ * @param {number} ratio
+ * @returns {string}
+ */
+function InformationSheetSkillTooltip(C, type, ratio) {
+	const ratioKey = type === "Bondage" || type === "Evasion" ? `SkillRatio${type}` : "SkillRatio";
+	const ratioText = ratio === 1 ? "" : TextSubstitute(ratioKey, {
+		RATIO: Math.round(ratio * 100).toString(),
+	}).join("");
+	const durationMs = SkillGetModifierDuration(C, type);
+	const duration = durationMs < 1 ? "" : TextSubstitute("SkillModifierDuration", {
+		$duration: TimermsToTime(durationMs),
+	}).join("");
+	return [ratioText, duration].filter(Boolean).join("\n");
 }
 
 /**
@@ -875,12 +874,15 @@ function InformationSheetRefreshSkills(C) {
 	for (const watch of InformationSheetSkillWatches) {
 		const modifier = SkillGetModifier(C, watch.type);
 		watch.value.textContent = InformationSheetSkillValue(C, watch.type);
+		const tooltip = watch.tooltip();
+		if (!tooltip) watch.row.classList.remove("information-sheet-hover");
+		InformationSheetRefreshTooltip(watch.row, tooltip);
 		if (!modifier) {
 			watch.modifier.hidden = true;
 			continue;
 		}
 		watch.modifier.hidden = false;
-		watch.modifier.textContent = InformationSheetModifierText(modifier, SkillGetModifierDuration(C, watch.type));
+		watch.modifier.textContent = InformationSheetModifierText(modifier);
 		watch.modifier.classList.toggle("information-sheet-positive", modifier > 0);
 		watch.modifier.classList.toggle("information-sheet-negative", modifier < 0);
 	}
@@ -914,7 +916,7 @@ function InformationSheetReputationSection(C) {
 			));
 		}
 	}
-	return InformationSheetSection("Reputation", entries, "ReputationNone", undefined, false);
+	return InformationSheetSection("Reputation", entries, "ReputationNone", "reputation");
 }
 
 /**

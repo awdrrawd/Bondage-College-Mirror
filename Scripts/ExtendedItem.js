@@ -1072,13 +1072,10 @@ function ExtendedItemBuildChatMessageDictionary(chatData, { chatTags, dictionary
  * Generally used for getting a chat prefix for extended item buttons with custom functionality.
  * @param {string} Name - The name of the pseudo-type
  * @param {ExtendedItemData<any>} Data - The extended item data
+ * @param {Character} C
  * @returns {string} The dialogue prefix for the custom chatroom messages
  */
-function ExtendedItemCustomChatPrefix(Name, Data) {
-	const C = CharacterGetCurrent();
-	if (!C) {
-		return "";
-	}
+function ExtendedItemCustomChatPrefix(Name, Data, C) {
 	const chat = Data.dialogPrefix.chat;
 	if (typeof chat === "function") {
 		return chat({
@@ -1393,11 +1390,24 @@ const ExtendedItemGatherOptions = (function () {
 				break;
 			}
 			case ExtendedArchetype.TEXT:
-				newOptions.push(TextItemConstructOptions(data, item).newOption);
+				newOptions.push({
+					Name: "newOption",
+					OptionType: "TextItemOption",
+					Property: CommonPick(data.baselineProperty, CommonKeys(data.maxLength)),
+					ParentData: data,
+				});
 				break;
-			case ExtendedArchetype.VARIABLEHEIGHT:
-				newOptions.push(VariableHeightConstructOptions(data, item).newOption);
+			case ExtendedArchetype.VARIABLEHEIGHT: {
+				const property = { SetPose: item.Property?.SetPose };
+				data.setHeight(property, 1, data.maxHeight, data.minHeight);
+				newOptions.push({
+					Name: "newOption",
+					OptionType: "VariableHeightOption",
+					Property: property,
+					ParentData: data,
+				});
 				break;
+			}
 			case ExtendedArchetype.VIBRATING:
 			case ExtendedArchetype.TYPED: {
 				typeKeySet.delete(data.name);

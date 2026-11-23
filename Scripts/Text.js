@@ -138,7 +138,7 @@ function InterfaceTextGet(msg) {
 	const stringsFile = TextAllScreenCache.get(InterfaceStringsPath);
 	if (!stringsFile) return `MISSING INTERFACE TEXT: ${msg}`;
 	const text = stringsFile.get(msg);
-	if (!text) return `MISSING INTERFACE TEXT: ${msg}`;
+	if (typeof text !== "string") return `MISSING INTERFACE TEXT: ${msg}`;
 	return text;
 }
 

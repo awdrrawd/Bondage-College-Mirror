@@ -55,7 +55,7 @@ var GameLARPTurnTimer = 0;
 var GameLARPTurnTimerDelay = GameLARPTimerDelay[0];
 /** @type {null | Character} */
 var GameLARPTurnFocusCharacter = null;
-/** @type {null | string} */
+/** @type {null | AssetGroupName} */
 var GameLARPTurnFocusGroup = null;
 
 /**
@@ -255,7 +255,7 @@ function GameLARPRunProcess() {
 
 /**
  * Builds the inventory selection list for a given asset group.
- * @param {string} FocusGroup - Asset group for which to build the inventory.
+ * @param {AssetGroupName} FocusGroup - Asset group for which to build the inventory.
  * @returns {void} - Nothing
  */
 function GameLARPBuildInventory(FocusGroup) {

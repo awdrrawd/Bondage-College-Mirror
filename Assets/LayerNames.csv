@@ -22,6 +22,11 @@ BodyMarkingsSplattersInternal3,Internal Back
 BodyMarkingsSplattersNippleDrip,Nipple Drip
 BodyMarkingsBabyPowderDustLayer1,Baby Powder Layer 1
 BodyMarkingsBabyPowderDustLayer2,Baby Powder Layer 2
+BodyMarkingsLowerBodyScarsbruise,Bruise
+BodyMarkingsLowerBodyScarscanemark,Cane Marks
+BodyMarkingsLowerBodyScarswhipmark1,Whip Marks 1
+BodyMarkingsLowerBodyScarswhipmark2,Whip Marks 2
+BodyMarkingsLowerBodyScarscrotch,Crotch
 BraceletLaceBandsBands,Bands
 BraceletLaceBandsLace,Lace
 BraceletMaidBraceletLeftBracelet,Left Bracelet
@@ -1218,6 +1223,14 @@ HairBackHairBack84LeftStreak,Left Streak
 HairBackHairBack84RightStreak,Right Streak
 HairBackHairBack85Base,Base
 HairBackHairBack85Clip,Clip
+HairBackHairBack86LeftBraid,Left Braid
+HairBackHairBack86LeftClip,Left Clip
+HairBackHairBack86RightBraid,Right Braid
+HairBackHairBack86RightClip,Right Clip
+HairBackHairBack86bLeftBraid,Left Braid
+HairBackHairBack86bLeftClip,Left Clip
+HairBackHairBack86bRightBraid,Right Braid
+HairBackHairBack86bRightClip,Right Clip
 HairFrontHairFront20Main,Base
 HairFrontHairFront20Braid,Braid
 HairFrontHairFront20SmallEarsBraid,Braid
@@ -3427,6 +3440,13 @@ ItemNeckRibbonCollarMain,Main
 ItemNeckRibbonCollarMainRibbon,Middle Ribbon
 ItemNeckRibbonCollarSideRibbons,Side Ribbons
 ItemNeckRibbonCollarChain,Chain
+ItemNeckRestrictCollarBase,Base
+ItemNeckRestrictCollarShadow,Shadow
+ItemNeckRestrictCollarShine,Shine
+ItemNeckRestrictCollarRing,Ring
+ItemNeckPaddedChokerBase,Base
+ItemNeckPaddedChokerBuckle,Buckle
+ItemNeckPaddedChokerLock,Lock
 ItemNipplesChainClampChain,Chain
 ItemNipplesChainClampClamp,Clamps
 ItemNipplesChainClampMetal,Metal

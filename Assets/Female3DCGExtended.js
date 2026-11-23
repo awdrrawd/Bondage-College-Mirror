@@ -1895,6 +1895,38 @@ var AssetFemale3DCGExtended = {
 			DrawImages: true,
 			CopyConfig: { GroupName: "FaceMarkings", AssetName: "FaceCrests" },
 		}, //FaceCrests
+		LowerBodyScars: {
+			Archetype: ExtendedArchetype.MODULAR,
+			ChatSetting: ModularItemChatSetting.PER_MODULE,
+			DrawImages: false,
+			Modules: [
+				{
+					Name: "bruise",
+					Key: "a",
+					Options: [{}, {}], // n,y
+				},
+				{
+					Name: "canemark",
+					Key: "b",
+					Options: [{}, {}], // n,y
+				},
+				{
+					Name: "whipmark1",
+					Key: "c",
+					Options: [{}, {}], // n,y
+				},
+				{
+					Name: "whipmark2",
+					Key: "d",
+					Options: [{}, {}], // n,y
+				},
+				{
+					Name: "crotch",
+					Key: "e",
+					Options: [{}, {}], // n,y
+				},
+			],
+		},
 	},
 	FaceMarkings: {
 		FaceWritings: {
@@ -2045,6 +2077,11 @@ var AssetFemale3DCGExtended = {
 			Archetype: ExtendedArchetype.TYPED,
 			DrawImages: false,
 			Options: [{ Name: "Type_1" }, { Name: "Type_2" }],
+		},
+		HairFront57: {
+			Archetype: ExtendedArchetype.TYPED,
+			DrawImages: false,
+			Options: [{ Name: "Default" }, { Name: "Lighter" }],
 		},
 		HairFront60: {
 			Archetype: ExtendedArchetype.TYPED,
@@ -2348,6 +2385,16 @@ var AssetFemale3DCGExtended = {
 			DrawImages: false,
 			Options: [{ Name: "Both" }, { Name: "LeftOnly" }, { Name: "RightOnly" }],
 		}, // HairBack84
+		HairBack86: {
+			Archetype: ExtendedArchetype.TYPED,
+			DrawImages: false,
+			Options: [{ Name: "LeftOnly" }, { Name: "Both" }, { Name: "RightOnly" }],
+		}, // HairBack86
+		HairBack86b: {
+			Archetype: ExtendedArchetype.TYPED,
+			DrawImages: false,
+			Options: [{ Name: "LeftOnly" }, { Name: "Both" }, { Name: "RightOnly" }],
+		}, // HairBack86b
 	},
 	ClothAccessory: {
 		LeatherStraps: {
@@ -6761,7 +6808,7 @@ var AssetFemale3DCGExtended = {
 							// Leashed
 							Property: {
 								Difficulty: 4,
-								Effect: [E.Leash, E.IsLeashed],
+								Effect: [E.Leash],
 							},
 						},
 					],
@@ -25722,6 +25769,10 @@ var AssetFemale3DCGExtended = {
 						{}, // Hajime
 						{}, // Lilly
 						{}, // Chris
+						{}, // Kara
+						{}, // Robin
+						{}, // Blake
+						{}, // Fosco
 					],
 					DrawData: {
 						elementData: [
@@ -25796,6 +25847,18 @@ var AssetFemale3DCGExtended = {
 							},
 							{
 								imagePath: "Assets/Female3DCG/ItemHandheld/Plushie_Chris.png",
+							},
+							{
+								imagePath: "Assets/Female3DCG/ItemHandheld/Plushie_Kara.png",
+							},
+							{
+								imagePath: "Assets/Female3DCG/ItemHandheld/Plushie_Robin2.png",
+							},
+							{
+								imagePath: "Assets/Female3DCG/ItemHandheld/Plushie_Blake.png",
+							},
+							{
+								imagePath: "Assets/Female3DCG/ItemHandheld/Plushie_Fosco.png",
 							},
 						],
 					},
@@ -26054,6 +26117,81 @@ var AssetFemale3DCGExtended = {
 							},
 							{
 								imagePath: "Assets/Female3DCG/ItemHandheld/Plushie_Felix2.png",
+							},
+						],
+					},
+				},
+				{
+					Name: "LMF",
+					Key: "LMF",
+					DrawImages: true,
+					Options: [
+						{}, // Off
+						{}, // Shari
+						{}, // Tina
+						{}, // Becky
+						{}, // Erica
+						{}, // Seb
+						{}, // Rose
+					],
+					DrawData: {
+						elementData: [
+							{ imagePath: "Screens/Inventory/ItemHandheld/Plushies/None.png" },
+							{
+								imagePath: "Assets/Female3DCG/ItemHandheld/Plushie_Shari.png",
+							},
+							{
+								imagePath: "Assets/Female3DCG/ItemHandheld/Plushie_Tina.png",
+							},
+							{
+								imagePath: "Assets/Female3DCG/ItemHandheld/Plushie_Becky.png",
+							},
+							{
+								imagePath: "Assets/Female3DCG/ItemHandheld/Plushie_Erica.png",
+							},
+							{
+								imagePath: "Assets/Female3DCG/ItemHandheld/Plushie_Seb.png",
+							},
+							{
+								imagePath: "Assets/Female3DCG/ItemHandheld/Plushie_Rose.png",
+							},
+						],
+					},
+				},
+				{
+					Name: "ACF",
+					Key: "ACF",
+					DrawImages: true,
+					Options: [
+						{}, // Off
+						{}, // Amelia
+						{}, // Fel
+					],
+					DrawData: {
+						elementData: [
+							{ imagePath: "Screens/Inventory/ItemHandheld/Plushies/None.png" },
+							{
+								imagePath: "Assets/Female3DCG/ItemHandheld/Plushie_Amelia.png",
+							},
+							{
+								imagePath: "Assets/Female3DCG/ItemHandheld/Plushie_Fel.png",
+							},
+						],
+					},
+				},
+				{
+					Name: "Vagabond",
+					Key: "Vagabond",
+					DrawImages: true,
+					Options: [
+						{}, // Off
+						{}, // Rose
+					],
+					DrawData: {
+						elementData: [
+							{ imagePath: "Screens/Inventory/ItemHandheld/Plushies/None.png" },
+							{
+								imagePath: "Assets/Female3DCG/ItemHandheld/Plushie_Rose2.png",
 							},
 						],
 					},

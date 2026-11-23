@@ -56,7 +56,8 @@ SkillWillpower,Willpower
 SkillInfiltration,Infiltration
 SkillDressage,Dressage
 SkillLevelMaximum,Max
-SkillModifier,ABSVAL for DURATION
+SkillModifier,ABSVAL
+SkillModifierDuration,Effect ends in $duration
 SkillRatioBondage,"Using RATIO% of your bondage skill, so restraints you apply are easier to escape."
 SkillRatioEvasion,"Using RATIO% of your evasion skill, so struggling free is harder."
 SkillRatio,Using RATIO% of this skill.

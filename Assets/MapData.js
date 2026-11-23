@@ -447,7 +447,7 @@ const AssetsMapDataTiles = [
 	{ ID: 1202, Type: "Wall", Style: "PipeBlue", BlockVision: true, CanEnter: () => false, },
 	{ ID: 1203, Type: "Wall", Style: "PipePurple", BlockVision: true, CanEnter: () => false, },
 	{ ID: 1204, Type: "Wall", Style: "SteelBlack", BlockVision: true, CanEnter: () => false, },
-	{ ID: 1205, Type: "Wall", Style: "SteelGary", BlockVision: true, CanEnter: () => false, },
+	{ ID: 1205, Type: "Wall", Style: "SteelGray", BlockVision: true, CanEnter: () => false, },
 	{ ID: 1227, Type: "Wall", Style: "SpiderWeb", BlockVision: true, CanEnter: () => false, },
 
 	{ ID: 1001, Type: "Wall", Style: "CedarWood", BlockVision: true, CanEnter: () => false, },

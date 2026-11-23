@@ -309,8 +309,8 @@ function NotificationGetTotalCount(alertType) {
  */
 function NotificationTitleUpdate() {
 	const totalRaisedCount = NotificationGetTotalCount(NotificationAlertType.TITLEPREFIX);
-	const titlePrefix = totalRaisedCount === 0 ? "" : "(" + totalRaisedCount.toString() + ") ";
-	document.title = titlePrefix + "Bondage Club";
+	const titlePrefix = totalRaisedCount === 0 ? "" : `(${totalRaisedCount}) `;
+	CommonSetDocumentTitle({ prefix: titlePrefix });
 }
 
 /**

@@ -129,13 +129,13 @@ var ChatRoomLeashPlayer = null;
 var ChatRoomJoinLeash;
 var ChatRoomCustomized = false;
 
-/** @satisfies {Record<"Never" | "DisabledByDefault" | "EnabledByDefault" | "Always", ChatRoomCustomizationType>} */
-const ChatRoomCustomization = /** @type {const} */ (Object.freeze({
+/** @satisfies {Record<string, ChatRoomCustomizationType>} */
+const ChatRoomCustomization = Object.freeze({
 	Never: 0,
 	DisabledByDefault: 1,
 	EnabledByDefault: 2,
 	Always: 3,
-}));
+});
 
 /**
  * The list of chat room views
@@ -375,7 +375,7 @@ function ChatRoomRefreshActiveView() {
 
 /**
  * Activates the chat room view with the passed name
- * @param {keyof ChatRoomViews} viewName - The name of the view to activate
+ * @param {"Character" | "Map"} viewName - The name of the view to activate
  * @returns {void}
  */
 function ChatRoomActivateView(viewName) {
@@ -1907,7 +1907,7 @@ function ChatRoomTarget() {
 
 /**
  * Updates the account to set the last chat room
- * @param {ChatRoomData|null} room - room to set it to. null to reset.
+ * @param {ServerChatRoomData | null} room - room to set it to. null to reset.
  * @returns {void} - Nothing
  */
 function ChatRoomSetLastChatRoom(room) {
@@ -5129,11 +5129,11 @@ function ChatRoomAddCharacterToChatRoom(newCharacter, newRawCharacter)
 /**
  * Handles the reception of the complete room data from the server.
  * @param {unknown} obj - Room object containing the updated chatroom data.
- * @returns {obj is ChatRoomData} - Returns true if the passed properties are valid and false if they're invalid.
+ * @returns {obj is ChatRoomSettings} - Returns true if the passed properties are valid and false if they're invalid.
  */
 function ChatRoomValidateProperties(obj)
 {
-	const room = /** @type {ChatRoomData} */ (obj);
+	const room = /** @type {ServerChatRoomData} */ (obj);
 	return room != null && typeof room === "object"
 		&& typeof room.Name === "string"
 		&& typeof room.Description === "string"

@@ -42,11 +42,15 @@
 	padding: 3px;
 }
 
-.screen .scroll-box,
-.screen > .screen-header,
-.screen > .screen-hgroup {
+.screen .scroll-box {
 	padding-left: var(--scrollbar-gutter);
 	padding-right: var(--scrollbar-gutter);
+}
+
+.screen > .screen-header,
+.screen > .screen-hgroup {
+	padding-left: calc(var(--scrollbar-width) + var(--scrollbar-gutter));
+	padding-right: calc(var(--scrollbar-width) + var(--scrollbar-gutter));
 }
 
 .screen .scroll-box {

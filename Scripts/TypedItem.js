@@ -267,6 +267,9 @@ function TypedItemGenerateAllowEffect({ asset, options, allowEffect }) {
 		...allowEffect,
 	];
 	options.forEach(o => effects.push(...(o.Property.Effect || [])));
+	if (effects.includes("Leash") && !effects.includes("IsLeashed")) {
+		effects.push("IsLeashed");
+	}
 	mutableAsset.AllowEffect = Array.from(new Set(effects));
 }
 
@@ -583,12 +586,13 @@ function TypedItemInit({ options, name, baselineProperty, asset }, C, Item, Push
 	let update = !isSubset.result;
 
 	const customProperties = CommonPick(Item.Property, ExtendedItemInitPropertyIgnore);
+	const omit = /** @type {const} */(["Difficulty", "HeightModifier"]).filter(i => i in expectedProps);
 	Item.Property = ItemPropertiesUnion([
 		customProperties,
 		expectedProps,
 		// FIXME (maybe?): Ban these summation-based numbers as there's no way of knowing what is and isn't already included in their pre-existing sum,
 		// meaning they are at great risk of double counting for successive ExtendedItemInit() calls
-		CommonOmit(Item.Property, ["Difficulty", "HeightModifier"]),
+		CommonOmit(Item.Property, omit),
 		customPropertiesBackup,
 		baselineProperty,
 	], Item.Asset);

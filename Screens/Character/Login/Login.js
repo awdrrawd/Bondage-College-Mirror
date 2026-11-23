@@ -1304,6 +1304,7 @@ function LoginResponse(C) {
 	ActivitySetArousal(Player, 0);
 	ActivityTimerProgress(Player, 0);
 	NotificationLoad();
+	CommonSetDocumentTitle();
 	KeyManager.deserialize();
 
 	if (ManagementIsClubSlave()) CharacterNaked(Player);

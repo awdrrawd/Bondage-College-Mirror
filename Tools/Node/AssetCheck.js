@@ -1414,6 +1414,19 @@ function testIllegalClothesEffects(assets, effects) {
 }
 
 /**
+ * @param {Asset[]} assets
+ */
+function testAllowExpression(assets) {
+	// The null/"empty expression" must be first in the group-level `AllowExpression` array
+	// Either that, or `_DialogExpressionMenu.facialExpressions` will have to perform some explicit sorting of the expressions
+	for (const asset of assets) {
+		if (asset.Group.AllowExpression?.length && asset.Group.AllowExpression?.[0] !== null) {
+			error(`${asset.Group.Name}:${asset.Name} first AllowExpression element must be null (an "empty expression")`);
+		}
+	}
+}
+
+/**
  * Strigify and parse the passed object to get the correct Array and Object prototypes, because VM uses different ones.
  * This unfortunately results in Functions being lost and replaced with a dummy function
  * @template {object} T
@@ -1671,4 +1684,5 @@ function sanitizeVMOutput(input) {
 	testSetPose(assetList, pose);
 	testSelfBlock(assetList, extendedItemSuperRecord);
 	testIllegalClothesEffects(assetList, effectCategories);
+	testAllowExpression(assetList);
 })();

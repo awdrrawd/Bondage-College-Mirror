@@ -2562,6 +2562,8 @@ interface GraphicsSettingsType {
 	CenterChatrooms: boolean;
 	AllowBlur: boolean;
 	ShowFPS: boolean;
+	/** Show the player nickname or name in the browser tab title */
+	ShowNameInTitle: boolean;
 	ShowFullscreenButton: GraphicsShowFullscreenButton;
 	/** 0 means unlimited */
 	MaxFPS: number;
@@ -3814,7 +3816,11 @@ interface ModularItemData extends ExtendedItemData<ModularItemOption> {
  * The currentOption is currently active option within the relevant module.
  * The prefix is the dialog prefix for the buttons text.
  */
-type ModularItemButtonDefinition = [ModularItemOption | ModularItemModule, ModularItemOption, string]
+type ModularItemButtonDefinition = [
+	moduleOrOption: ModularItemOption | ModularItemModule,
+	currentOption: ModularItemOption,
+	prefix: string,
+];
 
 //#endregion
 
@@ -4684,6 +4690,9 @@ interface DynamicBeforeDrawOverrides {
 }
 
 type DynamicDrawTextEffect = "burn";
+type DrawingResizeMode = 1 | 2 | 3;
+type DynamicDrawTextDirection = -1 | 1;
+type DynamicDrawTextCurve = -1 | 1;
 
 interface DynamicScriptCallbackData<T extends AnimationPersistentData = AnimationPersistentData> {
 	C: Character;
@@ -5229,6 +5238,8 @@ type LogNameAdvanced =
 	| `BlockItemGroup`
 ;
 
+type LogNPCNames = "Amanda" | "Sarah" | "Sidney" | "Jennifer" | "AmandaSarah" | "SarahIntro" | "Julia" | "Yuki" | "Mildred";
+
 /** An interface mapping {@link LogRecord.Group} types to valid {@link LogRecord.Name} types */
 interface LogNameType {
 	Arcade: "DeviousChallenge",
@@ -5702,6 +5713,8 @@ declare namespace Item {
 		property?: Readonly<ItemProperties>;
 	}
 }
+
+type CachedImageState = 'uncached' | 'loading' | 'loaded' | 'failed';
 
 declare namespace ImageCache {
 	/**

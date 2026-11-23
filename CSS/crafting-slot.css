@@ -92,7 +92,7 @@
 }
 
 #crafting-slot-screen .screen-header {
-	padding-right: var(--scrollbar-gutter);
+	padding-right: calc(var(--scrollbar-width) + var(--scrollbar-gutter));
 	padding-left: var(--gap);
 	padding-top: min(1.5vh, 0.75vw);
 	padding-top: min(1.5dvh, 0.75dvw);

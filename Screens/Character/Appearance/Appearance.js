@@ -850,15 +850,16 @@ function AppearanceEnterSearchMode(C) {
 		{
 			attributes: { maxlength: 40 },
 			eventListeners: {
-				input: () => {
+				input: CommonDebounce(300, () => {
 					if (!CharacterAppearanceSelectedGroup) return;
+					DialogInventoryOffset = 0;
 					DialogInventoryBuild(C, CharacterAppearanceSelectedGroup);
 					AppearanceSearchString = ElementValue(
 						Appearance.IDs.searchButton,
 					)?.toLocaleLowerCase();
 					AppearancePreviewBuild(C, CharacterAppearanceSelectedGroup, true);
 					AppearanceMenuBuild(C, CharacterAppearanceSelectedGroup);
-				},
+				}),
 			},
 			parent: document.body,
 		},
@@ -871,10 +872,14 @@ function AppearanceEnterSearchMode(C) {
 
 /**
  * Exit from the search mode
+ * @param {Character} C - The character the appearance is being set for
  */
-function AppearanceExitSearchMode() {
+function AppearanceExitSearchMode(C) {
 	AppearanceSearchString = "";
 	ElementRemove(Appearance.IDs.searchButton);
+
+	if(!CharacterAppearanceSelectedGroup) return;
+	AppearancePreviewBuild(C, CharacterAppearanceSelectedGroup, true);
 }
 
 /**
@@ -915,7 +920,7 @@ function AppearanceMenuBuild(C, group) {
 
 	switch (CharacterAppearanceMode) {
 		case "":
-			AppearanceExitSearchMode();
+			AppearanceExitSearchMode(C);
 			if (C.IsPlayer()) {
 				AppearanceMenu.push(LogQuery("Wardrobe", "PrivateRoom") ? "Wardrobe" : "WardrobeDisabled");
 				if (!LogQuery("Wardrobe", "PrivateRoom") && AppearanceGroupAllowed(C, "ALL")) AppearanceMenu.push("Reset");
@@ -1206,7 +1211,8 @@ function AppearancePreviewBuild(C, focusGroup, buildCanvases) {
 	if (!focusGroup) return;
 
 	AppearancePreviews = [];
-	if (AppearancePreviewUseCharacter(focusGroup) && DialogInventory) {
+	const inventory = AppearanceInventoryBuild();
+	if (AppearancePreviewUseCharacter(focusGroup) && inventory) {
 		// Create a copy of the character appearance without items
 		let baseAppearance = buildCanvases ? C.Appearance.filter(A => A.Asset.Group.Category === "Appearance") : null;
 		// If the group being viewed is underwear, remove outer clothes
@@ -1217,7 +1223,7 @@ function AppearancePreviewBuild(C, focusGroup, buildCanvases) {
 			});
 		}
 		// Add each preview character to the list, building their canvas if necessary
-		DialogInventory.slice(DialogInventoryOffset, DialogInventoryOffset + CharacterAppearanceNumClothPerPage).forEach(item => {
+		inventory.slice(DialogInventoryOffset, DialogInventoryOffset + CharacterAppearanceNumClothPerPage).forEach(item => {
 			let PreviewChar = CharacterLoadSimple("AppearancePreview-" + item.Asset.Name);
 			if (buildCanvases && baseAppearance) {
 				PreviewChar.Appearance = Array.from(baseAppearance);
@@ -1528,7 +1534,7 @@ function AppearanceClick() {
 						if (worn && CurrentItem.Asset.Extended) {
 							DialogExtendItem(CurrentItem);
 							if (group) {
-								AppearanceExitSearchMode();
+								AppearanceExitSearchMode(C);
 								AppearanceMenuBuild(C, group);
 							}
 						} else {
@@ -1627,7 +1633,7 @@ function AppearanceMenuClick(C) {
 					if (button === "Search") {
 						AppearanceEnterSearchMode(C);
 					} else if (button === "Remove") {
-						AppearanceExitSearchMode();
+						AppearanceExitSearchMode(C);
 					}
 
 					// Opens the color picker
@@ -1647,14 +1653,14 @@ function AppearanceMenuClick(C) {
 						CharacterRefresh(C, false);
 						if (AppearancePreviewUseCharacter(CharacterAppearanceSelectedGroup)) AppearancePreviewCleanup();
 						AppearanceExit();
-						AppearanceExitSearchMode();
+						AppearanceExitSearchMode(C);
 					}
 
 					// Accepts the new selection
 					if (button === "Accept") {
 						if (AppearancePreviewUseCharacter(CharacterAppearanceSelectedGroup)) AppearancePreviewCleanup();
 						AppearanceExit();
-						AppearanceExitSearchMode();
+						AppearanceExitSearchMode(C);
 					}
 
 					// Rebuild the menu buttons as selecting a button here can change what should appear
@@ -1664,7 +1670,7 @@ function AppearanceMenuClick(C) {
 					if (button === "Search") {
 						AppearanceEnterSearchMode(C);
 					} else if (button === "Remove") {
-						AppearanceExitSearchMode();
+						AppearanceExitSearchMode(C);
 					}
 
 					// Jumps to the cloth page
@@ -1681,7 +1687,7 @@ function AppearanceMenuClick(C) {
 					// Accepts the new selection
 					if (button === "Accept" || button === "Cancel") {
 						CharacterAppearanceMode = "Cloth";
-						AppearanceExitSearchMode();
+						AppearanceExitSearchMode(C);
 					}
 
 					// Rebuild the menu buttons as selecting a button here can change what should appear
@@ -1905,9 +1911,9 @@ function AppearanceItemColor(C, Item, AssetGroup, CurrentMode) {
 
 /**
  * Combine two sets of appearance changes from the same base, favouring the newer changes where conflicting
- * @param {Item[]} BaseAppearance - The previous appearance before either of the other two sets of changes were made
+ * @param {readonly Item[]} BaseAppearance - The previous appearance before either of the other two sets of changes were made
  * @param {Item[]} PrevAppearance - The first set of appearance changes
- * @param {Item[]} NewAppearance - The second set of appearance changes, overriding any conflicts with the first
+ * @param {readonly Item[]} NewAppearance - The second set of appearance changes, overriding any conflicts with the first
  * @returns {Item[]} - The final merged appearance
  */
 function CharacterAppearanceResolveAppearance(BaseAppearance, PrevAppearance, NewAppearance) {
@@ -1955,7 +1961,7 @@ function CharacterAppearanceResolveItem(BaseItem, PrevItem, NewItem) {
 /**
  * Merge the incoming appearance changes from the online sync to the currently selected appearance
  * @param {Character} C - The character with changes to merge
- * @param {Item[]} currentAppearance - The appearance before the sync's changes are applied
+ * @param {readonly Item[]} currentAppearance - The appearance before the sync's changes are applied
  * @returns {void} - Nothing
  */
 function CharacterAppearanceResolveSync(C, currentAppearance) {

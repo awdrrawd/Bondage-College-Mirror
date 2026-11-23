@@ -35,8 +35,6 @@ class BrowserCache {
 	async clear(): Promise<boolean>;
 }
 
-type CachedImageState = 'uncached' | 'loading' | 'loaded' | 'failed';
-
 class CachedImage<T> {
 	cache: ImageCache<T>;
 	url: string;

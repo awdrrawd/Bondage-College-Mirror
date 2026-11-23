@@ -8,6 +8,20 @@ Game.load("../Scripts/Text.js");
 
 const gameRoot = path.resolve(__dirname, "..");
 
+describe("InterfaceTextGet", () => {
+	it("preserves the empty Russian possessive suffix", async () => {
+		const previousLanguage = Game.TranslationLanguage;
+		try {
+			Game.TranslationLanguage = "RU";
+			await Game.TextPrefetchFile("Screens/Interface.csv").loadedPromise;
+			expect(Game.InterfaceTextGet("'s")).toBe("");
+		} finally {
+			Game.TranslationLanguage = previousLanguage;
+			await Game.TextPrefetchFile("Screens/Interface.csv").loadedPromise;
+		}
+	});
+});
+
 describe("TextCache.buildTranslations", () => {
 	const cache = Game.TextPrefetchFile("");
 

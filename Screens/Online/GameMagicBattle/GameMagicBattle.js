@@ -113,7 +113,7 @@ function GameMagicBattleInitialize() {
 
 /**
  * Returns the team setup for the online magic battle.
- * @returns {string} - "FreeForAll" or "House", depending on the team setup
+ * @returns {"FreeForAll" | "House"} - "FreeForAll" or "House", depending on the team setup
  */
 function GameMagicBattleGetTeamType() {
 

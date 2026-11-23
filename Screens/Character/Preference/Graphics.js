@@ -279,6 +279,17 @@ function PreferenceSubscreenGraphicsLoad() {
 		checkboxHtmlOptions
 	);
 
+	const showNameInTitle = ElementCheckbox.CreateLabelled(
+		"preference-graphics-show-name-in-title",
+		TextGet("ShowNameInTitle"),
+		function () {
+			Player.GraphicsSettings.ShowNameInTitle = this.checked;
+			CommonSetDocumentTitle();
+		},
+		{ checked: Player.GraphicsSettings.ShowNameInTitle },
+		checkboxHtmlOptions
+	);
+
 	const showFullscreenButtonOptions = PreferenceGraphicsFullscreenButtonList.map((v) => ({
 		attributes: {
 			value: v,
@@ -326,6 +337,7 @@ function PreferenceSubscreenGraphicsLoad() {
 			maxFpsDropdown,
 			maxUnfocusedFpsDropdown,
 			showFps,
+			showNameInTitle,
 			showFullscreenButton,
 		],
 		parent: ElementWrap(PreferenceIDs.subscreen)

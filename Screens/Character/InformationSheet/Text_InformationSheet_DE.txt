@@ -95,7 +95,7 @@ Infiltration:
 SkillDressage
 Dressur:
 SkillModifier
-ABSVAL for DURATION
+ABSVAL
 Trait
 - Merkmale -
 TraitUnknown

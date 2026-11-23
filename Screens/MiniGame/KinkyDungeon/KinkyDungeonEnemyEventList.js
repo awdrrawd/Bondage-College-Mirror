@@ -332,7 +332,7 @@ let KDIntentEvents = {
 /**
  *
  * @param {entity} enemy
- * @param {any} AIData
+ * @param {unknown} [AIData]
  */
 function KDResetIntent(enemy, AIData) {
 	enemy.IntentLeashPoint = null;
@@ -343,6 +343,8 @@ function KDResetIntent(enemy, AIData) {
  * Helper function called to leash player to the nearest furniture
  * @param {entity} enemy
  * @param {any} AIData
+ * @param {string[]} [tags]
+ * @param {number} [guardDelay]
  * @returns {boolean}
  */
 function KDSettlePlayerInFurniture(enemy, AIData, tags, guardDelay = 24) {

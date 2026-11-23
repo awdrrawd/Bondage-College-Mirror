@@ -91,6 +91,7 @@ export const NEEDED_FILES = [
 	"Screens/Inventory/ItemNipples/LactationPump/LactationPump.js",
 	"Screens/Inventory/ItemNeckRestraints/CollarLeash/CollarLeash.js",
 	"Screens/Inventory/ItemDevices/Kennel/Kennel.js",
+	"Screens/Inventory/ItemVulvaPiercings/CockRingLeash/CockRingLeash.js",
 	"Assets/Female3DCG.js",
 	"Scripts/Drawing.js",
 	"Scripts/Server.js",

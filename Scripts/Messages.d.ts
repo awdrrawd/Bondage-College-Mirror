@@ -272,7 +272,7 @@ interface ServerChatRoomCustomData {
 	 * `undefined` means unsynced.
 	 */
 	MusicStart?: number;
-	SizeMode?: number
+	SizeMode?: DrawingResizeMode;
 }
 
 /**
@@ -281,9 +281,7 @@ interface ServerChatRoomCustomData {
  * Define to `never` any property of {@link ServerChatRoomData} that
  * shouldn't be sent back to the server.
  */
-type ServerChatRoomSettings = Partial<ServerChatRoomData> & {
-	Character?: never;
-}
+type ServerChatRoomSettings = Omit<Partial<ServerChatRoomData>, "Character">;
 
 //#endregion
 

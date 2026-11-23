@@ -154,11 +154,9 @@ function ElementCreate(options) {
 function ElementParseChildren(children) {
 	/** @type {(string | Node)[]} */
 	const ret = [];
-	/** @type {(i: unknown) => i is Node | string} */
-	const isNode = (i) => typeof i === "string" || (CommonIsObject(i) && "nodeValue" in i);
 	for (const childElem of children ?? []) {
 		if (childElem != null) {
-			if (isNode(childElem)) {
+			if (typeof childElem === "string" || childElem instanceof Node) {
 				ret.push(childElem);
 			} else {
 				ret.push(ElementCreate({ ...childElem }));

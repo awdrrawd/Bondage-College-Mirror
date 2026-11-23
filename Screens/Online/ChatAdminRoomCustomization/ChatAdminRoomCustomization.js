@@ -92,7 +92,7 @@ const ChatAdminRoomCustomizationIDs = Object.freeze({
 	previewFilter: "room-custom-preview-filter",
 });
 
-/** @type {Readonly<Record<number, "fill" | "cover" | "contain">>} */
+/** @satisfies {Readonly<Record<DrawingResizeMode, "fill" | "cover" | "contain">>} */
 const ChatAdminRoomCustomizationSizeFit = {
 	[DrawingResizeMode.Fill]: "fill",
 	[DrawingResizeMode.FillOriginalRatio]: "cover",
@@ -141,7 +141,7 @@ async function ChatAdminRoomCustomizationLoad() {
 		adminData.Custom = ServerChatRoomDataValidationRecord.Custom({
 			...adminData.Custom ?? {},
 			ImageURL: ElementValue(ChatAdminRoomCustomizationIDs.imageURLInput).trim(),
-			SizeMode: CommonParseInt(ElementValue(ChatAdminRoomCustomizationIDs.imageFillModeSelect)) ?? DrawingResizeMode.Fill,
+			SizeMode: /** @type {null | DrawingResizeMode } */(CommonParseInt(ElementValue(ChatAdminRoomCustomizationIDs.imageFillModeSelect))) ?? DrawingResizeMode.Fill,
 			ImageFilter: data.ImageFilter,
 			MusicURL,
 			MusicStart,
@@ -198,7 +198,7 @@ async function ChatAdminRoomCustomizationLoad() {
 	const options = Object.entries(DrawingResizeMode).map(([key, value]) => /** @type {Omit<HTMLOptions<"option">, "tag">} */({ attributes: { value, label: TextGet(`BackgroundSizeMode${key}`), selected: value === data.SizeMode } }));
 
 	const imageFillSelect = ElementDropdown.CreateLabelled(ChatAdminRoomCustomizationIDs.imageFillModeSelect, options, TextGet("FillModeShort"), function () {
-		data.SizeMode = Number(this.value);
+		data.SizeMode = /** @type {DrawingResizeMode} */(Number(this.value));
 		ChatAdminRoomCustomizationRefreshPreview();
 	}, { disabled: !canEditCustom || !imageInput.value.trim() });
 

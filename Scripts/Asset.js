@@ -228,6 +228,9 @@ function AssetAdd(Group, AssetDef, ExtendedConfig, GroupDef) {
 	if (AssetDef.Effect) {
 		allowEffect = CommonArrayConcatDedupe(allowEffect ?? [], AssetDef.Effect);
 	}
+	if (allowEffect?.includes("Leash") && !allowEffect.includes("IsLeashed")) {
+		allowEffect.push("IsLeashed");
+	}
 
 	let allowExpression = AssetDef.AllowExpression ?? GroupDef.AllowExpression;
 	if (allowExpression && !allowExpression.includes(null)) {
@@ -814,7 +817,7 @@ function AssetParseAllowTypes(allowTypes) {
 
 			const idToTypeList = ret.IDToTypeKey[id];
 			if (idToTypeList) {
-				/** @type {Mutable<idToTypeList>} */(idToTypeList).push(name);
+				/** @type {Mutable<typeof idToTypeList>} */(idToTypeList).push(name);
 			} else {
 				ret.IDToTypeKey[id] = [name];
 			}

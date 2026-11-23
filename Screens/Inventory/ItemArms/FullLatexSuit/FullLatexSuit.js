@@ -32,7 +32,7 @@ function InventoryItemArmsFullLatexSuitSetWand(Data, C) {
 	ChatRoomCharacterItemUpdate(C, "ItemVulva");
 	CharacterRefresh(C);
 
-	const Prefix = ExtendedItemCustomChatPrefix("Wand", Data);
+	const Prefix = ExtendedItemCustomChatPrefix("Wand", Data, C);
 	const Dictionary = [
 		{Tag: "SourceCharacter", Text: CharacterNickname(Player), MemberNumber: Player.MemberNumber},
 		{Tag: "DestinationCharacter", Text: CharacterNickname(C), MemberNumber: C.MemberNumber},

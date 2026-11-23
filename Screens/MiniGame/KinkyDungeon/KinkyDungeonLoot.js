@@ -804,10 +804,12 @@ function KDTriggerLoot(Loot, Type) {
 
 /**
  *
- * @param {Record<string, object>} WeightList - contains values that have a weight param
+ * @param {Record<string, any>} WeightList - contains values that have a weight param
+ * @param {any} [params]
  */
 function KDGetWeightedString(WeightList, params) {
 	let WeightTotal = 0;
+	/** @type {{ obj: string, weight: number }[]} */
 	let Weights = [];
 
 	for (let obj of Object.entries(WeightList)) {

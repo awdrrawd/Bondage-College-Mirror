@@ -1066,6 +1066,7 @@ var PreferenceGraphicsSettingsDefault = {
 	MaxFPS: DEFAULT_FRAMERATE,
 	MaxUnfocusedFPS: 0,
 	ShowFPS: false,
+	ShowNameInTitle: true,
 	ShowFullscreenButton: "on_when_mobile",
 };
 
@@ -1086,6 +1087,7 @@ var PreferenceGraphicsSettingsValidate = {
 	MaxFPS: ServerValidation.isItem(PreferenceGraphicsFrameLimit, PreferenceGraphicsSettingsDefault.MaxFPS),
 	MaxUnfocusedFPS: ServerValidation.isItem(PreferenceGraphicsFrameLimit, PreferenceGraphicsSettingsDefault.MaxUnfocusedFPS),
 	ShowFPS: ServerValidation.isBool(PreferenceGraphicsSettingsDefault.ShowFPS),
+	ShowNameInTitle: ServerValidation.isBool(PreferenceGraphicsSettingsDefault.ShowNameInTitle),
 	ShowFullscreenButton: ServerValidation.isItem(PreferenceGraphicsFullscreenButtonList, PreferenceGraphicsSettingsDefault.ShowFullscreenButton),
 };
 

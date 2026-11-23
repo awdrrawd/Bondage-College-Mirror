@@ -120,12 +120,13 @@ function ModularItemInit(Data, C, Item, Push=true, Refresh=true, log=false) {
 	let update = !isSubset.result;
 
 	const customProperties = CommonPick(Item.Property, ExtendedItemInitPropertyIgnore);
+	const omit = /** @type {const} */(["Difficulty", "HeightModifier"]).filter(i => i in expectedProps);
 	Item.Property = ItemPropertiesUnion([
 		customProperties,
 		expectedProps,
 		// FIXME (maybe?): Ban these summation-based numbers as there's no way of knowing what is and isn't already included in their pre-existing sum,
 		// meaning they are at great risk of double counting for successive ExtendedItemInit() calls
-		CommonOmit(Item.Property, ["Difficulty", "HeightModifier"]),
+		CommonOmit(Item.Property, omit),
 		customPropertiesBackup,
 		baselineProperty,
 	], Item.Asset);
@@ -425,7 +426,7 @@ function ModularItemDrawModule(module, data) {
 /**
  * Generates a click function for a modular item's module selection screen
  * @param {ModularItemData} data - The modular item's data
- * @returns {function(): void} - A click handler for the modular item's module selection screen
+ * @returns {() => void} - A click handler for the modular item's module selection screen
  */
 function ModularItemCreateClickBaseFunction(data) {
 	const DrawData = data.drawData;
@@ -501,9 +502,9 @@ function ModularItemClickModule(module, data) {
  * in the future.
  * @param {ModularItemData} data
  * @param {ExtendedItemDrawData<ElementMetaData.Modular>} drawData
- * @param {function(): void} exitCallback - A callback to be called when the exit button has been clicked
- * @param {function(number): boolean} itemCallback - A callback to be called when an item has been clicked
- * @param {function(number): void} paginateCallback - A callback to be called when a pagination button has been clicked
+ * @param {() => void} exitCallback - A callback to be called when the exit button has been clicked
+ * @param {(buttonIndex: number) => boolean} itemCallback - A callback to be called when an item has been clicked
+ * @param {(paginateDirection: -1 | 1) => void} paginateCallback - A callback to be called when a pagination button has been clicked
  * @param {number} pageNumber - The currently shown page
  * @returns {void} - Nothing
  */
@@ -761,6 +762,9 @@ function ModularItemGenerateValidationProperties(data) {
 				if (Property.Tint && Array.isArray(Property.Tint) && Property.Tint.length > 0) asset.AllowTint = true;
 			}
 		}
+	}
+	if (allowEffect.includes("Leash") && !allowEffect.includes("IsLeashed")) {
+		allowEffect.push("IsLeashed");
 	}
 	ModularItemGenerateAllowLockType(data);
 }

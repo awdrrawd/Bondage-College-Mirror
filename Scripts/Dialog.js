@@ -4715,7 +4715,6 @@ class _DialogExpressionMenu extends _DialogSelfMenu {
 		super(mode);
 		const dialogMenu = this;
 
-		/** @satisfies {Record<string, (this: HTMLElement, ev: Event) => any>} */
 		this.eventListeners = {
 			...this.eventListeners,
 
@@ -6037,7 +6036,6 @@ function DialogStruggleStart(C, Action, PrevItem, NextItem) {
  * @type {StruggleCompletionCallback}
  */
 function DialogStruggleStop(C, Game, { Progress, PrevItem, NextItem, Skill, Attempts, Interrupted, Auto }) {
-	if (!DialogStruggleAction) return;
 	const Success = Progress >= 100;
 	if (Interrupted) {
 		// Handle the minigame having been interrupted by showing a message in chat
@@ -6073,7 +6071,7 @@ function DialogStruggleStop(C, Game, { Progress, PrevItem, NextItem, Skill, Atte
 		}
 		return;
 	} else if (Game === "Dexterity" || Game === "Flexibility" || Game === "Strength") {
-
+		if (!DialogStruggleAction) return;
 		if (!Success) {
 			// Send a stimulation event for that
 			if (Attempts >= 10 && !Auto && Progress >= 0 && Progress < 100) {

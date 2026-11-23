@@ -525,6 +525,8 @@ function KDEffectTileInteractions(x, y, b, d) {
  * @param {number} x
  * @param {number} y
  * @param {boolean} willing
+ * @param {boolean} [dash]
+ * @param {boolean} [forceHitBullets]
  * @param {boolean} [ignoreBlocked] - Ignore if the target is blocked--important if swapping
  */
 function KDMoveEntity(enemy, x, y, willing, dash, forceHitBullets, ignoreBlocked) {

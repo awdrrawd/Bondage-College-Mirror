@@ -84,6 +84,8 @@ async function GameStart(isNode=false) {
 	if (isNode) {
 		return;
 	}
+
+	CSSCheckSupport(CSSSupportCases);
 	return CommonSetScreen("Character", "Login");
 }
 

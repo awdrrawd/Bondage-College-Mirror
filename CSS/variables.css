@@ -14,10 +14,21 @@
 	/* Half the gap between grid items */
 	--half-gap: calc(var(--gap) / 2);
 
+	/*
+	 * Scrollbar width.
+	 * See Scripts/CSS.js for its initialization.
+	 */
+	--scrollbar-width: 0px;
+
+	/*
+	 * Scrollbar width for `scrollbar-width: thin` layouts.
+	 * See Scripts/CSS.js for its initialization.
+	 */
+	--scrollbar-width-thin: 0px;
+
 	/**
 	 * The size of the gutter as reserved for scrollbars.
-	 * Note the absolute `px` component of the gutter width, which is there to accommodate the fixed (browser-enforced) width of scrollbars.
+	 * See Scripts/CSS.js for its initialization.
 	 */
-	--scrollbar-gutter: max(15px, min(2.5vh, 1.25vw));
-	--scrollbar-gutter: max(15px, min(2.5dvh, 1.25dvw));
+	--scrollbar-gutter: 0px;
 }

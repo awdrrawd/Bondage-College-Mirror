@@ -236,7 +236,6 @@ var ColorPicker = {
 
 	/**
 	 * @readonly
-	 * @satisfies {Record<string, (this: HTMLElement, ev: Event) => any>}
 	 */
 	eventListeners: {
 		/** @type {(this: HTMLInputElement | HTMLColorTintElement, ev: Event) => void} */

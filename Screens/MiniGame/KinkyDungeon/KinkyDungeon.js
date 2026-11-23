@@ -146,6 +146,7 @@ let KDDefaultKB = {
 let KinkyDungeonRootDirectory = "Screens/MiniGame/KinkyDungeon/";
 /** @type {Character | null} */
 let KinkyDungeonPlayerCharacter = null; // Other player object
+/** @type {KinkyDungeonGameData | null} */
 let KinkyDungeonGameData = null; // Data sent by other player
 let KinkyDungeonGameDataNullTimer = 4000; // If data is null, we query this often
 let KinkyDungeonGameDataNullTimerTime = 0;
@@ -1156,7 +1157,7 @@ function KinkyDungeonRun() {
 						let parsed = JSON.parse(decompressed);
 						if (CommonIsArray(parsed) && parsed.length > 0) {
 							if (!StandalonePatched) {
-								for (let g of parsed) {
+								for (let g of /** @type {{ Name: AssetName, Group: AssetGroupName, Color?: null | ItemColor }[]} */(parsed)) {
 									if (CommonIsObject(g)) {
 										InventoryWear(KinkyDungeonPlayer, g.Name, g.Group, g.Color);
 									}
@@ -1852,7 +1853,7 @@ function KDCullSprites() {
 }
 
 /**
- * @type {Record<string, {Left: number, Top: number, Width: number, Height: number, enabled: boolean, func?: (bdata: any) => boolean}>}
+ * @type {Record<string, {Left: number, Top: number, Width: number, Height: number, enabled: boolean, func?: (bdata?: any) => boolean}>}
  */
 let KDButtonsCache = {
 
@@ -1935,7 +1936,7 @@ function DrawButtonKDEx(name, func, enabled, Left, Top, Width, Height, Label, Co
  * Draws a button component
  * @param {any} Container - Container to draw to
  * @param {string} name - Name of the button element
- * @param {(bdata: any) => boolean} func - Whether or not you can click on it
+ * @param {(bdata?: any) => boolean} func - Whether or not you can click on it
  * @param {boolean} enabled - Whether or not you can click on it
  * @param {number} Left - Position of the component from the left of the canvas
  * @param {number} Top - Position of the component from the top of the canvas
@@ -2436,7 +2437,7 @@ function KinkyDungeonHandleClick() {
 							let parsed = JSON.parse(decompressed);
 							if (CommonIsArray(parsed)) {
 								if (!StandalonePatched) {
-									for (let g of parsed) {
+									for (let g of /** @type {{ Name: AssetName, Group: AssetGroupName, Color?: null | ItemColor }[]} */(parsed)) {
 										if (CommonIsObject(g)) {
 											InventoryWear(KinkyDungeonPlayer, g.Name, g.Group, g.Color);
 										}
@@ -2718,7 +2719,6 @@ window.addEventListener('mouseup', function() {
 /**
  * Game keyboard input handler object: Handles keyboard inputs.
  * @constant
- * @type {object} - The game keyboard input handler object. Contains the functions and properties required to handle key press events.
  */
 let KinkyDungeonGameKey = {
 	keyPressed : [false, false, false, false, false, false, false, false, false],
@@ -2869,7 +2869,7 @@ let KinkyDungeonGameKey = {
  * @returns {KinkyDungeonSave} - Saved game object
  */
 function KinkyDungeonGenerateSaveData() {
-	/** @type {KinkyDungeonSave} */
+	/** @type {Partial<KinkyDungeonSave>} */
 	let save = {};
 	save.level = MiniGameKinkyDungeonLevel;
 	save.checkpoint = MiniGameKinkyDungeonCheckpoint;
@@ -2941,9 +2941,14 @@ function KinkyDungeonGenerateSaveData() {
 		npp: KinkyDungeonNewGame,
 		diff: KinkyDungeonStatsChoice.get("randomMode"),
 	};
-	return save;
+	return /** @type {KinkyDungeonSave} */(save);
 }
 
+/**
+ *
+ * @param {boolean} [ToString]
+ * @returns {string}
+ */
 function KinkyDungeonSaveGame(ToString) {
 	let save = KinkyDungeonGenerateSaveData();
 
@@ -2956,15 +2961,25 @@ function KinkyDungeonSaveGame(ToString) {
 	return data;
 }
 
+/**
+ *
+ * @param {unknown} save
+ * @returns {string}
+ */
 function KinkyDungeonCompressSave(save) {
 	return LZString.compressToBase64(JSON.stringify(save));
 }
 
 // N4IgNgpgbhYgXARgDQgMYAsJoNYAcB7ASwDsAXBABlQCcI8FQBxDAgZwvgFoBWakAAo0ibAiQg0EvfgBkIAQzJZJ8fgFkIZeXFWoASgTwQqqAOpEwO/gFFIAWwjk2JkAGExAKwCudFwElLLzYiMSoAX1Q0djJneGAIkAIaACNYgG0AXUisDnSskAATOjZYkAARCAAzeS8wClQAcwIwApdCUhiEAGZUSBgwWNBbCAcnBBQ3Tx9jJFQAsCCQknGEtiNLPNRSGHIkgE8ENNAokjYvO3lkyEYQEnkHBEECMiW1eTuQBIBHL3eXsgOSAixzEZwuVxmoDuD3gTxeYgAylo7KR5J9UD8/kQAStkCDTudLtc4rd7jM4UsAGLCBpEVrfX7kbGAxDAkAAdwUhGWJOh5IA0iQiJVjGE2cUyDR5B0bnzHmUvGgyAAVeRGOQNZwJF4NDBkcQlca9Ai4R7o0ASqUy3lk+WKlVqiCUiCaNTnOwHbVEXX6iCG2bgE04M1hDJhIA=
+/**
+ *
+ * @param {string} [String]
+ * @returns {boolean}
+ */
 function KinkyDungeonLoadGame(String) {
 	let str = String ? LZString.decompressFromBase64(String.trim()) : (localStorage.getItem('KinkyDungeonSave') ? LZString.decompressFromBase64(localStorage.getItem('KinkyDungeonSave')) : "");
 	if (str) {
-		let saveData = JSON.parse(str);
+		let saveData = /** @type {KinkyDungeonSave} */(JSON.parse(str));
 		if (CommonIsObject(saveData)
 			&& saveData.spells != undefined
 			&& saveData.level != undefined
@@ -3025,7 +3040,7 @@ function KinkyDungeonLoadGame(String) {
 			KDGameData = CommonCloneDeep(KDGameDataBase);
 			if (saveData.KDGameData != undefined) KDGameData = Object.assign({}, saveData.KDGameData);
 			KDEventData = CommonCloneDeep(KDEventDataBase);
-			if (saveData.KDEventData != undefined) KDEventData = Object.assign({}, saveData.KDEventData);
+			if (saveData.KDEventData != undefined) KDEventData = { ...saveData.KDEventData };
 
 			if (saveData.statchoice != undefined) KinkyDungeonStatsChoice = new Map(saveData.statchoice);
 			if (saveData.faction != undefined) KinkyDungeonFactionRelations = saveData.faction;

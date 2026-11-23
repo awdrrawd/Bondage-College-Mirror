@@ -162,7 +162,7 @@ function VibratorModeRegister(asset, config, parentOption=null) {
 		publishAction: (...args) => VibratorModePublishAction(data, ...args),
 		init: (...args) => VibratorModeInit(data, ...args),
 		scriptDraw: (...args) => VibratorModeScriptDraw(data, ...args),
-		setOption: (...args) => ExtendedItemSetOption(data, ...args),
+		setOption: (...args) => VibratorModeSetOption(data, ...args),
 	};
 	ExtendedItemCreateCallbacks(data, defaultCallbacks);
 	VibratorModeSetAssetProperties(data);
@@ -179,11 +179,14 @@ function VibratorModeRegister(asset, config, parentOption=null) {
  * @param {VibratingItemOption} previousOption - The previously applied extended item option
  * @param {boolean} [push] - Whether or not appearance updates should be persisted (only applies if the character is the
  * player) - defaults to false.
+ * @param {boolean} refresh - Whether to refresh the character. This should generally be `true`, with custom script hooks being a potential exception.
  */
-function VibratorModeSetOption(data, C, item, newOption, previousOption, push=false) {
-	ExtendedItemSetOption(data, C, item, newOption, previousOption, false);
+function VibratorModeSetOption(data, C, item, newOption, previousOption, push=false, refresh=true) {
+	ExtendedItemSetOption(data, C, item, newOption, previousOption, false, false);
 	VibratorModeSetAdvancedProperties(item, newOption.Name, { reset: true });
-	CharacterRefresh(C, push, false);
+	if (refresh || push) {
+		CharacterRefresh(C, push, false);
+	}
 }
 
 /**
@@ -199,8 +202,9 @@ function VibratorModeSetAdvancedProperties(item, mode, options=null) {
 	let changed = false;
 	switch (mode) {
 		case VibratorMode.RANDOM:
+			// Random intensities may be -1, but may never _start_ as -1 after a reset
 			if (reset || !CommonIsInteger(item.Property.Intensity, -1, 3)) {
-				item.Property.Intensity = CommonGetRandomItemFromList([-1, 0, 1, 2, 3]);
+				item.Property.Intensity = CommonGetRandomItemFromList([0, 1, 2, 3]);
 				changed = true;
 			}
 			item.Property.Effect = CommonArrayConcatDedupe(

@@ -106,7 +106,7 @@
 		"Non-integer value": {
 			"name": "Iterations",
 			"value": 1.5,
-			"output": { "status": "criticalError", "errorDescription": ["Invalid 'Iterations' integer value 1.5"] }
+			"output": { "status": "error", "value": 2, "errorDescription": ["Invalid 'Iterations' integer value 1.5"] }
 		},
 		"Invalid type (with fallback)": {
 			"name": "Iterations",
@@ -124,7 +124,7 @@
 			"name": "Iterations",
 			"value": 1.5,
 			"defaults": 42,
-			"output": { "status": "error", "value": 42, "errorDescription": ["Invalid 'Iterations' integer value 1.5"] }
+			"output": { "status": "error", "value": 2, "errorDescription": ["Invalid 'Iterations' integer value 1.5"] }
 		},
 		"Out of range value": {
 			"name": "Iterations",

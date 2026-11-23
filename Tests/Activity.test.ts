@@ -1,7 +1,23 @@
 import { Game, character } from "./Utils";
 
+import _testParam from "./Activity.json";
+const testParam = _testParam as Record<
+	keyof typeof _testParam,
+	Record<"accept", { group: AssetGroupName, name: AssetName, type?: TypeRecord }[]>
+>;
+
+let char: Character;
+let player: PlayerCharacter;
+
 beforeAll(async () => {
 	await Game.loadAll();
+	char = character.create("sourceChar");
+	player = Game.Player;
+});
+
+beforeEach(() => {
+	character.appearanceReset(char);
+	character.appearanceReset(player);
 });
 
 const siblingPrereqs: ActivityPrerequisite[] = ["Sisters", "Brothers", "SiblingsWithDifferentGender", "SiblingsNeutral"];
@@ -46,5 +62,41 @@ describe("ActivityCheckPrerequisite sibling activities", () => {
 				expect(passing(withPronouns("A", a, false), withPronouns("B", b, false))).toEqual([]);
 			}
 		}
+	});
+});
+
+describe("ActivityAllowedForGroup Needs-GagItem activities", () => {
+	const targetActivities: ActivityName[] = [
+		"MoanGag",
+		"MoanGagTalk",
+		"MoanGagWhimper",
+		"MoanGagGroan",
+		"MoanGagAngry",
+		"MoanGagGiggle",
+		"GaggedKiss"
+	];
+
+	const targetSelfActivities: ActivityName[] = [
+		"GagKiss",
+	];
+
+	it.each(testParam.needsGagItem.accept)("Target - $group/$name", ({ group, name, type }) => {
+		const item = character.inventoryWear(char, { Group: group, Name: name });
+		if (type !== undefined) {
+			Game.ExtendedItemSetOptionByRecord(char, item, type, { refresh: true });
+		}
+
+		const activities: ActivityName[] = Game.ActivityAllowedForGroup(char, "ItemMouth").map((i: ItemActivity) => i.Activity.Name);
+		expect(targetActivities).toEqual(expect.arrayContaining(activities));
+	});
+
+	it.each(testParam.needsGagItem.accept)("TargetSelf - $group/$name", ({ group, name, type }) => {
+		const item = character.inventoryWear(player, { Group: group, Name: name });
+		if (type !== undefined) {
+			Game.ExtendedItemSetOptionByRecord(player, item, type, { refresh: true });
+		}
+
+		const activities: ActivityName[] = Game.ActivityAllowedForGroup(player, "ItemMouth").map((i: ItemActivity) => i.Activity.Name);
+		expect(targetSelfActivities).toEqual(expect.arrayContaining(activities));
 	});
 });

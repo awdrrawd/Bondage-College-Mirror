@@ -346,7 +346,7 @@ function KinkyDungeonMakeNoise(radius, noiseX, noiseY) {
  * @param {spell} spell
  * @param {*} enemy
  * @param {*} player
- * @param {*} bullet
+ * @param {*} [bullet]
  * @param {string} [forceFaction]
  * @param {any} [castData]
  * @returns {{result: string, data: any}}

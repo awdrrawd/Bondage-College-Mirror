@@ -105,23 +105,26 @@ var CraftingJSON = {
 		return el?.getAttribute("role") === "tooltip";
 	},
 
-	/** @satisfies {Record<string, (this: HTMLElement, ev: Event) => any>} */
 	eventListeners: {
+		/** @type {(this: HTMLElement, ev: FocusEvent) => void} */
 		focusTooltip: function() {
 			const tooltips = ElementUnpackIDs.fromAttribute(this, "aria-owns", { filter: CraftingJSON._isTooltip });
 			tooltips.forEach(e => e.toggleAttribute("data-focus", true));
 		},
 
+		/** @type {(this: HTMLElement, ev: FocusEvent) => void} */
 		blurTooltip: function() {
 			const tooltips = ElementUnpackIDs.fromAttribute(this, "aria-owns", { filter: CraftingJSON._isTooltip });
 			tooltips.forEach(e => e.toggleAttribute("data-focus", false));
 		},
 
+		/** @type {(this: HTMLElement, ev: MouseEvent) => void} */
 		hoverinTooltip: function() {
 			const tooltips = ElementUnpackIDs.fromAttribute(this, "aria-owns", { filter: CraftingJSON._isTooltip });
 			tooltips.forEach(e => e.toggleAttribute("data-hover", true));
 		},
 
+		/** @type {(this: HTMLElement, ev: MouseEvent) => void} */
 		hoveroutTooltip: function() {
 			const tooltips = ElementUnpackIDs.fromAttribute(this, "aria-owns", { filter: CraftingJSON._isTooltip });
 			tooltips.forEach(e => e.toggleAttribute("data-hover", false));
@@ -201,11 +204,13 @@ var CraftingJSON = {
 			});
 		},
 
+		/** @type {(this: HTMLElement, ev: PointerEvent) => void} */
 		clickCancel: function() {
 			CraftingUnload();
 			CraftingModeSet("Slot");
 		},
 
+		/** @type {(this: HTMLElement, ev: PointerEvent) => void} */
 		clickAccept: function(ev) {
 			const craftList = CraftingJSON._craftListCache;
 			if (craftList == null) {
@@ -288,18 +293,21 @@ var CraftingJSON = {
 			this.setCustomValidity("");
 		},
 
+		/** @type {(this: HTMLElement, ev: PointerEvent) => void} */
 		clickSelectNew: function() {
 			/** @type {undefined | NodeListOf<HTMLInputElement>} */
 			const inputs = this.closest("fieldset")?.querySelectorAll("input[type='radio'][value='new']:enabled");
 			inputs?.forEach(el => el.checked = true);
 		},
 
+		/** @type {(this: HTMLElement, ev: PointerEvent) => void} */
 		clickSelectOld: function() {
 			/** @type {undefined | NodeListOf<HTMLInputElement>} */
 			const inputs = this.closest("fieldset")?.querySelectorAll("input[type='radio'][value='old']:enabled");
 			inputs?.forEach(el => el.checked = true);
 		},
 
+		/** @type {(this: HTMLElement, ev: PointerEvent) => void} */
 		clickError: function() {
 			this.focus();
 		},

@@ -5,7 +5,7 @@
 var Player;
 /** @type {ModuleType} */
 var CurrentModule;
-/** @type {ModuleScreens[typeof CurrentModule]} */
+/** @type {RoomName} */
 var CurrentScreen;
 /** @type {Required<ScreenFunctions>} */
 var CurrentScreenFunctions;
@@ -1431,6 +1431,22 @@ function CommonStringTitlecase(str) {
 }
 
 /**
+ * Sets the browser tab title.
+ * Uses the player nickname when set, otherwise the player name.
+ * @param {object} [options] - The options object
+ * @param {string} [options.prefix] - Text before the player name
+ * @param {string} [options.suffix] - Text after the player name
+ * @returns {void}
+ */
+function CommonSetDocumentTitle({ prefix, suffix } = {}) {
+	prefix ??= "";
+	suffix ??= "Bondage Club";
+	const showName = (Player.GraphicsSettings?.ShowNameInTitle ?? true) && Player.Name;
+	const name = showName ? `${CharacterNickname(Player)} • ` : "";
+	document.title = `${prefix}${name}${suffix}`;
+}
+
+/**
  * Censors a string or words in that string based on the player preferences
  * @param {string} S - The string to censor
  * @param {Character & { ChatSettings: ChatSettingsType }} C
@@ -1823,7 +1839,7 @@ function CommonObjectIsSubset(subRec, superRec) {
 
 /**
  * Returns the object with keys and values reversed
- * @template {object} T
+ * @template {Record<string | number | symbol, string | number | symbol>} T
  * @param {T} obj
  * @returns {{ [k in keyof T as T[k]]: k }}
  */

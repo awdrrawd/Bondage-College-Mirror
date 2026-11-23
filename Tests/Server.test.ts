@@ -1,4 +1,4 @@
-import { Game } from "./Utils";
+import { Game, character, utils } from "./Utils";
 
 import testParam from "./Server.json";
 
@@ -473,5 +473,32 @@ describe("ServerBundledItemFromAppearanceItem", () => {
 		expect(itemRestored?.Property, "bundle to item re-conversion").toEqual(finalItemProperty);
 		Game.ItemPropertiesDecompress(itemRestored, itemRestored?.Property);
 		expect(itemRestored?.Property, "item property accidental double decompression").toEqual(finalItemProperty);
+	});
+});
+
+// TODO: Consider moving all item-adjecant tests to a single .test.ts file
+describe("Extended item re-initialization", () => {
+	it("Double extended item initialization must not yield any updates", () => {
+		const C = character.create("dummy");
+		const assets: readonly Asset[] = Game.Asset;
+
+		const failures = assets.map(asset => {
+			if (!asset.Extended || !asset.Enable) {
+				return undefined;
+			}
+
+			character.appearanceReset(C);
+			const item: null | Item = Game.InventoryWear(C, asset.Name, asset.Group.Name, undefined, undefined, undefined, undefined, false);
+			if (item) {
+				const before = utils.cloneDeep(item.Property);
+				const reInitStatus: boolean = Game.ExtendedItemInit(C, item, false, false);
+				if (reInitStatus) {
+					const after = utils.cloneDeep(item.Property);
+					return [`${asset.Group.Name}/${asset.Name}`, { before, after }] as const;
+				}
+			}
+			return undefined;
+		}).filter(i => i !== undefined).sort((a, b) => a[0].localeCompare(b[0]));
+		expect(Object.fromEntries(failures)).toEqual({});
 	});
 });

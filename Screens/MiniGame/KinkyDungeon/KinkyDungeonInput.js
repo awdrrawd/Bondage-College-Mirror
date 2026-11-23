@@ -700,6 +700,8 @@ function KDProcessInput(type, data) {
  *
  * @param {string} type
  * @param {any} data
+ * @param {unknown} [frame]
+ * @param {boolean} [noUpdate]
  * @returns {string}
  */
 function KDSendInput(type, data, frame, noUpdate) {
@@ -718,6 +720,7 @@ function KDSendInput(type, data, frame, noUpdate) {
 
 /**
  * Handles inputs once per frame
+ * @param {boolean} [ReturnResult]
  * @returns {string}
  */
 function KDProcessInputs(ReturnResult) {

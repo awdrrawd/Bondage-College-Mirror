@@ -15,7 +15,7 @@
 	grid-template-rows: repeat(auto-fill, 1fr);
 	direction: rtl;
 	gap: var(--gap);
-	padding-right: var(--scrollbar-gutter);
+	padding-right: calc(var(--scrollbar-width) + var(--scrollbar-gutter));
 }
 
 .dialog-menubar-button {

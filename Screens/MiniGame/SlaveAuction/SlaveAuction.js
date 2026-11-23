@@ -135,11 +135,13 @@ function SlaveAuctionClick() {
 /**
  * Handles the key press in the slave auction mini game, the C cheat key removes $50 from the current bid in progress
  * @type {KeyboardEventListener}
- * @returns {void} - Nothing
  */
 function SlaveAuctionKeyDown(event) {
 	if ((SlaveAuctionBidAmount > 10) && MiniGameCheatKeyDown(event)) {
 		SlaveAuctionBidAmount = SlaveAuctionBidAmount - 50;
 		if (SlaveAuctionBidAmount < 10) SlaveAuctionBidAmount = 10;
+		return true;
+	} else {
+		return false;
 	}
 }
