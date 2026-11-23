@@ -10,13 +10,13 @@ Each snapshot lives at the root of a separate branch, so GitHub's **Download ZIP
 | [`echo-activity-ext`](https://github.com/awdrrawd/Bondage-College-Mirror/tree/echo-activity-ext) | [SugarChain-Studio/echo-activity-ext](https://github.com/SugarChain-Studio/echo-activity-ext)            |
 | [`echo-clothing-ext`](https://github.com/awdrrawd/Bondage-College-Mirror/tree/echo-clothing-ext) | [SugarChain-Studio/echo-clothing-ext](https://github.com/SugarChain-Studio/echo-clothing-ext)            |
 | [`bcx`](https://github.com/awdrrawd/Bondage-College-Mirror/tree/bcx) | [Jomshir98/bondage-club-extended](https://github.com/Jomshir98/bondage-club-extended), `master` |
-| [`lscg`](https://github.com/awdrrawd/Bondage-College-Mirror/tree/lscg) | [littlesera/LSCG](https://github.com/littlesera/LSCG), `dev` |
+| [`lscg`](https://github.com/awdrrawd/Bondage-College-Mirror/tree/lscg) | [littlesera/LSCG](https://github.com/littlesera/LSCG), `main` |
 | [`bcplus`](https://github.com/awdrrawd/Bondage-College-Mirror/tree/bcplus) | [Seles84/bc-plus](https://github.com/Seles84/bc-plus), `main` |
 
 The `main` branch only contains this documentation, the sync workflow, and a
 small browser tool (`index.html`, published via GitHub Pages) for searching
 the mirrored branches by filename or content. The sync workflow checks upstream every
-three hours (UTC cron: `0 */3 * * *`) and can also be triggered
+three hours (UTC cron: `17 */3 * * *`) and can also be triggered
 manually from the Actions tab.
 
 ### Code search tool
@@ -64,7 +64,7 @@ terms before using or redistributing these mirrors.
 
 `main` 分支只放這份說明文件、同步用的 workflow，以及一個透過 GitHub Pages
 發佈的小型瀏覽器工具（`index.html`），可以用檔名或內容關鍵字搜尋各個鏡像分支。
-同步 workflow 每 3 小時檢查一次上游（UTC cron：`0 */3 * * *`），也可以在
+同步 workflow 每 3 小時檢查一次上游（UTC cron：`17 */3 * * *`），也可以在
 Actions 分頁手動觸發。
 
 ### 代碼查詢工具
