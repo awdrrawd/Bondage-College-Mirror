@@ -285,16 +285,8 @@ function ActivityGenerateItemActivitiesFromNeed(acting, acted, needsItem, activi
 			return activities;
 		}
 
-		// FIXME: workaround for reverse activities because those are in a non-activity group
-
-		if (InventoryItemHasEffect(item, "UseRemote") && !item.Asset.Group.Name.startsWith("ItemMouth")) {
-			// FIXME: Review if this code branch is still required because it is pain
-			// That item actually needs a remote, so handle it separately
-		} else {
-			ActivityLog(`${acting.Name} on ${acted.Name}: act: ${activity.Name} needs item ${needsItem} satisfied by ${item.Asset.Name}`);
-			activities.push({ Activity: activity, Item: item, Blocked: blocked, Group: targetGroup.MirrorActivitiesFrom ?? targetGroup.Name });
-			return activities;
-		}
+		ActivityLog(`${acting.Name} on ${acted.Name}: act: ${activity.Name} needs item ${needsItem} satisfied by ${item.Asset.Name}`);
+		activities.push({ Activity: activity, Item: item, Blocked: blocked, Group: targetGroup.MirrorActivitiesFrom ?? targetGroup.Name });
 		return activities;
 	}, /** @type {ItemActivity[]} */ ([]));
 }
@@ -349,21 +341,23 @@ function ActivityAllowedForGroup(character, groupname) {
 		let targetNeedsItem = activity.Prerequisite.find(p => p.startsWith("TargetNeeds-"));
 		let needsItem = activity.Prerequisite.find(p => p.startsWith("Needs-"));
 
-		if (needsItem) {
-			const needsItemActivity = /** @type {ActivityNameItem} */(needsItem.substring(6));
-			ActivityLog(`${Player.Name} on ${character.Name}: needs item ${needsItem}`);
-			return [...allowedActivities, ...ActivityGenerateItemActivitiesFromNeed(Player, character, needsItemActivity, activity, group)];
-		}
-		if (targetNeedsItem) {
-			const targetNeedsItemActivity = /** @type {ActivityNameItem} */(targetNeedsItem.substring(12));
-			return [...allowedActivities, ...ActivityGenerateItemActivitiesFromNeed(Player, character, targetNeedsItemActivity, activity, group, true)];
-		}
-
-		if (activity.Name === "ShockItem" && targetedItem && InventoryItemHasEffect(targetedItem, "ReceiveShock")) {
-			let remote = Player.Appearance.find(a => InventoryItemHasEffect(a, "TriggerShock"));
+		if (activity.Name === "ShockItem") {
+			const remote = (targetedItem && InventoryItemHasEffect(targetedItem, "ReceiveShock")) ? Player.Appearance.find(a => InventoryItemHasEffect(a, "TriggerShock")) : undefined;
 			if (remote) {
 				ActivityLog(`${Player.Name} on ${character.Name}, act: ${activity.Name}: can trigger shock, adding in`);
 				return allowedActivities.concat({ Activity: activity, Item: remote, Group: group.Name });
+			} else {
+				return allowedActivities;
+			}
+		} else {
+			if (needsItem) {
+				const needsItemActivity = /** @type {ActivityNameItem} */(needsItem.substring(6));
+				ActivityLog(`${Player.Name} on ${character.Name}: needs item ${needsItem}`);
+				return [...allowedActivities, ...ActivityGenerateItemActivitiesFromNeed(Player, character, needsItemActivity, activity, group)];
+			}
+			if (targetNeedsItem) {
+				const targetNeedsItemActivity = /** @type {ActivityNameItem} */(targetNeedsItem.substring(12));
+				return [...allowedActivities, ...ActivityGenerateItemActivitiesFromNeed(Player, character, targetNeedsItemActivity, activity, group, true)];
 			}
 		}
 

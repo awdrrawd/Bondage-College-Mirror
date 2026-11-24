@@ -1142,7 +1142,29 @@ describe("placed object settings", () => {
 		it("let the kitchen sink with water recolor its water", () => {
 			const sink = Game.MapDataGetObject(343);
 			expect(Game.MapGetColorableLayers(sink).map(l => l.Name)).toContain("Water");
-			expect(sink.JoinsNeighbors).toBeFalsy();
+			expect(sink.JoinsNeighbors).toBe(true);
+			const getObjectId = jest.spyOn(Game.MapManager.Map, "getObjectId");
+			try {
+				getObjectId.mockImplementation((x, y) => y === 5 && (x === 4 || x === 6) ? 330 : null);
+				expect(sink.BuildImageName(5, 5)).toBe("KitchenCounterSinkWaterMiddle");
+				getObjectId.mockImplementation((x, y) => x === 6 && y === 5 ? 343 : null);
+				expect(Game.MapDataGetObject(330).BuildImageName(5, 5)).toBe("KitchenCounterLeft");
+			} finally {
+				getObjectId.mockRestore();
+			}
+		});
+
+		it("connect kitchen counters to adjacent tall cabinets", () => {
+			expect(Game.MapCanTransformObject(Game.MapDataGetObject(334))).toBe(false);
+			const getObjectId = jest.spyOn(Game.MapManager.Map, "getObjectId");
+			try {
+				getObjectId.mockImplementation((x, y) => x === 6 && y === 5 ? 334 : null);
+				expect(Game.MapDataGetObject(332).BuildImageName(5, 5)).toBe("KitchenCounterStoveElectricLeft");
+				getObjectId.mockImplementation((x, y) => x === 4 && y === 5 ? 334 : null);
+				expect(Game.MapDataGetObject(343).BuildImageName(5, 5)).toBe("KitchenCounterSinkWaterRight");
+			} finally {
+				getObjectId.mockRestore();
+			}
 		});
 
 		it("give every object at least one layer once loaded", () => {

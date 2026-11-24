@@ -11,6 +11,8 @@ let player: PlayerCharacter;
 
 beforeAll(async () => {
 	await Game.loadAll();
+	// Disable screen-specific activity restrictions
+	Game.ActivityAllowed = () => true;
 	char = character.create("sourceChar");
 	player = Game.Player;
 });
@@ -96,7 +98,29 @@ describe("ActivityAllowedForGroup Needs-GagItem activities", () => {
 			Game.ExtendedItemSetOptionByRecord(player, item, type, { refresh: true });
 		}
 
-		const activities: ActivityName[] = Game.ActivityAllowedForGroup(player, "ItemMouth").map((i: ItemActivity) => i.Activity.Name);
+		const activities: ActivityName[] = Game.ActivityAllowedForGroup(char, "ItemMouth").map((i: ItemActivity) => i.Activity.Name);
 		expect(targetSelfActivities).toEqual(expect.arrayContaining(activities));
+	});
+});
+
+describe("ActivityAllowedForGroup ShockItem", () => {
+	it("With remote", () => {
+		character.inventoryWear(player, { Group: "ItemNeck", Name: "ShockCollar" });
+		character.inventoryWear(player, { Group: "ItemHandheld", Name: "ShockRemote" });
+		const activities: ActivityName[] = Game.ActivityAllowedForGroup(player, "ItemNeck").map((i: ItemActivity) => i.Activity.Name);
+		expect(activities).toContain("ShockItem");
+	});
+
+	it("With remote (invalid target group)", () => {
+		character.inventoryWear(player, { Group: "ItemNeck", Name: "ShockCollar" });
+		character.inventoryWear(player, { Group: "ItemHandheld", Name: "ShockRemote" });
+		const activities: ActivityName[] = Game.ActivityAllowedForGroup(player, "ItemArms").map((i: ItemActivity) => i.Activity.Name);
+		expect(activities).not.toContain("ShockItem");
+	});
+
+	it("Without remote", () => {
+		character.inventoryWear(player, { Group: "ItemNeck", Name: "ShockCollar" });
+		const activities: ActivityName[] = Game.ActivityAllowedForGroup(player, "ItemNeck").map((i: ItemActivity) => i.Activity.Name);
+		expect(activities).not.toContain("ShockItem");
 	});
 });

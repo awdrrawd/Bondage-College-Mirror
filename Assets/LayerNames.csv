@@ -1059,6 +1059,10 @@ HairAccessory1TongqianHairpinTetheredBead,Tethered Bead
 HairAccessory1WingedHeadpieceW1,Wings
 HairAccessory1WingedHeadpieceW2,Tails
 HairAccessory1WingedHeadpieceW3,Button
+HairAccessory1MothAntennaAntenna,Antenna
+HairAccessory1MothAntennaAntennaReflection,Antenna Reflection
+HairAccessory1MothAntennaGlow,Glow
+HairAccessory1MothAntennaGlowFog,Glow Fog
 HairAccessory2BunnyEars2Inner,Inner
 HairAccessory2BunnyEars2Outer,Outer
 HairAccessory2FoxEars2Inner,Inner Ear
@@ -1806,6 +1810,7 @@ ItemDevicesBedMattress,Mattress
 ItemDevicesBedPillow,Pillow
 ItemDevicesBondageBenchBench,Bench
 ItemDevicesBondageBenchStraps,Straps
+ItemDevicesBondageBenchLock,Lock
 ItemDevicesBoxingBagBack1,Back
 ItemDevicesBoxingBagBack2,Back
 ItemDevicesBoxingBagFront1,Front
@@ -1834,6 +1839,21 @@ ItemDevicesBrickWallReLock,Padlocks
 ItemDevicesCageFrame,Frame
 ItemDevicesCageMesh,Mesh
 ItemDevicesCageTint,Tint
+ItemDevicesCageLock,Lock
+ItemDevicesBirdCageFront,Cage
+ItemDevicesBirdCageLock,Lock
+ItemDevicesLowCage,Cage
+ItemDevicesLowCageLock,Lock
+ItemDevicesSaddleStand,Saddle
+ItemDevicesSaddleStandLock,Lock
+ItemDevicesInflatableBodyBag,Bag
+ItemDevicesInflatableBodyBagLock,Lock
+ItemDevicesTheDisplayFrame,Display Frame
+ItemDevicesTheDisplayFrameLock,Lock
+ItemDevicesDisplayCase,Display Case
+ItemDevicesDisplayCaseLock,Lock
+ItemDevicesSmallDisplayCase,Display Case
+ItemDevicesSmallDisplayCaseLock,Lock
 ItemDevicesCementMainBucket,Bucket
 ItemDevicesCementMain,Material
 ItemDevicesCementStraps,Straps
@@ -1845,8 +1865,10 @@ ItemDevicesCoffinClosed,Lid (closed)
 ItemDevicesCoffinFrame,Frame
 ItemDevicesCoffinInside,Velvet
 ItemDevicesCoffinOpen,Lid (open)
+ItemDevicesCoffinLock,Locks
 ItemDevicesConcealingCloakFront,Cloak
 ItemDevicesConcealingCloakStrap,Straps
+ItemDevicesConcealingCloakLock,Lock
 ItemDevicesCribFrame,Frame
 ItemDevicesCribMattress,Mattress
 ItemDevicesCribPillow,Pillow
@@ -1862,6 +1884,15 @@ ItemDevicesDollBoxDollText,Label
 ItemDevicesDollBoxGlass,Glass
 ItemDevicesDollBoxHeart,Heart
 ItemDevicesDollBoxText,Custom Text
+ItemDevicesDollBoxLock,Lock
+ItemDevicesWoodenBoxOpenHead,Box
+ItemDevicesWoodenBoxOpenHeadLock,Lock
+ItemDevicesSmallWoodenBoxOpenHead,Box
+ItemDevicesSmallWoodenBoxOpenHeadLock,Lock
+ItemDevicesTrolleyMain,Trolley
+ItemDevicesTrolleyLock,Lock
+ItemDevicesWoodenStocks,Stocks
+ItemDevicesWoodenStocksLock,Lock
 ItemDevicesFoldingScreenFrame1,Frame
 ItemDevicesFoldingScreenPaper1,Paper
 ItemDevicesFoldingScreenShadow,Shadow
@@ -1872,6 +1903,7 @@ ItemDevicesFuckMachinePlastic,Plastic
 ItemDevicesFuckMachinePole,Pole
 ItemDevicesFurBlanketWrapBelts,Belts
 ItemDevicesFurBlanketWrapBlanket,Blanket
+ItemDevicesFurBlanketWrapLockBelts,Lock
 ItemDevicesFuturisticCrateBody,Padding
 ItemDevicesFuturisticCrateClampsHarness,Harness Clamps
 ItemDevicesFuturisticCrateDevicePleasure,Harness
@@ -1911,6 +1943,7 @@ ItemDevicesGlassJarPipeBack,Pipe Back
 ItemDevicesGlassJarPipeConnector,Pipe Connector
 ItemDevicesGlassJarPipeFront,Pipe Front
 ItemDevicesGlassJarTongue,Tongue
+ItemDevicesGlassJarLock,Lock
 ItemDevicesInflatableRestraintBagCanister,Canister
 ItemDevicesInflatableRestraintBagCanisterHighlight,Canister Highlight
 ItemDevicesInflatableRestraintBagCanisterHose,Canister Hose
@@ -1930,6 +1963,7 @@ ItemDevicesInflatableRestraintBagInflated3,Inflated
 ItemDevicesInflatableRestraintBagInflated4,Inflated
 ItemDevicesInflatableRestraintBagLiquid,Liquid
 ItemDevicesInflatableRestraintBagTube,Tube
+ItemDevicesInflatableRestraintBagLock,Locks
 ItemDevicesKabeshiriWallCuffsBody,Cuffs
 ItemDevicesKabeshiriWallCumButt,Cum
 ItemDevicesKabeshiriWallMonitor,Portrait Frame
@@ -1941,6 +1975,7 @@ ItemDevicesKennelDoor,Door
 ItemDevicesKennelFrame,Front Frame
 ItemDevicesKennelKennel,Kennel
 ItemDevicesKennelPadding,Padding
+ItemDevicesKennelLock,Lock
 ItemDevicesLatexbeltBedClosedCover,Closed Cover
 ItemDevicesLatexbeltBedEdge,Edge
 ItemDevicesLatexbeltBedLining,Lining
@@ -2024,7 +2059,6 @@ ItemDevicesOneBarGirlLock,Padlocks
 ItemDevicesPersonalCageBase,Base
 ItemDevicesPersonalCageClosed,Closed
 ItemDevicesPersonalCageLock,Lock
-ItemDevicesPersonalCageSuspendedLock,Lock
 ItemDevicesPetBedBed,Bed
 ItemDevicesPetBedBlanket,Blanket
 ItemDevicesPetBedInner,Blanket Lining
@@ -2036,6 +2070,8 @@ ItemDevicesPogoBallPogoMainShine,Shine
 ItemDevicesPogoBallPogoAnkle,Ankle rubber
 ItemDevicesSeizaisuChair,Legs
 ItemDevicesSeizaisuCushion,Cushion
+ItemDevicesOneBarPrisonBar,Bar
+ItemDevicesOneBarPrisonLock,Lock
 ItemDevicesShackledOneBarPrisonBar1,Bar
 ItemDevicesShackledOneBarPrisonBar2,Bar
 ItemDevicesShackledOneBarPrisonBase,Base
@@ -2049,6 +2085,7 @@ ItemDevicesShackledOneBarPrisonCuffRight2,Right
 ItemDevicesShackledOneBarPrisonMask,Mask
 ItemDevicesShackledOneBarPrisonPhallus,Dildo
 ItemDevicesShackledOneBarPrisonPiston,Piston
+ItemDevicesShackledOneBarPrisonLock,Locks
 ItemDevicesSnowmanButtons,Buttons
 ItemDevicesSnowmanStickHands,Arms
 ItemDevicesTheHangingFrameBelts,Belts
@@ -2059,6 +2096,7 @@ ItemDevicesTransportWoodenBoxBack,Wood
 ItemDevicesTransportWoodenBoxText,Text
 ItemDevicesTransportWoodenBoxWheelholders,Wheel Holders
 ItemDevicesTransportWoodenBoxWheels,Wheels
+ItemDevicesTransportWoodenBoxLock,Lock
 ItemDevicesThroneDeco,Deco Item
 ItemDevicesThroneSeat,Seat
 ItemDevicesThroneThrone,Throne
@@ -2101,6 +2139,13 @@ ItemDevicesWetFloorSign,Sign
 ItemDevicesWetFloorText,Text
 ItemDevicesWoodenBoxBack,Wood
 ItemDevicesWoodenBoxText,Text
+ItemDevicesWoodenBoxLock,Lock
+ItemDevicesSmallWoodenBox,Box
+ItemDevicesSmallWoodenBoxLock,Lock
+ItemDevicesLockerBack,Locker
+ItemDevicesLockerLock,Lock
+ItemDevicesSmallLockerBack,Locker
+ItemDevicesSmallLockerLock,Lock
 ItemDevicesWoodenHorseFrame,Frame
 ItemDevicesWoodenHorseWood,Wood
 ItemDevicesWoodenRackBack,Back
@@ -2113,6 +2158,7 @@ ItemDevicesWoodenRackTopRopes,Ropes
 ItemDevicesWoodenRackTopStocksBack,Arm Stocks
 ItemDevicesX-CrossCross,Frame
 ItemDevicesX-CrossPadding,Padding
+ItemDevicesX-CrossLock,Lock
 ItemDevicesHighchairChair,Chair
 ItemDevicesHighchairTray,Tray
 ItemDevicesHighchairSeat,Cushion
@@ -2199,57 +2245,17 @@ ItemDevicesGiantJarBackGlassReflection,Back Glass Reflection
 ItemDevicesGiantJarLid,Lid
 ItemDevicesGiantJarLidReflection,Lid Reflection
 ItemDevicesGiantJarBackLiquid,Back Liquid
-ItemDevicesGiantJarBackLiquid2,Back Liquid
-ItemDevicesGiantJarBackLiquid3,Back Liquid
-ItemDevicesGiantJarBackLiquid4,Back Liquid
-ItemDevicesGiantJarBackLiquid5,Back Liquid
-ItemDevicesGiantJarBackLiquid6,Back Liquid
 ItemDevicesGiantJarBackLiquidReflection,Back Liquid Reflection
-ItemDevicesGiantJarBackLiquidReflection2,Back Liquid Reflection
-ItemDevicesGiantJarBackLiquidReflection3,Back Liquid Reflection
-ItemDevicesGiantJarBackLiquidReflection4,Back Liquid Reflection
-ItemDevicesGiantJarBackLiquidReflection5,Back Liquid Reflection
-ItemDevicesGiantJarBackLiquidReflection6,Back Liquid Reflection
 ItemDevicesGiantJarFrontLiquid,Front Liquid
-ItemDevicesGiantJarFrontLiquid2,Front Liquid
-ItemDevicesGiantJarFrontLiquid3,Front Liquid
-ItemDevicesGiantJarFrontLiquid4,Front Liquid
-ItemDevicesGiantJarFrontLiquid5,Front Liquid
-ItemDevicesGiantJarFrontLiquid6,Front Liquid
 ItemDevicesGiantJarFrontLiquidReflection,Front Liquid Reflection
-ItemDevicesGiantJarFrontLiquidReflection2,Front Liquid Reflection
-ItemDevicesGiantJarFrontLiquidReflection3,Front Liquid Reflection
-ItemDevicesGiantJarFrontLiquidReflection4,Front Liquid Reflection
-ItemDevicesGiantJarFrontLiquidReflection5,Front Liquid Reflection
-ItemDevicesGiantJarFrontLiquidReflection6,Front Liquid Reflection
 ItemDevicesGiantJarBackBubbles,Back Bubbles
-ItemDevicesGiantJarBackBubbles2,Back Bubbles
-ItemDevicesGiantJarBackBubbles3,Back Bubbles
-ItemDevicesGiantJarBackBubbles4,Back Bubbles
 ItemDevicesGiantJarBackBubblesReflection,Back Bubbles Reflection
-ItemDevicesGiantJarBackBubblesReflection2,Back Bubbles Reflection
-ItemDevicesGiantJarBackBubblesReflection3,Back Bubbles Reflection
-ItemDevicesGiantJarBackBubblesReflection4,Back Bubbles Reflection
 ItemDevicesGiantJarFrontBubbles,Front Bubbles
-ItemDevicesGiantJarFrontBubbles2,Front Bubbles
-ItemDevicesGiantJarFrontBubbles3,Front Bubbles
-ItemDevicesGiantJarFrontBubbles4,Front Bubbles
 ItemDevicesGiantJarFrontBubblesReflection,Front Bubbles Reflection
-ItemDevicesGiantJarFrontBubblesReflection2,Front Bubbles Reflection
-ItemDevicesGiantJarFrontBubblesReflection3,Front Bubbles Reflection
-ItemDevicesGiantJarFrontBubblesReflection4,Front Bubbles Reflection
 ItemDevicesGiantJarLabel1,Label 1
-ItemDevicesGiantJarLabel12,Label 1
-ItemDevicesGiantJarLabel13,Label 1
-ItemDevicesGiantJarLabel14,Label 1
 ItemDevicesGiantJarLabelReflection,Label Reflection
-ItemDevicesGiantJarLabelReflection2,Label Reflection
-ItemDevicesGiantJarLabelReflection3,Label Reflection
-ItemDevicesGiantJarLabelReflection4,Label Reflection
 ItemDevicesGiantJarLabel2,Label 2
-ItemDevicesGiantJarLabel22,Label 2
 ItemDevicesGiantJarExtraLabelReflection,Extra Label Reflection
-ItemDevicesGiantJarExtraLabelReflection2,Extra Label Reflection
 ItemDevicesGiantJarholdout,hold out
 ItemDevicesGiantJarText Fill,Text Fill
 ItemDevicesGiantJarText Stroke,Text Stroke
@@ -4472,3 +4478,16 @@ WingsSeraphWingsWingTip3,Wing Tip3
 WingsSeraphWingsWingTip4,Wing Tip4
 WingsSeraphWingsWingTip5,Wing Tip5
 WingsSeraphWingsWingTip6,Wing Tip6
+WingsMothWingsWings,Wings
+WingsMothWingsWingsReflection,Wings Reflection
+WingsMothWingsWingsEdge,Wings Edge
+WingsMothWingsWingsEdgeReflection,Wings Edge Reflection
+WingsMothWingsInnerFakeEye,Inner Fake Eye
+WingsMothWingsInnerFakeEyeReflection,Inner Fake Eye Reflection
+WingsMothWingsOuterFakeEye,Outer Fake Eye
+WingsMothWingsOuterFakeEyeReflection,Outer Fake Eye Reflection
+WingsMothWingsWingsGlow,Wings Glow
+WingsMothWingsEffectsGlow,Effects Glow
+WingsMothWingsEffectsGlowFog,Effects Glow Fog
+WingsMothWingsReflection,Reflection
+WingsMothWingsEffects,Effects

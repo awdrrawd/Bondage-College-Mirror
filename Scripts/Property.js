@@ -1123,7 +1123,6 @@ class PropertyDataEntry {
 			errorDescription.push(`Invalid '${name}' non-finite value ${value}`);
 		} else if (isInteger && !Number.isInteger(value)) {
 			errorDescription.push(`Invalid '${name}' integer value ${value}`);
-			// @ts-expect-error
 			ret = CommonClamp(Math.round(value), min, max);
 		} else if (value > max || value < min) {
 			errorDescription.push(`Invalid '${name}' out of range value ${value} (expected interval [${min}, ${max}])`);

@@ -215,6 +215,10 @@ var AssetFemale3DCGExtended = {
 				},
 			],
 		}, //LatexHabit
+		MothAntenna: {
+			Archetype: ExtendedArchetype.TYPED,
+			CopyConfig: { GroupName: "HairAccessory1", AssetName: "MothAntenna" },
+		},
 		NunHabit: {
 			Archetype: ExtendedArchetype.TYPED,
 			Options: [
@@ -12133,7 +12137,6 @@ var AssetFemale3DCGExtended = {
 								SetPose: ["Spread"],
 								Block: ["ItemFeet"],
 								Effect: [E.BlockWardrobe],
-								Hide: ["ItemBoots", "Shoes"],
 							},
 						}, // b1 - Rope
 						{
@@ -12142,7 +12145,6 @@ var AssetFemale3DCGExtended = {
 								SetPose: ["LegsClosed"],
 								Block: ["ItemFeet"],
 								Effect: [E.BlockWardrobe],
-								Hide: ["ItemBoots", "Shoes"],
 							},
 						}, // b2 - RopeTight
 						{
@@ -12153,7 +12155,6 @@ var AssetFemale3DCGExtended = {
 								SetPose: ["Spread"],
 								Block: ["ItemFeet"],
 								Effect: [E.BlockWardrobe],
-								Hide: ["ItemBoots", "Shoes"],
 							},
 						}, // b3 - Chains
 						{
@@ -12164,7 +12165,6 @@ var AssetFemale3DCGExtended = {
 								SetPose: ["LegsClosed"],
 								Block: ["ItemFeet"],
 								Effect: [E.BlockWardrobe],
-								Hide: ["ItemBoots", "Shoes"],
 							},
 						}, // b4 - ChainsTogether
 						{
@@ -12174,7 +12174,6 @@ var AssetFemale3DCGExtended = {
 								SetPose: ["BaseLower"],
 								Block: ["ItemFeet"],
 								Effect: [E.BlockWardrobe],
-								Hide: ["ItemBoots", "Shoes"],
 							},
 						}, // b5 - Stocks
 					],
@@ -12943,8 +12942,8 @@ var AssetFemale3DCGExtended = {
 					Key: "v",
 					DrawImages: false,
 					Options: [
-						{ Property: { Intensity: -1, Effect: [] } }, // v0 - Turn Off
-						{ Property: { Intensity: 0, Effect: [E.Vibrating] } }, // v1 - Low
+						{ Property: { Intensity: -1, Effect: [E.Egged] } }, // v0 - Turn Off
+						{ Property: { Intensity: 0, Effect: [E.Egged, E.Vibrating] } }, // v1 - Low
 						{ Property: { Intensity: 1, Effect: [E.Egged, E.Vibrating] } }, // v2 - Medium
 						{ Property: { Intensity: 1, Effect: [E.Egged, E.Vibrating] } }, // v3 - High
 						{ Property: { Intensity: 2, Effect: [E.Egged, E.Vibrating] } }, // v4 - Maximum
@@ -13120,100 +13119,26 @@ var AssetFemale3DCGExtended = {
 				{
 					Name: "Full",
 					Property: {
-						Effect: [E.Block],
-						Block: [
-							"ItemHood",
-							"ItemHead",
-							"ItemEars",
-							"ItemNose",
-							"ItemMouth",
-							"ItemMouth2",
-							"ItemMouth3",
-							"ItemNeck",
-							"ItemNeckAccessories",
-							"ItemNeckRestraints",
-							"ItemMisc",
-							"ItemNipples",
-							"ItemNipplesPiercings",
-							"ItemBreast",
-							"ItemArms",
-							"ItemHands",
-							"ItemTorso",
-							"ItemTorso2",
-							"ItemPelvis",
-							"ItemButt",
-							"ItemVulvaPiercings",
-							"ItemVulva",
-							"ItemLegs",
-							"ItemFeet",
-							"ItemBoots",
-						],
+						Effect: [E.Block, E.Enclose],
 						Difficulty: 25,
 					},
 				},
 				{
 					Name: "FullOpt",
 					Property: {
-						Effect: [E.Block],
-						Block: [
-							"ItemHood",
-							"ItemHead",
-							"ItemEars",
-							"ItemNose",
-							"ItemMouth",
-							"ItemMouth2",
-							"ItemMouth3",
-							"ItemNeck",
-							"ItemNeckAccessories",
-							"ItemNeckRestraints",
-							"ItemMisc",
-							"ItemNipples",
-							"ItemNipplesPiercings",
-							"ItemBreast",
-							"ItemArms",
-							"ItemHands",
-							"ItemTorso",
-							"ItemTorso2",
-							"ItemPelvis",
-							"ItemButt",
-							"ItemVulvaPiercings",
-							"ItemVulva",
-							"ItemLegs",
-							"ItemFeet",
-							"ItemBoots",
-						],
+						Effect: [E.Block, E.Enclose],
 						Difficulty: 26,
 					},
 				},
 				{
 					Name: "LastBrick",
 					Property: {
-						Effect: [E.DeafHeavy, E.BlindTotal, E.GagMedium, E.Block],
-						Block: [
-							"ItemHood",
-							"ItemHead",
-							"ItemEars",
-							"ItemNose",
-							"ItemMouth",
-							"ItemMouth2",
-							"ItemMouth3",
-							"ItemNeck",
-							"ItemNeckAccessories",
-							"ItemNeckRestraints",
-							"ItemNipples",
-							"ItemNipplesPiercings",
-							"ItemBreast",
-							"ItemArms",
-							"ItemHands",
-							"ItemTorso",
-							"ItemTorso2",
-							"ItemPelvis",
-							"ItemButt",
-							"ItemVulvaPiercings",
-							"ItemVulva",
-							"ItemLegs",
-							"ItemFeet",
-							"ItemBoots",
+						Effect: [
+							E.DeafHeavy,
+							E.BlindTotal,
+							E.GagMedium,
+							E.Block,
+							E.Enclose,
 						],
 						Difficulty: 30,
 					},
@@ -13985,18 +13910,6 @@ var AssetFemale3DCGExtended = {
 						{
 							Property: {
 								Block: [
-									"ItemPelvis",
-									"ItemVulva",
-									"ItemVulvaPiercings",
-									"ItemButt",
-									"ItemLegs",
-								],
-								Effect: [E.BlindHeavy, E.GagLight, E.BlockWardrobe, E.Freeze],
-							},
-						},
-						{
-							Property: {
-								Block: [
 									"ItemHead",
 									"ItemHood",
 									"ItemEars",
@@ -14007,6 +13920,34 @@ var AssetFemale3DCGExtended = {
 									"ItemNose",
 									"ItemNeckAccessories",
 									"ItemNeckRestraints",
+									"ItemBreast",
+									"ItemNipplesPiercings",
+									"ItemNipples",
+									"ItemFeet",
+									"ItemBoots",
+									"ItemArms",
+									"ItemHands",
+									"ItemHandheld",
+								],
+								Effect: [E.BlindHeavy, E.GagLight, E.BlockWardrobe, E.Freeze],
+							},
+						},
+						{
+							Property: {
+								Block: [
+									"ItemPelvis",
+									"ItemVulva",
+									"ItemVulvaPiercings",
+									"ItemButt",
+									"ItemLegs",
+									"ItemFeet",
+									"ItemBoots",
+									"ItemBreast",
+									"ItemNipplesPiercings",
+									"ItemNipples",
+									"ItemArms",
+									"ItemHands",
+									"ItemHandheld",
 								],
 								Effect: [E.BlockWardrobe, E.Freeze],
 							},
@@ -16978,6 +16919,48 @@ var AssetFemale3DCGExtended = {
 				AssetName: "CustomizableFluffyEars1",
 			},
 		},
+		MothAntenna: {
+			Archetype: ExtendedArchetype.TYPED,
+			ChatSetting: TypedItemChatSetting.SILENT,
+			Options: [
+				{
+					Name: "HeartAntenna",
+				}, // 1
+				{
+					Name: "SidewaysAntenna",
+				}, // 2
+				{
+					Name: "HeartAntenna3",
+				}, // 3
+				{
+					Name: "BigHeartAntenna",
+				}, // 4
+				{
+					Name: "WideFloppyAntenna",
+				}, // 5
+				{
+					Name: "FloppyAntenna",
+				}, // 6
+				{
+					Name: "GlowingUpwardsAntenna",
+				}, // 7
+				{
+					Name: "GlowingSidewaysAntenna",
+				}, // 8
+				{
+					Name: "GlowingHeartAntenna",
+				}, // 9
+				{
+					Name: "GlowingBigHeartAntenna",
+				}, // 10
+				{
+					Name: "GlowingWideFloppyAntenna",
+				}, // 11
+				{
+					Name: "GlowingFloppyAntenna",
+				}, // 12
+			],
+		}, // MothAntenna
 		CustomizableCatEars: {
 			Archetype: ExtendedArchetype.MODULAR,
 			CopyConfig: {
@@ -17037,6 +17020,10 @@ var AssetFemale3DCGExtended = {
 				AssetName: "CustomizableFluffyEars1",
 			},
 		},
+		MothAntenna: {
+			Archetype: ExtendedArchetype.TYPED,
+			CopyConfig: { GroupName: "HairAccessory1", AssetName: "MothAntenna" },
+		},
 		CustomizableFluffyEars2: {
 			Archetype: ExtendedArchetype.MODULAR,
 			CopyConfig: {
@@ -17074,6 +17061,10 @@ var AssetFemale3DCGExtended = {
 		},
 	}, // HairAccessory2
 	HairAccessory3: {
+		MothAntenna: {
+			Archetype: ExtendedArchetype.TYPED,
+			CopyConfig: { GroupName: "HairAccessory1", AssetName: "MothAntenna" },
+		},
 		Halo: {
 			Archetype: ExtendedArchetype.TYPED,
 			CopyConfig: { GroupName: "HairAccessory1", AssetName: "Halo" },
@@ -25053,6 +25044,35 @@ var AssetFemale3DCGExtended = {
 				},
 			],
 		}, // SteampunkWings
+		MothWings: {
+			Archetype: ExtendedArchetype.MODULAR,
+			Modules: [
+				{
+					Name: "Wings",
+					Key: "a",
+					Options: [
+						{}, // a0
+						{}, // a1
+						{}, // a2
+						{}, // a3
+					],
+				},
+				{
+					Name: "Effects",
+					Key: "b",
+					Options: [
+						{}, // b0
+						{}, // b1
+						{}, // b2
+						{}, // b3
+					],
+				},
+			],
+                        DialogPrefix: {
+				Header: "HairAccessory1MothAntennaSelect",
+				Option: "HairAccessory1MothAntenna",
+			},
+		}, // MothWings
 		SeraphWings: {
 			Archetype: ExtendedArchetype.MODULAR,
 			Modules: [

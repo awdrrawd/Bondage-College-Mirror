@@ -23,8 +23,8 @@ function ChatRoomMapViewCreateAnimation(baseName, frames, duration = 2000, rever
 	};
 }
 
-/** All kitchen counter variants join each other into runs and corners */
-const AssetsMapDataKitchenCounterIDs = [330, 331, 332, 333];
+/** Kitchen counters join each other and the tall cabinet into runs and corners */
+const AssetsMapDataKitchenCounterIDs = [330, 331, 332, 333, 334, 343];
 
 /**
  * Creates a function that picks the kitchen counter piece matching the neighboring kitchen counters
@@ -992,7 +992,7 @@ const AssetsMapDataObjects = [
 		],
 	},
 	{
-		ID: 343, Type: "Kitchen", Style: "KitchenCounterSinkWater", Name: "Kitchen Sink With Water", Top: -0.3, Height: 1.3,
+		ID: 343, Type: "Kitchen", Style: "KitchenCounterSinkWaterSingle", Name: "Kitchen Sink With Water", Top: -0.3, Height: 1.3, JoinsNeighbors: true, BuildImageName: ChatRoomMapViewCreateKitchenCounterImage("KitchenCounterSinkWater"),
 		Layers: [
 			{ Name: "Body", IsColorable: true, DefaultColor: "#F2F0EB" },
 			{ Name: "Countertop", IsColorable: true, DefaultColor: "#8A6A4A" },
@@ -1002,7 +1002,7 @@ const AssetsMapDataObjects = [
 		],
 	},
 	{
-		ID: 334, Type: "Kitchen", Style: "KitchenTallCabinetSingle", Top: -1.2, Height: 2.2,
+		ID: 334, Type: "Kitchen", Style: "KitchenTallCabinetSingle", Top: -1.2, Height: 2.2, JoinsNeighbors: true,
 		Layers: [
 			{ Name: "Body", IsColorable: true, DefaultColor: "#F2F0EB" },
 			{ Name: "Handles", IsColorable: true, DefaultColor: "#A0A0A0" },

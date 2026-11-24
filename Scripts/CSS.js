@@ -84,7 +84,7 @@ function CSSCheckSupport(cases) {
 				ElementCreate({
 					tag: "ul",
 					style: { "list-style-type": '"❌"', "margin-block": "unset", "padding-left": "2.3em" },
-					children: failures.map(({ name }) => { return { tag: "li", children: [name], style: { "padding-left": "0.15em" } } }),
+					children: failures.map(({ name }) => { return { tag: "li", children: [name], style: { "padding-left": "0.15em" } }; }),
 				}),
 			],
 			{
