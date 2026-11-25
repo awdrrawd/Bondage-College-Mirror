@@ -1241,24 +1241,213 @@ var MapManager = (function () {
 	let MapUndoRoomName = null;
 
 	/**
-	 * The class holding the map data and responsible for keeping it synchronized with the outside
-	 * global state, notably, ChatRoomData.MapData.
+	 * Object for handling all the private details of {@link Manager}.
+	 *
+	 * Unfortunately, TS emit does not allow for private or protected symbols in anonymous classes (xref {@link https://github.com/microsoft/TypeScript/issues/30355}),
+	 * so as a workaround move the private stuff to a non-exported class.
+	 *
 	 */
-	class Manager {
+	const privateManager = new class {
 		/**
 		 * @type {MapData | undefined}
 		 */
-		#_mapData;
+		_mapData;
 
 		/**
 		 * @type {number}
 		 */
-		#_dirtyFlags;
+		_dirtyFlags = 0;
 
-		constructor() {
-			this.#_dirtyFlags = 0;
+		/**
+		 * Mark a specific part of the map data as dirty, that is, changed and not yet synchronized with the server.
+		 * @param {number} flag
+		 */
+		_markDirty(flag) {
+			this._dirtyFlags = DirtyFlags.setFlag(this._dirtyFlags, flag);
 		}
 
+		/**
+		 * Marks a specific part of the map data as clean, that is, synchronized with the server.
+		 * @param {number} flag
+		 * @returns {void}
+		 */
+		_markClean(flag) {
+			this._dirtyFlags = DirtyFlags.clearFlag(this._dirtyFlags, flag);
+		}
+
+		/**
+		 * Keeps only the settings an object can take, within their limits and not at their default
+		 * @param {ChatRoomMapObject} object
+		 * @param {ChatRoomMapObjectSettings} settings
+		 * @returns {ChatRoomMapObjectSettings | null} - null if the object can't be customized
+		 */
+		_cleanObjectSettings(object, settings) {
+			if (!MapCanCustomizeObject(object)) return null;
+			const transform = MapCanTransformObject(object);
+			const colors = MapIsValidObjectColors(settings.Colors, object) && settings.Colors.some(c => c !== "Default") ? settings.Colors : undefined;
+			const decal = MapIsValidObjectDecal(settings.Decal, object) ? settings.Decal : undefined;
+			const decalColor = decal && CommonIsColor(settings.DecalColor) ? settings.DecalColor : undefined;
+			return {
+				ID: object.ID,
+				...(transform && CommonIsInteger(settings.Rotation, 1, 359) && { Rotation: settings.Rotation }),
+				...(transform && CommonIsInteger(settings.Size, 50, 200) && settings.Size !== MapObjectDefaultSize && { Size: settings.Size }),
+				...(colors && { Colors: colors }),
+				...(decal && { Decal: decal }),
+				...(decalColor && { DecalColor: decalColor }),
+			};
+		}
+
+		/**
+		 *
+		 * @param {ChatRoomMapObject} object
+		 * @param {Manager} manager
+		 * @param {MapManager.UndoGroup} [undo]
+		 * @returns {boolean}
+		 */
+		_clearUniqueObject(object, manager, undo) {
+			if (!privateManager._mapData) throw Error("No map loaded");
+			if (!object?.Unique) return false;
+			const objects = privateManager._mapData.objects;
+
+			const objectsClean = !manager.isDirtyObjects();
+			let cleared = false;
+			for (let index = 0; index < objects.length; index++) {
+				if (objects[index].ID !== object.ID) continue;
+
+				undo?.add(() => {
+					if (!privateManager._mapData) return;
+					privateManager._mapData.objects[index] = object;
+				});
+
+				privateManager._mapData.objects[index] = MapDataGetObject(ChatRoomMapViewObjectStartID);
+				cleared = true;
+			}
+			if (cleared) {
+				if (objectsClean) {
+					undo?.add(() => manager.markCleanObjects());
+				}
+				privateManager._markDirty(DirtyFlags.OBJECTS);
+			}
+			return cleared;
+		}
+
+		/**
+		 * @param {ChatRoomMapTile} tile
+		 * @param {Manager} manager
+		 * @param {MapManager.UndoGroup} [undo]
+		 * @returns {boolean}
+		 */
+		_clearUniqueTile(tile, manager, undo) {
+			if (!privateManager._mapData) throw Error("No map loaded");
+			if (!tile?.Unique) return false;
+			const tiles = privateManager._mapData.tiles;
+			if (tiles == null) return false;
+
+			const tilesClean = !manager.isDirtyTiles();
+			let cleared = false;
+			for (let index = 0; index < tiles.length; index++) {
+				if (tiles[index].ID !== tile.ID) continue;
+
+				undo?.add(() => {
+					if (!privateManager._mapData) return;
+					privateManager._mapData.tiles[index] = tile;
+				});
+
+				privateManager._mapData.tiles[index] = MapDataGetTile(ChatRoomMapViewObjectStartID);
+				cleared = true;
+			}
+
+			if (cleared) {
+				if (tilesClean) {
+					undo?.add(() => manager.markCleanTiles());
+				}
+				privateManager._markDirty(DirtyFlags.TILES);
+			}
+
+			return cleared;
+		}
+
+
+		/**
+		 * Points a teleport pad that was just placed and one still waiting for a pair at each other,
+		 * so placing two pads in a row links them both ways. A pad waits when it doesn't send anywhere
+		 * and no pad sends to it. A new pair gets a color no other pad has, when there's one left.
+		 * @param {number} index - The new pad
+		 * @param {Manager} manager
+		 */
+		_pairNewTeleporter(index, manager) {
+			if (!privateManager._mapData) throw Error("No map loaded");
+			const pads = [];
+			const targeted = new Set();
+			const usedColors = new Set();
+			for (const key of Object.keys(privateManager._mapData.objectConfigs ?? {})) {
+				const other = Number(key);
+				const config = privateManager._teleporterConfig(manager, other);
+				if (other === index || !config) continue;
+				pads.push(other);
+				if (config.Destination) targeted.add(MapCoordinatesToIndex(config.Destination.X, config.Destination.Y));
+				if (config.Color) usedColors.add(config.Color);
+			}
+			const waiting = pads.find(other => !manager.getTeleporterDestination(other) && !targeted.has(other));
+			if (waiting == null) {
+				const colors = AssetsMapDataTeleportPadColors;
+				manager.setTeleporterColor(index, colors.find(color => !usedColors.has(color)) ?? colors[pads.length % colors.length]);
+				return;
+			}
+			manager.setTeleporterColor(index, manager.getTeleporterColor(waiting) ?? AssetsMapDataTeleportPadColors[0]);
+			manager.setTeleporterDestination(index, MapIndexToCoordinates(waiting));
+			manager.setTeleporterDestination(waiting, MapIndexToCoordinates(index));
+		}
+
+		/**
+		 * The config of the teleport pad at the given index
+		 * @template {MapDataIndexedArgs<[]>} T
+		 * @param {Manager} manager
+		 * @param {T} args
+		 * @return {ChatRoomMapTeleporterObjectConfig | null} - null if there's no teleport pad there
+		 */
+		_teleporterConfig(manager, ...args) {
+			const [index] = manager.unpackIndex(...args);
+			if (manager.getObject(index)?.DefaultObjectConfig?.Type !== "Teleporter") return null;
+			const config = manager.getObjectConfig(index);
+			return config?.Type === "Teleporter" ? config : null;
+		}
+
+		/** @type {MapManager.UndoGroup[]} */
+		_undoStack = [];
+
+		/**
+		 * @param {() => void} cb
+		 * @returns {MapManager.UndoGroup}
+		 */
+		_registerUndo(cb) {
+			const group = {
+				cbs: [cb],
+				/**
+				 * @param {() => void} icb
+				 */
+				add: function(icb) {
+					this.cbs.push(icb);
+				},
+			};
+			if (this._undoStroke) {
+				this._undoStroke.push(group);
+				return group;
+			}
+			privateManager._undoStack.push(group);
+			if (privateManager._undoStack.length > MAP_UNDO_LIMIT) privateManager._undoStack.shift();
+			return group;
+		}
+
+		/** @type {MapManager.UndoGroup[] | null} - The edits of the brush stroke being drawn */
+		_undoStroke = null;
+	};
+
+	/**
+	 * The class holding the map data and responsible for keeping it synchronized with the outside
+	 * global state, notably, ChatRoomData.MapData.
+	 */
+	class Manager {
 		/**
 		 * Turns either `(index, ...args)` or `(x, y, ...args)` forms into `[index, ...args]`.
 		 * The second value is Y when it is a number; otherwise the first value is already an index.
@@ -1293,10 +1482,10 @@ var MapManager = (function () {
 		 * @return {number | null}
 		 */
 		getTileId(...args) {
-			if (!this.#_mapData) throw Error("No map loaded");
+			if (!privateManager._mapData) throw Error("No map loaded");
 			const [index] = this.unpackIndex(...args);
 			if (index < 0 || index >= ChatRoomMapMaxLength) return null;
-			return this.#_mapData.tiles[index].ID;
+			return privateManager._mapData.tiles[index].ID;
 		}
 
 		/**
@@ -1343,7 +1532,7 @@ var MapManager = (function () {
 		 * @returns {boolean}
 		 */
 		setTile(...args) {
-			if (!this.#_mapData) throw Error("No map loaded");
+			if (!privateManager._mapData) throw Error("No map loaded");
 			let [index, tile, range = 0] = this.unpackIndex(...args);
 			if (index < 0 || index >= ChatRoomMapMaxLength) return false;
 
@@ -1356,9 +1545,9 @@ var MapManager = (function () {
 			MapForEachIndexInRange(index, range, (curIndex) => {
 				previousTiles[curIndex] = this.getTile(curIndex) ?? { ID: this.getTileId(curIndex) ?? ChatRoomMapViewObjectStartID, Type: "Floor", Style: "", DoodadType: "Tile" };
 			});
-			const undoGroup = this.#registerUndo(() => {
-				if (!this.#_mapData) return;
-				const undoMap = this.#_mapData;
+			const undoGroup = privateManager._registerUndo(() => {
+				if (!privateManager._mapData) return;
+				const undoMap = privateManager._mapData;
 				if (clean) this.markCleanTiles();
 				MapForEachIndexInRange(index, range, (curIndex) => {
 					if (this.canSetTile(index, tile)) {
@@ -1368,12 +1557,12 @@ var MapManager = (function () {
 			});
 
 			if (tile?.Unique) {
-				this.#clearUniqueTile(tile, undoGroup);
+				privateManager._clearUniqueTile(tile, this, undoGroup);
 			}
-			this.#_markDirty(DirtyFlags.TILES);
+			privateManager._markDirty(DirtyFlags.TILES);
 			tile ??= MapDataGetTile(ChatRoomMapViewObjectStartID);
 
-			const map = this.#_mapData;
+			const map = privateManager._mapData;
 			MapForEachIndexInRange(index, range, (curIndex) => {
 				if (this.canSetTile(index, tile)) {
 					map.tiles[curIndex] = tile;
@@ -1403,7 +1592,7 @@ var MapManager = (function () {
 		 * @returns {boolean}
 		 */
 		canSetTile(...args) {
-			if (!this.#_mapData) throw Error("No map loaded");
+			if (!privateManager._mapData) throw Error("No map loaded");
 			let [index, tile] = this.unpackIndex(...args);
 			if (index < 0 || index >= ChatRoomMapMaxLength) return false;
 
@@ -1413,41 +1602,6 @@ var MapManager = (function () {
 			if (tile.Style === "Blank") return true;
 
 			return true;
-		}
-
-		/**
-		 * @param {ChatRoomMapTile} tile
-		 * @param {MapManager.UndoGroup} [undo]
-		 * @returns {boolean}
-		 */
-		#clearUniqueTile(tile, undo) {
-			if (!this.#_mapData) throw Error("No map loaded");
-			if (!tile?.Unique) return false;
-			const tiles = this.#_mapData.tiles;
-			if (tiles == null) return false;
-
-			const tilesClean = !this.isDirtyTiles();
-			let cleared = false;
-			for (let index = 0; index < tiles.length; index++) {
-				if (tiles[index].ID !== tile.ID) continue;
-
-				undo?.add(() => {
-					if (!this.#_mapData) return;
-					this.#_mapData.tiles[index] = tile;
-				});
-
-				this.#_mapData.tiles[index] = MapDataGetTile(ChatRoomMapViewObjectStartID);
-				cleared = true;
-			}
-
-			if (cleared) {
-				if (tilesClean) {
-					undo?.add(() => this.markCleanTiles());
-				}
-				this.#_markDirty(DirtyFlags.TILES);
-			}
-
-			return cleared;
 		}
 
 		/**
@@ -1467,10 +1621,10 @@ var MapManager = (function () {
 		 * @return {number | null}
 		 */
 		getObjectId(...args) {
-			if (!this.#_mapData) throw Error("No map loaded");
+			if (!privateManager._mapData) throw Error("No map loaded");
 			const [index] = this.unpackIndex(...args);
 			if (index < 0 || index >= ChatRoomMapMaxLength) return null;
-			return this.#_mapData.objects[index].ID;
+			return privateManager._mapData.objects[index].ID;
 		}
 
 		/**
@@ -1517,7 +1671,7 @@ var MapManager = (function () {
 		 * @returns {boolean}
 		 */
 		setObject(...args) {
-			if (!this.#_mapData) throw Error("No map loaded");
+			if (!privateManager._mapData) throw Error("No map loaded");
 			let [index, object, range = 0] = this.unpackIndex(...args);
 			if (index < 0 || index >= ChatRoomMapMaxLength) return false;
 
@@ -1526,7 +1680,7 @@ var MapManager = (function () {
 
 			if (object?.DefaultObjectConfig?.Type === "Teleporter") range = 0;
 
-			const map = this.#_mapData;
+			const map = privateManager._mapData;
 			const clean = this.isDirtyObjects();
 			/** @type {Record<number, ChatRoomMapObject>} */
 			const previousObjects = {};
@@ -1534,12 +1688,12 @@ var MapManager = (function () {
 			const previousSettings = {};
 			MapForEachIndexInRange(index, range, (curIndex) => {
 				previousObjects[curIndex] = this.getObject(curIndex) ?? { ID: this.getObjectId(curIndex) ?? ChatRoomMapViewObjectStartID, Type: "EmptySpace", Style: "Passable", DoodadType: "Object" };
-				previousSettings[curIndex] = CommonCloneDeep(this.#_mapData?.objectSettings[curIndex]);
+				previousSettings[curIndex] = CommonCloneDeep(privateManager._mapData?.objectSettings[curIndex]);
 			});
-			const undo = this.#registerUndo(() => {
-				if (!this.#_mapData) return;
+			const undo = privateManager._registerUndo(() => {
+				if (!privateManager._mapData) return;
 				if (clean) this.markCleanObjects();
-				const undoMap = this.#_mapData;
+				const undoMap = privateManager._mapData;
 				MapForEachIndexInRange(index, range, (curIndex) => {
 					undoMap.objects[curIndex] = previousObjects[curIndex];
 					if (previousSettings[curIndex]) undoMap.objectSettings[curIndex] = previousSettings[curIndex];
@@ -1547,10 +1701,10 @@ var MapManager = (function () {
 			});
 
 			if (object?.Unique) {
-				this.#clearUniqueObject(object, undo);
+				privateManager._clearUniqueObject(object, this, undo);
 			}
 
-			this.#_markDirty(DirtyFlags.OBJECTS);
+			privateManager._markDirty(DirtyFlags.OBJECTS);
 			object ??= MapDataGetObject(ChatRoomMapViewObjectStartID);
 
 			MapForEachIndexInRange(index, range, (curIndex) => {
@@ -1563,40 +1717,10 @@ var MapManager = (function () {
 			// A newly placed object starts with its default config
 			if (object.DefaultObjectConfig && previousObjects[index]?.ID !== object.ID && this.getObjectId(index) === object.ID) {
 				this.setObjectConfig(index, CommonCloneDeep(object.DefaultObjectConfig));
-				if (object.DefaultObjectConfig.Type === "Teleporter") this.#pairNewTeleporter(index);
+				if (object.DefaultObjectConfig.Type === "Teleporter") privateManager._pairNewTeleporter(index, this);
 			}
 
 			return true;
-		}
-
-		/**
-		 * Points a teleport pad that was just placed and one still waiting for a pair at each other,
-		 * so placing two pads in a row links them both ways. A pad waits when it doesn't send anywhere
-		 * and no pad sends to it. A new pair gets a color no other pad has, when there's one left.
-		 * @param {number} index - The new pad
-		 */
-		#pairNewTeleporter(index) {
-			if (!this.#_mapData) throw Error("No map loaded");
-			const pads = [];
-			const targeted = new Set();
-			const usedColors = new Set();
-			for (const key of Object.keys(this.#_mapData.objectConfigs ?? {})) {
-				const other = Number(key);
-				const config = this.#teleporterConfig(other);
-				if (other === index || !config) continue;
-				pads.push(other);
-				if (config.Destination) targeted.add(MapCoordinatesToIndex(config.Destination.X, config.Destination.Y));
-				if (config.Color) usedColors.add(config.Color);
-			}
-			const waiting = pads.find(other => !this.getTeleporterDestination(other) && !targeted.has(other));
-			if (waiting == null) {
-				const colors = AssetsMapDataTeleportPadColors;
-				this.setTeleporterColor(index, colors.find(color => !usedColors.has(color)) ?? colors[pads.length % colors.length]);
-				return;
-			}
-			this.setTeleporterColor(index, this.getTeleporterColor(waiting) ?? AssetsMapDataTeleportPadColors[0]);
-			this.setTeleporterDestination(index, MapIndexToCoordinates(waiting));
-			this.setTeleporterDestination(waiting, MapIndexToCoordinates(index));
 		}
 
 		/**
@@ -1619,7 +1743,7 @@ var MapManager = (function () {
 		 * @returns {boolean}
 		 */
 		canSetObject(...args) {
-			if (!this.#_mapData) throw Error("No map loaded");
+			if (!privateManager._mapData) throw Error("No map loaded");
 			let [index, object] = this.unpackIndex(...args);
 			if (index < 0 || index >= ChatRoomMapMaxLength) return false;
 
@@ -1681,7 +1805,7 @@ var MapManager = (function () {
 		 */
 		getTeleporterDestination(...args) {
 			const [index] = this.unpackIndex(...args);
-			const config = this.#teleporterConfig(index);
+			const config = privateManager._teleporterConfig(this, index);
 			if (!config?.Destination) return null;
 			// A copy, the player's position is changed in place when she walks
 			return { X: config.Destination.X, Y: config.Destination.Y };
@@ -1695,7 +1819,7 @@ var MapManager = (function () {
 		 */
 		setTeleporterDestination(...args) {
 			const [index, destination] = this.unpackIndex(...args);
-			const config = this.#teleporterConfig(index);
+			const config = privateManager._teleporterConfig(this, index);
 			if (!config) return false;
 			if (!destination) {
 				const withoutDestination = { ...config };
@@ -1709,29 +1833,16 @@ var MapManager = (function () {
 		}
 
 		/**
-		 * The config of the teleport pad at the given index
-		 * @template {MapDataIndexedArgs<[]>} T
-		 * @param {T} args
-		 * @return {ChatRoomMapTeleporterObjectConfig | null} - null if there's no teleport pad there
-		 */
-		#teleporterConfig(...args) {
-			const [index] = this.unpackIndex(...args);
-			if (this.getObject(index)?.DefaultObjectConfig?.Type !== "Teleporter") return null;
-			const config = this.getObjectConfig(index);
-			return config?.Type === "Teleporter" ? config : null;
-		}
-
-		/**
 		 * Whether a teleport pad sends to the given coordinates
 		 * @template {MapDataIndexedArgs<[]>} T
 		 * @param {T} args
 		 * @return {boolean}
 		 */
 		isTeleporterDestination(...args) {
-			if (!this.#_mapData) throw Error("No map loaded");
+			if (!privateManager._mapData) throw Error("No map loaded");
 			const [index] = this.unpackIndex(...args);
-			for (const key of Object.keys(this.#_mapData.objectConfigs ?? {})) {
-				const destination = this.#teleporterConfig(Number(key))?.Destination;
+			for (const key of Object.keys(privateManager._mapData.objectConfigs ?? {})) {
+				const destination = privateManager._teleporterConfig(this, Number(key))?.Destination;
 				if (destination && MapCoordinatesToIndex(destination.X, destination.Y) === index) return true;
 			}
 			return false;
@@ -1745,7 +1856,7 @@ var MapManager = (function () {
 		 */
 		getTeleporterColor(...args) {
 			const [index] = this.unpackIndex(...args);
-			return this.#teleporterConfig(index)?.Color ?? null;
+			return privateManager._teleporterConfig(this, index)?.Color ?? null;
 		}
 
 		/**
@@ -1756,42 +1867,9 @@ var MapManager = (function () {
 		 */
 		setTeleporterColor(...args) {
 			const [index, color] = this.unpackIndex(...args);
-			const config = this.#teleporterConfig(index);
+			const config = privateManager._teleporterConfig(this, index);
 			if (!config || !CommonIsColor(color, { allowAlpha: true })) return false;
 			return this.setObjectConfig(index, { ...config, Color: color });
-		}
-
-		/**
-		 *
-		 * @param {ChatRoomMapObject} object
-		 * @param {MapManager.UndoGroup} [undo]
-		 * @returns {boolean}
-		 */
-		#clearUniqueObject(object, undo) {
-			if (!this.#_mapData) throw Error("No map loaded");
-			if (!object?.Unique) return false;
-			const objects = this.#_mapData.objects;
-
-			const objectsClean = !this.isDirtyObjects();
-			let cleared = false;
-			for (let index = 0; index < objects.length; index++) {
-				if (objects[index].ID !== object.ID) continue;
-
-				undo?.add(() => {
-					if (!this.#_mapData) return;
-					this.#_mapData.objects[index] = object;
-				});
-
-				this.#_mapData.objects[index] = MapDataGetObject(ChatRoomMapViewObjectStartID);
-				cleared = true;
-			}
-			if (cleared) {
-				if (objectsClean) {
-					undo?.add(() => this.markCleanObjects());
-				}
-				this.#_markDirty(DirtyFlags.OBJECTS);
-			}
-			return cleared;
 		}
 
 		/**
@@ -1811,10 +1889,10 @@ var MapManager = (function () {
 		 * @return {ChatRoomMapObjectConfig | null}
 		 */
 		getObjectConfig(...args) {
-			if (!this.#_mapData) throw Error("No map loaded");
+			if (!privateManager._mapData) throw Error("No map loaded");
 			const [index] = this.unpackIndex(...args);
 			if (index < 0 || index >= ChatRoomMapMaxLength) return null;
-			return this.#_mapData.objectConfigs?.[index];
+			return privateManager._mapData.objectConfigs?.[index];
 		}
 
 		/**
@@ -1836,27 +1914,27 @@ var MapManager = (function () {
 		 * @returns {boolean} true if the cell config was set, false if the coordinates are out of bounds.
 		 */
 		setObjectConfig(...args) {
-			if (!this.#_mapData) throw Error("No map loaded");
+			if (!privateManager._mapData) throw Error("No map loaded");
 			const [index, config] = this.unpackIndex(...args);
 			if (index < 0 || index >= ChatRoomMapMaxLength) return false;
 
 			const clean = this.isDirtyObjectConfigs();
 			const previousConfig = this.getObjectConfig(index);
-			this.#registerUndo(() => {
-				if (!this.#_mapData) return;
+			privateManager._registerUndo(() => {
+				if (!privateManager._mapData) return;
 				if (clean) this.markCleanObjectConfigs();
 				if (previousConfig) {
-					this.#_mapData.objectConfigs[index] = previousConfig;
+					privateManager._mapData.objectConfigs[index] = previousConfig;
 				} else {
-					delete this.#_mapData.objectConfigs[index];
+					delete privateManager._mapData.objectConfigs[index];
 				}
 			});
 
-			this.#_markDirty(DirtyFlags.OBJECT_CONFIGS);
+			privateManager._markDirty(DirtyFlags.OBJECT_CONFIGS);
 			if (config == null) {
-				delete this.#_mapData.objectConfigs[index];
+				delete privateManager._mapData.objectConfigs[index];
 			} else {
-				this.#_mapData.objectConfigs[index] = config;
+				privateManager._mapData.objectConfigs[index] = config;
 			}
 			return true;
 		}
@@ -1879,35 +1957,13 @@ var MapManager = (function () {
 		 * @returns {ChatRoomMapObjectSettings | null}
 		 */
 		getObjectSettings(...args) {
-			if (!this.#_mapData) throw Error("No map loaded");
+			if (!privateManager._mapData) throw Error("No map loaded");
 			const [index] = this.unpackIndex(...args);
 			if (index < 0 || index >= ChatRoomMapMaxLength) return null;
 			const object = this.getObject(index);
-			const settings = this.#_mapData.objectSettings[index];
+			const settings = privateManager._mapData.objectSettings[index];
 			if (!object || settings?.ID !== object.ID) return null;
-			return this.#cleanObjectSettings(object, settings);
-		}
-
-		/**
-		 * Keeps only the settings an object can take, within their limits and not at their default
-		 * @param {ChatRoomMapObject} object
-		 * @param {ChatRoomMapObjectSettings} settings
-		 * @returns {ChatRoomMapObjectSettings | null} - null if the object can't be customized
-		 */
-		#cleanObjectSettings(object, settings) {
-			if (!MapCanCustomizeObject(object)) return null;
-			const transform = MapCanTransformObject(object);
-			const colors = MapIsValidObjectColors(settings.Colors, object) && settings.Colors.some(c => c !== "Default") ? settings.Colors : undefined;
-			const decal = MapIsValidObjectDecal(settings.Decal, object) ? settings.Decal : undefined;
-			const decalColor = decal && CommonIsColor(settings.DecalColor) ? settings.DecalColor : undefined;
-			return {
-				ID: object.ID,
-				...(transform && CommonIsInteger(settings.Rotation, 1, 359) && { Rotation: settings.Rotation }),
-				...(transform && CommonIsInteger(settings.Size, 50, 200) && settings.Size !== MapObjectDefaultSize && { Size: settings.Size }),
-				...(colors && { Colors: colors }),
-				...(decal && { Decal: decal }),
-				...(decalColor && { DecalColor: decalColor }),
-			};
+			return privateManager._cleanObjectSettings(object, settings);
 		}
 
 		/**
@@ -1931,31 +1987,31 @@ var MapManager = (function () {
 		 * @returns {boolean}
 		 */
 		setObjectSettings(...args) {
-			if (!this.#_mapData) throw Error("No map loaded");
+			if (!privateManager._mapData) throw Error("No map loaded");
 			const [index, changes, undoable = true] = this.unpackIndex(...args);
 			if (index < 0 || index >= ChatRoomMapMaxLength) return false;
 			const object = this.getObject(index);
-			const settings = object && this.#cleanObjectSettings(object, { ...this.getObjectSettings(index), ...changes, ID: object.ID });
+			const settings = object && privateManager._cleanObjectSettings(object, { ...this.getObjectSettings(index), ...changes, ID: object.ID });
 			if (!settings) return false;
 
 			if (undoable) {
-				const previous = this.#_mapData.objectSettings[index];
-				this.#registerUndo(() => {
-					if (!this.#_mapData) return;
-					this.#_markDirty(DirtyFlags.OBJECT_SETTINGS);
+				const previous = privateManager._mapData.objectSettings[index];
+				privateManager._registerUndo(() => {
+					if (!privateManager._mapData) return;
+					privateManager._markDirty(DirtyFlags.OBJECT_SETTINGS);
 					if (previous) {
-						this.#_mapData.objectSettings[index] = previous;
+						privateManager._mapData.objectSettings[index] = previous;
 					} else {
-						delete this.#_mapData.objectSettings[index];
+						delete privateManager._mapData.objectSettings[index];
 					}
 				});
 			}
 
-			this.#_markDirty(DirtyFlags.OBJECT_SETTINGS);
+			privateManager._markDirty(DirtyFlags.OBJECT_SETTINGS);
 			if (settings.Rotation || settings.Size || settings.Colors || settings.Decal) {
-				this.#_mapData.objectSettings[index] = settings;
+				privateManager._mapData.objectSettings[index] = settings;
 			} else {
-				delete this.#_mapData.objectSettings[index];
+				delete privateManager._mapData.objectSettings[index];
 			}
 			return true;
 		}
@@ -1978,10 +2034,10 @@ var MapManager = (function () {
 		 * @return {ChatRoomMapEffect[]}
 		 */
 		getEffects(...args) {
-			if (!this.#_mapData) throw Error("No map loaded");
+			if (!privateManager._mapData) throw Error("No map loaded");
 			const [index] = this.unpackIndex(...args);
 			if (index < 0 || index >= ChatRoomMapMaxLength) return [];
-			return this.#_mapData.effects[index];
+			return privateManager._mapData.effects[index];
 		}
 
 		/**
@@ -2027,7 +2083,7 @@ var MapManager = (function () {
 		 * @returns {boolean}
 		 */
 		addEffect(...args) {
-			if (!this.#_mapData) throw Error("No map loaded");
+			if (!privateManager._mapData) throw Error("No map loaded");
 			let [index, effect, range = 0] = this.unpackIndex(...args);
 			if (index < 0 || index >= ChatRoomMapMaxLength) return false;
 
@@ -2060,7 +2116,7 @@ var MapManager = (function () {
 		 * @returns {boolean}
 		 */
 		setEffects(...args) {
-			if (!this.#_mapData) throw Error("No map loaded");
+			if (!privateManager._mapData) throw Error("No map loaded");
 			let [index, effects, range = 0] = this.unpackIndex(...args);
 			if (index < 0 || index >= ChatRoomMapMaxLength) return false;
 
@@ -2068,20 +2124,20 @@ var MapManager = (function () {
 			/** @type {Record<number, ChatRoomMapEffect[]>} */
 			const previousEffects = {};
 			MapForEachIndexInRange(index, range, (curIndex) => {
-				previousEffects[curIndex] = [...this.#_mapData?.effects[curIndex] ?? []];
+				previousEffects[curIndex] = [...privateManager._mapData?.effects[curIndex] ?? []];
 			});
-			this.#registerUndo(() => {
-				if (!this.#_mapData) return;
+			privateManager._registerUndo(() => {
+				if (!privateManager._mapData) return;
 				if (clean) this.markCleanEffects();
-				const undoMap = this.#_mapData;
+				const undoMap = privateManager._mapData;
 				MapForEachIndexInRange(index, range, (curIndex) => {
 					undoMap.effects[curIndex] = previousEffects[curIndex];
 				});
 			});
 
-			this.#_markDirty(DirtyFlags.EFFECTS);
+			privateManager._markDirty(DirtyFlags.EFFECTS);
 
-			const map = this.#_mapData;
+			const map = privateManager._mapData;
 			MapForEachIndexInRange(index, range, (curIndex) => {
 				map.effects[curIndex] = [...effects];
 			});
@@ -2140,8 +2196,8 @@ var MapManager = (function () {
 		 * @returns {ChatRoomMapEffect[][]}
 		 */
 		getAllEffects() {
-			if (!this.#_mapData) throw Error("No map loaded");
-			return this.#_mapData.effects;
+			if (!privateManager._mapData) throw Error("No map loaded");
+			return privateManager._mapData.effects;
 		}
 
 		/**
@@ -2150,17 +2206,17 @@ var MapManager = (function () {
 		 * @returns {void}
 		 */
 		replaceAllEffects(effectsList) {
-			if (!this.#_mapData) throw Error("No map loaded");
+			if (!privateManager._mapData) throw Error("No map loaded");
 			const clean = this.isDirtyEffects();
-			const previousEffects = [...this.#_mapData.effects];
+			const previousEffects = [...privateManager._mapData.effects];
 
-			this.#registerUndo(() => {
-				if (!this.#_mapData) return;
+			privateManager._registerUndo(() => {
+				if (!privateManager._mapData) return;
 				if (clean) this.markCleanEffects();
-				this.#_mapData.effects = previousEffects;
+				privateManager._mapData.effects = previousEffects;
 			});
 			this.markDirtyEffects();
-			this.#_mapData.effects = structuredClone(effectsList);
+			privateManager._mapData.effects = structuredClone(effectsList);
 		}
 
 		/**
@@ -2168,13 +2224,13 @@ var MapManager = (function () {
 		 * @returns {void}
 		 */
 		removeAllEffects() {
-			if (!this.#_mapData) throw Error("No map loaded");
-			this.#_mapData.removeAllEffects();
+			if (!privateManager._mapData) throw Error("No map loaded");
+			privateManager._mapData.removeAllEffects();
 		}
 
 		get hasFogEnabled() {
-			if (!this.#_mapData) throw Error("No map loaded");
-			return this.#_mapData.fogEnabled;
+			if (!privateManager._mapData) throw Error("No map loaded");
+			return privateManager._mapData.fogEnabled;
 		}
 
 		/**
@@ -2182,28 +2238,11 @@ var MapManager = (function () {
 		 * @param {boolean} val
 		 */
 		set hasFogEnabled(val) {
-			if (!this.#_mapData) throw Error("No map loaded");
+			if (!privateManager._mapData) throw Error("No map loaded");
 			const enabled = !!val;
-			if (this.#_mapData.fogEnabled === enabled) return;
-			this.#_mapData.fogEnabled = enabled;
+			if (privateManager._mapData.fogEnabled === enabled) return;
+			privateManager._mapData.fogEnabled = enabled;
 			this.updateGlobalMapData();
-		}
-
-		/**
-		 * Mark a specific part of the map data as dirty, that is, changed and not yet synchronized with the server.
-		 * @param {number} flag
-		 */
-		#_markDirty(flag) {
-			this.#_dirtyFlags = DirtyFlags.setFlag(this.#_dirtyFlags, flag);
-		}
-
-		/**
-		 * Marks a specific part of the map data as clean, that is, synchronized with the server.
-		 * @param {number} flag
-		 * @returns {void}
-		 */
-		#_markClean(flag) {
-			this.#_dirtyFlags = DirtyFlags.clearFlag(this.#_dirtyFlags, flag);
 		}
 
 		/**
@@ -2211,7 +2250,7 @@ var MapManager = (function () {
 		 * @returns {void}
 		 */
 		markDirtyEffects() {
-			this.#_markDirty(DirtyFlags.EFFECTS);
+			privateManager._markDirty(DirtyFlags.EFFECTS);
 		}
 
 		/**
@@ -2219,7 +2258,7 @@ var MapManager = (function () {
 		 * @returns {void}
 		 */
 		markCleanEffects() {
-			this.#_markClean(DirtyFlags.EFFECTS);
+			privateManager._markClean(DirtyFlags.EFFECTS);
 		}
 
 		/**
@@ -2228,7 +2267,7 @@ var MapManager = (function () {
 		 * @returns {boolean}
 		 */
 		isDirtyEffects() {
-			return DirtyFlags.hasFlag(this.#_dirtyFlags, DirtyFlags.EFFECTS);
+			return DirtyFlags.hasFlag(privateManager._dirtyFlags, DirtyFlags.EFFECTS);
 		}
 
 		/**
@@ -2236,7 +2275,7 @@ var MapManager = (function () {
 		 * @returns {void}
 		 */
 		markDirtyTiles() {
-			this.#_markDirty(DirtyFlags.TILES);
+			privateManager._markDirty(DirtyFlags.TILES);
 		}
 
 		/**
@@ -2244,7 +2283,7 @@ var MapManager = (function () {
 		 * @returns {void}
 		 */
 		markCleanTiles() {
-			this.#_markClean(DirtyFlags.TILES);
+			privateManager._markClean(DirtyFlags.TILES);
 		}
 
 		/**
@@ -2253,7 +2292,7 @@ var MapManager = (function () {
 		 * @returns {boolean}
 		 */
 		isDirtyTiles() {
-			return DirtyFlags.hasFlag(this.#_dirtyFlags, DirtyFlags.TILES);
+			return DirtyFlags.hasFlag(privateManager._dirtyFlags, DirtyFlags.TILES);
 		}
 
 		/**
@@ -2261,7 +2300,7 @@ var MapManager = (function () {
 		 * @returns {void}
 		 */
 		markDirtyObjects() {
-			this.#_markDirty(DirtyFlags.OBJECTS);
+			privateManager._markDirty(DirtyFlags.OBJECTS);
 		}
 
 		/**
@@ -2269,7 +2308,7 @@ var MapManager = (function () {
 		 * @returns {void}
 		 */
 		markCleanObjects() {
-			this.#_markClean(DirtyFlags.OBJECTS);
+			privateManager._markClean(DirtyFlags.OBJECTS);
 		}
 
 		/**
@@ -2278,7 +2317,7 @@ var MapManager = (function () {
 		 * @returns {boolean}
 		 */
 		isDirtyObjects() {
-			return DirtyFlags.hasFlag(this.#_dirtyFlags, DirtyFlags.OBJECTS);
+			return DirtyFlags.hasFlag(privateManager._dirtyFlags, DirtyFlags.OBJECTS);
 		}
 
 		/**
@@ -2286,14 +2325,14 @@ var MapManager = (function () {
 		 * @returns {void}
 		 */
 		markDirtyObjectConfigs() {
-			this.#_markDirty(DirtyFlags.OBJECT_CONFIGS);
+			privateManager._markDirty(DirtyFlags.OBJECT_CONFIGS);
 		}
 		/**
 		 * Marks the object configs as clean, that is, synchronized with the server.
 		 * @returns {void}
 		 */
 		markCleanObjectConfigs() {
-			this.#_markClean(DirtyFlags.OBJECT_CONFIGS);
+			privateManager._markClean(DirtyFlags.OBJECT_CONFIGS);
 		}
 
 		/**
@@ -2302,7 +2341,7 @@ var MapManager = (function () {
 		 * @returns {boolean}
 		 */
 		isDirtyObjectConfigs() {
-			return DirtyFlags.hasFlag(this.#_dirtyFlags, DirtyFlags.OBJECT_CONFIGS);
+			return DirtyFlags.hasFlag(privateManager._dirtyFlags, DirtyFlags.OBJECT_CONFIGS);
 		}
 
 		/**
@@ -2310,7 +2349,7 @@ var MapManager = (function () {
 		 * @returns {void}
 		 */
 		markDirtyObjectSettings() {
-			this.#_markDirty(DirtyFlags.OBJECT_SETTINGS);
+			privateManager._markDirty(DirtyFlags.OBJECT_SETTINGS);
 		}
 
 		/**
@@ -2318,7 +2357,7 @@ var MapManager = (function () {
 		 * @returns {void}
 		 */
 		markCleanObjectSettings() {
-			this.#_markClean(DirtyFlags.OBJECT_SETTINGS);
+			privateManager._markClean(DirtyFlags.OBJECT_SETTINGS);
 		}
 
 		/**
@@ -2327,7 +2366,7 @@ var MapManager = (function () {
 		 * @returns {boolean}
 		 */
 		isDirtyObjectSettings() {
-			return DirtyFlags.hasFlag(this.#_dirtyFlags, DirtyFlags.OBJECT_SETTINGS);
+			return DirtyFlags.hasFlag(privateManager._dirtyFlags, DirtyFlags.OBJECT_SETTINGS);
 		}
 
 		/**
@@ -2335,7 +2374,7 @@ var MapManager = (function () {
 		 * @returns {void}
 		 */
 		markCleanAll() {
-			this.#_dirtyFlags = 0;
+			privateManager._dirtyFlags = 0;
 		}
 
 		/**
@@ -2347,7 +2386,7 @@ var MapManager = (function () {
 		exportString() {
 			return ExportMap({
 				LegacyMapData: ChatRoomData?.MapData,
-				MapData: this.#_mapData,
+				MapData: privateManager._mapData,
 			});
 		}
 
@@ -2374,7 +2413,7 @@ var MapManager = (function () {
 				return false;
 			}
 
-			this.#_mapData = mapData;
+			privateManager._mapData = mapData;
 			this.markDirtyTiles();
 			this.markDirtyObjects();
 			this.markDirtyEffects();
@@ -2573,10 +2612,10 @@ var MapManager = (function () {
 		 * there was an error and the global state remains unchanged.
 		 */
 		updateGlobalMapData() {
-			if (!this.#_mapData) throw Error("No map loaded");
+			if (!privateManager._mapData) throw Error("No map loaded");
 			if (!ChatRoomData?.MapData) throw new Error("No map in current room");
 			this.validateMap();
-			const ret = this.#_mapData.save(ChatRoomData.MapData);
+			const ret = privateManager._mapData.save(ChatRoomData.MapData);
 			this.updatePlayerPerception();
 			ChatRoomMapViewScheduleMapUpdate();
 			return ret;
@@ -2593,58 +2632,29 @@ var MapManager = (function () {
 			if (!data) throw new Error("No map in current room");
 			const map = MapData.load(data);
 			if (map) {
-				this.#_mapData = map;
+				privateManager._mapData = map;
 				this.markCleanAll();
 				this.updatePlayerPerception();
 			}
 			return !!map;
 		}
 
-		/** @type {MapManager.UndoGroup[]} */
-		#undoStack = [];
-
-		/**
-		 * @param {() => void} cb
-		 * @returns {MapManager.UndoGroup}
-		 */
-		#registerUndo(cb) {
-			const group = {
-				cbs: [cb],
-				/**
-				 * @param {() => void} icb
-				 */
-				add: function(icb) {
-					this.cbs.push(icb);
-				},
-			};
-			if (this.#undoStroke) {
-				this.#undoStroke.push(group);
-				return group;
-			}
-			this.#undoStack.push(group);
-			if (this.#undoStack.length > MAP_UNDO_LIMIT) this.#undoStack.shift();
-			return group;
-		}
-
-		/** @type {MapManager.UndoGroup[] | null} - The edits of the brush stroke being drawn */
-		#undoStroke = null;
-
 		/**
 		 * Starts a brush stroke: the edits made until {@link endUndoStroke} are undone as a single step
 		 */
 		startUndoStroke() {
 			this.endUndoStroke();
-			this.#undoStroke = [];
+			privateManager._undoStroke = [];
 		}
 
 		/**
 		 * Ends the brush stroke started with {@link startUndoStroke}
 		 */
 		endUndoStroke() {
-			const stroke = this.#undoStroke;
-			this.#undoStroke = null;
+			const stroke = privateManager._undoStroke;
+			privateManager._undoStroke = null;
 			if (!stroke?.length) return;
-			this.#registerUndo(() => {
+			privateManager._registerUndo(() => {
 				for (const group of stroke.reverse()) {
 					for (const cb of group.cbs) cb();
 				}
@@ -2657,7 +2667,7 @@ var MapManager = (function () {
 		 */
 		undo() {
 			this.endUndoStroke();
-			const group = this.#undoStack.pop();
+			const group = privateManager._undoStack.pop();
 			if (!group) return false;
 			for (const cb of group.cbs) {
 				cb();
@@ -2671,10 +2681,10 @@ var MapManager = (function () {
 		 * @param {boolean} [keepUndo] - Whether to keep the undo history
 		 */
 		clear(keepUndo = false) {
-			this.#_mapData = new MapData(ChatRoomMapViewWidth, ChatRoomMapViewHeight);
+			privateManager._mapData = new MapData(ChatRoomMapViewWidth, ChatRoomMapViewHeight);
 			if (!keepUndo) {
-				this.#undoStack = [];
-				this.#undoStroke = null;
+				privateManager._undoStack = [];
+				privateManager._undoStroke = null;
 			}
 			this.markCleanAll();
 		}

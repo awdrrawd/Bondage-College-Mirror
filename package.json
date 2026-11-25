@@ -27,6 +27,7 @@
 		"scripts:typecheck": "run-p -cs --aggregate-output scripts:typecheck:bc scripts:typecheck:kd",
 		"scripts:typecheck:bc": "tsc -p tsconfig.json",
 		"scripts:typecheck:kd": "tsc -p Screens/MiniGame/KinkyDungeon/tsconfig.json",
+		"scripts:typecheck-emit": "tsc -p tsconfig.emit.json",
 		"scripts:typecheck-expensive": "tsc -p tsconfig.expensive.json",
 		"styles:prettier": "prettier --check --print-width 120 CSS/",
 		"styles:prettier:fix": "prettier --write --print-width 120 CSS/",

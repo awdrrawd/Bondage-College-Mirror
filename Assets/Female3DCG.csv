@@ -509,6 +509,7 @@ Glasses,SunGlasses2,Sunglasses 2
 Glasses,SunGlassesClear,Clear Sunglasses
 Glasses,VGlasses,V Glasses
 Glasses,VintageSunglasses,Vintage Sunglasses
+Glasses,EyeGlow,Glowing Eyes
 Gloves,,Gloves
 Gloves,AnimeGirlGloves,Cosplay Girl Gloves
 Gloves,BikerGloves,Biker Gloves
@@ -710,6 +711,8 @@ HairBack,HairBack85,Style 85
 HairBack,HairBack86,Style 86
 HairBack,HairBack86b,Style 86b
 HairBack,HairBack87,Style 87
+HairBack,EmberSweep,Ember Sweep
+HairBack,BraidedVikingRealistic,Braided Viking (Realistic)
 HairBack,HairNone,None
 HairFront,,Front Hair
 HairFront,HairFront1,Style 1
@@ -827,6 +830,8 @@ HairFront,HairFront74,Style 74
 HairFront,HairFront75,Style 75
 HairFront,HairFront76a,Style 76a
 HairFront,HairFront76b,Style 76b
+HairFront,EmberSweep,Ember Sweep
+HairFront,BraidedVikingRealistic,Braided Viking (Realistic)
 HandAccessoryLeft,,Hand Accessory (Left)
 HandAccessoryLeft,CatsuitGloves,Catsuit Gloves
 HandAccessoryLeft,Claws,Claws
@@ -892,6 +897,7 @@ Hat,WitchHat1,Witch Hat
 Hat,JesterHat, Jester Hat
 Hat,GIBeret,GI beret
 Hat,FrogHat,Frog Hat
+Hat,Sallet,Petal Sallet
 Head,,Body Ears
 Head,Default,Regular
 Head,NoEars,Subtle
@@ -2192,6 +2198,7 @@ TailStraps,WolfTailStrap2,Wolf Small Tail Strap
 TailStraps,WolfTailStrap3,Wolf White Tail Strap
 TailStraps,LatexFoxTail,Latex Fox Tail
 TailStraps,SkunkTail,Skunk Tail
+TailStraps,CableTail,Cable Tail
 Wings,,Wings
 Wings,AngelFeather,Angel Feather
 Wings,AngelWings,Angel Wings

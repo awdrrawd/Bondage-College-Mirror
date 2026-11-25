@@ -1950,7 +1950,7 @@ async function ChatSearchQuery(Query) {
 	};
 
 	const res = await ServerRoomSearch(Query.toUpperCase().trim(), SearchData);
-	if (res.err) {
+	if (res.err()) {
 		if (res.error?.name === "ServerTimeoutError" || res.error?.name === "ServerInProgressError") {
 			ChatSearchSendToast(res.error?.name);
 		} else {

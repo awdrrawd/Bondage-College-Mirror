@@ -3224,7 +3224,7 @@ function ChatRoomMapViewCopy() {
 	}
 
 	CommonClipboardWrite(mapString, (res) => {
-		if (res.err) {
+		if (res.err()) {
 			ToastManager.error(res.errorAsDOM(TextGet("MapCopyError")));
 		} else {
 			ToastManager.success(TextGet("MapCopyDone"));

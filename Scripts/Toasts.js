@@ -1,11 +1,10 @@
 'use strict';
 
 /**
- * Manages the display and lifecycle of toast notifications.
- * Maintains a queue of toasts to display and limits the number of
- * concurrently visible toasts.
+ * See {@link ToastManager}
+ * @private
  */
-var ToastManager = new class {
+class _ToastManager {
 	/**
 	 * Queue of toast options waiting to be displayed.
 	 * @type {Required<Toasts.Options>[]}
@@ -30,7 +29,7 @@ var ToastManager = new class {
 	 * @param {string | Element | readonly (string | Element)[]} msg - Text content of the toast.
 	 * @param {Omit<Toasts.Options, 'message' | 'type'>} [opts] - Other toast options.
 	 */
-	info(msg, opts = {}) { this._show({ icon: '../Icons/info_circle.svg', ...opts, message: msg, type: 'info' }); }
+	info(msg, opts = {}) { this.#show({ icon: '../Icons/info_circle.svg', ...opts, message: msg, type: 'info' }); }
 
 	/**
 	 * Show a success toast. It's time to celebrate! 🎉
@@ -38,7 +37,7 @@ var ToastManager = new class {
 	 * @param {string | Element | readonly (string | Element)[]} msg - Text content of the toast.
 	 * @param {Omit<Toasts.Options, 'message' | 'type'>} [opts] - Other toast options.
 	 */
-	success(msg, opts = {}) { this._show({ icon: '../Icons/check_circle.svg', ...opts, message: msg, type: 'success' }); }
+	success(msg, opts = {}) { this.#show({ icon: '../Icons/check_circle.svg', ...opts, message: msg, type: 'success' }); }
 
 	/**
 	 * Show a warning toast. Watch out, things might explode!
@@ -46,7 +45,7 @@ var ToastManager = new class {
 	 * @param {string | Element | readonly (string | Element)[]} msg - Text content of the toast.
 	 * @param {Omit<Toasts.Options, 'message' | 'type'>} [opts] - Other toast options.
 	 */
-	warning(msg, opts = {}) { this._show({ icon: '../Icons/exclamation_triangle.svg', ...opts, message: msg, type: 'warning' }); }
+	warning(msg, opts = {}) { this.#show({ icon: '../Icons/exclamation_triangle.svg', ...opts, message: msg, type: 'warning' }); }
 
 	/**
 	 * Show an error toast. Oh noes, something broke.
@@ -54,7 +53,7 @@ var ToastManager = new class {
 	 * @param {string | Element | readonly (string | Element)[]} msg - Text content of the toast.
 	 * @param {Omit<Toasts.Options, 'message' | 'type'>} [opts] - Other toast options.
 	 */
-	error(msg, opts = {}) { this._show({ icon: '../Icons/cross_circle.svg', ...opts, message: msg, type: 'error' }); }
+	error(msg, opts = {}) { this.#show({ icon: '../Icons/cross_circle.svg', ...opts, message: msg, type: 'error' }); }
 
 	/**
 	 * Show a custom toast, because you're special.
@@ -63,7 +62,7 @@ var ToastManager = new class {
 	 * @param {Toasts.Type} type - Custom type string or one of the predefined types.
 	 * @param {Omit<Toasts.Options, 'message' | 'type'>} [opts] - Other toast options.
 	 */
-	custom(msg, type, opts = {}) { this._show({ ...opts, message: msg, type: type }); }
+	custom(msg, type, opts = {}) { this.#show({ ...opts, message: msg, type: type }); }
 
 	/**
 	 * Kick out every single visible toast regardless of type.
@@ -113,11 +112,10 @@ var ToastManager = new class {
 	 * Fills in any missing option fields with default values, then
 	 * attempts to process the queue to show toasts if slots are available.
 	 *
-	 * @private
 	 * @param {Toasts.Options} options - Configuration for the toast.
 	 * @returns {void}
 	 */
-	_show(options) {
+	#show(options) {
 		if (!options.message) {
 			console.error('What are you even trying to show? Missing toast message.');
 			return;
@@ -133,7 +131,7 @@ var ToastManager = new class {
 		options.clampMessage ??= true;
 
 		this.queue.push(/** @type {Required<Toasts.Options>} */(options));
-		this._process();
+		this.#process();
 	}
 
 	/**
@@ -141,16 +139,15 @@ var ToastManager = new class {
 	 * if the active count is not currently at max capacity. Removes displayed toasts
 	 * from the queue and updates the active count.
 	 *
-	 * @private
 	 * @returns {void}
 	 */
-	_process() {
+	#process() {
 		for (let i = 0; i < this.queue.length; i++) {
 			const toast = this.queue[i];
 			const count = this.active || 0;
 			if (count < this.maxStack) {
 				this.queue.splice(i, 1);
-				this._display(toast);
+				this.#display(toast);
 				i--;
 			}
 		}
@@ -160,12 +157,11 @@ var ToastManager = new class {
 	 * Builds the toast element, hooks up animations, buttons, and timers,
 	 * and tracks its lifetime until Void kidnaps it.
 	 *
-	 * @private
 	 * @param {Required<Toasts.Options>} _ - Fully resolved options for the toast to display.
 	 * @returns {void}
 	 */
-	_display(_) {
-		const container = this._getOrCreateContainer();
+	#display(_) {
+		const container = this.#getOrCreateContainer();
 		const prefersReducedMotion = CommonPrefersReducedMotion();
 		this.active = (this.active || 0) + 1;
 
@@ -185,7 +181,7 @@ var ToastManager = new class {
 				toast._timeoutTimerRemove?.();
 				toast.remove();
 				this.active--;
-				this._process();
+				this.#process();
 			};
 
 			if (prefersReducedMotion) {
@@ -302,7 +298,7 @@ var ToastManager = new class {
 			const progressBar = /** @type {HTMLProgressElement} */(toast.querySelector('progress'));
 			progressBar.value = 0;
 
-			const timerRemove = this._animateProgress(progressBar, () => remove('timeout'), _.duration);
+			const timerRemove = this.#animateProgress(progressBar, () => remove('timeout'), _.duration);
 			toast._timeoutTimerRemove = timerRemove;
 
 			if (_.stopProgressOnHover) {
@@ -337,10 +333,9 @@ var ToastManager = new class {
 	/**
 	 * Retrieves an existing container element for toasts, or creates a new one if none exists.
 	 *
-	 * @private
 	 * @returns {HTMLDivElement} The container <div> element.
 	 */
-	_getOrCreateContainer() {
+	#getOrCreateContainer() {
 		const position = 'top-right';
 		let container = /** @type {null | HTMLDivElement} */(document.querySelector(`.toast-container[data-pos="${position}"]`));
 		if (!container) {
@@ -359,13 +354,12 @@ var ToastManager = new class {
 	 * Calls onFinish when the progress reaches its maximum. Returns a function that can
 	 * be called to stop the animation prematurely.
 	 *
-	 * @private
 	 * @param {HTMLProgressElement} progress - The <progress> element to animate.
 	 * @param {() => void | undefined} onFinish - Callback invoked when the animation completes.
 	 * @param {number} durationMs - Total time in milliseconds for the progress to fill.
 	 * @returns {() => void} Function to call to cancel the progress animation timer.
 	 */
-	_animateProgress(progress, onFinish, durationMs) {
+	#animateProgress(progress, onFinish, durationMs) {
 		const steps = 100;
 		const stepValue = (progress.max / steps);
 		const interval = durationMs / steps;
@@ -386,4 +380,11 @@ var ToastManager = new class {
 
 		return timerRemove;
 	}
-};
+}
+
+/**
+ * Manages the display and lifecycle of toast notifications.
+ * Maintains a queue of toasts to display and limits the number of
+ * concurrently visible toasts.
+ */
+var ToastManager = new _ToastManager;

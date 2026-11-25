@@ -7971,6 +7971,15 @@ var AssetFemale3DCG = [
 					AssetName: "TriskelionNecklace",
 				},
 			},
+			{
+				Name: "EyeGlow",
+				CopyConfig: {
+					GroupName: "Glasses",
+					AssetName: "EyeGlow",
+					BuyGroup: true,
+				},
+				DynamicGroupName: "Glasses",
+			},
 		],
 		Color: [
 			"Default",
@@ -22307,6 +22316,82 @@ var AssetFemale3DCG = [
 					},
 				],
 			},
+			{
+				Name: "Sallet",
+				InventoryID: 1438,
+				Value: 120,
+				Extended: true,
+				Left: 157,
+				Top: 2,
+				Priority: 55,
+				Hide: [
+					"ItemEars",
+					"HairFront",
+				],
+				Layer: [
+					{
+						Name: "Visor",
+						Priority: 56,
+						Color: ["#E0E6FF"],
+					},
+					{
+						Name: "VisorDark",
+						AllowTypes: {v:1},
+						Color: ["#000000"],
+						Priority: 40,
+					},
+					{
+						Name: "Top",
+						Color: ["#A7ACBF"],
+					},
+					{
+						Name: "Bottom",
+						Color: ["#A7ACBF"],
+					},
+					{
+						Name: "CrestFDL",
+						AllowTypes: {c:1},
+						Color: ["#FFD481"],
+						Priority: 56,
+					},
+					{
+						Name: "CrestBF",
+						AllowTypes: {c:2},
+						Priority: 56,
+						CopyLayerColor: "CrestFDL",
+					},
+					{
+						Name: "PlumeBase",
+						AllowTypes: {a:1},
+						Color: ["#DAB469"],
+						Priority: 54,
+					},
+					{
+						Name: "Plume",
+						AllowTypes: {a:1},
+						Color: ["#B60000"],
+						Priority: 4,
+					},
+					{
+						Name: "Spike",
+						AllowTypes: {a:[2,3]},
+						CopyLayerColor: "PlumeBase",
+						Priority: 54,
+					},
+					{
+						Name: "SpikeFeather",
+						AllowTypes: {a:2},
+						CopyLayerColor: "Plume",
+						Priority: 4,
+					},
+					{
+						Name: "SpikeLongFeather",
+						AllowTypes: {a:3},
+						CopyLayerColor: "Plume",
+						Priority: 4,
+					},
+				]
+			},
 		],
 		Color: [
 			"Default",
@@ -26472,6 +26557,40 @@ var AssetFemale3DCG = [
 					BuyGroup: true,
 				},
 			},
+			{
+				Name: "EyeGlow",
+				InventoryID: 1439,
+				Value: 30,
+				Extended: true,
+				Priority: 41,
+				Top: 135,
+				Layer: [
+					{
+						Name: "BasicL",
+						AllowTypes: { l:0 },
+						Left: 200,
+						Color: ["#FFCC66"],
+					},
+					{
+						Name: "BasicR",
+						AllowTypes: { r:0 },
+						Left: 253,
+						Color: ["#FFCC66"],
+					},
+					{
+						Name: "StarL",
+						AllowTypes: { l:1 },
+						Left: 200,
+						CopyLayerColor: "BasicL",
+					},
+					{
+						Name: "StarR",
+						AllowTypes: { r:1 },
+						Left: 251,
+						CopyLayerColor: "BasicR",
+					}
+				]
+			},
 		],
 		Color: [
 			"Default",
@@ -28147,6 +28266,24 @@ var AssetFemale3DCG = [
 				},
 				DynamicGroupName: "Hat",
 			},
+			{
+				Name: "Sallet",
+				CopyConfig: {
+					GroupName: "Hat",
+					AssetName: "Sallet",
+					BuyGroup: true,
+				},
+				DynamicGroupName: "Hat",
+			},
+			{
+				Name: "EyeGlow",
+				CopyConfig: {
+					GroupName: "Glasses",
+					AssetName: "EyeGlow",
+					BuyGroup: true,
+				},
+				DynamicGroupName: "Glasses",
+			},
 		],
 		Color: [
 			"Default",
@@ -29263,6 +29400,113 @@ var AssetFemale3DCG = [
 				Top: 60,
 				Left: 10,
 				Layer: [{ Name: "Tail", Color: ["#8F5F2D"] }],
+			},
+			{
+				Name: "CableTail",
+				InventoryID: 1437,
+				Value: 30,
+				Top: 450,
+				Left: 0,
+				Layer: [
+					{
+						Name: "Cable",
+						AllowTypes: { m:0 },
+						Color: ["#0F0F10"],
+					},
+					{
+						Name: "UsbBase",
+						AllowTypes: { m:0, t:0 },
+						CopyLayerColor: "Cable",
+					},
+					{
+						Name: "UsbPlug",
+						AllowTypes: { m:0, t:0 },
+						Color: ["#A7ABB3"],
+						Priority: 3,
+					},
+					{
+						Name: "EthernetBase",
+						AllowTypes: { m:0, t:1 },
+						CopyLayerColor: "Cable",
+					},
+					{
+						Name: "EthernetPlug",
+						AllowTypes: { m:0, t:1 },
+						CopyLayerColor: "UsbPlug",
+						Priority: 3,
+					},
+					{
+						Name: "TrsBase",
+						AllowTypes: { m:0, t:2 },
+						CopyLayerColor: "Cable",
+					},
+					{
+						Name: "TrsPlug",
+						AllowTypes: { m:0, t:2 },
+						CopyLayerColor: "UsbPlug",
+						Priority: 3,
+					},
+					{
+						Name: "GamepadBase",
+						AllowTypes: { m:0, t:3 },
+						CopyLayerColor: "Cable",
+					},
+					{
+						Name: "GamepadPlug",
+						AllowTypes: { m:0, t:3 },
+						CopyLayerColor: "UsbPlug",
+						Priority: 3,
+					},
+					{
+						Name: "CableM",
+						AllowTypes: { m:1 },
+						CopyLayerColor: "Cable",
+					},
+					{
+						Name: "UsbBaseM",
+						AllowTypes: { m:1, t:0 },
+						CopyLayerColor: "Cable",
+					},
+					{
+						Name: "UsbPlugM",
+						AllowTypes: { m:1, t:0 },
+						CopyLayerColor: "UsbPlug",
+						Priority: 3,
+					},
+					{
+						Name: "EthernetBaseM",
+						AllowTypes: { m:1, t:1 },
+						CopyLayerColor: "Cable",
+					},
+					{
+						Name: "EthernetPlugM",
+						AllowTypes: { m:1, t:1 },
+						CopyLayerColor: "UsbPlug",
+						Priority: 3,
+					},
+					{
+						Name: "TrsBaseM",
+						AllowTypes: { m:1, t:2 },
+						CopyLayerColor: "Cable",
+					},
+					{
+						Name: "TrsPlugM",
+						AllowTypes: { m:1, t:2 },
+						CopyLayerColor: "UsbPlug",
+						Priority: 3,
+					},
+					{
+						Name: "GamepadBaseM",
+						AllowTypes: { m:1, t:3 },
+						CopyLayerColor: "Cable",
+					},
+					{
+						Name: "GamepadPlugM",
+						AllowTypes: { m:1, t:3 },
+						CopyLayerColor: "UsbPlug",
+						Priority: 3,
+					},
+				],
 			},
 		],
 		Color: [
@@ -31714,6 +31958,15 @@ var AssetFemale3DCG = [
 					},
 				],
 			},
+			{
+				Name: "EyeGlow",
+				CopyConfig: {
+					GroupName: "Glasses",
+					AssetName: "EyeGlow",
+					BuyGroup: true,
+				},
+				DynamicGroupName: "Glasses",
+			},
 		],
 		Color: [
 			"Default",
@@ -33171,6 +33424,26 @@ var AssetFemale3DCG = [
 						AllowTypes: { Extra: 1 },
 					},
 				],
+			},
+			{
+				Name: "EmberSweep",
+				Random: false,
+				Top: { [PoseType.DEFAULT]: 50, Suspension: 24 },
+				PoseMapping: { Suspension: "Suspension" },
+				Layer: [
+					{ Name: "Base", Color: ["#c3a15e"] },
+					{ Name: "Tips", Color: ["#efd493"] },
+				],
+			},
+			{
+				Name: "BraidedVikingRealistic",
+				Random: false,
+				Top: {
+					[PoseType.DEFAULT]: 50,
+					Suspension: 17,
+				},
+				PoseMapping: { Suspension: "Suspension" },
+				Layer: [{ Name: "Base" }],
 			},
 		],
 		Color: [
@@ -34660,6 +34933,32 @@ var AssetFemale3DCG = [
 					},
 				],
 			},
+			{
+				Name: "EmberSweep",
+				Random: false,
+				Top: { [PoseType.DEFAULT]: 0, Suspension: -145 },
+				PoseMapping: {
+					Kneel: "Kneel",
+					KneelingSpread: "Kneel",
+					Suspension: "Suspension",
+				},
+				Layer: [
+					{ Name: "Base", Color: ["#c3a15e"] },
+					{ Name: "Tips", Color: ["#efd493"] },
+				],
+			},
+			{
+				Name: "BraidedVikingRealistic",
+				Random: false,
+				PoseMapping: {
+					Suspension: "Suspension",
+				},
+				Top: {
+					[PoseType.DEFAULT]: 0,
+					Suspension: -145,
+				},
+				Layer: [{ Name: "Base" }],
+			},
 		],
 		Color: [
 			"Default",
@@ -35134,6 +35433,15 @@ var AssetFemale3DCG = [
 						CopyLayerColor: "0",
 					},
 				],
+			},
+			{
+				Name: "EyeGlow",
+				CopyConfig: {
+					GroupName: "Glasses",
+					AssetName: "EyeGlow",
+					BuyGroup: true,
+				},
+				DynamicGroupName: "Glasses",
 			},
 		],
 	},
@@ -54470,6 +54778,18 @@ var AssetFemale3DCG = [
 						Name: "Rose",
 						AllowTypes: { LMF: 6 },
 					},
+					{
+						Name: "Liri"
+						AllowTypes: { LMF: 7 },
+					},	
+					{
+						Name: "Alicia"
+						AllowTypes: { LMF: 8 },
+					},	
+					{
+						Name: "Andrea"
+						AllowTypes: { LMF: 9 },
+					},	
 					{
 						Name: "Amelia",
 						AllowTypes: { ACF: 1 },

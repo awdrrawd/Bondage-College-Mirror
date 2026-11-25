@@ -776,7 +776,7 @@ var CraftingEventListeners = {
 		}
 		const craft = CraftingConvertSelectedToItem(CraftingSelectedItem);
 		CommonClipboardWrite(LZString.compressToBase64(JSON.stringify(craft)), (res) => {
-			if (res.err) {
+			if (res.err()) {
 				ToastManager.error(res.errorAsDOM(TextGet("DownloadFailed")));
 			} else {
 				ToastManager.success(TextGet("DownloadSuccess"));

@@ -1,0 +1,19 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+        "target": "es2022",
+		"lib": ["ES2022", "DOM"],
+		"allowJs": true,
+        "declaration": true,
+        "emitDeclarationOnly": true,
+		"types": [],
+		"strict": true,
+        "outDir": "ts_emit_tmp_output"
+	},
+	"include": ["Scripts/**/*", "Screens/**/*", "Assets/**/*", "Backgrounds/**/*.js"],
+	"exclude": [
+		"Scripts/MessagesPatch.d.ts",
+		"Scripts/DeclarationsExpensive.d.ts",
+		"Screens/MiniGame/KinkyDungeon"
+	]
+}

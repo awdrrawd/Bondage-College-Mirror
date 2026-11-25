@@ -1579,9 +1579,9 @@ function AppearanceMenuClick(C) {
 					if (button === "Copy") CharacterAppearanceCopyToClipboard(C);
 					if (button === "Paste") {
 						CommonClipboardRead((res) => {
-							if (res.ok && res.value) {
+							if (res.ok()) {
 								CharacterAppearancePaste(C, res.value, false);
-							} else if (res.err) {
+							} else if (res.err()) {
 								ToastManager.error(res.errorAsDOM(InterfaceTextGet("AppPasteError")));
 							}
 						});
@@ -2022,7 +2022,7 @@ function CharacterAppearanceCopyToClipboard(C) {
 	let S = JSON.stringify(App);
 	S = LZString.compressToBase64(S);
 	CommonClipboardWrite(S, (res) => {
-		if (res.err) {
+		if (res.err()) {
 			ToastManager.error(res.errorAsDOM(InterfaceTextGet("AppCopyError")));
 		} else {
 			ToastManager.success(InterfaceTextGet("AppCopyDone"));

@@ -614,11 +614,12 @@ function ChatAdminImport() {
 	if (!ChatAdminCanCommit()) return;
 
 	CommonClipboardRead((res) => {
-		try {
-			if (!res.ok) {
-				throw new Error();
-			}
+		if (!res.ok()) {
+			ToastManager.error(res.errorAsDOM(TextGet("UploadFailed")));
+			return;
+		}
 
+		try {
 			const data = CommonJSONParse(LZString.decompressFromBase64(res.value ?? "") ?? "");
 			if (!data || !ChatEditorValidateAdminSettings(data)) {
 				throw new Error();
@@ -723,10 +724,10 @@ function ChatAdminSetMessage(message) {
 function ChatAdminExport() {
 	const code = LZString.compressToBase64(JSON.stringify(ChatEditorGetAdminSettings()));
 	CommonClipboardWrite(code, (res) => {
-		if (res.ok) {
+		if (res.ok()) {
 			ToastManager.success(TextGet("DownloadSuccess"));
 		} else {
-			ToastManager.error(TextGet("DownloadFailed"));
+			ToastManager.error(res.errorAsDOM(TextGet("DownloadFailed")));
 		}
 	});
 }

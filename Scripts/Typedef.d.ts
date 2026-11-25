@@ -36,6 +36,23 @@ type ScalarType = null | string | boolean | number;
  */
 type SafePromise<T> = Promise<T>;
 
+/**
+ * A successful {@link Result}. `value` is available and `error` is null.
+ */
+type OkResult<T, E extends Error = Error> = Result<T, E> & { value: T, error: null };
+
+/**
+ * A failed {@link Result}. `error` is available and `value` is null.
+ */
+type ErrResult<T, E extends Error = Error> = Result<T, E> & { value: null, error: E };
+
+/**
+ * A {@link Result} that has either succeeded or failed.
+ *
+ * `ok()` and `err()` narrow `value` and `error` from either outcome.
+ */
+type ResultOf<T, E extends Error = Error> = OkResult<T, E> | ErrResult<T, E>;
+
 // GL shim
 
 /**

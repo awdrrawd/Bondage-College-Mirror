@@ -2790,14 +2790,14 @@ function CommonPromiseCatch(p) {
  * @template {Error} [E=Error]
  */
 class Result {
-	/** @type {T} */
+	/** @type {T | null} */
 	value;
 	/** @type {E | null} */
 	error;
 
 	/**
 	 * Create a new Result representing the status of a failable operation
-	 * @param {T} value
+	 * @param {T | null} value
 	 * @param {E | null} [error]
 	 */
 	constructor(value, error = null) {
@@ -2806,7 +2806,7 @@ class Result {
 	}
 
 	/**
-	 * Convert the {@link Result.Error} message into a list of DOM elements as usable by the likes of {@link ElementDOMScreen.setStatus}).
+	 * Convert the {@link Result.error} message into a list of DOM elements as usable by the likes of {@link ElementDOMScreen.setStatus}).
 	 *
 	 * Always returns an empty list for nullish errors
 	 * @param {null | string | Element | readonly (string | Element)[]} customMessage A custom message to be used as prefix
@@ -2831,57 +2831,64 @@ class Result {
 	 * Build a Result for a successful operation
 	 * @template T
 	 * @param {T} value
-	 * @returns {Result<T, never>}
+	 * @returns {OkResult<T, never>}
 	 */
 	static success(value) {
-		return /** @type {Result<T, never>} */ (new Result(value, null));
+		return /** @type {OkResult<T, never>} */ (new Result(value, null));
 	}
 
 	/**
 	 * Build a Result for a failed operation
 	 * @template {Error} T
 	 * @param {T} error
-	 * @returns {Result<never, T>}
+	 * @returns {ErrResult<never, T>}
 	 */
 	static failure(error) {
-		return /** @type {Result<never, T>} */ (new Result(null, error));
+		return /** @type {ErrResult<never, T>} */ (new Result(null, error));
 	}
 
 	/**
 	 * Returns whether the operation was a success
+	 *
+	 * When this is true, `value` is available and `error` is null.
+	 * @returns {this is OkResult<T, E>}
 	 */
-	get ok() {
+	ok() {
 		return !this.error;
 	}
 
 	/**
 	 * Returns whether the operation was a failure
+	 *
+	 * When this is true, `error` is available and `value` is null.
+	 * @returns {this is ErrResult<T, E>}
 	 */
-	get err() {
+	err() {
 		return !!this.error;
 	}
 
 	/**
 	 * Unwrap the result
 	 * This either returns the successful return of the operation, or throws the error it reported
+	 * @this {ResultOf<T, E>}
+	 * @returns {T}
 	 */
 	unwrap() {
-		if (this.ok) {
-			return this.value;
-		} else {
-			// eslint-disable-next-line @typescript-eslint/only-throw-error
+		if (!this.ok()) {
 			throw this.error;
 		}
+		return this.value;
 	}
 }
+
 
 class ClipboardError extends Error {
 	/**
 	 * @param {string} message
-	 * @param {object} options
+	 * @param {ErrorOptions} options
 	 */
 	constructor(message, options = {}) {
-		super(message);
+		super(message, options);
 		this.name = "ClipboardError";
 	}
 }
@@ -2889,7 +2896,7 @@ class ClipboardError extends Error {
 /**
  * Read text data from the browser's clipboard.
  *
- * @param {(result: Result<string | null, ClipboardError>) => void} cb
+ * @param {(result: ResultOf<string, ClipboardError>) => void} cb
  */
 function CommonClipboardRead(cb) {
 	navigator.clipboard.readText()
@@ -2909,7 +2916,7 @@ function CommonClipboardRead(cb) {
  * Write text data to the browser's clipboard.
  *
  * @param {string} data
- * @param {undefined | ((result: Result<null, ClipboardError>) => void)} [cb]
+ * @param {undefined | ((result: ResultOf<null, ClipboardError>) => void)} [cb]
  */
 function CommonClipboardWrite(data, cb = undefined) {
 	if (!document.hasFocus()) {

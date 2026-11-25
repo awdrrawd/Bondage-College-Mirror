@@ -372,6 +372,34 @@ var AssetFemale3DCGExtended = {
 				},
 			],
 		}, // FrogHat
+		Sallet: {
+			Archetype: ExtendedArchetype.MODULAR,
+			Modules: [
+				{
+					Name: "VisorDark",
+					Key: "v",
+					Options: [{}, {}],
+				},
+				{
+					Name: "Crest",
+					Key: "c",
+					Options: [{}, {}, {}],
+				},
+				{
+					Name: "TopOrnament",
+					Key: "a",
+					Options: [{}, {}, {}, {}],
+				},
+				{
+					Name: "BackHair",
+					Key: "h",
+					Options: [
+						{Property: { Hide: ["HairBack"] }}, 
+						{}
+					],
+				}
+			]
+		}//Sallet
 	}, // Hat
 	HandAccessoryLeft: {
 		Rings: {
@@ -651,6 +679,21 @@ var AssetFemale3DCGExtended = {
 				itemsPerPage: 9,
 			},
 		},
+		CableTail: {
+			Archetype: ExtendedArchetype.MODULAR,
+			Modules: [
+				{
+					Name: "Mirrored",
+					Key: "m",
+					Options: [{}, {}]
+				},
+				{
+					Name: "TailTip",
+					Key: "t",
+					Options: [{}, {}, {}, {}]
+				}
+			]
+		}
 	},
 	ClothOuter: {
 		CheerleaderTop: {
@@ -2070,6 +2113,18 @@ var AssetFemale3DCGExtended = {
 				},
 			],
 		}, // Face Crests
+		EyeGlow: {
+			Archetype: ExtendedArchetype.MODULAR,
+			CopyConfig: {
+				GroupName: "Glasses",
+				AssetName: "EyeGlow",
+			},
+			DialogPrefix: {
+				Header: "GlassesEyeGlowSelect",
+				Module: "GlassesEyeGlowModule",
+				Option: "GlassesEyeGlowOption",
+			},
+		}, //EyeGlow
 	},
 	HairFront: {
 		HairFront56: {
@@ -2697,6 +2752,18 @@ var AssetFemale3DCGExtended = {
 				{ Name: "Side", Key: "t", Options: [{}, {}, {}] },
 			],
 		}, // Epaulet
+		EyeGlow: {
+			Archetype: ExtendedArchetype.MODULAR,
+			CopyConfig: {
+				GroupName: "Glasses",
+				AssetName: "EyeGlow",
+			},
+			DialogPrefix: {
+				Header: "GlassesEyeGlowSelect",
+				Module: "GlassesEyeGlowModule",
+				Option: "GlassesEyeGlowOption",
+			},
+		},
 	}, // ClothAccessory
 	ClothLower: {
 		PantBoots: {
@@ -19850,6 +19917,30 @@ var AssetFemale3DCGExtended = {
 				},
 			],
 		},
+		Sallet: {
+			Archetype: ExtendedArchetype.MODULAR,
+			CopyConfig: {
+				GroupName: "Hat",
+				AssetName: "Sallet",
+			},
+			DialogPrefix: {
+				Header: "HatSalletSelect",
+				Module: "HatSalletModule",
+				Option: "HatSalletOption",
+			},
+		},
+		EyeGlow: {
+			Archetype: ExtendedArchetype.MODULAR,
+			CopyConfig: {
+				GroupName: "Glasses",
+				AssetName: "EyeGlow",
+			},
+			DialogPrefix: {
+				Header: "GlassesEyeGlowSelect",
+				Module: "GlassesEyeGlowModule",
+				Option: "GlassesEyeGlowOption",
+			},
+		},
 	}, // Mask
 	ItemLegs: {
 		DuctTape: {
@@ -23121,6 +23212,21 @@ var AssetFemale3DCGExtended = {
 			},
 			CopyConfig: { GroupName: "FaceMarkings", AssetName: "FaceCrests" },
 		}, //FaceCrests
+		EyeGlow: {
+			Archetype: ExtendedArchetype.MODULAR,
+			Modules: [
+				{
+					Name: "Left",
+					Key: "l",
+					Options: [{}, {}]
+				},
+				{
+					Name: "Right",
+					Key: "r",
+					Options: [{}, {}]
+				}
+			]
+		},
 	}, // Glasses
 	Bracelet: {
 		Band1: {
@@ -26153,6 +26259,9 @@ var AssetFemale3DCGExtended = {
 						{}, // Erica
 						{}, // Seb
 						{}, // Rose
+						{}, // Liri
+						{}, // Alicia
+						{}, // Andrea
 					],
 					DrawData: {
 						elementData: [
@@ -26174,6 +26283,15 @@ var AssetFemale3DCGExtended = {
 							},
 							{
 								imagePath: "Assets/Female3DCG/ItemHandheld/Plushie_Rose.png",
+							},
+							{
+								imagePath: "Assets/Female3DCG/ItemHandheld/Plushie_Liri.png",
+							},
+							{
+								imagePath: "Assets/Female3DCG/ItemHandheld/Plushie_Alicia.png",
+							},
+							{
+								imagePath: "Assets/Female3DCG/ItemHandheld/Plushie_Andrea.png",
 							},
 						],
 					},

@@ -370,7 +370,11 @@ function InformationSheetCopy(text) {
 		eventListeners: {
 			click(ev) {
 				ev.preventDefault();
-				CommonClipboardWrite(text);
+				CommonClipboardWrite(text, (res) => {
+					if (res.err()) {
+						ToastManager.error(res.errorAsDOM(TextGet("CopyFailed")));
+					}
+				});
 			},
 		},
 		children: [text],

@@ -20,14 +20,12 @@ function GetUpEnd(Victory) {
 	MiniGameTimer = CommonTime();
 }
 
-
-
 /**
  * Loads the Get Up mini game
  * @type {ScreenLoadHandler}
  */
 async function GetUpLoad() {
-	GetUpBackground = ChatRoomGetBackgroundURL();
+	GetUpBackground = ChatRoomData?.Background ?? "Introduction";
 
 	GetUpVelocity = 0;
 	GetUpPosition = 0;
@@ -63,29 +61,12 @@ function GetUpPhysics(delta) {
  * @returns {void} - Nothing
  */
 function GetUpRun() {
-	GetUpBackground = ChatRoomGetBackgroundURL();
-
-	DrawRect(0, 0, 1000, 1000, "Black");
-
-	// The game ends if the time runs out
-	const Time = CommonTime();
-	if (MiniGameRunning()) {
-		if (Math.abs(GetUpPosition) > GetUpMaxPosition) {
-			GetUpEnd(false);
-			SkillProgress(Player, "Evasion",  GetUpChallenge/2 + 1);
-		} else if (Time >= MiniGameTimer) {
-			GetUpEnd(true);
-			SkillProgress(Player, "Evasion",  GetUpChallenge/2 + 1);
-		} else {
-			GetUpPhysics(TimerRunInterval);
-		}
-	}
-	if (MiniGameStarted && Time >= MiniGameTimer + 750) MiniGameEnd();
-
-
-	DrawProgressBar(500 - GetUpMaxPosition, 500, 2*GetUpMaxPosition, 50, 50*((GetUpPosition + GetUpMaxPosition)/GetUpMaxPosition));
-	DrawCharacter(Player, 400 + GetUpPosition, 300, 0.4);
-
+	const padding = 500 - GetUpMaxPosition;
+	const barWidth = MainCanvasWidth - 2 * padding;
+	const scale = (GetUpPosition + GetUpMaxPosition) / (2 * GetUpMaxPosition);
+	const zoom = 1;
+	DrawProgressBar(padding, 500, barWidth, 50, 100 * scale);
+	DrawCharacter(Player, padding + barWidth * scale - (CanvasDrawWidth * zoom) / 2, 50 + Player.HeightModifier * Player.HeightRatio * zoom, zoom);
 
 	if (!MiniGameEnded) {
 		GetUpText = TextGet("GetUpObjective");
@@ -94,12 +75,26 @@ function GetUpRun() {
 	} else {
 		GetUpText = TextGet("GetUpFail");
 	}
-	DrawText(GetUpText, 500, 927, "white", "black");
-
+	DrawText(GetUpText, 1000, 927, "white", "black");
 
 	if (!MiniGameStarted)
-		DrawText(TextGet("GetUpStart"), 500, 977, "white", "black");
+		DrawText(TextGet("GetUpStart"), 1000, 977, "white", "black");
 
+	// The game ends if the time runs out
+	const Time = CommonTime();
+	if (MiniGameStarted && Time >= MiniGameTimer + 750) MiniGameEnd();
+
+	if (MiniGameRunning()) {
+		if (Math.abs(GetUpPosition) > GetUpMaxPosition) {
+			GetUpEnd(false);
+			SkillProgress(Player, "Evasion", GetUpChallenge/2 + 1);
+		} else if (Time >= MiniGameTimer) {
+			GetUpEnd(true);
+			SkillProgress(Player, "Evasion", GetUpChallenge/2 + 1);
+		} else {
+			GetUpPhysics(TimerRunInterval);
+		}
+	}
 }
 
 /**

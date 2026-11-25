@@ -754,11 +754,11 @@ const CommonCommands = [
 				return;
 			}
 			CommonClipboardRead((res) => {
-				if (res.value) {
-					CharacterAppearancePaste(Player, res.value, true);
-				} else {
+				if (!res.ok()) {
 					ToastManager.error(res.errorAsDOM(InterfaceTextGet("AppPasteError")));
+					return;
 				}
+				CharacterAppearancePaste(Player, res.value, true);
 			});
 		},
 	},
@@ -775,11 +775,11 @@ const CommonCommands = [
 				return;
 			}
 			CommonClipboardRead((res) => {
-				if (res.value) {
-					ChatRoomMapViewPaste(res.value);
-				} else {
+				if (!res.ok()) {
 					ToastManager.error(res.errorAsDOM(TextGet("MapPasteError")));
+					return;
 				}
+				ChatRoomMapViewPaste(res.value);
 			});
 		},
 	},

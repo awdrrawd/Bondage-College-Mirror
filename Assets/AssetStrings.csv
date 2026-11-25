@@ -3356,6 +3356,26 @@ HatFrogHatSelectBase,Customise your Frog Hat
 HatFrogHatSelectNob,Select Nob Style
 HatFrogHatSelectSides,Select Side Decoration
 HatFrogHatSelectTongue,Select Tongue
+HatSalletModuleVisorDark,Visor slit
+HatSalletModuleCrest,Crest
+HatSalletModuleTopOrnament,Ornament
+HatSalletModuleBackHair,Back hair
+HatSalletSelectBase,Configure the sallet.
+HatSalletSelectVisorDark,Configure the visor slit.
+HatSalletSelectCrest,Select a crest for the sallet.
+HatSalletSelectTopOrnament,Select an ornament for the top of the sallet.
+HatSalletSelectBackHair,Hide or show the back hair behind the sallet.
+HatSalletOptionv0,Clear
+HatSalletOptionv1,Obscured
+HatSalletOptionc0,None
+HatSalletOptionc1,Fleur de Lys
+HatSalletOptionc2,Bellflower
+HatSalletOptiona0,None
+HatSalletOptiona1,Plume
+HatSalletOptiona2,Spike (short feathers)
+HatSalletOptiona3,Spike (long feathers)
+HatSalletOptionh0,In
+HatSalletOptionh1,Out
 HeadphoneEarPlugsPoseHeavy,Heavy
 HeadphoneEarPlugsPoseLight,Light
 HeadphoneEarPlugsPoseNoiseCancelling,Noise-Cancelling
@@ -7858,6 +7878,17 @@ TailStrapsKitsuneTailStrapsSelectTail6,Tail Six
 TailStrapsKitsuneTailStrapsSelectTail7,Tail Seven
 TailStrapsKitsuneTailStrapsSelectTail8,Tail Eight
 TailStrapsKitsuneTailStrapsSelectTail9,Tail Nine
+TailStrapsCableTailModuleMirrored,Position
+TailStrapsCableTailModuleTailTip,Tip
+TailStrapsCableTailSelectBase,Configure the cable.
+TailStrapsCableTailSelectMirrored,Select which side to have the tail on.
+TailStrapsCableTailSelectTailTip,Select the cable's end connection.
+TailStrapsCableTailOptionm0,Regular
+TailStrapsCableTailOptionm1,Mirrored
+TailStrapsCableTailOptiont0,USB
+TailStrapsCableTailOptiont1,Ethernet
+TailStrapsCableTailOptiont2,TRS
+TailStrapsCableTailOptiont3,Gamepad
 TamperLockSetBy,Locked by:
 TamperLockSetTime,Locked on:
 TapedClitEggDecreaseTo-1,DestinationCharacterName vibrating egg on TargetPronounPossessive clitoris stops vibrating.
@@ -8142,6 +8173,15 @@ GlassesPincenezModuleAccessory,Glasses acessory
 GlassesPincenezSelectAccessory,Accessory options:
 GlassesPincenezOptiona0,No accessory
 GlassesPincenezOptiona1,Accessory added
+GlassesEyeGlowModuleLeft,Left side
+GlassesEyeGlowModuleRight,Right side
+GlassesEyeGlowSelectBase,Select which eye to change.
+GlassesEyeGlowSelectLeft,Select which glow shape to apply.
+GlassesEyeGlowSelectRight,Select which glow shape to apply.
+GlassesEyeGlowOptionl0,Circle
+GlassesEyeGlowOptionl1,Star
+GlassesEyeGlowOptionr0,Circle
+GlassesEyeGlowOptionr1,Star
 QualityHarnessGagSetBallGag,SourceCharacter attaches a ball gag to DestinationCharacter gag harness.
 QualityHarnessGagSetLargeBallGag,SourceCharacter attaches a large ball gag to DestinationCharacter gag harness.
 QualityHarnessGagSetRingGag,SourceCharacter attaches a ring gag to DestinationCharacter gag harness.
@@ -9467,6 +9507,12 @@ ItemHandheldPlushieOptionLMF5,Seb
 ItemHandheldPlushieSetLMF5,SourceCharacter places a cute Seb plushie in DestinationCharacter hands.
 ItemHandheldPlushieOptionLMF6,Rose
 ItemHandheldPlushieSetLMF6,SourceCharacter places a cute Rose plushie in DestinationCharacter hands.
+ItemHandheldPlushieOptionLMF7,Liri
+ItemHandheldPlushieSetLMF7,SourceCharacter places a cute Liri plushie in DestinationCharacter hands.
+ItemhandheldPlushieOptionLMF8,Alicia
+ItemHandheldPlushieSetLMF8,SourceCharacter places a cute Alicia plushie in DestinationCharacter hands.
+ItemhandheldPlushieOptionLMF9,Andrea
+ItemHandheldPlushieSetLMF9,SourceCharacter places a cute Andrea plushie in DestinationCharacter hands.
 ItemHandheldPlushieModuleACF,ACF
 ItemHandheldPlushieSelectACF,ACF
 ItemHandheldPlushieACFSelect,Choose the plushie:

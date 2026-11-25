@@ -793,6 +793,8 @@ GlassesVintageSunglassesMain,Frame
 GlassesVintageSunglassesNose,Nose
 GlassesVintageSunglassesRLens,Right lens
 GlassesVintageSunglassesLLens,Left lens
+GlassesEyeGlowBasicL,Left side
+GlassesEyeGlowBasicR,Right side
 GlovesAnimeGirlGlovesGloves,Gloves
 GlovesAnimeGirlGlovesDetail,Elbow Stripe
 GlovesBikerGlovesHands,Gloves
@@ -1225,6 +1227,9 @@ HairBackHairBack84Left,Left
 HairBackHairBack84Right,Right
 HairBackHairBack84LeftStreak,Left Streak
 HairBackHairBack84RightStreak,Right Streak
+HairBackEmberSweepBase,Base
+HairBackEmberSweepTips,Gradient Tips
+HairBackBraidedVikingRealisticBase,Base
 HairBackHairBack85Base,Base
 HairBackHairBack85Clip,Clip
 HairBackHairBack86LeftBraid,Left Braid
@@ -1235,6 +1240,9 @@ HairBackHairBack86bLeftBraid,Left Braid
 HairBackHairBack86bLeftClip,Left Clip
 HairBackHairBack86bRightBraid,Right Braid
 HairBackHairBack86bRightClip,Right Clip
+HairFrontEmberSweepBase,Base
+HairFrontEmberSweepTips,Gradient Tips
+HairFrontBraidedVikingRealisticBase,Base
 HairFrontHairFront20Main,Base
 HairFrontHairFront20Braid,Braid
 HairFrontHairFront20SmallEarsBraid,Braid
@@ -1421,6 +1429,13 @@ HatFrogHatCrystalNob,Crystal Nob
 HatFrogHatCrystalNob_Shine,Crystal Nob Shine
 HatFrogHatTongue,Tongue
 HatFrogHatTongue_Shine,Tongue Shine
+HatSalletVisor,Visor
+HatSalletVisorDark,Visor darkness
+HatSalletTop,Top
+HatSalletBottom,Bottom
+HatSalletCrestFDL,Crest
+HatSalletPlumeBase,Top accessory
+HatSalletPlume,Feathers
 HatGatTop,Top
 HatGatBeads,Beads
 HatMaidLatexHairbandDetail,Detail
@@ -4428,6 +4443,8 @@ TailStrapsLatexFoxTailShineDull,Shine
 TailStrapsSkunkTailBase,Base
 TailStrapsSkunkTailPattern,Pattern
 TailStrapsLargeBushyTail,Tail
+TailStrapsCableTailCable,Cable
+TailStrapsCableTailUsbPlug,Plug
 WesternBoots,Shoes
 WingsBeeWingsBone,Bone
 WingsBeeWingsVeins,Veins

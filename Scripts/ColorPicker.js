@@ -534,7 +534,7 @@ var ColorPicker = {
 			}
 
 			CommonClipboardWrite(color, (res) => {
-				if (res.err) {
+				if (res.err()) {
 					ElementDOMScreen.setStatus(root, res.errorAsDOM(ItemColorText.get("CopyFailBrowser")));
 					return;
 				}
@@ -568,7 +568,7 @@ var ColorPicker = {
 			}
 
 			CommonClipboardRead((res) => {
-				if (!res.ok) {
+				if (!res.ok()) {
 					ElementDOMScreen.setStatus(root, res.errorAsDOM(ItemColorText.get("PasteFailBrowser")));
 					return;
 				}

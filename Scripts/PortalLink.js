@@ -343,20 +343,20 @@ function PortalLinkSyncCodeInputClick(item, receiver) {
 		const code = ElementValue(PortalLinkCodeInputID);
 		if (MouseIn(...PortalLinkCopyCodeButton) && code.length > 0) {
 			CommonClipboardWrite(ElementValue(PortalLinkCodeInputID), (res) => {
-				if (!res.ok) {
-					PortalLinkTransmitterStatus = "PortalLinkClipboardError";
-					console.error("Clipboard write error", res.error);
-				}});
+				if (!res.ok()) {
+					ToastManager.error(res.errorAsDOM(AssetTextGet("PortalLinkClipboardError")));
+				}
+			});
 
 			return;
 		}
 	} else {
 		if (MouseIn(...PortalLinkPasteCodeButton)) {
 			CommonClipboardRead((res) => {
-				if (!res.ok) {
-					PortalLinkTransmitterStatus = "PortalLinkClipboardError";
+				if (!res.ok()) {
+					ToastManager.error(res.errorAsDOM(AssetTextGet("PortalLinkClipboardError")));
 					return;
-				} else if (res.value !== null) {
+				} else {
 					ElementValue(PortalLinkCodeInputID, res.value);
 					PortalLinkCodeChanged(Player, item, receiver);
 				}

@@ -69,9 +69,11 @@ function ServerInit() {
 	ServerSocket.on("AccountLovership", function (data) { ServerAccountLovership(data); });
 }
 
-/** @readonly */
-var ServerAccountUpdate = new class AccountUpdater {
-
+/**
+ * See {@link ServerAccountUpdate}
+ * @private
+ */
+class _AccountUpdater {
 	constructor() {
 		/**
 		 * @private
@@ -133,7 +135,10 @@ var ServerAccountUpdate = new class AccountUpdater {
 
 		if (!this.Timeout) this.Timeout = setTimeout(this.SyncToServer.bind(this), 2000);
 	}
-};
+}
+
+/** @readonly */
+var ServerAccountUpdate = new _AccountUpdater();
 
 /**
  * Sets the connection status of the server and updates the login page message
@@ -283,7 +288,7 @@ function ServerHandleRelog(C) {
 			.then(async () => {
 				if (RelogData?.ChatRoomName) {
 					const ret = await ServerRoomJoin(RelogData.ChatRoomName);
-					if (ret.err) {
+					if (ret.err()) {
 						console.error(ret.error);
 					}
 				}
@@ -1213,12 +1218,12 @@ async function ServerHandleLeashBeep(data) {
 		return;
 	}
 
-	/** @type {Result<ServerChatRoomSearchResultResponse, ServerError>} */
+	/** @type {ResultOf<ServerChatRoomSearchResultResponse, ServerError>} */
 	let searchRes;
 	let retries = 5;
 	while (true) {
 		searchRes = await ServerRoomSearch(data.ChatRoomName, { Language: "", Space: data.ChatRoomSpace });
-		if (searchRes.ok) {
+		if (searchRes.ok()) {
 			break;
 		}
 
@@ -1265,7 +1270,7 @@ async function ServerHandleLeashBeep(data) {
 	retries = 5;
 	while (true) {
 		const result = await ServerRoomJoin(room.Name);
-		if (result.ok) {
+		if (result.ok()) {
 			break;
 		}
 
@@ -2179,7 +2184,7 @@ let ServerRoomSearchLastQuery = null;
  * Perform a search query against the server
  * @param {string} queryString
  * @param {Omit<ServerChatRoomSearchRequest, "Query">} options
- * @returns {Promise<Result<ServerChatRoomSearchResultResponse, ServerError>>}
+ * @returns {Promise<ResultOf<ServerChatRoomSearchResultResponse, ServerError>>}
  */
 async function ServerRoomSearch(queryString, options) {
 	/** @type {ServerChatRoomSearchRequest} */
@@ -2225,7 +2230,7 @@ let ServerRoomJoinLastQueryTime = 0;
 /**
  * Perform a join query against the server
  * @param {string} roomName
- * @returns {Promise<Result<string, ServerError>>}
+ * @returns {Promise<ResultOf<string, ServerError>>}
  */
 async function ServerRoomJoin(roomName) {
 	if (ServerRoomJoinLastQuery === roomName && ServerRoomJoinLastQueryTime + ServerDefaultTimeout > CommonTime()) {

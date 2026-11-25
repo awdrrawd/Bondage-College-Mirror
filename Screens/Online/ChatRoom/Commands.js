@@ -1510,7 +1510,7 @@ var CommandsModsList = {
 			`chat-room-mods-copy-${id}`,
 			function () {
 				CommonClipboardWrite(CommandsModsList._FormatModListForCopy(mods, char), (res) => {
-					if (res.err) {
+					if (res.err()) {
 						ToastManager.error(res.errorAsDOM(TextGet("CommandModsListCopyError")));
 					} else {
 						ToastManager.success(TextGet("CommandModsListCopyDone"));

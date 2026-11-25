@@ -837,7 +837,7 @@ function FriendListBeepCollectReactionState(messageIndices) {
 function FriendListBeepCopyMessage(text) {
 	if (!text) return;
 	CommonClipboardWrite(text, (result) => {
-		if (!result.ok) return ToastManager.info(TextGet("CopyFailed"), { duration: 3000 });
+		if (!result.ok()) return ToastManager.error(result.errorAsDOM(TextGet("CopyFailed")), { duration: 3000 });
 
 		ToastManager.info(TextGet("CopyDone"), { duration: 3000 });
 	});

@@ -22,6 +22,7 @@ const CHEAP_CHECKS = /** @type {const} */([
 	"assets:prettier",
 	"assets:eslint",
 	"scripts:typecheck",
+	"scripts:typecheck-emit",
 	"scripts:lint",
 	"files:case",
 	"files:csvtypescript",
