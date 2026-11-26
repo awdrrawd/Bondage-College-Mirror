@@ -14,7 +14,17 @@ function syncRun() {
         Content: syncMsgKey,
         Type: "Hidden",
         ...(typeof doSync === "number" ? { Target: doSync } : undefined),
-        Dictionary: [{ ...pl.XCharacterDrawOrder, drawState: undefined }],
+        Dictionary: [
+            /** @type {ChatMessageDictionaryEntry}*/ (
+                /**@type {unknown}*/ ({
+                    Type: syncMsgKey,
+                    Content: {
+                        ...pl.XCharacterDrawOrder,
+                        drawState: undefined,
+                    },
+                })
+            ),
+        ],
     });
     doSync = undefined;
 }

@@ -5,10 +5,15 @@ import { createItemDialogModular } from "@local/lib/itemDialog";
 import { Access } from "@local/lib/type";
 import { LSCG } from "@local/lib/lscg";
 import { luziSuffixFixups } from "@local/lib/fixups";
+import { registerBooleanProperty } from "@local/lib/property";
 
 /**
  * @typedef { { Masturbate:boolean, InstantOrgasm: boolean, OpenPerm?: boolean } } LewdCrestProps
  */
+
+registerBooleanProperty("Masturbate");
+registerBooleanProperty("InstantOrgasm");
+registerBooleanProperty("OpenPerm");
 
 /**
  * @typedef { globalThis.ItemProperties & LewdCrestProps } ExtendItemProperties
@@ -32,6 +37,9 @@ const extProp = (item) => /** @type {ExtendItemProperties}*/ (item.Property);
 
 /** @type {[BCColor,BCColor]} */
 const defaultGradientColor = ["#D75CFF", "#72B5FF"];
+
+/** @type {BCColor} */
+const defaultGradient2Color = "#FFBFF1";
 
 // #region 交互界面
 const dialog = createItemDialogModular({
@@ -314,19 +322,27 @@ const asset = [
         RemoveTime: 15,
         Time: 10,
         ParentGroup: {},
-        DefaultColor: ["#EA3E74", "Default", "Default", "Default", ...defaultGradientColor, "#FFBFF1"],
         DynamicGroupName: "ItemPelvis",
         Category: ["Fantasy"],
         PoseMapping: { Hogtied: "Hide", AllFours: "Hide" },
         Layer: [
-            { Name: "淫纹", AllowTypes: { t: 0 } },
+            { Color: ["#EA3E74"], Name: "淫纹", AllowTypes: { t: 0 } },
             { Name: "预设淫纹1", AllowTypes: { t: 1 } },
             { Name: "预设淫纹2", AllowTypes: { t: 2 } },
             { Name: "预设淫纹3", AllowTypes: { t: 3 } },
-            { Name: "渐变层", HasImage: false, AllowColorize: false, AllowTypes: { g: 1 } },
-            { Name: "发光1", HasImage: false },
-            { Name: "发光2", HasImage: false },
-            { Name: "泛光", HasImage: false, AllowTypes: { g: 2 } },
+            {
+                Name: "渐变层",
+                HasImage: false,
+                AllowColorize: false,
+                AllowTypes: { g: 1 },
+            },
+            {
+                Color: [defaultGradientColor[0]],
+                Name: "发光1",
+                HasImage: false,
+            },
+            { Color: [defaultGradientColor[1]], Name: "发光2", HasImage: false },
+            { Color: [defaultGradient2Color], Name: "泛光", HasImage: false, AllowTypes: { g: 2 } },
         ],
     },
     {
@@ -395,14 +411,17 @@ const clothAsset = [
         Left: 150,
         Top: 380,
         Priority: 9,
-        DefaultColor: ["#E975A0", "Default", "Default", "Default"],
         Extended: true,
         PoseMapping: { ...AssetPoseMapping.Panties },
         Expose: ["ItemVulva", "ItemVulvaPiercings", "ItemButt"],
         Category: ["Fantasy"],
         ParentGroup: {},
         DynamicGroupName: "ItemPelvis",
-        Layer: clothLCSetting.map((layer, index) => ({ Name: layer.Src, AllowTypes: { typed: index } })),
+        Layer: clothLCSetting.map((layer, index) => ({
+            Name: layer.Src,
+            ...(index === 0 ? { Color: ["#E975A0"] } : {}),
+            AllowTypes: { typed: index },
+        })),
     },
     {
         translation: { CN: "淫纹", EN: "Lewd Crest" },
@@ -581,9 +600,9 @@ function afterDraw(data, originalFunction, drawData) {
         Data.GlowCanvas ??= AnimationGenerateTempCanvas(C, A, 200, 200);
 
         const [c1, c2] = ((colors) => {
-            if (!Array.isArray(colors) && colors.length < 6) return defaultGradientColor;
+            if (!Array.isArray(colors) || colors.length < 6) return defaultGradientColor;
             return [4, 5].map((idx) => colorDefault(colors[idx], defaultGradientColor[idx - 4]));
-        })(CA.Color ?? CA.Asset.DefaultColor);
+        })(CA.Color);
 
         const ctx = Data.GlowCanvas.getContext("2d");
         ctx.clearRect(0, 0, 200, 200);
@@ -630,7 +649,7 @@ function afterDraw(data, originalFunction, drawData) {
 
         ctx.globalAlpha = 0.2 + 0.3 * Math.cos(Data.V1GlowCycle);
         const gradient = ctx.createRadialGradient(100, 108, 0, 100, 108, 100);
-        const c = colorDefault(Color, A.DefaultColor[6]);
+        const c = colorDefault(Color, defaultGradient2Color);
         gradient.addColorStop(0, c);
         gradient.addColorStop(1, `${c}00`);
         ctx.fillStyle = gradient;

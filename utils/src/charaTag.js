@@ -26,10 +26,12 @@ function sendFunc(localTag, target) {
         Type: "Hidden",
         ...(target ? { Target: target } : {}),
         Dictionary: [
-            {
-                Type: ECHO_INFO_TAG,
-                Content: localTag,
-            },
+            /** @type {ChatMessageDictionaryEntry}*/ (
+                /**@type {unknown}*/ ({
+                    Type: ECHO_INFO_TAG,
+                    Content: localTag,
+                })
+            ),
         ],
     });
 }

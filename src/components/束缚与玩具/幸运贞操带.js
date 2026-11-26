@@ -2,6 +2,7 @@ import { AssetManager } from "@local/AssetManager";
 import { ChatRoomEvents } from "@sugarch/bc-event-handler";
 import { OrgasmEvents } from "@sugarch/bc-event-handler";
 import { DialogTools, StateTools, Tools } from "@mod-utils/Tools";
+import { registerNumberProperty } from "@local/lib/property";
 
 /**
  * @typedef {Object} ExtendItemPropertiesPart
@@ -13,6 +14,14 @@ import { DialogTools, StateTools, Tools } from "@mod-utils/Tools";
  * @property {number} RuinedOrgasmCount
  * @property {number} ResistedOrgasmCount
  */
+
+registerNumberProperty("LastStruggleTime");
+registerNumberProperty("StruggleCount");
+registerNumberProperty("WornTime");
+registerNumberProperty("LastOrgasmTime");
+registerNumberProperty("OrgasmCount");
+registerNumberProperty("RuinedOrgasmCount");
+registerNumberProperty("ResistedOrgasmCount");
 
 /**
  * @typedef {globalThis.ItemProperties & ExtendItemPropertiesPart} ExtendItemProperties
@@ -39,10 +48,14 @@ const asset = {
     AllowTighten: false,
     Audio: "CuffsMetal",
     ParentGroup: {},
-    DefaultColor: ["#000000", "#deedff", "#d28b81", "#f9fbfe"],
     Prerequisite: ["AccessCrotch", "HasVagina", "CanCoverVulva"],
     ExpressionTrigger: [{ Name: "Soft", Group: "Eyebrows", Timer: 10 }],
-    Layer: [{ Name: "底色" }, { Name: "色调" }, { Name: "反射" }, { Name: "高光" }],
+    Layer: [
+        { Color: ["#000000"], Name: "底色" },
+        { Color: ["#deedff"], Name: "色调" },
+        { Color: ["#d28b81"], Name: "反射" },
+        { Color: ["#f9fbfe"], Name: "高光" },
+    ],
     Effect: [E.CanEdge],
     Hide: ["Pussy"],
     Extended: true,
@@ -114,7 +127,7 @@ const extended = {
     ],
 };
 
-/** @type {AssetGroupItemName[]} */
+/** @type {AssetGroupName[]} */
 const tamperArea = ["ItemPelvis", "ItemVulva", "ItemVulvaPiercings", "ItemButt"];
 
 const orgasmState = new StateTools.OrgasmState();
@@ -435,4 +448,3 @@ export default function () {
     AssetManager.addCustomAssetString(custom_dialogs);
     orgasmState.watch(OrgasmEvents);
 }
-
