@@ -9,6 +9,7 @@ Game.ChatRoomCharacterViewKeyDown = () => {};
 Game.ChatRoomCharacterViewCanLeave = () => {};
 Game.ChatRoomCharacterViewScreenshot = () => {};
 Game.ChatRoomCharacterViewActivate = () => {};
+Game.ChatRoomCharacterViewRightClick = () => {};
 
 Game.ChatRoomMapViewRun = () => {};
 Game.ChatRoomMapViewDraw = () => {};
@@ -27,6 +28,7 @@ Game.ChatRoomMapViewScreenshot = () => {};
 Game.ChatRoomMapViewActivate = () => {};
 Game.ChatRoomMapViewDeactivate = () => {};
 Game.ChatRoomMapViewResize = () => {};
+Game.ChatRoomMapViewRightClick = () => {};
 
 Game.load("../Screens/Online/ChatRoom/ChatRoom.js");
 

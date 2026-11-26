@@ -66,12 +66,15 @@ async function GameStart(isNode=false) {
 	}
 
 	canvas.addEventListener("wheel", (e) => GameMouseWheel(e));
+	canvas.addEventListener("contextmenu", (e) => ContextualMenu.handleContextMenu(e));
 
 	canvas.addEventListener("pointerdown", (e) => GamePointerDown(e, canvas));
 	canvas.addEventListener("pointerup", (e) => GamePointerUp(e, canvas));
 	canvas.addEventListener("pointermove", (e) => GamePointerMove(e));
 	canvas.addEventListener("pointercancel", (e) => GamePointerCancel(e, canvas));
 	canvas.addEventListener("pointerout", (e) => GamePointerOut(e));
+	canvas.addEventListener("touchstart", (e) => ContextualMenu.handleTouchStart(e));
+	canvas.addEventListener("touchmove", (e) => ContextualMenu.handleTouchMove(e));
 	canvas.addEventListener("touchend", (e) => GameTouchEnd(e));
 
 	canvas.addEventListener("click", (e) => GameClick(e));
@@ -212,7 +215,6 @@ function GameRunBackground(Timestamp) {
  * @param {KeyboardEvent} event
  */
 function GameKeyDown(event) {
-
 	if (ScreenIsLoading) return;
 
 	let handled = false;
@@ -281,12 +283,16 @@ function GamePaste(event) {
 	}
 }
 
+/** Clicks before this timestamp are ignored because a touch gesture just opened the contextual menu. */
+var GameSuppressClickUntil = 0;
+
 /**
  * If the user presses the mouse button, we fire the mousedown event for other screens
  * @param {PointerEvent} event
  * @param {HTMLCanvasElement} canvas
  */
 function GamePointerDown(event, canvas) {
+	if (event.button === 2) return;
 	CommonMouseDown(event);
 	// Guarantees that a `pointdown` event is followed up with `pointerup`
 	canvas.setPointerCapture(event.pointerId);
@@ -298,16 +304,20 @@ function GamePointerDown(event, canvas) {
  * @param {HTMLCanvasElement} canvas
  */
 function GamePointerUp(event, canvas) {
+	if (event.button === 2) return;
 	GamePointerMove(event, false);
 	CommonMouseUp(event);
 	canvas.releasePointerCapture(event.pointerId);
 }
 
 /**
- * If the user stops touching the screen (mobile only), we fire the mouseup event for other screens
+ * Tracks active touches, and ignores the click that follows a contextual-menu gesture.
  * @param {TouchEvent} event
  */
 function GameTouchEnd(event) {
+	if (ContextualMenu.handleTouchEnd(event)) {
+		GameSuppressClickUntil = Date.now() + 700;
+	}
 	CommonTouchList = event.touches;
 }
 
@@ -338,6 +348,7 @@ function GamePointerMove(event, forwardToScreens = true) {
  * @param {PointerEvent} event
  */
 function GameClick(event) {
+	if (Date.now() < GameSuppressClickUntil) return;
 	CommonClick(event);
 }
 
@@ -349,7 +360,9 @@ function GamePointerCancel(event, canvas) {
 	MouseX = -1;
 	MouseY = -1;
 	CommonTouchList = null;
-	canvas.releasePointerCapture(event.pointerId);
+	if (canvas.hasPointerCapture(event.pointerId)) {
+		canvas.releasePointerCapture(event.pointerId);
+	}
 }
 
 /**

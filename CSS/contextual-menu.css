@@ -1,0 +1,145 @@
+.contextual-menu {
+	position: fixed;
+	z-index: 10000;
+	width: max-content;
+	min-width: min(15dvh, 7.5dvw);
+	background: white;
+	border: var(--border-width) solid black;
+	box-shadow: 0 min(0.6dvh, 0.3dvw) min(1.8dvh, 0.9dvw) rgba(0, 0, 0, 0.45);
+	padding: min(0.6dvh, 0.3dvw);
+	color: black;
+	border-radius: min(0.6dvh, 0.3dvw);
+	outline: none;
+}
+
+.contextual-menu-backdrop {
+	position: fixed;
+	z-index: 9999;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.contextual-menu:focus-visible {
+	outline: 2px solid #8b5cf6;
+	outline-offset: 2px;
+}
+
+.contextual-menu[data-colortheme^="dark"],
+.contextual-menu[data-colortheme^="dark"] .contextual-menu {
+	background: #1a1a1a;
+	border-color: #333;
+	color: #e6e6e6;
+}
+
+.contextual-menu * {
+	user-select: none;
+}
+
+.contextual-menu-item {
+	display: flex;
+	width: 100%;
+	background: transparent;
+	border: 0;
+	color: inherit;
+	text-align: left;
+	line-height: 1.4;
+	padding: min(0.6dvh, 0.3dvw) min(1.2dvh, 0.6dvw);
+	cursor: pointer;
+	border-radius: min(0.4dvh, 0.2dvw);
+}
+
+.contextual-menu-item:hover:not([disabled], [aria-disabled="true"]) {
+	background: #e6e6e6;
+}
+
+.contextual-menu[data-colortheme^="dark"] .contextual-menu-item:hover:not([disabled], [aria-disabled="true"]) {
+	background: #2a2a2a;
+}
+
+.contextual-menu-item[disabled],
+.contextual-menu-item[aria-disabled="true"] {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+.contextual-menu-section {
+	padding: min(0.6dvh, 0.3dvw) min(1.2dvh, 0.6dvw);
+	color: #666;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+
+.contextual-menu[data-colortheme^="dark"] .contextual-menu-section,
+.contextual-menu-item .button-label {
+	font-size: inherit;
+}
+
+.contextual-menu-item.button > .button-image {
+	position: static;
+	transform: none;
+	width: 1.5em;
+	height: 1.5em;
+	aspect-ratio: 1/1;
+	object-fit: contain;
+}
+
+.contextual-menu-separator {
+	border: 0;
+	height: min(0.1dvh, 0.05dvw);
+	background: #ccc;
+	margin: min(0.6dvh, 0.3dvw) 0;
+}
+
+.contextual-menu[data-colortheme^="dark"] .contextual-menu-separator {
+	background: #333;
+}
+
+.contextual-menu-submenu {
+	--contextual-menu-gap: min(0.4dvh, 0.2dvw);
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 100%;
+	margin-left: var(--contextual-menu-gap);
+	min-width: min(15dvh, 7.5dvw);
+	font-size: 1em;
+}
+
+.contextual-menu-submenu::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 100%;
+	width: calc(var(--contextual-menu-gap) + var(--border-width) + min(0.6dvh, 0.3dvw));
+}
+
+.contextual-menu-submenu-button.contextual-menu-submenu-open-left > .contextual-menu-submenu::before {
+	right: auto;
+	left: 100%;
+}
+
+.contextual-menu-submenu-button:has(> .contextual-menu-submenu-open) {
+	z-index: 1;
+}
+
+.contextual-menu-submenu-open {
+	display: block;
+}
+
+.contextual-menu-submenu-button {
+	position: relative;
+	overflow: visible;
+	padding-right: 1.8em;
+}
+
+.contextual-menu-submenu-button::after {
+	content: "▶";
+	position: absolute;
+	right: var(--half-gap);
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 0.8em;
+}

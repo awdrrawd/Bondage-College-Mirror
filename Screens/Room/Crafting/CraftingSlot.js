@@ -156,7 +156,7 @@ var CraftingSlots = {
 
 			const craftsBackup = [...Player.Crafting];
 			let nChanges = 0;
-			Player.Crafting = Array(craftsBackup.length).fill(null);
+			Player.Crafting = CommonFillNewArray(craftsBackup.length, null);
 			for (const [indexNew, indexOld] of indexList.entries()) {
 				if (indexNew !== indexOld && Player.Crafting[indexNew] != craftsBackup[indexOld]) {
 					nChanges++;
@@ -903,7 +903,7 @@ var CraftingSlots = {
 		let nCrafts = 200;
 		if (Player.Crafting.length < nCrafts) {
 			nCrafts -= Player.Crafting.length;
-			Player.Crafting.push(...Array(nCrafts).fill(null));
+			Player.Crafting.push(...CommonFillNewArray(nCrafts, null));
 		}
 
 		const mode = CraftingMode in CraftingSlots.modeData ? /** @type {CraftingSlotModes} */(CraftingMode) : "Slot";

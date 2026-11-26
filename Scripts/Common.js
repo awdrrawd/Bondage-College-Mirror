@@ -458,6 +458,16 @@ function CommonResize(load) {
 }
 
 /**
+ * Forwards a canvas right-click to the current screen.
+ * @param {PointerEvent} event
+ */
+function CommonRightClick(event) {
+	if (ScreenIsLoading) return;
+	if (CurrentCharacter == null)
+		CurrentScreenFunctions.RightClick(event);
+}
+
+/**
  * Catches the clicks on the main screen and forwards it to the current screen click function if it exists, otherwise it sends it to the dialog click function
  * @type {MouseEventListener}
  */
@@ -673,6 +683,7 @@ async function CommonSetScreenWrapped(...spec) {
 		KeyUp: (e) => namespace[`${NewScreen}KeyUp`]?.(e) ?? false,
 		Exit: () => namespace[`${NewScreen}Exit`]?.(),
 		Paste: (e) => namespace[`${NewScreen}Paste`]?.(e),
+		RightClick: (e) => namespace[`${NewScreen}RightClick`]?.(e),
 	};
 
 	CurrentDarkFactor = 1.0;
@@ -754,9 +765,9 @@ function CommonIsColor(Value, options=null) {
  * Checks whether an item's color has a valid value that can be interpreted by the drawing
  * functions. Valid values are null, undefined, color strings, and an array containing any of the
  * aforementioned types.
- * @param {null | ItemColor} [color] - The Color value to check
+ * @param {null | Readonly<ItemColor>} [color] - The Color value to check
  * @param {null | { schema?: readonly BCColor[] }} [options]
- * @returns {color is (null | undefined | ItemColor)} - Returns TRUE if the color is a valid item color
+ * @returns {color is (null | undefined | Readonly<ItemColor>)} - Returns TRUE if the color is a valid item color
  */
 function CommonColorIsValid(color, options=null) {
 	if (color == null) {
@@ -2993,4 +3004,17 @@ function CommonMax(arg0, ...args) {
  */
 function CommonMin(arg0, ...args) {
 	return /** @type {T} */(Math.min(arg0, ...args));
+}
+
+/**
+ * Construct a new array of the specified length and fill it with the passed values.
+ * @template {undefined | ScalarType} T
+ * @param {number} length The length of the array
+ * @param {T} fillValue The _scalar_ fill value if the array
+ * @returns {T[]} The new array
+ */
+function CommonFillNewArray(length, fillValue) {
+	// Disallow object fill values as a precaution as there's no copying, potentially introducing a sneaky footgun
+	// due to all array values refering to the same object (unsafe unless you're dealing with singletons)
+	return Array(length).fill(fillValue);
 }

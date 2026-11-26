@@ -181,6 +181,8 @@ var MapManager = (function () {
 			const tile = MapDataGetTile(ChatRoomMapViewObjectStartID);
 			const object = MapDataGetObject(ChatRoomMapViewObjectStartID);
 			const effect = MapDataGetEffect(ChatRoomMapViewEffectStartID);
+
+			// All object-based array fill values are singletons
 			this.tiles = tiles ?? Array.from({ length }).fill(tile);
 			this.objects = objects ?? Array.from({ length }).fill(object);
 			this.effects = effects ?? Array.from({ length }, () => [effect]);

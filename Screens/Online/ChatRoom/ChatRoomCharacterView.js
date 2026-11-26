@@ -57,6 +57,23 @@ function ChatRoomCharacterViewClick(event) {
 
 }
 
+/**
+ * Handles right-clicks in the chatroom character view.
+ * @param {PointerEvent} event
+ */
+function ChatRoomCharacterViewRightClick(event) {
+	if (OnlineGameClick()) return;
+
+	ChatRoomCharacterViewLoopCharacters((charIdx, charX, charY, space, zoom) => {
+		if (MouseIn(charX, charY, space, ChatRoomCharacterViewWidth * zoom)) {
+			const character = ChatRoomCharacterDrawlist[charIdx];
+			ContextualMenu.show("character", { character }, { event });
+			return true;
+		}
+	});
+}
+
+
 /** @type {KeyboardEventListener} */
 function ChatRoomCharacterViewKeyDown(event) {
 	return false;

@@ -952,7 +952,7 @@ function AssetAssignDefaultColor(A) {
 	}
 
 	/** @type {BCColor[]} */
-	const defaults = Array(A.ColorableLayerCount).fill(fill);
+	const defaults = CommonFillNewArray(A.ColorableLayerCount, fill);
 	/** @type {Set<number>} */
 	const seen = new Set();
 	for (const layer of A.Layer) {

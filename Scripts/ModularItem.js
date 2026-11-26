@@ -587,7 +587,7 @@ function ModularItemModuleTransition(newModule, data) {
  */
 function ModularItemParseCurrent({ asset, modules }, typeRecord) {
 	if (!CommonIsObject(typeRecord)) {
-		return Array(modules.length).fill(0);
+		return CommonFillNewArray(modules.length, 0);
 	}
 	return modules.map(module => {
 		const index = typeRecord[module.Key];

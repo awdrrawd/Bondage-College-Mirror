@@ -744,7 +744,7 @@ function ItemGetColor(C, itemOrGroupName) {
 	const item = typeof itemOrGroupName === "string" ? InventoryGet(C, itemOrGroupName) : itemOrGroupName;
 	if (!item) return undefined;
 	if (typeof item.Color === "string") {
-		return Array(item.Asset.ColorableLayerCount).fill(item.Color);
+		return CommonFillNewArray(item.Asset.ColorableLayerCount, item.Color);
 	}
 	return !item.Color || ItemColorIsDefault(item) ? [...item.Asset.DefaultColor] : item.Color;
 }
@@ -1360,7 +1360,7 @@ function CharacterAppearanceNextColor(C, Group) {
 	if (newColor == "Default") {
 		item.Color = [...item.Asset.DefaultColor];
 	} else {
-		item.Color = Array(item.Asset.ColorableLayerCount).fill(newColor);
+		item.Color = CommonFillNewArray(item.Asset.ColorableLayerCount, newColor);
 	}
 
 	// Reloads the character canvas
@@ -1391,7 +1391,7 @@ function CharacterAppearanceMoveGroup(C, Move) {
 function CharacterAppearanceSetColorForGroup(C, Color, Group) {
 	const item = InventoryGet(C, Group);
 	if (item) {
-		item.Color = Array(item.Asset.ColorableLayerCount).fill(Color);
+		item.Color = CommonFillNewArray(item.Asset.ColorableLayerCount, Color);
 		CharacterLoadCanvas(C);
 	}
 }

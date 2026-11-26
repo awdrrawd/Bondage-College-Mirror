@@ -209,3 +209,35 @@ ObjectSettingsReset,Reset
 ObjectSettingsColor,Color
 ObjectSettingsDecal,Decal
 ObjectSettingsDecalNone,None
+
+Examine,Examine
+ChangeClothes,Change clothes
+WhisperTarget,Whisper to
+UnwhisperTarget,Clear whisper target
+AdminActions,Admin actions
+Kick,Kick
+KickConfirm,Kick $target?
+Ban,Ban
+BanConfirm,Ban $target?
+Promote,Promote
+Demote,Demote
+Whitelist,Whitelist
+Unwhitelist,Unwhitelist
+Move,Move
+CopyMessage,Copy message
+Relations,Relations
+Blacklist,Blacklist
+Ghost,Ghost and ignore
+FriendNotification,Friend with notification
+FriendNoNotification,Friend without notification
+Unfriend,Unfriend
+CharacterActions,Character actions
+AddFocuslist,Add to focus list
+RemoveFocuslist,Remove from focus list
+HoldLeash,Hold leash
+ReleaseLeash,Release leash
+HelpStand,Help stand
+HelpKneel,Help kneel
+HelpStruggle,Help struggle free
+StopStruggles,Stop struggles
+StopLeaving,Stop from leaving

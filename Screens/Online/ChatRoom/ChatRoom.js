@@ -147,6 +147,7 @@ var ChatRoomViews = {
 		Draw: ChatRoomCharacterViewDraw,
 		DrawUi: ChatRoomCharacterViewDrawUi,
 		Click: ChatRoomCharacterViewClick,
+		RightClick: ChatRoomCharacterViewRightClick,
 		KeyDown: ChatRoomCharacterViewKeyDown,
 		CanLeave: ChatRoomCharacterViewCanLeave,
 		Screenshot: ChatRoomCharacterViewScreenshot
@@ -158,6 +159,7 @@ var ChatRoomViews = {
 		Draw: ChatRoomMapViewDraw,
 		DrawUi: ChatRoomMapViewDrawUi,
 		Click: ChatRoomMapViewClick,
+		RightClick: ChatRoomMapViewRightClick,
 		MouseDown: ChatRoomMapViewMouseDown,
 		MouseUp: ChatRoomMapViewMouseUp,
 		MouseMove: ChatRoomMapViewMouseMove,
@@ -409,46 +411,52 @@ function ChatRoomIsViewActive(viewName) {
 
 /**
  * Checks if the player can add the current character to her whitelist.
+ * @param {Character | null} [C] - The character to check
  * @returns {boolean} - TRUE if the current character is not in the player's whitelist nor blacklist.
  */
-function ChatRoomCanAddWhiteList() { return !!CurrentCharacter && !CurrentCharacter.IsWhitelisted() && !CurrentCharacter.IsBlacklisted(); }
+function ChatRoomCanAddWhiteList(C) { C ??= CurrentCharacter; return !!C && !C.IsWhitelisted() && !C.IsBlacklisted(); }
 /**
  * Checks if the player can add the current character to her blacklist.
+ * @param {Character | null} [C] - The character to check
  * @returns {boolean} - TRUE if the current character is not in the player's whitelist nor blacklist.
  */
-function ChatRoomCanAddBlackList() { return !!CurrentCharacter && !CurrentCharacter.IsWhitelisted() && !CurrentCharacter.IsBlacklisted(); }
+function ChatRoomCanAddBlackList(C) { C ??= CurrentCharacter; return !!C && !C.IsWhitelisted() && !C.IsBlacklisted(); }
 /**
  * Checks if the player can remove the current character from her whitelist.
+ * @param {Character | null} [C] - The character to check
  * @returns {boolean} - TRUE if the current character is in the player's whitelist, but not her blacklist.
  */
-function ChatRoomCanRemoveWhiteList() { return !!CurrentCharacter && CurrentCharacter.IsWhitelisted(); }
+function ChatRoomCanRemoveWhiteList(C) { C ??= CurrentCharacter; return !!C && C.IsWhitelisted(); }
 /**
  * Checks if the player can remove the current character from her blacklist.
+ * @param {Character | null} [C] - The character to check
  * @returns {boolean} - TRUE if the current character is in the player's blacklist, but not her whitelist.
  */
-function ChatRoomCanRemoveBlackList() { return !!CurrentCharacter && CurrentCharacter.IsBlacklisted(); }
+function ChatRoomCanRemoveBlackList(C) { C ??= CurrentCharacter; return !!C && C.IsBlacklisted(); }
 /**
  * Checks if the player can add the current character to her friendlist
+ * @param {Character | null} [C] - The character to check
  * @returns {boolean} - TRUE if the current character is not in the player's friendlist yet.
  */
-function ChatRoomCanAddFriend() { return !!CurrentCharacter && !CurrentCharacter.IsFriend(); }
+function ChatRoomCanAddFriend(C) { C ??= CurrentCharacter; return !!C && !C.IsFriend(); }
 /**
  * Checks if the player can remove the current character from her friendlist.
+ * @param {Character | null} [C] - The character to check
  * @returns {boolean} - TRUE if the current character is in the player's friendlist.
  */
-function ChatRoomCanRemoveFriend() {
-	return !!CurrentCharacter && CurrentCharacter.IsOnline() && FriendListCanDelete(CurrentCharacter.MemberNumber);
-}
+function ChatRoomCanRemoveFriend(C) { C ??= CurrentCharacter; return !!C && C.IsOnline() && FriendListCanDelete(C.MemberNumber); }
 /**
  * Checks if the player can add the current character to her ghostlist
+ * @param {Character | null} [C] - The character to check
  * @returns {boolean} - TRUE if the current character is not in the player's ghostlist yet.
  */
-function ChatRoomCanAddGhost() { return !!CurrentCharacter && !CurrentCharacter?.IsGhosted(); }
+function ChatRoomCanAddGhost(C) { C ??= CurrentCharacter; return !!C && !C.IsGhosted(); }
 /**
  * Checks if the player can remove the current character from her ghostlist.
+ * @param {Character | null} [C] - The character to check
  * @returns {boolean} - TRUE if the current character is in the player's ghostlist.
  */
-function ChatRoomCanRemoveGhost() { return !!CurrentCharacter && CurrentCharacter.IsGhosted(); }
+function ChatRoomCanRemoveGhost(C) { C ??= CurrentCharacter; return !!C && C.IsGhosted(); }
 /**
  * Checks if the player can change the current character's clothes
  * @returns {boolean} - TRUE if the player can change the character's clothes and is allowed to.
@@ -549,10 +557,16 @@ function ChatRoomCurrentCharacterIsWhitelisted() { return !!(CurrentCharacter?.I
  */
 function ChatRoomPlayerIsInDrawFocus() { return ChatRoomDrawFocusList.length > 0; }
 /**
+ * Checks if the character is in the player's focuslist (/focus).
+ * @param {Character} C - The character to check
+ * @returns {boolean} - TRUE if the character is in the player's focuslist.
+ */
+function ChatRoomCharacterIsInFocusList(C) { return ChatRoomDrawFocusList.includes(C); }
+/**
  * Checks if the current character is in the player's focuslist (/focus).
  * @returns {boolean} - TRUE if the current character is in the player's focuslist.
  */
-function ChatRoomCurrentCharacterInDrawFocusList() { return ((CurrentCharacter != null) && (ChatRoomDrawFocusList.indexOf(CurrentCharacter) >= 0)); }
+function ChatRoomCurrentCharacterInDrawFocusList() { return !!(CurrentCharacter && ChatRoomCharacterIsInFocusList(CurrentCharacter)); }
 /**
  * Checks if the room allows the photograph feature to be used.
  * @returns {boolean} - TRUE if the player can take a photo.
@@ -782,9 +796,10 @@ function ChatRoomCanGiveLockpicks() {
 
 /**
  * Checks if the player can help the current character by giving her lockpicks
+ * @param {Character | null} [C] - The character to check
  * @returns {boolean} - TRUE if the player can interact and is allowed to interact with the current character.
  */
-function ChatRoomCanAssistStruggle() { return !!CurrentCharacter && CurrentCharacter.AllowItem && !CurrentCharacter.CanInteract(); }
+function ChatRoomCanAssistStruggle(C) { C ??= CurrentCharacter; return !!C && ServerChatRoomGetAllowItem(Player, C) && !C.CanInteract(); }
 
 /**
  * Checks if the character options menu is available.
@@ -844,14 +859,15 @@ function ChatRoomStopWhisper() {
  * Checks if the target character can be helped back on her feet. This is different than CurrentCharacter.CanKneel()
  * because it listens for the current active pose and removes certain checks that are not required for someone else to
  * help a person kneel down.
+ * @param {Character | null} [C] - The character to check
  * @returns {boolean} - Whether or not the target character can stand
  */
-function ChatRoomCanAssistStand() {
-	if (!CurrentCharacter) return false;
-	const C = CurrentCharacter;
+function ChatRoomCanAssistStand(C) {
+	C ??= CurrentCharacter;
+	if (!C) return false;
 	return (
 		Player.CanInteract()
-		&& C.AllowItem
+		&& ServerChatRoomGetAllowItem(Player, C)
 		&& PoseAllStanding.some(p => PoseAvailable(C, "BodyLower", p))
 		&& C.IsKneeling()
 	);
@@ -861,15 +877,16 @@ function ChatRoomCanAssistStand() {
  * Checks if the target character can be helped down on her knees. This is different than CurrentCharacter.CanKneel()
  * because it listens for the current active pose and removes certain checks that are not required for someone else to
  * help a person kneel down.
- * @returns {boolean} - Whether or not the target character can stand
+ * @param {Character | null} [C] - The character to check
+ * @returns {boolean} - Whether or not the target character can kneel
  */
 
-function ChatRoomCanAssistKneel() {
-	if (!CurrentCharacter) return false;
-	const C = CurrentCharacter;
+function ChatRoomCanAssistKneel(C) {
+	C ??= CurrentCharacter;
+	if (!C) return false;
 	return (
 		Player.CanInteract()
-		&& C.AllowItem
+		&& ServerChatRoomGetAllowItem(Player, C)
 		&& PoseAllKneeling.some(p => PoseAvailable(C, "BodyLower", p))
 		&& !C.IsKneeling()
 	);
@@ -897,40 +914,46 @@ function ChatRoomCanAttemptKneel() {
 
 /**
  * Checks if the player can stop the current character from leaving.
+ * @param {Character | null} [C] - The character to check
  * @returns {boolean} - TRUE if the current character is slowed down and can be interacted with.
  */
-function ChatRoomCanStopSlowPlayer() { return !!CurrentCharacter && CurrentCharacter.IsSlow() && Player.CanInteract() && CurrentCharacter.AllowItem; }
+function ChatRoomCanStopSlowPlayer(C) { C ??= CurrentCharacter; return !!C && C.IsSlow() && Player.CanInteract() && ServerChatRoomGetAllowItem(Player, C); }
 
 /**
  * Checks if the player can interrupt another character from struggling.
+ * @param {Character | null} [C] - The character to check
  * @returns {boolean} - TRUE if the player can do it
  */
-function ChatRoomCanInterruptOnlineStruggle() { return !!CurrentCharacter && Player.CanInteract() && !CurrentCharacter.IsPlayer() && CurrentCharacter.AllowItem; }
+function ChatRoomCanInterruptOnlineStruggle(C) { C ??= CurrentCharacter; return !!C && Player.CanInteract() && !C.IsPlayer() && ServerChatRoomGetAllowItem(Player, C); }
 
 /**
  * Checks if the player can grab the targeted player's leash
+ * @param {Character | null} [C] - The character to check
  * @returns {boolean} - TRUE if the player can interact and is allowed to interact with the current character.
  */
-function ChatRoomCanHoldLeash() {
-	if (!CurrentCharacter || !CurrentCharacter.IsOnline()) return false;
-	return CurrentCharacter.AllowItem
+function ChatRoomCanHoldLeash(C) {
+	C ??= CurrentCharacter;
+	if (!C || !C.IsOnline()) return false;
+	return ServerChatRoomGetAllowItem(Player, C)
 		&& Player.CanInteract()
-		&& (CurrentCharacter.OnlineSharedSettings?.AllowPlayerLeashing ?? false)
-		&& !ChatRoomLeashList.includes(CurrentCharacter.MemberNumber)
-		&& ChatRoomCanBeLeashed(CurrentCharacter);
+		&& (C.OnlineSharedSettings?.AllowPlayerLeashing ?? false)
+		&& !ChatRoomLeashList.includes(C.MemberNumber)
+		&& ChatRoomCanBeLeashed(C);
 }
 
 /**
  * Checks if the player can let go of the targeted player's leash
+ * @param {Character | null} [C] - The character to check
  * @returns {boolean} - TRUE if the player can interact and is allowed to interact with the current character.
  */
-function ChatRoomCanStopHoldLeash() {
-	if (!CurrentCharacter || !CurrentCharacter.IsOnline()) return false;
-	if (CurrentCharacter.AllowItem && Player.CanInteract() && CurrentCharacter.OnlineSharedSettings.AllowPlayerLeashing && ChatRoomLeashList.includes(CurrentCharacter.MemberNumber)) {
-		if (ChatRoomCanBeLeashed(CurrentCharacter)) {
+function ChatRoomCanStopHoldLeash(C) {
+	C ??= CurrentCharacter;
+	if (!C || !C.IsOnline()) return false;
+	if (ServerChatRoomGetAllowItem(Player, C) && Player.CanInteract() && C.OnlineSharedSettings.AllowPlayerLeashing && ChatRoomLeashList.includes(C.MemberNumber)) {
+		if (ChatRoomCanBeLeashed(C)) {
 			return true;
 		} else {
-			ChatRoomLeashList.splice(ChatRoomLeashList.indexOf(CurrentCharacter.MemberNumber), 1);
+			ChatRoomLeashList.splice(ChatRoomLeashList.indexOf(C.MemberNumber), 1);
 		}
 	}
 	return false;
@@ -1361,6 +1384,9 @@ function ChatRoomCreateElement() {
 					tag: "div",
 					attributes: { id: "TextAreaChatLog", role: "log" },
 					classList: ["scroll-box"],
+					eventListeners: {
+						contextmenu: (ev) => ChatRoomMessageRightClick(ev)
+					},
 				},
 				{
 					tag: "div",
@@ -2885,6 +2911,47 @@ function ChatRoomClick(event) {
 		if (ChatRoomActiveView?.Click)
 			return ChatRoomActiveView.Click(event);
 
+}
+
+/**
+ * Copy a chat message's text to the clipboard.
+ * @param {HTMLElement | null} messageElement
+ */
+function ChatRoomCopyMessageText(messageElement) {
+	if (!messageElement) return;
+	const text = messageElement.querySelector(".chat-room-message-content")?.textContent
+		|| "";
+	if (!text) return;
+	CommonClipboardWrite(text);
+}
+
+/**
+ * Right-click on a message in the chat log.
+ * @param {PointerEvent} event
+ */
+function ChatRoomMessageRightClick(event) {
+	const target = event.target instanceof HTMLElement ? event.target : null;
+	const messageElement = target?.closest(".ChatMessage");
+	if (!(messageElement instanceof HTMLElement)) return;
+	const msgNode = messageElement.querySelector("[msgid]");
+	const msgId = msgNode?.getAttribute("msgid") || null;
+	ContextualMenu.show("chatMessage", { messageElement, msgId }, { event });
+}
+
+/**
+ * Handles right-clicks in the chatroom screen.
+ * @type {MouseEventListener}
+ */
+function ChatRoomRightClick(event) {
+
+	// In orgasm mode, do not allow contextual menus
+	if ((typeof Player.ArousalSettings?.OrgasmTimer === "number") && (Player.ArousalSettings?.OrgasmTimer > 0)) {
+		return;
+	}
+
+	if (MouseIn(0, 0, 1000, 1000)) {
+		return ChatRoomActiveView?.RightClick?.(event);
+	}
 }
 
 /**
@@ -5678,10 +5745,12 @@ async function DialogCallMaids() {
 /**
  * Triggered when the player assists another player to struggle out, the bonus is evasion / 2 + 1, with penalties if
  * the player is restrained.
+ * @param {Character | null} [C] - The character to struggle assist
  * @returns {void} - Nothing.
  */
-function ChatRoomStruggleAssist() {
-	if (!CurrentCharacter) return;
+function ChatRoomStruggleAssist(C) {
+	C ??= CurrentCharacter;
+	if (!C) return;
 	let Bonus = SkillGetLevelReal(Player, "Evasion") / 2 + 1;
 	if (!Player.CanInteract()) {
 		const armItem = InventoryGet(Player, "ItemArms");
@@ -5692,10 +5761,10 @@ function ChatRoomStruggleAssist() {
 	}
 	const Dictionary = new DictionaryBuilder()
 		.sourceCharacter(Player)
-		.targetCharacter(CurrentCharacter)
+		.targetCharacter(C)
 		.build();
 	ServerSend("ChatRoomChat", { Content: "StruggleAssist", Type: "Action", Dictionary });
-	ServerSend("ChatRoomChat", { Content: "StruggleAssist" + Math.round(Bonus).toString(), Type: "Hidden", Target: CurrentCharacter.MemberNumber });
+	ServerSend("ChatRoomChat", { Content: "StruggleAssist" + Math.round(Bonus).toString(), Type: "Hidden", Target: C.MemberNumber });
 	DialogLeave();
 }
 
@@ -5716,18 +5785,20 @@ function ChatRoomGiveLockpicks() {
 
 /**
  * Triggered when the player grabs another player's leash
+ * @param {Character | null} [C] - The character to hold the leash
  * @returns {void} - Nothing.
  */
-function ChatRoomHoldLeash() {
-	if (!CurrentCharacter || !CurrentCharacter.IsOnline()) return;
+function ChatRoomHoldLeash(C) {
+	C ??= CurrentCharacter;
+	if (!C || !C.IsOnline()) return;
 	const Dictionary = new DictionaryBuilder()
 		.sourceCharacter(Player)
-		.targetCharacter(CurrentCharacter)
+		.targetCharacter(C)
 		.build();
 	ServerSend("ChatRoomChat", { Content: "HoldLeash", Type: "Action", Dictionary });
-	ServerSend("ChatRoomChat", { Content: "HoldLeash", Type: "Hidden", Target: CurrentCharacter.MemberNumber });
-	if (ChatRoomLeashList.indexOf(CurrentCharacter.MemberNumber) < 0)
-		ChatRoomLeashList.push(CurrentCharacter.MemberNumber);
+	ServerSend("ChatRoomChat", { Content: "HoldLeash", Type: "Hidden", Target: C.MemberNumber });
+	if (ChatRoomLeashList.indexOf(C.MemberNumber) < 0)
+		ChatRoomLeashList.push(C.MemberNumber);
 	DialogLeave();
 }
 
@@ -5752,18 +5823,20 @@ function ChatRoomDoHoldLeash(SenderCharacter) {
 
 /**
  * Triggered when the player lets go of another player's leash
+ * @param {Character | null} [C] - The character to stop holding the leash
  * @returns {void} - Nothing.
  */
-function ChatRoomStopHoldLeash() {
-	if (!CurrentCharacter || !CurrentCharacter.IsOnline()) return;
+function ChatRoomStopHoldLeash(C) {
+	C ??= CurrentCharacter;
+	if (!C || !C.IsOnline()) return;
 	const Dictionary = new DictionaryBuilder()
 		.sourceCharacter(Player)
-		.targetCharacter(CurrentCharacter)
+		.targetCharacter(C)
 		.build();
 	ServerSend("ChatRoomChat", { Content: "StopHoldLeash", Type: "Action", Dictionary });
-	ServerSend("ChatRoomChat", { Content: "StopHoldLeash", Type: "Hidden", Target: CurrentCharacter.MemberNumber });
-	if (ChatRoomLeashList.indexOf(CurrentCharacter.MemberNumber) >= 0)
-		ChatRoomLeashList.splice(ChatRoomLeashList.indexOf(CurrentCharacter.MemberNumber), 1);
+	ServerSend("ChatRoomChat", { Content: "StopHoldLeash", Type: "Hidden", Target: C.MemberNumber });
+	if (ChatRoomLeashList.indexOf(C.MemberNumber) >= 0)
+		ChatRoomLeashList.splice(ChatRoomLeashList.indexOf(C.MemberNumber), 1);
 	DialogLeave();
 }
 
@@ -5823,46 +5896,52 @@ function ChatRoomDoRemoveLeash(SenderCharacter) {
 
 /**
  * Triggered when a character makes another character kneel/stand.
+ * @param {Character | null} [C] - The character to kneel/stand
  * @returns {void} - Nothing
  */
-function ChatRoomKneelStandAssist() {
-	if (!CurrentCharacter) return;
+function ChatRoomKneelStandAssist(C) {
+	C ??= CurrentCharacter;
+	if (!C) return;
 	const Dictionary = new DictionaryBuilder()
 		.sourceCharacter(Player)
-		.targetCharacter(CurrentCharacter)
+		.targetCharacter(C)
 		.build();
-	ServerSend("ChatRoomChat", { Content: !CurrentCharacter.IsKneeling() ? "HelpKneelDown" : "HelpStandUp", Type: "Action", Dictionary });
-	PoseSetActive(CurrentCharacter, !CurrentCharacter.IsKneeling() ? "Kneel" : "BaseLower", false);
-	ChatRoomCharacterUpdate(CurrentCharacter);
+	ServerSend("ChatRoomChat", { Content: !C.IsKneeling() ? "HelpKneelDown" : "HelpStandUp", Type: "Action", Dictionary });
+	PoseSetActive(C, !C.IsKneeling() ? "Kneel" : "BaseLower", false);
+	ChatRoomCharacterUpdate(C);
 }
 
 /**
  * Triggered when a character stops another character from leaving.
+ * @param {Character | null} [C] - The character to stop leaving
  * @returns {void} - Nothing
  */
-function ChatRoomStopLeave() {
-	if (!CurrentCharacter) return;
+function ChatRoomStopLeave(C) {
+	C ??= CurrentCharacter;
+	if (!C) return;
 	const Dictionary = new DictionaryBuilder()
 		.sourceCharacter(Player)
-		.targetCharacter(CurrentCharacter)
+		.targetCharacter(C)
 		.build();
 	ServerSend("ChatRoomChat", { Content: "SlowStop", Type: "Action", Dictionary });
-	ServerSend("ChatRoomChat", { Content: "SlowStop", Type: "Hidden", Target: CurrentCharacter.MemberNumber });
+	ServerSend("ChatRoomChat", { Content: "SlowStop", Type: "Hidden", Target: C.MemberNumber });
 	DialogLeave();
 }
 
 /**
  * Triggered when a character interrupt online struggles on another character.
+ * @param {Character | null} [C] - The character to interrupt online struggles
  * @returns {void} - Nothing
  */
-function ChatRoomOnlineStruggleInterrupt() {
-	if (!CurrentCharacter) return;
+function ChatRoomOnlineStruggleInterrupt(C) {
+	C ??= CurrentCharacter;
+	if (!C) return;
 	const Dictionary = new DictionaryBuilder()
 		.sourceCharacter(Player)
-		.targetCharacter(CurrentCharacter)
+		.targetCharacter(C)
 		.build();
 	ServerSend("ChatRoomChat", { Content: "OnlineStruggleInterrupt", Type: "Action", Dictionary });
-	ServerSend("ChatRoomChat", { Content: "OnlineStruggleInterrupt", Type: "Hidden", Target: CurrentCharacter.MemberNumber });
+	ServerSend("ChatRoomChat", { Content: "OnlineStruggleInterrupt", Type: "Hidden", Target: C.MemberNumber });
 	DialogLeave();
 }
 
@@ -5885,16 +5964,24 @@ function ChatRoomAdminAction(ActionType, Publish=true) {
 
 /**
  * Sends an administrative command to the server from the chat text field.
- * @param {"Ban"|"Unban"|"Kick"|"Promote"|"Demote"|"Whitelist"|"Unwhitelist"} ActionType - Type of action performed.
- * @param {string} Argument - Target number of the action.
+ * @param {"Ban"|"Unban"|"Kick"|"Promote"|"Demote"|"Whitelist"|"Unwhitelist"|"Move"} ActionType - Type of action performed.
+ * @param {string | number | Character} Argument - Target number of the action.
  * @returns {void} - Nothing
  */
 function ChatRoomAdminChatAction(ActionType, Argument) {
-	if (ChatRoomPlayerIsAdmin()) {
-		const C = parseInt(Argument);
-		if (!isNaN(C) && (C > 0) && (C != Player.MemberNumber))
-			ServerSend("ChatRoomAdmin", { MemberNumber: C, Action: ActionType });
+	if (!ChatRoomPlayerIsAdmin() || !Argument) return;
+	const memberNumber = (() => {
+		if (typeof Argument === "number") return Argument;
+		if (typeof Argument === "string") return CommonParseInt(Argument);
+		if (Argument.IsOnline() || Argument.IsPlayer()) return Argument.MemberNumber;
+		return null;
+	})();
+	if (!CommonIsNonNegativeInteger(memberNumber)) return;
+	if (ActionType === "Move") {
+		ChatRoomCharacterViewMoveTarget = memberNumber;
+		return;
 	}
+	ServerSend("ChatRoomAdmin", { MemberNumber: memberNumber, Action: ActionType });
 }
 
 /**

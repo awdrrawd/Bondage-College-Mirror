@@ -93,7 +93,7 @@ function CSSCheckSupport(cases) {
 				title: "Outdated browser warning",
 				onClick: (ev, toast) => CommonClipboardWrite(
 					toast.innerText,
-					(result) => { if (result.ok) { ToastManager.info("Message coppied to clipboard"); }},
+					(result) => { if (result.ok()) { ToastManager.info("Message coppied to clipboard"); }},
 				),
 			},
 		);

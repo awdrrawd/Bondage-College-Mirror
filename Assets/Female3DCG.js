@@ -22324,10 +22324,7 @@ var AssetFemale3DCG = [
 				Left: 157,
 				Top: 2,
 				Priority: 55,
-				Hide: [
-					"ItemEars",
-					"HairFront",
-				],
+				Hide: ["ItemEars", "HairFront"],
 				Layer: [
 					{
 						Name: "Visor",
@@ -22336,7 +22333,7 @@ var AssetFemale3DCG = [
 					},
 					{
 						Name: "VisorDark",
-						AllowTypes: {v:1},
+						AllowTypes: { v: 1 },
 						Color: ["#000000"],
 						Priority: 40,
 					},
@@ -22350,47 +22347,47 @@ var AssetFemale3DCG = [
 					},
 					{
 						Name: "CrestFDL",
-						AllowTypes: {c:1},
+						AllowTypes: { c: 1 },
 						Color: ["#FFD481"],
 						Priority: 56,
 					},
 					{
 						Name: "CrestBF",
-						AllowTypes: {c:2},
+						AllowTypes: { c: 2 },
 						Priority: 56,
 						CopyLayerColor: "CrestFDL",
 					},
 					{
 						Name: "PlumeBase",
-						AllowTypes: {a:1},
+						AllowTypes: { a: 1 },
 						Color: ["#DAB469"],
 						Priority: 54,
 					},
 					{
 						Name: "Plume",
-						AllowTypes: {a:1},
+						AllowTypes: { a: 1 },
 						Color: ["#B60000"],
 						Priority: 4,
 					},
 					{
 						Name: "Spike",
-						AllowTypes: {a:[2,3]},
+						AllowTypes: { a: [2, 3] },
 						CopyLayerColor: "PlumeBase",
 						Priority: 54,
 					},
 					{
 						Name: "SpikeFeather",
-						AllowTypes: {a:2},
+						AllowTypes: { a: 2 },
 						CopyLayerColor: "Plume",
 						Priority: 4,
 					},
 					{
 						Name: "SpikeLongFeather",
-						AllowTypes: {a:3},
+						AllowTypes: { a: 3 },
 						CopyLayerColor: "Plume",
 						Priority: 4,
 					},
-				]
+				],
 			},
 		],
 		Color: [
@@ -23812,7 +23809,7 @@ var AssetFemale3DCG = [
 			},
 			{
 				Name: "MothAntenna",
-				InventoryID: 6000,
+				InventoryID: 1440,
 				Category: ["Fantasy"],
 				Value: -1,
 				BuyGroup: "Moth",
@@ -26567,29 +26564,29 @@ var AssetFemale3DCG = [
 				Layer: [
 					{
 						Name: "BasicL",
-						AllowTypes: { l:0 },
+						AllowTypes: { l: 0 },
 						Left: 200,
 						Color: ["#FFCC66"],
 					},
 					{
 						Name: "BasicR",
-						AllowTypes: { r:0 },
+						AllowTypes: { r: 0 },
 						Left: 253,
 						Color: ["#FFCC66"],
 					},
 					{
 						Name: "StarL",
-						AllowTypes: { l:1 },
+						AllowTypes: { l: 1 },
 						Left: 200,
 						CopyLayerColor: "BasicL",
 					},
 					{
 						Name: "StarR",
-						AllowTypes: { r:1 },
+						AllowTypes: { r: 1 },
 						Left: 251,
 						CopyLayerColor: "BasicR",
-					}
-				]
+					},
+				],
 			},
 		],
 		Color: [
@@ -29410,99 +29407,99 @@ var AssetFemale3DCG = [
 				Layer: [
 					{
 						Name: "Cable",
-						AllowTypes: { m:0 },
+						AllowTypes: { m: 0 },
 						Color: ["#0F0F10"],
 					},
 					{
 						Name: "UsbBase",
-						AllowTypes: { m:0, t:0 },
+						AllowTypes: { m: 0, t: 0 },
 						CopyLayerColor: "Cable",
 					},
 					{
 						Name: "UsbPlug",
-						AllowTypes: { m:0, t:0 },
+						AllowTypes: { m: 0, t: 0 },
 						Color: ["#A7ABB3"],
 						Priority: 3,
 					},
 					{
 						Name: "EthernetBase",
-						AllowTypes: { m:0, t:1 },
+						AllowTypes: { m: 0, t: 1 },
 						CopyLayerColor: "Cable",
 					},
 					{
 						Name: "EthernetPlug",
-						AllowTypes: { m:0, t:1 },
+						AllowTypes: { m: 0, t: 1 },
 						CopyLayerColor: "UsbPlug",
 						Priority: 3,
 					},
 					{
 						Name: "TrsBase",
-						AllowTypes: { m:0, t:2 },
+						AllowTypes: { m: 0, t: 2 },
 						CopyLayerColor: "Cable",
 					},
 					{
 						Name: "TrsPlug",
-						AllowTypes: { m:0, t:2 },
+						AllowTypes: { m: 0, t: 2 },
 						CopyLayerColor: "UsbPlug",
 						Priority: 3,
 					},
 					{
 						Name: "GamepadBase",
-						AllowTypes: { m:0, t:3 },
+						AllowTypes: { m: 0, t: 3 },
 						CopyLayerColor: "Cable",
 					},
 					{
 						Name: "GamepadPlug",
-						AllowTypes: { m:0, t:3 },
+						AllowTypes: { m: 0, t: 3 },
 						CopyLayerColor: "UsbPlug",
 						Priority: 3,
 					},
 					{
 						Name: "CableM",
-						AllowTypes: { m:1 },
+						AllowTypes: { m: 1 },
 						CopyLayerColor: "Cable",
 					},
 					{
 						Name: "UsbBaseM",
-						AllowTypes: { m:1, t:0 },
+						AllowTypes: { m: 1, t: 0 },
 						CopyLayerColor: "Cable",
 					},
 					{
 						Name: "UsbPlugM",
-						AllowTypes: { m:1, t:0 },
+						AllowTypes: { m: 1, t: 0 },
 						CopyLayerColor: "UsbPlug",
 						Priority: 3,
 					},
 					{
 						Name: "EthernetBaseM",
-						AllowTypes: { m:1, t:1 },
+						AllowTypes: { m: 1, t: 1 },
 						CopyLayerColor: "Cable",
 					},
 					{
 						Name: "EthernetPlugM",
-						AllowTypes: { m:1, t:1 },
+						AllowTypes: { m: 1, t: 1 },
 						CopyLayerColor: "UsbPlug",
 						Priority: 3,
 					},
 					{
 						Name: "TrsBaseM",
-						AllowTypes: { m:1, t:2 },
+						AllowTypes: { m: 1, t: 2 },
 						CopyLayerColor: "Cable",
 					},
 					{
 						Name: "TrsPlugM",
-						AllowTypes: { m:1, t:2 },
+						AllowTypes: { m: 1, t: 2 },
 						CopyLayerColor: "UsbPlug",
 						Priority: 3,
 					},
 					{
 						Name: "GamepadBaseM",
-						AllowTypes: { m:1, t:3 },
+						AllowTypes: { m: 1, t: 3 },
 						CopyLayerColor: "Cable",
 					},
 					{
 						Name: "GamepadPlugM",
-						AllowTypes: { m:1, t:3 },
+						AllowTypes: { m: 1, t: 3 },
 						CopyLayerColor: "UsbPlug",
 						Priority: 3,
 					},
@@ -30249,7 +30246,7 @@ var AssetFemale3DCG = [
 			},
 			{
 				Name: "MothWings",
-				InventoryID: 6000,
+				InventoryID: 1440,
 				Category: ["Fantasy"],
 				Value: 30,
 				BuyGroup: "Moth",
@@ -31339,7 +31336,7 @@ var AssetFemale3DCG = [
 				Name: "LowerBodyScars",
 				Priority: 13,
 				Value: 10,
-				InventoryID: 1437,
+				InventoryID: 1441,
 				Top: 200,
 				Left: 0,
 				ParentGroup: "BodyLower",
@@ -40118,6 +40115,20 @@ var AssetFemale3DCG = [
 				Prerequisite: ["AccessButt"],
 				Effect: [E.IsPlugged],
 				ExpressionTrigger: [{ Name: "Low", Group: "Blush", Timer: 10 }],
+			},
+			{
+				Name: "RotatingAnalBeads",
+				InventoryID: 1444,
+				Effect: [E.IsPlugged, E.UseRemote],
+				Value: 80,
+				Difficulty: 30,
+				Time: 30,
+				RemoveTime: 50,
+				IsRestraint: true,
+				AllowLock: true,
+				Prerequisite: ["AccessButt"],
+				ExpressionTrigger: [{ Group: "Blush", Name: "High", Timer: 10 }],
+				Visible: false,
 			},
 			{
 				Name: "Cowtail",
@@ -54779,17 +54790,17 @@ var AssetFemale3DCG = [
 						AllowTypes: { LMF: 6 },
 					},
 					{
-						Name: "Liri"
+						Name: "Liri",
 						AllowTypes: { LMF: 7 },
-					},	
+					},
 					{
-						Name: "Alicia"
+						Name: "Alicia",
 						AllowTypes: { LMF: 8 },
-					},	
+					},
 					{
-						Name: "Andrea"
+						Name: "Andrea",
 						AllowTypes: { LMF: 9 },
-					},	
+					},
 					{
 						Name: "Amelia",
 						AllowTypes: { ACF: 1 },
@@ -56833,7 +56844,7 @@ var AssetFemale3DCG = [
 			{
 				Name: "RestrictCollar",
 				Audio: "LeatherStretchingWithMetal",
-				InventoryID: 1438,
+				InventoryID: 1442,
 				Fetish: ["Leather", "Latex"],
 				Value: 30,
 				Difficulty: 50,
@@ -56858,7 +56869,7 @@ var AssetFemale3DCG = [
 			{
 				Name: "PaddedChoker",
 				Audio: "LeatherStretchingWithMetal",
-				InventoryID: 1439,
+				InventoryID: 1443,
 				Fetish: ["Leather"],
 				Value: 30,
 				Difficulty: 50,

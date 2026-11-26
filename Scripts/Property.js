@@ -1404,10 +1404,10 @@ var PropertyData = {
 		{
 			compare(prop1, prop2, { asset }) {
 				if (typeof prop1 === "string") {
-					prop1 = Array(asset.ColorableLayerCount).fill(prop1);
+					prop1 = CommonFillNewArray(asset.ColorableLayerCount, prop1);
 				}
 				if (typeof prop2 === "string") {
-					prop2 = Array(asset.ColorableLayerCount).fill(prop2);
+					prop2 = CommonFillNewArray(asset.ColorableLayerCount, prop2);
 				}
 				return CommonArraysEqual(prop1, prop2, false);
 			},
@@ -1723,10 +1723,10 @@ var PropertyData = {
 		{
 			compare(prop1, prop2, { asset }) {
 				if (typeof prop1 === "number") {
-					prop1 = Array(asset.Layer.length).fill(prop1);
+					prop1 = CommonFillNewArray(asset.Layer.length, prop1);
 				}
 				if (typeof prop2 === "number") {
-					prop2 = Array(asset.Layer.length).fill(prop2);
+					prop2 = CommonFillNewArray(asset.Layer.length, prop2);
 				}
 				return CommonArraysEqual(prop1, prop2, false);
 			},

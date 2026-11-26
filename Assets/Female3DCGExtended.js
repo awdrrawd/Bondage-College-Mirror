@@ -393,13 +393,10 @@ var AssetFemale3DCGExtended = {
 				{
 					Name: "BackHair",
 					Key: "h",
-					Options: [
-						{Property: { Hide: ["HairBack"] }}, 
-						{}
-					],
-				}
-			]
-		}//Sallet
+					Options: [{ Property: { Hide: ["HairBack"] } }, {}],
+				},
+			],
+		}, //Sallet
 	}, // Hat
 	HandAccessoryLeft: {
 		Rings: {
@@ -685,15 +682,15 @@ var AssetFemale3DCGExtended = {
 				{
 					Name: "Mirrored",
 					Key: "m",
-					Options: [{}, {}]
+					Options: [{}, {}],
 				},
 				{
 					Name: "TailTip",
 					Key: "t",
-					Options: [{}, {}, {}, {}]
-				}
-			]
-		}
+					Options: [{}, {}, {}, {}],
+				},
+			],
+		},
 	},
 	ClothOuter: {
 		CheerleaderTop: {
@@ -15446,6 +15443,9 @@ var AssetFemale3DCGExtended = {
 		FuckPlug: {
 			Archetype: ExtendedArchetype.VIBRATING,
 		}, // FuckPlug
+		RotatingAnalBeads: {
+			Archetype: ExtendedArchetype.VIBRATING,
+		}, // RotatingAnalBeads
 		AnalBeads2: {
 			Archetype: ExtendedArchetype.TYPED,
 			ChatTags: [
@@ -17027,6 +17027,10 @@ var AssetFemale3DCGExtended = {
 					Name: "GlowingFloppyAntenna",
 				}, // 12
 			],
+			DialogPrefix: {
+				Header: "HairAccessory1MothAntennaSelect",
+				Option: "HairAccessory1MothAntenna",
+			},
 		}, // MothAntenna
 		CustomizableCatEars: {
 			Archetype: ExtendedArchetype.MODULAR,
@@ -23218,14 +23222,14 @@ var AssetFemale3DCGExtended = {
 				{
 					Name: "Left",
 					Key: "l",
-					Options: [{}, {}]
+					Options: [{}, {}],
 				},
 				{
 					Name: "Right",
 					Key: "r",
-					Options: [{}, {}]
-				}
-			]
+					Options: [{}, {}],
+				},
+			],
 		},
 	}, // Glasses
 	Bracelet: {
@@ -25174,10 +25178,6 @@ var AssetFemale3DCGExtended = {
 					],
 				},
 			],
-                        DialogPrefix: {
-				Header: "HairAccessory1MothAntennaSelect",
-				Option: "HairAccessory1MothAntenna",
-			},
 		}, // MothWings
 		SeraphWings: {
 			Archetype: ExtendedArchetype.MODULAR,
@@ -26582,6 +26582,18 @@ var AssetFemale3DCGExtended = {
 					Name: "4",
 				},
 			],
+		},
+		EyeGlow: {
+			Archetype: ExtendedArchetype.MODULAR,
+			CopyConfig: {
+				GroupName: "Glasses",
+				AssetName: "EyeGlow",
+			},
+			DialogPrefix: {
+				Header: "GlassesEyeGlowSelect",
+				Module: "GlassesEyeGlowModule",
+				Option: "GlassesEyeGlowOption",
+			},
 		},
 	},
 };

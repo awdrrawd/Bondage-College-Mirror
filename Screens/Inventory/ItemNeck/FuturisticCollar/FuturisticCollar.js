@@ -362,7 +362,7 @@ function InventoryItemNeckFuturisticCollarColor(C, FromItem) {
 	/** @type {readonly BCColor[]} */
 	let fromColors;
 	if (typeof FromItem.Color === "string") {
-		fromColors = Array(FromItem.Asset.ColorableLayerCount).fill(FromItem.Color);
+		fromColors = CommonFillNewArray(FromItem.Asset.ColorableLayerCount, FromItem.Color);
 	} else if (CommonIsArray(FromItem.Color)) {
 		fromColors = FromItem.Color;
 	} else {
@@ -395,7 +395,7 @@ function InventoryItemNeckFuturisticCollarColor(C, FromItem) {
 					FromItem.Color ??= [];
 					if (!item.Asset.Layer[L].Name) {
 						if (FromItem.Color[3] != "Default")
-							item.Color = Array(item.Asset.ColorableLayerCount).fill(canRecolorDisplay ? fromColors[0] : fromColors[3]);
+							item.Color = CommonFillNewArray(item.Asset.ColorableLayerCount, canRecolorDisplay ? fromColors[0] : fromColors[3]);
 					} else if (item.Asset.Layer[L].Name == "Lock") {
 						if (FromItem.Color[3] != "Default")
 							colors[L] = fromColors[3];

@@ -58,7 +58,7 @@ function MagicSchoolFindsAroundDressUpKitsune(C) {
 	InventoryWear(C, "KitsuneTailStraps", "TailStraps", undefined, undefined, undefined, undefined, false);
 	InventoryWear(C, "FaceVeil", "Mask", ["#2A2A2A", "#141414"], undefined, undefined, undefined, false);
 	InventoryWear(C, "SmallBlurred", "EyeShadow", "#8E2C40", undefined, undefined, undefined, false);
-	InventoryWear(C,"CustomizableFluffyEars2","HairAccessory2", ["#262626", "#1F1D1D", "#AE2F2F", "#3B0E0E", ...Array(25).fill("Default")], undefined, undefined, undefined, false);
+	InventoryWear(C,"CustomizableFluffyEars2","HairAccessory2", ["#262626", "#1F1D1D", "#AE2F2F", "#3B0E0E", ...CommonFillNewArray(25, "Default")], undefined, undefined, undefined, false);
 
 	// GLOVES
 	const gloves = InventoryWear(C, "HaremGlove", "Gloves", ["Default", "#A2A2A2"], undefined, undefined, undefined, false);

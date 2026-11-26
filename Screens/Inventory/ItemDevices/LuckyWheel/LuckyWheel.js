@@ -328,7 +328,7 @@ function AssetsItemDevicesLuckyWheelAfterDraw({ C, PersistentData, A, CA, X, Y, 
 		/** @type {readonly BCColor[]} */
 		let itemColors;
 		if (typeof CA.Color === "string") {
-			itemColors = Array(CA.Asset.ColorableLayerCount).fill(CA.Color);
+			itemColors = CommonFillNewArray(CA.Asset.ColorableLayerCount, CA.Color);
 		} else if (CommonIsArray(CA.Color)) {
 			itemColors = CA.Color;
 		} else {

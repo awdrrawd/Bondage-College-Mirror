@@ -460,7 +460,7 @@ var CraftingJSON = {
 	 */
 	createRadioGroups: function createRadioGroups(items, tooltipContainer) {
 		const dragListeners = CraftingJSON.getDragListeners();
-		const crafts = Player.Crafting.length < 200 ? Array(200).fill(null).map((_, i) => Player.Crafting[i] ?? null) : Player.Crafting;
+		const crafts = Player.Crafting.length < 200 ? CommonFillNewArray(200, null).map((_, i) => Player.Crafting[i] ?? null) : Player.Crafting;
 		return crafts.map((oldCraft, i) => {
 			const newCraft = items[i] ?? { name: "<empty>", craft: null, status: CraftingStatusType.OK };
 			const newChecked = newCraft.craft != null && newCraft.status !== CraftingStatusType.CRITICAL_ERROR;

@@ -2740,7 +2740,7 @@ function DialogChangeItemColor(C, Color) {
 	if (InventoryItemHasEffect(Item, "Enclose", true) && (C.IsPlayer())) return;
 
 	// Apply the color & redraw the character after 100ms.  Prevent unnecessary redraws to reduce performance impact
-	Item.Color = Array(Item.Asset.ColorableLayerCount).fill(Color);
+	Item.Color = CommonFillNewArray(Item.Asset.ColorableLayerCount, Color);
 	clearTimeout(DialogFocusItemColorizationRedrawTimer);
 	DialogFocusItemColorizationRedrawTimer = setTimeout(function () { CharacterAppearanceBuildCanvas(C); }, 100);
 

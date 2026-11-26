@@ -118,7 +118,7 @@ function ItemColorSanitizeProperty(item) {
 			layerOpacities.fill(opacity);
 		} else {
 			// It doesn't, so make a fake array with that value and let the next block validate it
-			item.Property.Opacity = Array(item.Asset.Layer.length).fill(item.Property?.Opacity);
+			item.Property.Opacity = CommonFillNewArray(item.Asset.Layer.length, opacity);
 		}
 	}
 	if (Array.isArray(item.Property?.Opacity)) {
@@ -876,7 +876,7 @@ function ItemColorIsDefault(Item) {
 	/** @type {readonly BCColor[]} */
 	let colorArray;
 	if (typeof Item.Color === "string") {
-		colorArray = Array(Item.Asset.ColorableLayerCount).fill(Item.Color);
+		colorArray = CommonFillNewArray(Item.Asset.ColorableLayerCount, Item.Color);
 	} else if (CommonIsArray(Item.Color)) {
 		colorArray = Item.Color;
 	} else {

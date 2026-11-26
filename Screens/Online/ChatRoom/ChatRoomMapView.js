@@ -2913,6 +2913,21 @@ function ChatRoomMapViewSetSelectedTile(pos) {
 	}
 }
 
+
+
+/**
+ * Handles right-clicks in the chatroom map view.
+ * @param {PointerEvent} event
+ */
+function ChatRoomMapViewRightClick(event) {
+	if (OnlineGameClick()) return;
+
+	if ((MouseX <= ChatRoomCharacterViewWidth) && (ChatRoomMapViewFocusedCharacter !== null) && (ChatRoomMapViewEditMode !== "Tile") && (ChatRoomMapViewEditMode !== "Object") && !ChatRoomMapViewEditStarted) {
+		ContextualMenu.show("character", { character: ChatRoomMapViewFocusedCharacter }, { event });
+	}
+}
+
+
 /**
  * Builds the rotation, size, color and decal controls for an object on a tile
  * @param {ChatRoomMapPos} pos

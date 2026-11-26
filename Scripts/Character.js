@@ -253,7 +253,7 @@ function CharacterCreate(CharacterAssetFamily, Type, CharacterID) {
 				return (
 					this.CanInteract() &&
 					C.MemberNumber != null &&
-					C.AllowItem &&
+					ServerChatRoomGetAllowItem(this, C) &&
 					!C.IsEnclose() &&
 					InventoryGet(C, "ItemNeck")?.Asset.Name !== "ClubSlaveCollar"
 				);
@@ -2126,7 +2126,10 @@ function CharacterSetFacialExpression(C, AssetGroup, Expression, Timer, Color, f
 	if (item.Property.Expression == Expression && (!Color || item.Color == Color)) return;
 
 	item.Property.Expression = Expression;
-	if (Color && CommonColorIsValid(Color)) item.Color = Array(item.Asset.ColorableLayerCount).fill(Color);;
+	if (Color && CommonColorIsValid(Color)) {
+		item.Color = CommonIsArray(Color) ? [...Color] : CommonFillNewArray(item.Asset.ColorableLayerCount, Color);
+	}
+
 	// Remove all queued expression for that group if it's not coming from the queue
 	if (!fromQueue && C.ExpressionQueue) {
 		C.ExpressionQueue = C.ExpressionQueue.filter(({ Group }) => Group !== AssetGroup);

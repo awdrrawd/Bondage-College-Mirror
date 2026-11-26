@@ -568,7 +568,7 @@ function WardrobeFixLength() {
  */
 function WardrobeLoadCharacters() {
 	WardrobeClearCharacters();
-	WardrobeCharacter = new Array(WardrobeSize).fill(null);
+	WardrobeCharacter = CommonFillNewArray(WardrobeSize, null);
 	WardrobeScheduleVisibleCharacters();
 }
 

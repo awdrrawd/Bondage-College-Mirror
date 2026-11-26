@@ -824,7 +824,7 @@ function ServerBundledItemFromAppearanceItem(item) {
  */
 function ServerParseColor(asset, color, schema) {
 	if (typeof color === "string") {
-		return CommonIsColor(color, { schema }) ? Array(asset.ColorableLayerCount).fill(color) : [...asset.DefaultColor];
+		return CommonIsColor(color, { schema }) ? CommonFillNewArray(asset.ColorableLayerCount, color) : [...asset.DefaultColor];
 	} else if (CommonIsArray(color)) {
 		return asset.DefaultColor.map((fallback, i) => CommonIsColor(color[i], { schema }) ? color[i] : fallback);
 	} else {
@@ -1845,7 +1845,7 @@ var ServerAccountDataSyncedValidate = {
 		return ValidationApplyRecord(arg, undefined, ServerChatRoomSearchSettingsValidate, false);
 	},
 	WardrobeCharacterNames: (arg, C) => {
-		const names = new Array(WardrobeSize).fill(C.Name);
+		const names = CommonFillNewArray(WardrobeSize, C.Name);
 		if (!Array.isArray(arg)) return names;
 		for (const [idx, name] of arg.entries()) {
 			if (idx >= WardrobeSize) break;
