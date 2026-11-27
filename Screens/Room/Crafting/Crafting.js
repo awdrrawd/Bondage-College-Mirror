@@ -2594,177 +2594,37 @@ var CraftingValidationRecord = {
 		Partial: true,
 	},
 	ItemProperty: {
+		// NOTE: More thorough validation is performed `InventoryWear()` -> `ItemPropertiesValidate()`
 		Validate: function (c, a) {
 			const property = c.ItemProperty;
 			if (property == null) {
 				return true;
 			} else if (!CommonIsObject(property)) {
 				return false;
-			} else if (!a) {
+			} else {
 				return true;
 			}
-
-			// TODO: Add a better way of validating subscreen properties rather than just unconditionally
-			// allowing `OverrideHeight`.
-			/** @type {ItemProperties} */
-			const baseline = {
-				OverrideHeight: undefined,
-			};
-			if (a.Archetype) {
-				const data = ExtendedItemGetData(a, a.Archetype);
-				if (data && data.baselineProperty) {
-					CommonAssign(baseline, data.baselineProperty);
-				}
-			}
-
-			/** @satisfies {Set<keyof ItemProperties>} */
-			const layeringScalar = new Set(/** @type {const} */([
-				"TranslationX",
-				"TranslationY",
-				"ScaleX",
-				"ScaleY",
-				"Rotation",
-			]));
-			/** @satisfies {Set<keyof ItemProperties>} */
-			const layeringObject = new Set(/** @type {const} */([
-				"LayerTranslationX",
-				"LayerTranslationY",
-				"LayerScaleX",
-				"LayerScaleY",
-				"LayerRotation",
-			]));
-			// Must match Layering / Property / CommonDraw: unnamed layers key as ""
-			/** @type {null | string[]} */
-			let layers = null;
-			for (const [key, value] of CommonEntries(property)) {
-				if (value == null) {
-					continue;
-				} else if (CraftingPropertyExclude.has(key)) {
-					return false;
-				} else if (key === "OverridePriority") {
-					if (Number.isInteger(value)) {
-						continue;
-					} else if (CommonIsObject(value)) {
-						layers ??= a.Layer.map(l => l.Name ?? "");
-						for (const [layerName, priority] of Object.entries(value)) {
-							if (!(layers.includes(layerName) && Number.isInteger(priority))) {
-								return false;
-							}
-						}
-					} else {
-						return false;
-					}
-				} else if (layeringScalar.has(key)) {
-					if (!Number.isFinite(value)) {
-						return false;
-					}
-				} else if (layeringObject.has(key)) {
-					if (!CommonIsObject(value)) {
-						return false;
-					}
-					layers ??= a.Layer.map(l => l.Name ?? "");
-					for (const [layerName, i] of Object.entries(value)) {
-						if (!layers.includes(layerName)) {
-							return false;
-						} else if (!(i === undefined || Number.isFinite(i))) {
-							return false;
-						}
-					}
-				} else if (typeof value !== typeof baseline[key]) {
-					return false;
-				}
-			}
-			return true;
 		},
 		GetDefault: function (c, a) {
-			const property = c.ItemProperty;
-			if (!CommonIsObject(property) || !a) {
-				return {};
-			}
-
-			/** @type {ItemProperties} */
-			const baseline = {
-				OverrideHeight: undefined,
-			};
-			if (a.Archetype) {
-				let data = ExtendedItemGetData(a, a.Archetype);
-				if (data && data.baselineProperty) {
-					CommonAssign(baseline, data.baselineProperty);
-				}
-			}
-
-			/** @satisfies {Set<keyof ItemProperties>} */
-			const layeringScalar = new Set(/** @type {const} */([
-				"TranslationX",
-				"TranslationY",
-				"ScaleX",
-				"ScaleY",
-				"Rotation",
-			]));
-			/** @satisfies {Set<keyof ItemProperties>} */
-			const layeringObject = new Set(/** @type {const} */([
-				"LayerTranslationX",
-				"LayerTranslationY",
-				"LayerScaleX",
-				"LayerScaleY",
-				"LayerRotation",
-			]));
-			const layers = a.Layer.map(l => l.Name ?? "");
-
-			/** @type {ItemProperties} */
-			const ret = {};
-			for (const [key, value] of CommonEntries(property)) {
-				if (value == null || CraftingPropertyExclude.has(key)) {
-					continue;
-				} else if (key === "OverridePriority" && Number.isInteger(value)) {
-					ret[key] = /** @type {any} */(value);
-				} else if (key === "OverridePriority" && CommonIsObject(value)) {
-					ret[key] = {};
-					for (const [layerName, priority] of Object.entries(value)) {
-						if (layers.includes(layerName) && Number.isInteger(priority)) {
-							ret[key][layerName] = priority;
-						}
-					}
-				} else if (layeringScalar.has(key) && Number.isFinite(value)) {
-					/** @type {Unknown<ItemProperties>} */(ret)[key] = value;
-				} else if (layeringObject.has(key) && CommonIsObject(value)) {
-					/** @type {Record<string, number>} */
-					const filtered = {};
-					for (const [layerName, i] of Object.entries(value)) {
-						if (layers.includes(layerName) && (i === undefined || Number.isFinite(i))) {
-							filtered[layerName] = i;
-						}
-					}
-					if (Object.keys(filtered).length > 0) {
-						/** @type {Unknown<ItemProperties>} */(ret)[key] = filtered;
-					}
-				} else if (typeof value === typeof baseline[key]) {
-					/** @type {Unknown<ItemProperties>} */(ret)[key] = value;
-				}
-			}
-			return ret;
+			return undefined;
 		},
 		StatusCode: CraftingStatusType.ERROR,
 	},
-	// NOTE: More thorough `TypeRecord` validation is performed by the extended item `...Init` functions
 	TypeRecord: {
+		// NOTE: More thorough validation is performed by `InventoryWear()` -> `ItemPropertiesValidate()`
 		Validate: function (c, a) {
 			const typeRecord = c.TypeRecord;
 			if (typeRecord == null) {
 				return true;
 			} else if (!CommonIsObject(typeRecord)) {
 				return false;
-			} else if (a == null) {
-				return true;
-			} else if (!a.Archetype) {
-				return typeRecord == null;
 			} else {
 				return true;
 			}
 		},
 		GetDefault: function (c, a) {
 			if (a == null || !a.Archetype) {
-				return null;
+				return undefined;
 			} else {
 				return {};
 			}

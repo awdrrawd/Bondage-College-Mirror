@@ -122,6 +122,8 @@ const _Game = {
 			return false;
 		},
 	},
+	TestingColorLayers: new Set(),
+	TestingColorGroups: new Set(),
 	Worker: class {
 		constructor(scriptURL: string | URL, options: WorkerOptions) {
 		}
@@ -185,6 +187,9 @@ const _Game = {
 	},
 	async loadAll(): Promise<void> {
 		this.load("../index.html");
+
+		// A testing-only module. Can be used for adding testing-only symbols, e.g. because they are otherwise declared as `const`
+		this.load("../Scripts/Testing.js");
 		const promise: Promise<void> = this.GameStart(true);
 		return promise;
 	},

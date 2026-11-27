@@ -102,7 +102,7 @@ function ValidationResolveAppearanceDiff(groupName, previousItem, newItem, param
 	}
 	let { item, valid } = result;
 	// If the diff has resolved to an item, sanitize its properties
-	if (item && groupName !== "ItemScript") valid = !ValidationSanitizeProperties(params.C, item) && valid;
+	if (item) valid = !ValidationSanitizeProperties(params.C, item) && valid;
 	return { item, valid };
 }
 
@@ -209,14 +209,6 @@ function ValidationResolveScriptDiff(previousItem, newItem, {C, permissions, sou
 	// properties to the item.
 	if (item && item === newItem && !valid) {
 		item.Property = sanitizedProperty;
-	}
-
-	if (item && item.Property) {
-		// Finally, sanitize item properties
-		valid = !ValidationSanitizeStringArray(item.Property, "Hide") && valid;
-		valid = !ValidationSanitizeStringArray(item.Property, "UnHide") && valid;
-		valid = !ValidationSanitizeStringArray(item.Property, "HideItem") && valid;
-		valid = !ValidationSanitizeStringArray(item.Property, "Block") && valid;
 	}
 
 	return { item, valid };
@@ -703,32 +695,9 @@ function ValidationSanitizeProperties(C, item) {
 
 	const property = item.Property;
 
-	// If the item doesn't have a property, no validation is needed
-	if (property == null) return false;
-
-	// If the property is not an object, remove it and return
-	if (typeof property !== "object") {
-		console.error("Removing invalid property:", property);
-		item.Property = {};
-		return true;
-	}
-
 	// Sanitize various properties
-	changed = ValidationSanitizeEffects(C, item) || changed;
+	changed = ValidationSanitizeLock(C, item) || changed;
 	changed = ValidationSanitizeColor(item) || changed;
-	changed = ValidationSanitizeAllowedPropertyArray(C, item, "Block", "AllowBlock") || changed;
-	changed = ValidationSanitizeAllowedPropertyArray(C, item, "Hide", "AllowHide") || changed;
-	changed = ValidationSanitizeAllowedPropertyArray(C, item, "HideItem", "AllowHideItem") || changed;
-	changed = ValidationSanitizeSetPose(C, item) || changed;
-	changed = ValidationSanitizeStringArray(property, "Hide") || changed;
-
-	// If the property has an expression, it needs to be in the asset or group's AllowExpression array
-	const allowExpression = asset.AllowExpression ?? [];
-	if (property.Expression !== undefined && !allowExpression.includes(property.Expression)) {
-		console.error(`Removing invalid expression "${property.Expression}" from ${asset.Name}`);
-		delete property.Expression;
-		changed = true;
-	}
 
 	// Clamp item opacity within the allowed range
 	if (CommonIsFinite(property.Opacity)) {
@@ -749,11 +718,6 @@ function ValidationSanitizeProperties(C, item) {
 				changed = true;
 			}
 		}
-	}
-
-	if (property.Tint && !asset.AllowTint) {
-		delete property.Tint;
-		changed = true;
 	}
 
 	// Remove invalid properties from non-typed items
@@ -799,35 +763,6 @@ function ValidationSanitizeColor(item) {
 }
 
 /**
- * Sanitizes the `Effect` array on an item's Property object, if present. This ensures that it is a valid array of
- * strings, and that each item in the array is present in the asset's `AllowEffect` array.
- * @param {Character} C - The character on whom the item is equipped
- * @param {Item} item - The item whose `Effect` property should be sanitized
- * @returns {boolean} - TRUE if the item's `Effect` property was modified as part of the sanitization process
- * (indicating it was not a valid string array, or that invalid effects were present), FALSE otherwise
- */
-function ValidationSanitizeEffects(C, item) {
-	const property = (item.Property ??= {});
-	let changed = ValidationSanitizeStringArray(property, "Effect");
-	changed = ValidationSanitizeLock(C, item) || changed;
-
-	// If there is no Effect array, no further sanitization is needed
-	if (!Array.isArray(property.Effect)) return changed;
-
-	const assetEffect = item.Asset.Effect || [];
-	const allowEffect = item.Asset.AllowEffect || [];
-	property.Effect = property.Effect.filter((effect) => {
-		if (!assetEffect.includes(effect) && !allowEffect.includes(effect)) {
-			console.error(`Filtering out invalid Effect entry on ${item.Asset.Name}:`, effect);
-			changed = true;
-			return false;
-		} else return true;
-	});
-
-	return changed;
-}
-
-/**
  * Sanitizes an item's lock properties, if present. This ensures that any lock on the item is valid, and removes or
  * corrects invalid properties.
  * @param {Character} C - The character on whom the item is equipped
@@ -836,6 +771,10 @@ function ValidationSanitizeEffects(C, item) {
  * lock was not valid), FALSE otherwise
  */
 function ValidationSanitizeLock(C, item) {
+	// NOTE: `ItemPropertiesValidate()` takes care of single-property validation of lock properties where possible;
+	// i.e. those that can be validated reasonably without any inter-property dependencies (like how the validity of the
+	// `"Lock"` effect can depend on `TypeRecord`)
+
 	const property = (item.Property ??= {});
 	// If there is no lock effect present, strip out any lock-related properties
 	if (!Array.isArray(property.Effect) || !property.Effect.includes("Lock")) return ValidationDeleteLock(property);
@@ -857,12 +796,6 @@ function ValidationSanitizeLock(C, item) {
 
 	// Remove any invalid lock member number
 	const lockNumber = property.LockMemberNumber;
-	if (lockNumber !== undefined && !CommonIsInteger(lockNumber, -1)) {
-		console.error("Removing invalid lock member number:", lockNumber);
-		delete property.LockMemberNumber;
-		changed = true;
-	}
-
 	const lockedBySelf = lockNumber === C.MemberNumber;
 	const ownerNumber = C.Ownership && C.Ownership.MemberNumber;
 	const lockedByOwner = (typeof ownerNumber === 'number' && lockNumber === ownerNumber);
@@ -903,165 +836,6 @@ function ValidationSanitizeLock(C, item) {
 			console.error(`Removing invalid lover-only lock with member number: ${lockNumber}`);
 			return ValidationDeleteLock(property);
 		}
-	}
-
-	// Sanitize combination lock number
-	if (typeof property.CombinationNumber === "string") {
-		if (!ValidationCombinationNumberRegex.test(property.CombinationNumber)) {
-			// If the combination is invalid, reset to 0000
-			console.error(
-				`Invalid combination number: ${property.CombinationNumber}. Combination will be reset to ${ValidationDefaultCombinationNumber}`
-			);
-			property.CombinationNumber = ValidationDefaultCombinationNumber;
-			changed = true;
-		}
-	} else if (property.CombinationNumber != null) {
-		delete property.CombinationNumber;
-		changed = true;
-	}
-
-	// Sanitize lockpicking seed
-	if (typeof property.LockPickSeed === "string") {
-		const seed = CommonConvertStringToArray(property.LockPickSeed);
-		if (!seed.length) {
-			console.error("Deleting invalid lockpicking seed: ", property.LockPickSeed);
-			delete property.LockPickSeed;
-			changed = true;
-		} else {
-			// Check that every number from 0 up to the seed length is included in the seed
-			for (let i = 0; i < seed.length; i++) {
-				if (!seed.includes(i)) {
-					console.error("Deleting invalid lockpicking seed: ", property.LockPickSeed);
-					delete property.LockPickSeed;
-					changed = true;
-					break;
-				}
-			}
-		}
-	} else if (property.LockPickSeed != null) {
-		delete property.LockPickSeed;
-		changed = true;
-	}
-
-	// Sanitize lock password
-	if (typeof property.Password === "string") {
-		if (!ValidationPasswordRegex.test(property.Password)) {
-			// If the password is invalid, reset to "UNLOCK"
-			console.error(
-				`Invalid password: ${property.Password}. Combination will be reset to ${ValidationDefaultPassword}`
-			);
-			property.Password = ValidationDefaultPassword;
-			changed = true;
-		}
-	} else if (property.Password != null) {
-		delete property.Password;
-		changed = true;
-	}
-
-	// Sanitize timer lock remove timers
-	if (lock.Asset.RemoveTimer > 0 && typeof property.RemoveTimer === "number") {
-		// Ensure the lock's remove timer doesn't exceed the maximum for that lock type
-		const maxTime = C.GetLockTimerLimit() ?? lock.Asset.MaxTimer;
-		if (property.RemoveTimer - ValidationRemoveTimerToleranceMs > CurrentTime + maxTime * 1000) {
-			property.RemoveTimer = Math.round(CurrentTime + maxTime * 1000);
-			changed = true;
-		}
-	} else if (property.RemoveTimer != null) {
-		delete property.RemoveTimer;
-		changed = true;
-	}
-
-	return changed;
-}
-
-/**
- * Sanitizes an array on an item's Property object, if present. This ensures that it is a valid array of
- * strings, and that each item in the array is present in the either the asset's corresponding property array or the
- * "allow" array for that item.
- * @param {Character} C - The character on whom the item is equipped
- * @param {Item} item - The item whose property should be sanitized
- * @param {keyof (PropertiesArray.Asset | PropertiesArray.Item)} propertyName - The name of the property
- * @param {keyof PropertiesArray.Asset} allowPropertyName - The name of the property corresponding to the list of allowed property
- * values on the asset (e.g. `AllowHide` or `AllowEffect`)
- * @returns {boolean} - TRUE if the item's property was modified as part of the sanitization process
- * (indicating it was not a valid string array, or that invalid entries were present), FALSE otherwise
- */
-function ValidationSanitizeAllowedPropertyArray(C, item, propertyName, allowPropertyName) {
-	const property = (item.Property ??= {});
-	let changed = ValidationSanitizeStringArray(property, propertyName);
-
-	// If there is no property array, no further sanitization is needed
-	const propertyValue = property[propertyName];
-	if (!Array.isArray(propertyValue)) return changed;
-
-	/** @type {readonly unknown[]} */
-	const assetProperty = item.Asset[propertyName] || [];
-	/** @type {readonly unknown[]} */
-	const allowProperty = item.Asset[allowPropertyName] || [];
-
-	// Any entry must be included in the allow list to be permitted
-	/** @type {Unknown<ItemProperties>} */(property)[propertyName] = propertyValue.filter((i) => {
-		if (!assetProperty.includes(i) && !allowProperty.includes(i)) {
-			console.error(`Filtering out invalid ${propertyName} entry on ${item.Asset.Name}:`, propertyValue);
-			changed = true;
-			return false;
-		} else return true;
-	});
-	return changed;
-}
-
-/**
- * Sanitizes the `SetPose` array on an item's Property object, if present. This ensures that it is a valid array of
- * strings, and that each item in the array is present in the list of poses available in the game.
- * @param {Character} C - The character on whom the item is equipped
- * @param {Item} item - The item whose `SetPose` property should be sanitized
- * @returns {boolean} - TRUE if the item's `SetPose` property was modified as part of the sanitization process
- * (indicating it was not a valid string array, or that invalid entries were present), FALSE otherwise
- */
-function ValidationSanitizeSetPose(C, item) {
-	const property = (item.Property ??= {});
-	let changed = ValidationSanitizeStringArray(property, "SetPose");
-
-	// If there is no SetPose array, no further sanitization is needed
-	if (!Array.isArray(property.SetPose)) return changed;
-
-	// The SetPose array must contain a list of valid pose names
-	property.SetPose = property.SetPose.filter((pose) => {
-		if (!PoseFemale3DCGNames.includes(pose)) {
-			console.error(`Filtering out invalid SetPose entry on ${item.Asset.Name}:`, pose);
-			changed = true;
-			return false;
-		} else return true;
-	});
-	return changed;
-}
-
-/**
- * Sanitizes a property on an object to ensure that it is a valid string array or null/undefined. If the property is not
- * a valid array and is not null, it will be deleted from the object. If it is a valid array, any non-string entries
- * will be removed.
- * @param {ItemProperties} property - The object whose property should be sanitized
- * @param {keyof ItemProperties} key - The key indicating which property on the object should be sanitized
- * @returns {boolean} - TRUE if the object's property was modified as part of the sanitization process (indicating  that
- * the property was not a valid array, or that it contained a non-string entry), FALSE otherwise
- */
-function ValidationSanitizeStringArray(property, key) {
-	const value = property[key];
-	let changed = false;
-	if (Array.isArray(value)) {
-		/** @type {Unknown<ItemProperties>} */(property)[key] = value.filter(str => {
-			if (typeof str !== "string") {
-				console.error(`Filtering out invalid ${key} entry:`, str);
-				changed = true;
-				return false;
-			} else {
-				return true;
-			}
-		});
-	} else if (value != null) {
-		console.error(`Removing invalid ${key} array:`, value);
-		delete property[key];
-		changed = true;
 	}
 	return changed;
 }

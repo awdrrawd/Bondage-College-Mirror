@@ -1453,10 +1453,7 @@ var PropertyData = {
 				return ret;
 			},
 			validate(prop, { asset }, defaults) {
-				// TODO: Automatically append `AllowEffect` with the "Lock" effect when appropriate
 				const valueSet = new Set(asset.AllowEffect ?? []);
-				if (asset.AllowLock) { valueSet.add("Lock"); }
-
 				const metaData = { ...this.metaData, name: this.name, valueSet };
 				const ret = this.validateAsLiteralSet(prop, defaults, metaData);
 
@@ -1477,15 +1474,11 @@ var PropertyData = {
 	Expression: new PropertyDataEntry("Expression", undefined,
 		{
 			validate(prop, { asset }, defaults) {
-				// TODO: Propagate group-level `AllowExpression` to the asset-level
-				if (asset.AllowExpression === undefined && asset.Group.AllowExpression === undefined) {
+				if (asset.AllowExpression === undefined) {
 					return { status: "criticalError", errorDescription: [`Illegal property '${this.name}'`] };
 				}
 
-				// TODO: Fix `AllowExpression` lacking a `null` entry
-				const valueSet = new Set(asset.AllowExpression ?? asset.Group.AllowExpression ?? []);
-				valueSet.add(null);
-
+				const valueSet = new Set(asset.AllowExpression ?? []);
 				const metaData = { ...this.metaData, name: this.name, valueSet };
 				return this.validateAsSetMember(prop, defaults, metaData);
 			},
@@ -1662,7 +1655,8 @@ var PropertyData = {
 			validate(prop, itemData, defaults) { return this.validateString(prop, defaults); },
 		},
 	),
-	LockMemberNumber: new PropertyDataEntry("LockMemberNumber", undefined,
+	LockMemberNumber: new PropertyDataEntry("LockMemberNumber",
+		{ min: -1 },
 		{
 			validate(prop, itemData, defaults) { return this.validateNumber(prop, defaults); },
 		},
@@ -1674,7 +1668,36 @@ var PropertyData = {
 	),
 	LockPickSeed: new PropertyDataEntry("LockPickSeed", undefined,
 		{
-			validate(prop, itemData, defaults) { return this.validateString(prop, defaults); },
+			validate(prop, itemData, defaults) {
+				const stringCheck = this.validateString(prop, defaults);
+				if (stringCheck.status !== "ok") {
+					return stringCheck;
+				}
+
+				const seedStringArray = stringCheck.value.split(",");
+				const seedArray = seedStringArray.map(i => CommonParseInt(i));
+				/** @type {ItemProperty.ValidationOutput<number>[]} */
+				const arrayOutput = CommonRange(0, seedArray.length - 1).map(i => {
+					const stringValue = seedStringArray[i];
+					const numberValue = seedArray[i];
+					if (numberValue === null) {
+						return { status: "criticalError", errorDescription: [`Invalid '${this.name}[i]' stringified number '${stringValue}'`] };
+					} else if (seedArray.includes(i)) {
+						return { status: "criticalError", errorDescription: [`Missing '${this.name}' entry ${i}`] };
+					} else {
+						return { status: "ok", value: numberValue };
+					}
+				});
+
+				const mergedArrayOutput = ItemPropertiesMergeValidationOutputs(arrayOutput);
+				switch (mergedArrayOutput.status) {
+					case "criticalError":
+						return defaults === undefined ? mergedArrayOutput : { ...mergedArrayOutput, value: defaults, status: "error" };
+					case "error":
+					case "ok":
+						return { ...mergedArrayOutput, value: mergedArrayOutput.value.join(",") };
+				}
+			},
 		},
 	),
 	LockSet: new PropertyDataEntry("LockSet", undefined,
@@ -1695,9 +1718,29 @@ var PropertyData = {
 			validate(prop, itemData, defaults) { return this.validateSetLikeArray({ type: "number", value: prop }); },
 		},
 	),
-	MemberNumberListKeys: new PropertyDataEntry("MemberNumberListKeys",  undefined,
+	MemberNumberListKeys: new PropertyDataEntry("MemberNumberListKeys",
+		{ min: 0 },
 		{
-			validate(prop, itemData, defaults) { return this.validateString(prop, defaults); },
+			validate(prop, itemData, defaults) {
+				const stringOutput = this.validateString(prop, defaults);
+				if (stringOutput.status !== "ok") {
+					return stringOutput;
+				}
+
+				const stringValue = stringOutput.value.trim();
+				const array = stringValue ? stringOutput.value.split(",").map(i => Number.parseInt(i, 10)) : [];
+				/** @type {ItemProperty.ValidationOutput<number>[]} */
+				const arrayOutput = array.map((value, i) => this.validateNumber(value, undefined, { min: this.metaData.min, name: `${this.name}[${i}]` }));
+
+				const mergedArrayOutput = ItemPropertiesMergeValidationOutputs(arrayOutput, { partial: true });
+				switch (mergedArrayOutput.status) {
+					case "criticalError":
+						return defaults === undefined ? mergedArrayOutput : { ...mergedArrayOutput, value: defaults, status: "error" };
+					case "error":
+					case "ok":
+						return { ...mergedArrayOutput, value: mergedArrayOutput.value.join(",") };
+				}
+			},
 		},
 	),
 	Mode: new PropertyDataEntry("Mode",
@@ -2036,7 +2079,15 @@ var PropertyData = {
 	RemoveTimer: new PropertyDataEntry("RemoveTimer",
 		{ min: 0.0, isInteger: false },
 		{
-			validate(prop, itemData, defaults) { return this.validateNumber(prop, defaults); },
+			validate(prop, { asset, C }, defaults) {
+				const maxTime = C?.GetLockTimerLimit() ?? asset.MaxTimer;
+				const metadata = {
+					...this.metaData,
+					name: this.name,
+					max: CurrentTime + maxTime * 1000 + ValidationRemoveTimerToleranceMs,
+				};
+				return this.validateNumber(prop, defaults, metadata);
+			},
 		},
 	),
 	Revert: new PropertyDataEntry("Revert", undefined,

@@ -213,3 +213,61 @@ describe("Object validation", () => {
 		expect(output.value?.Foo).toBe(undefined);
 	});
 });
+
+type ExtendedItemDataUnion = (
+	ModularItemData
+	| TypedItemData
+	| VibratingItemData
+	| VariableHeightData
+	| TextItemData
+	| NoArchItemData
+);
+
+describe("Verify extended item option property validity", () => {
+	const types = {
+		"modular": "TestingModularItemDataLookup",
+		"typed": "TestingTypedItemDataLookup",
+		"vibrating": "TestingVibratingItemDataLookup",
+		"variableheight": "TestingVariableHeightItemDataLookup",
+		"text": "TestingTextItemDataLookup",
+		"noarch": "TestingNoArchItemDataLookup",
+	};
+	const param = Object.entries(types).map(([name, symbol]) => { return { name, symbol }; });
+	it.each(param)("$name", ({ name, symbol }) => {
+		const dataLookup: Record<string, ExtendedItemDataUnion> = Game[symbol];
+		expect(dataLookup).not.toBe(undefined);
+
+		// Skip TypeRecords, as each option only contains a subset of all expected entries
+		const failures: Record<string, unknown> = {};
+		for (const data of Object.values(dataLookup)) {
+			switch (data.archetype) {
+				case "modular": {
+					const options = data.modules.flatMap(mod => mod.Options);
+					for (const option of options) {
+						const output = Game.ItemPropertiesValidate(option.Property, data.asset, { omit: ["TypeRecord"] });
+						if (output.status !== "ok") {
+							failures[`${data.asset.Group.Name}/${data.asset.Name}/${data.archetype}/${option.Name}`] = output.errorDescriptions;
+						}
+					}
+					break;
+				}
+				case "vibrating":
+				case "typed": {
+					for (const option of data.options) {
+						const output = Game.ItemPropertiesValidate(option.Property, data.asset, { omit: ["TypeRecord"] });
+						if (output.status !== "ok") {
+							failures[`${data.asset.Group.Name}/${data.asset.Name}/${data.archetype}/${option.Name}`] = output.errorDescriptions;
+						}
+					}
+					break;
+				}
+			}
+
+			const baselineOutput = Game.ItemPropertiesValidate(data.baselineProperty, data.asset, { omit: ["TypeRecord"] });
+			if (baselineOutput.status !== "ok") {
+				failures[`${data.asset.Group.Name}/${data.asset.Name}/${data.archetype}/baseline`] = baselineOutput.errorDescriptions;
+			}
+		}
+		expect(failures).toEqual({});
+	});
+});

@@ -1258,39 +1258,71 @@ function AppearancePreviewUseCharacter(assetGroup) {
 
 /**
  * Sets an item in the character appearance
+ * @overload
+ * @param {Character} C
+ * @param {AssetGroupName} group
+ * @param {Asset|null} asset
+ * @param {null | Readonly<ItemColor>} [color]
+ * @param {null | number} [difficultyFactor]
+ * @returns {Item | null}
+ */
+/**
+ * Sets an item in the character appearance
+ * @overload
  * @param {Character} C - The character whose appearance should be changed
- * @param {AssetGroupName} Group - The name of the corresponding groupr for the item
- * @param {Asset|null} ItemAsset - The asset collection of the item to be changed. Passing a `null` is equivalent to removing an item (see {@link InventoryRemove})
- * @param {null | Readonly<ItemColor>} [NewColor] - The new color (as "#xxyyzz" hex value) for that item
- * @param {null | number} [DifficultyFactor] - The difficulty, on top of the base asset difficulty, that should be assigned
+ * @param {AssetGroupName} group - The name of the corresponding groupr for the item
+ * @param {Asset | null} asset - The asset collection of the item to be changed. Passing a `null` is equivalent to removing an item (see {@link InventoryRemove})
+ * @param {object} options
+ * @param {Readonly<ItemColor>} [options.color] - The new color (as "#xxyyzz" hex value) for that item
+ * @param {number} [options.difficultyFactor] - The difficulty, on top of the base asset difficulty, that should be assigned
+ * @param {boolean} [options.initExtendedItem] - Whether to initialize extended item properties (defaults to `true`)
  * to the item
- * @param {null | number} [ItemMemberNumber] - The member number of the player adding the item - defaults to -1
  * @returns {Item | null} - Thew newly created item or `undefined` if the asset does not exist
  */
-function CharacterAppearanceSetItem(C, Group, ItemAsset, NewColor=null, DifficultyFactor=null, ItemMemberNumber=null) {
-
-	// Sets the difficulty factor
-	DifficultyFactor ??= 0;
+/**
+ * Sets an item in the character appearance
+ * @param {Character} C - The character whose appearance should be changed
+ * @param {AssetGroupName} group - The name of the corresponding groupr for the item
+ * @param {Asset|null} asset - The asset collection of the item to be changed. Passing a `null` is equivalent to removing an item (see {@link InventoryRemove})
+ * @param {null | Readonly<ItemColor> | { color?: Readonly<ItemColor>, difficultyFactor?: number, initExtendedItem?: boolean }} [color] - The new color (as "#xxyyzz" hex value) for that item
+ * @param {null | number} [difficultyFactor] - The difficulty, on top of the base asset difficulty, that should be assigned
+ * to the item
+ * @returns {Item | null} - Thew newly created item or `undefined` if the asset does not exist
+ */
+function CharacterAppearanceSetItem(C, group, asset, color=null, difficultyFactor=null) {
+	/** @type {boolean} */
+	let initExtendedItem;
+	if (CommonIsObject(color) && !CommonIsArray(color)) {
+		difficultyFactor = color.difficultyFactor ?? 0;
+		initExtendedItem = color.initExtendedItem ?? true;
+		color = color.color;
+	} else {
+		difficultyFactor ??= 0;
+		color ??= undefined;
+		initExtendedItem = true;
+	}
 
 	// Removes the previous if we need to
-	const prevItem = InventoryGet(C, Group);
+	const prevItem = InventoryGet(C, group);
 	if (prevItem) {
 		// Do not remove any sub items if the new asset also supports them (e.g. don't remove bed-specific restraints when swapping the bed for the medical bed)
-		const removeItemOnRemove = AssetGetRemoveOnItemRemoveDiff(prevItem.Asset.RemoveItemOnRemove, ItemAsset?.RemoveItemOnRemove ?? []);
+		const removeItemOnRemove = AssetGetRemoveOnItemRemoveDiff(prevItem.Asset.RemoveItemOnRemove, asset?.RemoveItemOnRemove ?? []);
 		InventoryRemoveItems(C, prevItem, { removeItemOnRemove, refresh: false });
 	}
 
-	if (!ItemAsset) {
+	if (!asset) {
 		return null;
 	}
 
 	if (prevItem && !ItemColorIsDefault(prevItem)) {
-		NewColor ??= prevItem.Color;
+		color ??= prevItem.Color;
 	}
 
 	// Add the new item to the character appearance
-	const NA = AppearanceItem.fromAsset(ItemAsset, { color: NewColor ?? undefined, difficulty: ItemAsset.Difficulty + DifficultyFactor });
-	ExtendedItemInit(C, NA, false, false);
+	const NA = AppearanceItem.fromAsset(asset, { color: color, difficulty: asset.Difficulty + difficultyFactor });
+	if (initExtendedItem) {
+		ExtendedItemInit(C, NA, false, false);
+	}
 	C.Appearance.push(NA);
 	return NA;
 }

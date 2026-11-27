@@ -60,6 +60,10 @@ const CSSSupportCases = {
 		url: "https://caniuse.com/css-masks",
 		condition: "mask: url('./Icons/PrivateInvert.png') center/contain",
 	},
+	":has() CSS relational pseudo-class": {
+		url: "https://caniuse.com/css-has",
+		condition: "selector(:has(.foo))",
+	},
 };
 
 /**

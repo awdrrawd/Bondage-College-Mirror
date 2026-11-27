@@ -802,7 +802,7 @@ function InventoryWear(C, AssetName, AssetGroup, ItemColor=null, Difficulty=null
 	if (!A) return null;
 	ItemColor ??= "Default";
 	const color = ItemColor === "Default" ? [...A.DefaultColor] : ItemColor;
-	const item = CharacterAppearanceSetItem(C, AssetGroup, A, color, Difficulty, MemberNumber);
+	const item = CharacterAppearanceSetItem(C, AssetGroup, A, { color, difficultyFactor: Difficulty ?? undefined, initExtendedItem: false });
 	if (!item) return null;
 
 	/**
@@ -821,6 +821,19 @@ function InventoryWear(C, AssetName, AssetGroup, ItemColor=null, Difficulty=null
 		InventoryCraft(C_Source, C, /** @type {AssetGroupItemName} */(AssetGroup), CommonCloneDeep(Craft), false);
 		if (ItemColor !== "Default") {
 			item.Color = backupColor;
+		}
+	}
+
+	if (item.Asset.Extended) {
+		ExtendedItemInit(C, item, false, false);
+	} else {
+		const { status, errorDescriptions, value: properties } = ItemPropertiesValidate(item.Property, item.Asset, { C });
+		item.Property = properties;
+		if (status !== "ok") {
+			console.error(
+				`Sanitizing invalid '${C.Name}' (${C.MemberNumber ?? C.Type}) '${item.Asset.Group.Name}/${item.Asset.Name}' item properties: error status '${status}'`,
+				`\n${JSON.stringify(errorDescriptions, undefined, 4)}`,
+			);
 		}
 	}
 
