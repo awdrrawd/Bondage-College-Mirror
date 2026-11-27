@@ -1,40 +1,40 @@
 ###_NPC
 (They release, pay and leave you with your new owner.)  Pleased to meet you my girl, I'm DialogCharacterName.
-（他们释放你，付给你钱，并把你留给你的新主人。）很高兴见到你，我的女孩，我是DialogCharacterName。
+（他们将你松绑，付清钱款后，便把你留给了新主人。）很高兴见到你，好女孩，我是DialogCharacterName。
 (They release, pay and leave you with your new owner.)  Come here girl, my name is DialogCharacterName.
-（他们释放你，付给你钱，并把你留给你的新主人。）过来，女孩，我的名字是DialogCharacterName。
+（他们将你松绑，付清钱款后，便把你留给了新主人。）过来，小女奴，我是DialogCharacterName。
 (They release, pay and leave you with your new owner.)  Hello girl, I'm DialogCharacterName, your new owner.
-（他们释放你，付给你钱，并把你留给你的新主人。）你好，女孩，我是DialogCharacterName，你的新主人。
+（他们将你松绑，付清钱款后，便把你留给了新主人。）你好呀，小女奴，我是DialogCharacterName，你的新主人。
 (They release, pay and leave you with your new owner.)  Don't be afraid, I'm a succubus and your new owner.
-（他们释放你，付给你钱，并把你留给你的新主人。）不要害怕，我是一个魅魔，也是你的新主人。
+（他们将你松绑，付清钱款后，便把你留给了新主人。）别害怕，我是个魅魔，也是你的新主人。
 ###_PLAYER
 Hi, I'm DialogPlayerName.
-嗨，我是DialogPlayerName。
+你好，我是DialogPlayerName。
 ###_NPC
 From now on, you will call me "Mistress".  I'm sure we'll have a great time together.
-从今以后，你就叫我“女主人”吧。 我相信我们会一起度过美好的时光。
+从现在起，你要称呼我为“主人”。我相信我们会相处得很愉快的。
 ###_PLAYER
 You're the new owner?
-你是新主人？
+您就是我的新主人？
 (Bow your head.)
-（低头。）
+（低头顺从。）
 Absolutely!
-当然！
+没问题！
 ###_NPC
 Let's go back to your place, I want to know everything about you.
-我们回你的地方吧，我想知道关于你的一切。
+我们回你的房间吧，我想了解关于你的一切。
 ###_PLAYER
 I'm scared.
-我很害怕。
+我好害怕。
 ###_NPC
 Don't be scared my girl, everything will be fine.  Let's go back to your place, I want to know everything about you.
-不要害怕，我的女孩，一切都会没事的。我们回你的地方吧，我想知道关于你的一切。
+别害怕，好女孩，一切都会好好的。我们回你的房间吧，我想了解关于你的一切。
 ###_PLAYER
 Yes Mistress.
-是的，女主人。
+好的，主人。
 ###_NPC
 Good girl.  Now let's go back to your place, I want to know everything about you.
-乖女孩。现在让我们回你的地方吧，我想知道关于你的一切。
+真乖。现在我们回你的房间吧，我想了解关于你的一切。
 ###_PLAYER
 (Show her your room.)
 （带她去你的房间。）

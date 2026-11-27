@@ -1,10 +1,10 @@
 RemainingTime
 剩余时间：
 IsolationTime
-剩余惩罚时间：
+惩罚时间：
 Entrance
-收容所入口
+精神病院入口
 Profile
 个人档案
 Sleep
-睡觉（退出）
+睡觉（登出）

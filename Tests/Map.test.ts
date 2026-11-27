@@ -601,7 +601,7 @@ describe("with an old map using unknown tile IDs", () => {
 	const voidTileId = 66;
 
 	/** The map's own data, straight from the code */
-	const legacyData = JSON.parse(Game.LZString.decompressFromBase64(mapData));
+	const legacyData: any = JSON.parse(Game.LZString.decompressFromBase64(mapData) ?? "{}");
 	const voidCells: number[] = [];
 	for (let index = 0; index < legacyData.Tiles.length; index++) {
 		if (legacyData.Tiles.charCodeAt(index) === voidTileId) voidCells.push(index);
@@ -658,7 +658,7 @@ describe("with an old map using unknown tile IDs", () => {
 
 	it("exports the same tiles and objects, and loads its own export again", () => {
 		const exported = Game.MapManager.Map.exportString();
-		const exportedData = JSON.parse(Game.LZString.decompressFromBase64(exported.split("@")[0]));
+		const exportedData: any = JSON.parse(Game.LZString.decompressFromBase64(exported.split("@")[0]) ?? "{}");
 		expect(exportedData.Tiles).toBe(legacyData.Tiles);
 		expect(exportedData.Objects).toBe(legacyData.Objects);
 
@@ -687,7 +687,7 @@ describe("with an old map using unknown tile IDs", () => {
 		expect(map.updateGlobalMapData()).toBe(true);
 		expect(Game.ChatRoomData.MapData.Objects).toBe(objects);
 		const exported = map.exportString();
-		const exportedData = JSON.parse(Game.LZString.decompressFromBase64(exported.split("@")[0]));
+		const exportedData: any = JSON.parse(Game.LZString.decompressFromBase64(exported.split("@")[0]) ?? "{}");
 		expect(exportedData.Tiles).toBe(legacyData.Tiles);
 		expect(exportedData.Objects).toBe(objects);
 		map.setObject(0, null);
@@ -853,7 +853,7 @@ describe("tether points", () => {
 		Game.Player.MemberNumber = 1;
 		Game.Player.IsPlayer = () => true;
 		Game.Player.IsOnline = () => true;
-		const other = { MemberNumber: 3, Name: "Other", IsPlayer: () => false, IsOnline: () => true, MapData: { Pos: { X: 6, Y: 6 } } };
+		const other = { MemberNumber: 3, Name: "Other", IsPlayer: () => false, IsOnline: () => true, MapData: { Pos: { X: 6, Y: 6 } } } as OnlineCharacter;
 		Game.ChatRoomCharacter = [Game.Player, other];
 		const actions = () => sent.filter(m => m.Type === "Action");
 		const tags = (m: { Dictionary: { Tag?: string, MemberNumber?: number, SourceCharacter?: number }[] }) =>
@@ -872,19 +872,19 @@ describe("tether points", () => {
 
 		// Tying someone else's leash: said once their map data shows it (ChatRoomMapViewSyncMapData calls this), by the one who tied it, and only once
 		Game.ChatRoomMapViewSendTetherRequest(other, tether);
-		other.MapData = { Pos: { X: 6, Y: 6 } };
+		other.MapData = { Pos: { X: 6, Y: 6 }, PrivateState: {} };
 		Game.ChatRoomMapViewTetherAnnounce(other);
 		expect(actions()).toEqual([]);
-		other.MapData = { Pos: { X: 6, Y: 6 }, Tether: tether };
+		other.MapData = { Pos: { X: 6, Y: 6 }, PrivateState: {}, Tether: tether };
 		Game.ChatRoomMapViewTetherAnnounce(other);
-		other.MapData = { Pos: { X: 6, Y: 6 }, Tether: tether };
+		other.MapData = { Pos: { X: 6, Y: 6 }, PrivateState: {}, Tether: tether };
 		Game.ChatRoomMapViewTetherAnnounce(other);
 		expect(actions().map(m => m.Content)).toEqual(["MapViewTetherTie"]);
 		expect(tags(actions()[0])).toEqual(["SourceCharacter:1", "DestinationCharacter:3"]);
 
 		// Untying it
 		Game.ChatRoomMapViewSendTetherRequest(other, null);
-		other.MapData = { Pos: { X: 6, Y: 6 } };
+		other.MapData = { Pos: { X: 6, Y: 6 }, PrivateState: {} };
 		Game.ChatRoomMapViewTetherAnnounce(other);
 		expect(actions().map(m => m.Content)).toEqual(["MapViewTetherTie", "MapViewTetherUntie"]);
 		expect(tags(actions()[1])).toEqual(["SourceCharacter:1", "DestinationCharacter:3"]);
@@ -1102,13 +1102,13 @@ describe("placed object settings", () => {
 				3075, 3076, 3121, 3133, 3134, 3135, 3136, 3137, 3138, 3139, 3140, 5014,
 				...range(1110, 1119), ...range(1201, 1226), ...range(1301, 1309),
 			];
-			for (const object of colorableIDs.map(id => Game.MapDataGetObject(id))) {
+			for (const object of colorableIDs.map((id): ChatRoomMapObject => Game.MapDataGetObject(id))) {
 				const colorable = Game.MapGetColorableLayers(object);
 				expect(colorable.length).toBeGreaterThan(0);
 				for (const layer of colorable) {
 					expect(layer.DefaultColor).toMatch(/^#[0-9A-F]{6}$/i);
 				}
-				const names = object.Layers.map(l => l.Name);
+				const names = object.Layers?.map(l => l.Name) ?? [];
 				expect(new Set(names).size).toBe(names.length);
 			}
 		});
@@ -1132,9 +1132,9 @@ describe("placed object settings", () => {
 		});
 
 		it("have a picture for every named layer", () => {
-			const objects = Array.from({ length: 6000 }, (_, id) => Game.MapGetDoodad("Object", id)).filter(o => o && !o.BuildImageName);
+			const objects: ChatRoomMapObject[] = Array.from({ length: 6000 }, (_, id) => Game.MapGetDoodad("Object", id)).filter(o => o && !o.BuildImageName);
 			for (const object of objects) {
-				for (const layer of object.Layers.filter(l => l.Name)) {
+				for (const layer of object.Layers?.filter(l => l.Name) ?? []) {
 					const file = path.join(__dirname, "..", "Assets", "Map", "Objects", object.Type, `${object.Style}_${layer.Name}.png`);
 					expect([file, fs.existsSync(file)]).toEqual([file, true]);
 				}
@@ -1143,7 +1143,7 @@ describe("placed object settings", () => {
 
 		it("let the kitchen sink with water recolor its water", () => {
 			const sink = Game.MapDataGetObject(343);
-			expect(Game.MapGetColorableLayers(sink).map(l => l.Name)).toContain("Water");
+			expect(Game.MapGetColorableLayers(sink).map((l: ChatRoomMapColorableLayer) => l.Name)).toContain("Water");
 			expect(sink.JoinsNeighbors).toBe(true);
 			const getObjectId = jest.spyOn(Game.MapManager.Map, "getObjectId");
 			try {
@@ -1177,7 +1177,7 @@ describe("placed object settings", () => {
 			}
 			expect(plainObject.Layers).toEqual([{ Name: "", IsColorable: false }]);
 			expect(Game.MapDataGetObject(1201).Layers).toEqual([{ Name: "", IsColorable: true, DefaultColor: "#FFFFFF" }]);
-			expect(Game.MapDataGetObject(730).Layers.map(l => l.IsColorable)).toEqual([true, false]);
+			expect(Game.MapDataGetObject(730).Layers.map((l: ChatRoomMapLayer) => l.IsColorable)).toEqual([true, false]);
 		});
 
 		it("are checked against the object's layers", () => {
@@ -1192,7 +1192,7 @@ describe("placed object settings", () => {
 
 		it("fall back to the layers' default colors", () => {
 			place(1, 1, throne.ID);
-			expect(Game.MapGetObjectLayerColors(pos, throne)).toEqual(Game.MapGetColorableLayers(throne).map(l => l.DefaultColor));
+			expect(Game.MapGetObjectLayerColors(pos, throne)).toEqual(Game.MapGetColorableLayers(throne).map((l: ChatRoomMapColorableLayer) => l.DefaultColor));
 			map().setObjectSettings(1, 1, { Colors: ["#3050E0", "Default"] });
 			expect(Game.MapGetObjectLayerColors(pos, throne)).toEqual(["#3050E0", Game.MapGetColorableLayers(throne)[1].DefaultColor]);
 		});
@@ -1243,7 +1243,10 @@ describe("placed object settings", () => {
 
 	describe("decals", () => {
 		const djBooth = 599;
-		const decal = (Name: string, extra = {}) => ({ Name, Description: Name, Layer: [{ Name: null }], ...extra });
+		const decal = (Name: string, extra = {}) => {
+			const layer: readonly AssetLayer[] = [{ Name: null } as AssetLayer];
+			return { Name, Description: Name, Layer: layer, ...extra } as Asset;
+		};
 		beforeEach(() => {
 			// Only the decals are needed, not the whole asset list
 			const decals = [decal("VelvetBunny"), decal("SADollhouse"), decal("MissMariasManor", { Extended: true })];
@@ -1262,7 +1265,7 @@ describe("placed object settings", () => {
 
 		it("leave the object's own colors to its layers", () => {
 			place(1, 1, djBooth);
-			expect(Game.MapGetColorableLayers(Game.MapDataGetObject(djBooth)).map(l => l.Name)).toEqual(["Body", "Lights"]);
+			expect(Game.MapGetColorableLayers(Game.MapDataGetObject(djBooth)).map((l: ChatRoomMapObject) => l.Name)).toEqual(["Body", "Lights"]);
 			map().setObjectSettings(1, 1, { Colors: ["#A01818", "#FFC020"], Decal: "VelvetBunny", DecalColor: "#FFFFFF" });
 			expect(map().getObjectSettings(1, 1)).toEqual({ ID: djBooth, Colors: ["#A01818", "#FFC020"], Decal: "VelvetBunny", DecalColor: "#FFFFFF" });
 		});

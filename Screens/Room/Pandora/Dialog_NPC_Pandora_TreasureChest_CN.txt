@@ -8,7 +8,7 @@
 （离开。）
 ###_NPC
 (The chest is unlocked.)
-（箱子被打开了。）
+（箱子的锁解开了。）
 ###_PLAYER
 (Loot it.)
-（搜掠一番。）
+（搜刮一番。）

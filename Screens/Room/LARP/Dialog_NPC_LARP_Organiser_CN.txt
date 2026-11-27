@@ -1,436 +1,436 @@
 ###_NPC
 Let me guess, you've lost your last battle?   (She laughs.)
-让我猜猜，你输掉了你的最后一场战斗？ （她笑了。）
+让我猜猜，你上一场打输了？（她笑了起来。）
 Well done, you're a card Mistress.  It's a good thing we haven't bet anything on that game.  (She winks at you.)
-打得不错，你真是个卡牌女主人。我们没在这局游戏上赌什么真是好事。（她朝你眨眨眼。）
+打得真好，你真是个卡牌大师。幸好我们刚才这局没下赌注。（她朝你眨了眨眼。）
 Good game girl!   Don't be sad for losing, my deck has been studied carefully.  Another match?
-好游戏，女孩！别因为失败而难过，我的牌组可是仔细研究过的。再来一局吗？
+打得不错，姑娘！输了也别灰心，我的牌组可是精心研究过的。要再来一局吗？
 It's an honor to see you DialogPlayerName.  Would you like to try a new class?
-很荣幸见到您，DialogPlayerName。 你想要尝试新的职业吗？
+很荣幸见到你，DialogPlayerName。你想试试新职业吗？
 It's always a pleasure to see you DialogPlayerName.  Would you like to try a new class?
-见到你总是很高兴，DialogPlayerName。 你想尝试新的职业吗？
+见到你总是让人高兴，DialogPlayerName。你想尝试新职业吗？
 Welcome to the Live Action Role Playing battles DialogPlayerName.  Do you need some explanations, or would you like to try a new class?
-欢迎来到实时角色扮演战斗 DialogPlayerName。 您想要一些介绍，还是想尝试新职业？
+欢迎来到体感对战，DialogPlayerName。你需要听听规则介绍，还是想尝试新职业？
 Welcome to the Live Action Role Playing battles.  Would you like to join us?
-欢迎来到实时角色扮演战斗。你想加入我们吗？
+欢迎来到体感对战。你想加入我们吗？
 ###_PLAYER
 Hi, I'm DialogPlayerName.
-嘿，我是 DialogPlayerName.
+你好，我是 DialogPlayerName。
 ###_NPC
 It's nice to meet you, I'm DialogCharacterName.  I organize the LARP battles and register the classes.
-很高兴认识你，我是 DialogCharacterName。 我组织 LARP 战斗和注册职业。
+很高兴认识你，我是 DialogCharacterName。我负责组织体感对战和登记职业。
 ###_PLAYER
 Can you help me?
-你能帮我吗？
+你能帮帮我吗？
 ###_NPC
 Sorry, go find a maid for that.  I need to organize battles.
-对不起，去找个女仆吧。 我需要去组织战斗。
+抱歉，找女仆帮忙吧。我还得组织对战呢。
 ###_PLAYER
 I have some questions on LARP.
-我有一些关于 LARP 的问题。
+我有些关于体感对战的问题。
 ###_NPC
 What would you like to know?
-你想知道什么？
+你想了解什么？
 ###_PLAYER
 I have some questions on battles.
-我有一些关于战斗的问题。
+我有些关于对战的问题。
 Tell me about the classes.
-告诉我关于职业的事吧。
+跟我讲讲各职业吧。
 ###_NPC
 Which class interests you?  I can give you some details.
-你对哪一门课感兴趣？ 我可以给你一些细节。
+你对哪个职业感兴趣？我可以给你详细介绍一下。
 ###_PLAYER
 Tell me about the levelling system.
-告诉我关于等级系统的事吧。
+跟我说说升级系统吧。
 ###_NPC
 What would you like to know about class levels?
-您想了解有关等级的哪些信息？
+关于职业等级，你想了解些什么？
 ###_PLAYER
 I'd like to join the LARP battles.
-我想加入 LARP 战斗。
+我想参加体感对战。
 ###_NPC
 This is great news!  First, we need to review the rules and you'll need to accept them.
-这是个好消息！ 首先，我们需要阅读规则，并且您需要接受它们。
+太好了！首先，我们需要过一遍规则，而且你必须接受它们。
 ###_PLAYER
 I'd like to select a new class.
 我想选择一个新职业。
 ###_NPC
 Very good.  Which class would you like to select?
-很好。 你想选哪个职业？
+很好。你想选择哪个职业？
 ###_PLAYER
 Are you also a card player?
-你也是一个卡牌玩家？
+你也玩卡牌吗？
 ###_NPC
 Lots of LARP players also play Club Card.  Would you like to do a game?
-许多LARP玩家也玩俱乐部卡牌。你想要来一局吗？
+很多玩体感对战的人也玩俱乐部卡牌。想来一局吗？
 ###_PLAYER
 I'm fine, thanks.  (Leave her.)
-我很好，谢谢。 (离开她。)
+我没事，谢谢。（离开她。）
 What is LARP?
-什么是 LARP?
+什么是体感对战？
 ###_NPC
 LARP stands for Live Action Role Playing.  Everyone picks a class with special abilities and we battle each other.  The winners get paid.
-LARP 代表实时角色扮演。 每个人都选择一个具有特殊能力的职业，然后互相战斗。 获胜者得到报酬。
+LARP 代表体感对战。每个人选择一个拥有特殊能力的职业，然后互相战斗。获胜者能拿到报酬。
 ###_PLAYER
 How much money do winners get?
 获胜者能拿到多少钱？
 ###_NPC
 The battles bring lots of customers.  The money amount split by the winners increase with long battles and the number of participants.
-战斗带来了很多客户。 获胜者瓜分的奖金将会随着战斗时间的增长和参加的人数增加而增加。
+这些对战能吸引大量顾客。获胜者平分的奖金会随着战斗时间的延长和参与人数的增加而增加。
 ###_PLAYER
 There's no cheating?
-不存在作弊吗？
+没有人作弊吗？
 ###_NPC
 For a fun LARP, it's mandatory that everyone plays fair.  When someone loses a battle, they need to submit and go along with it.
-对于一个有趣的 LARP，每个人都必须公平竞争。 当有人输掉一场战斗时，他们需要屈服并离开这里。
+为了让对战好玩，每个人都必须公平竞争。如果有人输掉了战斗，就必须服从认输并配合处置。
 ###_PLAYER
 How do I join?
-我该如何加入？
+我该怎么加入？
 ###_NPC
 You first need to agree to the rules and select a class.  After that, just join the battles from this room or create a new match.
-您首先需要同意规则并选择一个职业。 之后，只需从这个房间加入战斗或创建一个新的比赛。
+你首先需要同意规则并选择一个职业。之后，只要从这个房间加入对战，或者创建一场新比赛就行了。
 ###_PLAYER
 Can I team up with my friends?
-我可以和我的朋友组队吗？
+我可以和朋友组队吗？
 ###_NPC
 Of course, you can make teams however you want it.  Simply select a color to pick a team.  You need at least two teams to play.
-当然，你可以随心所欲地组建团队。 只需选择一种颜色即可选择团队。 您需要至少两个团队才能参加比赛。
+当然可以，你想怎么组队都行。只要选择一种颜色就能选定队伍。至少需要两支队伍才能开始比赛。
 ###_PLAYER
 What if someone goes missing?
-如果有人不见了怎么办？
+如果有人挂机不见了怎么办？
 ###_NPC
 Each player has a twenty seconds delay to select what she does.  If nothing is selected, her turn is skipped automatically.
-每个玩家都有 20 秒的时间来选择她做什么。 如果未选择任何内容，则会自动跳过她的回合。
+每位玩家有二十秒的时间来选择行动。如果在时限内未作选择，她的回合就会被自动跳过。
 ###_PLAYER
 What is a full cycle?
-什么是完整周期？
+什么是完整轮次？
 ###_NPC
 In a LARP Battle, a full cycle means that everyone plays twice.  Everyone plays in order going forward, then backward and going back to the origin.
-在LARP战斗中，一个完整的周期意味着每个人都要玩两次。每个人都按顺序前进，然后后退，再回到原点。
+在体感对战中，一个完整轮次意味着每个人行动两次。所有人按正序行动一轮，再按倒序行动一轮，回到起始位置。
 ###_PLAYER
 That's all I wanted to know.
-这就是我想知道的。
+我想了解的就这些。
 ###_NPC
 Very well.  Are you ready to battle then?
-很好。 那你准备好战斗了吗？
+很好。那现在准备好战斗了吗？
 ###_PLAYER
 Who plays first?
-谁先玩？
+谁先出手？
 ###_NPC
 We use a turn-based system to fight and restrain each other.  The turn order is random and reversed once everyone played.
-我们使用基于回合的系统来相互对抗和拘束。回合顺序是随机的，一旦每个人都玩了，顺序就会颠倒。
+我们采用回合制进行战斗和互相束缚。行动顺序是随机决定的，当每个人都行动过一次后，顺序就会颠倒过来。
 ###_PLAYER
 What can I do when it's my turn?
-轮到我的时候我能做什么？
+轮到我时我能做什么？
 ###_NPC
 You can always try to strip or restrain an opponent, there's a random chance it will work.  You can also use your class special abilities.
-您总是可以尝试脱掉或拘束对手，这是随机的。 您还可以使用您的特殊能力。
+你随时可以尝试剥除对手的衣物或束缚对手，这有一定几率成功。你也可以使用职业特殊技能。
 ###_PLAYER
 What are the odds for restraining?
-拘束的可能性有多大？
+束缚的成功率是多少？
 ###_NPC
 When you try to strip or restrain someone, the odds are 50% plus your offensive bonus, minus the opponent defensive bonus.
-当你试图脱掉或拘束某人时，几率是50%加上你的进攻加成，减去对手的防守加成。
+当你尝试剥除或束缚某人时，成功率是50%加上你的攻击加成，再减去对手的防御加成。
 ###_PLAYER
 What are the special abilities?
-什么是特殊能力？
+特殊技能都是什么？
 ###_NPC
 Each class has three special abilities that they can use once per battle.  They can give bonuses, hamper enemies, rescue allies and more.
-每个职业都有三种特殊能力，每场战斗可以使用一次。 他们可以给予奖励、阻碍敌人、拯救盟友等等。
+每个职业都有三种特殊技能，每场战斗可以使用一次。它们能提供加成、妨碍敌人、营救盟友等。
 ###_PLAYER
 Do special bonuses stack?
-特殊奖励可以叠加吗？
+特殊加成可以叠加吗？
 ###_NPC
 No, if you get multiple bonuses from special abilities, the biggest bonus applies.  It gets added to your class bonus.
-不，如果你从特殊能力中获得多个奖金，则最高奖金适用。它会添加到你的课堂奖金中。
+不行，如果你从特殊技能中获得了多个加成，只有数值最大的那个生效，并加到你的职业基础加成中。
 ###_PLAYER
 What happens if someone is restrained?
-如果有人被拘束了会发生什么？
+如果有人被束缚住了会怎样？
 ###_NPC
 Some abilities that requires walking or talking cannot be used when restrained.  If your arms are restrained, you can only try to struggle.
-一些需要移动或说话的能力在受到拘束时无法使用。 如果你的手臂被束缚，你只能尝试挣扎。
+某些需要走动或说话的技能在受到束缚时无法使用。如果你的手臂被束缚，你只能尝试挣扎。
 ###_PLAYER
 How do you win a battle?
-你是如何赢得一场战斗的？
+怎样才能赢得对战？
 ###_NPC
 If only one team can act, the fight is over, and the winning team is announced.  The winners can enjoy their restrained spoils of war.
-如果只有一个团队可以行动，则战斗结束，并宣布获胜的团队。 获胜者可以享受他们拘束的战利品。
+如果只剩下一支队伍还能行动，战斗就会结束，并宣布该队获胜。胜者可以尽情享用她们被束缚的战利品。
 ###_PLAYER
 The Matron class.
-Matron 职业。
+守护者职业。
 ###_NPC
 What would you like to know on the Matron class?
-您想在 Matron 里了解什么？
+你想了解守护者职业的什么信息？
 ###_PLAYER
 The Seducer class.
-Seducer 职业。
+诱惑者职业。
 ###_NPC
 What would you like to know on the Seducer class?
-您想在 Seducer 里了解什么？
+你想了解诱惑者职业的什么信息？
 ###_PLAYER
 The Trickster class.
-Trickster 职业。
+诡术师职业。
 ###_NPC
 What would you like to know on the Trickster class?
-您想在 Trickster 里了解什么？
+你想了解诡术师职业的什么信息？
 ###_PLAYER
 The Artist class.
-Artist 职业。
+艺术家职业。
 ###_NPC
 What would you like to know on the Artist class?
-您想在 Artist 里了解什么？
+你想了解艺术家职业的什么信息？
 ###_PLAYER
 The Servant class.
-Servant 职业。
+仆从职业。
 ###_NPC
 What would you like to know on the Servant class?
-您想在 Servant 里了解什么？
+你想了解仆从职业的什么信息？
 ###_PLAYER
 The Protector class.
-Protector 职业。
+护卫职业。
 ###_NPC
 What would you like to know on the Protector class?
-您想在 Protector 里了解什么？
+你想了解护卫职业的什么信息？
 ###_PLAYER
 Tell me of the bonuses.
-告诉我加成。
+跟我说说加成属性。
 ###_NPC
 The Matron gets a 20% offensive bonus and no defensive bonus.
-Matron 会获得 20% 的进攻加成，但是没有防御加成。
+守护者拥有20%的攻击加成，但没有防御加成。
 ###_PLAYER
 What is Charge?
 什么是冲锋？
 ###_NPC
 If you use Charge, your team will get a 25% offensive bonus for a full cycle.  You must be able to walk.
-如果您使用冲锋，您的团队将在一个完整周期内获得 25% 的进攻奖励。 但是你必须能够移动。
+如果你使用冲锋，你的队伍将在一个完整轮次内获得25%的攻击加成。你必须能够走动。
 ###_PLAYER
 What is Control?
 什么是控制？
 ###_NPC
 If you use Control, nobody will be able to use special abilities for a full cycle.  You must be able to talk.
-如果你使用控制，将没有人可以在一个完整的循环中使用特殊能力。 但是你必须可以说话。
+如果你使用控制，在接下来的一个完整轮次内任何人都无法使用特殊技能。你必须能够说话。
 ###_PLAYER
 What is Detain?
-什么是拘留？
+什么是拘禁？
 ###_NPC
 If you use Detain, it will work like a regular arm restraining without any random luck, it works automatically.
-如果您使用拘留，它将像常规的手臂约束一样工作，没有任何随机的运气，它会自动工作。
+如果你使用拘禁，它会像普通的手臂束缚一样生效，但无需依靠运气，必定自动成功。
 ###_PLAYER
 Let's talk about another class.
-让我们谈谈另一个职业。
+聊聊别的职业吧。
 ###_NPC
 Which class would you like to know about?
-你想知道哪个技能？
+你想了解哪个职业？
 The Seducer gets a 16% offensive bonus and a 4% defensive bonus.
-Seducer 会获得 16% 的进攻加成和 4% 的防御加成。
+诱惑者拥有16%的攻击加成和4%的防御加成。
 ###_PLAYER
 What is Expose?
-什么是暴露？
+什么是剥衣？
 ###_NPC
 If you use Expose, it will work like a regular stripping without any random luck, it works automatically.
-如果您使用暴露，它将像常规脱去一样工作，没有任何随机运气，它会自动工作。
+如果你使用剥衣，它会像普通的衣物剥除一样生效，但无需依靠运气，必定自动成功。
 ###_PLAYER
 What is Inspire?
 什么是鼓舞？
 ###_NPC
 If you use Inspire, your target teammate will be able to use all her special abilities once again.  As if they were never used before.
-如果您使用鼓舞，您的目标队友将能够再次使用她的所有特殊能力。 就好像它们以前从未使用过一样。
+如果你使用鼓舞，目标队友的所有特殊技能使用次数都会重置，就像从未用过一样。
 ###_PLAYER
 What is Seduce?
-什么是引诱？
+什么是诱惑？
 ###_NPC
 If you use Seduce, your target will be dazed with love and will need to pass her next turn to recover.  You must be able to talk.
-如果你使用引诱，你的目标会因爱而发呆，并且需要通过她的下一回合才能恢复。 但是你必须可以说话。
+如果你使用诱惑，目标会被爱意冲昏头脑，必须跳过她的下一个回合来恢复。你必须能够说话。
 The Trickster gets a 12% offensive bonus and a 8% defensive bonus.
-Trickster 会获得 12% 的进攻加成和 8% 的防守加成。
+诡术师拥有12%的攻击加成和8%的防御加成。
 ###_PLAYER
 What is Confuse?
-什么是迷惑？
+什么是扰乱？
 ###_NPC
 If you use Confuse, your target won't be able to use special abilities for a full cycle.  You must be able to talk.
-如果你使用迷惑，你的目标将无法在一个完整的循环中使用特殊能力。 但是你必须可以说话。
+如果你使用扰乱，目标将在一个完整轮次内无法使用特殊技能。你必须能够说话。
 ###_PLAYER
 What is Hide?
-什么是隐藏？
+什么是隐匿？
 ###_NPC
 If you use Hide, you cannot get targeted by anyone from another team, until your next turn.
-如果您使用隐藏，则在您下一轮之前，您不会被其他团队的任何人盯上。
+如果你使用隐匿，在你的下一个回合到来之前，其他队伍的任何人都无法将你选为目标。
 ###_PLAYER
 What is Immobilize?
 什么是定身？
 ###_NPC
 If you use Immobilize, it will work like a regular leg restraining without any random luck, it works automatically.
-如果你使用定身，它会像普通的腿部约束一样工作，没有任何随机运气，它会自动工作。
+如果你使用定身，它会像普通的腿部束缚一样生效，但无需依靠运气，必定自动成功。
 The Artist gets a 8% offensive bonus and a 12% defensive bonus.
-Artist 会获得 8% 的进攻加成和 12% 的防守加成。
+艺术家拥有8%的攻击加成和12%的防御加成。
 ###_PLAYER
 What is Cheer?
-什么是欢呼？
+什么是喝彩？
 ###_NPC
 If you use Cheer, your target gets a 25% offensive and defensive bonus for a full cycle.  You must be able to talk.
-如果你使用欢呼，你的目标在一个完整周期内获得 25% 的进攻和防御加成。 但是你必须可以说话。
+如果你使用喝彩，你的目标将在一个完整轮次内获得25%的攻击和防御加成。你必须能够说话。
 ###_PLAYER
 What is Costume?
-什么是服装？
+什么是更衣？
 ###_NPC
 If you use Costume, a target teammate automatically dresses back with a selected cloth.  You must be able to walk.
-如果您使用服装，目标队友会自动穿上选定的衣服。 你必须能够移动。
+如果你使用更衣，目标队友会自动重新穿上一件选定的衣物。你必须能够走动。
 ###_PLAYER
 What is Evasion?
-什么是躲避？
+什么是闪避？
 ###_NPC
 If you use Evasion, you automatically remove your legs restraints, or arms restraints if they are restrained.
-如果您使用躲避，您将自动移除您的腿部约束或手臂约束（如果它们受到约束）。
+如果你使用闪避，你会自动解开自己的腿部束缚；若手臂被绑，则会解开手臂束缚。
 The Servant gets a 4% offensive bonus and a 16% defensive bonus.
-Servant 会获得 4% 的进攻加成和 16% 的防御加成。
+仆从拥有4%的攻击加成和16%的防御加成。
 ###_PLAYER
 What is Rescue?
-什么是救援？
+什么是解救？
 ###_NPC
 If you use Rescue, you remove the legs or arms restraints from a target teammate.  You must be able to walk.
-如果您使用救援，您将移除目标队友的腿或手臂约束。 你必须能够移动。
+如果你使用解救，你可以解除目标队友的腿部或手臂束缚。你必须能够走动。
 ###_PLAYER
 What is Silence?
-什么是沉默？
+什么是噤声？
 ###_NPC
 If you use Silence, it will work like a regular gagging without any random luck, it works automatically.
-如果您使用沉默，它会像常规的堵嘴一样工作，没有任何随机运气，它会自动工作。
+如果你使用噤声，它会像普通的堵嘴一样生效，但无需依靠运气，必定自动成功。
 ###_PLAYER
 What is Ungag?
-什么是消除堵嘴？
+什么是去塞？
 ###_NPC
 If you use Ungag, you remove the gag from a target teammate.
-如果您使用消除堵嘴，您将移除目标队友的堵嘴。
+如果你使用去塞，你可以取下目标队友口中的口塞。
 The Protector gets no offensive bonus and a 20% defensive bonus.
-Protector 没有攻击加成，获得20%的防御加成。
+护卫没有攻击加成，但拥有20%的防御加成。
 ###_PLAYER
 What is Cover?
 什么是掩护？
 ###_NPC
 If you use Cover, your target cannot be targeted by anyone that's not in her team for a full cycle.  You must be able to walk.
-如果您使用掩护，则您的目标在整个周期内都不会被不在她团队中的任何人作为目标。 你必须能够移动。
+如果你使用掩护，目标在接下来的一个完整轮次内不会被非同队任何人选为目标。你必须能够走动。
 ###_PLAYER
 What is Dress?
 什么是穿戴？
 ###_NPC
 If you use Dress, you automatically dress back up with a selected cloth.
-如果您使用穿戴，您会自动用选定的衣服重新打扮。
+如果你使用穿戴，你会自动重新穿上一件选定的衣物。
 ###_PLAYER
 What is Support?
-什么是支持？
+什么是援护？
 ###_NPC
 If you use Support, your team will get a 25% defensive bonus for a full cycle.  You must be able to talk.
-如果您使用支持，您的团队将在一个完整周期内获得 25% 的防御加成。 你必须会说话。
+如果你使用援护，你的队伍将在一个完整轮次内获得25%的防御加成。你必须能够说话。
 ###_PLAYER
 What are the rules?
 规则都有哪些？
 ###_NPC
 First rule, you must play fair and never cheat in battles.  Is that fine with you?
-第一条规则，你必须公平竞争，决不能在战斗中作弊。 你可以做到吗？
+第一条规则，你必须公平竞争，决不能在战斗中作弊。你可以接受吗？
 ###_PLAYER
 Let's talk some more first.
-让我们先多谈一谈。
+我们先多聊一会儿吧。
 ###_NPC
 Very well.  What would you like to know?
-很好。 你想知道什么？
+很好。你想了解些什么？
 ###_PLAYER
 I will never cheat in LARP battles.
-我永远不会在 LARP 战斗中作弊。
+我绝不会在体感对战中作弊。
 ###_NPC
 Second rule, if you lose, you must accept it and surrender to the winner.  Alright?
-第二条规则，如果你输了，你必须接受它并向获胜者投降。 好吧？
+第二条规则，如果你输了，你必须认赌服输并向赢家投降。明白了吗？
 ###_PLAYER
 I cannot promise that.
-我不能保证。
+我不能保证这一点。
 ###_NPC
 Sorry, I can't sign you in if that's the case.
-对不起，如果是这样的话，我不能让你加入。
+抱歉，如果是这样的话，我不能为你登记报名。
 ###_PLAYER
 I will submit when I lose.
-我会在输了后投降。
+输了我就会服从。
 ###_NPC
 Third and last rule, if must select a class.  Which one will you pick?
-第三条也是最后一条规则，如果必须选择一个职业。 你会选择哪一个？
+第三条也是最后一条规则，你必须选择一个职业。你会选哪一个？
 Alright!  You will be a Matron in your first battles.  Come back to me if you want to change your class.
-真棒！ 在你的第一次战斗中，你将成为 Matron。 如果你想换职业的话请回来找我。
+好极了！在你的最初几场对战中，你将担任守护者。如果你想换职业，随时来找我。
 Alright!  You will be a Seducer in your first battles.  Come back to me if you want to change your class.
-真棒！ 在你的第一次战斗中，你将成为 Seducer 如果你想换职业的话请回来找我。
+好极了！在你的最初几场对战中，你将担任诱惑者。如果你想换职业，随时来找我。
 Alright!  You will be a Trickster in your first battles.  Come back to me if you want to change your class.
-真棒！ 在你的第一次战斗中，你将成为 Trickster 如果你想换职业的话请回来找我。
+好极了！在你的最初几场对战中，你将担任诡术师。如果你想换职业，随时来找我。
 Alright!  You will be an Artist in your first battles.  Come back to me if you want to change your class.
-真棒！ 在你的第一次战斗中，你将成为 Artist 如果你想换职业的话请回来找我。
+好极了！在你的最初几场对战中，你将担任艺术家。如果你想换职业，随时来找我。
 Alright!  You will be a Servant in your first battles.  Come back to me if you want to change your class.
-真棒！ 在你的第一次战斗中，你将成为 Servant 如果你想换职业的话请回来找我。
+好极了！在你的最初几场对战中，你将担任仆从。如果你想换职业，随时来找我。
 Alright!  You will be a Protector in your first battles.  Come back to me if you want to change your class.
-真棒！ 在你的第一次战斗中，你将成为 Protector 如果你想换职业的话请回来找我。
+好极了！在你的最初几场对战中，你将担任护卫。如果你想换职业，随时来找我。
 ###_PLAYER
 I need to think about it.
-我需要想一想。.
+我需要考虑一下。
 ###_NPC
 It's perfectly fine, let me know when you're ready.
-没关系，等你准备好了就告诉我。
+完全没问题，等你准备好了再告诉我。
 ###_PLAYER
 Thanks a lot!
 非常感谢！
 ###_NPC
 My pleasure.  Check the battle lobby to find fights or create a battle of your own.  Good luck!
-我的荣幸。 检查战斗大厅以寻找战斗或创建自己的战斗。 祝你好运！
+不客气。去对战大厅寻找比赛或者自己建一场吧。祝你好运！
 Very well, you will be a Matron in your next battles.  Come back to me if you want to change your class again.  Good luck and have fun.
-很好，你将在接下来的战斗中成为 Matron。 如果你想再次改变你的职业，请回来找我。 祝你好运，玩得开心。
+很好，在接下来的战斗中你将担任守护者。如果你想再次更换职业，随时来找我。祝你好运，玩得开心！
 Very well, you will be a Seducer in your next battles.  Come back to me if you want to change your class again.  Good luck and have fun.
-很好，你将在接下来的战斗中成为 Seducer 如果你想再次改变你的职业，请回来找我。 祝你好运，玩得开心。
+很好，在接下来的战斗中你将担任诱惑者。如果你想再次更换职业，随时来找我。祝你好运，玩得开心！
 Very well, you will be a Trickster in your next battles.  Come back to me if you want to change your class again.  Good luck and have fun.
-很好，你将在接下来的战斗中成为 Trickster 如果你想再次改变你的职业，请回来找我。 祝你好运，玩得开心。
+很好，在接下来的战斗中你将担任诡术师。如果你想再次更换职业，随时来找我。祝你好运，玩得开心！
 Very well, you will be an Artist in your next battles.  Come back to me if you want to change your class again.  Good luck and have fun.
-很好，你将在接下来的战斗中成为 Artist 如果你想再次改变你的职业，请回来找我。 祝你好运，玩得开心。
+很好，在接下来的战斗中你将担任艺术家。如果你想再次更换职业，随时来找我。祝你好运，玩得开心！
 Very well, you will be a Servant in your next battles.  Come back to me if you want to change your class again.  Good luck and have fun.
-很好，你将在接下来的战斗中成为 Servant 如果你想再次改变你的职业，请回来找我。 祝你好运，玩得开心。
+很好，在接下来的战斗中你将担任仆从。如果你想再次更换职业，随时来找我。祝你好运，玩得开心！
 Very well, you will be a Protector in your next battles.  Come back to me if you want to change your class again.  Good luck and have fun.
-很好，你将在接下来的战斗中成为 Protector 如果你想再次改变你的职业，请回来找我。 祝你好运，玩得开心。
+很好，在接下来的战斗中你将担任护卫。如果你想再次更换职业，随时来找我。祝你好运，玩得开心！
 ###_PLAYER
 I'll keep my current class.
-我会保留我现在的职业。
+我保留现在的职业。
 How does it work?
-它是如何工作的？
+它是怎么运作的？
 ###_NPC
 Each level adds a 5% bonus to your class basic bonus.  At level zero there's no bonus, at level ten there's a 50% bonus.
-每个级别都会为您的职业基本奖金增加 5% 的奖金。 0级没有奖金，10级有50%的奖金。
+每升一级，都会为你的职业基础加成提供额外的5%增幅。0级时没有额外增幅，到了10级则有50%的额外加成。
 ###_PLAYER
 Give me an example.
-给我举个例子。
+给我举个例子吧。
 ###_NPC
 The Trickster class gets a 12% offensive bonus and a 8% defensive bonus at level zero.  At level ten it will be 18% and 12%.
-Trickster 职业在零级时获得 12% 的进攻加成和 8% 的防御加成。 在第十级，它将是 18% 和 12%。
+诡术师职业在0级时拥有12%的攻击加成和8%的防御加成。升到10级时，就会提升为18%和12%。
 ###_PLAYER
 How do I gain levels?
-我如何获得等级？
+我该怎么提升等级？
 ###_NPC
 Each class has it's own level.  Whenever you finish a LARP battle, whether you won or lost, you will progress toward your next level.
-每个职业都有自己的等级。 每当您完成 LARP 战斗时，无论您是赢还是输，您都将进入下一个级别。
+每个职业都有各自独立的等级。每当你完成一场体感对战，无论胜负，都能获得升级进度。
 ###_PLAYER
 Do I lose progress if I change class?
-在我改变职业后我的进度会消失吗？
+如果我切换职业，之前的进度会丢失吗？
 ###_NPC
 (She shakes her head no.)  Each class level progress is kept on record.  You won't lose any progress if you pick a new class.
-（她摇头不。）每个职业的进度都被记录在案。 如果你选择一个新的职业，你不会失去任何进度。
+（她摇了摇头。）每个职业的等级进度都会完整保留。就算你换了新职业，也不会损失任何进度。
 ###_PLAYER
 Let's talk about something else.
-我们谈些别的吧。
+我们聊点别的吧。
 ###_NPC
 How can I help you?
-我要怎么帮你？
+有什么需要我帮忙的吗？
 ###_PLAYER
 Can I tie you up if I win?
-如果我赢了，我可以绑住你吗？
+如果我赢了，可以把你绑起来吗？
 ###_NPC
 (She shakes her head no.)  I have a LARP session soon.  Let's play without stakes.
-（她摇摇头，表示拒绝。）我很快就要开始LARP了。我们还是不要玩赌什么的。
+（她摇了摇头。）我很快就有一场体感对战要打。我们不带赌注地玩玩吧。
 ###_PLAYER
 (Play Club Card with her.)
 （和她玩俱乐部卡牌。）
 ###_NPC
 Let's focus on LARP games.  We can play cards later.
-我们专心在LARP上吧。之后我们再玩卡牌。
+先专注于体感对战吧。我们待会儿再玩牌。
 ###_PLAYER
 (Check the battles.)
-（检查战斗。）
+（查看对战列表。）

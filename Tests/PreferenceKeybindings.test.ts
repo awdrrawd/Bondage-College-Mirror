@@ -6,17 +6,17 @@ Game.load("../Screens/Character/Preference/Keybindings.js");
 
 function delayedCache() {
 	let finish!: () => void;
-	const loadedPromise = new Promise<TextCache>(resolve => {
-		finish = () => resolve({} as TextCache);
+	const loadedPromise = new Promise<object>(resolve => {
+		finish = () => resolve({});
 	});
-	return { cache: { loadedPromise } as TextCache, finish };
+	return { cache: { loadedPromise }, finish };
 }
 
 describe("Keybinding screen translation loading", () => {
 	beforeEach(() => {
 		jest.restoreAllMocks();
 		Game.CurrentScreen = "Preference";
-		Game.PreferenceSubscreen = { name: "Keybindings" } as PreferenceSubscreen;
+		Game.PreferenceSubscreen = { name: "Keybindings" };
 		Game.KeyGUI.loadGeneration = 0;
 		jest.spyOn(Game, "ScreenFileGetTranslation").mockReturnValue("keys.csv");
 		jest.spyOn(Game, "PreferenceSubscreenKeybindingsResize").mockImplementation(() => {});
@@ -39,7 +39,7 @@ describe("Keybinding screen translation loading", () => {
 		jest.spyOn(Game, "TextPrefetchFile").mockReturnValue(pending.cache);
 		const build = jest.spyOn(Game.KeyGUI, "buildSubscreen").mockImplementation(() => {});
 		Game.PreferenceSubscreenKeybindingsLoad();
-		Game.PreferenceSubscreen = { name: "Main" } as PreferenceSubscreen;
+		Game.PreferenceSubscreen = { name: "Main" };
 		pending.finish();
 		await pending.cache.loadedPromise;
 		expect(build).not.toHaveBeenCalled();

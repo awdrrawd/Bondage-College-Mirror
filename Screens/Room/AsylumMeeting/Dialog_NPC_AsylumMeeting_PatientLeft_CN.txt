@@ -270,7 +270,7 @@ How can we stop it?
 我们怎么阻止它？
 ###_NPC
 How the hell do I know?  You have a plan?
-我怎么可能直到？你有计划吗？
+我怎么可能知道？你有计划吗？
 ###_PLAYER
 I'll think of something.
 我会想个办法的。

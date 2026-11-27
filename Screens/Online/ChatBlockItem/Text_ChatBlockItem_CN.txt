@@ -1,16 +1,22 @@
 Title
-选择禁用的物品种类和行动，玩家将无法在房间内看到或进行这些活动
+屏蔽类别
+Hint
+选择要在你的聊天室内屏蔽的物品类别或互动，玩家将无法看到或使用它们。
 ABDL
-成人尿布癖 (ABDL)
+成年婴儿/恋尿布
 SciFi
 未来/科幻
 Fantasy
 奇幻物品
 Leashing
-牵走玩家
+牵引玩家
 Photos
 拍照
 Arousal
-性活动
+兴奋互动
+Smoking
+吸烟
+Location
+共享位置
 Return
 返回

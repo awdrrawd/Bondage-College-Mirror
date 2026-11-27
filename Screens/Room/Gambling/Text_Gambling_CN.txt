@@ -1,4 +1,4 @@
 DiceTheft
-尝试偷取骰子。
+尝试偷取骰子
 SuccessStolen
-你成功偷取了骰子。
+你成功偷到了骰子

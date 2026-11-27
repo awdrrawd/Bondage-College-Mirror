@@ -1,117 +1,117 @@
 ﻿###_NPC
 Welcome to Mistress lair.  The club management office.
-欢迎来到女主人的地方。俱乐部管理办公室。
+欢迎来到女主人的巢穴，也就是俱乐部的管理办公室。
 ###_PLAYER
 Who are you?
 你是谁？
 ###_NPC
 (She purrs like a cat.)  I'm DialogCharacterName, pleased to meet you Miss.
-（她像猫一样发出咕噜声。）我是DialogCharacterName，很高兴见到你，女士。
+（她像猫咪一样呼噜着。）我是DialogCharacterName，很高兴见到您，小姐。
 ###_PLAYER
 Why are you restrained?
-你为什么被束缚着？
+你为什么被绑着？
 ###_NPC
 (She struggles playfully.)  Mistress loves to have me restrained while she works.
-（她顽皮地挣扎了几下。）女主人喜欢在工作的时候束缚住我。
+（她调皮地挣扎了几下。）女主人工作时喜欢把我绑起来。
 ###_PLAYER
 (Purr and meow like a cat.)
-（像猫一样喵喵叫。）
+（像猫咪一样呼噜呼噜、喵喵叫。）
 ###_NPC
 (She gets a little bit closer and purrs playfully.)
-（她靠得更近了一点，调皮地发出咕噜声。）
+（她凑近了些，顽皮地发出呼噜声。）
 ###_PLAYER
 Can I play with you?
-我可不可以玩弄你？
+我能跟你玩玩吗？
 ###_NPC
 (She shakes her head no.)  I don't think Mistress would approve.
-（她摇头，表示拒绝。）我想我的女主人不会同意的。
+（她摇了摇头。）我觉得女主人不会允许的。
 ###_PLAYER
 (Play with her.)
-（和她一起玩。）
+（跟她玩。）
 ###_NPC
 (You get closer to her.)
-（你靠近她。）
+（你向她走近。）
 ###_PLAYER
 (Release her.)
-（放开她。）
+（帮她松绑。）
 I need to go, take care.  (Leave her.)
 我得走了，保重。（离开她。）
 (Try to talk with her.)
 （试着和她说话。）
 ###_NPC
 (You both try to speak to each other but fail to have a coherent conversation.)
-（你们都试图互相交谈，但没能进行能相互理解的对话。）
+（你们都试着和对方说话，但根本没法连贯地交流。）
 ###_PLAYER
 (Lean on her.)
 （靠在她身上。）
 ###_NPC
 (You lean and rest on each other shoulder while she purrs slowly.)
-（你靠在对方的肩膀上，她慢慢地发出呼噜声。）
+（你们把头靠在彼此肩头依偎着，她轻轻地发出呼噜声。）
 ###_PLAYER
 (Nuzzle with her.)
-（摩擦肩她的肩膀。）
+（用脸颊蹭蹭她。）
 ###_NPC
 (You clumsily nuzzle each other in your restraints and giggle.)
-（你们在束缚中笨拙地相互依偎着，咯咯地笑起来。）
+（你们受制于身上的束缚，笨拙地互相蹭着彼此，咯咯笑了起来。）
 ###_PLAYER
 (Give her a restrained hug.)
-（束缚着给她一个拥抱。）
+（在束缚中给她一个拥抱。）
 ###_NPC
 (You get close to each other for a long submissive hug.  She seems to enjoy it and moans like a cat.)
-（你们靠得很近，顺从地长时间拥抱在一起。她似乎很享受，像猫一样呻吟着。）
+（你们凑上前紧紧抱在一起，顺从地久久相拥。她似乎很受用，像小猫一样轻声呻吟起来。）
 ###_PLAYER
 (Rub your body against hers.)
-（用你的身体摩擦她的身体。）
+（用你的身体蹭她的身体。）
 ###_NPC
 (You both rub your bodies against each other and moan slowly.  She slides her tail against your skin.)
-（你们俩互相摩擦身体，慢慢地呻吟。她用尾巴贴着你的皮肤。）
+（你们在彼此身上轻轻磨蹭，断断续续地低吟着。她用尾巴滑过你的肌肤。）
 ###_PLAYER
 (Try to masturbate her.)
-（尝试抚慰她。）
+（试着帮她自慰。）
 ###_NPC
 (You rub your armbinder against her chastity belt and realize that you won't be able to give her any pleasure.)
-（你用单手套摩擦她的贞操带，并意识到你无法给她带来任何快感。）
+（你用单手套蹭着她的贞操带，意识到这样根本没法给她带来任何快感。）
 ###_PLAYER
 (Try to release her.)
-（尝试释放她。）
+（尝试帮她解脱束缚。）
 ###_NPC
 (You struggle in your armbinder and try to release her.  But you fail miserably.)
-（你在你的单手套里挣扎，试图释放她。但你失败了。）
+（你被困在单手套里费力挣扎着想帮她解开，结果彻底失败了。）
 ###_PLAYER
 (Step back.)
-（退后。）
+（后退。）
 ###_NPC
 (You step back.)
-（你退后一步。）
+（你退后了一步。）
 ###_PLAYER
 I love your ears and tail.
-我爱你的耳朵和尾巴。
+我喜欢你的耳朵和尾巴。
 ###_NPC
 (She nods happily.)  I've got the tail at the club store.
-（她高兴地点点头。）我在俱乐部商店买到的尾巴。
+（她开心地连连点头。）尾巴是在俱乐部商店买的。
 ###_PLAYER
 You're a good kitty.
-你是一只好猫咪。
+你真是一只乖猫咪。
 ###_NPC
 (She purrs some more.)  Thank you Miss.
-（她又咕噜了几声）谢谢你，女士。
+（她更响地呼噜了几声。）谢谢您，小姐。
 ###_PLAYER
 Are you a furry?
 你是福瑞吗？
 ###_NPC
 (She shakes her head no and grumbles in her gag.)
-（她摇头，表示否认，并在她的堵嘴里嘟囔着。）
+（她摇了摇头，在口塞里含糊地嘟囔着。）
 ###_PLAYER
 Are you a neko?
 你是猫娘吗？
 ###_NPC
 (She shakes her head yes and purrs.)
-（她摇头，表示同意，并发出咕噜声。）
+（她点了点头，发出满足的呼噜声。）
 ###_PLAYER
 (Pet her.)
-（轻轻摸她。）
+（摸摸她。）
 (Talk about something else.)
-（谈点别的。）
+（换个话题。）
 ###_NPC
 (You take one step back.)
-（你后退一步。）
+（你往后退了一步。）

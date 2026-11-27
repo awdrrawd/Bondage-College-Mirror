@@ -1,6 +1,6 @@
 Leave
-大厅
+离开
 Profile
-你的档案
+个人档案
 Battle
-LARP 战斗
+体感对战

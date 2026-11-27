@@ -1,149 +1,149 @@
 ###_NPC
 (There's a small wooden drawer.)
-（这里有一个小木抽屉。）
+（这里有一个小巧的木制抽屉柜。）
 ###_PLAYER
 (Open the first one.)
-（打开第一个。）
+（打开第一个抽屉。）
 ###_NPC
 (You pull hard on the top drawer, but it doesn't open.  It seems to be stuck.)
-（你用力拉最上面的抽屉，没能打开。似乎卡住了。）
+（你用力拉最上面的抽屉，但打不开。它似乎卡住了。）
 (You pull hard on the top drawer and it slowly opens.  You find a catsuit and some lingerie.  There's enough room to put more clothes inside.)
-（你用力拉最上面的抽屉，它慢慢打开。里面有一件紧身衣和一些内衣。里面的空间足够放更多的衣服。）
+（你用力拉最上面的抽屉，它慢慢被拉开了。你发现了一件紧身衣和一些内衣。里面的空间足够再放些衣服进去。）
 ###_PLAYER
 (Open the second one.)
-（打开第二个。）
+（打开第二个抽屉。）
 ###_NPC
 (You pull hard on the second drawer, but it doesn't open.  It seems to be stuck.)
-（你用力拉第二个抽屉，没能打开。似乎卡住了。）
+（你用力拉第二个抽屉，但打不开。它似乎卡住了。）
 (You open the second drawer.  It contains a few latex clothes.)
-（你打开第二个抽屉。里面有几件乳胶衣服。）
+（你打开第二个抽屉。里面装着几件乳胶衣物。）
 ###_PLAYER
 (Open the third one.)
-（打开第三个。）
+（打开第三个抽屉。）
 ###_NPC
 (You pull hard on the third drawer, but it doesn't open.  It seems to be stuck.)
-（你用力拉第三个抽屉，没能打开。似乎卡住了。）
+（你用力拉第三个抽屉，但打不开。它似乎卡住了。）
 (You open the third drawer.  It contains a few leather cuffs and collars.)
-（你打开第三个抽屉。里面有一些皮革铐和项圈。）
+（你打开第三个抽屉。里面装着一些皮质手足铐和项圈。）
 ###_PLAYER
 (Leave it.)
-（不管它。）
+（离开。）
 (Wear the black catsuit.)
 （穿上黑色紧身衣。）
 ###_NPC
 (You swap your clothes for a black catsuit and shows it to the camera.  You then push hard on the top drawer to close it.)
-（你换上黑色紧身衣，然后对着镜头展示。然后用力推最上面的抽屉，把它关上。）
+（你换上黑色紧身衣，对着镜头展示了一番。随后你用力推上最上面的抽屉，把它关好。）
 ###_PLAYER
 (Wear the lingerie.)
-（穿上内衣。）
+（换上内衣。）
 ###_NPC
 (You swap your clothes for the lingerie and shows it to the camera.  You then push hard on the top drawer to close it.)
-（你换上内衣，然后对着镜头展示。然后用力推最上面的抽屉，把它关上。）
+（你换上内衣，对着镜头展示了一番。随后你用力推上最上面的抽屉，把它关好。）
 ###_PLAYER
 (Strip naked.)
 （脱光衣服。）
 ###_NPC
 (You slowly strip naked for the camera and leave your clothes inside.  You then push hard on the top drawer to close it.)
-（你在镜头前慢慢脱光衣服，把衣服留在里面。然后用力推最上面的抽屉，把它关上。）
+（你在镜头前慢慢脱光衣服，把衣物留在了抽屉里。随后你用力推上最上面的抽屉，把它关好。）
 ###_PLAYER
 (Close it.)
-（关上它。）
+（关上抽屉。）
 ###_NPC
 (You push hard on the top drawer to close it.)
-（你用力推最上面的抽屉把它关上。）
+（你用力推上最上面的抽屉，把它关好。）
 ###_PLAYER
 (Inspect the latex clothes.)
-（检查乳胶衣服。）
+（检查乳胶衣物。）
 ###_NPC
 (The latex clothes are very shiny and smell new.  They seem to have a strange locking mechanism.)
-（乳胶衣服非常闪亮，闻起来很新。这些衣服似乎有一个奇怪的锁定机构。）
+（这些乳胶衣物十分闪亮，闻起来很新。它们上面似乎带有一种奇特的锁扣结构。）
 ###_PLAYER
 (Wear the latex corset.)
 （穿上乳胶束腰。）
 ###_NPC
 (You put on the latex corset and it seems to lock on you when you attach it.)
-（你穿上乳胶束腰，当你穿好后，它似乎锁在了你身上。）
+（你穿上乳胶束腰，系上后它似乎就直接在你身上锁死了。）
 ###_PLAYER
 (Wear the latex ballet heels.)
 （穿上乳胶芭蕾高跟鞋。）
 ###_NPC
 (You put on the latex ballet heels and it seems to lock on you when you attach it.)
-（你穿上乳胶芭蕾高跟鞋，当你穿好后，它似乎锁在了你身上。）
+（你穿上乳胶芭蕾高跟鞋，扣紧后它似乎就直接在你脚上锁死了。）
 (You close the second drawer.)
-（你关上第二个抽屉。）
+（你关上了第二个抽屉。）
 ###_PLAYER
 (Inspect the restraints.)
-（检查束缚。）
+（检查束缚具。）
 ###_NPC
 (The restraints seem pretty strong and smell new.  They seem to have a strange locking mechanism.)
-（束缚看起来很结实，闻起来很新。这些东西似乎有一种奇怪的锁定机制。）
+（这些束缚具看起来相当结实，闻起来很新。上面似乎带有一种奇特的锁扣结构。）
 ###_PLAYER
 (Wear the cuffs.)
 （戴上皮铐。）
 ###_NPC
 (You put on the leather cuffs one by one, hearing a small locking click each time you attach one.)
-（你一个一个地戴上皮铐，每系上一个，都会听到轻微的锁定咔嗒声。）
+（你逐一把皮铐戴上，每扣好一个，都会听到轻微的锁定咔嗒声。）
 ###_PLAYER
 (Wear the collar.)
 （戴上项圈。）
 ###_NPC
 (You put on the leather collar, hearing a small locking click when you attach it.)
-（你戴上皮革项圈，戴好时，能听到轻微的锁定咔嗒声。）
+（你戴上皮项圈，扣紧时听到了一声轻微的锁定咔嗒声。）
 (You close the third drawer.)
-（你关上第三个抽屉。）
+（你关上了第三个抽屉。）
 (There are a few duster gags in the first drawer.)
-（第一个抽屉里有一些掸子口塞。）
+（第一个抽屉里有几个掸子口塞。）
 (There are many dusters in the second drawer.)
-（第二个抽屉里有很多掸子。）
+（第二个抽屉里有许多掸子。）
 (There are a few electric items in the third drawer.)
-（第三个抽屉里有一些电击物品。）
+（第三个抽屉里有一些电动道具。）
 ###_PLAYER
 (Dust the drawer.)
-（给抽屉除尘。）
+（给抽屉掸掸灰。）
 ###_NPC
 (You dust the drawer as the camera zooms on your gag.)
-（镜头拉近你的口塞，你清扫抽屉。）
+（在镜头拉近特写你的口塞时，你清扫着抽屉。）
 ###_PLAYER
 (Wear the duster gag.)
 （戴上掸子口塞。）
 ###_NPC
 (You strap the duster gag around your head as the camera zooms on you.)
-（镜头对准你，你将掸子口塞套在头上。）
+（在镜头对准你并拉近特写时，你将掸子口塞固定在头上。）
 ###_PLAYER
 (Leave the duster gag inside.)
-（将掸子口塞留在里面。）
+（把掸子口塞放回抽屉。）
 ###_NPC
 (You slowly remove the duster gag and try not to drool on your outfit.)
-（你慢慢地取下掸子口塞，尽量避免口水流到你的衣服上。）
+（你慢慢取下掸子口塞，尽量不让口水流到衣服上。）
 (You close the drawer.)
 （你关上抽屉。）
 ###_PLAYER
 (Take a feather duster.)
-（拿起掸子。）
+（拿一把羽毛掸。）
 ###_NPC
 (You take a feather duster and caress it in front of the camera.)
-（你拿着掸子，在镜头前抚摸它。）
+（你拿出一把羽毛掸，在镜头前抚弄着它。）
 ###_PLAYER
 (Take a long duster.)
-（拿起一个长鸡毛掸。）
+（拿一把长掸子。）
 ###_NPC
 (You take a long duster and caress it in front of the camera.)
-（你拿起一个长鸡毛掸，在镜头前抚摸它。）
+（你拿出一把长掸子，在镜头前抚弄着它。）
 ###_PLAYER
 (Leave your item.)
-（放下你的物品。）
+（放回手中的道具。）
 ###_NPC
 (You stare at your item one more time, sigh and slowly put it away.)
-（你再次凝视着你的物品，叹了口气，慢慢地把它收起来。）
+（你最后凝视了一眼手中的道具，叹了口气，慢慢将它收了回去。）
 ###_PLAYER
 (Take an electric toothbrush.)
-（拿起一把电动牙刷。）
+（拿一把电动牙刷。）
 ###_NPC
 (You take an electric toothbrush and turn it on and off for the viewers.)
-（你拿起一把电动牙刷，朝着观众打开又关闭它。）
+（你拿起一把电动牙刷，对着观众开关了几次演示。）
 ###_PLAYER
 (Take a vibrating wand.)
-（拿起一根振动棒。）
+（拿一根震动棒。）
 ###_NPC
 (You take a vibrating wand and turn it on and off for the viewers.)
-（你拿起一根振动棒，朝着观众打开又关闭它。）
+（你拿起一根震动棒，对着观众开关了几次演示。）

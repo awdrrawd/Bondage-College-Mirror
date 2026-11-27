@@ -392,7 +392,7 @@ function InformationSheetDifficulty(C) {
 		const lastChange = typeof C.Difficulty.LastChange === "number" ? C.Difficulty.LastChange : C.Creation;
 		const daysSince = Math.floor((CurrentTime - lastChange) / MS_PER_DAY);
 		const remaining = daysSince >= maxDelay ? 0 : maxDelay - daysSince;
-		text += " " + TextGet("DifficultyDaysTillCanChange").trimStart().replace("NumberOfDays", remaining.toString());
+		text += " " + CommonStringSubstitute(TextGet("DifficultyDaysTillCanChange").trimStart(), [["NumberOfDays", remaining.toString()]]);
 	}
 	return ElementCreate({
 		tag: "p",
@@ -542,8 +542,7 @@ function InformationSheetOwnership(C) {
 				tag: "p",
 				classList: ["information-sheet-owner"],
 				children: [
-					`${TextGet(`${stageText}By`)} `,
-					InformationSheetCopy(C.OwnerName()),
+					...TextSubstitute(`${stageText}By`, { $name: InformationSheetCopy(C.OwnerName()) }),
 					ownerNumber !== -1 ? " (" : null,
 					ownerNumber !== -1 ? InformationSheetCopy(ownerNumber.toString()) : null,
 					ownerNumber !== -1 ? ")" : null,
@@ -642,8 +641,7 @@ function InformationSheetLoverEntry(name, stage, start, memberNumber) {
 				tag: "p",
 				classList: ["information-sheet-lover"],
 				children: [
-					`${TextGet(`${stageKey}With`)} `,
-					InformationSheetCopy(name),
+					...TextSubstitute(`${stageKey}With`, { $name: InformationSheetCopy(name) }),
 					memberNumber != null ? " (" : null,
 					memberNumber != null ? InformationSheetCopy(memberNumber.toString()) : null,
 					memberNumber != null ? ")" : null,

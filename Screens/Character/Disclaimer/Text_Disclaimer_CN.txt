@@ -1,27 +1,27 @@
 Disclaimer
-Bondage Club – Terms of Service
+Bondage Club – 服务条款
 TosIntro1
-To play the game and create a character, you must read and agree to the Terms of Service (TOS).
+若要游玩本游戏并创建角色，你必须阅读并同意本服务条款（TOS）。
 TosIntro2
-These terms can change at any time. By playing the game, you agree to the terms below.
+本条款可能随时发生变更。继续游玩本游戏即代表你同意以下条款。
 TosItem1
-Age Eligibility: This website contains age-restricted materials including nudity and explicit descriptions of sexual activities. You must be a legal adult in your country and at least 18 years old to play the Bondage Club. Minors are not allowed and should leave this website immediately. Never create a character that would be a minor.
+年龄限制：本网站包含受年龄限制的内容，包括裸露以及露骨的性行为描述。你必须在所在国家或地区属于法定成年人，且年满18周岁方可游玩Bondage Club。未成年人不得游玩，并应立即离开本网站。严禁创建任何未成年角色。
 TosItem2
-Player License: As a player, you do not own the game, you are granted a license to play it. This license can be revoked, and your character can be banned or deleted if these terms are violated.
+玩家许可：作为玩家，你并不拥有本游戏的所有权，仅获得游玩许可。若违反本条款，该许可可能会被撤销，你的角色也可能会被封禁或删除。
 TosItem3
-User Conduct: As a player, you must conduct yourself in a civilized manner. Do not harass others, make hateful statements or try to harm others maliciously. You can cheat by using scripts or mods on yourself, but do not use them on others without their consent. Do not, in any way, try to hack or disrupt the server.
+用户行为规范：作为玩家，你的言行必须文明得体。不得骚扰他人、发表仇恨言论或蓄意恶意伤害他人。你可以在自己身上使用脚本或模组来作弊，但未经他人同意，不得对其使用。严禁以任何方式尝试黑入或破坏服务器。
 TosItem4
-Assets Ownership: Many assets (drawings, real pictures & sounds) used in the Bondage Club game are not owned by the Bondage Club developers or Bondage Projects. The game is a community driven visible source game and these assets were imported from all over the web, making it almost impossible to track and credit all the sources. If you're the owner of one of these assets, please inform Ben987 on Patreon, Discord or DeviantArt.
+素材归属：Bondage Club游戏中使用的诸多素材（画作、实景图片与音频）并不归Bondage Club开发者或Bondage Projects所有。本游戏是一款社区驱动的开源游戏，这些素材采集自全网各地，因此几乎无法追溯并标注所有来源。若你是其中某些素材的版权所有者，请在Patreon、Discord或DeviantArt上告知Ben987。
 TosItem5
-No Warranty: The game is a community driven visible source game and can be modified in hundreds of ways, bugs are to be expected. There is no guarantee that the game won’t crash, that the server will be running and the client hosting will remain available. The Bondage Club is not responsible for any data loss on your accounts.
+免责声明：本游戏是一款社区驱动的开源游戏，可以进行成百上千种修改，因此难免会出现漏洞。本游戏不保证不会崩溃，也不保证服务器持续运行或客户端托管始终可用。Bondage Club对你账号的任何数据丢失概不负责。
 TosItem6
-Limitation of Liability: The Bondage Club is a free game and is not liable for any direct or indirect damage. Since you do not pay for the game, you cannot get a refund or sue the developers for bugs or content that does not meet your expectations.
+责任限制：Bondage Club是一款免费游戏，对任何直接或间接损失概不承担责任。鉴于你未为本游戏付费，因此无法因程序漏洞或内容不符合预期而申请退款或起诉开发者。
 TosItem7
-Termination of Access: The Bondage Club can be shut down at any time, without prior notification. There are no obligations to continue supporting the game in the future.
+访问终止：Bondage Club可能会在未经事先通知的情况下随时关闭。官方没有在未来继续支持本游戏的义务。
 TosItem8
-Privacy: Your private information is not required to play the game. The only information you might want to provide is an email address to recover your account password. It is not advised, but you can share your private information with other players if you desire. The Bondage Club is not liable if the shared information is used against you in the future. The Bondage Club values your privacy and will not share or distribute your email address.
+隐私政策：游玩本游戏无需提供你的个人隐私信息。你可能唯一需要提供的信息是用于找回账号密码的电子邮箱地址。我们不建议你这样做，但如果你愿意，也可以与其他玩家分享你的私人信息。若你分享的信息在日后被用来危害你自身，Bondage Club概不负责。Bondage Club重视你的隐私，绝不会分享或散播你的电子邮箱地址。
 TosAcceptPrompt
-Please accept these Terms of Service to create your character.
+请接受本服务条款以创建你的角色。
 TosReturn
 返回
 TosAccept

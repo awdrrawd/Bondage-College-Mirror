@@ -1,12 +1,12 @@
 Accept
-接受
+确认
 Prev
-向前
+上一页
 Next
-向后
+下一页
 Cancel
 取消
 Selection
-选择：选择背景
+选择：SelectedBackground
 Filter
-过滤：过滤/全部
+筛选：已筛选 / 总计

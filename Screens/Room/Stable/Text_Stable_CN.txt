@@ -1,12 +1,12 @@
 Toyhorse
-试训
+玩具马
 Treadmill
 跑步机
 Carriage
 马车
 InStable
-你在隔离马厩里等待
+你正待在隔离马厩中。
 HideDice
-尝试隐藏骰子。
+试着藏起骰子。
 SuccessHide
-你成功隐藏了骰子
+你成功藏好了骰子。

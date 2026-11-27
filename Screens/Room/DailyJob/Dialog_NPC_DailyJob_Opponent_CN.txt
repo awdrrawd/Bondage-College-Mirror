@@ -1,115 +1,115 @@
 ###_NPC
 Silence is gold, and gags are better than gold.
-沉默是金，而口塞胜过金子。
+沉默是金，而口塞胜过黄金。
 (She sighs and bows her head.)  Well done, you're too strong for me.
-（她叹了口气，低下头。）干得漂亮，你比我强得多。
+（她叹了口气并低下头。）干得漂亮，你确实比我强。
 (She laughs at you and smirks.)  Ha!  You're so pathetic.
-（她朝着你笑，然后得意地笑起来）哈！你真可怜。
+（她冲着你冷笑，面带嘲讽。）哈！你可真没用。
 (She sighs and reluctantly allows you to gag her.)
-（她叹了口气，不情愿地让你堵嘴。）
+（她叹了口气，心不甘情愿地任由你塞住她的嘴。）
 (You remove her gag and she seems happy.)  You had fun?  It's over now?
-（你移除她的口塞，她看起来很开心。）你玩得开心吗？现在结束了？
+（你取下她的口塞，她显得松了口气。）玩够了吗？现在能结束了吗？
 (She turns around as you restrain her arms securely.)  Enjoy your victory while it lasts.
-（她转过身，你牢牢地束缚住她的手臂。）暂时享受你的胜利吧。
+（在你将她的双臂牢牢束缚住时，她转过了身。）趁着胜利还在，好好享受吧。
 (You free her arms as she stretches them.)  Alright.  Am I allowed to leave?
-（你解开她，她伸展了一下身体。）好吧。我可以离开吗？
+（你解开她的双臂，她伸展了一下手脚。）行了。我现在能走了吗？
 (She grumbles and gives you her hands as you restrain them.)  Enjoy your victory while it lasts.
-（她把双臂交给你，你束缚住她的双臂，她抱怨着。）暂时享受你的胜利吧。
+（她嘟囔着把双手交给你任由你束缚。）趁着胜利还在，好好享受吧。
 (You free her hands and she gives you a thumbs up.)  Alright.  Am I allowed to leave?
-（你松开她的手，她朝你竖起大拇指。）好吧。我可以离开吗？
+（你解开她的双手，她冲你竖起大拇指。）行了。我现在能走了吗？
 (She submits to you while you restrain her legs.)  You sure know your bondage.
-（她顺从地让你束缚住双腿。）你真懂束缚。
+（在你束缚她双腿时，她顺从地任由你摆弄。）你确实很懂束缚嘛。
 (You release her legs as she shakes her butt.)  How long will you keep me here?
-（你松开她的腿，她摇晃她的屁股。）你要把我留在这里多久？
+（你解开她的腿，她扭了扭屁股。）你还要把我留在这里多久？
 (She tests your feet restraints by jumping on her toes.)
-（她用脚趾跳，测试你对脚束缚的程度。）
+（她踮着脚尖跳了跳，测试脚部束缚的松紧。）
 (You release her feet and she wiggles them.)
-（你松开她的脚，她扭了扭脚。）
+（你解开她的双脚，她活动了一下脚趾。）
 (She adjusts her neck to the new collar.)  I will never become your slave.
-（她调整脖子适应新的项圈。）我永远不会成为你的奴隶。
+（她扭动脖子适应新的项圈。）我绝不可能成为你的奴隶。
 (You remove the collar from her neck.)  Next time I will collar you.
-（你从她脖子上取下项圈。）下次我会给你戴上项圈。
+（你取下她脖子上的项圈。）下次戴上项圈的会是你。
 (She struggles to avoid the belt but you're able to strap it on her.)  These belts should be banned.
-（她挣扎着想避开贞操带，但你还是成功系到她身上。）这些贞操带应该被禁止。
+（她拼命挣扎试图避开，但你还是成功把贞操带系在了她身上。）这种带子就该被彻底查禁。
 (She seems happy as you unlock the belt from her waist.)  Thanks, DialogPlayerName.
-（当你解开她腰间的贞操带时，她看起来很高兴。）谢谢，DialogPlayerName。
+（当你从她腰间解开贞操带时，她看起来很高兴。）谢谢，DialogPlayerName。
 (You strap the device on her head as she sighs.)  Next time I won't lose against you.
-（当你绑紧她头上的道具时，她叹了口气。）下次我不会输给你的。
+（当你把拘束具系在她头上时，她叹了一口气。）下次我绝不会输给你。
 (You release her head as she nods rapidly.)  Enjoy that short-term victory.
-（你解开她的头时，她迅速点头。）享受那短暂的胜利吧。
+（你解开她头上的束缚，她连连点头。）你就得意这一阵子吧。
 (You strap the harness on her torso as she blushes.)  Stop the kinky stuff.
-（你把束缚带系在她的躯干上，她脸上泛红。）别整这些色情东西了。
+（当你把躯干束身带绑在她身上时，她脸红了。）别整这些变态玩意儿了。
 (She stretches as you release her from the harness.)  It will be easier to breath like that.
-（当你将她从安全带中解开时，她会伸展身体。）这样呼吸会更容易。
+（当你把她从束身带中解脱出来时，她伸展了一下身体。）这样呼吸可顺畅多了。
 (She whimpers and cries as you whip her breast.)  Revenge will be sweet!
-（当你鞭打她的乳房时，她呜咽着哭泣。）复仇会很甜蜜！
+（当你抽打她的乳房时，她呜咽着哭出声来。）这笔账我早晚加倍奉还！
 (You lash the crop on her torso, hitting her breast.)  Ow!  Careful with that crop.
-（你用硬鞭抽打她的躯干，击中她的胸部。）噢！用那个硬鞭的时候小心点。
+（你挥舞马鞭抽在她的躯干上，打中了她的胸部。）呜！用马鞭时给我小心点。
 (You whip her butt as she grumbles.)  I'll make sure to get a whip next time I'm facing you.
-（你鞭打她的屁股，她抱怨着。）下次我面对你时，我保证会拿着鞭子。
+（你抽打她的屁股，她低声抱怨着。）下次对决时，我也一定要带上一根鞭子。
 (You whack the leather crop right on her butt.)  Ouch! I'll put my next bounty on you.
-（你用皮革硬鞭抽打她，正打在她的屁股上。）啊呀！我的下一个赏金目标就是你。
+（你用皮质马鞭狠狠抽在她的屁股上。）好痛！我的下一个悬赏目标非你莫属。
 ###_PLAYER
 The maids want you bound and gagged.
-女仆们绑住你并堵上你的嘴。
+女仆们要你被捆绑并堵上嘴。
 ###_NPC
 (She laughs at you.)  Get off my path or there will be trouble.
-（她朝你笑起来。）从我面前滚开，否则会有麻烦的。
+（她冲你冷笑。）别挡我的道，否则有你好看的。
 ###_PLAYER
 I'm sorry, but there's money on your head.
-对不起，你头上有赏金。
+抱歉，有人花钱悬赏你。
 ###_NPC
 And you're not getting it.  Get off my path or there will be trouble.
-并且，你得不到它。从我面前滚开，否则会有麻烦的。
+而你一分钱也拿不到。别挡我的道，否则有你好看的。
 ###_PLAYER
 Surrender now and I won't be too rough with you.
-立即投降，我不会对你太粗暴。
+现在投降，我就不会对你太粗暴。
 ###_NPC
 I'll make a better deal: run away now and I won't crush you!
-我会做一个更好的交易：现在逃跑，我就不会粉碎你！
+我有个更好的提议：现在滚蛋，我就不把你打趴下！
 ###_PLAYER
 I'm here to teach you a lesson.
 我是来给你上一课的。
 ###_NPC
 You and what army?  Get off my path or there will be trouble.
-你和什么，军队吗？从我面前滚开，否则会有麻烦的。
+就凭你？带了帮手吗？别挡我的道，否则有你好看的。
 ###_PLAYER
 (Fight her.)
-（与她战斗。）
+（战斗。）
 (Run away.)
 （逃跑。）
 Many people will enjoy your humiliation.
-有很多人将会享用你的屈辱。
+很多人都会乐意欣赏你受辱的样子。
 ###_NPC
 (She stays silent as more club members gathers around you two.)
-（随着越来越多的俱乐部成员聚集在你们两个周围，她保持沉默。）
+（随着越来越多的俱乐部成员聚集在你们周围，她保持了沉默。）
 ###_PLAYER
 Beg for your freedom slave.
-乞求你的自由吧，奴隶。
+乞求自由吧，奴隶。
 ###_NPC
 (She gulps as more club members gathers around you two.)
-（随着越来越多的俱乐部成员聚集在你们两个周围，她咽了咽口水。）
+（随着越来越多的俱乐部成员聚集在你们周围，她紧张地咽了口唾沫。）
 ###_PLAYER
 Wow!  I was so lucky.
-哇！我太幸运了。
+哇！我真是太走运了。
 ###_NPC
 (She sighs as more club members gathers around you two.)
-（随着越来越多的俱乐部成员聚集在你们两个周围，她叹了口气。）
+（随着越来越多的俱乐部成员聚集在你们周围，她叹了一口气。）
 ###_PLAYER
 (Invite other members.)
 （邀请其他成员。）
 ###_NPC
 (She grumbles as more club members gathers around you two.)
-（随着越来越多的俱乐部成员聚集在你们两个周围，她嘟哝起来。）
+（随着越来越多的俱乐部成员聚集在你们周围，她嘟囔着抱怨起来。）
 ###_PLAYER
 Time to strip girl.
-是时候脱掉衣服了，女孩。
+该脱衣服了，姑娘。
 ###_NPC
 (She blushes as you strip her down, while everyone is watching her humiliation.)
-（当你把她脱光时，她脸红了，而每个人都在观看着她受辱。）
+（你在众人的围观下剥光了她的衣服，她羞耻得满脸通红。）
 ###_PLAYER
 You're wearing too many clothes.
-你穿的衣服太多了。
+你穿得太多了。
 (Strip her.)
 （脱光她。）
 ###_NPC
@@ -120,97 +120,97 @@ NOEXIT
 （束缚她。）
 ###_NPC
 (Use the items from your inventory to restrain her.)
-（使用你携带的物品来束缚她。）
+（使用你背包中的道具来束缚她。）
 ###_PLAYER
 (Humiliate her.)
 （羞辱她。）
 ###_NPC
 (Everyone laughs and has a good time as you humiliate her publicly in the main hall.)
-（你在正厅公开地羞辱她，每个人都笑起来，非常享受。）
+（你在大厅里当众羞辱她，围观的人都笑着看得很开心。）
 ###_PLAYER
 (Let her go.)
-（让她走。）
+（放她走。）
 Congrats girl.  You got the best of me.
-恭喜，女孩。你比我厉害一些。
+恭喜你啊，姑娘。是我技不如人。
 ###_NPC
 I'm the best, never forget that.  (She calls for other club members to see you.)
-我是最强的，别忘了。（她要求其他俱乐部成员见你。）
+我才是最强的，永远别忘了这一点。（她招呼其他俱乐部成员过来看你。）
 ###_PLAYER
 I'll get you next time.
-下次我搞定你的。
+下次我一定拿下你。
 ###_NPC
 There won't be another time.  (She calls for other club members to see you.)
-不会有下一次了。（她找来其他俱乐部成员围观你。）
+不会再有下次了。（她招呼其他俱乐部成员过来看你。）
 ###_PLAYER
 (Bow your head.)
-（低头。）
+（低下头。）
 ###_NPC
 (She smirks and calls for other club members to see you.)
-（她得意地笑，并找来其他俱乐部成员围观你。）
+（她得意地冷笑，并招呼其他俱乐部成员过来看你。）
 ###_PLAYER
 (Struggle to get out.)
-（挣扎以逃出去。）
+（挣扎着试图脱身。）
 ###_NPC
 (She laughs and calls for other club members to see you.)
-（她笑着找来其他俱乐部成员围观你。）
+（她大笑着招呼其他俱乐部成员过来看你。）
 ###_PLAYER
 Now what?
-现在要干啥？
+现在想怎样？
 ###_NPC
 Now you get naked.  (She strips you down.)
-现在，你会被脱光衣服。（她脱光你的衣服。）
+现在脱光你的衣服。（她剥光了你。）
 ###_PLAYER
 Why the crowd?
-为什么在人群里？
+为什么要叫这么多人来？
 ###_NPC
 So you remember that day.  (She strips you down.)
-这样你就忘不掉了。（她脱光你的衣服。）
+这样你才能永远记住今天。（她剥光了你。）
 ###_PLAYER
 (Stay silent.)
 （保持沉默。）
 ###_NPC
 (She quickly strips you down.)
-（她很快就把你脱光了。）
+（她迅速脱光了你的衣服。）
 ###_PLAYER
 I'll have my revenge someday.
-总有一天我会报仇的。
+总有一天我会报复回来的。
 ###_NPC
 We'll see about that.  (She opens a gym bag full of restraints and grins.)
-我们走着瞧咯。（她打开一个装满束缚的健身包，咧嘴笑起来。）
+那我们就走着瞧。（她拉开一个装满拘束具的运动包，咧嘴狞笑。）
 ###_PLAYER
 This is too much!
-这过分了！
+这太过分了！
 ###_NPC
 It's not enough.  (She opens a gym bag full of restraints and grins.)
-这远远不够。（她打开一个装满束缚的健身包，咧嘴笑起来。）
+这才哪到哪啊。（她拉开一个装满拘束具的运动包，咧嘴狞笑。）
 ###_PLAYER
 (Blush red.)
-（脸红。）
+（羞红了脸。）
 ###_NPC
 Isn't it fun?  (She opens a gym bag full of restraints and grins.)
-不是很有趣吗？（她打开一个装满束缚的健身包，咧嘴笑起来。）
+这不是挺好玩的吗？（她拉开一个装满拘束具的运动包，咧嘴狞笑。）
 ###_PLAYER
 (Act like you don't care.)
-（表现得像是不在乎。）
+（装作满不在乎的样子。）
 ###_NPC
 Time for more trouble.  (She opens a gym bag full of restraints and grins.)
-是时候给你更多麻烦了。（她打开一个装满束缚的健身包，咧嘴笑起来。）
+该给你来点更大的麻烦了。（她拉开一个装满拘束具的运动包，咧嘴狞笑。）
 ###_PLAYER
 Alright, can we stop now?
-好吧，我们现在可以停下来了吗？
+行了，我们现在能停手了吗？
 ###_NPC
 (She stares at you and uses many restraints on you, while everyone around watches.)
-（她盯着你，对你用了了很多约束，而周围的每个人都看着。）
+（她在众目睽睽之下凝视着你，并把大量的拘束具套在你的身上。）
 ###_PLAYER
 (Shake your head no.)
-（摇头，表示拒绝。）
+（摇头表示拒绝。）
 (Look away.)
-（移开视线。）
+（把目光移开。）
 (Grumble and struggle.)
-（咕哝并挣扎。）
+（一边抱怨一边挣扎。）
 ###_NPC
 (She humiliates you some more and leaves you bound in the main hall.)
-（她进一步地羞辱你，把你绑着留在大厅里。）
+（她进一步羞辱了你一番，将你牢牢绑在大厅里不管了。）
 ###_PLAYER
 (Wait patiently.)
 （耐心等待。）

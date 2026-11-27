@@ -29,7 +29,7 @@ dice
 expr
 [0-5]: 清空或加载面部表情。指令后的“0”会清空当前的表情。“1”到“5”会从保存栏位加载表情。如果没有提供数字，会打开已保存的表情菜单。
 eyes
-[o|c][l|r] 或者 [expression]: 睁开或关闭眼睛，或者改变表情。“c”会闭眼，“o”会睁眼，使用“l”或者“r”来只针对一侧的眼睛。如果没有提供动作，会打开表情菜单，使用下列之一来改变表情：“defualt”、“dazed”、“shy”、“sad”、“horny”、“lewd”、“verylewd”、“heart”、“heartpink”、“lewdheartpink”、“dizzy”（或“@@”）、“daydream”（或者“><”）、“shylyhappy”（或者“^^”）、“angry”（或“èé”）、“surprised”（或“éè”）、“scared”。
+[o|c][l|r] 或 [expression]: 睁开或闭上眼睛，或改变表情。“c”为闭眼，“o”为睁眼，使用“l”或“r”可仅作用于单侧眼睛。不带参数将打开表情菜单，使用以下选项之一可切换表情：“default”、“dazed”、“shy”、“sad”、“horny”、“lewd”、“verylewd”、“heart”、“heartpink”、“lewdheart”、“lewdheartpink”、“dizzy”（或“@@”）、“daydream”（或“><”）、“shylyhappy”（或“^^”）、“angry”（或“èé”）、“surprised”（或“éè”）或“scared”。
 focus
 add/remove/list/clear/help [目标]: 修改你的关注列表（允许你选择性地查看聊天室中的玩家）。运行'/focus'获取更多信息。
 focusadd
@@ -46,6 +46,8 @@ friendlistadd
 [MemberNumber]:将玩家添加到好友列表
 friendlistremove
 [MemberNumber]:将玩家从好友列表移除
+friendlistrequest
+[MemberNumber]: 将该玩家加入你的好友列表并发送通知
 ghostadd
 [MemberNumber]:将玩家添加到忽视列表
 ghostremove
@@ -90,6 +92,18 @@ wheel
 转动你的命运之轮
 release
 [MemberNumber]: 释放一个被你拥有的顺从者
+roomcustom
+查看或修改房间的自定义配置。
+roomcustom-enable|disable-desc
+启用房间自定义
+roomcustom-image [URL|-]-desc
+将此 URL 设为房间背景。输入“-”清除设置
+roomcustom-filter [#hexcode|-]-desc
+将此十六进制颜色代码设为房间滤镜效果。输入“-”清除设置
+roomcustom-music [URL|-]-desc
+将此 URL 设为房间背景音乐。输入“-”清除设置
+roomcustom-sync [on|off]-desc
+启用/禁用音乐同步
 customimage
 [URL]: 设置背景使用的jpg/png图片的http地址
 customfilter
@@ -118,3 +132,21 @@ mapgivekey
  [MemberNumber] [bronze] [silver] [gold]: 给予玩家任何地图钥匙
 maptakekey
  [MemberNumber] [bronze] [silver] [gold]: 从玩家那里拿走任何地图钥匙
+clear
+清除聊天记录中的所有消息
+arousal
+设置你的兴奋程度
+mods
+显示 Mod SDK 相关命令
+mods-list
+在聊天记录中显示你的客户端加载的 Mod SDK 模组
+mods-remote
+[MemberNumber|Name|Nickname] 向其他人（或某位玩家）查询其 Mod SDK 列表；收到回复或超时后显示结果。
+mods-remote-target
+目标玩家
+mods-remote-target-desc
+此房间中的可选玩家（名称或成员编号）；留空则查询其他所有人
+sos
+切换 SOS 表情
+brb
+切换马上回来（BRB）表情

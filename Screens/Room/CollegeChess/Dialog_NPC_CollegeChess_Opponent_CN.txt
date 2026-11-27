@@ -238,13 +238,13 @@ What will you do?
 你要做什么呢？
 ###_NPC
 (She ponders.)  Since you're naked and you lost, you could do a sexy dance for me.
-（她沉思了一会儿。）既然你光着身子，并且不知道做啥，你可以为我跳一段性感的舞蹈。
+（她沉思了一会儿。）既然你光着身子，又输给了我，你可以为我跳一段性感的舞蹈。
 ###_PLAYER
 This is kinky!
 这太变态了！
 ###_NPC
 It could be even more kinky.  Since you're naked and you lost, you could do a sexy dance for me.
-这可以更变态。既然你光着身子，并且不知道做啥，你可以为我跳一段性感的舞蹈。
+这可以更变态。既然你光着身子，又输了，你可以为我跳一段性感的舞蹈。
 ###_PLAYER
 This is too embarrassing.
 这太羞人了。
@@ -546,7 +546,7 @@ You're not funny.  This last lesson will be on the endgame.  (She forces you to 
 （保持沉默。）
 ###_NPC
 You're a good student.  This last lesson will be on the endgame.  (She teaches you more chess moves.)
-你是个好学生。最后一课是关于残局处理的。（她强迫你学习更多的国际象棋技巧。）
+你是个好学生。最后一课是关于残局处理的。（她教了你更多的国际象棋技巧。）
 ###_PLAYER
 (Sigh and struggle lightly.)
 （轻轻叹息和挣扎。）

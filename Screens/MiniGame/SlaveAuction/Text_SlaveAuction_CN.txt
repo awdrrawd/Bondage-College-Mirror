@@ -11,7 +11,7 @@ You
 SomeoneElse
 其他人
 Nobody
-没有人
+无人
 YourMoney
 你的钱款：
 GiveUp
@@ -19,10 +19,10 @@ GiveUp
 Return
 返回
 DoIHear
-我听到了
+有人出
 GoingOnce
-确认一次！
+一次！
 GoingTwice
-确认二次！
+两次！
 Sold
 成交！

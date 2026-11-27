@@ -1,10 +1,16 @@
 EnterDescription
-输入你的在线描述（限MAXLEN字符）
+输入你的在线描述（最多 MAXLEN 个字符）
 ViewDescription
 CharacterName的在线描述
+EnterOwnersNotes
+输入对CharacterName的公开备注（最多 MAXLEN 个字符）
+ViewOwnersNotes
+来自OwnerName（CharacterName的主人）的备注
 Leave
 退出档案
 LeaveSave
-接受改动
+保存改动
 LeaveNoSave
 取消改动
+OwnersNotes
+主人备注

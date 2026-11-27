@@ -1,20 +1,20 @@
 HorseWalkCarrotSpots
-移动至胡萝卜 ($CARROTS) 并躲开马鞭 ($CROPS)
+前往胡萝卜 ($CARROTS) 处，避开马鞭 ($CROPS)
 HorseWalkCarrotStart
-移动到胡萝卜并避开马鞭。触碰以开始。
+前往胡萝卜处，避开马鞭。点击以开始。
 CarrotVictory
-恭喜！ (胡萝卜: $CARROTS, 马鞭: $CROPS)
+恭喜！ (胡萝卜: $CARROTS，马鞭: $CROPS)
 CarrotDefeat
-抱歉，你失败了。 (胡萝卜: $CARROTS, 马鞭: $CROPS)
+很遗憾，你失败了。 (胡萝卜: $CARROTS，马鞭: $CROPS)
 HorseWalkHurdleSpots
-跳过跨栏。成功: ($HURDLEWIN), 失败: ($HURDLEFAIL)
+跳过跨栏。成功: ($HURDLEWIN)，失败: ($HURDLEFAIL)
 HorseWalkHurdleStart
-跳过跨栏。触碰以开始。
+跳过跨栏。点击以开始。
 HurdleVictory
-恭喜！ (成功: $HURDLEWIN, 失败: $HURDLEFAIL)
+恭喜！ (成功: $HURDLEWIN，失败: $HURDLEFAIL)
 HurdleDefeat
-抱歉，你失败了。 (成功: $HURDLEWIN, 失败: $HURDLEFAIL)
+很遗憾，你失败了。 (成功: $HURDLEWIN，失败: $HURDLEFAIL)
 HorseWalkHitSpots
-鞭打小马 ($PONY), 不要鞭打驯马师 ($TRAINER)。
+鞭打小马 ($PONY)，不要鞭打驯马师 ($TRAINER)。
 HorseWalkHitStart
-鞭打小马，不要鞭打驯马师。触碰以开始。
+鞭打小马，不要鞭打驯马师。点击以开始。

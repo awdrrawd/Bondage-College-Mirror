@@ -1,21 +1,39 @@
+Title
+聊天室自定义
+Desc
+你可以通过加载外部资源，在此为你的房间选择自定义背景图片和背景音乐。请注意，其他玩家需要手动启用这些自定义设置。
 TitleMusicLibrary
-用户可以使用来自音乐库的免费版权音乐。
+这里精选了部分免版税音乐供你使用。
+BackgroundImageLabel
+自定义背景图片：
 BackgroundImageNote
-你也可以使用游戏资源。例如：Screens/Room/Platform/Background/Savannah/TentInterior.jpg
+你也可以使用游戏内资源，例如 https://bondageprojects.com/images/school.jpg 或 Screens/Room/Platform/Background/Savannah/TentInterior.jpg
+BackgroundImageFillModeLabel
+选择图片填充模式：
 BackgroundSizeModeFill
-充满房间
+铺满房间
 BackgroundSizeModeFillOriginalRatio
-充满房间，原始要素比例
+铺满房间，保持原始宽高比
 BackgroundSizeModeShowFullOriginalRatio
-完整图片，原始要素比例
+完整显示图片，保持原始宽高比
+BackgroundFilterLabel
+颜色滤镜：
 BackgroundFilterNote
-你可以在背景上添加颜色滤镜。例如，使用#00000080来调暗灯光。
+你可以为背景叠加一层颜色滤镜。例如，使用 #00000080 可以调暗光线。
+BackgroundMusicLabel
+自定义音乐：
 BackgroundMusicNote
-填入要使用的背景mp3地址。例如：https://bondageprojects.com/music/relax.mp3
+输入要使用的背景 mp3 音乐文件地址。
+BackgroundMusicSync
+在房间内同步音乐音轨
+ResetButtonTooltip
+重置
 OpenLibraryButtonTooltip
 音乐库
-PreviewButtonTooltip
-预览
+MusicPlay
+播放
+MusicPause
+暂停
 ClearButtonTooltip
 全部清除
 SaveButtonTooltip
@@ -29,22 +47,32 @@ MusicLibraryFantasyAmbience
 MusicLibraryHorrorAmbience
 恐怖氛围
 MusicLibraryWesternAmbience
-西方氛围
+西部氛围
 MusicLibraryPop2020
-流行2020
+流行 2020
 MusicLibraryPop2022
-流行2022
+流行 2022
 MusicLibraryProgressiveHouse2022
-渐进浩室2022
+渐进浩室 2022
 MusicLibraryMetalInstrumental2021
-金属纯音乐2021
+金属纯音乐 2021
 MusicLibraryElectroDance2022
-电子舞曲2022
+电子舞曲 2022
 MusicLibraryElectroDance2023
-电子舞曲2023
+电子舞曲 2023
 MusicLibraryElectroRoyKnox
-Roy Knox电子乐
+Roy Knox 电子乐
 MusicLibraryDanceElectroPop
 流行电子舞曲
 MusicLibraryDarkTechno
-黑暗科技舞曲
+暗黑铁克诺
+SectionBackground
+背景
+SectionMusic
+音乐
+FillModeShort
+填充模式
+PreviewEmpty
+无背景图片
+MusicSource
+来源

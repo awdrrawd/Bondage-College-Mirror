@@ -27,19 +27,21 @@ LARPTeamBlack
 LARPTimerNA
 0
 LARPEndGame
-游戏结束！TeamName队胜利。享用你们的战利品吧！
+游戏结束！TeamName队获胜。尽情享用你们的战利品吧！
 LARPTurnStart
-TargetName(TargetNumber)最先行动，并开始了游戏。
+TargetName(TargetNumber)最先行动，游戏开始。
 LARPTurnSkip
-这个回合跳过，TargetName(TargetNumber)行动。
+本回合被跳过。轮到TargetName(TargetNumber)行动。
 LARPTurnNext
-TargetName(TargetNumber)行动。
+轮到TargetName(TargetNumber)行动。
 LARPBackToCharacters
-回到角色。
+返回角色列表
 LARPOptionPass
 跳过回合
 LARPOptionPassSuccess
-SourceName(SourceNumber)什么也没有做，并跳过了回合。
+SourceName(SourceNumber)什么都没做，跳过了SourcePronounPossessive回合。
+LARPOptionStrip
+脱掉TargetPronounObject的衣服(OptionOdds %)
 LARPOptionStripSuccess
 SourceName(SourceNumber)成功脱掉了TargetName(TargetNumber)的衣服。[ActionOdds >= ActionRNG]
 LARPOptionStripFail
@@ -49,107 +51,109 @@ LARPOptionRestrainArms
 LARPOptionRestrainArmsSuccess
 SourceName(SourceNumber)成功使用ItemDesc束缚了TargetName(TargetNumber)的双臂。[ActionOdds >= ActionRNG]
 LARPOptionRestrainArmsFail
-SourceName(SourceNumber)未能使用ItemDesc束缚住TargetName(TargetNumber)的双臂。[ActionOdds < ActionRNG]
+SourceName(SourceNumber)未能使用ItemDesc束缚TargetName(TargetNumber)的双臂。[ActionOdds < ActionRNG]
 LARPOptionRestrainLegs
 束缚双腿(OptionOdds %)
 LARPOptionRestrainLegsSuccess
 SourceName(SourceNumber)成功使用ItemDesc束缚了TargetName(TargetNumber)的双腿。[ActionOdds >= ActionRNG]
 LARPOptionRestrainLegsFail
-SourceName(SourceNumber)未能使用ItemDesc束缚住TargetName(TargetNumber)的双腿。[ActionOdds < ActionRNG]
+SourceName(SourceNumber)未能使用ItemDesc束缚TargetName(TargetNumber)的双腿。[ActionOdds < ActionRNG]
+LARPOptionRestrainMouth
+堵住TargetPronounObject的嘴(OptionOdds %)
 LARPOptionRestrainMouthSuccess
-SourceName(SourceNumber)成功使用ItemDesc塞住了TargetName(TargetNumber)的嘴。[ActionOdds >= ActionRNG]
+SourceName(SourceNumber)成功使用ItemDesc堵住了TargetName(TargetNumber)的嘴。[ActionOdds >= ActionRNG]
 LARPOptionRestrainMouthFail
-SourceName(SourceNumber)未能使用ItemDesc塞住TargetName(TargetNumber)的嘴。[ActionOdds < ActionRNG]
+SourceName(SourceNumber)未能使用ItemDesc堵住TargetName(TargetNumber)的嘴。[ActionOdds < ActionRNG]
 LARPOptionTighten
-束紧(OptionOdds %)
+收紧束缚(OptionOdds %)
 LARPOptionTightenSuccess
-SourceName(SourceNumber)收紧了TargetName(TargetNumber)的束缚，重置了她的挣扎进度。
+SourceName(SourceNumber)收紧了TargetName(TargetNumber)身上的束缚，重置了TargetPronounPossessive挣扎进度。
 LARPOptionStruggle
 挣扎(OptionOdds %)
 LARPOptionStruggleSuccess
-SourceName(SourceNumber)成功挣脱，解放了她的双臂。[ActionOdds >= ActionRNG]
+TargetName(TargetNumber)成功挣脱，解放了TargetPronounPossessive双手。[ActionOdds >= ActionRNG]
 LARPOptionStruggleFail
-SourceName(SourceNumber)尝试挣脱，但是失败了。[ActionOdds < ActionRNG]
+TargetName(TargetNumber)试图挣脱，但失败了。[ActionOdds < ActionRNG]
 LARPOptionCharge
-鼓舞(OptionOdds %)
+冲锋(OptionOdds %)
 LARPOptionChargeSuccess
-SourceName(SourceNumber)鼓舞她的队伍，在一整轮内，提供25%的攻击加成。
+SourceName(SourceNumber)率领SourcePronounPossessive队伍发起冲锋，在一整轮内提供25%的攻击加成。
 LARPOptionControl
-掌控(OptionOdds %)
+控场(OptionOdds %)
 LARPOptionControlSuccess
-SourceName(SourceNumber)掌控房间，在一整轮内，阻止任何人使用特殊能力。
+SourceName(SourceNumber)掌控了全场，在一整轮内阻止所有人使用特殊能力。
 LARPOptionDetain
-扣押(OptionOdds %)
+拘禁(OptionOdds %)
 LARPOptionDetainSuccess
-SourceName(SourceNumber)使用ItemDesc扣押了TargetName(TargetNumber)并束缚了她的手臂。
+SourceName(SourceNumber)拘禁了TargetName(TargetNumber)，并使用ItemDesc束缚了TargetPronounPossessive双臂。
 LARPOptionExpose
 暴露(OptionOdds %)
 LARPOptionExposeSuccess
-SourceName(SourceNumber)暴露了TargetName(TargetNumber)并脱掉了她的衣服。
+SourceName(SourceNumber)使TargetName(TargetNumber)暴露，并剥除了TargetPronounPossessive衣服。
 LARPOptionInspire
-启发(OptionOdds %)
+鼓舞(OptionOdds %)
 LARPOptionInspireSuccess
-SourceName(SourceNumber)启发了TargetName(TargetNumber)，让她能够再次使用特殊能力。
+SourceName(SourceNumber)鼓舞了TargetName(TargetNumber)，使TargetPronounObject能够再次使用TargetPronounPossessive特殊能力。
 LARPOptionSeduce
 诱惑(OptionOdds %)
 LARPOptionSeduceSuccess
-SourceName(SourceNumber)诱惑了TargetName(TargetNumber)，她在下个回合无法行动。
+SourceName(SourceNumber)诱惑了TargetName(TargetNumber)，使TargetPronounObject在TargetPronounPossessive下个回合无法行动。
 LARPOptionConfuse
 迷惑(OptionOdds %)
 LARPOptionConfuseSuccess
-SourceName(SourceNumber)迷惑了TargetName(TargetNumber)，在一整轮内，她无法使用特殊能力。
+SourceName(SourceNumber)迷惑了TargetName(TargetNumber)，在一整轮内阻止TargetPronounObject使用特殊能力。
 LARPOptionHide
-躲藏(OptionOdds %)
+隐蔽(OptionOdds %)
 LARPOptionHideSuccess
-SourceName(SourceNumber)躲在了角落里，直到她的下个回合，敌人不能以她为目标。
+SourceName(SourceNumber)躲进了角落里，在SourcePronounPossessive下个回合前，任何对手都无法以SourcePronounObject为目标。
 LARPOptionImmobilize
-固定(OptionOdds %)
+制服(OptionOdds %)
 LARPOptionImmobilizeSuccess
-SourceName(SourceNumber)使用ItemDesc固定了TargetName(TargetNumber)并束缚了她的双腿。
+SourceName(SourceNumber)制服了TargetName(TargetNumber)，并使用ItemDesc束缚了TargetPronounPossessive双腿。
 LARPOptionCheer
-庆贺(OptionOdds %)
+助威(OptionOdds %)
 LARPOptionCheerSuccess
-SourceName(SourceNumber)向TargetName(TargetNumber)庆贺，在一整轮内，向她提供25%的攻击和防御加成。
+SourceName(SourceNumber)为TargetName(TargetNumber)加油助威，在一整轮内为TargetPronounObject提供25%的攻防加成。
 LARPOptionCostume
-装扮(OptionOdds %)
+换装(OptionOdds %)
 LARPOptionCostumeSuccess
-SourceName(SourceNumber)使用ItemDesc装扮了TargetName(TargetNumber)。
+SourceName(SourceNumber)使用ItemDesc为TargetName(TargetNumber)换上装扮。
 LARPOptionEvasion
-逃脱(OptionOdds %)
+脱身(OptionOdds %)
 LARPOptionEvasionSuccess
-SourceName(SourceNumber)使用她的逃脱能力从束缚中逃脱出来。
+SourceName(SourceNumber)使用SourcePronounPossessive脱身技巧解除了自身的束缚。
 LARPOptionRescue
 解救(OptionOdds %)
 LARPOptionRescueSuccess
-SourceName(SourceNumber)解救了TargetName(TargetNumber)。并移除了她的束缚。
+SourceName(SourceNumber)解救了TargetName(TargetNumber)，解除了TargetPronounPossessive束缚。
 LARPOptionSilence
-沉默(OptionOdds %)
+禁言(OptionOdds %)
 LARPOptionSilenceSuccess
-SourceName(SourceNumber)使用ItemDesc让TargetName(TargetNumber)沉默，并塞住了她的嘴。
+SourceName(SourceNumber)使TargetName(TargetNumber)陷入沉默，并使用ItemDesc堵住了TargetPronounObject的嘴。
 LARPOptionUngag
 解开口塞(OptionOdds %)
 LARPOptionUngagSuccess
-SourceName(SourceNumber)解开了TargetName(TargetNumber)的口塞。
+SourceName(SourceNumber)取下了TargetName(TargetNumber)的口塞。
 LARPOptionCover
 掩护(OptionOdds %)
 LARPOptionCoverSuccess
-SourceName(SourceNumber)掩护TargetName(TargetNumber)，在一整轮内，敌人不能以她为目标。
+SourceName(SourceNumber)掩护了TargetName(TargetNumber)，在一整轮内任何对手都无法以TargetPronounObject为目标。
 LARPOptionDress
-着装(OptionOdds %)
+穿衣(OptionOdds %)
 LARPOptionDressSuccess
-SourceName(SourceNumber)使用ItemDesc穿回衣服。
+SourceName(SourceNumber)使用ItemDesc穿回了衣服。
 LARPOptionSupport
 支援(OptionOdds %)
 LARPOptionSupportSuccess
-SourceName(SourceNumber)支援她的队伍，在一整轮内，提供25%的防御加成。
+SourceName(SourceNumber)支援SourcePronounPossessive队伍，在一整轮内提供25%的防御加成。
 MagicBattleGameStartFreeForAll
-一场自由对战的魔法对战开始了。要取得胜利，使用你的咒语封住所有其他魔法师的嘴。选择你的第一个目标吧。
+一场大混战模式的魔法对战开始了。想要获胜，就用你的咒语堵住其他所有魔法师的嘴吧。选择你的第一个目标。
 MagicBattleGameStartHouse
-一场组队的魔法对战开始了。要取得胜利，使用你的咒语封住所有其他学院的魔法师的嘴。选择你的第一个目标吧。
+一场大学组队的魔法对战开始了。想要获胜，就用你的咒语堵住其他所有大学魔法师的嘴吧。选择你的第一个目标。
 MagicBattleGameStop
 管理员SourceName(SourceNumber)手动结束了魔法对战。
 MagicBattleTurnNext
-这个回合结束了，选择你的下个目标。
+本回合结束，请选择你的下一个目标。
 MagicBattleTimerNA
 0
 MagicBattleSpell0Name
@@ -159,24 +163,24 @@ MagicBattleSpell1Name
 MagicBattleSpell2Name
 绳索紧束
 MagicBattleSpell3Name
-言语闭塞
+言语封禁
 MagicBattleSpell4Name
 锁链舞动
 MagicBattleSpell5Name
 锁链紧束
 MagicBattleSpell6Name
-赤裸肉身
+赤裸身躯
 MagicBattleSpell7Name
-交手紧缚
+皮带束缚
 MagicBattleSpellSuccess
-SourceName(SourceNumber)成功对TargetName(TargetNumber)施放了SpellDesc，用时SpellTime秒。
+SourceName(SourceNumber)在SpellTime秒内成功对TargetName(TargetNumber)施放了SpellDesc。
 MagicBattleSpellFail
 SourceName(SourceNumber)未能对TargetName(TargetNumber)施放SpellDesc，用时SpellTime秒。
 MagicBattleNoWinner
-没有人成功施放咒语。
+没有人成功施放出咒语。
 MagicBattleTieRound
-两个咒语同时施放出来
+双方同时施放出咒语，本轮不分胜负。
 MagicBattleRoundWinner
-SourceName(SourceNumber)施放的SpellDesc影响了TargetName(TargetNumber)。
+SourceName(SourceNumber)施放的SpellDesc击中了TargetName(TargetNumber)。
 MagicBattleGameOver
-战斗结束了！享受你们的战利品吧。
+战斗结束！尽情享用你们的战利品吧。

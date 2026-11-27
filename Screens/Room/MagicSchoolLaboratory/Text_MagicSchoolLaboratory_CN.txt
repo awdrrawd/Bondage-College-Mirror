@@ -1,10 +1,12 @@
 Exit
-返回束缚俱乐部
+离开
 Profile
 个人档案
 Dress
-穿上你结社的服装
+穿上所属分院的服装
 Explore
 探索魔法学校
 Escape
 逃脱挑战
+ExploreAround
+在魔法学校各处探索

@@ -30,6 +30,10 @@ ScriptsPreferences
 - 脚本权限设置 -
 ExtensionsPreferences
 - 扩展组件设置 -
+CensoredWordsPreferences
+- 屏蔽词设置 -
+KeybindingsPreferences
+- 按键绑定设置 -
 HomepageGeneral
 通用
 HomepageDifficulty
@@ -60,6 +64,8 @@ HomepageGender
 性别
 HomepageScripts
 脚本
+HomepageKeybindings
+按键绑定
 HomepageExtensions
 扩展组件
 DifficultyTitle
@@ -133,7 +139,7 @@ AllowedInteraction4
 AllowedInteraction5
 仅主人
 ErrorInvalidColor
-请输入有效的十六位#RGB颜色
+请输入有效的十六进制 #RRGGBB 颜色值
 ColorTheme
 主题:
 Light
@@ -204,6 +210,8 @@ PreserveChat
 在房间之间保留聊天记录
 DisableReplies
 禁用回复功能
+ShowFriendRequestMessages
+显示好友申请消息
 DefaultChatRoomBackground
 默认聊天室背景:
 ChatSettingsPage0
@@ -237,7 +245,7 @@ BlindAdjacent
 StimulationEvents
 被插入或被振动时的事件
 ChatRoomMuffle
-失明时隐藏聊天室名和描述
+失明时混淆聊天室名称与描述
 RoomCustomizationLabel
 房间自定义：
 RoomCustomizationLevel0
@@ -250,8 +258,22 @@ RoomCustomizationLevel3
 总是
 SensDepSetting
 感觉剥夺设置
+LockTimerLimitSetting
+锁定时长上限设置
+LockTimerLimitDefault
+默认
+LockTimerLimitDay
+1天
+LockTimerLimitWeek
+1周
+LockTimerLimitMonth
+1个月
+LockTimerLimitYear
+1年
+LockTimerLimitUnlimited
+无限制
 SensDepLight
-明亮
+轻度
 SensDepNames
 隐藏角色名
 SensDepTotal
@@ -282,6 +304,8 @@ ArousalDisableAdvancedVibes
 禁止高级振动模式(寸止、随机等)
 GeneralHardcoreWarning
 安全词和NPC帮助在硬核和极限难度不可用
+ToggleColorPicker
+切换拾色器
 ItemsAffectExpressions
 物品可以影响你的面部表情
 GeneralAnimationQuality0
@@ -316,6 +340,8 @@ ShowStatus
 显示状态泡泡
 SendStatus
 发送你的状态
+RespondRemoteModListQueries
+响应他人的模组列表查询
 UpdateEmailDescription
 链接邮箱地址可以找回密码
 UpdateEmail
@@ -338,12 +364,14 @@ ArousalShowOtherMeter
 显示其他角色量表
 ArousalAffectExpression
 影响你的面部表情
+ArousalAffectErection
+影响你的勃起状态
 ArousalActive
 启用:
 ArousalActiveInactive
 禁用交互动作
 ArousalActiveNoMeter
-启用量表
+允许互动（无量表）
 ArousalActiveManual
 启用手动量表
 ArousalActiveHybrid
@@ -417,7 +445,7 @@ ArousalFetishTape
 ArousalFetishNylon
 尼龙
 ArousalFetishLingerie
-亚麻
+内衣
 ArousalFetishPony
 马驹游戏
 ArousalFetishABDL
@@ -461,7 +489,7 @@ ArousalConfigureErogenousZones
 ArousalZoneLove0
 禁止对该区域的一切行动
 ArousalZoneLove1
-不喜欢,禁止
+不喜欢
 ArousalZoneLove2
 没什么特别的
 ArousalZoneLove3
@@ -528,8 +556,14 @@ VisibilityWarning
 该图标会出现在穿戴隐藏物品的角色身旁
 VisibilityReset
 重置全部
+VisibilityResetDescription
+重置所有物品偏好以使隐藏物品重新可见，然后退出并保存？
 VisibilityLocked
 所有物品在极难难度下都强制可见
+VisibilitySearchPlaceholder
+搜索……
+VisibilityNoResults
+没有符合搜索条件的物品
 LeaveSave
 接受改动
 LeaveNoSave
@@ -676,6 +710,8 @@ ScriptsHelpHide
 允许脚本覆盖束缚俱乐部的默认项目隐藏行为。这可以让你用通常无法实现的物品组合来增强你的游戏体验，或者通过隐藏物品来使得你的外观不反映你身上的物品穿戴。但是，这也可以用来制造严重的显示问题，包括让物品甚至你的整个角色不可见。谨慎使用！
 ScriptsHelpBlock
 允许脚本覆盖束缚俱乐部的默认物品阻挡。此功能可以防止你在他人身上装备物品，也可以防止在阻挡的区域进行互动。允许脚本添加自定义阻挡，可以带来额外的限制，防止玩家移除旧物品或在给定物品栏中添加新物品，但也可能导致你无法自行移除物品，除非获得脚本的帮助（或删除此权限）。
+ScriptsShowHelp
+显示帮助
 ScriptsPermissionLevelSelf
 自身
 ScriptsPermissionLevelOwner
@@ -698,10 +734,16 @@ FPSUnfocusedLimit
 失焦时帧率限制
 ShowFPS
 显示帧率
+ShowFullscreenButton
+显示全屏按钮
+ShowFullscreenButtonHint
+显示用于进入全屏模式的小按钮。推荐在移动设备上开启；桌面浏览器通常已自带全屏快捷键。
 ShowFullscreenButtonon
 总是
 ShowFullscreenButtonoff
 永不
+ShowFullscreenButtonon_when_mobile
+移动设备上
 MaxFPS0
 无限制
 MaxFPS10
@@ -716,3 +758,33 @@ OOCAutoClose
 自动关闭OOC消息
 ShowUngarbledMessages
 如果可用，显示未混淆的消息内容
+ExtensionsNotFound
+未找到扩展组件
+KeybindSearchMode
+搜索模式
+KeybindSearchMode.action
+操作
+KeybindSearchMode.category
+类别
+KeybindSearchMode.keyCombo
+按键组合
+KeybindSearchPlaceholder
+输入以搜索……
+KeybindNotBound
+未绑定
+KeybindError
+错误
+KeybindConflictsOnly
+仅显示冲突项
+KeybindConflictsWith
+与以下按键冲突：\n$conflicts$
+KeybindContextsValid
+生效情境：\n$contexts$
+KeybindReset
+重置按键组合
+KeybindUnbind
+解绑按键组合
+KeybindWaitingForInput
+正在等待输入 $action$ 的按键……
+KeybindFiltering
+正在筛选

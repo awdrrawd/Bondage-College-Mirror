@@ -1,302 +1,302 @@
 ###_NPC
 (She checks your gag.)  This gag is a perfect fit Miss.
-（她检查你的口塞。）这个口塞非常适合，女士。
+（她检查你的口塞。）这个口塞戴着正合适，女士。
 (She seems pretty mad.)  What do you think you're doing?   You will get caught right away.
-（她看起来很生气。）你以为你在干什么？你会被立即逮捕。
+（她看起来非常生气。）你以为你在干什么？你马上就会被抓住的。
 (She seems very happy.)  You're no match for Pandora's staff.  Now it's time to prepare your punishment.
-（她似乎很高兴。）你不是潘多拉的工作人员的对手。现在是时候接受你的惩罚了。
+（她似乎很高兴。）你根本不是潘多拉员工的对手。现在是时候安排你的惩罚了。
 (A Dominatrix takes you away from the maid.)  So, we've caught the infamous DialogPlayerName.  You'll never forget this lesson.
-（一位女王将你从女仆身边带走。）所以，我们抓到了臭名昭著的DialogPlayerName。我会给你上一堂忘不掉的课。
+（一位女王将你从女仆身边带走。）看来，我们抓到了臭名昭著的DialogPlayerName。我会让你永远记住这个教训。
 (A Dominatrix takes you away from the maid.)  You've been on list for a while DialogPlayerName.  I'll teach you a lesson.
-（一位女王将你从女仆身边带走。）DialogPlayerName，你在名单上已经有一段时间了。我来给你上一课。
+（一位女王将你从女仆身边带走。）DialogPlayerName，你在我们的黑名单上已经有一阵子了。我来给你上一课。
 (A Dominatrix takes you away from the maid.)  (She cracks her knuckles.)  So, you're a troublemaker?  I'll teach you a lesson.
-（一位女王把你从女仆身边带走。）（她捏响指关节。）那么，你是来找茬的？那我来给你上一课。
+（一位女王把你从女仆身边带走。）（她捏响指关节。）所以，你就是那个刺头？那我就好好教训教训你。
 (A Dominatrix takes you away from the maid.)  (She stares at you.)  You've caused some trouble?  Then it's time for your lesson.
-（一位女王把你从女仆身边带走。）（她盯着你。）你惹了麻烦吗？那么，到了给你上一课的时候了。
+（一位女王把你从女仆身边带走。）（她盯着你。）你惹了事是吧？那么，到了接受教训的时候了。
 Welcome to Pandora's Box, the best BDSM club in town.  It will be my pleasure to introduce you.
-欢迎来到潘多拉魔盒，这是城里最好的BDSM俱乐部。我很高兴为你介绍。
+欢迎来到潘多拉魔盒，这里是城里最好的BDSM俱乐部。我很荣幸能为你做介绍。
 ###_PLAYER
 I'm a member.  (Show your fake ID.)
-我是会员。（出示你的假证件。）
+我是会员。（出示伪造的证件。）
 ###_NPC
 (She looks at your ID and nods.)  I'm so sorry Miss, please come inside and have fun.
-（她看着你的证件，点点头。）对不起，女士，请进来玩吧。
+（她看了一眼你的证件并点了点头。）非常抱歉，女士，请进，玩得开心。
 ###_PLAYER
 Thanks.  What goes on around here?
-谢谢。这里怎么了？
+谢谢。这里平时都玩些什么？
 ###_NPC
 We are an adult club, aimed at fulfilling your wildest fantasies.  Be careful when you open the box.  (She giggles.)
-我们是一家成人俱乐部，旨在满足你最疯狂的幻想。打开魔盒时要小心哦。（她呵呵笑起来。）
+我们是一家成人俱乐部，致力于满足你最狂野的幻想。打开魔盒时可得小心哦。（她吃吃地笑了起来。）
 ###_PLAYER
 You're cute in that costume.
-你穿这套戏服真可爱。
+你穿这套制服真可爱。
 ###_NPC
 Thanks Miss, but this is not a costume, it's my work uniform.  I work here as a full-time maid.  (She smiles.)
-谢谢小姐，但这不是戏服，是我的工作服。我在这里做全职女仆。（她露出微笑。）
+谢谢女士，不过这不是情趣服装，而是我的工作制服。我在这里做全职女仆。（她微微一笑。）
 ###_PLAYER
 Yes, can you introduce me?
-是的，你能帮我介绍一下吗？
+好啊，能给我介绍一下吗？
 ###_NPC
 (She nods.)  We are an adult club, aimed at fulfilling your wildest fantasies.  Be careful when you open the box.
-（她点点头。）我们是一家成人俱乐部，旨在满足你最疯狂的幻想。打开魔盒时要小心哦。
+（她点了点头。）我们是一家成人俱乐部，致力于满足你最狂野的幻想。打开魔盒时可要小心哦。
 ###_PLAYER
 (Look around.)
-（环视四周。）
+（环顾四周。）
 ###_NPC
 Welcome to Pandora's Box, the best BDSM club in town.  (She stares at you.)  You've been here before haven't you?
-欢迎来到潘多拉魔盒，这是城里最好的BDSM俱乐部。（她盯着你。）你以前来过这里吧？
+欢迎来到潘多拉魔盒，这里是全城最好的BDSM俱乐部。（她盯着你。）你以前来过这里对吧？
 ###_PLAYER
 No.  This is my first visit.
-不，这是我第一次来。
+没有，这是我第一次来。
 ###_NPC
 Very well Miss.  (She seems a little suspicious.)  Would you like to know about Pandora's Box?
-好的，女士。（她似乎有点怀疑。）你想了解潘多拉魔盒吗？
+好的，女士。（她看起来有些起疑。）你想了解潘多拉魔盒的相关信息吗？
 ###_PLAYER
 I've been here a while ago.
-我之前来过这里。
+我前阵子来过。
 ###_NPC
 That's probably it.  (She seems a little suspicious.)  Would you like to know about Pandora's Box?
-或许是。（她似乎有点怀疑。）你想了解潘多拉魔盒吗？
+难怪。（她看起来有些起疑。）你想了解潘多拉魔盒的相关信息吗？
 ###_PLAYER
 I'm from the Bondage Club, get lost maid.
-我来自束缚俱乐部，离我远点，女仆。
+我来自束缚俱乐部，滚一边去，女仆。
 ###_NPC
 (She frowns at you.)  Then you better leave now, you are not welcome here.
-（她看着你，皱起眉毛。）那你最好立即离开，这里不欢迎你。
+（她冲你皱起眉头。）那你最好立刻离开，这里不欢迎你。
 Welcome to Pandora's Box, the best BDSM club in town.  I've seen you before, who are you Miss?
-欢迎来到潘多拉魔盒，这是城里最好的BDSM俱乐部。我以前见过你，你是谁，女士？
+欢迎来到潘多拉魔盒，全城最好的BDSM俱乐部。我以前见过你，请问你是哪位，女士？
 ###_PLAYER
 You might have met my evil twin sister.
-你可能见过我邪恶的双胞胎妹妹。
+你见到的可能是我邪恶的双胞胎姐妹。
 ###_NPC
 (She doesn't seem to believe you.)  Yes!  You're DialogPlayerName from the Bondage Club!  You are not welcome here.
-（她似乎不相信你。）是的！你是来自束缚俱乐部的DialogPlayerName！这里不欢迎你。
+（她显然不相信你的话。）对！你是来自束缚俱乐部的DialogPlayerName！这里不欢迎你。
 ###_PLAYER
 You're confused little maid.
-你糊涂了，小女仆。
+你认错人了，小女仆。
 ###_NPC
 Maybe you're right Miss.  (She seems suspicious.)  Would you like to know about Pandora's Box?
-也许你是对的，女士。（她似乎很怀疑。）你想了解潘多拉的盒子吗？
+也许你说得对，女士。（她看起来疑心重重。）你想了解潘多拉魔盒的相关信息吗？
 Welcome to Pandora's Box, the best BDSM club in town.  Wait!  You look like someone we are searching for.
-欢迎来到潘多拉魔盒，这是城里最好的BDSM俱乐部。等一下！你看起来像一个我们在找的人。
+欢迎来到潘多拉魔盒，全城最好的BDSM俱乐部。等等！你看起来很像我们在搜捕的人。
 (She recognizes you.)  Yes!  You're DialogPlayerName from the Bondage Club!  You are not welcome here.
-（她认出了你。）对！你是来自束缚俱乐部的DialogPlayerName！这里不欢迎你。
+（她认出了你。）没错！你是来自束缚俱乐部的DialogPlayerName！这里不欢迎你。
 (She frowns at you.)  I knew it!  You're DialogPlayerName!  You are not welcome here.
-（她对你皱眉头）我就知道！你是DialogPlayerName！这里不欢迎你。
+（她冲你皱起眉头。）我就知道！你是DialogPlayerName！这里不欢迎你。
 Sister!  What were you doing outside?
-姐妹！你在外面做什么？
+姐妹！你在外面干什么呢？
 ###_PLAYER
 Let me in.  (Show your fake ID.)
-让我进去。（出示你的假证件。）
+放我进去。（出示伪造的证件。）
 ###_NPC
 (She looks at your ID and nods.)  Welcome back sister.
-（她看着你的证件，点点头。）欢迎回来，姐妹。
+（她查看了你的证件并点了点头。）欢迎回来，姐妹。
 ###_PLAYER
 I'm from the Bondage Club.
 我来自束缚俱乐部。
 ###_NPC
 (She frowns at you.)  What?  Get lost then.  You're not welcome here.
-（她对你皱眉头）什么？那赶紧走吧。这里不欢迎你。
+（她冲你皱起眉头。）什么？那就赶紧滚。这里不欢迎你。
 ###_PLAYER
 I went out for a smoke.
 我出去抽了根烟。
 ###_NPC
 (She nods.)  Smoking is bad, you should be punished.  Get to work sister!
-（她点点头。）吸烟是不好的，你应该受到惩罚。赶紧回去工作吧，姐妹！
+（她点了点头。）吸烟有害健康，你该受点惩罚才对。快去干活吧，姐妹！
 ###_PLAYER
 I don't know.
 我不知道。
 ###_NPC
 (She gives you a confused look.)  Maybe you should not be here.  Get out girl.
-（她露出困惑的眼神。）也许你不应该在这里。快走吧，女孩。
+（她一脸困惑地看着你。）也许你根本就不该出现在这里。出去，女孩。
 ###_PLAYER
 I forgot something in my car.
-我把东西忘在我的车里了。
+我把东西落车上了。
 ###_NPC
 Get inside then, we have tons of work today.
-那就进去吧，我们今天有很多工作要做。
+那就快进去吧，我们今天有堆积如山的工作要做。
 Hello sister.  Do you need anything?
-你好姐妹。你需要什么吗？
+你好，姐妹。需要帮忙吗？
 ###_PLAYER
 Where can I find some paint?
-我在哪里可以找到一些油漆？
+我在哪里能找到油漆？
 ###_NPC
 (She shrugs.)  I don't know sis.  Can you check with the other maids?  I'm pretty busy at the entrance.
-（她耸耸肩。）我不知道，姐妹。你能和其他女仆确认一下吗？我的接待工作很忙。
+（她耸了耸肩。）我不知道啊，姐妹。你能去问问其他女仆吗？我在这门口忙得不可开交。
 ###_PLAYER
 Take care.  (Go explore.)
-多保重。（开始探索。）
+你忙吧。（去探索。）
 ###_NPC
 You're not welcome here.  You need to go now.
-这里不欢迎你。你现在得走了。
+这里不欢迎你。你现在就得走。
 ###_PLAYER
 (Fight her.)
 （与她战斗。）
 (Leave Pandora's Box.)
 （离开潘多拉魔盒。）
 Tell me about this club.
-告诉我关于这个俱乐部的事情。
+跟我说说这个俱乐部吧。
 ###_NPC
 Pandora's Box is a young BDSM club, but we are growing quickly.  We have the best Dominatrixes in town.
-潘多拉魔盒是一个年轻的BDSM俱乐部，但我们正在迅速成长。我们有城里最好的女王。
+潘多拉魔盒是一家新成立的BDSM俱乐部，但我们的发展非常迅速。我们拥有全城最优秀的女王们。
 ###_PLAYER
 Who runs this club?
-谁经营这个俱乐部？
+谁在管理这家俱乐部？
 ###_NPC
 The leaders are called the Dominatrixes, they wear golden leather, you cannot miss them.
-领导者们叫做女王，他们穿着金色的皮革衣服，你绝对不会认错。
+这里的管理者被称为女王，她们身穿金色皮衣，一眼就能认出来。
 ###_PLAYER
 Can anyone join?
-任何人都可以加入吗？
+任何人都能加入吗？
 ###_NPC
 Yes, anyone that's open minded can enter.  Don't cause any trouble or you'll get punished.
-是的，任何想法开放的人都可以进入。但别带来麻烦，你会受到惩罚的。
+是的，只要思想开放都可以进来。但千万别惹麻烦，否则你会受到惩罚的。
 ###_PLAYER
 Can I visit?
-我可以参观吗？
+我可以参观一下吗？
 ###_NPC
 Absolutely.  Do you need help on how to explore Pandora's Box or you're fine on your own?
-那是当然。你是否需要有关如何探索潘多拉魔盒的帮助，或者你自己就可以了？
+当然可以。你需要我指导你如何探索潘多拉魔盒，还是你自己随便逛逛就行？
 Hi sister!  How can I help you?
-你好，姐妹！有什么可以帮你的？
+嗨，姐妹！有什么我可以帮你的吗？
 Hello cosplayer.  (She does a maid curtsy.)  Is there anything I can do for you?
-你好coser。（她做了一个女仆屈膝礼。）有什么可以为你做的吗？
+你好呀，coser。（她行了一个女仆屈膝礼。）有什么我能为你效劳的吗？
 Hello Miss Guard.  (She does a maid curtsy.)  Is there anything I can do for you?
-你好，警卫女士。（她做了一个女仆屈膝礼。）有什么可以为你做的吗？
+你好，警卫女士。（她行了一个女仆屈膝礼。）有什么我能为你效劳的吗？
 It's an honor to speak with you Miss Dominatrix.  (She does a maid curtsy.)  How can I serve you?
-很荣幸与你交谈，女王女士。（她做了一个女仆屈膝礼。）我能为你服务吗？
+很荣幸能与您对话，女王大人。（她行了一个女仆屈膝礼。）我该如何为您服务？
 (She does a maid curtsy.)  Is there anything else you'd like to know Miss?
-（她做了一个女仆屈膝礼。）还有什么想知道的吗，女士？
+（她行了一个女仆屈膝礼。）还有什么想了解的吗，女士？
 ###_PLAYER
 I can go anywhere?
-我可以去任何地方吗？
+我哪里都可以去吗？
 ###_NPC
 Yes and no.  If someone is on official duty, she might not let you pass.  Just go back from where you came from.
-是，也不是。如果有人在执行公务，她可能不会让你通过。那时候就原路返回吧。
+可以，也不全可以。如果有人在值勤，她可能不会放你过去。那时候直接原路返回就行。
 ###_PLAYER
 There are many levels?
-这里有很多层楼？
+这里有很多层吗？
 ###_NPC
 Pandora's Box has three levels.  We are on the ground level.  You can go downstairs for the dungeons or upstairs for the chambers.
-潘多拉魔盒分为三层。现在我们在地面层。你可以下楼去地牢，也可以上楼去卧室。
+潘多拉魔盒共有三层。我们现在在地面一楼。下楼是地牢，上楼则是调教套房。
 ###_PLAYER
 What if I get lost?
 如果我迷路了怎么办？
 ###_NPC
 Just scream.  (She giggles.)  I know this place might be confusing but keep on walking and you'll find your way back.
-那就尖叫吧。（她呵呵笑起来。）我知道这个地方挺容易迷路的，但如果一直走的话，你会找到回来的路的。
+大叫就好啦。（她吃吃地笑了起来。）我知道这里可能有点像迷宫，不过只要一直走，总能找到回来的路的。
 ###_PLAYER
 Can you come with me?
-你可以跟我来吗？
+你能跟我一起去吗？
 ###_NPC
 (She shakes her head no.)  I'm sorry Miss, I'm working at the entrance right now.  Maybe you'll find more help inside.
-（她摇头，表示拒绝。）对不起小姐，我现在有接待的工作。你应该会在里面找到更多帮助。
+（她摇了摇头。）很抱歉，女士，我现在负责前门接待。也许你进去能找到其他人帮忙。
 ###_PLAYER
 I should be fine, thanks.  (Go explore.)
-我应该没事的，谢谢。（开始探索。）
+我自己应该没问题，谢谢。（去探索。）
 ###_NPC
 It's always a pleasure to see you Miss.
-见到你一直很高兴，女士。
+随时乐意为您效劳，女士。
 ###_PLAYER
 I will do what I want.
-我会做我想做的。
+我想怎样就怎样。
 ###_NPC
 (She grumbles.)  The Dominatrixes will hunt you down like a pig.  You're in so much trouble.
-（她嘟囔着。）女王会像抓头猪一样追捕你。你惹上大麻烦了。
+（她嘀咕着。）女王们会像猎猪一样把你揪出来的。你惹大麻烦了。
 ###_PLAYER
 (Strip her naked.)
-（脱光她的衣服。）
+（剥光她的衣服。）
 ###_NPC
 (She seems furious as you strip her naked.)
-（当你脱光她的衣服时，她看起来很生气。）
+（当你把她剥得一丝不挂时，她显得怒不可遏。）
 ###_PLAYER
 (Wear her clothes.)
 （穿上她的衣服。）
 ###_NPC
 (She stares at you as you quickly dress up as her.)
-（你迅速打扮成她，期间她死死地瞪着你。）
+（你迅速换上她的衣服，期间她死死地瞪着你。）
 ###_PLAYER
 (Lock her up in a broom closet.)
-（把她锁在扫帚柜里。）
+（把她关进杂物柜里。）
 ###_NPC
 (She tries to resist as you lock her up in a broom closet.)  (Your infiltration skill has gone up.)
-（当你把她锁在扫帚柜里时，她试图反抗。）（你的潜入技能提高了。）
+（当你把她锁进杂物柜时，她拼命挣扎。）（你的潜入技能提升了。）
 ###_PLAYER
 (Leave her.)
-（离开她。）
+（抛下她。）
 Punishment?  What do you mean?
-惩罚？你是什​​么意思？
+惩罚？你这是什么意思？
 ###_NPC
 You will understand and remember your lesson.  Don't try anything funny, a Dominatrix will take care of you soon.
-你会理解并记住这教训。别试图做任何不理智的事情，女王很快就会来好好照顾你。
+你很快就会明白，并且牢牢记住这个教训。别动歪心思，女王很快就会来收拾你。
 ###_PLAYER
 You're not punishing me girl.
-你不是在惩罚我，女孩。
+你可没资格惩罚我，丫头。
 ###_NPC
 Of course, I won't do it myself, a Dominatrix will take care of you soon.
-当然，我不会自己做，女王很快就会来好好照顾你。
+当然，不用我亲自动手，女王马上就会来收拾你。
 ###_PLAYER
 I will accept it Miss.
-我会接受的，小姐。
+我会接受惩罚的，女士。
 ###_NPC
 Very good, you're already learning.  A Dominatrix will take care of you soon.
-很好，你已经学到了教训。女王很快就会来好好照顾你。
+很好，你已经开始学乖了。女王很快就会来接收你。
 ###_PLAYER
 (Scream in your gag.)
-（在你的口塞里尖叫。）
+（戴着口塞尖叫。）
 ###_NPC
 Stop making all that noise.  A Dominatrix will take care of you soon.
-别制造噪音了。女王很快就会来好好照顾你。
+别吵吵闹闹的。女王马上就会来收拾你。
 ###_PLAYER
 (Thrash in your bondage.)
-（在你的束缚中挣扎。）
+（在束缚中疯狂挣扎。）
 ###_NPC
 Don't try to do anything funny.  A Dominatrix will take care of you soon.
-别试图做任何不理智的事情。女王很快就会来好好照顾你。
+别妄想耍花招。女王马上就会来收拾你。
 ###_PLAYER
 (Bow your head and stay silent.)
-（低下头，保持沉默。）
+（低下头，保持安静。）
 ###_NPC
 Good girl.  A Dominatrix will take care of you soon.
-乖女孩。女王很快就会来好好照顾你。
+乖女孩。女王马上就会来接收你。
 ###_PLAYER
 Can we negotiate?
-我们可以协商吗？
+我们可以商量商量吗？
 ###_NPC
 It's too late for that.  Just wait and be quiet.
-为时已晚。安静等着吧。
+现在说这个已经太迟了。老老实实闭嘴等着吧。
 ###_PLAYER
 I will have my revenge.
 我会报仇的。
 ###_NPC
 You won't.  We will teach you a lesson that you will never forget.
-你不会的。我们会给你一个教训，你永远不会忘记的那种。
+你没那个机会的。我们会给你一个刻骨铭心的教训。
 ###_PLAYER
 (Wait for the Dominatrix.)
 （等待女王。）
 ###_NPC
 Sorry for the trouble Miss.  Please have a good day.
-抱歉添麻烦了，女士。祝你有美好的一天。
+抱歉打扰了，女士。祝你玩得愉快。
 (A maid jumps in front of you and blocks your path.)  Can I speak with you Miss?
-（一位女仆跳到你面前挡住你的去路。）女士，我可以和你谈谈吗？
+（一名女仆跳到你面前挡住了去路。）女士，我能跟你谈谈吗？
 ###_PLAYER
 Of course.
-当然。
+当然可以。
 ###_NPC
 Very good.  An object has been stolen and I'm mandated to search everyone.  Can I please search on you?
-很好。一件物品被盗，我需要搜查每个人。请问我可以搜查你吗？
+很好。有东西被盗了，我奉命搜查每一个人。请问我可以搜你的身吗？
 ###_PLAYER
 Make it quick.
-快一点。
+快点弄完。
 ###_NPC
 I will.  An object has been stolen and I'm mandated to search everyone.  Can I please search on you?
-我会的。一件物品被盗，我需要搜查每个人。请问我可以搜查你吗？
+我会的。有东西被盗了，我奉命搜查每一个人。请问我可以搜你的身吗？
 ###_PLAYER
 I don't have time.
-我没有时间。
+我没时间。
 ###_NPC
 I'm sorry, but an object has been stolen and I'm mandated to search everyone.  Can I please search on you?
-很抱歉，但一件物品被盗，我需要搜查每个人。请问我可以搜查你吗？
+实在抱歉，但有东西失窃了，我奉命搜查所有人。请问我可以搜你的身吗？
 ###_PLAYER
 (Nod.)
 （点头。）
@@ -304,127 +304,127 @@ Don't touch me!
 别碰我！
 ###_NPC
 (She jumps and looks angry.)  Are you the thief?  Surrender right now!
-（她跳起来，看起来很生气。）你就是小偷吗？立即投降！
+（她猛地跳开，一脸怒气。）你就是那个小偷？立刻投降！
 ###_PLAYER
 Go ahead.
-来吧。
+搜吧。
 ###_NPC
 (She starts to search but doesn't find the object.)  Sorry for the trouble Miss, you're good to go.
-（她开始搜查，但没有找到那件物品。）打扰你很抱歉，女士，你可以走了。
+（她开始搜身，但并没有找到失窃物品。）打扰你了，女士，你可以走了。
 (She starts to search and quickly finds the object.)  You're the thief!  Surrender right now!
-（她开始搜查，很快找到了那件物品。）你就是小偷！立即投降！
+（她开始搜身，并迅速找到了赃物。）你就是小偷！立刻投降！
 ###_PLAYER
 (Surrender.)
 （投降。）
 ###_NPC
 (You surrender as she quickly restrains you.)  A Dominatrix will come to take you away.
-（你投降，她迅速地束缚住你。）女王会过来把你带走。
+（你选择投降，她迅速将你束缚起来。）女王马上就会过来把你带走。
 (A maid jumps in front of you and blocks your path.)  Sister, can I speak with you?
-（一位女仆跳到你面前挡住你的去路。）姐妹，我可以和你说话吗？
+（一名女仆跳到你面前拦住了去路。）姐妹，能跟你说句话吗？
 ###_PLAYER
 Of course, sister.
-当然，姐妹。
+当然可以，姐妹。
 ###_NPC
 An object has been stolen, can you stop your duty and bring a Dominatrix here?
-一件物品被偷了，你能否先停下手上的工作，把一位女王带到这里来？
+有东西被偷了，你能先放下手头的工作，带一位女王过来吗？
 ###_PLAYER
 What's going on?
-发生什么事了？
+出什么事了？
 ###_NPC
 I'm sorry, but an object has been stolen, can you stop your duty and bring a Dominatrix here?
-很抱歉，一件物品被偷了，你能否先停下手上的工作，把一位女王带到这里来？
+不好意思，但有东西被偷了，你能先暂停执勤，带一位女王过来吗？
 ###_PLAYER
 I will do it.
-我会的。
+我去办。
 ###_NPC
 Thank you so much.  You're good to go, please hurry.
-太感谢了。你可以走了，请快点。
+太感谢了。你过去吧，请抓紧时间。
 ###_PLAYER
 No problem sis.
 没问题，姐妹。
 I'm too busy.
-我现在太忙了。
+我太忙了，抽不开身。
 ###_NPC
 I'm sorry.  You're good to go then.  See you later.
-很抱歉。你可以走了。回头见。
+那好吧。你可以过去了。回头见。
 (A maid jumps in front of you and blocks your path.)  What are you doing with this prisoner?
-（一位女仆跳到你面前挡住你的去路。）你要对这个犯人做什么？
+（一名女仆跳到你面前拦住去路。）你带着这个囚犯要干什么？
 ###_PLAYER
 That's none of your business.
-这跟你没关系。
+这不关你的事。
 ###_NPC
 You're trying to rescue her?  Surrender right now!
-你想救她出去？立即投降！
+你想把她救走？立刻投降！
 ###_PLAYER
 I'm rescuing her.
-我在救她出去。
+我正在救她。
 ###_NPC
 Not while I'm on duty!  Surrender right now!
-在我值班的时候就不可能！立即投降！
+有我值勤你就休想！立刻投降！
 ###_PLAYER
 Her ransom was paid.
-她的赎金已经支付了。
+她的赎金已经付清了。
 ###_NPC
 (She nods.)  Very good, please take her away then.  You're good to go.
-（她点头）很好，那请带她走。你可以走了。
+（她点了点头。）很好，那就请带她离开吧。你可以走了。
 (She shakes her head no.)  I know you're lying!  Surrender right now!
-（她摇头，表示否认。）我知道你在撒谎！立即投降！
+（她摇了摇头。）我知道你在撒谎！立刻投降！
 (A maid jumps in front of you and blocks your path.)  Miss guard, what is going on with this prisoner?
-（一位女仆跳到你面前挡住你的去路）警卫女士，这个犯人是怎么回事？
+（一名女仆跳到你面前拦住了去路。）警卫女士，这个囚犯是怎么回事？
 (She sighs.)  I know I'm too curious, sorry.  You're good to go.
-（她叹了口气。）我知道我太好奇了，抱歉。你可以走了。
+（她叹了口气。）我知道我多管闲事了，对不起。你可以走了。
 I'm watching the door.  This is my business!  (She inspects you.)  You're not a real guard, surrender right now!
-我负责看门。这是我的工作！（她打量了一下你。）你不是真正的警卫，立即投降！
+我负责看门，这就是我的职责！（她上下打量着你。）你根本不是真正的警卫，立刻投降！
 ###_PLAYER
 She's getting transferred.
-她正在被转移。
+她正准备移交。
 ###_NPC
 (She nods.)  Of course, please be careful she doesn't escape.  You're good to go.
-（她点点头。）当然，请小心不要让她逃了。你可以走了。
+（她点了点头。）明白了，请当心别让她逃跑了。你可以过去了。
 ###_PLAYER
 Do I need to put you in jail?
-我需要把你关进监狱吗？
+需要我把你关进大牢吗？
 ###_NPC
 You're going to jail!  You're not fooling me with that disguise.  Surrender right now!
-你才会进监狱！你这种伪装休想骗我我。立即投降！
+该进大牢的是你！别想用这身伪装糊弄我。立刻投降！
 (Your prisoner screams for help and the maid jumps in.)  Stop!  Are you kidnapping her?
-（你的囚犯尖叫着求救，女仆介入进来。）停下！你要绑架她吗？
+（你的囚犯大声呼救，女仆立刻冲了过来。）住手！你要绑架她吗？
 ###_PLAYER
 I would never do that.
-我永远不会那样做。
+我怎么可能做那种事。
 ###_NPC
 You're lying, she just said so.  Surrender right now!
-你在撒谎，她刚刚这么说了。立即投降！
+你在撒谎，她刚才都喊出来了。立刻投降！
 ###_PLAYER
 What if I am?
-如果我是怎么办？
+如果是又怎样？
 ###_NPC
 Then you're in trouble.  Surrender right now!
-那你就惹上麻烦了。立即投降！
+那你就大祸临头了。立刻投降！
 ###_PLAYER
 Get out of my way.
-从我面前滚开。
+给我让开。
 ###_NPC
 I'm not moving.  Surrender right now!
-我不会走的。立即投降！
+我绝不退让。立刻投降！
 (The maid at the entrance stops you.)  Wait!  What are you doing with one of Pandora's Box Dominatrix?
-（门口的女仆拦住你。）等等！你在对潘多拉魔盒的女王做什么？
+（入口处的女仆拦住了你。）等等！你对潘多拉魔盒的女王做了什么？
 ###_PLAYER
 (Show her a forged document.)
-（给她展示伪造的文件。）
+（向她出示伪造的文件。）
 ###_NPC
 (She scans the forged document as the Dominatrix grumbles.)  I'm sorry Miss.  Everything looks fine, you can go.
-（她扫描伪造的文件，而女王嘟囔着。）对不起小姐。一切看起来没有问题，你可以走了。
+（她扫视了一眼伪造文件，女王在旁低声抱怨。）非常抱歉，女士。一切都没问题，您可以走了。
 ###_PLAYER
 She's not a Dominatrix.
-她不是女王。
+她才不是女王。
 ###_NPC
 I know the administrators around here, that's why I'm in charge of the entrance.  Surrender right now!
-我认识这里的管理员，这也为什么我负责看门。立即投降！
+这里的每位管理层我都认识，不然我也不会负责看守入口。立刻投降！
 (She stands her ground.)  Never!  You'll know why I'm in charge of the entrance.  Surrender right now!
-（她坚持自己的立场。）永远不会！你会知道为什么我负责入口。立即投降！
+（她寸步不让。）休想！我会让你知道为什么是我负责看守前门的。立刻投降！
 Please have a good day Miss.  Sorry for interrupting your important work.
-女士，祝你有美好的一天。对不起，打扰了你重要的工作。
+祝您度过愉快的一天，女士。很抱歉打扰了您的要务。
 ###_PLAYER
 (Explore Pandora's Box.)
 （探索潘多拉魔盒。）

@@ -2,13 +2,37 @@ Accept
 接受
 Cancel
 取消
+Reset
+重置为默认
+Copy
+复制颜色
+CopyFail
+无法复制具有 {nColors} 种不同颜色的物品颜色
+CopyFailBrowser
+浏览器不支持复制颜色
+CopySuccess
+成功复制颜色 {color}
+Paste
+粘贴颜色
+PasteFailBrowser
+浏览器不支持粘贴颜色
+PasteFailInvalid
+粘贴无效颜色 {color} 失败
+PasteSuccess
+成功粘贴颜色 {color}
 Default
 默认
 Many
-复数
+多种
 Next
 下一页
 WholeItem
-物品整体
+整件物品
 All
-所有
+全部
+Heading
+选择 {item} 的颜色
+SavedColors
+已保存的颜色
+SaveColor
+保存颜色

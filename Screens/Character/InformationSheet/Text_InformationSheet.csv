@@ -17,11 +17,11 @@ JoinDate,Join Date
 Birthday,Bondage Club Birthday! 
 FriendsFor,Friends for
 For,for
-TrialBy,On trial by
-CollaredBy,Collared by
-DatingWith,Dating
-EngagedWith,Engaged to
-MarriedWith,Married to
+TrialBy,On trial by $name
+CollaredBy,Collared by $name
+DatingWith,Dating $name
+EngagedWith,Engaged to $name
+MarriedWith,Married to $name
 Days,day(s)
 Unknown,Unknown
 Reputation,Reputation

@@ -47,7 +47,9 @@ PandoraInvalidSource
 PandoraInvalidTarget
 你的目标不是潘多拉的囚犯。
 PandoraInvalidActivity
-无效的潘多拉活动，输入/help获取列表。
+无效的潘多拉活动，输入/pandora help获取列表。
+PandoraActivityHelp
+支持的活动如下：
 PandoraInvalidActivityForTarget
 这个活动不能对这个目标执行。
 OrgasmComing
@@ -101,7 +103,7 @@ CommandBlacklist
 FocusEnabledWarningIcon
 <img src='Icons/FocusEnabledWarning.png' style='display: inline-block; height: 1em; vertical-align: middle; transform: translateY(-0.15em);' aria-hidden='true'>
 FocusEnabled
-<strong>注意</strong>: FocusEnabledWarningIcon <strong>focus list</strong> FocusEnabledWarningIcon 现在已经 <strong>启用</strong>. <i>只有在你的关注列表中的角色可以看到你在聊天室中</i>. 要关闭此选项，使用 <code>/focus clear</code> 或者菜单栏中的按钮.
+<strong>注意</strong>: FocusEnabledWarningIcon <strong>关注列表</strong> FocusEnabledWarningIcon 现在已经 <strong>启用</strong>. <i>在聊天室中你只能看到关注列表中的角色</i>. 要关闭此选项，使用 <code>/focus clear</code> 或者菜单栏中的按钮.
 CommandFocusTargeterAmbiguous
 忽略 'Targeter': 找到多个匹配。
 CommandFocusTargeterDuplicate
@@ -165,7 +167,7 @@ GGTSIntro
 OwnerPresenceBlockTalk
 当你的主人在场时，禁止说话
 OwnerPresenceBlockEmote
-当你的主人在场时，禁止发送心里话
+当你的主人在场时，禁止发送表情动作
 OwnerPresenceBlockWhisper
 当你的主人在场时，禁止对其他人发送悄悄话
 OwnerPresenceBlockChangePose
@@ -200,3 +202,211 @@ PonyNotJoin
 你还没有加入小马
 PonyInvalidActivity
 无效小马活动，输入/help获取列表。
+FriendRequestMessage
+SourceCharacter 请求添加你为好友。{buttons}
+FriendAcceptMessage
+SourceCharacter 接受了你的好友请求。
+FriendRemoveMessage
+SourceCharacter 已将你从好友列表中删除。
+FriendAddback
+回加好友
+FriendAddbackMessage
+已将 SourceCharacter 添加为好友。
+FriendGhost
+隐匿 SourceCharacter
+FriendGhostMessage
+已将 SourceCharacter 设为隐匿。
+FriendIgnore
+忽略请求
+InvalidNumber
+无效编号。
+ArousalNotChangeable
+你的兴奋“激活”模式需设置为“手动”或“混合”方可更改兴奋度。
+CommandModsListTitle
+已加载的模组
+CommandModsListSummaryOne
+$count 个已注册模组
+CommandModsListSummaryMany
+$count 个已注册模组
+CommandModsVersionFormat
+v$version
+CommandModsRepositoryLink
+源码仓库
+CommandModsHelpList
+在聊天记录中显示客户端中加载的 Mod SDK 模组（名称、版本、可选的源码仓库链接）。
+CommandModsHelpRemote
+查询其他玩家安装的模组；可选参数指定房间内的一名玩家。对方必须在在线偏好设置中允许回复。
+CommandModsRemoteTitle
+远程 Mod SDK 查询结果
+CommandModsRemoteAriaLabel
+远程 Mod SDK 查询结果
+CommandModsRemoteProgress
+回复进度 $done / $total
+CommandModsRemoteNoMods
+（无已注册模组）
+CommandModsRemoteUnknownMember
+会员 $member
+CommandModsRemoteStatusOk
+已回复
+CommandModsRemoteStatusDeclined
+已拒绝
+CommandModsRemoteStatusError
+错误
+CommandModsRemoteStatusYou
+你
+CommandModsRemoteStatusTimeout
+无响应
+CommandModsRemoteDeclinedBody
+该玩家拒绝了远程 Mod SDK 查询（在线偏好设置）。
+CommandModsRemoteErrorBody
+无法读取模组列表。
+CommandModsRemoteTimeoutBody
+等待回复超时（隐匿列表或网络连接可能会阻止回复）。
+CommandModsRemoteNotInRoom
+你必须在聊天室中才能使用此命令。
+CommandModsRemoteInvalidTarget
+本房间中没有匹配该名字或成员编号的玩家。
+CommandModsListCopyDone
+模组列表已复制到你的剪贴板。
+CommandModsListCopyError
+无法将模组列表复制到剪贴板。
+CommandModsListCopyTooltip
+复制模组列表
+ChatRoomMapViewRecentItemsLabel
+最近物品
+MapViewTetherPoint
+拴狗桩
+MapViewTetherPointToggle
+可以将牵引绳系在此处
+MapViewTetherTieSelf
+将你的牵引绳系在此处
+MapViewTetherTieOther
+将 TargetCharacterName 的牵引绳系在此处
+MapViewTetherUntieSelf
+解开你的牵引绳
+MapViewTetherUntieOther
+解开 TargetCharacterName 的牵引绳
+MapViewTetherNobody
+触及范围内没有可以系在此处的牵引绳。
+TileTypeNameWall
+墙壁
+TileTypeNameFloor
+地板
+TileTypeNameFloorExterior
+室外地面
+TileTypeNameWater
+水体
+ObjectTypeNameEmptySpace
+虚空空间
+ObjectTypeNameLivingRoom
+客厅
+ObjectTypeNameBathroom
+浴室
+ObjectTypeNameBedroom
+卧室
+ObjectTypeNameKitchen
+厨房
+ObjectTypeNameOffice
+办公室
+ObjectTypeNameSchool
+学校
+ObjectTypeNameABDL
+ABDL
+ObjectTypeNameFloorDecorationThemed
+主题
+ObjectTypeNameFloorDecorationParty
+派对
+ObjectTypeNameFloorDecorationCamping
+露营
+ObjectTypeNameFloorDecorationExpanding
+拓展
+ObjectTypeNameFloorDecorationAnimal
+动物
+ObjectTypeNameFloorItem
+物品
+ObjectTypeNameFloorObstacle
+障碍物
+ObjectTypeNameFloorNumber
+数字
+ObjectTypeNameFloorLetter
+字母
+ObjectTypeNameFloorIcon
+图标
+ObjectTypeNameWallDecoration
+墙面装饰
+ObjectTypeNameWallPath
+门
+ObjectTypeNameBanners
+旗帜
+ObjectTypeNameFloorFoamTiles
+泡沫地垫
+ObjectTypeNameFunctional
+功能性
+EffectTypeNameStaticLighting
+特效
+EditorButtonTextUndo
+撤销
+EditorButtonTextEditRange
+编辑范围
+EditorButtonTextZoomIn
+放大
+EditorButtonTextZoomOut
+缩小
+EditorButtonTextToggleFog
+切换迷雾
+EditorButtonTextEditTiles
+地块
+EditorButtonTextEditObjects
+物件
+EditorButtonTextEditEffects
+特效
+EditorButtonTextObjectSettings
+物件设置
+EditorColorReset
+重置
+EditorColorPasteFormat
+粘贴格式
+EditorColorStopPaste
+停止粘贴
+EditorColorPasteTitle
+粘贴格式：
+EditorButtonTextBack
+返回
+EditorButtonTextEraser
+橡皮擦
+EditorButtonTextEraserAlt
+橡皮擦。按住 Alt 可绘制无法通行的虚空空间
+TeleportPadTitle
+传送阵
+TeleportPadNoDestination
+尚未指定传送目的地
+TeleportPadSendsTo
+传送至描边的地块
+TeleportPadSendsBothWays
+双向传送至描边的传送阵
+TeleportPadPick
+在地图上挑选
+TeleportPadPicking
+点击要传送到的地块
+TeleportPadCancel
+取消
+TeleportPadTwoWay
+双向
+TeleportPadRemove
+移除
+TeleportPadColor
+颜色
+TeleportPadInvalid
+无法传送到自身或墙壁上
+ObjectSettingsRotation
+旋转
+ObjectSettingsSize
+大小
+ObjectSettingsReset
+重置
+ObjectSettingsColor
+颜色
+ObjectSettingsDecal
+贴花
+ObjectSettingsDecalNone
+无

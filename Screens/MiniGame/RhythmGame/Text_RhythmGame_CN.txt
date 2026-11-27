@@ -1,6 +1,6 @@
 AudiencePatienceLevel
-听众的耐心
+观众耐心值
 Acc
-准确度
+准确率
 Score
 奖励分数

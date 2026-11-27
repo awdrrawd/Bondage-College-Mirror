@@ -1,12 +1,12 @@
 Sentence
-判罚:
+刑期：
 Minutes
 分钟
 Leave
 离开牢房
 Profile
-个人档案
+角色档案
 Kneel
 跪下/站立
 EndsIn
-剩余时间:
+剩余时间：

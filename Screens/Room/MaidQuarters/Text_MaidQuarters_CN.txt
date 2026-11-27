@@ -1,8 +1,8 @@
 Exit
-返回束缚俱乐部
+离开
 Profile
 个人档案
 Change
 更换外观
 Dress
-穿上女仆制服
+换上女仆制服

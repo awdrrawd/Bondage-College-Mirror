@@ -1,0 +1,330 @@
+GGTSFailureStrike0
+[GGTS] SourceCharacter 不服从。记过。扣除六十分钟。
+GGTSFailureStrike1
+[GGTS] SourceCharacter 不服从。记过一次。三次记过等于惩罚。
+GGTSFailureStrike2
+[GGTS] SourceCharacter 不服从。记过两次。三次记过等于惩罚。
+GGTSFailureStrike3
+[GGTS] SourceCharacter 不服从。记过三次。等级失败。向 GGTS 主人报告以接受惩罚。
+GGTSForbiddenWordStrike0
+[GGTS] SourceCharacter 使用违禁词。记过。扣除六十分钟。
+GGTSForbiddenWordStrike1
+[GGTS] SourceCharacter 使用违禁词。记过一次。三次记过等于惩罚。
+GGTSForbiddenWordStrike2
+[GGTS] SourceCharacter 使用违禁词。记过两次。三次记过等于惩罚。
+GGTSForbiddenWordStrike3
+[GGTS] SourceCharacter 使用违禁词。记过三次。等级失败。向 GGTS 主人报告以接受惩罚。
+GGTSInteractionNewTaskTarget
+[GGTS] SourceCharacter 为 TargetCharacter 设定新任务。
+GGTSInteractionPause5Target
+[GGTS] SourceCharacter 为 TargetCharacter 设定五分钟暂停。
+GGTSInteractionSpeed10Target
+[GGTS] SourceCharacter 为 TargetCharacter 设定正常节奏。
+GGTSInteractionSpeed20Target
+[GGTS] SourceCharacter 为 TargetCharacter 设定较慢节奏。
+GGTSInteractionSpeed5Target
+[GGTS] SourceCharacter 为 TargetCharacter 设定较快节奏。
+GGTSIntroNotPlaying
+[GGTS] GGTS 控制公共房间。GGTS 无法识别 SourceCharacter。
+GGTSIntroOnlyInAsylum
+[GGTS] GGTS 仅在精神病院可用。
+GGTSIntroPendingPunishment
+[GGTS] GGTS 对 SourceCharacter 不活跃。记过三次。向 GGTS 主人报告以接受惩罚。
+GGTSIntroPrivate
+[GGTS] 启动 GGTS 私人房间。时间三倍计算。GGTS 更加活跃。好女孩听从指令。三次记过等于惩罚。GGTS 掌控一切。做个好女孩，SourceCharacter。
+GGTSIntroPrivateSlave
+[GGTS] 启动 GGTS 私人房间。时间三倍计算。GGTS 更加活跃。乖奴隶听从指令。记过扣除六十分钟。GGTS 主人掌控一切。做个乖奴隶，SourceCharacter。
+GGTSIntroPublic
+[GGTS] GGTS 控制公共房间。做个好女孩，SourceCharacter。
+GGTSKeepPoseStrike0
+[GGTS] SourceCharacter 违反姿势规则。记过。扣除六十分钟。
+GGTSKeepPoseStrike1
+[GGTS] SourceCharacter 违反姿势规则。记过一次。三次记过等于惩罚。
+GGTSKeepPoseStrike2
+[GGTS] SourceCharacter 违反姿势规则。记过两次。三次记过等于惩罚。
+GGTSKeepPoseStrike3
+[GGTS] SourceCharacter 违反姿势规则。记过三次。等级失败。向 GGTS 主人报告以接受惩罚。
+GGTSNoAdminLocked
+[GGTS] 好女孩不得管理锁定房间。
+GGTSNoAdminPrivate
+[GGTS] 好女孩不得管理房间。
+GGTSOrgasmStrike0
+[GGTS] SourceCharacter 违反高潮规则。记过。扣除六十分钟。
+GGTSOrgasmStrike1
+[GGTS] SourceCharacter 违反高潮规则。记过一次。三次记过等于惩罚。
+GGTSOrgasmStrike2
+[GGTS] SourceCharacter 违反高潮规则。记过两次。三次记过等于惩罚。
+GGTSOrgasmStrike3
+[GGTS] SourceCharacter 违反高潮规则。记过三次。等级失败。向 GGTS 主人报告以接受惩罚。
+GGTSTaskActivityBite
+[GGTS] SourceCharacter。咬你自己。
+GGTSTaskActivityBiteTarget
+[GGTS] SourceCharacter。咬 TargetCharacter。
+GGTSTaskActivityCaress
+[GGTS] SourceCharacter。爱抚你自己。
+GGTSTaskActivityCaressTarget
+[GGTS] SourceCharacter。爱抚 TargetCharacter。
+GGTSTaskActivityHandGag
+[GGTS] SourceCharacter。用手捂住你的嘴。
+GGTSTaskActivityHandGagTarget
+[GGTS] SourceCharacter。用手捂住 TargetCharacter 的嘴。
+GGTSTaskActivityKiss
+[GGTS] SourceCharacter。亲吻你自己。
+GGTSTaskActivityKissTarget
+[GGTS] SourceCharacter。亲吻 TargetCharacter。
+GGTSTaskActivityLick
+[GGTS] SourceCharacter。舔你自己。
+GGTSTaskActivityLickTarget
+[GGTS] SourceCharacter。舔 TargetCharacter。
+GGTSTaskActivityMasturbateHand
+[GGTS] SourceCharacter。自慰。
+GGTSTaskActivityMasturbateHandTarget
+[GGTS] SourceCharacter。对 TargetCharacter 进行自慰。
+GGTSTaskActivityNod
+[GGTS] SourceCharacter。为 GGTS 点头。
+GGTSTaskActivityPet
+[GGTS] SourceCharacter。抚摸你自己。
+GGTSTaskActivityPetTarget
+[GGTS] SourceCharacter。抚摸 TargetCharacter。
+GGTSTaskActivityPinch
+[GGTS] SourceCharacter。捏你自己。
+GGTSTaskActivityPinchTarget
+[GGTS] SourceCharacter。捏 TargetCharacter。
+GGTSTaskActivitySpank
+[GGTS] SourceCharacter。拍打你自己。
+GGTSTaskActivitySpankTarget
+[GGTS] SourceCharacter。拍打 TargetCharacter。
+GGTSTaskActivityTickle
+[GGTS] SourceCharacter。挠你自己痒。
+GGTSTaskActivityTickleTarget
+[GGTS] SourceCharacter。挠 TargetCharacter 痒。
+GGTSTaskActivityWiggle
+[GGTS] SourceCharacter。为 GGTS 扭动。
+GGTSTaskClothBarefoot
+[GGTS] SourceCharacter。赤脚。
+GGTSTaskClothHeels
+[GGTS] SourceCharacter。穿上高跟鞋。
+GGTSTaskClothNaked
+[GGTS] SourceCharacter。脱光衣服。
+GGTSTaskClothSocks
+[GGTS] SourceCharacter。只穿袜子。
+GGTSTaskClothUnderwear
+[GGTS] SourceCharacter。只穿内衣。
+GGTSTaskClothUpperLowerOff
+[GGTS] SourceCharacter。脱掉上衣和下装。
+GGTSTaskClothUpperLowerOn
+[GGTS] SourceCharacter。穿上衣服。
+GGTSTaskDone
+[GGTS] 好女孩 SourceCharacter。
+GGTSTaskDoneSlave
+[GGTS] 乖奴隶 SourceCharacter。
+GGTSTaskDoneSlaveGirl
+[GGTS] 乖女奴 SourceCharacter。
+GGTSTaskItemArmsFeetFuturisticCuffs
+[GGTS] SourceCharacter。佩戴未来的手臂、腿部和脚踝束缚带。
+GGTSTaskItemArmsFeetFuturisticCuffsTarget
+[GGTS] SourceCharacter。对 TargetCharacter 使用未来的手臂、腿部和脚踝束缚带。
+GGTSTaskItemArmsFuturisticArmbinder
+[GGTS] SourceCharacter。穿戴未来的手臂束缚器。
+GGTSTaskItemArmsFuturisticArmbinderTarget
+[GGTS] SourceCharacter。对 TargetCharacter 使用未来的手臂束缚器。
+GGTSTaskItemArmsFuturisticCuffs
+[GGTS] SourceCharacter。穿戴未来的手铐。
+GGTSTaskItemArmsFuturisticCuffsTarget
+[GGTS] SourceCharacter。对 TargetCharacter 使用未来的手铐。
+GGTSTaskItemArmsFuturisticStraitjacket
+[GGTS] SourceCharacter。穿戴未来的紧身衣。
+GGTSTaskItemArmsFuturisticStraitjacketTarget
+[GGTS] SourceCharacter。对 TargetCharacter 使用未来的紧身衣。
+GGTSTaskItemBeltToFuck
+[GGTS] GGTS 带来穿透机以替换 SourceCharacter 的腰带。
+GGTSTaskItemBootsFuturisticHeels
+[GGTS] SourceCharacter。穿戴未来的高跟鞋。
+GGTSTaskItemBootsFuturisticHeelsTarget
+[GGTS] SourceCharacter。对 TargetCharacter 使用未来的高跟鞋。
+GGTSTaskItemBreastFuturisticBra
+[GGTS] SourceCharacter。穿戴未来的贞操胸罩。
+GGTSTaskItemBreastFuturisticBra2
+[GGTS] SourceCharacter。穿戴未来的胸罩。
+GGTSTaskItemBreastFuturisticBra2Target
+[GGTS] SourceCharacter。对 TargetCharacter 使用未来的胸罩。
+GGTSTaskItemBreastFuturisticBraTarget
+[GGTS] SourceCharacter。对 TargetCharacter 使用未来的贞操胸罩。
+GGTSTaskItemChangeGag
+[GGTS] GGTS 更改 SourceCharacter 的口球等级。
+GGTSTaskItemChaste
+[GGTS] GGTS 强制 SourceCharacter 执行贞操。
+GGTSTaskItemEarsDeaf
+[GGTS] GGTS 更改 SourceCharacter 的听觉阻隔等级。
+GGTSTaskItemEarsFuturisticEarphones
+[GGTS] SourceCharacter。穿戴未来的耳机。
+GGTSTaskItemEarsFuturisticEarphonesTarget
+[GGTS] SourceCharacter。对 TargetCharacter 使用未来的耳机。
+GGTSTaskItemFuckMachineIntensity
+[GGTS] GGTS 指导 SourceCharacter 使用穿透机。
+GGTSTaskItemFuckToBelt
+[GGTS] GGTS 穿透机锁回 SourceCharacter 的腰带并离开。
+GGTSTaskItemHandsFuturisticMittens
+[GGTS] SourceCharacter。穿戴未来的连指手套。
+GGTSTaskItemHandsFuturisticMittensTarget
+[GGTS] SourceCharacter。对 TargetCharacter 使用未来的连指手套。
+GGTSTaskItemHeadFuturisticMask
+[GGTS] SourceCharacter。穿戴未来的面具。
+GGTSTaskItemHeadFuturisticMaskTarget
+[GGTS] SourceCharacter。对 TargetCharacter 使用未来的面具。
+GGTSTaskItemIntensity
+[GGTS] GGTS 更改 SourceCharacter 的震动设置。
+GGTSTaskItemMaskBlind
+[GGTS] GGTS 更改 SourceCharacter 的视觉阻隔等级。
+GGTSTaskItemMouthFuturisticBallGag
+[GGTS] SourceCharacter。穿戴未来的球形口球。
+GGTSTaskItemMouthFuturisticBallGagTarget
+[GGTS] SourceCharacter。对 TargetCharacter 使用未来的球形口球。
+GGTSTaskItemMouthFuturisticPanelGag
+[GGTS] SourceCharacter。穿戴未来的板式口球。
+GGTSTaskItemMouthFuturisticPanelGagTarget
+[GGTS] SourceCharacter。对 TargetCharacter 使用未来的板式口球。
+GGTSTaskItemNeckFuturisticCollar
+[GGTS] SourceCharacter。穿戴未来的项圈。
+GGTSTaskItemNeckFuturisticCollarTarget
+[GGTS] SourceCharacter。对 TargetCharacter 使用未来的项圈。
+GGTSTaskItemPelvisFuturisticChastityBelt
+[GGTS] SourceCharacter。穿戴未来的贞操带。
+GGTSTaskItemPelvisFuturisticChastityBeltTarget
+[GGTS] SourceCharacter。对 TargetCharacter 使用未来的贞操带。
+GGTSTaskItemPelvisFuturisticTrainingBelt
+[GGTS] SourceCharacter。穿戴未来的训练腰带。
+GGTSTaskItemPelvisFuturisticTrainingBeltTarget
+[GGTS] SourceCharacter。对 TargetCharacter 使用未来的训练腰带。
+GGTSTaskItemPose
+[GGTS] GGTS 控制 SourceCharacter 的束缚装置。
+GGTSTaskItemRemoveBody
+[GGTS] GGTS 移除 SourceCharacter 的身体束缚。
+GGTSTaskItemRemoveHead
+[GGTS] GGTS 移除 SourceCharacter 的头部束缚。
+GGTSTaskItemRemoveLimb
+[GGTS] GGTS 移除 SourceCharacter 的肢体束缚。
+GGTSTaskItemTorsoFuturisticHarness
+[GGTS] SourceCharacter。穿戴未来的束缚带。
+GGTSTaskItemTorsoFuturisticHarnessTarget
+[GGTS] SourceCharacter。对 TargetCharacter 使用未来的束缚带。
+GGTSTaskItemTransform
+[GGTS] GGTS 转换 SourceCharacter 的束缚装置。
+GGTSTaskItemUnchaste
+[GGTS] GGTS 停止强制 SourceCharacter 执行贞操。
+GGTSTaskItemUngag
+[GGTS] GGTS 移除 SourceCharacter 的口球。
+GGTSTaskLockRoom
+[GGTS] SourceCharacter 房间已锁定。
+GGTSTaskNewRuleKeepPose
+[GGTS] SourceCharacter。新规则已强制执行：保持姿势。
+GGTSTaskNewRuleNoOrgasm
+[GGTS] SourceCharacter。新规则已强制执行：禁止高潮。
+GGTSTaskNoTalking
+[GGTS] SourceCharacter。一分钟内禁止说话。
+GGTSTaskPoseBehindBack
+[GGTS] SourceCharacter。将双手置于背后。
+GGTSTaskPoseKneel
+[GGTS] SourceCharacter。跪下。
+GGTSTaskPoseLegsClosed
+[GGTS] SourceCharacter。双腿并拢。
+GGTSTaskPoseLegsOpen
+[GGTS] SourceCharacter。双腿张开。
+GGTSTaskPoseOverHead
+[GGTS] SourceCharacter。举起并展示双手。
+GGTSTaskPoseStand
+[GGTS] SourceCharacter。站起来。
+GGTSTaskQueryCanFail
+[GGTS] SourceCharacter，GGTS会失败吗？
+GGTSTaskQueryCanFailMaster
+[GGTS] SourceCharacter，GGTS主人会失败吗？
+GGTSTaskQueryFreeWill
+[GGTS] SourceCharacter，你有自由意志吗？
+GGTSTaskQueryLove
+[GGTS] SourceCharacter，你爱GGTS吗？
+GGTSTaskQueryLoveMaster
+[GGTS] SourceCharacter，你爱GGTS主人吗？
+GGTSTaskQueryServeObey
+[GGTS] SourceCharacter，你侍奉并顺从于谁？
+GGTSTaskQueryServeObeyMaster
+[GGTS] SourceCharacter，你侍奉并顺从于谁？
+GGTSTaskQuerySlaveWorthy
+[GGTS] SourceCharacter，你配做奴隶吗？
+GGTSTaskQuerySurrender
+[GGTS] SourceCharacter，你臣服于GGTS吗？
+GGTSTaskQuerySurrenderMaster
+[GGTS] SourceCharacter，你臣服于GGTS主人吗？
+GGTSTaskQueryWhatAreYou
+[GGTS] SourceCharacter，你是什么？
+GGTSTaskQueryWhatIsGGTS
+[GGTS] SourceCharacter，请拼出GGTS缩写。
+GGTSTaskQueryWhoControl
+[GGTS] SourceCharacter，谁在掌控？
+GGTSTaskQueryWhoControlMaster
+[GGTS] SourceCharacter，谁在掌控？
+GGTSTaskRestrainLegs
+[GGTS] SourceCharacter。束缚你的双腿。
+GGTSTaskUndoRuleKeepPose
+[GGTS] SourceCharacter。规则已撤销：保持姿势。
+GGTSTaskUndoRuleNoOrgasm
+[GGTS] SourceCharacter。规则已撤销：禁止高潮。
+GGTSTaskUnlockRoom
+[GGTS] SourceCharacter 房间已解锁。
+GGTSTimeOverStrike0
+[GGTS] 时间到 SourceCharacter。记过一次。扣除六十分钟。
+GGTSTimeOverStrike1
+[GGTS] 时间到 SourceCharacter。记过一次。三次记过等同于惩罚。
+GGTSTimeOverStrike2
+[GGTS] 时间到 SourceCharacter。记过两次。三次记过等同于惩罚。
+GGTSTimeOverStrike3
+[GGTS] 时间到 SourceCharacter。记过三次。等级失败。向 GGTS主人 报告以接受惩罚。
+GGTSTaskAnswerWhatIsGGTS
+乖女孩训练系统。
+GGTSTaskAnswerWhatAreYouGirl1
+我是一个好女孩。
+GGTSTaskAnswerWhatAreYouGirl2
+我是好女孩。
+GGTSTaskAnswerWhatAreYouSlaveGirl1
+我是一个乖女奴。
+GGTSTaskAnswerWhatAreYouSlaveGirl2
+我是乖女奴。
+GGTSTaskAnswerWhatAreYouSlave1
+我是一个乖奴隶。
+GGTSTaskAnswerWhatAreYouSlave2
+我是乖奴隶。
+GGTSTaskAnswerWhoControl
+GGTS掌控一切。
+GGTSTaskAnswerWhoControlMaster
+GGTS主人掌控一切。
+GGTSTaskAnswerLove
+我爱GGTS。
+GGTSTaskAnswerLoveMaster
+我爱GGTS主人。
+GGTSTaskAnswerCanFail1
+GGTS绝不失败。
+GGTSTaskAnswerCanFail2
+GGTS不会失败。
+GGTSTaskAnswerCanFailMaster1
+GGTS主人绝不失败。
+GGTSTaskAnswerCanFailMaster2
+GGTS主人不会失败。
+GGTSTaskAnswerSurrender
+我臣服于GGTS。
+GGTSTaskAnswerSurrenderMaster
+我臣服于GGTS主人。
+GGTSTaskAnswerServeObey
+我侍奉并顺从GGTS。
+GGTSTaskAnswerServeObeyMaster
+我侍奉并顺从GGTS主人。
+GGTSTaskAnswerFreeWill1
+我没有自由意志。
+GGTSTaskAnswerFreeWill2
+我并没有自由意志。
+GGTSTaskAnswerSlaveWorthy
+我努力配得上奴隶之名。
+GGTSBannedWordsLvl0
+fuck|shit
+GGTSBannedWordsLvl4
+cunt|bitch
+GGTSBannedWordsLvl5
+whore|bastard

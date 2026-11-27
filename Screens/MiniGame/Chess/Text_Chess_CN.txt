@@ -5,12 +5,12 @@ Checkmate
 Draw
 平局
 Stalemate
-僵局
+逼和
 ThreefoldRepetition
 三次重复局面
 Victory
 胜利
 ClickEnd
-点击你自己以结束。
+点击自己以结束。
 Concede
 认输

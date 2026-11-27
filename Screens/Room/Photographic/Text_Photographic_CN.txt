@@ -1,6 +1,6 @@
 SelectItemUse
-选择要使用的项目
+选择要使用的物品
 EmptyCategory
-此类别没有项目。
+该类别下没有物品。
 MoreItem
-我可以用别的东西给你吗？
+我还能对你使用别的物品吗？

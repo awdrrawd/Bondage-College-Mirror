@@ -1,56 +1,56 @@
 Exit
 退出束缚格斗
 Save
-保存您的进度
+保存进度
 SelectSave
-选择一个位置来保存您的进度
+选择存档位以保存进度
 SaveOn
-保存在位置 #
+保存在存档位 #
 Character
 角色详情
 ChangeCharacter
-更改活动角色
+更换当前角色
 AudioToggle
-打开/关闭音频
+切换音频开关
 GameOver
-游戏结束。使用退出按钮重试。
+游戏结束。点击退出按钮重试。
 LevelUp
-角色名称升级！
+CharacterName 升级了！
 ButtonGift
-给她一个物品
+赠送物品
 ButtonOliviaLover1Start
-开始与 Olivia 约会
+与 Olivia 建立恋爱关系
 ButtonOliviaLover1End
-与 Olivia 分手
+与 Olivia 结束恋爱关系
 ButtonOliviaDomination1Start
 支配 Olivia
 ButtonOliviaDomination1End
 释放 Olivia
 ButtonOliviaSubmission1Start
-屈服于 Olivia
+顺从 Olivia
 ButtonOliviaSubmission1End
 摆脱 Olivia
 ButtonEdlaranLover1Start
-开始与 Edlaran 约会
+与 Edlaran 建立恋爱关系
 ButtonEdlaranLover1End
-与 Edlaran 分手
+与 Edlaran 结束恋爱关系
 ButtonEdlaranDomination1Start
 支配 Edlaran
 ButtonEdlaranDomination1End
 释放 Edlaran
 ButtonEdlaranSubmission1Start
-屈服于 Edlaran
+顺从 Edlaran
 ButtonEdlaranSubmission1End
 摆脱 Edlaran
 ButtonLynLover1Start
-开始与 Lyn 约会
+与 Lyn 建立恋爱关系
 ButtonLynLover1End
-与 Lyn 分手
+与 Lyn 结束恋爱关系
 ButtonLynDomination1Start
 支配 Lyn
 ButtonLynDomination1End
 释放 Lyn
 ButtonLynSubmission1Start
-屈服于 Lyn
+顺从 Lyn
 ButtonLynSubmission1End
-从 Lyn 手里逃脱
+摆脱 Lyn

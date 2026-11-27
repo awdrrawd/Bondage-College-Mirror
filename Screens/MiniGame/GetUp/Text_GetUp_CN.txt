@@ -1,8 +1,8 @@
 GetUpObjective
-点击以向右靠。试着保持在中间！
+点击向右倾斜，尽量保持在正中！
 GetUpStart
-点击以开始。
+点击此处开始。
 GetUpPass
-你做到了！
+你成功了！
 GetUpFail
 你失去了平衡！

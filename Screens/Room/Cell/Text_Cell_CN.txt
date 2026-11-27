@@ -1,5 +1,5 @@
 Timer
-定时：
+定时锁：
 Minutes
 分钟
 Leave
@@ -17,4 +17,4 @@ OpensIn
 Kneel
 跪下/站立
 KeyDeposit
-钥匙保管
+寄存钥匙

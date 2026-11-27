@@ -1,66 +1,66 @@
 ###_NPC
 That gag looks great on you.  It sounds good also.  (She laughs.)
-这个口塞你穿着看起来很不错。听起来也不错。（她起来。）
+你戴着那个口塞看起来真不错，呜呜叫的声音也挺好听。（她笑了起来。）
 (A maid is cleaning the room.  She turns to look at you.)  You look adorable on that cross.
-（一个女仆正在打扫房间。她转身看着你。）你在那个X字架上看起来很可爱。
+（一名女仆正在打扫房间。她转身看向你。）你在那个十字架上的样子真招人喜欢。
 (A maid is cleaning the room.  She turns to look at you.)  I hope I'm not bothering you.
-（一个女仆正在打扫房间。她转身看着你。）希望我没有打扰你。
+（一名女仆正在打扫房间。她转身看向你。）希望我没有打扰到你。
 ###_PLAYER
 Who are you?
 你是谁？
 ###_NPC
 I'm DialogCharacterName the maid, I'm here to clean this room.
-我是女仆DialogCharacterName，我是来打扫这个房间的。
+我是女仆DialogCharacterName，我是来打扫这间屋子的。
 ###_PLAYER
 Can you help me?
-你能帮助我吗？
+你能帮帮我吗？
 ###_NPC
 (She smiles.)  So, you're stuck on the Saint Andrew's Cross?  Who strapped you on it?
-（她笑起来。）所以，你被困在圣安德鲁X字架上了？谁把你绑在上面了？
+（她微笑道。）所以，你被困在圣安德鲁十字架上了？是谁把你绑在上面的？
 ###_PLAYER
 What is that cross?
-那个X字架是什么？
+那个十字架是什么？
 ###_NPC
 (She giggles.)  This is called a Saint Andrew's Cross or X Cross.  Who strapped you on it?
-（她呵呵地笑。）这被称为圣安德鲁X字架或就叫X字架。谁把你绑在上面了？
+（她吃吃地笑。）这个叫做圣安德鲁十字架，也叫X字架。是谁把你绑在上面的？
 ###_PLAYER
 (Struggle on the cross.)
-（在X字架上挣扎。）
+（在十字架上挣扎。）
 ###_NPC
 (She laughs at you.)  That Saint Andrew's Cross don't want to let you go?  Who strapped you on it?
-（她对你笑。）那个圣安德鲁X字架困住你了？谁把你绑在上面了？
+（她嘲笑着你。）那个圣安德鲁十字架不肯放你走吗？是谁把你绑在上面的？
 ###_PLAYER
 What are you doing here?
 你在这里做什么？
 ###_NPC
 I need to clean this room and bring fresh drinks before the Mistress comes.
-我需要在女主人来之前打扫这个房间并带上新鲜的饮料。
+我得在女主人过来之前把这间屋子打扫干净，再送些新鲜饮料过来。
 ###_PLAYER
 Is the Mistress coming?
-女主人来了吗？
+女主人要过来吗？
 ###_NPC
 Yes, I'm here to clean this room before she comes.
-是的，我来这里是为了在她来之前打扫这个房间。
+是的，我就是为了在她来之前把房间打扫干净才在这的。
 ###_PLAYER
 Please tell me about your work.
-请告诉我你的工作。
+请跟我讲讲你的工作吧。
 ###_NPC
 My job is to keep six playrooms clean, including this one.  It can get messy in the dungeons.  (She winks at you.)
-我的工作是让六个游戏室保持干净，包括这个。地牢里会很快变得乱糟糟的。（她向你眨眼。）
+我的工作是负责保持六间游戏室的整洁，包括这一间。地牢里往往会弄得挺乱的。（她朝你眨了眨眼。）
 ###_PLAYER
 You're doing a great job.
 你做得很好。
 ###_NPC
 (She smiles.)  That's very nice of you.  I've worked very hard today, so I appreciate it.
-（她露出微笑。）谢谢你的赞美。我今天工作很努力，所以我很感谢你的夸奖。
+（她微笑起来。）你人真好。我今天干得很卖力，听到你这么说我很高兴。
 ###_PLAYER
 The pleasure is mine, my friend.
-这份荣幸属于我，我的朋友。
+这是我的荣幸，朋友。
 ###_NPC
 (She nods happily.)  You look so cute on that cross my friend.  Maybe I could take a break to play with you.
-（她高兴地点点头。）我的朋友，你在X字架上看起来很可爱。也许我可以休息一下和你一起玩。
+（她开心地颔首。）我的朋友，你在那个十字架上的样子真可爱。也许我可以忙里偷闲和你玩会儿。
 (She nods happily.)  Too bad I'm working now.  We could explore the club together my friend.
-（她高兴地点点头。）可惜我现在在工作。我的朋友，我们可以一起探索俱乐部。
+（她开心地颔首。）可惜我现在还在工作。不然我们本可以一起在俱乐部里到处逛逛的，我的朋友。
 ###_PLAYER
 (Leave her.)
 （离开她。）
@@ -68,7 +68,7 @@ What is this room?
 这是什么房间？
 ###_NPC
 Isn't it obvious?  You're in one the dungeon playroom.  Mistress reserved it for an event.
-这不是很明显吗？你在地牢游戏室中。女主人为一次活动预定了这里。
+这不是显而易见的吗？你在地牢游戏室里。女主人为了活动把这里包下来了。
 ###_PLAYER
 Where are we?
 我们在哪里？
@@ -76,939 +76,939 @@ A dungeon playroom?
 地牢游戏室？
 ###_NPC
 Dominants can bring submissives here to get punished or simply to have some bondage fun.  Are you a Dominant or a submissive?
-支配者可以把顺从者带到这里来接受惩罚，或者只是为了享受一些束缚的乐趣。你是支配者还是顺从者？
+支配者可以把顺从者带到这里来接受惩罚，或者单纯享受绑缚的乐趣。你是支配者还是顺从者？
 ###_PLAYER
 What goes on in here?
-这里发生了什么？
+这里通常会做什么？
 Tell me about this place.
-介绍一下这个地方。
+跟我说说这个地方吧。
 I'm a Dominant for sure.
 我肯定是支配者。
 ###_NPC
 (She nods politely.)  Dommes have lots of control in a dungeon like this.
-（她礼貌地点点头。）支配者在这样的地牢里有很多控制权。
+（她礼貌地点了点头。）在这样的地牢里，支配者拥有绝对的掌控权。
 ###_PLAYER
 I'm independent.
-我是自由的。
+我是独立的。
 ###_NPC
 You're probably a Dominant.  Dommes have lots of control in a dungeon like this.
-你可能是一个支配者。支配者在这样的地牢中有很多控制权。
+那你很可能是支配者。在这样的地牢里，支配者拥有绝对的掌控权。
 ###_PLAYER
 I don't know.
 我不知道。
 ###_NPC
 I'll help you figure it out.  (She locks your cuffs behind your back.)
-我会帮你弄清楚的。（她把你的手铐反锁在背后。）
+我来帮你弄清楚。（她将你的手铐反锁在背后。）
 ###_PLAYER
 I'm probably a submissive.
-我可能是一个顺从者。
+我可能是个顺从者。
 ###_NPC
 There's something missing in your setup then.  (She locks your cuffs behind your back.)
-那么你的穿戴里缺少一些东西。（她把你的手铐反锁在背后。）
+那你这身行头还差了点东西。（她将你的手铐反锁在背后。）
 I'll help you figure it out.  (She gets some cuffs from the drawer and locks them on you.)
-我会帮你弄清楚的。（她从抽屉里拿出一些手铐，锁在你身上。）
+我来帮你弄清楚。（她从抽屉里拿出几副手铐，将你拷上。）
 Then you're missing a few accessories.  (She gets some cuffs from the drawer and locks them on you.)
-那么你的身上缺少一些装饰品。（她从抽屉里拿出一些手铐，锁在你身上。）
+那你身上还少了几样配件呢。（她从抽屉里拿出几副手铐，将你拷上。）
 ###_PLAYER
 This is really tight.
-这好紧。
+这真的很紧。
 ###_NPC
 Isn't it a wonderful feeling to be restrained?  To be under control?
-被束缚，被控制的感觉是不是很美妙？
+被束缚住、被彻底掌控的感觉不是很美妙吗？
 ###_PLAYER
 Wait!  What are you doing?
-等下！你在干什么？
+等等！你在做什么？
 Are you punishing me Miss?
-你在惩罚我吗，女士？
+您是在惩罚我吗，女士？
 I'm not sure.  (Tug on the cuffs.)
-我不确定。（拉扯手铐。）
+我不确定。（扯动动手铐。）
 ###_NPC
 Oh!  Would you like to get out subbie girl?
-哦！你想出来吗，顺从的女孩？
+哎呀！小女奴，你想脱身吗？
 ###_PLAYER
 That's not why I came here.
-这不是我来这里的原因。
+我来这里可不是为了这个。
 Yes, can you release me?
 是的，你能放开我吗？
 ###_NPC
 I could release you, but there's a price.
-我可以释放你，但这是有代价的。
+我可以放了你，但这是有代价的。
 ###_PLAYER
 Yes, please Miss.
-是的，求你，女士。
+是的，求求您了，女士。
 ###_NPC
 You're a polite submissive.  I could release you, but there's a price.
-你是一个有礼貌的顺从者。我可以释放你，但这是有代价的。
+你真是个有礼貌的顺从者。我可以放了你，但这是有代价的。
 ###_PLAYER
 Yes, get me out now.
-是的，现在就让我出去。
+少废话，现在就放我出去。
 ###_NPC
 You're a pushy submissive.  I could release you, but there's a price.
-你是一个咄咄逼人的顺从者。我可以释放你，但这是有代价的。
+你真是个得寸进尺的顺从者。我可以放了你，但这是有代价的。
 ###_PLAYER
 Why does it matter?
 这有什么关系吗？
 ###_NPC
 (She takes a step back.)  I'm guessing you restrained yourself and you can't get out?  You're a bondage sub?
-（她后退一步。）我猜你把自己绑住了结果出不来了？你是顺从者？
+（她后退了一步。）我猜是你自己把自己绑起来结果解不开了？你是个喜欢绑缚的顺从者？
 ###_PLAYER
 Nobody.  I've restrained myself.
-没有人。我自己把自己绑起来的。
+没人帮我。是我自己把自己绑起来的。
 ###_NPC
 So you were enjoying self-bondage and you can't get out?  You're a bondage sub?
-所以你正在享受自我束缚，并且无法摆脱？你是顺从者？
+这么说你是在自缚自娱，结果被困住了？你是个喜欢绑缚的顺从者？
 ###_PLAYER
 (Blush and bow your head.)
 （脸红并低下头。）
 ###_NPC
 Don't be shy, you restrained yourself and you can't get out?  You're a bondage sub?
-别害羞，你把自己绑住了结果出不来了？你是顺从者？
+别害羞嘛，是你自己把自己绑起来结果脱不了身了？你是个喜欢绑缚的顺从者？
 ###_PLAYER
 No!  I'm a journalist.
-不！我是一名记者。
+才不是！我是个记者。
 ###_NPC
 (She laughs.)  Yeah, yeah, and I'm Head Mistress Sophie.  I could release you, but there's a price.
-（她笑起来。）是的，是的，那我就是首席女主人索菲。我可以释放你，但这是有代价的。
+（她笑了起来。）行啊行啊，那我还是首席女主人索菲呢。我可以放了你，但这是有代价的。
 ###_PLAYER
 What's a bondage sub?
-什么是顺从者？
+什么是喜欢绑缚的顺从者？
 ###_NPC
 (She caresses your cheek.)  It's you little submissive.  I could release you, but there's a price.
-（她抚摸着你的脸颊。）是你，小顺从者。我可以释放你，但这是有代价的。
+（她轻抚着你的脸颊。）说的不就是你嘛，小顺从者。我可以放了你，但这是有代价的。
 ###_PLAYER
 I'm not a club member.
-我不是俱乐部会员。
+我不是这里的俱乐部会员。
 ###_NPC
 Of course, you look like a stranger.  (She laughs.)  I could release you, but there's a price.
-当然，你看起来像个陌生人。（她笑起来。）我可以释放你，但这是有代价的。
+看得出来，你像个生面孔。（她笑了起来。）我可以放了你，但这是有代价的。
 ###_PLAYER
 I'm here for an interview.
-我是来采访的。
+我是来做采访的。
 ###_NPC
 (She giggles.)  And you're interviewing the X cross?  I could release you, but there's a price.
-（她呵呵地笑起来。）所以你在采访X字架吗？我可以释放你，但这是有代价的。
+（她吃吃地笑。）那你是在采访X字架吗？我可以放了你，但这是有代价的。
 ###_PLAYER
 A price?  You want money?
-代价？你想要钱？
+代价？你想要钱吗？
 ###_NPC
 I don't want any money.  What do you have to offer?
-我不想要钱。你能提供什么？
+我不要钱。你能付出什么呢？
 ###_PLAYER
 What do you want?
-你想要什么？
+那你想要什么？
 ###_NPC
 (The cleaning maid looks at you.)  What do you have to offer for your freedom?
-（清洁女工看着你。）你要为你的自由付出什么？
+（打扫卫生的女仆看着你。）换取你的自由，你能拿出什么来？
 ###_PLAYER
 I don't know!
 我不知道！
 ###_NPC
 Think harder girl.
-多想想女孩。
+使劲想想吧，小姑娘。
 ###_PLAYER
 This is a big mistake.
-这是一个大错误。
+这真是个大失误。
 ###_NPC
 I don't think so.  Deep in your heart, you wanted to get into that situation.
-我不这么认为。在你的内心深处，你想身处哪种情况。
+我可不这么觉得。在你内心深处，你其实巴不得落到这步田地呢。
 ###_PLAYER
 Would you like to cum?
 你想高潮吗？
 ###_NPC
 (She smiles.)  You think you could do that?  An orgasm for your freedom sounds like a fair deal.
-（她笑起来。）你认为你能做到吗？高潮交换自由听起来很划算。
+（她微微一笑。）你觉得你能办到？用一次高潮来换你的自由，听起来挺公平的。
 ###_PLAYER
 I could offer an orgasm.
-我可以支付一次高潮。
+我可以让你高潮一次。
 Do you need help with chores?
-你需要帮忙做家务吗？
+你需要人帮忙做家务吗？
 ###_NPC
 (She ponders.)  Fine.  If you clean this place with me, I'll let you go.  Do we have a deal?
-（她沉思）好吧。如果你和我一起打扫这个地方，我就放你走。那么，成交了？
+（她思索片刻。）好吧。如果你跟我一起打扫这里，我就放你走。成交吗？
 ###_PLAYER
 I could clean with you.
-我可以和你一起打扫。
+我可以跟你一起打扫。
 Let me think.  (Leave her.)
 让我想想。（离开她。）
 It would be my pleasure Miss.
-那将是我的荣幸，女士。
+能为您效劳是我的荣幸，女士。
 ###_NPC
 You're a good sub, aren't you?  You better please me fast, I have work to do before the Mistress comes.
-你是个乖顺从者，不是吗？你最好快点取悦我，在女主人来之前我还有工作要做。
+你是个乖顺从者，对吧？你最好动作快点伺候好我，在女主人过来之前我还有工作要做呢。
 ###_PLAYER
 It's a kinky deal for sure.
-这肯定是一个变态的交易。
+这交易可真够变态的。
 ###_NPC
 A great deal!  But you better do it quick.  I have work to do before the Mistress comes.
-好的成交！但你最好快点做。在女主人来之前我还有工作要做。
+一桩好交易！但你最好手脚麻利点。在女主人过来之前我还有工作要做呢。
 ###_PLAYER
 Get naked, it will be easy.
-脱光衣服，这会很容易。
+脱掉衣服吧，这很容易搞定。
 ###_NPC
 Aren't you a pushy sub?  You better do it quick.  I have work to do before the Mistress comes.
-你不是一个咄咄逼人的顺从者吗？你最好快点做。在女主人来之前我还有工作要做。
+你这个顺从者还真够急躁的？你最好快点弄。在女主人过来之前我还有工作要做呢。
 ###_PLAYER
 I'll do my best.
-我将尽我所能。
+我会尽全力的。
 ###_NPC
 (She checks the clock and quickly gets naked.)  Now I need to prepare you to work.
-（她看了看时钟，很快就脱光了衣服。）现在我需你做好工作准备。
+（她看了看表，迅速脱光了衣服。）现在我得帮你做好开工的准备了。
 ###_PLAYER
 (Nod rapidly.)
-（迅速点头。）
+（快速点头。）
 Very well Miss.
-很好女士。
+遵命，女士。
 ###_NPC
 (She restrains you on your knees, facing her vulva.)  Time to pay your dept.
-（她让你跪在地上，面对她的阴部。）是时候偿还你的债务了。
+（她将你束缚成跪姿，面朝她的私处。）是时候偿还你的债务了。
 ###_PLAYER
 (Lick your lips.)
-（舔你的嘴唇。）
+（舔舔嘴唇。）
 ###_NPC
 Don't get lazy subbie girl.  I want my orgasm.  (The camera zooms on you.)
-别偷懒，顺从者女孩。我想要我的高潮。（镜头对准你。）
+别偷懒啊，小女奴。我要我的高潮。（镜头聚焦在你身上。）
 ###_PLAYER
 (Kiss her vulva.)
-（亲吻她的阴部。）
+（亲吻她的外阴。）
 ###_NPC
 (The camera zooms on you as you kiss her vulva slowly.)
-（你慢慢地亲吻她的外阴，镜头对准你。）
+（镜头推近，特写你缓缓亲吻她外阴的画面。）
 ###_PLAYER
 (Lick her clitoris.)
-（舔她的阴蒂。）
+（舔舐她的阴蒂。）
 ###_NPC
 (You lick her clitoris slowly as she moans from the pleasure.)
-（你慢慢地舔她的阴蒂，她因快感而呻吟。）
+（你缓缓舔舐她的阴蒂，快感让她发出阵阵娇喘。）
 ###_PLAYER
 (Lick her pussy lips.)
-（舔她的阴唇。）
+（舔舐她的阴唇。）
 ###_NPC
 (You lick her pussy lips as she trembles and grabs on your hair.)
-（你舔她的阴唇，她颤抖着抓住你的头发。）
+（你舔舐着她的阴唇，她浑身颤抖，抓紧了你的头发。）
 ###_PLAYER
 (Push your tongue inside.)
-（把你的舌头伸进去。）
+（将舌头伸进去。）
 ###_NPC
 (You push your tongue inside as the camera zooms on her vagina.)
-（你将舌头伸了进去，镜头拉近她的阴道。）
+（你将舌头探入内部，镜头拉近特写她的私密处。）
 ###_PLAYER
 (Explore inside.)
-（探索内部。）
+（向深处探索。）
 ###_NPC
 (You explore deep inside with your tongue, as she jerks from the ecstasy.)
-（你用舌头探索深处，她因到达极乐而抽搐。）
+（你的舌尖在她体内深处肆意探索，强烈的极乐让她不由自主地抽搐起来。）
 ###_PLAYER
 This is unfair!
 这不公平！
 ###_NPC
 BDSM isn't fair girl.  Get to work.  (She tightens your cuffs.)
-BDSM本就不公平，女孩。开始工作吧。（她收紧你的手铐。）
+小姑娘，BDSM可从来没有公平可言。快干活。（她勒紧了你的手铐。）
 ###_PLAYER
 (Look around.)
 （环视四周。）
 ###_NPC
 (The cleaning maid looks at you.)  If you clean this place with me, I'll let you go.  Do we have a deal?
-（正在清洁的女仆看着你。）如果你跟我一起打扫这个地方，我就放过你。成交吗？
+（打扫卫生的女仆看着你。）如果你帮我一起打扫这儿，我就放你走。成交吗？
 ###_PLAYER
 Very well, let me go and I'll clean with you.
-很好，放开我，我和你一起打扫卫生。
+好吧，放开我，我跟你一起打扫。
 ###_NPC
 No, no, no, I will let you go when you're done cleaning.
-不不不，打扫完我就放开你。
+不不不，等你打扫完了我才会放了你。
 ###_PLAYER
 We have a deal.  Now release me.
-成交了。现在放开我。
+成交。现在放开我吧。
 That won't work.
 那可不行。
 ###_NPC
 Sure, it will.  Let me show you.  (She restrains you securely and straps a duster gag.)
-当然，会的。我来给你展示。（她牢牢地束缚你，并给你戴上了掸子口塞。）
+当然行得通，我做给你看。（她牢牢地束缚住你，并绑上了一个掸子口塞。）
 ###_PLAYER
 Are you nuts?
 你疯了吗？
 ###_NPC
 I'll teach you some manners.  (She restrains you securely and straps a duster gag.)
-我会教你一些礼仪。（她牢牢地束缚你，并给你戴上了掸子口塞。）
+我来教教你规矩。（她牢牢地束缚住你，并绑上了一个掸子口塞。）
 ###_PLAYER
 How is that possible?
-这怎么可能？
+这怎么可能办得到？
 ###_NPC
 Let me demonstrate.  (She restrains you securely and straps a duster gag.)
-让我演示一下。（她牢牢地束缚你，并给你戴上了掸子口塞。）
+让我演示给你看。（她牢牢地束缚住你，并绑上了一个掸子口塞。）
 ###_PLAYER
 (Struggle in your restraints.)
 （在束缚中挣扎。）
 ###_NPC
 You're not getting out.  (She spanks your butt.)  Now start dusting.
-你逃不掉的。（她打你的屁股。）现在开始打扫吧。
+你逃不掉的。（她拍了拍你的屁股。）现在开始除尘吧。
 ###_PLAYER
 (Grumble in the gag.)
-（在口塞里咕哝。）
+（隔着口塞发出含糊的咕哝。）
 ###_NPC
 Grumbling will not help you to get out.  Now start dusting.
-嘟嘟囔囔并不能帮你解开。现在开始打扫吧。
+嘴里嘟囔可没法帮你脱身。现在开始除尘吧。
 ###_PLAYER
 (Bow your head.)
-（低头。）
+（低下头。）
 ###_NPC
 Good girl.  (She pets your head.)  Now start dusting.
-乖女孩。（她抚摸你的头。）现在开始打扫吧。
+好姑娘。（她摸了摸你的头。）现在开始除尘吧。
 (The cleaning maid looks at you.)  Dust harder girl.
-（清洁女仆看着你。）清洁要更努力，女孩。
+（打扫卫生的女仆看着你。）除尘再卖力点，姑娘。
 ###_PLAYER
 (Dust her outfit.)
-（给她的衣服除尘。）
+（为她的衣服掸除灰尘。）
 ###_NPC
 (You slowly dust her outfit as she moans and exposes her breast for the camera.)
-（你慢慢地清理她的衣服，她呻吟着并对着镜头露出乳房。）
+（你缓缓掸除她衣服上的灰尘，她轻声呻吟着，对着镜头露出了双乳。）
 ###_PLAYER
 (Dust her feet.)
-（清洁她的脚。）
+（为她的双脚除尘。）
 ###_NPC
 (You kneel down and dust her feet clumsily and she smiles.)  Good girl.
-（你跪下来笨拙地清洁她的脚，她笑起来。）乖女孩。
+（你跪在地上，笨拙地用掸子清理她的脚，她露出了微笑。）好孩子。
 ###_PLAYER
 (Dust the room.)
-（清洁房间。）
+（打扫房间。）
 ###_NPC
 (You dust randomly in the room as the camera follows you.)
-（你在房间里随意清扫，摄像机跟着你。）
+（你在房间各处胡乱掸扫着，镜头一路跟随着你。）
 ###_PLAYER
 (Whimper for freedom.)
 （呜咽着乞求自由。）
 ###_NPC
 (You whimper for freedom as she laughs at you.)  Get dusting girl!
-（你呜咽着乞求自由，她朝你笑着。）快打扫，女孩！
+（你呜咽着乞求被放走，她却嘲笑起你来。）赶紧干活除尘，小姑娘！
 ###_PLAYER
 Control?  What kind of control?
-控制？什么样的控制？
+掌控？什么样的掌控？
 ###_NPC
 (She giggles.)  Dominants like you can order submissives around, get them bound and gagged.  They can also control them sexually.
-（她呵呵地笑。）像你这样的支配者可以命令顺从者，让他们被束缚和戴上口塞。她们也可以控制她们，性的意义上的。
+（她吃吃地笑。）像你这样的支配者可以随意对顺从者发号施令，把她们五花大绑并戴上口塞。还可以在性方面彻底支配她们。
 ###_PLAYER
 Control is my middle name.
-控制是我的中间名。
+掌控是我的天性。
 ###_NPC
 (She bows her head.)  Dominants like you can order submissives around, get them bound and gagged.  They can also control them sexually.
-（她低下头。）像你这样的支配者可以命令顺从者，让他们被束缚和戴上口塞。她们也可以控制她们，性的意义上的。
+（她低下头。）像你这样的支配者可以随意对顺从者发号施令，把她们五花大绑并戴上口塞。还可以在性方面彻底支配她们。
 ###_PLAYER
 Being in control sounds good.
-掌控一切听起来不错。
+居于掌控地位听起来不错。
 ###_NPC
 (She blushes.)  Dominants like you can order submissives around, get them bound and gagged.  They can also control them sexually.
-（她脸红起来。）像你这样的支配者可以命令顺从者，让他们被束缚和戴上口塞。她们也可以控制她们，性的意义上的。
+（她脸红了起来。）像你这样的支配者可以随意对顺从者发号施令，把她们五花大绑并戴上口塞。还可以在性方面彻底支配她们。
 ###_PLAYER
 Submissives like you?
 像你这样的顺从者？
 ###_NPC
 (She freezes for a few seconds and blushes.)  Well...  Miss...  I did...  I did not mean...
-（她愣了几秒钟，脸红了。）嗯……女士……我是……我不是那个意思……
+（她愣住了几秒钟，脸颊通红。）唔……女士……我……我不是那个意思……
 ###_PLAYER
 You like to be controlled, don't you?
-你喜欢被控制，不是吗？
+你很喜欢被掌控，对吧？
 Submit to me now.
-现在，服从我。
+现在，服从于我。
 ###_NPC
 (She bows her head and slowly gets on her knees.)  Yes Miss.  I'm under your control.
-（她低下头，慢慢地跪下。）是的，女士。我在你的控制之下。
+（她低下头，缓缓双膝跪地。）遵命，女士。我任凭您的摆布。
 ###_PLAYER
 What does your submissive heart tell you?
-你顺服的心告诉你什么？
+你那颗渴望顺从的心在告诉你什么？
 ###_NPC
 (She bows her head and slowly gets on her knees.)  I feel like getting on my knees for you Miss.
-（她低下头，慢慢地跪下。）女士，我想为你跪下。
+（她低下头，缓缓双膝跪地。）女士，我忍不住想跪倒在您的面前。
 ###_PLAYER
 Get on your knees, girl.
-跪下，女孩。
+给我跪下，姑娘。
 ###_NPC
 (She bows her head and slowly gets on her knees.)  Yes Miss.  Of course.
-（她低下头，慢慢地跪下。）是的，女士。当然。
+（她低下头，缓缓双膝跪地。）遵命，女士。理当如此。
 ###_PLAYER
 (Point to the ground.)
-（指着地面。）
+（指向地面。）
 ###_NPC
 (She stays silent, bows her head and slowly gets on her knees.)
-（她保持沉默，低下头，慢慢地跪下。）
+（她一言不发，顺从地低下头，缓缓双膝跪地。）
 ###_PLAYER
 You belong to me now.
 你现在属于我了。
 ###_NPC
 (She bows her head.)  How can I serve you Miss?
-（她低下头。）女士，请问我可以如何服侍您？
+（她低下头。）女士，我该如何服侍您？
 ###_PLAYER
 I've always wanted a maid.
-我一直想要一个女仆。
+我一直想要个专属女仆。
 ###_NPC
 (She looks up at you and nods.)  How can I serve you Miss?
-（她抬头看着你，点点头。）女士，请问我可以如何服侍您？
+（她抬头看向你，点了点头。）女士，我该如何服侍您？
 ###_PLAYER
 (Make an evil grin.)
-（露出邪恶的笑容。）
+（露出一抹坏笑。）
 ###_NPC
 (She gulps.)  How can I serve you Miss?
-（她咽了一口唾沫。）女士，请问我可以如何服侍您？
+（她咽了一口唾沫。）女士，我该如何服侍您？
 How can I serve you Miss?
-女士，请问我可以如何服侍您？
+女士，我该如何服侍您？
 ###_PLAYER
 Bark for me bitch.
-小母狗，给我叫几声。
+贱人，给我叫几声听听。
 ###_NPC
 (She lowers her head and barks for you.)  Woof!  Woof!  Woof!
-（她低下头，对你吠叫。）汪！汪！汪！
+（她低垂着脑袋，顺从地对你汪汪叫。）汪！汪！汪！
 ###_PLAYER
 (Use a duster gag on her.)
-（将掸子口塞用在她身上。）
+（给她戴上掸子口塞。）
 ###_NPC
 (She whimpers as you strap a duster gag on her mouth.)
-（你用掸子口塞堵住她的嘴，她呜咽起来。）
+（当你把掸子口塞绑在她嘴上时，她发出了一声轻细的呜咽。）
 ###_PLAYER
 (Make her clean the room.)
-（让她打扫房间。）
+（命令她打扫房间。）
 ###_NPC
 (She crawls on her knees and cleans the room as the camera follows her.)
-（她跪着打扫房间，镜头跟着她。）
+（她在地上膝行打扫着房间，镜头一路跟随着她。）
 ###_PLAYER
 (Expose her breast.)
-（露出她的乳房。）
+（露出她的胸部。）
 ###_NPC
 (You slowly grab her breast and reveal them to the camera.  You expose them out of her outfit.)
-（你慢慢地抓住她的乳房，把它们暴露在镜头前。你把她的乳房从她的衣服里露出来。）
+（你缓缓抓住她的乳房，将其从衣物中扯出，彻底暴露在镜头前。）
 ###_PLAYER
 (Massage her breast.)
-（按摩她的乳房。）
+（揉捏她的胸部。）
 ###_NPC
 (You cup her breast and massage it slowly as she moans from the pleasure.)
-（你捧着她的乳房慢慢按摩，她因快感而呻吟。）
+（你托起她的乳房轻轻揉捏，快感让她发出阵阵呻吟。）
 ###_PLAYER
 (Lock her in cuffs.)
 （用手铐锁住她。）
 ###_NPC
 (You lock cuffs on her arms and legs, then attach them behind her back.)
-（你把手铐锁在她的胳膊和腿上，然后系在她背后。）
+（你用手铐铐住她的双臂与双腿，随后将它们在背后固定在一起。）
 ###_PLAYER
 (Strap her on the X cross.)
-（把她绑在X字架上。）
+（将她绑到X字架上。）
 ###_NPC
 (You pick her up and strap her on the huge X cross as she struggles sensually.)
-（你把她抱起来，绑在巨大的X字架上，她煽情地挣扎着。）
+（你将她抱起并绑在巨大的X字架上，她扭动着身躯，带着诱人的媚态挣扎着。）
 (She struggles playfully on the cross and moans.)
-（她在X字架上玩闹似地挣扎并呻吟。）
+（她在十字架上嬉闹般地扭动身子，嘴里发出低吟。）
 ###_PLAYER
 (Slap her butt.)
-（拍她的屁股。）
+（拍打她的屁股。）
 ###_NPC
 (You raise the hem of her outfit, revealing her butt to the camera.  You then slap it a few times as she jumps with each impact.)
-（你掀起她衣服的下摆，让她的屁股对着镜头。你对着她的屁股拍了几下，每次都让她稍稍蹦起来。）
+（你掀起她裙子的下摆，把她的翘臀暴露在镜头前。接着重重拍打了几下，每一次击打都让她猛地一颤。）
 ###_PLAYER
 (French kiss her.)
-（湿吻她。）
+（与她深吻。）
 ###_NPC
 (You French kiss her lovingly as she struggles on the X cross very slowly.)
-（你深情地舌吻她，她在X字架上非常缓慢地挣扎。）
+（你深情地与她热烈舌吻，而她在X字架上极缓地扭动着身躯。）
 ###_PLAYER
 (Pinch her nipples.)
-（捏她的乳头。）
+（揪掐她的乳头。）
 ###_NPC
 (You pinch her nipples with both hands and twist slowly as she jerks from the pain.)
-（你用双手捏住她的乳头，在她因疼痛而抽搐时慢慢扭动。）
+（你双手捏住她的乳头慢慢揉捻扭转，疼痛让她猛烈地颤抖。）
 ###_PLAYER
 (Masturbate her.)
-（手淫她。）
+（为她自慰。）
 ###_NPC
 (You slide your hand under her outfit and masturbate her.  The camera goes down and films your hand as she gets really wet.)
-（你把手伸到她的衣服下面，然后用手抚慰她。摄像机下降并拍摄你的手，她湿得一塌糊涂。）
+（你的手滑入她的衣物下开始抚弄她。摄像机向下移动，特写你那沾满爱液的手，她早已湿得一塌糊涂。）
 (The maid seems very nervous.  She stares at the Mistress and doesn't notice you anymore.)
-（女仆似乎很紧张，她盯着女主人看，不再理会你。）
+（女仆看起来非常紧张。她紧盯着女主人，完全没有注意到你。）
 (The maid is fully restrained.  It's a good opportunity to take pictures for the interview.)
-（女仆被完全束缚。这是个为采访拍照的好机会。）
+（女仆已被完全束缚。这正是为采访拍几张照片的大好机会。）
 ###_PLAYER
 (Step back and take pictures.)
-（退后一步，开始拍照。）
+（退后几步开始拍照。）
 ###_NPC
 (You take a few steps back and snap a few pictures of the maid getting teased by the Mistress.)
-（你后退几步，拍了几张女仆被女主人调戏的照片。）
+（你后退几步，拍下了女仆被女主人戏弄调教的瞬间。）
 ###_PLAYER
 (Get closer and take pictures.)
-（靠近一点拍照。）
+（靠上前去拍照。）
 ###_NPC
 (You get closer and take pictures or her tight restraints and her heavy struggling.)
-（你靠近一点，拍摄了一些她被紧紧束缚和猛烈挣扎的照片。）
+（你凑近拍下了她身上的紧绷束缚以及她剧烈挣扎的特写。）
 (The maid is fully restrained.  The Mistress has more items you could use on her.)
-（女仆完全克制，女主人身上可以用的东西比较多。）
+（女仆已被彻底束缚。女主人那里还有更多道具可以供你使用。）
 ###_PLAYER
 (Try new restraints on her.)
-（尝试对她使用新的束缚。）
+（在她身上尝试新的束缚道具。）
 ###_NPC
 (The Mistress gives you new restraints to try on her as the camera follows the scene.)
-（女主人给了你新的束缚，让使用在她身上，期间镜头跟随着场景。）
+（女主人递给你新的束缚道具让你在她身上尝试，镜头忠实记录着这一幕。）
 ###_PLAYER
 (Spank her.)
-（打她屁股。）
+（拍打她的屁股。）
 ###_NPC
 (The Mistress claps her hands as you spank her pretty hard.)
-（你用力打她的屁股，女主人鼓了鼓掌。）
+（你狠狠拍打着她的臀部，女主人在一旁拍手称赞。）
 ###_PLAYER
 (Make out with her.)
-（和她亲热。）
+（与她亲热。）
 ###_NPC
 (You get really close to her and starts to kiss and caress her wherever you can.)
-（你贴近她，在她全身上下亲吻和爱抚。）
+（你紧贴着她的身躯，忘情地亲吻抚摸着触手可及的每一寸肌肤。）
 (The maid looks at you and giggles.)
-（女仆看着你，呵呵地笑。）
+（女仆看着你，吃吃地笑了。）
 ###_PLAYER
 (Cuddle with her.)
-（和她拥抱。）
+（与她相拥依偎。）
 ###_NPC
 (You clumsily rub on each other, sharing a kinky bondage cuddle.)
-（你们笨拙地互相摩擦，色情地束缚着拥抱。）
+（你们笨拙地互相摩擦着身躯，在变态的束缚中缠绵相拥。）
 (The maid seems to be in pain from the spanking.)  What did we do to deserve that?
-（女仆似乎被打得很痛。）为什么我们会遭受这个？
+（女仆似乎因为刚才的痛打而疼得龇牙咧嘴。）我们到底做错了什么要遭这种罪啊？
 ###_PLAYER
 (Spank her some more.)
-（再打她一下。）
+（再打几下她的屁股。）
 ###_NPC
 (The Mistress laughs and let you spank her a few times before splitting you two.)  That's enough.
-（女主人笑起来，让你打她几下，然后分开你们两个。）够了。
+（女主人笑了起来，任由你又打了她几记，随后才将你们俩分开。）好了，到此为止。
 ###_PLAYER
 (Give her a hug.)
 （给她一个拥抱。）
 ###_NPC
 (You give her a long naked hug.  The Mistress splits you two after a while.)  That's enough.
-（你给了她一个长长的赤裸的拥抱。过了一会儿，女主人把你们分开了。）够了。
+（你赤身裸体地给了她一个长久的拥抱。过了一会儿，女主人将你们分开了。）好了，到此为止。
 ###_PLAYER
 (Whisper something in her ear.)
-（在她耳边耳语。）
+（在她耳边低语。）
 ###_NPC
 (You get close to her so you can whisper privately.)
-（你靠近她，这样你就可以私下耳语了。）
+（你贴近她，悄悄咬起了耳朵。）
 (The maid seems to be in pain from the spanking.)  I don't think we should talk.
-（女仆似乎被打得很痛。）我认为我们不应该说话。
+（女仆似乎还因刚才的击打隐隐作痛。）我觉得我们现在最好别说话。
 ###_PLAYER
 What's going on here?
-这里发生了什么？
+这里到底怎么回事？
 ###_NPC
 We're going to be punished by Mistress.  Do you think we deserve it?
-我们会受到女主人的惩罚。你认为我们应得的吗？
+我们要被女主人惩罚了。你觉得这是我们应得的吗？
 ###_PLAYER
 Is she really going to punish us?
-她真的要惩罚我们吗？
+她真的会惩罚我们吗？
 ###_NPC
 I think she will.  Do you think we deserve it?
-我想她会的。你认为我们应得的吗？
+我觉得她绝对会。你觉得这是我们应得的吗？
 ###_PLAYER
 We do deserve it.
-我们应得的。
+确实是我们活该。
 ###_NPC
 Maybe you're right, I hope it won't hurt too much.  Let's stop whispering, she's looking at us.
-也许你是对的，我希望这不会很疼。别说悄悄话了，她在看着我们。
+也许你说得对，希望不会太痛吧。别交头接耳了，她在看我们呢。
 ###_PLAYER
 We don't deserve it.
-我们不应得如此。
+我们不该受这罪。
 ###_NPC
 Maybe you're right, BDSM isn't fair.  Let's stop whispering, she's looking at us.
-也许你是对的，BDSM是不公平的。别说悄悄话了，她在看着我们。
+也许你是对的，BDSM本就没什么公平可言。别交头接耳了，她在看我们呢。
 ###_PLAYER
 We should turn the tables.
-我们应该掀桌子。
+我们应该反客为主，掀了她的摊子。
 ###_NPC
 (She giggles.)  You think we could do it my friend?  We might get in trouble.  What's your plan?
-（她呵呵地笑。）你认为我们能做到吗，我的朋友？我们可能会遇到麻烦。你的计划是什么？
+（她吃吃地笑。）你觉得我们真能办到吗，我的朋友？我们会惹大麻烦的。你有什么计划？
 (She giggles.)  Don't be ridiculous, we'll get in trouble.  Let's stop whispering, she's looking at us.
-（她呵呵地笑。）别开玩笑了，我们会惹上麻烦的。别说悄悄话了，她在看着我们。
+（她吃吃地笑。）别闹了，我们会倒大霉的。别交头接耳了，她在看我们呢。
 ###_PLAYER
 I run while you keep her busy.
-我跑，你牵制住她。
+我趁机逃跑，你负责拖住她。
 ###_NPC
 That's your plan?  Forget it!  Let's stop whispering, she's looking at us.
-那是你的计划？算了吧！别说悄悄话了，她在看着我们。
+这就是你的计划？门都没有！别交头接耳了，她在看我们呢。
 ###_PLAYER
 I push her on the cross while you put her in cuffs.
-我把她推上X字架，你把她铐起来。
+我一把将她推到十字架上，你趁机给她拷上手铐。
 ###_NPC
 That could work.  We will get in trouble for sure, but it might be worth it.  We really do it my friend?
-那行得通。我们肯定会遇到麻烦，但这可能是值得的。我们真的要做吗，我的朋友？
+这倒行得通。我们肯定会倒霉，不过听起来挺值得冒险的。我们真要这么干吗，我的朋友？
 ###_PLAYER
 I don't have a plan.
 我没有计划。
 ###_NPC
 That won't work then.  Let's stop whispering, she's looking at us.
-那恐怕行不通。别说悄悄话了，她在看着我们。
+那就行不通了。别交头接耳了，她在看我们呢。
 ###_PLAYER
 Let's do it!  (Try to push the Mistress on the cross.)
-我们开始做吧！（试着把女主人推到X字架上。）
+动手！（试图将女主人推到十字架上。）
 I'm too nervous.
 我太紧张了。
 ###_NPC
 We should forget it then.  Let's stop whispering, she's looking at us.
-那就算了吧。你把她铐起来，
+那就当没这回事吧。别交头接耳了，她在看我们呢。
 (The maid sighs in her gag and looks at you.)
-（女仆在她的口塞里叹了口气，看着你。）
+（女仆隔着口塞叹了口气，无奈地看着你。）
 (The maid stares at the Mistress and doesn't focus on you.)
-（女仆盯着女主人，并没有把注意力集中在你身上。）
+（女仆死死盯着女主人，完全没有把精力放在你身上。）
 This is great!  We did it DialogPlayerName!  What should we do with the Mistress?
-这很棒！我们做到了，DialogPlayerName！我们应该如何对付女主人？
+太棒了！我们成功了，DialogPlayerName！我们该怎么处置女主人呢？
 ###_PLAYER
 We are so devious.
-我们太坏了。
+我们真是太坏了。
 ###_NPC
 We make the best duo my friend.  But what should we do with her?
-我们是最好的二人组，我的朋友。但是我们该怎么处理她呢？
+我们真是天造地设的搭档，我的朋友。可是我们该怎么料理她呢？
 ###_PLAYER
 We could torture her.
-我们可以折磨她。
+我们可以狠狠折磨她。
 ###_NPC
 This is devious, I love it.  What's your favorite torture weapon?
-这很坏，我喜欢。你最喜欢的刑具是什么？
+真够使坏的，我喜欢。你最喜欢用什么刑具？
 ###_PLAYER
 (Kiss her.)
-（亲她。）
+（亲吻她。）
 ###_NPC
 (You slowly French kiss each other in front of the raging Mistress.)
-（你们在愤怒的女主人面前慢慢地湿吻。）
+（你们在暴跳如雷的女主人面前，旁若无人地缓缓深吻起来。）
 What's your favorite torture weapon?
-你最喜欢的刑具是什么？
+你最喜欢用什么刑具？
 ###_PLAYER
 No need for any weapon.
-不需要任何刑具。
+不需要任何工具。
 ###_NPC
 (She nods as you both let go of your torture weapons.)
-（你们都放下刑具，她点点头。）
+（你们放下了手中的刑具，她赞许地点了点头。）
 ###_PLAYER
 The crop.
-硬鞭。
+马鞭。
 ###_NPC
 (She nods and gets two leather crops.  She then turns around to the Mistress with a smile.)
-（她点点头，拿了两把皮革硬鞭下来。然后她转过身来，微笑着对女主人。）
+（她点点头，拿来了两根皮质马鞭。随后带着微笑转身面对女主人。）
 ###_PLAYER
 The whip.
-鞭子。
+皮鞭。
 ###_NPC
 (She nods and gets two whips.  She then turns around to the Mistress with a grin.)
-（她点点头，拿来了两根鞭子。然后她转过身来，咧嘴笑着朝向女主人。）
+（她点点头，拿来了两条皮鞭。随后咧嘴笑着转身面对女主人。）
 ###_PLAYER
 The cattle prod.
-赶牛棒。
+电击棒。
 ###_NPC
 (She nods and gets two cattle prods.  She then turns around to the Mistress with a wicked smile.)
-（她点点头，拿了两根赶牛棒。然后她转过身来，对着女主人坏笑。）
+（她点点头，取来两根电击棒。随后带着不怀好意的坏笑转身面对女主人。）
 (A maid is restrained in your room.  She makes pleading eyes to you.)  I'm sorry Mistress.  I was kidnapped.
-（一个女仆被关在你的房间里，向你做恳求的眼神。）对不起，女士。我被绑架了。
+（一名女仆被束缚在你的房间里。她用哀求的眼神看着你。）对不起，女主人。我是被绑架过来的。
 (A maid is playing with a restrained club member in your room.  She doesn't dare to look at you.)  Greetings Mistress.  How can I serve you?
-（女仆在你房间里和一个被束缚的俱乐部成员玩耍，她不敢看向你。）你好，女主人。我应该如何服侍您？
+（一名女仆正在你的房间里摆弄着一位被束缚的俱乐部成员。她甚至不敢看你。）向您问好，女主人。我该如何服侍您？
 (She blushes.)  I came to clean the room for your meeting and was seduced into cuffs by this Dominant woman.
-（她脸红起来。）我是来为你的采访打扫房间的，被这个支配者女人引诱，戴上了手铐。
+（她脸红了。）我本来是来为您的会议打扫房间的，却被这个具有支配者倾向的女人诱惑，被她拷上了手铐。
 I came to clean the room for your meeting and found this girl playing with restraints.  I helped her a little I guess.
-我是来为你的采访打扫房间的，发现这个女孩在玩束缚。我想我帮了她一点忙。
+我本来是来为您的会议打扫房间的，结果发现这女孩在玩束缚道具。我想着就稍微顺手帮了她一把。
 ###_PLAYER
 Why are you restrained?
-你为什么被束缚了？
+你为什么会被绑起来？
 Why did you restrain her?
-你为什么要束缚她？
+你为什么要绑住她？
 (Check the room.)
 （检查房间。）
 The place isn't clean girl.
-这个地方并不干净，女孩。
+这里还没打扫干净呢，姑娘。
 ###_NPC
 (She nods.)  I'm sorry Miss.  If you forgive me, I will finish cleaning up for your meeting.
-（她点点头。）对不起女士。如果你原谅我，我会为你的采访完成打扫。
+（她点了点头。）对不起，女士。如果您肯原谅我，我马上把房间彻底打扫干净，绝不耽误您的会议。
 ###_PLAYER
 You're a lazy maid?
-你是个懒惰的女仆？
+你是个偷懒的女仆？
 ###_NPC
 (She shakes her head no.)  I'm sorry Miss.  If you forgive me, I will finish cleaning up for your meeting.
-（她摇头表示否认。）对不起女士。如果你原谅我，我会为你的采访完成打扫。
+（她摇了摇头。）对不起，女士。如果您肯原谅我，我马上把房间彻底打扫干净，绝不耽误您的会议。
 ###_PLAYER
 Why is the sorority paying you?
-凭什么社团付给你工资？
+女仆协会花钱雇你就是为了看这个？
 ###_NPC
 (She seems nervous.)  I'm sorry Miss.  If you forgive me, I will finish cleaning up for your meeting.
-（她似乎很紧张。）对不起女士。如果你原谅我，我会为你的采访完成打扫。
+（她看起来很紧张。）对不起，女士。如果您肯原谅我，我马上把房间彻底打扫干净，绝不耽误您的会议。
 ###_PLAYER
 (Spank her.)  You play while you clean?
-（打她屁股。）你一边打扫一边玩耍？
+（拍打她的屁股。）打扫卫生的时候还有心思玩？
 ###_NPC
 (She jumps as you spank her.)  I'm sorry Miss.  If you forgive me, I will finish cleaning up for your meeting.
-（你打她，她跳了起来。）对不起女士。如果你原谅我，我会为你的采访完成打扫。
+（你拍打她的臀部，她猛地一跳。）对不起，女士。如果您肯原谅我，我马上把房间彻底打扫干净，绝不耽误您的会议。
 If you forgive me, I will finish cleaning up for your meeting.
-如果你原谅我，我会为你的采访完成打扫。
+如果您肯原谅我，我马上把房间彻底打扫干净，绝不耽误您的会议。
 ###_PLAYER
 I don't forgive that easily.
-我不会那么轻易地原谅。
+我可没那么容易原谅人。
 ###_NPC
 Please Mistress!  There's no need to enforce the club rules.
-求求你，女主人！没有必要强制执行俱乐部规则。
+求求您了，女主人！没必要动用俱乐部的规矩吧。
 ###_PLAYER
 Maybe I should punish you.
-也许我应该惩罚你。
+也许我该惩罚你。
 Rules are important.
-规则很重要。
+规矩就是规矩。
 ###_NPC
 I know Miss.  I will accept a BDSM trial if I must.  Are you sure this is necessary?
-我知道，女士。如果有必要，我会接受BDSM审判。你确定这是必要的吗？
+我知道的，女士。如果必须的话，我愿意接受BDSM审判。您确定一定要这样吗？
 ###_PLAYER
 We need to follow procedures.
-我们需要遵循程序。
+我们必须按规矩办事。
 I will put you on trial.
-我会审判你。
+我要对你进行审判。
 ###_NPC
 Very well Miss.  I will accept a BDSM trial if I must.  Are you sure this is necessary?
-很好，女士。如果有必要，我会接受BDSM审判。你确定这是必要的吗？
+好的，女士。如果必须的话，我愿意接受BDSM审判。您确定一定要这样吗？
 I will accept a BDSM trial if I must.  Are you sure this is necessary?
-如果有必要，我会接受BDSM审判。你确定这是必要的吗？
+如果必须的话，我愿意接受BDSM审判。您确定一定要这样吗？
 ###_PLAYER
 Let's do a trial.  (Go get a gavel.)
-让我们来一场审判吧。（去拿木槌。）
+开始审判。（去取法槌。）
 There won't be any trial.
-不会有任何审判。
+不用开庭审判了。
 ###_NPC
 (She seems disappointed.)  I can't plead for myself?  BDSM can be so unfair.
-（她似乎很失望。）我不能为自己申诉吗？BDSM可能是如此不公平。
+（她显得很失望。）难道我连为自己辩护的权利都没有吗？BDSM有时真的很不公平。
 I hope you will hear us and have a fair judgment Miss.
-女士，我希望你能听到我们的声音并做出公正的判决。
+女士，我希望您能听取我们的陈述，并做出公正的裁决。
 ###_PLAYER
 The BDSM court is in session!
-BDSM法庭开庭了！
+BDSM法庭正式开庭！
 ###_NPC
 (She nods and stays silent.)
-（她点点头，保持沉默。）
+（她点了点头，保持安静。）
 ###_PLAYER
 I will be fair and equitable.
-我会公平公正。
+我会秉公审理，公平公正。
 You will be restrained for your hearing.
-在听证会上，你会被束缚。
+听证期间你必须接受束缚。
 ###_NPC
 I understand the law Miss.  (She gives you some restraints that you use on her.)
-我了解法律，女士。（她给了你一些你对她使用的束缚。）
+我明白规矩，女士。（她递给你一些束缚道具，任由你用在她身上。）
 ###_PLAYER
 I'm ready to hear your testimony.
-我准备好听你的证词了。
+我已经准备好听取你的证词了。
 ###_NPC
 (She describes the previous scene to you and the camera.)
-（她向你和相机描述之前的场景。）
+（她向你和摄像机描述了刚才发生的经过。）
 ###_PLAYER
 Tell me your side of the story.
-告诉我你的故事。
+跟我说说你的说法。
 Do you have anything else to add?
 你还有什么要补充的吗？
 ###_NPC
 No Miss.  Are you ready to make your judgment?
-不，女士，你准备好做出判决了吗？
+没有了，女士。您准备好做出裁决了吗？
 ###_PLAYER
 (Spank her as she speaks.)
-（在她说话的时候打她。）
+（在她陈述时拍打她的屁股。）
 ###_NPC
 (You spank her butt as she completes her speech.)  That's the full story Miss.  Are you ready to make your judgment?
-（她完成演讲的过程中，你打她的屁股。）这就是完整的故事了，女士。你准备好做出判决了吗？
+（在她陈述完毕时，你拍打了她的臀部。）这就是整件事的经过了，女士。您准备好做出裁决了吗？
 ###_PLAYER
 I've heard enough.
-我听够了。
+我已经听得够多了。
 ###_NPC
 Yes Miss.  Are you ready to make your judgment?
-是的女士。你准备好做出判决了吗？
+遵命，女士。您准备好做出裁决了吗？
 Are you ready to make your judgment?
-你准备好做出判决了吗？
+您准备好做出裁决了吗？
 ###_PLAYER
 Yes.  You are guilty.  (Knock the gavel.)
-是的。你有罪。（敲木槌。）
+是的。你罪名成立。（敲响法槌。）
 ###_NPC
 (She bows her head.)  Very well Miss.  I will accept my punishment.
-（她低下头。）很好，女士。我会接受我的惩罚。
+（她低下头。）遵命，女士。我愿意接受惩罚。
 ###_PLAYER
 Yes.  You are innocent.  (Knock the gavel.)
-是的。你是无辜的。（敲木槌。）
+是的。你无罪。（敲响法槌。）
 ###_NPC
 (She nods happily.)  Thank you so much Miss.  Should I finish cleaning up?
-（她高兴地点点头。）非常感谢女士。我可以去完成打扫吗？
+（她开心地连连点头。）太感谢您了，女士。我现在可以去把打扫工作做完了吗？
 ###_PLAYER
 Not yet.  (Check the room.)
-还没有。（检查房间。）
+还没到时候。（检查房间。）
 ###_NPC
 Should I finish cleaning up?
-我应该完成打扫吗？
+我现在可以把卫生打扫完吗？
 ###_PLAYER
 I will strap you to help you clean.
-我会把你绑起来，来帮你打扫。
+我会把你绑好，来帮你把卫生打扫干净。
 ###_NPC
 (She sighs and nods as you restrain her in a position where she can still clean with a duster gag.)
-（她叹了口气，点了点头，你把她束缚成一个她还能用掸子口塞清洁的姿势。）
+（她叹了口气并点了点头，你将她束缚成依然能戴着掸子口塞打扫卫生的姿势。）
 ###_PLAYER
 (Nod and restrain her in a cleaning position.)
-（点头并将她固定在一个清洁的姿势。）
+（点头并将她固定为清扫姿势。）
 ###_NPC
 (She's slowly cleaning the room with her duster gag.)
-（她用掸子口塞慢慢地打扫房间。）
+（她戴着掸子口塞，慢吞吞地打扫着房间。）
 ###_PLAYER
 Clean here girl.
-清洁这里，女孩。
+把这儿擦干净，姑娘。
 ###_NPC
 (She nods and cleans where you're pointing.  The camera zooms on her duster gag.)
-（她点头并清理你所指的地方。镜头对准她的掸子口塞。）
+（她点点头，按照你指的地方清扫起来。镜头特写了她戴着的掸子口塞。）
 ###_PLAYER
 (Change her restraints.)
-（改变她的束缚。）
+（更换她身上的束缚具。）
 ###_NPC
 (She complies as you use new restraints on her.)
-（她服从地让你对她使用新的束缚。）
+（你换上新的束缚具用在她身上，她全程顺从听话。）
 (She whimpers as you spank her while she cleans.)
-（你在她打扫卫生时打她的屁股，她发出呜咽。）
+（她在打扫时被你拍打臀部，忍不住发出了呜咽声。）
 ###_PLAYER
 (Grope her.)
-（抚摸她。）
+（上下抚摸她。）
 ###_NPC
 (She moans softly as you grope her while she cleans.)
-（你在她打扫卫生时抚摸她，她轻声呻吟。）
+（当你在她打扫时揉弄抚摸她的身子，她轻声娇喘起来。）
 ###_PLAYER
 Life isn't fair.  You will be punished.
-生活是不公平的。你会受到惩罚。
+生活就是这么不公。你必须接受惩罚。
 ###_NPC
 (She grumbles and nods.)  How will you punish me Miss?
-（她抱怨并点点头。）女士，你将如何惩罚我？
+（她小声咕哝着点了点头。）女士，您打算如何惩罚我？
 ###_PLAYER
 Submit to me girl.
-服从我，女孩。
+乖乖服从我，姑娘。
 ###_NPC
 How will you punish me Miss?
-你会如何惩罚我，女士？
+女士，您打算如何惩罚我？
 ###_PLAYER
 (Restrain her.)
 （束缚她。）
 ###_NPC
 (You strap her up as the camera zooms on the action.)  You're good at this Miss.
-（你把她绑起来，镜头对准动作。）你很擅长这个，女士。
+（镜头推近特写你捆绑她的动作。）女士，您在这方面真是个行家。
 ###_PLAYER
 (Gag her.)
-（塞住她的嘴。）
+（为她戴上口塞。）
 ###_NPC
 (She doesn't protest as you pick up a gag for her.)
-（你为她挑选一个口塞，她没有抗议。）
+（当你拿起口塞准备给她戴上时，她没有任何反抗。）
 ###_PLAYER
 (Strap her on the cross.)
-（把她绑在X字架上。）
+（将她绑到十字架上。）
 ###_NPC
 (She spreads her arms and legs as you restrain her on the cross.)  This might better than cleaning.
-（她张开胳膊和腿，你把她绑在X字架上。）这可能比打扫卫生要好。
+（当你把她绑在十字架上时，她配合地张开四肢。）这样说不定比打扫卫生强多了。
 ###_PLAYER
 (Release her.)
 （放开她。）
 ###_NPC
 (She stretches happily as you release her.)  Thanks a lot Miss.
-（你放开她，她高兴地伸了个懒腰。）多谢，女士。
+（重获自由后，她开心地伸了个懒腰。）非常感谢您，女士。
 (You spank her pretty hard as she whimpers from the pain.)  You're very strong.
-（你狠狠地打了她屁股，她痛得呜咽。）你很强壮。
+（你重重地拍打了她的屁股，痛得她呜咽出声。）您的力气可真大。
 ###_PLAYER
 (Slap her.)
-（打她耳光。）
+（扇她耳光。）
 ###_NPC
 (You slap her on the face a few times as she bows her head and stays silent.)
-（你在她脸上打了几下耳光，她低头不说话，。）
+（你扇了她几记耳光，她低着头默不作声。）
 ###_PLAYER
 (Hit her with the gavel.)
-（用木槌敲打她。）
+（用法槌打她。）
 ###_NPC
 (You hit her body a few times with the gavel as she whimpers.)  I won't break the rules again Miss.
-（她呜咽着，你用木槌敲了她几下。）女士，我不会再违反规则了。
+（你用法槌敲打了她身上几下，她呜咽着。）女士，我再也不敢违规了。
 (She looks at you and giggles.)  I know we will get in trouble Miss, but this is worth it.
-（她看着你，呵呵地笑了起来。）我知道我们会惹上麻烦，女士，但这是值得的。
+（她看着你咯咯笑了起来。）我知道我们会有麻烦的，女士，但这很值得。
 ###_PLAYER
 You are in huge trouble girl.
-你有大麻烦了，女孩。
+你惹上大麻烦了，丫头。
 ###_NPC
 Let's push this to the limit then.  You did not do a trial Miss.  We will do one for you.  (She smiles at the journalist.)
-那就来探寻一下极限吧。你之前没有被审判，女士。我们接下来给你一个。（她对记者微笑。）
+那就彻底豁出去吧。你之前没有经历过庭审，女士。我们来给你开一场。（她对记者微笑着。）
 ###_PLAYER
 Get me out and we'll forget everything.
-带我出去，我们会忘记一切。
+放我出去，我们就当作什么都没发生。
 ###_NPC
 I don't think this is possible.  You did not do a trial Miss.  We will do one for you.  (She smiles at the journalist.)
-我认为这是不可能的。你之前没有被审判，女士。我们接下来给你一个。（她对记者微笑。）
+我觉得这可不行。你之前没有经历过庭审，女士。我们来给你开一场。（她对记者微笑着。）
 ###_PLAYER
 (Give her a stern look.)
-（朝她露出一个严厉的表情。）
+（严厉地瞪着她。）
 ###_NPC
 (She seems a little nervous.)  You did not do a trial Miss.  We will do one for you.  (She smiles at the journalist.)
-（她似乎有点紧张。）你之前没有被审判，女士。我们接下来给你一个。（她对记者微笑。）
+（她显得有点紧张。）你之前没有经历过庭审，女士。我们来给你开一场。（她对记者微笑着。）
 This is the trial.  You're accused of unfair punishment Miss, how do you plead?
-这就是审判。你受到指控，并会受到不公正的处罚，女士，你如何申辩？
+这就是审判。你被指控施加不公正的惩罚，女士，你认罪吗？
 ###_PLAYER
 Forget it girl.
-算了吧，女孩。
+算了吧，丫头。
 ###_NPC
 (She takes a deep breath.)  You're accused of unfair punishment Miss, how do you plead?
-（她深吸一口气。）你受到指控，并会受到不公正的处罚，女士，你如何申辩？
+（她深吸了一口气。）你被指控施加不公正的惩罚，女士，你认罪吗？
 (She checks to see if your bondage is comfortable.)  You're accused of unfair punishment Miss, how do you plead?
-（她检查你的束缚是否舒服。）你受到指控，并会受到不公正的处罚，女士，你如何申辩？
+（她检查了一下你的束缚是否舒服。）你被指控施加不公正的惩罚，女士，你认罪吗？
 You're accused of unfair punishment Miss, how do you plead?
-你受到指控，并会受到不公正的处罚，女士，你如何申辩？
+你被指控施加不公正的惩罚，女士，你认罪吗？
 ###_PLAYER
 I plead innocent.
 我申辩无罪。
 ###_NPC
 Very good.  Please present your case and we will make a fair judgment.
-非常好。陈述你的实情，我们将做出公正的判决。
+很好。请陈述你的辩词，我们会做出公正的判决。
 ###_PLAYER
 I plead guilty.
 我认罪。
 ###_NPC
 I'm really surprised.  We are not bad judges.  We will allow you to pick who will select the sentence.
-我真的很惊讶。我们不是坏法官，我们将允许你选择谁来决定你的判决。
+真让我意外。我们可不是坏法官。我们允许你挑选由谁来决定量刑。
 ###_PLAYER
 This is a joke.
-这是个玩笑。
+真是笑话。
 ###_NPC
 Please Miss.  Present your case and we will make a fair judgment.
-女士，请。陈述你的实情，我们将做出公正的判决。
+请吧，女士。陈述你的辩词，我们会做出公正的判决。
 ###_PLAYER
 (Stay silent and defiant.)
-（保持沉默和抵抗。）
+（保持沉默，毫不屈服。）
 ###_NPC
 Please present your case and we will make a fair judgment.
-请陈述你的情况，我们将做出公正的判断。
+请陈述你的辩词，我们会做出公正的判决。
 ###_PLAYER
 (Try to make a convincing case.)
-（尝试提出一个令人信服的实情。）
+（试着提出令人信服的辩词。）
 ###_NPC
 You should be a lawyer Miss.  Me and the maid will deliberate and get back to you.  (They start to chat.)
-你应该做个律师，女士，我和女仆会商量后再给你答复。（她们开始聊天。）
+你真该去当律师，女士。我和女仆会商议一下再答复你。（她们开始交头接耳。）
 ###_PLAYER
 (Plead a little.)
-（稍稍恳求。）
+（稍微求求情。）
 ###_NPC
 That wasn't a great case.  Me and the maid will deliberate and get back to you.  (They start to chat.)
-那不是一个很好的事情。我和女仆会商量后再给你答复。（她们开始聊天。）
+这辩词可不怎么样。我和女仆会商议一下再答复你。（她们开始交头接耳。）
 ###_PLAYER
 Get lost maid!
 滚开，女仆！
 ###_NPC
 This will not help at all.  Me and the maid will deliberate and get back to you.  (They start to chat.)
-这根本没用。我和女仆会商量后再给你答复。（她们开始聊天。）
+这根本无济于事。我和女仆会商议一下再答复你。（她们开始交头接耳。）
 ###_PLAYER
 Common!  End this farce already.
-够了！结束这场闹剧吧。
+得了吧！赶紧结束这场闹剧。
 ###_NPC
 (They talk some more and get back to you.)  I'm sorry, you're guilty.  We are not bad judges.  We will allow you to pick who will select the sentence.
-（他们又聊了几句然后回复你。）对不起，你有罪。我们不是坏法官，我们将允许你选择谁来决定你的判决。
+（她们又商量了一会儿，然后转向你。）很遗憾，你被判有罪。我们可不是坏法官。我们允许你挑选由谁来决定量刑。
 ###_PLAYER
 Get me out girls.
-带我出去，女孩。
+放我出去，姑娘们。
 I don't have time for this.
-我没有时间做这个。
+我没闲工夫陪你们玩这个。
 (Stay silent and wait.)
 （保持沉默并等待。）
 ###_NPC
 We will allow you to pick who will select the sentence.
-我们将允许你选择谁来决定你的判决。
+我们允许你挑选由谁来决定量刑。
 ###_PLAYER
 There won't be any sentence.
-不会有任何判决。
+根本不会有什么判决。
 ###_NPC
 Rules are rules Miss.  Should I pick the sentence myself?  I won't be too harsh.
-规矩就是规矩，女士，我可以决定判决吗？我不会过于严苛。
+规矩就是规矩，女士。要由我来决定判决吗？我不会太严厉的。
 ###_PLAYER
 Fine.  You pick the sentence.
-好吧。你来选择这个判决。
+行。你来定判决吧。
 ###_NPC
 Very well...  Your sentence will be to do my work for an hour.  You will clean this room and the main hall.
-很好……你的判决将是做我的工作一个小时。你将打扫这个房间和大厅。
+很好……你的判决是替我干一个小时的活。你得把这个房间和大厅打扫干净。
 ###_PLAYER
 Let me think about it.  (Leave her.)
 让我想想。（离开她。）
@@ -1016,56 +1016,56 @@ You cannot be serious.
 你不是认真的吧。
 ###_NPC
 Skipping my chores is very serious.  (She giggles.)  We need to get you dressed up for work.
-对逃脱杂务工作的家伙我可是很认真的。（她呵呵地笑。）我们需要为你的工作给你打扮一番。
+逃避杂务可是很严肃的问题。（她咯咯地笑。）我们得帮你好好打扮一番才能去干活。
 ###_PLAYER
 I'm not a maid.
-我不是女仆。
+我又不是女仆。
 ###_NPC
 You will be for a little while.  (She giggles.)  We need to get you dressed up for work.
-接下来你就是。（她呵呵地笑。）我们需要为你的工作给你打扮一番。
+待会儿你就是了。（她咯咯地笑。）我们得帮你好好打扮一番才能去干活。
 ###_PLAYER
 (Give her an angry look.)
-（愤怒地看着她。）
+（怒视着她。）
 ###_NPC
 Please don't be too mad.  (She giggles.)  We need to get you dressed up for work.
-请不要太生气。（她呵呵地笑。）我们需要为你的工作给你打扮一番。
+请别太生气嘛。（她咯咯地笑。）我们得帮你好好打扮一番才能去干活。
 ###_PLAYER
 I cannot change like that.
-我不会变成那样的。
+我才不要换成那种打扮。
 ###_NPC
 No worries Miss.  (They strap a duster gag on your mouth and put a maid hairband on your head.)  Time to clean!
-女士，别担心。（他们在你的嘴上系上了一个掸子口塞，并在你的头上戴上了女仆发带。）该打扫卫生了！
+别担心，女士。（她们把一个掸子口塞绑在你嘴上，又在你的头上戴上了女仆发箍。）该打扫卫生了！
 ###_PLAYER
 Don't you dare.
-你怎么敢？
+你敢。
 ###_NPC
 Daring is half the fun.  (They strap a duster gag on your mouth and put a maid hairband on your head.)  Time to clean!
-冒险是乐趣的一半。（他们在你的嘴上系上了一个掸子口塞，并在你的头上戴上了女仆发带。）该打扫卫生了！
+敢作敢当才好玩呢。（她们把一个掸子口塞绑在你嘴上，又在你的头上戴上了女仆发箍。）该打扫卫生了！
 (You grumble in the gag as both girls laugh at you.)
-（你在堵嘴中抱怨，两个女孩朝着你笑起来。）
+（你戴着口塞发出含糊的抱怨，两个女孩都在嘲笑你。）
 (You struggle in your restraints as the camera zooms on your body.)
-（你在束缚中挣扎，镜头对准你的身体。）
+（你在拘束具中挣扎着，摄像机拉近特写了你的身体。）
 ###_PLAYER
 (Try to shake off the gag.)
-（试着摆脱口塞。）
+（试图甩掉口塞。）
 ###_NPC
 (You shake your head frenetically, trying in vain to get the gag off.)
-（你疯狂地摇头，试图摆脱口塞，但徒劳无功。）
+（你疯狂地摇晃着头，徒劳地试图摆脱口塞。）
 ###_PLAYER
 (Beg for freedom.)
-（祈求自由。）
+（哀求重获自由。）
 ###_NPC
 (You beg both girls for freedom, but they give you two thumbs down.)
-（你乞求两个女孩放了你，但他们给了你两个朝上的大拇指。）
+（你哀求两个女孩放了你，但她们双双把大拇指朝下倒竖。）
 ###_PLAYER
 (Clean the dungeon.)
 （打扫地牢。）
 ###_NPC
 (You slowly clean the dungeon in your predicament as the camera follows you.)
-（你在困境束缚中慢慢打扫地牢，摄像机跟着你。）
+（你在困窘的拘束中慢慢打扫地牢，摄像机一路紧跟着你。）
 ###_PLAYER
 (Clean the main hall.)
 （打扫大厅。）
 ###_NPC
 (You slowly clean the main hall as club members claps their hands.)
-（你慢慢打扫大厅，俱乐部成员纷纷鼓掌。）
+（你慢慢打扫着大厅，俱乐部成员们纷纷为你鼓掌。）

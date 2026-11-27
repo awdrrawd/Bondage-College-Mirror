@@ -338,6 +338,8 @@ Text Masochist
 若有友方支配者，每回合+1声望和+1金钱。你弃牌时：+1金钱。
 Title Feet Worshiper
 足崇拜者
+Text Feet Worshiper
++2 金钱/回合，如果有色情女星或妈咪盟友。
 Title Fin-Dom Simp
 取款机小虾奴
 Text Fin-Dom Simp
@@ -365,11 +367,11 @@ Text Porn Lesbian
 Title Porn Veteran
 色情老手
 Text Porn Veteran
-进场：+3声望和金钱。
+进场：+3声望且+3金钱。
 Title Porn Star
 色情明星
 Text Porn Star
-进场：+5声望和金钱。
+进场：+5声望且+5金钱。
 Title Cam Girl
 直播女孩
 Text Cam Girl
@@ -411,7 +413,7 @@ Title Novice Nurse
 Text Novice Nurse
 每有一名友方病人，每回合+1声望（最多+3）。
 Title Commited Patient
-忠诚病人
+长期病人
 Text Commited Patient
 <F>我的拘束衣永远不够紧。
 Title Veteran Nurse
@@ -549,7 +551,7 @@ Text College Hidden Genius
 Title Substitute Teacher
 代课老师
 Text Substitute Teacher
-每有yi 名友方学生，每回合+1声望（最多+4）。
+每有一名友方学生，每回合+1声望（最多+4）。
 Title Julia
 Julia
 Text Julia
@@ -583,7 +585,7 @@ Title Kinky Garage Sale
 Text Kinky Garage Sale
 打出：+15金钱。
 Title Second Mortgage
-次级贷款
+二次抵押贷款
 Text Second Mortgage
 打出：+20金钱。
 Title Foreign Investment
@@ -607,7 +609,7 @@ Title Vampire Ball
 Text Vampire Ball
 打出：每有一名不是支配者、累赘、兽耳娘、女仆、在线玩家或工作人员的友方，+2声望。
 Title Straitjacket Saturday
-拘束衣周末
+拘束衣星期六
 Text Straitjacket Saturday
 打出：每有一名友方病人，+4金钱，并随机抽一名护士。
 Title Charity Auction
@@ -763,7 +765,7 @@ Title Teacher's Aide
 Text Teacher's Aide
 <F>日夜辅佐她的老师
 Title Homeroom
-班主任
+班级教室
 Text Homeroom
 需要3名及以上大学会员才能打出。持续4回合。玩家无法升级自己的俱乐部。
 Title Student Custodian
@@ -853,7 +855,7 @@ Title Prodigious Patient
 Text Prodigious Patient
 停留6回合。离场：对手失去15声望并随机弃一张牌。
 Title Theatre Nurse
-剧院护士
+手术室护士
 Text Theatre Nurse
 友方病人进场时：+3金钱并抽一张牌。
 Title Knot Nut
@@ -1163,7 +1165,7 @@ Title Vintage Maid
 Text Vintage Maid
 无法成为目标。进场：你可以选择街道中的一名友方返回你的手牌。
 Title Fetish Flick
-癖好随机
+怪癖爱好者
 Text Fetish Flick
 打出：随机返回2名友方色情女演员到手牌，然后+3行动。
 Title Ball Buster
@@ -1241,7 +1243,7 @@ Text Miss N Spection
 Prerequisite Miss N Spection
 请选择你手牌中的一张牌弃掉。
 Title Bottom Bitch
-下等妓女
+头牌妓女
 Text Bottom Bitch
 每有一名其他友方顺从者，每回合+2声望（最多+10）。回合结束：若没有友方女主人则离场。
 Title Nadu Nyla

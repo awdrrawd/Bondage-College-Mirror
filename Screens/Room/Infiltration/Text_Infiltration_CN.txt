@@ -1,5 +1,5 @@
 Exit
-大厅
+离开
 Profile
 个人档案
 Perks

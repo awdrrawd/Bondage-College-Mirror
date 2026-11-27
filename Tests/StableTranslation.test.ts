@@ -8,7 +8,7 @@ Game.load("../Screens/Room/Stable/Stable.js");
 
 it("shows the charged trainer guild fee inside the English and Russian money templates", () => {
 	const room = path.join(__dirname, "../Screens/Room/Stable");
-	const rows = Game.CommonParseCSV(fs.readFileSync(path.join(room, "Dialog_NPC_Stable_Trainer.csv"), "utf8"));
+	const rows: string[][] = Game.CommonParseCSV(fs.readFileSync(path.join(room, "Dialog_NPC_Stable_Trainer.csv"), "utf8"));
 	const english = rows.find(row => row[0] === "StableBecomeTrainerTrueIntro")?.[3];
 	expect(english).toBeDefined();
 	const lines = Game.TranslationParseTXT(fs.readFileSync(path.join(room, "Dialog_NPC_Stable_Trainer_RU.txt"), "utf8"));

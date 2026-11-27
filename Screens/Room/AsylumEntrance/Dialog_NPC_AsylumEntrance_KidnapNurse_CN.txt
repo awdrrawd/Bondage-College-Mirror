@@ -169,7 +169,7 @@ Very well.
 （她帮你换上了病人的衣服）现在你需要被绑起来。
 ###_PLAYER
 I hate these clothes.
-我讨厌那些衣服（
+我讨厌这身衣服。
 (Nod and change.)
 （点了点头，然后换上）
 That's really necessary?

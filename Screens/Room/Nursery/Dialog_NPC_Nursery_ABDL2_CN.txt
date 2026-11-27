@@ -1,85 +1,85 @@
 ###_NPC
 Heehee   you sound funny.
-嘻嘻，你听起来真好玩。
+嘻嘻，你听起来真滑稽。
 (She accepts the gag, giggles and tests its effects.)  Teehee.  This makes my voice sound funny
-（她接受了口塞，咯咯地笑着测试它的效果。）嘻嘻。这让我的声音听起来很好玩
+（她顺从地戴上口塞，咯咯笑着试了试效果。）嘻嘻。这让我的声音听起来怪怪的。
 (You remove her gag while she stretches her mouth.)  It seems kind of funny for a baby to be able to talk.
-（她张开嘴，你摘下她的口塞。）婴儿能够说话感觉很有趣。
+（你取下她的口塞，她活动着嘴巴。）宝宝居然能说话，感觉还挺滑稽的。
 (She wriggles nervously while you restrain her arms.)  It looks like my arms won't get to play for a while.
-（你束缚她的手臂，她紧张地扭动着身体。）看来我的手臂暂时不能玩了。
+（当你束缚住她的手臂时，她紧张地扭了扭身子。）看来我的双手暂时没法玩耍了。
 (You free her arms and she nods happily.)  Thank you.  We could play all sorts of games now.
-（你松开她的手臂，她高兴地点点头。）谢谢。我们现在可以玩各种游戏了。
+（你解开她的手臂束缚，她开心地连连点头。）谢谢你。我们现在可以玩各种各样的游戏了。
 (She submits to you while you restrain her legs securely.)  I don't need to move anyway.
-（她顺从地让你牢固地束缚住她的腿。）反正我也不需要动。
+（她顺从地任由你牢牢绑住双腿。）反正我本来也不需要乱动。
 (You release her legs from the restraint.)  Let me know if I can help you Miss.
-（你解开她的腿上的束缚。）如果我能帮助你，请告诉我女士。
+（你解开她腿上的束缚。）如果需要我帮忙，请尽管吩咐，小姐。
 (She looks puzzled as you restrain her feet.)  I'll stay on guard here Miss.
-（当你克制她的脚时，她看起来很困惑。）女士，我会在这里守着。
+（当你束缚住她的双脚时，她看起来有些困惑。）我会在这乖乖待命的，小姐。
 (You release her feet and she wiggles them.)  Thanks Miss, it was troublesome.
-（你松开她的脚，她扭动双脚。）谢谢女士，这很麻烦。
+（你解开她的双脚，她动了动脚趾。）谢谢小姐，刚才那样还挺碍事的。
 (You strap the collar on her while she blushes.)  You're quite a Dominant Miss.
-（她满脸通红地看着你为她带上项圈。）你真是个天生的支配者。
+（你为她戴上项圈，她脸颊泛红。）您可真是一位气场十足的支配者呢，小姐。
 (You remove the collar around her neck.)  Thanks Miss.
-（你取下她脖子上的项圈。）谢谢，女士。
+（你解下她脖子上的项圈。）多谢小姐。
 (You snap the belt around her waist and crotch while she sighs.)  No more fun for the crew.
-（你将贞操带系在她的腰部和胯部，她叹口气。）工作人员失去了乐趣。
+（你将贞操带扣在她的腰部和胯间，她轻叹一口气。）这下大家可都没乐子玩了。
 (You unlock the belt from her waist and she smiles.)  Thanks a lot Miss DialogPlayerName.
-（你解开她腰间的贞操带，她露出微笑。）非常感谢，DialogPlayerName女士。
+（你解开她腰上的贞操带，她露出了微笑。）非常感谢您，DialogPlayerName小姐。
 (You strap the device on her head as she nods slowly.)  This will not make my job easier Miss.
-（你把道具绑在她头上，她慢慢点头。）这肯定不会让我的工作更轻松的，女士。
+（你将装置固定在她头上，她缓缓点了点头。）这可不会让我的工作变轻松呢，小姐。
 (You remove the device and she nods rapidly.)  Thanks a million, this is much better.
-（你取下设备，她迅速点头。）百万份感谢，这好多了。
+（你取下装置，她急忙连连点头。）万分感谢，这下感觉好多了。
 (She jumps from the searing pain on her breast.)  Ouch!  Miss Head Maid!
-（她因胸口的灼痛而跳了起来）哎哟！女仆长女士！
+（胸口传来的剧痛让她猛地一颤。）哎哟！女仆长小姐！
 (You whip her breast with the leather crop as she whimpers and bows her head.)
-（你用皮鞭抽打她的胸部，她呜咽着低下头。）
+（你用皮拍抽打她的胸部，她呜咽着低下了头。）
 (You whip her butt hard as she sighs.)  I promise I'll work harder Miss Head Maid.
-（你使劲抽打她的屁股，她叹口气。）我保证我会更加努力的，女仆长。
+（你狠狠抽打她的屁股，她轻叹一声。）我保证会更加努力工作的，女仆长小姐。
 (She grumbles as you strike her butt with the crop.)  A maid's work is never easy.
-（你用皮鞭打她的屁股，她抱怨道。）女仆工作真不容易。
+（你用皮拍抽打她的屁股，她小声抱怨道。）女仆的工作可从来都不轻松。
 Welcome to the Nursery.  How can I help you?
-欢迎来到育婴室。有什么需要我帮你的吗？
+欢迎来到育婴室。有什么我可以帮您的吗？
 ###_PLAYER
 My name's DialogPlayerName.  Whats yours?
-我的名字是DialogPlayerName。你的名字呢？
+我叫DialogPlayerName。你叫什么名字？
 ###_NPC
 I'm DialogCharacterName. Would you like to play?
-我是DialogCharacterName。你想要玩吗？
+我是DialogCharacterName。你想一起玩吗？
 ###_PLAYER
 What is there to do here?
-这里有什么可做的？
+这里有什么好玩的？
 ###_NPC
 There isn't a lot to do at the moment, but the nurse will come along later with bottles full of milk.
-目前没什么可做的，但护士稍后会带着装满牛奶的瓶子来。
+目前没什么好玩的，不过护士稍后会带着装满牛奶的奶瓶过来。
 ###_PLAYER
 Your dress looks pretty.
-你的裙子看起来很漂亮。
+你的裙子真漂亮。
 ###_NPC
 (She blushes and fiddles with the hem of her dress.)  If you want to try a different dress, you could try asking the nurse.
-（她脸红起来，摆弄着裙子的下摆。）如果你想试试另一条裙子，你可以问问护士。
+（她脸红起来，摆弄着裙子的下摆。）如果你想换一条裙子穿，可以去问问护士。
 ###_PLAYER
 (Show her your restraints.)
-（向她展示你的束缚。）
+（向她展示你身上的束缚。）
 ###_NPC
 (She giggles and shakes her head.)
-（她咯咯笑着摇摇头。）
+（她咯咯笑着摇了摇头。）
 ###_PLAYER
 I can't stay to chat.  (Leave her.)
-我不能继续聊天了。（离开她。）
+我不能继续闲聊了。（离开她。）
 Milk, is that all?
-这完全是牛奶吗？
+只是牛奶吗？
 ###_NPC
 I'm not sure it's just milk either.  We tend to need these diapers shortly afterwards.
-我也不确定这只是牛奶。我们往往过不久就需要用到尿布。
+我也不确定里面是不是只有牛奶。反正喝完之后没多久，我们通常就得换尿布了。
 ###_PLAYER
 Can we play any games now?
-我们现在可以玩任何游戏吗？
+我们现在能玩什么游戏吗？
 ###_NPC
 I'm not sure what games we could play.  The nurse will organise some fun and games for us later.
-我不确定我们可以玩什么游戏。稍后护士会为我们组织一些有趣的游戏。
+我不确定能玩什么游戏。护士稍后会为我们组织一些好玩的活动的。
 ###_PLAYER
 Is that all?
-这就是全部？
+就只有这些吗？
 ###_NPC
 For the time being.  The nursery is still under development.
-暂时如此。幼儿园还在建设中。
+暂时只有这些。育婴室还在建设中呢。
