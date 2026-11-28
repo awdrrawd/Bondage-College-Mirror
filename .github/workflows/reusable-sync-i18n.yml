@@ -1,0 +1,52 @@
+name: Reusable shared i18n sync
+
+# 共用的手動 i18n 同步，由 AFC、FCM、HSC、LCE、Responsive 的 sync-i18n.yml 以 workflow_call 呼叫。
+# 下載 liko-Plugin-Repository 的最新 i18n 引擎、跑完整檢查，通過後推到新分支並在 Job Summary 附上建立 PR 的連結；不觸發部署。
+# 呼叫端的 job 需給 permissions: contents: write。修改這裡會影響所有呼叫端。
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        required: false
+        type: string
+        default: '24'
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      # 在 reusable workflow 內，checkout 取得的是呼叫端的 repo；保留憑證以便推送同步分支。
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: ${{ inputs.node-version }}
+          cache: npm
+      - run: npm ci
+      - run: npm run sync:i18n
+      - run: npm run check:i18n
+      - run: npm run lint --if-present
+      - run: npm run format:check --if-present
+      - run: npm test
+      - run: npm run build
+      - name: Save the tested update on a new branch
+        env:
+          SYNC_BRANCH: sync/i18n-${{ github.run_id }}-${{ github.run_attempt }}
+          BASE_BRANCH: ${{ github.ref_name }}
+        run: |
+          target=$(node --input-type=module -e "import fs from 'node:fs'; console.log(JSON.parse(fs.readFileSync('scripts/i18n-source.json')).target)")
+          git add -- "$target" scripts/i18n-source.json
+          if git diff --cached --quiet; then
+            echo 'No i18n changes.' >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          git switch -c "$SYNC_BRANCH"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'fix(i18n): sync shared engine from upstream main'
+          git push origin "HEAD:refs/heads/$SYNC_BRANCH"
+          echo "Tested update: [Create pull request]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/compare/$BASE_BRANCH...$SYNC_BRANCH?expand=1)" >> "$GITHUB_STEP_SUMMARY"
+          echo 'Open the pull request using this link so the normal PR checks run under your account. No deployment was triggered.' >> "$GITHUB_STEP_SUMMARY"
