@@ -24,7 +24,7 @@ on:
       node-version:
         required: false
         type: string
-        default: '22'
+        default: '24'
       check-script:
         required: false
         type: string
