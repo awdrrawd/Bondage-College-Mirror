@@ -13,7 +13,9 @@ Each snapshot lives at the root of a separate branch, so GitHub's **Download ZIP
 | [`lscg`](https://github.com/awdrrawd/Bondage-College-Mirror/tree/lscg) | [littlesera/LSCG](https://github.com/littlesera/LSCG), `main` |
 | [`bcplus`](https://github.com/awdrrawd/Bondage-College-Mirror/tree/bcplus) | [Seles84/bc-plus](https://github.com/Seles84/bc-plus), `main` |
 
-The `main` branch only contains this documentation, the sync workflow, and a
+The `main` branch only contains this documentation, the sync workflow, the
+reusable workflows shared by the liko plugins (`reusable-bc-compat.yml`,
+`reusable-sync-i18n.yml`; changing them affects every caller), and a
 small browser tool (`index.html`, published via GitHub Pages) for searching
 the mirrored branches by filename or content. The sync workflow checks upstream every
 three hours (UTC cron: `17 */3 * * *`) and can also be triggered
@@ -62,7 +64,8 @@ terms before using or redistributing these mirrors.
 | [`lscg`](https://github.com/awdrrawd/Bondage-College-Mirror/tree/lscg) | [littlesera/LSCG](https://github.com/littlesera/LSCG), `main` |
 | [`bcplus`](https://github.com/awdrrawd/Bondage-College-Mirror/tree/bcplus) | [Seles84/bc-plus](https://github.com/Seles84/bc-plus), `main` |
 
-`main` 分支只放這份說明文件、同步用的 workflow，以及一個透過 GitHub Pages
+`main` 分支只放這份說明文件、同步用的 workflow、liko 各插件共用的 reusable workflow
+（`reusable-bc-compat.yml`、`reusable-sync-i18n.yml`，修改會影響所有呼叫端），以及一個透過 GitHub Pages
 發佈的小型瀏覽器工具（`index.html`），可以用檔名或內容關鍵字搜尋各個鏡像分支。
 同步 workflow 每 3 小時檢查一次上游（UTC cron：`17 */3 * * *`），也可以在
 Actions 分頁手動觸發。
